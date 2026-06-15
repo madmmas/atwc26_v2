@@ -1,0 +1,241 @@
+# TESTING.md — QA & automation guide
+
+Everything a QA engineer needs to test **AnalyseThisWC26**: how to run it, the
+full API contract with sample payloads, the frontend `data-testid` map, model
+invariants worth asserting, and copy-paste starting points for **pytest** (API)
+and **Playwright** (E2E).
+
+---
+
+## 1. Bring the app up for testing
+
+**Option A — local processes**
+```bash
+# backend
+cd backend && python -m venv .venv && source .venv/bin/activate
+pip install -r requirements.txt
+python -m uvicorn app.main:app --port 8000        # API at :8000
+
+# frontend (another terminal)
+cd frontend && cp .env.example .env.local && npm install
+npm run dev                                        # UI at :3000
+```
+
+**Option B — full stack via Docker** (single origin, like prod)
+```bash
+docker compose up --build                          # everything at :8080
+```
+
+**Readiness gate** (poll before running a suite):
+```bash
+curl -fs http://localhost:8000/api/health > /dev/null && echo "API ready"
+```
+
+---
+
+## 2. API contract (for API automation)
+
+Base URL: `http://localhost:8000` (or `http://localhost:8080` behind Nginx).
+All responses are JSON; `NaN/inf` are converted to `null`.
+
+### `GET /api/health`
+```json
+{ "status": "ok", "app": "AnalyseThisWC26", "version": "1.0.0",
+  "avg_team_goals": 1.583, "games": 12, "teams": 24, "players": 376 }
+```
+
+### `GET /api/overview`
+Keys: `league`, `teams[]`, `top_scorers[]`, `top_xg_per90[]`, `top_creators_per90[]`.
+Each team: `{team_name, games, goals_for, goals_against, goals_per_game,
+conceded_per_game, xg_per_game, xga_per_game, shots_per_game, sot_per_game,
+big_chances_per_game}`.
+
+### `GET /api/teams`
+`{ "teams": [ {team_name, …}, … ] }`
+
+### `GET /api/teams/{team_name}/players`
+`{ "team_name": "...", "players": [ {player_id, player_name, role, minutes,
+expectedGoals_p90, …}, … ] }` — **404** if the team is unknown.
+
+### `GET /api/players`
+Query: `team`, `role` (GK/DEF/MID/FWD), `sort` (any player column),
+`limit` (≤ 500).
+`{ "count": N, "players": [...] }` — **400** on an unknown `sort` field.
+
+### `GET /api/leaderboard`
+Query: `metric` (default `expectedGoals_p90`), `role`, `min_minutes` (default 90),
+`limit` (default 20).
+`{ "metric": "...", "leaders": [...] }` — **400** on an unknown `metric`.
+
+### `POST /api/predict`
+Request:
+```json
+{
+  "team_a": { "team_name": "Brazil", "home": true,
+    "players": [ {"player_id": 12345, "role": "GK"},
+                 {"player_id": 23456, "role": "DEF"} ] },
+  "team_b": { "team_name": "Germany", "home": false,
+    "players": [ {"player_id": 34567, "role": "FWD"} ] }
+}
+```
+Response (abridged):
+```json
+{
+  "team_a": { "team_name": "Brazil", "attack_rating": 0.76, "defense_rating": 0.97,
+    "gk_rating": 0.96, "expected_goals": 2.60, "win_probability": 0.19,
+    "key_players": [ {"player_name": "...", "attack": 1.57, "defense": 0.27} ] },
+  "team_b": { "...": "..." },
+  "draw_prob": 0.13,
+  "most_likely_score": { "a": 2, "b": 4, "prob": 0.05 },
+  "top_scorelines": [ {"a": 2, "b": 4, "prob": 0.05}, … ],
+  "radar": { "dimensions": ["Attack","Creativity","Possession","Defense","Goalkeeping"],
+             "Brazil": {...}, "Germany": {...} },
+  "narrative": "The model gives Germany a strong edge …",
+  "model": { "type": "...", "avg_team_goals_baseline": 1.583, "assumptions": "..." }
+}
+```
+**400** if either team has zero selected players.
+
+> **Tip:** an easy way to build a valid `predict` body is to call
+> `GET /api/teams/{team}/players`, take the first GK + some DEF/MID/FWD, and map
+> each to `{player_id, role}`.
+
+---
+
+## 3. Model invariants worth asserting
+
+These should hold for **any** valid prediction — great automated checks:
+
+1. `team_a.win_probability + team_b.win_probability + draw_prob ≈ 1.0` (±0.001).
+2. Every probability ∈ [0, 1]; every `expected_goals` ∈ [0.2, 5.0] (the clamp).
+3. `most_likely_score` equals the highest-prob entry in `top_scorelines`.
+4. `radar.dimensions` has 5 entries; each team vector has all 5 keys, values 5–100.
+5. **Symmetry/sanity:** identical XIs for both teams on neutral ground →
+   `win_a ≈ win_b` and `expected_goals_a ≈ expected_goals_b ≈ ~1.58`.
+6. Home advantage: flipping `home` to team A (others equal) must **not decrease**
+   team A's win probability.
+7. A clearly stronger XI (top scorers) vs. a weak XI should give the stronger side
+   the higher win probability.
+
+---
+
+## 4. Frontend `data-testid` map (for E2E)
+
+Stable selectors are already wired in:
+
+| testid | Element | Page |
+|---|---|---|
+| `logo` | brand wordmark | all |
+| `nav`, `nav-overview`, `nav-explore`, `nav-predict` | nav + links | all |
+| `team-select-a`, `team-select-b` | team dropdowns | /predict |
+| `autopick-a`, `autopick-b` | "Auto-pick XI" buttons | /predict |
+| `team-col-a`, `team-col-b` | each team's column | /predict |
+| `predict-button` | "Predict result" | /predict |
+| `prediction-result` | result container (appears after predict) | /predict |
+| `predict-error` | error banner (negative paths) | /predict |
+
+If you need more, add `data-testid`s in the component and note them here (see
+[CONTRIBUTING.md](CONTRIBUTING.md)).
+
+---
+
+## 5. Suggested automation stack
+
+| Layer | Tool | Why |
+|---|---|---|
+| API tests | **pytest + httpx** (or `requests`) | fast, asserts the contract above |
+| Component/E2E | **Playwright** (TS or Python) | drives the real UI via `data-testid` |
+| Load/perf | **k6** or **Locust** | the API is CPU-bound & cacheable; easy to load |
+| CI | GitHub Actions | run API tests + `next build` + Playwright on PRs |
+
+### Example: API test (pytest + httpx)
+```python
+# tests/test_api.py   →   pip install pytest httpx
+import httpx
+
+BASE = "http://localhost:8000"
+
+def test_health():
+    r = httpx.get(f"{BASE}/api/health")
+    assert r.status_code == 200
+    assert r.json()["status"] == "ok"
+
+def test_unknown_team_404():
+    assert httpx.get(f"{BASE}/api/teams/Nowhere/players").status_code == 404
+
+def _xi(team):
+    players = httpx.get(f"{BASE}/api/teams/{team}/players").json()["players"]
+    picks, need = [], {"GK": 1, "DEF": 4, "MID": 3, "FWD": 3}
+    for role, n in need.items():
+        for p in [p for p in players if p["role"] == role][:n]:
+            picks.append({"player_id": p["player_id"], "role": role})
+    return {"team_name": team, "players": picks, "home": False}
+
+def test_predict_probabilities_sum_to_one():
+    body = {"team_a": _xi("Brazil"), "team_b": _xi("Germany")}
+    d = httpx.post(f"{BASE}/api/predict", json=body).json()
+    total = d["team_a"]["win_probability"] + d["team_b"]["win_probability"] + d["draw_prob"]
+    assert abs(total - 1.0) < 1e-3
+
+def test_predict_requires_players():
+    body = {"team_a": {"team_name": "Brazil", "players": []},
+            "team_b": {"team_name": "Germany", "players": []}}
+    assert httpx.post(f"{BASE}/api/predict", json=body).status_code == 400
+```
+
+### Example: E2E test (Playwright, TypeScript)
+```ts
+// e2e/predict.spec.ts   →   npm i -D @playwright/test && npx playwright install
+import { test, expect } from "@playwright/test";
+
+test("build two XIs and predict a result", async ({ page }) => {
+  await page.goto("http://localhost:3000/predict");
+
+  await page.getByTestId("team-select-a").selectOption({ label: "Brazil" });
+  await page.getByTestId("team-select-b").selectOption({ label: "Germany" });
+
+  await page.getByTestId("autopick-a").click();
+  await page.getByTestId("autopick-b").click();
+
+  await page.getByTestId("predict-button").click();
+
+  const result = page.getByTestId("prediction-result");
+  await expect(result).toBeVisible();
+  await expect(result).toContainText("Most likely scoreline");
+});
+```
+
+---
+
+## 6. Negative & edge cases to cover
+
+- `POST /api/predict` with **empty** players → 400.
+- Same team on both sides (UI disables Predict when `teamA === teamB`).
+- Unknown `sort`/`metric` query → 400.
+- Unknown team in path → 404.
+- Players with **very low minutes** (cameo XI) — prediction should still return
+  valid, clamped numbers (no NaN/inf in JSON).
+- Switching formation (4-3-3 ↔ 3-5-2) re-shapes the XI slots without errors.
+- Backend cold start: first request after boot triggers data load — health may
+  lag a second; poll it.
+
+---
+
+## 7. Smoke checklist (manual, ~2 min)
+
+- [ ] `/api/health` returns `200` with non-zero `players`/`teams`.
+- [ ] Overview page shows KPIs, the team chart, and three leaderboards.
+- [ ] Explore: filter by team + role and change sort → table updates.
+- [ ] Predictor: pick two teams → Auto-pick both → Predict → result + radar show.
+- [ ] Toggle home advantage → win probabilities shift accordingly.
+- [ ] Footer "NeuNov Technologies" links to neunov.com.
+
+---
+
+## 8. Notes for reliable runs
+
+- The dataset is **read-only** and deterministic, so tests are reproducible for a
+  given `data/` snapshot. If `data/` is refreshed, exact numbers change but the
+  **invariants in §3 still hold** — assert on invariants, not hard-coded values.
+- Run API and E2E suites against the **same** running stack (Docker `:8080` is
+  closest to production).

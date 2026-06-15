@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  color-scheme: dark;
+}
+
+body {
+  @apply bg-pitch-bg text-slate-200 antialiased;
+  background-image:
+    radial-gradient(900px 500px at 80% -10%, rgba(16, 185, 129, 0.10), transparent),
+    radial-gradient(700px 400px at 0% 0%, rgba(6, 182, 212, 0.08), transparent);
+  background-attachment: fixed;
+}
+
+@layer components {
+  .card {
+    @apply rounded-2xl border border-pitch-edge bg-pitch-card/80 backdrop-blur-sm;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 py-2
+           text-sm font-semibold transition-colors disabled:opacity-40
+           disabled:cursor-not-allowed;
+  }
+  .btn-primary {
+    @apply btn bg-pitch-accent text-pitch-bg hover:bg-emerald-400 shadow-glow;
+  }
+  .btn-ghost {
+    @apply btn border border-pitch-edge text-slate-300 hover:bg-pitch-edge/60;
+  }
+  .chip {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
+  }
+  .stat-grad {
+    @apply bg-gradient-to-r from-pitch-accent to-pitch-accent2 bg-clip-text text-transparent;
+  }
+  .select {
+    @apply rounded-lg border border-pitch-edge bg-pitch-bg px-3 py-1.5 text-sm
+           text-slate-200 outline-none focus:border-pitch-accent;
+  }
+}
+
+/* role accent chips */
+.role-GK { @apply bg-amber-500/15 text-amber-300; }
+.role-DEF { @apply bg-sky-500/15 text-sky-300; }
+.role-MID { @apply bg-emerald-500/15 text-emerald-300; }
+.role-FWD { @apply bg-rose-500/15 text-rose-300; }
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-thumb { @apply bg-pitch-edge rounded-full; }

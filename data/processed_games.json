@@ -1,0 +1,74 @@
+{
+  "760415": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760415",
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-12T23:24:11+00:00"
+  },
+  "760414": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760414",
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-12T23:24:32+00:00"
+  },
+  "760416": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760416",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-12T23:24:52+00:00"
+  },
+  "760417": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760417",
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-15T17:06:46+00:00"
+  },
+  "760420": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760420",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-15T17:07:06+00:00"
+  },
+  "760419": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760419",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-15T17:07:26+00:00"
+  },
+  "760418": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760418",
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-15T17:07:47+00:00"
+  },
+  "760421": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760421",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-15T17:08:08+00:00"
+  },
+  "760422": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760422",
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-15T17:08:29+00:00"
+  },
+  "760425": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760425",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-15T17:08:49+00:00"
+  },
+  "760423": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760423",
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-15T17:09:10+00:00"
+  },
+  "760424": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760424",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-15T17:09:31+00:00"
+  }
+}

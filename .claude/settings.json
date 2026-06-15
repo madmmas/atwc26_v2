@@ -1,0 +1,35 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(pip3 list *)",
+      "Read(//private/tmp/**)",
+      "Bash(curl -sL -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" \"https://www.espn.com/soccer/player-stats/_/gameId/760416\" -o espn_test.html)",
+      "Bash(curl -sL --max-time 20 -A \"Mozilla/5.0 \\(Macintosh; Intel Mac OS X 10_15_7\\) AppleWebKit/537.36 \\(KHTML, like Gecko\\) Chrome/120.0 Safari/537.36\" -H \"Accept: text/html\" \"https://www.espn.com/soccer/player-stats/_/gameId/760416\" -w \"HTTP_CODE:%{http_code} SIZE:%{size_download}\\\\n\" -o espn_test.html)",
+      "Bash(python3)",
+      "Bash(python3 -c \"import pyarrow; print\\('pyarrow', pyarrow.__version__\\)\")",
+      "Bash(pip3 install *)",
+      "Bash(python3 -c \"import pyarrow; print\\('pyarrow OK', pyarrow.__version__\\)\")",
+      "Bash(python3 scrape_wc26.py)",
+      "Bash(python3 -c ' *)",
+      "Bash(jupyter nbconvert *)",
+      "Bash(python3 -c \"import fastapi, uvicorn, pydantic; print\\('fastapi', fastapi.__version__, '| pydantic', pydantic.VERSION\\)\")",
+      "Bash(curl -s \"http://127.0.0.1:8011/api/leaderboard?metric=expectedGoals_p90&limit=3\")",
+      "Bash(python3 -c \"import sys,json;[print\\(p['player_name'],p['team_name'],p['expectedGoals_p90']\\) for p in json.load\\(sys.stdin\\)['leaders']]\")",
+      "Bash(curl -s \"http://127.0.0.1:8011/api/players?team=Germany&role=FWD&limit=3\")",
+      "Bash(python3 -c \"import sys,json;d=json.load\\(sys.stdin\\);print\\('count',d['count']\\);[print\\(p['player_name'],p['role'],p['minutes']\\) for p in d['players']]\")",
+      "Bash(pkill -f \"uvicorn app.main\")",
+      "Bash(cp .env.example .env.local)",
+      "Bash(npm install *)",
+      "Bash(npm run *)",
+      "Bash(pkill -f \"next-server\")",
+      "Bash(pkill -f \"npm run start\")",
+      "Bash(docker compose *)",
+      "Bash(timeout 420 docker build -t pitchiq-backend:test ./backend)",
+      "Bash(docker build *)",
+      "Bash(sed -n '1,6p' backend/app/main.py)",
+      "Bash(sed -n '1,5p' frontend/lib/api.ts)",
+      "Bash(sed -n '12,33p' frontend/components/Nav.tsx)",
+      "Bash(python3 -W error::FutureWarning -c ' *)"
+    ]
+  }
+}

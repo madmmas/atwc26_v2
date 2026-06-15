@@ -1,0 +1,43 @@
+# AnalyseThisWC26 full stack: nginx (public) -> frontend (Next.js) + backend (FastAPI).
+# Bring up with:  docker compose up --build
+# Then open:      http://localhost:8080
+
+services:
+  backend:
+    build: ./backend
+    environment:
+      # Same-origin frontend through nginx; relax/extend for other hosts.
+      ATWC26_CORS_ORIGINS: "http://localhost:8080,http://127.0.0.1:8080"
+      WEB_CONCURRENCY: "4"
+      ATWC26_DATA_DIR: "/data"
+    volumes:
+      # Mount the scraped dataset read-only. Refreshed by scrape_wc26.py.
+      - ./data:/data:ro
+    expose:
+      - "8000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        # Empty -> the browser calls same-origin /api, which nginx routes.
+        NEXT_PUBLIC_API_URL: ""
+    expose:
+      - "3000"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+  nginx:
+    image: nginx:1.27-alpine
+    ports:
+      - "8080:80"
+      # - "443:443"   # enable when terminating TLS (mount certs below)
+    volumes:
+      - ./deploy/nginx.conf:/etc/nginx/nginx.conf:ro
+      # - ./deploy/certs:/etc/nginx/certs:ro
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
