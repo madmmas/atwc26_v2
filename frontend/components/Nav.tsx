@@ -16,7 +16,7 @@ export function Nav() {
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <div className="flex items-center gap-2">
           <Link href="/" aria-label="AnalyseThisWC26 home">
-            <Logo />
+            <Logo size="md" />
           </Link>
           <ByNeuNov className="hidden text-[10px] uppercase tracking-widest text-slate-500 sm:inline" />
         </div>

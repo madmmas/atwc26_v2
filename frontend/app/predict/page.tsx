@@ -110,7 +110,7 @@ function TeamColumn({
                   <option value="">— empty —</option>
                   {opts.map((p) => (
                     <option key={p.player_id} value={p.player_id} disabled={chosen.has(p.player_id) && p.player_id !== s.player_id}>
-                      {p.player_name} · {p.minutes}m
+                      {p.player_name} · {p.minutes > 0 ? `${p.minutes}m` : "DNP"}
                     </option>
                   ))}
                 </select>

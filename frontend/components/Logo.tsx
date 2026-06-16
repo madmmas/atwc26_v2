@@ -1,39 +1,44 @@
-// Colorful typographic wordmark for AnalyseThisWC26.
-// Pure CSS/typography — no image asset — so it stays crisp at any size.
+import Image from "next/image";
 
 type Size = "sm" | "md" | "lg";
 
-const TILE: Record<Size, string> = {
-  sm: "h-8 w-8 text-base",
-  md: "h-9 w-9 text-lg",
-  lg: "h-12 w-12 text-2xl",
-};
-const WORD: Record<Size, string> = {
-  sm: "text-sm",
-  md: "text-base",
-  lg: "text-3xl",
+// Logo sizing: responsive widths for the SVG wordmark.
+const SIZES: Record<Size, string> = {
+  sm: "w-32 h-8",   // 128px wide, ~32px tall
+  md: "w-40 h-10",  // 160px wide, ~40px tall
+  lg: "w-56 h-14",  // 224px wide, ~56px tall
 };
 
 export function Logo({ size = "md" }: { size?: Size }) {
   return (
-    <span className="inline-flex items-center gap-2" data-testid="logo">
-      <span
-        className={`grid ${TILE[size]} place-items-center rounded-xl bg-gradient-to-br from-emerald-400 via-cyan-400 to-violet-500 font-black text-pitch-bg shadow-glow`}
-      >
-        A
-      </span>
-      <span className={`flex items-baseline gap-1 font-black tracking-tight ${WORD[size]}`}>
-        <span className="bg-gradient-to-r from-emerald-300 to-cyan-400 bg-clip-text text-transparent">
-          Analyse
-        </span>
-        <span className="bg-gradient-to-r from-amber-300 to-rose-400 bg-clip-text text-transparent">
-          This
-        </span>
-        <span className="rounded-md bg-gradient-to-br from-violet-500 to-fuchsia-500 px-1.5 py-0.5 text-[0.55em] font-black uppercase tracking-wider text-white">
-          WC26
-        </span>
-      </span>
-    </span>
+    <div className={`inline-block ${SIZES[size]}`} data-testid="logo">
+      <Image
+        src="/NewLogoAnalyseThis.png"
+        alt="AnalyseThisWC26"
+        width={1854}
+        height={302}
+        priority
+        className="w-full h-auto"
+      />
+    </div>
+  );
+}
+
+// Symbol icon (AT badge) for small spaces like favicon or compact display.
+export function Symbol({ size = "sm" }: { size?: "xs" | "sm" | "md" } = {}) {
+  const SYMBOL_SIZES: Record<"xs" | "sm" | "md", string> = {
+    xs: "w-6 h-6",   // 24px
+    sm: "w-8 h-8",   // 32px
+    md: "w-12 h-12", // 48px
+  };
+  return (
+    <Image
+      src="/ATSymble.png"
+      alt="AT"
+      width={420}
+      height={414}
+      className={`${SYMBOL_SIZES[size]} rounded`}
+    />
   );
 }
 

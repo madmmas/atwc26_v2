@@ -50,10 +50,11 @@ export default function Home() {
     );
   if (!data) return <Spinner label="Loading tournament data…" />;
 
+  // All tournament teams, best xG first; teams that haven't played sit at zero.
   const chart = [...data.teams]
-    .sort((a, b) => b.xg_per_game - a.xg_per_game)
-    .slice(0, 12)
+    .sort((a, b) => b.xg_per_game - a.xg_per_game || a.team_name.localeCompare(b.team_name))
     .map((t) => ({ name: t.team_name, xG: t.xg_per_game, xGA: t.xga_per_game }));
+  const chartWidth = Math.max(chart.length * 46, 640); // horizontal scroll for 48 teams
 
   return (
     <div className="space-y-8">
@@ -89,21 +90,26 @@ export default function Home() {
 
       {/* Team xG chart */}
       <section>
-        <SectionTitle title="Team attacking output" hint="expected goals per game (xG) vs. conceded (xGA)" />
-        <div className="card p-4" style={{ height: 320 }}>
-          <ResponsiveContainer width="100%" height="100%">
-            <BarChart data={chart} margin={{ top: 8, right: 8, bottom: 40, left: -10 }}>
-              <CartesianGrid stroke="#1e2733" vertical={false} />
-              <XAxis dataKey="name" angle={-35} textAnchor="end" interval={0} tick={{ fill: "#94a3b8", fontSize: 11 }} />
-              <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
-              <Tooltip
-                contentStyle={{ background: "#121821", border: "1px solid #1e2733", borderRadius: 12 }}
-                labelStyle={{ color: "#fff" }}
-              />
-              <Bar dataKey="xG" fill="#10b981" radius={[4, 4, 0, 0]} />
-              <Bar dataKey="xGA" fill="#f59e0b" radius={[4, 4, 0, 0]} />
-            </BarChart>
-          </ResponsiveContainer>
+        <SectionTitle
+          title="Team attacking output"
+          hint={`all ${chart.length} teams · xG vs. conceded (xGA) per game · scroll →`}
+        />
+        <div className="card overflow-x-auto p-4">
+          <div style={{ width: chartWidth, height: 340 }}>
+            <ResponsiveContainer width="100%" height="100%">
+              <BarChart data={chart} margin={{ top: 8, right: 8, bottom: 56, left: -10 }}>
+                <CartesianGrid stroke="#1e2733" vertical={false} />
+                <XAxis dataKey="name" angle={-45} textAnchor="end" interval={0} height={70} tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                <Tooltip
+                  contentStyle={{ background: "#121821", border: "1px solid #1e2733", borderRadius: 12 }}
+                  labelStyle={{ color: "#fff" }}
+                />
+                <Bar dataKey="xG" fill="#10b981" radius={[4, 4, 0, 0]} />
+                <Bar dataKey="xGA" fill="#f59e0b" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
+          </div>
         </div>
       </section>
 
