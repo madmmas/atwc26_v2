@@ -2,15 +2,40 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Light theme (default). RGB triplets so Tailwind alpha modifiers work. */
 :root {
+  color-scheme: light;
+  --bg: 247 249 252;       /* near-white */
+  --card: 255 255 255;     /* white cards */
+  --edge: 226 232 240;     /* slate-200 */
+  --fg: 15 23 42;          /* slate-900 */
+  --fg-soft: 51 65 85;     /* slate-700 */
+  --muted: 71 85 105;      /* slate-600 */
+  --faint: 100 116 139;    /* slate-500 */
+  --grid: 203 213 225;     /* slate-300 */
+  --glowA: rgba(16, 185, 129, 0.10);
+  --glowB: rgba(6, 182, 212, 0.10);
+}
+
+.dark {
   color-scheme: dark;
+  --bg: 10 14 20;          /* #0a0e14 */
+  --card: 18 24 33;        /* #121821 */
+  --edge: 30 39 51;        /* #1e2733 */
+  --fg: 248 250 252;       /* slate-50 */
+  --fg-soft: 203 213 225;  /* slate-300 */
+  --muted: 148 163 184;    /* slate-400 */
+  --faint: 100 116 139;    /* slate-500 */
+  --grid: 30 39 51;        /* #1e2733 */
+  --glowA: rgba(16, 185, 129, 0.10);
+  --glowB: rgba(6, 182, 212, 0.08);
 }
 
 body {
-  @apply bg-pitch-bg text-slate-200 antialiased;
+  @apply bg-pitch-bg text-fg antialiased;
   background-image:
-    radial-gradient(900px 500px at 80% -10%, rgba(16, 185, 129, 0.10), transparent),
-    radial-gradient(700px 400px at 0% 0%, rgba(6, 182, 212, 0.08), transparent);
+    radial-gradient(900px 500px at 80% -10%, var(--glowA), transparent),
+    radial-gradient(700px 400px at 0% 0%, var(--glowB), transparent);
   background-attachment: fixed;
 }
 
@@ -24,28 +49,28 @@ body {
            disabled:cursor-not-allowed;
   }
   .btn-primary {
-    @apply btn bg-pitch-accent text-pitch-bg hover:bg-emerald-400 shadow-glow;
+    @apply btn bg-pitch-accent text-white hover:bg-emerald-500 shadow-glow;
   }
   .btn-ghost {
-    @apply btn border border-pitch-edge text-slate-300 hover:bg-pitch-edge/60;
+    @apply btn border border-pitch-edge text-fg-soft hover:bg-pitch-edge/60;
   }
   .chip {
     @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
   }
   .stat-grad {
-    @apply bg-gradient-to-r from-pitch-accent to-pitch-accent2 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent;
   }
   .select {
-    @apply rounded-lg border border-pitch-edge bg-pitch-bg px-3 py-1.5 text-sm
-           text-slate-200 outline-none focus:border-pitch-accent;
+    @apply rounded-lg border border-pitch-edge bg-pitch-card px-3 py-1.5 text-sm
+           text-fg outline-none focus:border-pitch-accent;
   }
 }
 
-/* role accent chips */
-.role-GK { @apply bg-amber-500/15 text-amber-300; }
-.role-DEF { @apply bg-sky-500/15 text-sky-300; }
-.role-MID { @apply bg-emerald-500/15 text-emerald-300; }
-.role-FWD { @apply bg-rose-500/15 text-rose-300; }
+/* role accent chips — readable in both themes */
+.role-GK { @apply bg-amber-500/15 text-amber-700 dark:text-amber-300; }
+.role-DEF { @apply bg-sky-500/15 text-sky-700 dark:text-sky-300; }
+.role-MID { @apply bg-emerald-500/15 text-emerald-700 dark:text-emerald-300; }
+.role-FWD { @apply bg-rose-500/15 text-rose-700 dark:text-rose-300; }
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { @apply bg-pitch-edge rounded-full; }

@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss";
 
 const config: Config = {
+  darkMode: "class",
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,15 +9,21 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        // Surfaces & text are CSS-variable-driven so they adapt to light/dark.
         pitch: {
-          bg: "#0a0e14",
-          card: "#121821",
-          edge: "#1e2733",
-          accent: "#10b981", // emerald
+          bg: "rgb(var(--bg) / <alpha-value>)",
+          card: "rgb(var(--card) / <alpha-value>)",
+          edge: "rgb(var(--edge) / <alpha-value>)",
+          accent: "#10b981", // emerald (works on both themes)
           accent2: "#06b6d4", // cyan
           warn: "#f59e0b",
           danger: "#ef4444",
         },
+        // Semantic text tokens.
+        fg: "rgb(var(--fg) / <alpha-value>)",
+        "fg-soft": "rgb(var(--fg-soft) / <alpha-value>)",
+        muted: "rgb(var(--muted) / <alpha-value>)",
+        faint: "rgb(var(--faint) / <alpha-value>)",
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],

@@ -7,6 +7,7 @@ reads from these cached frames.
 """
 from __future__ import annotations
 
+import json
 import threading
 from functools import lru_cache
 
@@ -14,6 +15,45 @@ import numpy as np
 import pandas as pd
 
 from . import config
+
+# Team-level indicators compared in Match Analysis (column, label, how-to-agg,
+# whether a higher value is "better"). possession% is computed separately.
+MATCH_INDICATORS = [
+    ("expectedGoals", "Expected goals (xG)", "sum", True),
+    ("totalShots", "Shots", "sum", True),
+    ("shotsOnTarget", "Shots on target", "sum", True),
+    ("bigChanceCreated", "Big chances", "sum", True),
+    ("totalPasses", "Passes", "sum", True),
+    ("touchesInOppBox", "Touches in opp. box", "sum", True),
+    ("duelsWon", "Duels won", "sum", True),
+    ("totalTackles", "Tackles", "sum", True),
+    ("interceptions", "Interceptions", "sum", True),
+    ("totalClearance", "Clearances", "sum", True),
+    ("saves", "Saves", "sum", True),
+    ("foulsCommitted", "Fouls", "sum", False),
+    ("yellowCards", "Yellow cards", "sum", False),
+]
+
+# Per-player indicators shown in Player Analysis (column, label, per90-able).
+PLAYER_INDICATORS = [
+    ("totalGoals", "Goals", True),
+    ("goalAssists", "Assists", True),
+    ("expectedGoals", "xG", True),
+    ("expectedAssists", "xA", True),
+    ("totalShots", "Shots", True),
+    ("shotsOnTarget", "Shots on target", True),
+    ("touches", "Touches", True),
+    ("totalPasses", "Passes", True),
+    ("passPct", "Pass %", False),
+    ("duelsWon", "Duels won", True),
+    ("totalTackles", "Tackles", True),
+    ("interceptions", "Interceptions", True),
+    ("totalClearance", "Clearances", True),
+    ("defensiveInterventions", "Defensive actions", True),
+    ("foulsCommitted", "Fouls", True),
+    ("saves", "Saves", True),
+    ("goalsConceded", "Goals conceded", True),
+]
 
 # --------------------------------------------------------------------------- #
 # Metric groups used across analytics and the prediction engine
@@ -102,10 +142,24 @@ class DataStore:
                 for p, a in zip(df["position"], df["position_abbr"])
             ])
             self.raw = df
+            self.flags = self._load_flags()
             self.players = self._build_player_profiles(df)
             self.teams = self._build_team_profiles(df)
+            self.matches = self._build_matches(df)
             self.league = self._build_league_context(df)
             self._loaded = True
+
+    # -- flags ------------------------------------------------------------- #
+    def _load_flags(self) -> dict:
+        """team_name -> flag image url (authentic ESPN country flags)."""
+        try:
+            raw = json.loads(config.TEAM_FLAGS.read_text())
+            return {name: info.get("flag_url") for name, info in raw.items()}
+        except Exception:
+            return {}
+
+    def flag(self, team_name: str) -> str | None:
+        return self.flags.get(team_name)
 
     # -- player profiles --------------------------------------------------- #
     def _build_player_profiles(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -126,6 +180,7 @@ class DataStore:
                 "player_name": g["player_name"].iat[0],
                 "team_name": g["team_name"].iat[0],
                 "team_id": g["team_id"].iat[0],
+                "flag_url": self.flag(g["team_name"].iat[0]),
                 "role": role,
                 "games": int(g["game_id"].notna().sum()),  # count non-null games
                 "minutes": round(minutes, 0),
@@ -173,6 +228,7 @@ class DataStore:
             n = len(g)
             rows.append({
                 "team_name": team,
+                "flag_url": self.flag(team),
                 "games": int(n),
                 "goals_for": round(float(g["goals"].sum()), 0),
                 "goals_against": round(float(g["conceded"].sum()), 0),
@@ -190,7 +246,7 @@ class DataStore:
         played_teams = {r["team_name"] for r in rows}
         for team in sorted(set(df["team_name"]) - played_teams):
             rows.append({
-                "team_name": team, "games": 0,
+                "team_name": team, "flag_url": self.flag(team), "games": 0,
                 "goals_for": 0, "goals_against": 0,
                 "goals_per_game": 0.0, "conceded_per_game": 0.0,
                 "xg_per_game": 0.0, "xga_per_game": 0.0,
@@ -213,6 +269,142 @@ class DataStore:
             "games": int(df["game_id"].nunique()),
             "teams": int(df["team_name"].nunique()),
             "players": int(df["player_id"].nunique()),
+        }
+
+    # -- matches ----------------------------------------------------------- #
+    def _build_matches(self, df: pd.DataFrame) -> list[dict]:
+        """One entry per played match (most recent first)."""
+        played = df[df["game_id"].notna()]
+        matches = []
+        for gid, g in played.groupby("game_id"):
+            # home row tells us both sides + score from one perspective
+            home = g[g["home_away"] == "home"]
+            row = home.iloc[0] if not home.empty else g.iloc[0]
+            home_name = row["team_name"]
+            away_name = row["opp_team_name"]
+            hs, as_ = row["team_score"], row["opp_score"]
+            matches.append({
+                "game_id": str(gid),
+                "date": row["match_date"],
+                "home_team": home_name,
+                "away_team": away_name,
+                "home_flag": self.flag(home_name),
+                "away_flag": self.flag(away_name),
+                "home_score": None if pd.isna(hs) else int(hs),
+                "away_score": None if pd.isna(as_) else int(as_),
+            })
+        matches.sort(key=lambda m: m["date"] or "", reverse=True)
+        return matches
+
+    def match_detail(self, game_id: str) -> dict | None:
+        """Side-by-side team indicator comparison for one match."""
+        g = self.raw[self.raw["game_id"].astype(str) == str(game_id)]
+        g = g[g["minutes"] > 0]
+        if g.empty:
+            return None
+        teams = list(g["team_name"].unique())[:2]
+        if len(teams) < 2:
+            return None
+
+        def team_block(team):
+            t = g[g["team_name"] == team]
+            return t, {
+                "team_name": team,
+                "flag_url": self.flag(team),
+                "score": (None if t["team_score"].isna().all()
+                          else int(t["team_score"].iloc[0])),
+            }
+
+        ta, a = team_block(teams[0])
+        tb, b = team_block(teams[1])
+
+        # Possession proxy = share of total passes.
+        pa = float(ta["totalPasses"].sum()) if "totalPasses" in ta else 0.0
+        pb = float(tb["totalPasses"].sum()) if "totalPasses" in tb else 0.0
+        tot = pa + pb
+        indicators = [{
+            "key": "possession", "label": "Possession %", "better_high": True,
+            "a": round(pa / tot * 100, 1) if tot else 50.0,
+            "b": round(pb / tot * 100, 1) if tot else 50.0,
+        }]
+        for col, label, _agg, better in MATCH_INDICATORS:
+            if col not in g.columns:
+                continue
+            av = round(float(ta[col].sum()), 2)
+            bv = round(float(tb[col].sum()), 2)
+            indicators.append({"key": col, "label": label,
+                               "better_high": better, "a": av, "b": bv})
+
+        meta = next((m for m in self.matches if m["game_id"] == str(game_id)), {})
+        return {"meta": meta, "team_a": a, "team_b": b, "indicators": indicators}
+
+    # -- player detail ----------------------------------------------------- #
+    def player_detail(self, player_id: int) -> dict | None:
+        df = self.raw[self.raw["player_id"].astype(str) == str(player_id)]
+        if df.empty:
+            return None
+        first = df.iloc[0]
+        team = first["team_name"]
+        played = df[df["game_id"].notna() & (df["minutes"] > 0)].copy()
+
+        cols = [c for c, _l, _p in PLAYER_INDICATORS if c in df.columns]
+        labels = [{"key": c, "label": l, "per90": p}
+                  for c, l, p in PLAYER_INDICATORS if c in df.columns]
+
+        # Per-match breakdown.
+        matches = []
+        for _, r in played.sort_values("match_date").iterrows():
+            ts, os_ = r["team_score"], r["opp_score"]
+            result = None
+            if not pd.isna(ts) and not pd.isna(os_):
+                result = "W" if ts > os_ else "L" if ts < os_ else "D"
+            matches.append({
+                "game_id": str(r["game_id"]),
+                "date": r["match_date"],
+                "opponent": r["opp_team_name"],
+                "opp_flag": self.flag(r["opp_team_name"]),
+                "home_away": r["home_away"],
+                "result": result,
+                "score": (None if pd.isna(ts) or pd.isna(os_)
+                          else f"{int(ts)}-{int(os_)}"),
+                "minutes": int(r["minutes"]),
+                "stats": {c: (None if pd.isna(r[c]) else round(float(r[c]), 2))
+                          for c in cols},
+            })
+
+        total_minutes = float(played["minutes"].sum())
+        totals, per90 = {}, {}
+        for c, _l, per in PLAYER_INDICATORS:
+            if c not in df.columns:
+                continue
+            s = float(played[c].sum())
+            if per:
+                totals[c] = round(s, 2)
+                per90[c] = round(s / total_minutes * 90, 2) if total_minutes else 0.0
+            else:                                  # rate stat -> average
+                totals[c] = round(float(played[c].mean()), 2) if not played.empty else 0.0
+                per90[c] = totals[c]
+
+        rating = (round(float(pd.to_numeric(played["avgRatingFromDataFeed"],
+                  errors="coerce").mean()), 2)
+                  if "avgRatingFromDataFeed" in played and not played.empty else None)
+
+        return {
+            "player": {
+                "player_id": int(player_id),
+                "player_name": first["player_name"],
+                "team_name": team,
+                "flag_url": self.flag(team),
+                "role": first["role"],
+                "position": first["position"],
+                "games": int(len(played)),
+                "minutes": int(total_minutes),
+                "rating": rating,
+            },
+            "indicators": labels,
+            "matches": matches,
+            "totals": totals,
+            "per90": per90,
         }
 
 

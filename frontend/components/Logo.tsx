@@ -52,7 +52,7 @@ export function ByNeuNov({ className = "" }: { className?: string }) {
         href="https://neunov.com"
         target="_blank"
         rel="noopener noreferrer"
-        className="font-semibold text-slate-400 transition-colors hover:text-pitch-accent"
+        className="font-semibold text-muted transition-colors hover:text-pitch-accent"
       >
         NeuNov
       </a>

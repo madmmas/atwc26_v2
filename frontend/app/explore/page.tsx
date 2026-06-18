@@ -2,6 +2,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { api, Overview, Player } from "@/lib/api";
 import { RoleChip, SectionTitle, Spinner } from "@/components/ui";
+import { Flag } from "@/components/Flag";
 
 const METRICS: { key: string; label: string; fmt?: (n: number) => string }[] = [
   { key: "minutes", label: "Minutes" },
@@ -29,7 +30,9 @@ export default function Explore() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    api.overview().then((o: Overview) => setTeams(o.teams.map((t) => t.team_name)));
+    api.overview().then((o: Overview) =>
+      setTeams(o.teams.map((t) => t.team_name).sort((a, b) => a.localeCompare(b)))
+    );
   }, []);
 
   useEffect(() => {
@@ -104,7 +107,7 @@ export default function Explore() {
               key={r}
               onClick={() => setRole(r)}
               className={`rounded-lg px-3 py-1.5 text-xs font-bold ${
-                role === r ? "bg-pitch-accent text-pitch-bg" : "bg-pitch-edge/60 text-slate-300"
+                role === r ? "bg-pitch-accent text-pitch-bg" : "bg-pitch-edge/60 text-fg-soft"
               }`}
             >
               {r}
@@ -112,7 +115,7 @@ export default function Explore() {
           ))}
         </div>
         <div className="ml-auto flex items-center gap-2 text-sm">
-          <span className="text-slate-500">Sort by</span>
+          <span className="text-faint">Sort by</span>
           <select value={sort} onChange={(e) => setSort(e.target.value)} className="select">
             {METRICS.map((m) => (
               <option key={m.key} value={m.key}>{m.label}</option>
@@ -127,7 +130,7 @@ export default function Explore() {
       ) : (
         <div className="card overflow-hidden">
           <table className="w-full text-sm">
-            <thead className="bg-pitch-edge/40 text-left text-xs uppercase tracking-wider text-slate-400">
+            <thead className="bg-pitch-edge/40 text-left text-xs uppercase tracking-wider text-muted">
               <tr>
                 <th className="px-4 py-3">#</th>
                 {[
@@ -140,7 +143,7 @@ export default function Explore() {
                   <th
                     key={c.key}
                     onClick={() => toggleSort(c.key)}
-                    className={`cursor-pointer select-none px-4 py-3 transition-colors hover:text-white ${
+                    className={`cursor-pointer select-none px-4 py-3 transition-colors hover:text-fg ${
                       c.align === "right" ? "text-right" : ""
                     } ${sortKey === c.key ? "text-pitch-accent" : ""}`}
                     title="Click to sort"
@@ -153,11 +156,16 @@ export default function Explore() {
             <tbody className="divide-y divide-pitch-edge/40">
               {sorted.slice(0, 300).map((p, i) => (
                 <tr key={`${p.player_id}-${p.team_name}`} className="hover:bg-pitch-edge/20">
-                  <td className="px-4 py-2.5 text-slate-500">{i + 1}</td>
-                  <td className="px-4 py-2.5 font-semibold text-white">{p.player_name}</td>
-                  <td className="px-4 py-2.5 text-slate-400">{p.team_name}</td>
+                  <td className="px-4 py-2.5 text-faint">{i + 1}</td>
+                  <td className="px-4 py-2.5 font-semibold text-fg">{p.player_name}</td>
+                  <td className="px-4 py-2.5 text-muted">
+                    <span className="inline-flex items-center gap-1.5">
+                      <Flag src={p.flag_url} name={p.team_name} size={14} />
+                      {p.team_name}
+                    </span>
+                  </td>
                   <td className="px-4 py-2.5"><RoleChip role={p.role} /></td>
-                  <td className="px-4 py-2.5 text-right text-slate-400">{p.minutes}</td>
+                  <td className="px-4 py-2.5 text-right text-muted">{p.minutes}</td>
                   <td className="px-4 py-2.5 text-right font-bold stat-grad">
                     {metric.fmt ? metric.fmt(p[metric.key]) : p[metric.key] ?? "—"}
                   </td>
