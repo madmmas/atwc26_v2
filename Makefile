@@ -1,0 +1,89 @@
+# AnalyseThisWC26 — common dev & ops commands.
+# Run `make` or `make help` to list targets.
+
+.DEFAULT_GOAL := help
+
+ROOT          := $(CURDIR)
+BACKEND_DIR   := $(ROOT)/backend
+FRONTEND_DIR  := $(ROOT)/frontend
+BACKEND_VENV  := $(BACKEND_DIR)/.venv
+BACKEND_PY    := $(BACKEND_VENV)/bin/python
+BACKEND_PIP   := $(BACKEND_VENV)/bin/pip
+PYTHON        ?= python3
+PIP           ?= pip3
+
+.PHONY: help setup setup-backend setup-frontend setup-scraper verify \
+        backend frontend dev scrape scrape-force analyze \
+        up docker down restart-backend health
+
+help: ## Show available targets
+	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make <target>\n\nTargets:\n"} \
+		/^[a-zA-Z0-9_-]+:.*##/ {printf "  %-18s %s\n", $$1, $$2}' $(MAKEFILE_LIST)
+
+setup: setup-backend setup-frontend setup-scraper ## One-time install (venv, deps, env)
+	@echo "Setup complete. Run 'make dev' or 'make docker'."
+
+setup-backend: $(BACKEND_VENV)/bin/activate ## Backend venv + pip packages
+	$(BACKEND_PIP) install -r $(BACKEND_DIR)/requirements.txt
+	@$(BACKEND_PY) -c "import fastapi, pyarrow, pandas" 2>/dev/null \
+		|| (echo "Backend deps missing." && exit 1)
+	@echo "backend: OK"
+
+$(BACKEND_VENV)/bin/activate:
+	$(PYTHON) -m venv $(BACKEND_VENV)
+
+setup-frontend: ## Frontend npm packages + .env.local
+	@test -f $(FRONTEND_DIR)/.env.local \
+		|| cp $(FRONTEND_DIR)/.env.example $(FRONTEND_DIR)/.env.local
+	cd $(FRONTEND_DIR) && npm install
+	@echo "frontend: OK"
+
+setup-scraper: ## Root Python deps (scraper + notebook)
+	$(PIP) install -r $(ROOT)/requirements.txt
+	@$(PYTHON) -c "import pandas, pyarrow" 2>/dev/null \
+		|| (echo "Scraper deps missing." && exit 1)
+	@echo "scraper: OK"
+
+verify: ## Check whether one-time setup steps are done
+	@echo "venv:      $$([ -d $(BACKEND_VENV) ] && echo OK || echo MISSING)"
+	@echo "backend:   $$($(BACKEND_PY) -c 'import fastapi,pyarrow,pandas' 2>/dev/null && echo OK || echo MISSING)"
+	@echo "frontend:  $$([ -d $(FRONTEND_DIR)/node_modules ] && echo OK || echo MISSING)"
+	@echo "env file:  $$([ -f $(FRONTEND_DIR)/.env.local ] && echo OK || echo MISSING)"
+	@echo "data:      $$([ -f data/all_players_stats.parquet ] && echo OK || echo MISSING)"
+
+backend: setup-backend ## Run FastAPI dev server (http://localhost:8000)
+	cd $(BACKEND_DIR) && $(BACKEND_PY) -m uvicorn app.main:app --reload --port 8000
+
+frontend: setup-frontend ## Run Next.js dev server (http://localhost:3000)
+	cd $(FRONTEND_DIR) && npm run dev
+
+dev: setup ## Run backend + frontend together (Ctrl-C stops both)
+	@trap 'kill 0' INT TERM; \
+	$(MAKE) backend & \
+	$(MAKE) frontend & \
+	wait
+
+scrape: ## Incremental scrape from game_links.csv
+	$(PYTHON) scrape_wc26.py
+
+scrape-force: ## Re-scrape all games from scratch
+	$(PYTHON) scrape_wc26.py --force
+
+analyze: ## Re-execute analysis.ipynb in place
+	jupyter nbconvert --to notebook --execute --inplace analysis.ipynb
+
+up: ## Build and run full stack via Docker (http://localhost:8080)
+	docker compose up --build
+
+docker: up
+
+down: ## Stop Docker stack
+	docker compose down
+
+restart-backend: ## Reload backend after a data refresh (Docker)
+	docker compose restart backend
+
+health: ## Poll API health endpoint
+	@curl -fs http://localhost:8000/api/health && echo
+
+refresh: scrape restart-backend ## Scrape new games and restart Docker backend
