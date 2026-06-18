@@ -127,21 +127,22 @@ class DataStore:
                 "team_name": g["team_name"].iat[0],
                 "team_id": g["team_id"].iat[0],
                 "role": role,
-                "games": int(g["game_id"].nunique()),
+                "games": int(g["game_id"].notna().sum()),  # count non-null games
                 "minutes": round(minutes, 0),
                 "rating": round(float(
                     pd.to_numeric(g["avgRatingFromDataFeed"], errors="coerce").mean()
                 ) if "avgRatingFromDataFeed" in g else 0.0, 2),
+                "played": minutes > 0,  # flag: did this player appear in a match?
             }
-            # per-90 counting stats
+            # per-90 counting stats (0 for players who never played)
             factor = 90.0 / minutes if minutes > 0 else 0.0
             for c in PER90_STATS:
                 if c in g:
-                    rec[f"{c}_p90"] = round(float(g[c].sum()) * factor, 3)
+                    rec[f"{c}_p90"] = round(float(g[c].sum()) * factor, 3) if minutes > 0 else 0.0
             # per-game rate stats
             for c in RATE_STATS:
                 if c in g:
-                    rec[c] = round(float(g[c].mean()), 3)
+                    rec[c] = round(float(g[c].mean()), 3) if minutes > 0 else 0.0
             # raw tournament totals for a few headline stats
             for c in ("totalGoals", "goalAssists", "expectedGoals", "expectedAssists"):
                 if c in g:
@@ -183,8 +184,22 @@ class DataStore:
                 "sot_per_game": round(float(g["sot"].mean()), 1),
                 "big_chances_per_game": round(float(g["big_chances"].mean()), 1),
             })
+
+        # Include teams that are in the tournament (have squad players) but
+        # haven't played a match yet — so they're still selectable everywhere.
+        played_teams = {r["team_name"] for r in rows}
+        for team in sorted(set(df["team_name"]) - played_teams):
+            rows.append({
+                "team_name": team, "games": 0,
+                "goals_for": 0, "goals_against": 0,
+                "goals_per_game": 0.0, "conceded_per_game": 0.0,
+                "xg_per_game": 0.0, "xga_per_game": 0.0,
+                "shots_per_game": 0.0, "sot_per_game": 0.0,
+                "big_chances_per_game": 0.0,
+            })
+
         return pd.DataFrame(rows).sort_values(
-            "xg_per_game", ascending=False
+            ["games", "xg_per_game"], ascending=[False, False]
         ).reset_index(drop=True)
 
     # -- league baselines -------------------------------------------------- #

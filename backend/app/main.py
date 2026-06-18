@@ -100,7 +100,7 @@ def players(
     team: str | None = None,
     role: str | None = None,
     sort: str = Query("minutes"),
-    limit: int = Query(100, le=500),
+    limit: int = Query(100, le=2000),
 ):
     store = get_store()
     df = store.players

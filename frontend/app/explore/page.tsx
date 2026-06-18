@@ -15,13 +15,17 @@ const METRICS: { key: string; label: string; fmt?: (n: number) => string }[] = [
   { key: "rating", label: "Rating", fmt: (n) => n?.toFixed(2) },
 ];
 const ROLES = ["ALL", "GK", "DEF", "MID", "FWD"];
+const ROLE_ORDER: Record<string, number> = { GK: 0, DEF: 1, MID: 2, FWD: 3 };
+type Dir = "asc" | "desc";
 
 export default function Explore() {
   const [teams, setTeams] = useState<string[]>([]);
   const [players, setPlayers] = useState<Player[]>([]);
   const [team, setTeam] = useState("ALL");
   const [role, setRole] = useState("ALL");
-  const [sort, setSort] = useState("minutes");
+  const [sort, setSort] = useState("minutes");          // which stat column to show
+  const [sortKey, setSortKey] = useState("minutes");    // active sort column
+  const [sortDir, setSortDir] = useState<Dir>("desc");
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -30,7 +34,7 @@ export default function Explore() {
 
   useEffect(() => {
     setLoading(true);
-    const q = new URLSearchParams({ sort, limit: "500" });
+    const q = new URLSearchParams({ sort, limit: "1500" });
     if (team !== "ALL") q.set("team", team);
     if (role !== "ALL") q.set("role", role);
     api.players(q.toString()).then((r) => {
@@ -39,7 +43,48 @@ export default function Explore() {
     });
   }, [team, role, sort]);
 
+  // Changing the displayed metric also sorts by it (descending).
+  useEffect(() => {
+    setSortKey(sort);
+    setSortDir("desc");
+  }, [sort]);
+
   const metric = useMemo(() => METRICS.find((m) => m.key === sort)!, [sort]);
+
+  function toggleSort(key: string) {
+    if (key === sortKey) {
+      setSortDir((d) => (d === "asc" ? "desc" : "asc"));
+    } else {
+      setSortKey(key);
+      // text columns default A→Z, numbers default high→low
+      setSortDir(["player_name", "team_name", "role"].includes(key) ? "asc" : "desc");
+    }
+  }
+
+  const sorted = useMemo(() => {
+    const arr = [...players];
+    arr.sort((a, b) => {
+      let av: any, bv: any;
+      if (sortKey === "role") {
+        av = ROLE_ORDER[a.role] ?? 9;
+        bv = ROLE_ORDER[b.role] ?? 9;
+      } else {
+        av = (a as any)[sortKey];
+        bv = (b as any)[sortKey];
+      }
+      if (typeof av === "string" || typeof bv === "string") {
+        const r = String(av ?? "").localeCompare(String(bv ?? ""));
+        return sortDir === "asc" ? r : -r;
+      }
+      av = av ?? -Infinity;
+      bv = bv ?? -Infinity;
+      return sortDir === "asc" ? av - bv : bv - av;
+    });
+    return arr;
+  }, [players, sortKey, sortDir]);
+
+  const arrow = (key: string) =>
+    sortKey === key ? (sortDir === "asc" ? " ▲" : " ▼") : "";
 
   return (
     <div className="space-y-5">
@@ -85,16 +130,29 @@ export default function Explore() {
             <thead className="bg-pitch-edge/40 text-left text-xs uppercase tracking-wider text-slate-400">
               <tr>
                 <th className="px-4 py-3">#</th>
-                <th className="px-4 py-3">Player</th>
-                <th className="px-4 py-3">Team</th>
-                <th className="px-4 py-3">Role</th>
-                <th className="px-4 py-3 text-right">Mins</th>
-                <th className="px-4 py-3 text-right">{metric.label}</th>
+                {[
+                  { key: "player_name", label: "Player", align: "left" },
+                  { key: "team_name", label: "Team", align: "left" },
+                  { key: "role", label: "Role", align: "left" },
+                  { key: "minutes", label: "Mins", align: "right" },
+                  { key: metric.key, label: metric.label, align: "right" },
+                ].map((c) => (
+                  <th
+                    key={c.key}
+                    onClick={() => toggleSort(c.key)}
+                    className={`cursor-pointer select-none px-4 py-3 transition-colors hover:text-white ${
+                      c.align === "right" ? "text-right" : ""
+                    } ${sortKey === c.key ? "text-pitch-accent" : ""}`}
+                    title="Click to sort"
+                  >
+                    {c.label}{arrow(c.key)}
+                  </th>
+                ))}
               </tr>
             </thead>
             <tbody className="divide-y divide-pitch-edge/40">
-              {players.slice(0, 200).map((p, i) => (
-                <tr key={p.player_id} className="hover:bg-pitch-edge/20">
+              {sorted.slice(0, 300).map((p, i) => (
+                <tr key={`${p.player_id}-${p.team_name}`} className="hover:bg-pitch-edge/20">
                   <td className="px-4 py-2.5 text-slate-500">{i + 1}</td>
                   <td className="px-4 py-2.5 font-semibold text-white">{p.player_name}</td>
                   <td className="px-4 py-2.5 text-slate-400">{p.team_name}</td>

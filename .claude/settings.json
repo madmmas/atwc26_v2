@@ -29,7 +29,11 @@
       "Bash(sed -n '1,6p' backend/app/main.py)",
       "Bash(sed -n '1,5p' frontend/lib/api.ts)",
       "Bash(sed -n '12,33p' frontend/components/Nav.tsx)",
-      "Bash(python3 -W error::FutureWarning -c ' *)"
+      "Bash(python3 -W error::FutureWarning -c ' *)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(python3 scrape_squads.py)",
+      "Bash(python3 scrape_squads.py --add-demos)",
+      "Bash(curl -s --max-time 25 -A \"Mozilla/5.0\" \"https://site.api.espn.com/apis/site/v2/sports/soccer/fifa.world/teams\" -o teams.json -w \"HTTP:%{http_code} bytes:%{size_download}\\\\n\")"
     ]
   }
 }
