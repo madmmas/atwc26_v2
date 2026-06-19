@@ -46,7 +46,7 @@ const GROUPS: { title: string; terms: Term[] }[] = [
 export function GlossaryBar() {
   return (
     <details className="mx-auto max-w-7xl px-4">
-      <summary className="cursor-pointer select-none rounded-lg px-3 py-2 text-xs font-semibold text-slate-400 transition-colors hover:bg-pitch-edge/40 hover:text-white">
+      <summary className="cursor-pointer select-none rounded-lg px-3 py-2 text-xs font-semibold text-muted transition-colors hover:bg-pitch-edge/40 hover:text-fg">
         📖 Glossary — what the stats mean
       </summary>
       <div className="mt-2 grid gap-4 rounded-xl border border-pitch-edge bg-pitch-card/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
@@ -58,10 +58,10 @@ export function GlossaryBar() {
             <dl className="space-y-1.5">
               {g.terms.map((t) => (
                 <div key={t.abbr}>
-                  <dt className="text-xs font-semibold text-white">
-                    {t.abbr} <span className="font-normal text-slate-500">· {t.name}</span>
+                  <dt className="text-xs font-semibold text-fg">
+                    {t.abbr} <span className="font-normal text-faint">· {t.name}</span>
                   </dt>
-                  <dd className="text-[11px] leading-snug text-slate-400">{t.desc}</dd>
+                  <dd className="text-[11px] leading-snug text-muted">{t.desc}</dd>
                 </div>
               ))}
             </dl>

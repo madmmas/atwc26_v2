@@ -8,6 +8,7 @@ export type Player = {
   player_id: number;
   player_name: string;
   team_name: string;
+  flag_url?: string | null;
   role: "GK" | "DEF" | "MID" | "FWD";
   games: number;
   minutes: number;
@@ -26,6 +27,7 @@ export type Player = {
 
 export type Team = {
   team_name: string;
+  flag_url?: string | null;
   games: number;
   goals_for: number;
   goals_against: number;
@@ -101,4 +103,62 @@ export const api = {
     if (!res.ok) throw new Error(`predict -> ${res.status}`);
     return res.json();
   },
+  matches: () => get<{ matches: MatchListItem[] }>("/api/matches"),
+  matchDetail: (id: string) => get<MatchDetail>(`/api/matches/${id}`),
+  playerDetail: (id: number) => get<PlayerDetail>(`/api/players/${id}`),
+};
+
+// --- Match Analysis ---
+export type MatchListItem = {
+  game_id: string;
+  date: string;
+  home_team: string;
+  away_team: string;
+  home_flag?: string | null;
+  away_flag?: string | null;
+  home_score: number | null;
+  away_score: number | null;
+};
+export type MatchIndicator = {
+  key: string;
+  label: string;
+  better_high: boolean;
+  a: number;
+  b: number;
+};
+export type MatchDetail = {
+  meta: MatchListItem;
+  team_a: { team_name: string; flag_url?: string | null; score: number | null };
+  team_b: { team_name: string; flag_url?: string | null; score: number | null };
+  indicators: MatchIndicator[];
+};
+
+// --- Player Analysis ---
+export type PlayerMatch = {
+  game_id: string;
+  date: string;
+  opponent: string;
+  opp_flag?: string | null;
+  home_away: string;
+  result: "W" | "D" | "L" | null;
+  score: string | null;
+  minutes: number;
+  stats: Record<string, number | null>;
+};
+export type PlayerDetail = {
+  player: {
+    player_id: number;
+    player_name: string;
+    team_name: string;
+    flag_url?: string | null;
+    role: string;
+    position: string;
+    games: number;
+    minutes: number;
+    rating: number | null;
+  };
+  indicators: { key: string; label: string; per90: boolean }[];
+  matches: PlayerMatch[];
+  totals: Record<string, number>;
+  per90: Record<string, number>;
 };

@@ -12,16 +12,20 @@ import {
 } from "recharts";
 import { api, Overview, Player } from "@/lib/api";
 import { RoleChip, SectionTitle, Spinner, StatCard } from "@/components/ui";
+import { Flag } from "@/components/Flag";
 
 function LeaderList({ players, metric, fmt }: { players: Player[]; metric: string; fmt?: (n: number) => string }) {
   return (
     <div className="card divide-y divide-pitch-edge/60">
       {players.map((p, i) => (
         <div key={p.player_id} className="flex items-center gap-3 px-4 py-2.5">
-          <span className="w-5 text-sm font-bold text-slate-500">{i + 1}</span>
+          <span className="w-5 text-sm font-bold text-faint">{i + 1}</span>
           <div className="flex-1">
-            <div className="text-sm font-semibold text-white">{p.player_name}</div>
-            <div className="text-xs text-slate-500">{p.team_name}</div>
+            <div className="text-sm font-semibold text-fg">{p.player_name}</div>
+            <div className="flex items-center gap-1.5 text-xs text-faint">
+              <Flag src={p.flag_url} name={p.team_name} size={14} />
+              {p.team_name}
+            </div>
           </div>
           <RoleChip role={p.role} />
           <span className="w-14 text-right text-sm font-bold stat-grad">
@@ -45,14 +49,15 @@ export default function Home() {
     return (
       <div className="card mt-10 p-6 text-rose-300">
         Could not reach the API. Is the backend running? <br />
-        <span className="text-xs text-slate-500">{err}</span>
+        <span className="text-xs text-faint">{err}</span>
       </div>
     );
   if (!data) return <Spinner label="Loading tournament data…" />;
 
-  // All tournament teams, best xG first; teams that haven't played sit at zero.
+  // All tournament teams in alphabetical order (easy to find a country);
+  // teams that haven't played sit at zero.
   const chart = [...data.teams]
-    .sort((a, b) => b.xg_per_game - a.xg_per_game || a.team_name.localeCompare(b.team_name))
+    .sort((a, b) => a.team_name.localeCompare(b.team_name))
     .map((t) => ({ name: t.team_name, xG: t.xg_per_game, xGA: t.xga_per_game }));
   const chartWidth = Math.max(chart.length * 46, 640); // horizontal scroll for 48 teams
 
@@ -62,10 +67,10 @@ export default function Home() {
       <section className="relative overflow-hidden rounded-3xl border border-pitch-edge bg-pitch-card/60 p-8">
         <div className="max-w-2xl">
           <div className="chip bg-pitch-accent/15 text-pitch-accent">World Cup 2026 · Live Analytics</div>
-          <h1 className="mt-3 text-4xl font-black leading-tight text-white sm:text-5xl">
+          <h1 className="mt-3 text-4xl font-black leading-tight text-fg sm:text-5xl">
             See the game in <span className="stat-grad">numbers</span>.
           </h1>
-          <p className="mt-3 text-slate-400">
+          <p className="mt-3 text-muted">
             Explore every player and team of the tournament, then build two XIs and let
             the AI engine predict the result from real per-90 performance.
           </p>
@@ -98,12 +103,13 @@ export default function Home() {
           <div style={{ width: chartWidth, height: 340 }}>
             <ResponsiveContainer width="100%" height="100%">
               <BarChart data={chart} margin={{ top: 8, right: 8, bottom: 56, left: -10 }}>
-                <CartesianGrid stroke="#1e2733" vertical={false} />
+                <CartesianGrid stroke="#94a3b8" strokeOpacity={0.18} vertical={false} />
                 <XAxis dataKey="name" angle={-45} textAnchor="end" interval={0} height={70} tick={{ fill: "#94a3b8", fontSize: 11 }} />
                 <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
                 <Tooltip
-                  contentStyle={{ background: "#121821", border: "1px solid #1e2733", borderRadius: 12 }}
-                  labelStyle={{ color: "#fff" }}
+                  cursor={{ fill: "#94a3b8", fillOpacity: 0.1 }}
+                  contentStyle={{ background: "rgb(var(--card))", border: "1px solid rgb(var(--edge))", borderRadius: 12, color: "rgb(var(--fg))" }}
+                  labelStyle={{ color: "rgb(var(--fg))" }}
                 />
                 <Bar dataKey="xG" fill="#10b981" radius={[4, 4, 0, 0]} />
                 <Bar dataKey="xGA" fill="#f59e0b" radius={[4, 4, 0, 0]} />

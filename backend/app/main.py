@@ -56,16 +56,16 @@ def overview():
     store = get_store()
     players = store.players
     top_scorers = (players.sort_values("totalGoals_total", ascending=False)
-                   .head(8)[["player_id", "player_name", "team_name", "role",
+                   .head(8)[["player_id", "player_name", "team_name", "flag_url", "role",
                              "totalGoals_total", "expectedGoals_total", "minutes"]]
                    .to_dict("records"))
     top_xg = (players.sort_values("expectedGoals_p90", ascending=False)
               .query("minutes >= 90")
-              .head(8)[["player_id", "player_name", "team_name", "role",
+              .head(8)[["player_id", "player_name", "team_name", "flag_url", "role",
                         "expectedGoals_p90", "minutes"]].to_dict("records"))
     top_creators = (players.sort_values("expectedAssists_p90", ascending=False)
                     .query("minutes >= 90")
-                    .head(8)[["player_id", "player_name", "team_name", "role",
+                    .head(8)[["player_id", "player_name", "team_name", "flag_url", "role",
                               "expectedAssists_p90", "minutes"]].to_dict("records"))
     return _clean({
         "league": store.league,
@@ -114,6 +114,32 @@ def players(
     return _clean({"count": int(len(df)), "players": df.to_dict("records")})
 
 
+@app.get("/api/matches")
+def matches():
+    """All played matches, most recent first (for Match Analysis)."""
+    store = get_store()
+    return _clean({"matches": store.matches})
+
+
+@app.get("/api/matches/{game_id}")
+def match_detail(game_id: str):
+    store = get_store()
+    detail = store.match_detail(game_id)
+    if detail is None:
+        raise HTTPException(404, f"No match data for game {game_id}")
+    return _clean(detail)
+
+
+@app.get("/api/players/{player_id}")
+def player_detail(player_id: int):
+    """Per-match breakdown + tournament aggregate for one player."""
+    store = get_store()
+    detail = store.player_detail(player_id)
+    if detail is None:
+        raise HTTPException(404, f"No data for player {player_id}")
+    return _clean(detail)
+
+
 @app.get("/api/leaderboard")
 def leaderboard(metric: str = Query("expectedGoals_p90"),
                 role: str | None = None,
@@ -127,7 +153,7 @@ def leaderboard(metric: str = Query("expectedGoals_p90"),
     if role:
         df = df[df["role"] == role.upper()]
     df = df.sort_values(metric, ascending=False).head(limit)
-    cols = ["player_id", "player_name", "team_name", "role", "minutes", metric]
+    cols = ["player_id", "player_name", "team_name", "flag_url", "role", "minutes", metric]
     return _clean({"metric": metric, "leaders": df[cols].to_dict("records")})
 
 

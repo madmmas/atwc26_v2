@@ -2,11 +2,14 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Logo, ByNeuNov } from "@/components/Logo";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
   { href: "/", label: "Overview" },
   { href: "/explore", label: "Explore" },
-  { href: "/predict", label: "Match Predictor" },
+  { href: "/matches", label: "Matches" },
+  { href: "/players", label: "Players" },
+  { href: "/predict", label: "Predictor" },
 ];
 
 export function Nav() {
@@ -18,7 +21,7 @@ export function Nav() {
           <Link href="/" aria-label="AnalyseThisWC26 home">
             <Logo size="md" />
           </Link>
-          <ByNeuNov className="hidden text-[10px] uppercase tracking-widest text-slate-500 sm:inline" />
+          <ByNeuNov className="hidden text-[10px] uppercase tracking-widest text-faint sm:inline" />
         </div>
         <nav className="flex items-center gap-1" data-testid="nav">
           {links.map((l) => {
@@ -28,16 +31,17 @@ export function Nav() {
                 key={l.href}
                 href={l.href}
                 data-testid={`nav-${l.href === "/" ? "overview" : l.href.slice(1)}`}
-                className={`rounded-lg px-3 py-1.5 text-sm font-semibold transition-colors ${
+                className={`rounded-lg px-2.5 py-1.5 text-sm font-semibold transition-colors ${
                   active
-                    ? "bg-pitch-edge text-white"
-                    : "text-slate-400 hover:text-white"
+                    ? "bg-pitch-edge text-fg"
+                    : "text-muted hover:text-fg"
                 }`}
               >
                 {l.label}
               </Link>
             );
           })}
+          <ThemeToggle />
         </nav>
       </div>
     </header>

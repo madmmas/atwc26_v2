@@ -119,7 +119,7 @@ function TeamColumn({
           })}
         </div>
       )}
-      <div className="mt-3 text-right text-xs text-slate-500">
+      <div className="mt-3 text-right text-xs text-faint">
         {chosen.size}/{slots.length} selected
       </div>
     </div>
@@ -143,7 +143,9 @@ export default function Predict() {
   const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
-    api.overview().then((o: Overview) => setTeams(o.teams.map((t) => t.team_name)));
+    api.overview().then((o: Overview) =>
+      setTeams(o.teams.map((t) => t.team_name).sort((a, b) => a.localeCompare(b)))
+    );
   }, []);
 
   // re-shape slots when formation changes (keeps any still-valid picks by role order)
@@ -216,14 +218,14 @@ export default function Predict() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-black text-white">Match Predictor</h1>
-          <p className="text-sm text-slate-400">
+          <h1 className="text-2xl font-black text-fg">Match Predictor</h1>
+          <p className="text-sm text-muted">
             Pick two teams, build an XI for each, and the engine predicts the result from
             tournament form.
           </p>
         </div>
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-slate-500">Formation</span>
+          <span className="text-faint">Formation</span>
           <select value={formation} onChange={(e) => setFormation(e.target.value)} className="select">
             {Object.keys(FORMATIONS).map((f) => (
               <option key={f} value={f}>{f}</option>
@@ -239,13 +241,13 @@ export default function Predict() {
 
       <div className="card flex flex-wrap items-center justify-between gap-3 p-4">
         <div className="flex items-center gap-2 text-sm">
-          <span className="text-slate-500">Home advantage</span>
+          <span className="text-faint">Home advantage</span>
           {(["none", "a", "b"] as const).map((h) => (
             <button
               key={h}
               onClick={() => setHomeSide(h)}
               className={`rounded-lg px-3 py-1.5 text-xs font-bold ${
-                homeSide === h ? "bg-pitch-accent text-pitch-bg" : "bg-pitch-edge/60 text-slate-300"
+                homeSide === h ? "bg-pitch-accent text-pitch-bg" : "bg-pitch-edge/60 text-fg-soft"
               }`}
             >
               {h === "none" ? "Neutral" : h === "a" ? teamA || "Team A" : teamB || "Team B"}
