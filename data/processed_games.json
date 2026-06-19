@@ -148,5 +148,29 @@
     "status": "ok",
     "players": 30,
     "scraped_at": "2026-06-18T19:23:14+00:00"
+  },
+  "760439": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760439",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-19T00:35:54+00:00"
+  },
+  "760440": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760440",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-19T00:36:15+00:00"
+  },
+  "760441": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760441",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-19T22:33:20+00:00"
+  },
+  "760442": {
+    "url": "https://www.espn.com/soccer/player-stats/_/gameId/760442",
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-19T22:33:40+00:00"
   }
 }
