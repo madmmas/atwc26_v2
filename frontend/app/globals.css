@@ -58,7 +58,7 @@ body {
     @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-semibold;
   }
   .stat-grad {
-    @apply bg-gradient-to-r from-emerald-500 to-cyan-500 bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-emerald-500 to-amber-500 bg-clip-text text-transparent;
   }
   .select {
     @apply rounded-lg border border-pitch-edge bg-pitch-card px-3 py-1.5 text-sm

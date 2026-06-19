@@ -79,7 +79,7 @@ export function PredictionResult({ p }: { p: Prediction }) {
               <PolarGrid stroke="#94a3b8" strokeOpacity={0.22} />
               <PolarAngleAxis dataKey="dim" tick={{ fill: "#94a3b8", fontSize: 11 }} />
               <Radar name={p.team_a.team_name} dataKey={p.team_a.team_name} stroke="#10b981" fill="#10b981" fillOpacity={0.35} />
-              <Radar name={p.team_b.team_name} dataKey={p.team_b.team_name} stroke="#06b6d4" fill="#06b6d4" fillOpacity={0.3} />
+              <Radar name={p.team_b.team_name} dataKey={p.team_b.team_name} stroke="#f59e0b" fill="#f59e0b" fillOpacity={0.3} />
             </RadarChart>
           </ResponsiveContainer>
         </div>

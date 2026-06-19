@@ -12,6 +12,7 @@ DATA_DIR = Path(os.getenv("ATWC26_DATA_DIR", str(_DEFAULT_DATA)))
 MASTER_PARQUET = DATA_DIR / "all_players_stats.parquet"
 GLOSSARY_CSV = DATA_DIR / "glossary.csv"
 TEAM_FLAGS = DATA_DIR / "team_flags.json"
+MATCH_EVENTS = DATA_DIR / "match_events.json"
 
 # Comma-separated list of allowed CORS origins for the frontend.
 CORS_ORIGINS = os.getenv(

@@ -15,7 +15,7 @@ const config: Config = {
           card: "rgb(var(--card) / <alpha-value>)",
           edge: "rgb(var(--edge) / <alpha-value>)",
           accent: "#10b981", // emerald (works on both themes)
-          accent2: "#06b6d4", // cyan
+          accent2: "#f59e0b", // amber
           warn: "#f59e0b",
           danger: "#ef4444",
         },

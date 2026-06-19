@@ -13,7 +13,7 @@ PYTHON        ?= python3
 PIP           ?= pip3
 
 .PHONY: help setup setup-backend setup-frontend setup-scraper verify \
-        backend frontend dev scrape scrape-force analyze \
+        backend frontend dev scrape scrape-force analyze events \
         up docker down restart-backend health
 
 help: ## Show available targets
@@ -50,6 +50,7 @@ verify: ## Check whether one-time setup steps are done
 	@echo "frontend:  $$([ -d $(FRONTEND_DIR)/node_modules ] && echo OK || echo MISSING)"
 	@echo "env file:  $$([ -f $(FRONTEND_DIR)/.env.local ] && echo OK || echo MISSING)"
 	@echo "data:      $$([ -f data/all_players_stats.parquet ] && echo OK || echo MISSING)"
+	@echo "timelines: $$([ -f data/match_events.json ] && echo OK || echo MISSING)"
 
 backend: setup-backend ## Run FastAPI dev server (http://localhost:8000)
 	cd $(BACKEND_DIR) && $(BACKEND_PY) -m uvicorn app.main:app --reload --port 8000
@@ -72,6 +73,9 @@ scrape-force: ## Re-scrape all games from scratch
 analyze: ## Re-execute analysis.ipynb in place
 	jupyter nbconvert --to notebook --execute --inplace analysis.ipynb
 
+events: ## Rebuild match timelines/momentum from data/raw/*.json
+	$(PYTHON) build_match_events.py
+
 up: ## Build and run full stack via Docker (http://localhost:8080)
 	docker compose up --build
 
@@ -86,4 +90,4 @@ restart-backend: ## Reload backend after a data refresh (Docker)
 health: ## Poll API health endpoint
 	@curl -fs http://localhost:8000/api/health && echo
 
-refresh: scrape restart-backend ## Scrape new games and restart Docker backend
+refresh: scrape events restart-backend ## Scrape new games, rebuild timelines, restart Docker backend

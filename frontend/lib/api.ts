@@ -126,11 +126,28 @@ export type MatchIndicator = {
   a: number;
   b: number;
 };
+export type MatchEvent = {
+  minute: number;
+  display: string;
+  type: string;
+  team: string | null;
+  label: string;
+  scoring: boolean;
+};
+export type MomentumPoint = { minute: number; value: number };
+export type MatchTimeline = {
+  home_team: string;
+  away_team: string;
+  events: MatchEvent[];
+  momentum: MomentumPoint[];
+  duration: number;
+};
 export type MatchDetail = {
   meta: MatchListItem;
   team_a: { team_name: string; flag_url?: string | null; score: number | null };
   team_b: { team_name: string; flag_url?: string | null; score: number | null };
   indicators: MatchIndicator[];
+  timeline: MatchTimeline | null;
 };
 
 // --- Player Analysis ---

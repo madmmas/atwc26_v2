@@ -143,6 +143,7 @@ class DataStore:
             ])
             self.raw = df
             self.flags = self._load_flags()
+            self.events = self._load_events()
             self.players = self._build_player_profiles(df)
             self.teams = self._build_team_profiles(df)
             self.matches = self._build_matches(df)
@@ -160,6 +161,19 @@ class DataStore:
 
     def flag(self, team_name: str) -> str | None:
         return self.flags.get(team_name)
+
+    # -- match events / momentum ------------------------------------------- #
+    def _load_events(self) -> dict:
+        """game_id -> {home_team, away_team, events[], momentum[], duration}.
+
+        Built by build_match_events.py from ESPN's own keyEvents (literal,
+        for the markers) and commentary (used to derive an approximate
+        momentum wave). See that script's docstring for the methodology.
+        """
+        try:
+            return json.loads(config.MATCH_EVENTS.read_text())
+        except Exception:
+            return {}
 
     # -- player profiles --------------------------------------------------- #
     def _build_player_profiles(self, df: pd.DataFrame) -> pd.DataFrame:
@@ -336,7 +350,11 @@ class DataStore:
                                "better_high": better, "a": av, "b": bv})
 
         meta = next((m for m in self.matches if m["game_id"] == str(game_id)), {})
-        return {"meta": meta, "team_a": a, "team_b": b, "indicators": indicators}
+        timeline = self.events.get(str(game_id))
+        return {
+            "meta": meta, "team_a": a, "team_b": b, "indicators": indicators,
+            "timeline": timeline,
+        }
 
     # -- player detail ----------------------------------------------------- #
     def player_detail(self, player_id: int) -> dict | None:
