@@ -13,7 +13,6 @@ venv/
 node_modules/
 .next/
 npm-debug.log
-package-lock.json
 
 # Environment
 .env.local
