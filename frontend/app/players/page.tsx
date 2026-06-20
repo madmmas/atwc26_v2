@@ -1,17 +1,9 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { api, Overview, Player, PlayerDetail } from "@/lib/api";
 import { Flag } from "@/components/Flag";
 import { RoleChip, Spinner } from "@/components/ui";
-
-function fmtDate(d?: string) {
-  if (!d) return "";
-  try {
-    return new Date(d).toLocaleDateString(undefined, { month: "short", day: "numeric" });
-  } catch {
-    return d;
-  }
-}
 
 const RESULT_COLOR: Record<string, string> = {
   W: "bg-emerald-500/20 text-emerald-300",
@@ -20,13 +12,26 @@ const RESULT_COLOR: Record<string, string> = {
 };
 
 export default function Players() {
+  return (
+    <Suspense fallback={<Spinner label="Loading player analysis…" />}>
+      <PlayersContent />
+    </Suspense>
+  );
+}
+
+function PlayersContent() {
+  const searchParams = useSearchParams();
+  const deepLinkRef = useRef<number | null>(null);
+  const processedDeepLink = useRef<string | null>(null);
+
   const [teams, setTeams] = useState<{ name: string; flag?: string | null }[]>([]);
   const [team, setTeam] = useState("");
   const [roster, setRoster] = useState<Player[]>([]);
   const [playerId, setPlayerId] = useState<number | null>(null);
   const [detail, setDetail] = useState<PlayerDetail | null>(null);
-  const [view, setView] = useState<string>("all"); // "all" or a game_id
+  const [view, setView] = useState<string>("all");
   const [loadingRoster, setLoadingRoster] = useState(false);
+  const [deepLinkErr, setDeepLinkErr] = useState<string | null>(null);
 
   useEffect(() => {
     api.overview().then((o: Overview) =>
@@ -38,18 +43,51 @@ export default function Players() {
     );
   }, []);
 
+  // Deep link: /players?player={id}
+  useEffect(() => {
+    const raw = searchParams.get("player");
+    if (!raw || raw === processedDeepLink.current) return;
+
+    const id = Number(raw);
+    if (!Number.isFinite(id) || id <= 0) {
+      setDeepLinkErr("Invalid player id in URL.");
+      return;
+    }
+
+    processedDeepLink.current = raw;
+    deepLinkRef.current = id;
+    setDeepLinkErr(null);
+
+    api.playerDetail(id)
+      .then((d) => setTeam(d.player.team_name))
+      .catch(() => {
+        deepLinkRef.current = null;
+        processedDeepLink.current = null;
+        setDeepLinkErr("Could not load player from link.");
+      });
+  }, [searchParams]);
+
   useEffect(() => {
     if (!team) return;
+
+    const initPlayerId = deepLinkRef.current;
     setLoadingRoster(true);
-    setDetail(null);
-    setPlayerId(null);
+    if (!initPlayerId) {
+      setDetail(null);
+      setPlayerId(null);
+    }
+
     api.teamPlayers(team).then((r) => {
-      // alphabetical by player name, so they're easy to find
       const sorted = [...r.players].sort((a, b) =>
         a.player_name.localeCompare(b.player_name)
       );
       setRoster(sorted);
       setLoadingRoster(false);
+
+      if (initPlayerId) {
+        setPlayerId(initPlayerId);
+        deepLinkRef.current = null;
+      }
     });
   }, [team]);
 
@@ -62,7 +100,6 @@ export default function Players() {
 
   const teamFlag = useMemo(() => teams.find((t) => t.name === team)?.flag, [teams, team]);
 
-  // Value for an indicator under the current view (all vs single match).
   function valueFor(key: string, per90: boolean): string {
     if (!detail) return "—";
     if (view === "all") {
@@ -85,6 +122,10 @@ export default function Players() {
           the whole tournament or a single match.
         </p>
       </div>
+
+      {deepLinkErr && (
+        <div className="card p-4 text-sm text-rose-300">{deepLinkErr}</div>
+      )}
 
       {/* Selectors */}
       <div className="card flex flex-wrap items-center gap-3 p-4">

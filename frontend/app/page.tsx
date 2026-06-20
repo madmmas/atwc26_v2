@@ -21,7 +21,13 @@ function LeaderList({ players, metric, fmt }: { players: Player[]; metric: strin
         <div key={p.player_id} className="flex items-center gap-3 px-4 py-2.5">
           <span className="w-5 text-sm font-bold text-faint">{i + 1}</span>
           <div className="flex-1">
-            <div className="text-sm font-semibold text-fg">{p.player_name}</div>
+            <Link
+              href={`/players?player=${p.player_id}`}
+              className="text-sm font-semibold text-fg transition-colors hover:text-pitch-accent"
+              data-testid={`leader-player-${p.player_id}`}
+            >
+              {p.player_name}
+            </Link>
             <div className="flex items-center gap-1.5 text-xs text-faint">
               <Flag src={p.flag_url} name={p.team_name} size={14} />
               {p.team_name}

@@ -25,7 +25,7 @@ export function Nav() {
         </div>
         <nav className="flex items-center gap-1" data-testid="nav">
           {links.map((l) => {
-            const active = path === l.href;
+            const active = l.href === "/players" ? path.startsWith("/players") : path === l.href;
             return (
               <Link
                 key={l.href}
