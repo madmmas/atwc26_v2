@@ -13,7 +13,7 @@ PYTHON        ?= python3
 PIP           ?= pip3
 
 .PHONY: help setup setup-backend setup-frontend setup-scraper verify \
-        backend frontend dev schedule scrape scrape-force analyze events \
+        backend frontend dev schedule scrape scrape-force analyze events squads \
         up docker down restart-backend health
 
 help: ## Show available targets
@@ -79,6 +79,9 @@ analyze: ## Re-execute analysis.ipynb in place
 events: ## Rebuild match timelines/momentum from data/raw/*.json
 	$(PYTHON) build_match_events.py
 
+squads: ## Refresh full WC26 squad rosters (incl. players who haven't played)
+	$(PYTHON) scrape_squads.py
+
 up: ## Build and run full stack via Docker (http://localhost:8080)
 	docker compose up --build
 
@@ -95,4 +98,4 @@ health: ## Poll API health endpoint
 
 refresh: scrape events restart-backend ## Scrape new games, rebuild timelines, restart Docker backend
 
-refresh-full: schedule scrape events restart-backend ## Discover new fixtures, then refresh
+refresh-full: schedule scrape events squads restart-backend ## Discover new fixtures/squads, then refresh
