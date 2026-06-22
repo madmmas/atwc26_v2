@@ -127,6 +127,7 @@ class DataStore:
             if self._loaded and not force:
                 return
             df = pd.read_parquet(config.MASTER_PARQUET)
+            df = self._merge_squads(df)
 
             # Coerce every stat column to numeric (some arrive as strings).
             for c in df.columns:
@@ -149,6 +150,54 @@ class DataStore:
             self.matches = self._build_matches(df)
             self.league = self._build_league_context(df)
             self._loaded = True
+
+    # -- squads -------------------------------------------------------------- #
+    def _merge_squads(self, df: pd.DataFrame) -> pd.DataFrame:
+        """Add a synthetic 0-minute row for every registered squad member who
+        hasn't appeared in a scraped match yet, so player pickers (Predictor,
+        Player Analysis) can list a full squad, not just those with stats.
+
+        Done in-memory on every load (not written back to the parquet) so it
+        survives `rebuild_master()` in scrape_wc26.py, which only ever knows
+        about players who appeared in a match and otherwise overwrites the
+        master parquet wholesale on every scrape/refresh cycle.
+        """
+        if not config.SQUADS_RAW.exists():
+            return df
+        try:
+            squads = json.loads(config.SQUADS_RAW.read_text())
+        except Exception:
+            return df
+
+        existing = set(zip(df["player_id"].astype(str), df["team_name"].astype(str)))
+        new_rows = []
+        for squad in squads:
+            for p in squad.get("players", []):
+                key = (str(p["player_id"]), squad["team_name"])
+                if key in existing:
+                    continue
+                row = {c: None for c in df.columns}
+                row.update({
+                    "competition": "FIFA World Cup",
+                    "season": 2026,
+                    "team_id": squad["team_id"],
+                    "team_name": squad["team_name"],
+                    "player_id": p["player_id"],
+                    "player_name": p["player_name"],
+                    "jersey": p.get("jersey"),
+                    "position": p.get("position"),
+                    "position_abbr": p.get("position_abbr"),
+                    "starter": False,
+                    "subbed_in": False,
+                    "subbed_out": False,
+                    "minutes": 0.0,
+                    "appearances": 0.0,
+                })
+                new_rows.append(row)
+                existing.add(key)
+        if not new_rows:
+            return df
+        return pd.concat([df, pd.DataFrame(new_rows)], ignore_index=True)
 
     # -- flags ------------------------------------------------------------- #
     def _load_flags(self) -> dict:
