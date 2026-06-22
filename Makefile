@@ -13,7 +13,7 @@ PYTHON        ?= python3
 PIP           ?= pip3
 
 .PHONY: help setup setup-backend setup-frontend setup-scraper verify \
-        backend frontend dev scrape scrape-force analyze events \
+        backend frontend dev schedule scrape scrape-force analyze events \
         up docker down restart-backend health
 
 help: ## Show available targets
@@ -64,6 +64,9 @@ dev: setup ## Run backend + frontend together (Ctrl-C stops both)
 	$(MAKE) frontend & \
 	wait
 
+schedule: ## Discover WC26 fixtures (gameId + kickoff time) from ESPN
+	$(PYTHON) fetch_schedule.py
+
 scrape: ## Incremental scrape from game_links.csv
 	$(PYTHON) scrape_wc26.py
 
@@ -91,3 +94,5 @@ health: ## Poll API health endpoint
 	@curl -fs http://localhost:8000/api/health && echo
 
 refresh: scrape events restart-backend ## Scrape new games, rebuild timelines, restart Docker backend
+
+refresh-full: schedule scrape events restart-backend ## Discover new fixtures, then refresh
