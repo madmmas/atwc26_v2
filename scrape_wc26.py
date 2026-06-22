@@ -238,6 +238,22 @@ def _stat_value(stats: dict[str, float], *names: str) -> float | None:
 # --------------------------------------------------------------------------- #
 # Per-game scraping
 # --------------------------------------------------------------------------- #
+def match_is_final(session: requests.Session, gid: str, league: str) -> bool | None:
+    """Cheap pre-check: has ESPN marked this match's status as completed?
+
+    Returns None if the status couldn't be determined (treat as a transient
+    failure, retry later) rather than risk scraping a still-live match.
+    """
+    summary = get_json(session, SUMMARY_URL.format(league=league, gid=gid))
+    if not summary:
+        return None
+    comp = (summary.get("header", {}).get("competitions") or [{}])[0]
+    status = comp.get("status", {}).get("type", {})
+    if "completed" not in status:
+        return None
+    return bool(status.get("completed"))
+
+
 def scrape_game(
     session: requests.Session,
     gid: str,
@@ -428,6 +444,20 @@ def process_once(session, args, glossary) -> int:
     log.info("processing %d game(s): %s", len(targets), ", ".join(targets))
     scraped = 0
     for gid, url in targets.items():
+        final = match_is_final(session, gid, args.league)
+        if final is False:
+            log.info("[%s] match not finished yet — skipping until it's final", gid)
+            state[gid] = {"url": url, "status": "pending",
+                          "checked_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+            save_state(state)
+            continue
+        if final is None:
+            log.warning("[%s] could not determine match status — will retry", gid)
+            state[gid] = {"url": url, "status": "error",
+                          "checked_at": datetime.now(timezone.utc).isoformat(timespec="seconds")}
+            save_state(state)
+            continue
+
         try:
             df = scrape_game(session, gid, url, args.league, glossary,
                              args.include_dnp)
