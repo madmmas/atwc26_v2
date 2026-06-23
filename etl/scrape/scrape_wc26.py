@@ -2,7 +2,7 @@
 """
 FIFA World Cup 2026 — match-by-match player-stats scraper.
 
-Reads game URLs from `game_links.csv`. For every *new* game added to that file
+Reads game URLs from `etl/scrape/game_links.csv`. For every *new* game added to that file
 it pulls the full per-player statistics for both teams and appends them to a
 tidy dataset for analysis.
 
@@ -61,9 +61,10 @@ from urllib3.util.retry import Retry
 # --------------------------------------------------------------------------- #
 # Configuration
 # --------------------------------------------------------------------------- #
+REPO_ROOT = Path(__file__).resolve().parents[2]
 ROOT = Path(__file__).resolve().parent
 LINKS_CSV = ROOT / "game_links.csv"
-DATA_DIR = ROOT / "data"
+DATA_DIR = REPO_ROOT / "data"
 RAW_DIR = DATA_DIR / "raw"
 GAMES_DIR = DATA_DIR / "games"
 MASTER_PARQUET = DATA_DIR / "all_players_stats.parquet"

@@ -1,14 +1,14 @@
 # CONTRIBUTING.md — Developer & reviewer guide
 
 Welcome 👋 This guide gets you from a fresh clone to making a reviewed change.
-Read [README.md](README.md) first for the big picture and
+Read [README.md](../README.md) first for the big picture and
 [ANALYTICS.md](ANALYTICS.md) for how the model works.
 
 ---
 
 ## 1. Get set up
 
-Follow the **one-time setup** in [README.md §4](README.md#4-setup--one-time-vs-repeated-commands).
+Follow the **one-time setup** in [README.md §4](../README.md#4-setup--one-time-vs-repeated-commands).
 Short version:
 
 ```bash
@@ -55,10 +55,12 @@ frontend/
 deploy/nginx.conf   reverse proxy (routes /api → backend, / → frontend)
 docker-compose.yml  full stack
 data/               generated dataset (do not hand-edit)
-scrape_wc26.py      data pipeline (see RUN.md)
+etl/scrape/         data pipeline scrapers (see RUN.md)
+notebooks/          analysis and data QA notebooks
+docs/               project documentation
 ```
 
-**Data flow:** `scrape_wc26.py` → `data/*.parquet` → `DataStore` (cached) →
+**Data flow:** `etl/scrape/scrape_wc26.py` → `data/*.parquet` → `DataStore` (cached) →
 endpoints in `main.py` → `lib/api.ts` → React pages.
 
 ---
@@ -132,7 +134,7 @@ endpoints in `main.py` → `lib/api.ts` → React pages.
       `GET /api/health` is `200`.
 - [ ] New endpoints have types in `lib/api.ts`.
 - [ ] New interactive UI has `data-testid`s.
-- [ ] Docs updated if behavior/model/API changed (README/ANALYTICS/TESTING).
+- [ ] Docs updated if behavior/model/API changed (`docs/`, README).
 - [ ] No secrets, no large data files committed (`data/` is generated).
 
 ### Review checklist (reviewer)

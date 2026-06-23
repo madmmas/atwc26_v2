@@ -6,6 +6,8 @@
 ROOT          := $(CURDIR)
 BACKEND_DIR   := $(ROOT)/backend
 FRONTEND_DIR  := $(ROOT)/frontend
+ETL_DIR       := $(ROOT)/etl
+SCRAPER_DIR   := $(ETL_DIR)/scrape
 BACKEND_VENV  := $(BACKEND_DIR)/.venv
 BACKEND_PY    := $(BACKEND_VENV)/bin/python
 BACKEND_PIP   := $(BACKEND_VENV)/bin/pip
@@ -38,8 +40,8 @@ setup-frontend: ## Frontend npm packages + .env.local
 	cd $(FRONTEND_DIR) && npm install
 	@echo "frontend: OK"
 
-setup-scraper: ## Root Python deps (scraper + notebook)
-	$(PIP) install -r $(ROOT)/requirements.txt
+setup-scraper: ## ETL scraper deps (etl/requirements.txt)
+	$(PIP) install -r $(ETL_DIR)/requirements.txt
 	@$(PYTHON) -c "import pandas, pyarrow" 2>/dev/null \
 		|| (echo "Scraper deps missing." && exit 1)
 	@echo "scraper: OK"
@@ -67,20 +69,20 @@ dev: setup ## Run backend + frontend together (Ctrl-C stops both)
 schedule: ## Discover WC26 fixtures (gameId + kickoff time) from ESPN
 	$(PYTHON) fetch_schedule.py
 
-scrape: ## Incremental scrape from game_links.csv
-	$(PYTHON) scrape_wc26.py
+scrape: ## Incremental scrape from etl/scrape/game_links.csv
+	$(PYTHON) $(SCRAPER_DIR)/scrape_wc26.py
 
 scrape-force: ## Re-scrape all games from scratch
-	$(PYTHON) scrape_wc26.py --force
+	$(PYTHON) $(SCRAPER_DIR)/scrape_wc26.py --force
 
-analyze: ## Re-execute analysis.ipynb in place
-	jupyter nbconvert --to notebook --execute --inplace analysis.ipynb
+analyze: ## Re-execute notebooks/analysis.ipynb in place
+	jupyter nbconvert --to notebook --execute --inplace notebooks/analysis.ipynb
 
 events: ## Rebuild match timelines/momentum from data/raw/*.json
 	$(PYTHON) build_match_events.py
 
 squads: ## Refresh full WC26 squad rosters (incl. players who haven't played)
-	$(PYTHON) scrape_squads.py
+	$(PYTHON) $(SCRAPER_DIR)/scrape_squads.py
 
 history: ## Backfill ~1yr of qualifier/friendly history (Predictor ratings only)
 	$(PYTHON) scrape_history.py

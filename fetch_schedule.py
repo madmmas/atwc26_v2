@@ -4,7 +4,7 @@ FIFA World Cup 2026 — fixture discovery.
 
 Queries ESPN's public scoreboard API across the tournament's date range and
 writes the full fixture list (gameId, kickoff time, teams, status) to
-`data/schedule.json`. Any gameId not already present in `game_links.csv`
+`data/schedule.json`. Any gameId not already present in `etl/scrape/game_links.csv`
 gets appended there automatically, so new matches no longer need to be added
 by hand.
 
@@ -31,11 +31,12 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-ROOT = Path(__file__).resolve().parent
-LINKS_CSV = ROOT / "game_links.csv"
-DATA_DIR = ROOT / "data"
+REPO_ROOT = Path(__file__).resolve().parent
+SCRAPER_DIR = REPO_ROOT / "etl" / "scrape"
+LINKS_CSV = SCRAPER_DIR / "game_links.csv"
+DATA_DIR = REPO_ROOT / "data"
 SCHEDULE_FILE = DATA_DIR / "schedule.json"
-LOG_FILE = ROOT / "scrape.log"
+LOG_FILE = SCRAPER_DIR / "scrape.log"
 
 DEFAULT_LEAGUE = "fifa.world"
 SCOREBOARD_URL = "https://site.api.espn.com/apis/site/v2/sports/soccer/{league}/scoreboard?dates={ymd}"

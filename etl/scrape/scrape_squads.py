@@ -40,8 +40,9 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+REPO_ROOT = Path(__file__).resolve().parents[2]
 ROOT = Path(__file__).resolve().parent
-DATA_DIR = ROOT / "data"
+DATA_DIR = REPO_ROOT / "data"
 SQUADS_RAW = DATA_DIR / "squads_raw.json"
 LOG_FILE = ROOT / "scrape_squads.log"
 

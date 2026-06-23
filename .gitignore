@@ -30,6 +30,7 @@ npm-debug.log
 
 # Logs
 scrape.log
+etl/scrape/*.log
 *.log
 
 # Raw ESPN payload cache for the qualifier/friendly history backfill (~700MB+).
@@ -39,3 +40,13 @@ scrape.log
 # re-scraping, which matters far less for a mostly-static historical pull
 # than for the live WC26 pipeline.
 data/history_raw/
+
+# frontend
+frontend/out/
+
+# v2 reference scripts (not part of v1 tree)
+v2_scripts/
+
+data/.gitkeep
+
+.pytest_cache

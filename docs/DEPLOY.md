@@ -16,7 +16,7 @@ A two-service web app plus a reverse proxy:
               └──────────────┘   └─────────┬──────────┘
                                            ▼
                                    data/*.parquet  (read-only)
-                                   produced by scrape_wc26.py
+                                   produced by etl/scrape/scrape_wc26.py
 ```
 
 * **Frontend** — Next.js (React/TS/Tailwind/Recharts). Static-ish; calls the API
@@ -32,7 +32,7 @@ A two-service web app plus a reverse proxy:
 
 > Use a **virtualenv** for the backend so the interpreter running uvicorn always
 > matches its installed packages (avoids the classic "No module named pyarrow"
-> from a mismatched Python). See [README.md §4](README.md#4-setup--one-time-vs-repeated-commands)
+> from a mismatched Python). See [README.md §4](../README.md#4-setup--one-time-vs-repeated-commands)
 > for the one-time-vs-repeated command breakdown.
 
 **Backend**
@@ -70,7 +70,8 @@ the app through Nginx on port **8080**. The frontend is built with
 **Refreshing data:** re-run the scraper, then restart the backend so it reloads
 the parquet:
 ```bash
-python3 scrape_wc26.py
+make scrape
+# or: python3 etl/scrape/scrape_wc26.py
 docker compose restart backend
 ```
 

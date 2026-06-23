@@ -14,7 +14,7 @@ All of this lives in two backend files:
 ## 1. The data foundation
 
 ### Where the data comes from
-`scrape_wc26.py` pulls **per-player, per-game** statistics from ESPN's public
+`etl/scrape/scrape_wc26.py` pulls **per-player, per-game** statistics from ESPN's public
 JSON APIs (the rich Opta-style feed: ~140 metrics per player — xG, xA, touches,
 duels, defensive actions, goalkeeping, etc.). One scraped **row = one player in
 one game**. The combined dataset is `data/all_players_stats.parquet`.

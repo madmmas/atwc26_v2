@@ -8,10 +8,10 @@ and get a statistical match-result prediction driven by real per-90 performance.
 
 > **New here?** Read this file top-to-bottom once. Then jump to the deep-dive doc
 > for your role:
-> - 🧠 **How the numbers & prediction work** → [ANALYTICS.md](ANALYTICS.md)
-> - 👩‍💻 **Contributing / code review** → [CONTRIBUTING.md](CONTRIBUTING.md)
-> - 🧪 **QA & automation testing** → [TESTING.md](TESTING.md)
-> - 🚀 **Deployment & ops** → [DEPLOY.md](DEPLOY.md)
+> - 🧠 **How the numbers & prediction work** → [docs/ANALYTICS.md](docs/ANALYTICS.md)
+> - 👩‍💻 **Contributing / code review** → [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)
+> - 🧪 **QA & automation testing** → [docs/TESTING.md](docs/TESTING.md)
+> - 🚀 **Deployment & ops** → [docs/DEPLOY.md](docs/DEPLOY.md)
 
 ---
 
@@ -21,30 +21,30 @@ The project is two halves that share one dataset:
 
 ```
                  ┌──────────────────────────────────────────────┐
-   ESPN JSON ──▶ │  scrape_wc26.py   (data pipeline)            │
+   ESPN JSON ──▶ │  etl/scrape/scrape_wc26.py (data pipeline)   │
    APIs          │  → data/all_players_stats.parquet           │
                  └───────────────┬──────────────────────────────┘
                                  │ reads
               ┌──────────────────┴───────────────────┐
               ▼                                       ▼
    ┌────────────────────┐                 ┌────────────────────────┐
-   │ analysis.ipynb     │                 │  Web app               │
-   │ (ad-hoc notebook)  │                 │  backend/  (FastAPI)   │
+   │ notebooks/         │                 │  Web app               │
+   │ notebooks/analysis.ipynb │                 │  backend/  (FastAPI)   │
    └────────────────────┘                 │  frontend/ (Next.js)   │
                                           └────────────────────────┘
 ```
 
 | Part | Folder / file | What it does |
 |---|---|---|
-| **Scraper** | [scrape_wc26.py](scrape_wc26.py) | Pulls per-player stats for each game from ESPN's JSON APIs into Parquet. |
-| **Notebook** | [analysis.ipynb](analysis.ipynb) | Pandas starter: per-90 normalization, leaderboards. |
+| **Scraper** | [etl/scrape/scrape_wc26.py](etl/scrape/scrape_wc26.py) | Pulls per-player stats for each game from ESPN's JSON APIs into Parquet. |
+| **Notebook** | [notebooks/analysis.ipynb](notebooks/analysis.ipynb) | Pandas starter: per-90 normalization, leaderboards. |
 | **Backend** | [backend/](backend/) | FastAPI service: analytics endpoints + the prediction engine. |
 | **Frontend** | [frontend/](frontend/) | Next.js UI: Overview, Explore, Match Predictor. |
 | **Deploy** | [docker-compose.yml](docker-compose.yml), [deploy/](deploy/) | Containerized stack behind Nginx. |
 | **Data** | [data/](data/) | Generated Parquet/CSV/JSON (the single source of truth). |
 
 The full data-collection design (and its legal/ethical notes) lives in
-[RUN.md](RUN.md) and [ANALYTICS.md](ANALYTICS.md).
+[docs/RUN.md](docs/RUN.md) and [docs/ANALYTICS.md](docs/ANALYTICS.md).
 
 ---
 
@@ -80,10 +80,10 @@ The full data-collection design (and its legal/ethical notes) lives in
 |---|---|---|---|
 | 1 | `python -m venv backend/.venv` | once | `test -d backend/.venv && echo yes` prints `yes` |
 | 2 | `pip install -r backend/requirements.txt` | once, then whenever `requirements.txt` changes | `backend/.venv/bin/python -c "import fastapi, pyarrow, pandas; print('ok')"` prints `ok` |
-| 3 | `pip install -r requirements.txt` (root, for the scraper/notebook) | once, then on change | `python -c "import pandas, pyarrow; print('ok')"` prints `ok` |
+| 3 | `pip install -r etl/requirements.txt` (scraper + notebook) | once, then on change | `python -c "import pandas, pyarrow; print('ok')"` prints `ok` |
 | 4 | `npm install` (in `frontend/`) | once, then whenever `package.json` changes | `test -d frontend/node_modules && echo yes` prints `yes` |
 | 5 | `cp frontend/.env.example frontend/.env.local` | once | `test -f frontend/.env.local && echo yes` prints `yes` |
-| 6 | First data scrape: `python scrape_wc26.py` | once to bootstrap data | `ls data/all_players_stats.parquet` lists the file |
+| 6 | First data scrape: `make scrape` | once to bootstrap data | `ls data/all_players_stats.parquet` lists the file |
 
 **One-shot verification of the whole setup** (copy-paste):
 
@@ -103,7 +103,7 @@ If every line says `OK`, skip setup and go straight to **Run** below.
 | `source backend/.venv/bin/activate` | activate the backend env in a shell |
 | `python -m uvicorn app.main:app --reload --port 8000` (in `backend/`) | run the API (dev) |
 | `npm run dev` (in `frontend/`) | run the UI (dev) |
-| `python scrape_wc26.py` | refresh data with newly-added game links |
+| `make scrape` | refresh data with newly-added game links |
 | `docker compose up --build` | run the whole stack in containers |
 
 ---
@@ -145,10 +145,10 @@ docker compose up --build       # → http://localhost:8080
 
 The dataset grows as the tournament progresses. Add new game links and re-scrape;
 the scraper is incremental (only fetches new games). Full step-by-step:
-**[RUN.md](RUN.md)**.
+**[docs/RUN.md](docs/RUN.md)**.
 
 ```bash
-python scrape_wc26.py           # picks up new links in game_links.csv
+make scrape                     # picks up new links in etl/scrape/game_links.csv
 # restart the backend so it reloads the parquet
 ```
 
@@ -167,4 +167,4 @@ python scrape_wc26.py           # picks up new links in game_links.csv
 
 Predictions are an illustrative statistical model, **not betting advice**. Data is
 collected from public tournament sources for demonstration purposes only; see the
-data-source notes in [RUN.md](RUN.md) and [ANALYTICS.md](ANALYTICS.md).
+data-source notes in [docs/RUN.md](docs/RUN.md) and [docs/ANALYTICS.md](docs/ANALYTICS.md).

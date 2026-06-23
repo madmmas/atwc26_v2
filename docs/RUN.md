@@ -1,14 +1,10 @@
 # Refreshing the data after adding a new game link
 
-Follow these steps whenever you add one or more links to `game_links.csv`.
+Follow these steps whenever you add one or more links to `etl/scrape/game_links.csv`.
 The scraper is **incremental** — it only fetches games it hasn't already done,
 so re-running is safe and cheap.
 
-Run everything from the project root:
-
-```bash
-cd /Users/sbmsoikot/FifaWC26AnalyseThis
-```
+Run everything from the project root.
 
 ---
 
@@ -18,26 +14,22 @@ cd /Users/sbmsoikot/FifaWC26AnalyseThis
 > ```bash
 > python3 -c "import pandas, pyarrow; print('deps OK')"
 > ```
-> If that prints `deps OK`, jump to Step 2. Otherwise install:
+> If that prints `deps OK`, jump to Step 2. Otherwise:
 
 ```bash
-pip3 install -r requirements.txt
+make setup-scraper
+# or: pip3 install -r etl/requirements.txt
 ```
 
-> 💡 To keep this isolated from other Python projects, you can use a virtualenv:
-> ```bash
-> python3 -m venv .venv && source .venv/bin/activate   # one-time
-> pip install -r requirements.txt                       # one-time
-> ```
-> (The web-app backend has its own venv under `backend/.venv` — see
-> [README.md §4](README.md#4-setup--one-time-vs-repeated-commands).)
+> 💡 The web-app backend has its own venv under `backend/.venv` — see
+> [README.md §4](../README.md#4-setup--one-time-vs-repeated-commands).
 
 ---
 
 ## Step 2 — confirm your new link is in the file
 
 ```bash
-cat game_links.csv
+cat etl/scrape/game_links.csv
 ```
 
 You should see the new line, e.g. `.../gameId/760417`. Each line just needs to
@@ -48,7 +40,8 @@ contain `gameId/<number>`; order and a header row don't matter.
 ## Step 3 — scrape only the new game(s)
 
 ```bash
-python3 scrape_wc26.py
+make scrape
+# or: python3 etl/scrape/scrape_wc26.py
 ```
 
 What to expect in the output:
@@ -80,11 +73,12 @@ The new `gameId` should appear in the list and the row count should have grown.
 
 ## Step 5 — refresh the analysis notebook
 
-Open `analysis.ipynb` and run all cells (Kernel ▸ Restart & Run All), **or**
+Open `notebooks/analysis.ipynb` and run all cells (Kernel ▸ Restart & Run All), **or**
 re-execute it from the command line:
 
 ```bash
-jupyter nbconvert --to notebook --execute --inplace analysis.ipynb
+make analyze
+# or: jupyter nbconvert --to notebook --execute --inplace notebooks/analysis.ipynb
 ```
 
 All leaderboards and tables now include the new match.
@@ -95,18 +89,18 @@ All leaderboards and tables now include the new match.
 
 | Goal | Command |
 |---|---|
-| Re-scrape **one** specific game (overwrite it) | `python3 scrape_wc26.py --game 760417` |
-| Re-scrape **everything** from scratch | `python3 scrape_wc26.py --force` |
-| Also keep players who didn't play | `python3 scrape_wc26.py --include-dnp` |
-| Auto-poll the csv every 60s for new links | `python3 scrape_wc26.py --watch 60` (Ctrl-C to stop) |
+| Re-scrape **one** specific game (overwrite it) | `python3 etl/scrape/scrape_wc26.py --game 760417` |
+| Re-scrape **everything** from scratch | `make scrape-force` |
+| Also keep players who didn't play | `python3 etl/scrape/scrape_wc26.py --include-dnp` |
+| Auto-poll the csv every 60s for new links | `python3 etl/scrape/scrape_wc26.py --watch 60` (Ctrl-C to stop) |
 | See what's been processed so far | `cat data/processed_games.json` |
-| Check the run log | `tail -n 30 scrape.log` |
+| Check the run log | `tail -n 30 etl/scrape/scrape.log` |
 
 ---
 
 ### TL;DR — the normal refresh is just two commands
 
 ```bash
-python3 scrape_wc26.py
-jupyter nbconvert --to notebook --execute --inplace analysis.ipynb
+make scrape
+make analyze
 ```

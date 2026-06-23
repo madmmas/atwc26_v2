@@ -5,10 +5,10 @@ An interactive **FIFA World Cup 2026 analytics** web app — a capability demo f
 of the tournament and build two custom XIs to get an **AI match-result
 prediction** from real per-90 performance.
 
-Built on the dataset produced by [`scrape_wc26.py`](scrape_wc26.py).
+Built on the dataset produced by [`etl/scrape/scrape_wc26.py`](../etl/scrape/scrape_wc26.py).
 
 > 📚 **This is the web-app reference.** For the whole project start at
-> **[README.md](README.md)**. Deep dives: **[ANALYTICS.md](ANALYTICS.md)** (the
+> **[README.md](../README.md)**. Deep dives: **[ANALYTICS.md](ANALYTICS.md)** (the
 > model), **[CONTRIBUTING.md](CONTRIBUTING.md)** (dev/review),
 > **[TESTING.md](TESTING.md)** (QA), **[DEPLOY.md](DEPLOY.md)** (ops).
 
@@ -48,7 +48,7 @@ output from the scraped data. See [`backend/app/prediction.py`](backend/app/pred
 |---|---|
 | Frontend | Next.js 14 (App Router), TypeScript, Tailwind, Recharts |
 | Backend | FastAPI, Gunicorn + Uvicorn workers, pandas/pyarrow |
-| Data | Parquet (from `scrape_wc26.py`), cached in memory |
+| Data | Parquet (from `etl/scrape/scrape_wc26.py`), cached in memory |
 | Delivery | Docker, docker-compose, Nginx reverse proxy |
 
 ## Quick start
@@ -88,7 +88,7 @@ backend/   FastAPI app (data layer, prediction engine, API)
 frontend/  Next.js app (overview, explore, predict)
 deploy/    nginx.conf
 docker-compose.yml, DEPLOY.md
-data/      parquet dataset (from scrape_wc26.py)
+data/      parquet dataset (from etl/scrape/scrape_wc26.py)
 ```
 
 > **Demo disclaimer:** predictions are a statistical model for illustration, not
