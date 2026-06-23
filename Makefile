@@ -13,7 +13,7 @@ PYTHON        ?= python3
 PIP           ?= pip3
 
 .PHONY: help setup setup-backend setup-frontend setup-scraper verify \
-        backend frontend dev schedule scrape scrape-force analyze events squads \
+        backend frontend dev schedule scrape scrape-force analyze events squads history \
         up docker down restart-backend health
 
 help: ## Show available targets
@@ -81,6 +81,9 @@ events: ## Rebuild match timelines/momentum from data/raw/*.json
 
 squads: ## Refresh full WC26 squad rosters (incl. players who haven't played)
 	$(PYTHON) scrape_squads.py
+
+history: ## Backfill ~1yr of qualifier/friendly history (Predictor ratings only)
+	$(PYTHON) scrape_history.py
 
 up: ## Build and run full stack via Docker (http://localhost:8080)
 	docker compose up --build

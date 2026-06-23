@@ -31,3 +31,11 @@ npm-debug.log
 # Logs
 scrape.log
 *.log
+
+# Raw ESPN payload cache for the qualifier/friendly history backfill (~700MB+).
+# Not needed to run the app (data/historical_form.parquet is) or to resume an
+# incremental re-run (data/history_games/*.parquet + historical_state.json
+# already cover that) — only useful for re-deriving new fields without
+# re-scraping, which matters far less for a mostly-static historical pull
+# than for the live WC26 pipeline.
+data/history_raw/

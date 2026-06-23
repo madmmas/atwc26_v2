@@ -1,0 +1,1716 @@
+{
+  "fifa.friendly:401873391": {
+    "status": "pending"
+  },
+  "fifa.friendly:401861774": {
+    "status": "ok",
+    "players": 44,
+    "scraped_at": "2026-06-23T20:03:46+00:00"
+  },
+  "fifa.friendly:401872678": {
+    "status": "error"
+  },
+  "fifa.friendly:401870853": {
+    "status": "ok",
+    "players": 39,
+    "scraped_at": "2026-06-23T20:04:06+00:00"
+  },
+  "fifa.friendly:401860781": {
+    "status": "ok",
+    "players": 36,
+    "scraped_at": "2026-06-23T20:04:26+00:00"
+  },
+  "fifa.friendly:401872547": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:04:43+00:00"
+  },
+  "fifa.friendly:401871530": {
+    "status": "ok",
+    "players": 22,
+    "scraped_at": "2026-06-23T20:04:52+00:00"
+  },
+  "fifa.friendly:401871131": {
+    "status": "ok",
+    "players": 35,
+    "scraped_at": "2026-06-23T20:05:11+00:00"
+  },
+  "fifa.friendly:401869326": {
+    "status": "ok",
+    "players": 43,
+    "scraped_at": "2026-06-23T20:05:32+00:00"
+  },
+  "fifa.friendly:401856621": {
+    "status": "ok",
+    "players": 36,
+    "scraped_at": "2026-06-23T20:05:52+00:00"
+  },
+  "fifa.friendly:401869431": {
+    "status": "ok",
+    "players": 37,
+    "scraped_at": "2026-06-23T20:06:11+00:00"
+  },
+  "fifa.friendly:401872679": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T20:06:30+00:00"
+  },
+  "fifa.friendly:401861775": {
+    "status": "ok",
+    "players": 41,
+    "scraped_at": "2026-06-23T20:06:51+00:00"
+  },
+  "fifa.friendly:401867618": {
+    "status": "ok",
+    "players": 39,
+    "scraped_at": "2026-06-23T20:07:10+00:00"
+  },
+  "fifa.friendly:401862319": {
+    "status": "ok",
+    "players": 43,
+    "scraped_at": "2026-06-23T20:07:31+00:00"
+  },
+  "fifa.friendly:401872603": {
+    "status": "ok",
+    "players": 36,
+    "scraped_at": "2026-06-23T20:07:48+00:00"
+  },
+  "fifa.friendly:401871172": {
+    "status": "ok",
+    "players": 43,
+    "scraped_at": "2026-06-23T20:08:08+00:00"
+  },
+  "fifa.friendly:758381": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:08:28+00:00"
+  },
+  "fifa.friendly:762592": {
+    "status": "ok",
+    "players": 41,
+    "scraped_at": "2026-06-23T20:08:46+00:00"
+  },
+  "fifa.friendly:401864003": {
+    "status": "ok",
+    "players": 43,
+    "scraped_at": "2026-06-23T20:09:06+00:00"
+  },
+  "fifa.friendly:401864055": {
+    "status": "ok",
+    "players": 41,
+    "scraped_at": "2026-06-23T20:09:26+00:00"
+  },
+  "fifa.friendly:401871359": {
+    "status": "ok",
+    "players": 44,
+    "scraped_at": "2026-06-23T20:09:47+00:00"
+  },
+  "fifa.friendly:401856597": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T20:10:07+00:00"
+  },
+  "fifa.friendly:401866134": {
+    "status": "ok",
+    "players": 37,
+    "scraped_at": "2026-06-23T20:10:27+00:00"
+  },
+  "fifa.friendly:401853575": {
+    "status": "ok",
+    "players": 39,
+    "scraped_at": "2026-06-23T20:10:47+00:00"
+  },
+  "fifa.friendly:401856361": {
+    "status": "ok",
+    "players": 40,
+    "scraped_at": "2026-06-23T20:11:07+00:00"
+  },
+  "fifa.friendly:401872680": {
+    "status": "ok",
+    "players": 41,
+    "scraped_at": "2026-06-23T20:11:26+00:00"
+  },
+  "fifa.friendly:401863573": {
+    "status": "ok",
+    "players": 39,
+    "scraped_at": "2026-06-23T20:11:47+00:00"
+  },
+  "fifa.friendly:401871830": {
+    "status": "ok",
+    "players": 22,
+    "scraped_at": "2026-06-23T20:11:55+00:00"
+  },
+  "fifa.friendly:401871169": {
+    "status": "ok",
+    "players": 35,
+    "scraped_at": "2026-06-23T20:12:15+00:00"
+  },
+  "fifa.friendly:401863500": {
+    "status": "ok",
+    "players": 42,
+    "scraped_at": "2026-06-23T20:12:36+00:00"
+  },
+  "fifa.friendly:401870075": {
+    "status": "ok",
+    "players": 44,
+    "scraped_at": "2026-06-23T20:12:57+00:00"
+  },
+  "fifa.friendly:401871496": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T20:13:17+00:00"
+  },
+  "fifa.friendly:401874358": {
+    "status": "ok",
+    "players": 22,
+    "scraped_at": "2026-06-23T20:13:27+00:00"
+  },
+  "fifa.friendly:401870034": {
+    "status": "ok",
+    "players": 42,
+    "scraped_at": "2026-06-23T20:13:48+00:00"
+  },
+  "fifa.friendly:401871471": {
+    "status": "ok",
+    "players": 44,
+    "scraped_at": "2026-06-23T20:14:08+00:00"
+  },
+  "fifa.friendly:401864934": {
+    "status": "ok",
+    "players": 40,
+    "scraped_at": "2026-06-23T20:14:28+00:00"
+  },
+  "fifa.friendly:401870095": {
+    "status": "ok",
+    "players": 36,
+    "scraped_at": "2026-06-23T20:14:47+00:00"
+  },
+  "fifa.friendly:401861776": {
+    "status": "ok",
+    "players": 42,
+    "scraped_at": "2026-06-23T20:15:07+00:00"
+  },
+  "fifa.friendly:401871132": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T20:15:26+00:00"
+  },
+  "fifa.friendly:401873680": {
+    "status": "ok",
+    "players": 42,
+    "scraped_at": "2026-06-23T20:15:44+00:00"
+  },
+  "fifa.friendly:401860780": {
+    "status": "ok",
+    "players": 35,
+    "scraped_at": "2026-06-23T20:16:03+00:00"
+  },
+  "fifa.friendly:401871781": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T20:16:23+00:00"
+  },
+  "fifa.friendly:401856622": {
+    "status": "ok",
+    "players": 35,
+    "scraped_at": "2026-06-23T20:16:44+00:00"
+  },
+  "fifa.friendly:401862883": {
+    "status": "ok",
+    "players": 37,
+    "scraped_at": "2026-06-23T20:17:04+00:00"
+  },
+  "fifa.friendly:762260": {
+    "status": "ok",
+    "players": 40,
+    "scraped_at": "2026-06-23T20:17:24+00:00"
+  },
+  "fifa.friendly:401871528": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T20:17:45+00:00"
+  },
+  "fifa.friendly:401869743": {
+    "status": "ok",
+    "players": 42,
+    "scraped_at": "2026-06-23T20:18:05+00:00"
+  },
+  "fifa.friendly:401868148": {
+    "status": "ok",
+    "players": 40,
+    "scraped_at": "2026-06-23T20:18:24+00:00"
+  },
+  "fifa.friendly:401860828": {
+    "status": "ok",
+    "players": 44,
+    "scraped_at": "2026-06-23T20:18:44+00:00"
+  },
+  "fifa.friendly:401870103": {
+    "status": "ok",
+    "players": 36,
+    "scraped_at": "2026-06-23T20:19:05+00:00"
+  },
+  "fifa.friendly:401875160": {
+    "status": "error"
+  },
+  "fifa.friendly:401861998": {
+    "status": "ok",
+    "players": 41,
+    "scraped_at": "2026-06-23T20:19:26+00:00"
+  },
+  "fifa.friendly:401871361": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T20:19:46+00:00"
+  },
+  "fifa.friendly:401868047": {
+    "status": "ok",
+    "players": 43,
+    "scraped_at": "2026-06-23T20:20:05+00:00"
+  },
+  "fifa.friendly:401873741": {
+    "status": "error"
+  },
+  "fifa.worldq.uefa:724972": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:24:42+00:00"
+  },
+  "fifa.worldq.uefa:724973": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:25:32+00:00"
+  },
+  "fifa.worldq.uefa:724974": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:25:51+00:00"
+  },
+  "fifa.worldq.uefa:724978": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:26:09+00:00"
+  },
+  "fifa.worldq.uefa:724977": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T20:26:27+00:00"
+  },
+  "fifa.worldq.uefa:724985": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T20:26:45+00:00"
+  },
+  "fifa.worldq.uefa:724979": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:27:03+00:00"
+  },
+  "fifa.worldq.uefa:724987": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:27:22+00:00"
+  },
+  "fifa.worldq.uefa:724988": {
+    "status": "ok",
+    "players": 28,
+    "scraped_at": "2026-06-23T20:27:40+00:00"
+  },
+  "fifa.worldq.uefa:724983": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:27:59+00:00"
+  },
+  "fifa.worldq.uefa:724984": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:28:18+00:00"
+  },
+  "fifa.worldq.uefa:724990": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:28:37+00:00"
+  },
+  "fifa.worldq.uefa:724991": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:28:55+00:00"
+  },
+  "fifa.worldq.uefa:724992": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:29:13+00:00"
+  },
+  "fifa.worldq.uefa:724994": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:29:32+00:00"
+  },
+  "fifa.worldq.uefa:724995": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:29:51+00:00"
+  },
+  "fifa.worldq.uefa:724998": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:30:10+00:00"
+  },
+  "fifa.worldq.uefa:725001": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:30:28+00:00"
+  },
+  "fifa.worldq.uefa:725002": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:30:47+00:00"
+  },
+  "fifa.worldq.uefa:725003": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:31:06+00:00"
+  },
+  "fifa.worldq.uefa:725010": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:31:24+00:00"
+  },
+  "fifa.worldq.uefa:725007": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:31:42+00:00"
+  },
+  "fifa.worldq.uefa:725009": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:32:00+00:00"
+  },
+  "fifa.worldq.uefa:725014": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:32:18+00:00"
+  },
+  "fifa.worldq.uefa:725018": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:32:36+00:00"
+  },
+  "fifa.worldq.uefa:725016": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:32:54+00:00"
+  },
+  "fifa.worldq.uefa:725008": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:33:13+00:00"
+  },
+  "fifa.worldq.uefa:725017": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:33:31+00:00"
+  },
+  "fifa.worldq.uefa:725019": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:33:49+00:00"
+  },
+  "fifa.worldq.uefa:725021": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:34:08+00:00"
+  },
+  "fifa.worldq.uefa:725022": {
+    "status": "ok",
+    "players": 28,
+    "scraped_at": "2026-06-23T20:34:26+00:00"
+  },
+  "fifa.worldq.uefa:724833": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:34:44+00:00"
+  },
+  "fifa.worldq.uefa:724834": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:35:03+00:00"
+  },
+  "fifa.worldq.uefa:724838": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:35:21+00:00"
+  },
+  "fifa.worldq.uefa:724842": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:35:39+00:00"
+  },
+  "fifa.worldq.uefa:724839": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:35:57+00:00"
+  },
+  "fifa.worldq.uefa:724837": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T20:36:16+00:00"
+  },
+  "fifa.worldq.uefa:724844": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:36:34+00:00"
+  },
+  "fifa.worldq.uefa:724847": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:36:52+00:00"
+  },
+  "fifa.worldq.uefa:724849": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:37:11+00:00"
+  },
+  "fifa.worldq.uefa:724850": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:37:29+00:00"
+  },
+  "fifa.worldq.uefa:724852": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:37:48+00:00"
+  },
+  "fifa.worldq.uefa:724854": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:38:07+00:00"
+  },
+  "fifa.worldq.uefa:724853": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:38:25+00:00"
+  },
+  "fifa.worldq.uefa:724856": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:38:43+00:00"
+  },
+  "fifa.worldq.uefa:724857": {
+    "status": "ok",
+    "players": 28,
+    "scraped_at": "2026-06-23T20:39:02+00:00"
+  },
+  "fifa.worldq.uefa:724866": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:39:20+00:00"
+  },
+  "fifa.worldq.uefa:724861": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T20:39:38+00:00"
+  },
+  "fifa.worldq.uefa:724863": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T20:39:57+00:00"
+  },
+  "fifa.worldq.uefa:724864": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T20:40:15+00:00"
+  },
+  "fifa.worldq.uefa:724859": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:40:34+00:00"
+  },
+  "fifa.worldq.uefa:724871": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:40:52+00:00"
+  },
+  "fifa.worldq.uefa:724867": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:41:10+00:00"
+  },
+  "fifa.worldq.uefa:724869": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:41:28+00:00"
+  },
+  "fifa.worldq.uefa:724874": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T20:41:47+00:00"
+  },
+  "fifa.worldq.uefa:724875": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:42:06+00:00"
+  },
+  "fifa.worldq.uefa:724879": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:42:24+00:00"
+  },
+  "fifa.worldq.uefa:724881": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:42:42+00:00"
+  },
+  "fifa.worldq.uefa:724882": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:43:01+00:00"
+  },
+  "fifa.worldq.uefa:724887": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:43:19+00:00"
+  },
+  "fifa.worldq.uefa:724885": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:43:37+00:00"
+  },
+  "fifa.worldq.uefa:724886": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:43:55+00:00"
+  },
+  "fifa.worldq.uefa:724889": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:44:14+00:00"
+  },
+  "fifa.worldq.uefa:724891": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:44:32+00:00"
+  },
+  "fifa.worldq.uefa:724890": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:44:51+00:00"
+  },
+  "fifa.worldq.uefa:724892": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:45:09+00:00"
+  },
+  "fifa.worldq.uefa:724895": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:45:27+00:00"
+  },
+  "fifa.worldq.uefa:724898": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:45:45+00:00"
+  },
+  "fifa.worldq.uefa:724897": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:46:03+00:00"
+  },
+  "fifa.worldq.uefa:724900": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:46:21+00:00"
+  },
+  "fifa.worldq.uefa:724902": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T20:46:40+00:00"
+  },
+  "fifa.worldq.uefa:724901": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T20:46:57+00:00"
+  },
+  "fifa.worldq.uefa:724906": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:47:15+00:00"
+  },
+  "fifa.worldq.uefa:724909": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:47:32+00:00"
+  },
+  "fifa.worldq.uefa:724911": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:47:51+00:00"
+  },
+  "fifa.worldq.uefa:724907": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:48:08+00:00"
+  },
+  "fifa.worldq.uefa:724912": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:48:26+00:00"
+  },
+  "fifa.worldq.uefa:724913": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:48:43+00:00"
+  },
+  "fifa.worldq.uefa:724915": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:49:02+00:00"
+  },
+  "fifa.worldq.uefa:724922": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:49:26+00:00"
+  },
+  "fifa.worldq.uefa:724921": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T20:49:48+00:00"
+  },
+  "fifa.worldq.uefa:724917": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:50:11+00:00"
+  },
+  "fifa.worldq.uefa:724919": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:50:31+00:00"
+  },
+  "fifa.worldq.uefa:761383": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T20:50:49+00:00"
+  },
+  "fifa.worldq.uefa:761378": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T20:51:08+00:00"
+  },
+  "fifa.worldq.uefa:761384": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:51:26+00:00"
+  },
+  "fifa.worldq.uefa:761381": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:51:44+00:00"
+  },
+  "fifa.worldq.uefa:761952": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T20:52:03+00:00"
+  },
+  "fifa.worldq.uefa:761955": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:52:21+00:00"
+  },
+  "fifa.worldq.uefa:761953": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:52:39+00:00"
+  },
+  "fifa.worldq.uefa:761954": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T20:52:58+00:00"
+  },
+  "fifa.worldq.concacaf:754236": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:53:20+00:00"
+  },
+  "fifa.worldq.concacaf:754239": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:53:37+00:00"
+  },
+  "fifa.worldq.concacaf:754240": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:53:55+00:00"
+  },
+  "fifa.worldq.concacaf:754243": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:54:13+00:00"
+  },
+  "fifa.worldq.concacaf:754245": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:54:31+00:00"
+  },
+  "fifa.worldq.concacaf:754246": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:54:48+00:00"
+  },
+  "fifa.worldq.concacaf:754248": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:55:06+00:00"
+  },
+  "fifa.worldq.concacaf:754251": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:55:24+00:00"
+  },
+  "fifa.worldq.concacaf:754252": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:55:43+00:00"
+  },
+  "fifa.worldq.concacaf:754255": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:56:00+00:00"
+  },
+  "fifa.worldq.concacaf:754256": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T20:56:18+00:00"
+  },
+  "fifa.worldq.concacaf:754257": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:56:36+00:00"
+  },
+  "fifa.worldq.concacaf:754265": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:56:54+00:00"
+  },
+  "fifa.worldq.concacaf:754263": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:57:12+00:00"
+  },
+  "fifa.worldq.concacaf:754262": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:57:30+00:00"
+  },
+  "fifa.worldq.concacaf:754268": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:57:48+00:00"
+  },
+  "fifa.worldq.concacaf:754267": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T20:58:08+00:00"
+  },
+  "fifa.worldq.concacaf:754266": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T20:58:25+00:00"
+  },
+  "fifa.worldq.conmebol:684658": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:58:47+00:00"
+  },
+  "fifa.worldq.conmebol:684660": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T20:59:05+00:00"
+  },
+  "fifa.worldq.conmebol:684661": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T20:59:23+00:00"
+  },
+  "fifa.worldq.conmebol:684662": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T20:59:42+00:00"
+  },
+  "fifa.worldq.conmebol:684659": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:00:00+00:00"
+  },
+  "fifa.worldq.conmebol:684665": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:00:18+00:00"
+  },
+  "fifa.worldq.conmebol:684663": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:00:37+00:00"
+  },
+  "fifa.worldq.conmebol:684664": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T21:00:55+00:00"
+  },
+  "fifa.worldq.conmebol:684666": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:01:13+00:00"
+  },
+  "fifa.worldq.conmebol:684667": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:01:31+00:00"
+  },
+  "fifa.worldq.caf:687368": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:01:53+00:00"
+  },
+  "fifa.worldq.caf:687218": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:02:11+00:00"
+  },
+  "fifa.worldq.caf:687299": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:02:30+00:00"
+  },
+  "fifa.worldq.caf:687329": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:02:48+00:00"
+  },
+  "fifa.worldq.caf:687158": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:03:06+00:00"
+  },
+  "fifa.worldq.caf:687188": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:03:24+00:00"
+  },
+  "fifa.worldq.caf:687119": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:03:42+00:00"
+  },
+  "fifa.worldq.caf:687269": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:04:01+00:00"
+  },
+  "fifa.worldq.caf:687239": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:04:19+00:00"
+  },
+  "fifa.worldq.caf:687149": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:04:37+00:00"
+  },
+  "fifa.worldq.caf:687330": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:04:56+00:00"
+  },
+  "fifa.worldq.caf:687240": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:05:14+00:00"
+  },
+  "fifa.worldq.caf:687300": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:05:33+00:00"
+  },
+  "fifa.worldq.caf:687360": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:05:50+00:00"
+  },
+  "fifa.worldq.caf:687120": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:06:08+00:00"
+  },
+  "fifa.worldq.caf:687210": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:06:27+00:00"
+  },
+  "fifa.worldq.caf:687150": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:06:45+00:00"
+  },
+  "fifa.worldq.caf:687180": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:07:03+00:00"
+  },
+  "fifa.worldq.caf:687270": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:07:21+00:00"
+  },
+  "fifa.worldq.caf:687241": {
+    "status": "pending"
+  },
+  "fifa.worldq.caf:687219": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:07:39+00:00"
+  },
+  "fifa.worldq.caf:687369": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:07:57+00:00"
+  },
+  "fifa.worldq.caf:687121": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:08:15+00:00"
+  },
+  "fifa.worldq.caf:687301": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:08:33+00:00"
+  },
+  "fifa.worldq.caf:687271": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:08:51+00:00"
+  },
+  "fifa.worldq.caf:687151": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:09:09+00:00"
+  },
+  "fifa.worldq.caf:687159": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:09:27+00:00"
+  },
+  "fifa.worldq.caf:687331": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:09:45+00:00"
+  },
+  "fifa.worldq.caf:687189": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:10:03+00:00"
+  },
+  "fifa.worldq.caf:687122": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:10:20+00:00"
+  },
+  "fifa.worldq.caf:687370": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:10:38+00:00"
+  },
+  "fifa.worldq.caf:687332": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:10:57+00:00"
+  },
+  "fifa.worldq.caf:687220": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:11:13+00:00"
+  },
+  "fifa.worldq.caf:687302": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:11:32+00:00"
+  },
+  "fifa.worldq.caf:687190": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:11:50+00:00"
+  },
+  "fifa.worldq.caf:687160": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:12:07+00:00"
+  },
+  "fifa.worldq.caf:687272": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:12:25+00:00"
+  },
+  "fifa.worldq.caf:687242": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:12:43+00:00"
+  },
+  "fifa.worldq.caf:687152": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:13:04+00:00"
+  },
+  "fifa.worldq.caf:760048": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:13:22+00:00"
+  },
+  "fifa.worldq.caf:761088": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:13:41+00:00"
+  },
+  "fifa.worldq.afc:753692": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:14:02+00:00"
+  },
+  "fifa.worldq.afc:753691": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:14:21+00:00"
+  },
+  "fifa.worldq.afc:753693": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:14:39+00:00"
+  },
+  "fifa.worldq.afc:753695": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:14:58+00:00"
+  },
+  "fifa.worldq.afc:753696": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:15:16+00:00"
+  },
+  "fifa.worldq.afc:760045": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:15:34+00:00"
+  },
+  "fifa.worldq.afc:760046": {
+    "status": "ok",
+    "players": 29,
+    "scraped_at": "2026-06-23T21:15:53+00:00"
+  },
+  "fifa.friendly:749917": {
+    "status": "error"
+  },
+  "fifa.friendly:751361": {
+    "status": "error"
+  },
+  "fifa.friendly:753973": {
+    "status": "pending"
+  },
+  "fifa.friendly:754178": {
+    "status": "ok",
+    "players": 37,
+    "scraped_at": "2026-06-23T21:16:18+00:00"
+  },
+  "fifa.friendly:753974": {
+    "status": "pending"
+  },
+  "fifa.friendly:753972": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:16:34+00:00"
+  },
+  "fifa.friendly:755890": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:16:51+00:00"
+  },
+  "fifa.friendly:755868": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:17:09+00:00"
+  },
+  "fifa.friendly:755903": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:17:29+00:00"
+  },
+  "fifa.friendly:733152": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:17:48+00:00"
+  },
+  "fifa.friendly:755849": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:18:09+00:00"
+  },
+  "fifa.friendly:743812": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:18:26+00:00"
+  },
+  "fifa.friendly:733151": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:18:45+00:00"
+  },
+  "fifa.friendly:735765": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:19:04+00:00"
+  },
+  "fifa.friendly:735773": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:19:24+00:00"
+  },
+  "fifa.friendly:755869": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:19:44+00:00"
+  },
+  "fifa.friendly:749810": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:20:04+00:00"
+  },
+  "fifa.friendly:743813": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:20:22+00:00"
+  },
+  "fifa.friendly:758165": {
+    "status": "error"
+  },
+  "fifa.friendly:733167": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:20:40+00:00"
+  },
+  "fifa.friendly:735766": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:20:59+00:00"
+  },
+  "fifa.friendly:735774": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:21:18+00:00"
+  },
+  "fifa.friendly:733158": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:21:37+00:00"
+  },
+  "fifa.friendly:756251": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:21:56+00:00"
+  },
+  "fifa.friendly:758972": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:22:15+00:00"
+  },
+  "fifa.friendly:739959": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:22:35+00:00"
+  },
+  "fifa.friendly:757631": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:22:56+00:00"
+  },
+  "fifa.friendly:758400": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:23:15+00:00"
+  },
+  "fifa.friendly:758719": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:23:35+00:00"
+  },
+  "fifa.friendly:735086": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:23:55+00:00"
+  },
+  "fifa.friendly:749807": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:24:14+00:00"
+  },
+  "fifa.friendly:758378": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:24:32+00:00"
+  },
+  "fifa.friendly:753161": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:24:52+00:00"
+  },
+  "fifa.friendly:751638": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:25:12+00:00"
+  },
+  "fifa.friendly:733031": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:25:31+00:00"
+  },
+  "fifa.friendly:758411": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:25:50+00:00"
+  },
+  "fifa.friendly:757632": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:26:10+00:00"
+  },
+  "fifa.friendly:739960": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:26:30+00:00"
+  },
+  "fifa.friendly:735087": {
+    "status": "pending"
+  },
+  "fifa.friendly:759665": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:26:48+00:00"
+  },
+  "fifa.friendly:733153": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:27:04+00:00"
+  },
+  "fifa.friendly:758681": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:27:24+00:00"
+  },
+  "fifa.friendly:758373": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:27:42+00:00"
+  },
+  "fifa.friendly:746411": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:28:01+00:00"
+  },
+  "fifa.friendly:753162": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:28:20+00:00"
+  },
+  "fifa.friendly:755899": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:28:40+00:00"
+  },
+  "fifa.friendly:760185": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:28:59+00:00"
+  },
+  "fifa.friendly:759987": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:29:17+00:00"
+  },
+  "fifa.friendly:760378": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:29:34+00:00"
+  },
+  "fifa.friendly:757634": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:29:52+00:00"
+  },
+  "fifa.friendly:758183": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:30:11+00:00"
+  },
+  "fifa.friendly:760050": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:30:30+00:00"
+  },
+  "fifa.friendly:758720": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:30:50+00:00"
+  },
+  "fifa.friendly:760281": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:31:09+00:00"
+  },
+  "fifa.friendly:759988": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:31:27+00:00"
+  },
+  "fifa.friendly:760376": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:31:47+00:00"
+  },
+  "fifa.friendly:760186": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:32:08+00:00"
+  },
+  "fifa.friendly:760374": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:32:27+00:00"
+  },
+  "fifa.friendly:760259": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:32:46+00:00"
+  },
+  "fifa.friendly:760282": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:33:03+00:00"
+  },
+  "fifa.friendly:760051": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:33:24+00:00"
+  },
+  "fifa.friendly:758376": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:33:44+00:00"
+  },
+  "fifa.friendly:758715": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:34:03+00:00"
+  },
+  "fifa.friendly:758718": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:34:23+00:00"
+  },
+  "fifa.friendly:761121": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:34:41+00:00"
+  },
+  "fifa.friendly:760915": {
+    "status": "ok",
+    "players": 37,
+    "scraped_at": "2026-06-23T21:34:59+00:00"
+  },
+  "fifa.friendly:758721": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:35:20+00:00"
+  },
+  "fifa.friendly:760052": {
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-06-23T21:35:37+00:00"
+  },
+  "fifa.friendly:760409": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:35:57+00:00"
+  },
+  "fifa.friendly:760824": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:36:16+00:00"
+  },
+  "fifa.friendly:761122": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:36:35+00:00"
+  },
+  "fifa.friendly:760377": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:36:54+00:00"
+  },
+  "fifa.friendly:760899": {
+    "status": "error"
+  },
+  "fifa.friendly:760375": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:37:13+00:00"
+  },
+  "fifa.friendly:760053": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:37:33+00:00"
+  },
+  "fifa.friendly:758377": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:37:55+00:00"
+  },
+  "fifa.friendly:759185": {
+    "status": "pending"
+  },
+  "fifa.friendly:760258": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:38:15+00:00"
+  },
+  "fifa.friendly:758717": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:38:34+00:00"
+  },
+  "fifa.friendly:758974": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:38:59+00:00"
+  },
+  "fifa.friendly:758716": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:39:18+00:00"
+  },
+  "fifa.friendly:762772": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:39:41+00:00"
+  },
+  "fifa.friendly:762474": {
+    "status": "ok",
+    "players": 35,
+    "scraped_at": "2026-06-23T21:40:01+00:00"
+  },
+  "fifa.friendly:401842482": {
+    "status": "error"
+  },
+  "fifa.friendly:401844264": {
+    "status": "ok",
+    "players": 35,
+    "scraped_at": "2026-06-23T21:40:18+00:00"
+  },
+  "fifa.friendly:762557": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:40:41+00:00"
+  },
+  "fifa.friendly:401842387": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:41:01+00:00"
+  },
+  "fifa.friendly:401842388": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:41:25+00:00"
+  },
+  "fifa.friendly:401857718": {
+    "status": "error"
+  },
+  "fifa.friendly:401842389": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:41:42+00:00"
+  },
+  "fifa.friendly:401866396": {
+    "status": "error"
+  },
+  "fifa.friendly:401856642": {
+    "status": "pending"
+  },
+  "fifa.friendly:762452": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:42:01+00:00"
+  },
+  "fifa.friendly:401847048": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:42:27+00:00"
+  },
+  "fifa.friendly:401856419": {
+    "status": "ok",
+    "players": 37,
+    "scraped_at": "2026-06-23T21:42:46+00:00"
+  },
+  "fifa.friendly:401856591": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:43:09+00:00"
+  },
+  "fifa.friendly:401856601": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:43:28+00:00"
+  },
+  "fifa.friendly:401856592": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:43:51+00:00"
+  },
+  "fifa.friendly:401861777": {
+    "status": "ok",
+    "players": 36,
+    "scraped_at": "2026-06-23T21:44:10+00:00"
+  },
+  "fifa.friendly:401866483": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:44:30+00:00"
+  },
+  "fifa.friendly:401856593": {
+    "status": "ok",
+    "players": 41,
+    "scraped_at": "2026-06-23T21:44:50+00:00"
+  },
+  "fifa.friendly:401860541": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:45:08+00:00"
+  },
+  "fifa.friendly:401862038": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:45:28+00:00"
+  },
+  "fifa.friendly:401854539": {
+    "status": "ok",
+    "players": 42,
+    "scraped_at": "2026-06-23T21:45:48+00:00"
+  },
+  "fifa.friendly:401861598": {
+    "status": "ok",
+    "players": 40,
+    "scraped_at": "2026-06-23T21:46:08+00:00"
+  },
+  "fifa.friendly:401862318": {
+    "status": "ok",
+    "players": 36,
+    "scraped_at": "2026-06-23T21:46:27+00:00"
+  },
+  "fifa.friendly:762553": {
+    "status": "ok",
+    "players": 37,
+    "scraped_at": "2026-06-23T21:46:46+00:00"
+  },
+  "fifa.friendly:762549": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:47:05+00:00"
+  },
+  "fifa.friendly:762550": {
+    "status": "ok",
+    "players": 36,
+    "scraped_at": "2026-06-23T21:47:25+00:00"
+  },
+  "fifa.friendly:401865041": {
+    "status": "ok",
+    "players": 37,
+    "scraped_at": "2026-06-23T21:47:46+00:00"
+  },
+  "fifa.friendly:401860936": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:48:07+00:00"
+  },
+  "fifa.friendly:401866131": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:48:27+00:00"
+  },
+  "fifa.friendly:401860779": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:48:47+00:00"
+  },
+  "fifa.friendly:401861999": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:49:07+00:00"
+  },
+  "fifa.friendly:401856638": {
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-06-23T21:49:26+00:00"
+  },
+  "fifa.friendly:401856618": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:49:47+00:00"
+  },
+  "fifa.friendly:762258": {
+    "status": "ok",
+    "players": 40,
+    "scraped_at": "2026-06-23T21:50:06+00:00"
+  },
+  "fifa.friendly:401856640": {
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-06-23T21:50:26+00:00"
+  },
+  "fifa.friendly:762263": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:50:47+00:00"
+  },
+  "fifa.friendly:762453": {
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-06-23T21:51:07+00:00"
+  },
+  "fifa.friendly:401856602": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:51:26+00:00"
+  },
+  "fifa.friendly:401856420": {
+    "status": "ok",
+    "players": 36,
+    "scraped_at": "2026-06-23T21:51:45+00:00"
+  },
+  "fifa.friendly:401861040": {
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-06-23T21:52:06+00:00"
+  },
+  "fifa.friendly:758380": {
+    "status": "pending"
+  },
+  "fifa.friendly:762773": {
+    "status": "ok",
+    "players": 35,
+    "scraped_at": "2026-06-23T21:52:25+00:00"
+  },
+  "fifa.friendly:401856595": {
+    "status": "ok",
+    "players": 40,
+    "scraped_at": "2026-06-23T21:52:45+00:00"
+  },
+  "fifa.friendly:401861778": {
+    "status": "ok",
+    "players": 38,
+    "scraped_at": "2026-06-23T21:53:04+00:00"
+  }
+}

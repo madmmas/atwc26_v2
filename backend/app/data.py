@@ -120,6 +120,10 @@ class DataStore:
         self.players: pd.DataFrame | None = None       # one row per player
         self.teams: pd.DataFrame | None = None         # one row per team
         self.league: dict = {}
+        # Predictor-only inputs (may include qualifier/friendly history on
+        # top of WC26 data) — see _load_predictor_inputs.
+        self.predictor_players: pd.DataFrame | None = None
+        self.predictor_avg_goals: float = 0.0
 
     # -- loading ----------------------------------------------------------- #
     def load(self, force: bool = False) -> None:
@@ -149,6 +153,7 @@ class DataStore:
             self.teams = self._build_team_profiles(df)
             self.matches = self._build_matches(df)
             self.league = self._build_league_context(df)
+            self.predictor_players, self.predictor_avg_goals = self._load_predictor_inputs(df)
             self._loaded = True
 
     # -- squads -------------------------------------------------------------- #
@@ -198,6 +203,48 @@ class DataStore:
         if not new_rows:
             return df
         return pd.concat([df, pd.DataFrame(new_rows)], ignore_index=True)
+
+    # -- predictor-only history blend --------------------------------------- #
+    def _load_predictor_inputs(self, df: pd.DataFrame) -> tuple[pd.DataFrame, float]:
+        """Wider player ratings + scoring baseline for the Predictor ONLY.
+
+        Blends in real qualifier/friendly history (scrape_history.py) on top
+        of WC26 data, so players with little/no tournament minutes still get
+        a meaningful rating. Every other page (Match Analysis, Player
+        Analysis, Overview) keeps reading `self.players`/`self.league`,
+        built from WC26 data only — this never touches those.
+        """
+        avg_goals = self.league["avg_team_goals"]
+        if not config.HISTORICAL_FORM.exists():
+            return self.players, avg_goals
+        try:
+            hist = pd.read_parquet(config.HISTORICAL_FORM)
+            squads = json.loads(config.SQUADS_RAW.read_text())
+        except Exception:
+            return self.players, avg_goals
+
+        # Each historical match also includes the (often non-WC26) opponent's
+        # roster — keep only the WC26 side's rows, we never need to rate the
+        # other 150+ national teams that aren't in this tournament.
+        wc26_team_ids = {s["team_id"] for s in squads}
+        hist = hist[hist["team_id"].astype(str).isin(wc26_team_ids)]
+        if hist.empty:
+            return self.players, avg_goals
+
+        for c in hist.columns:
+            if c not in ID_COLS:
+                hist[c] = pd.to_numeric(hist[c], errors="coerce")
+        hist["team_score"] = pd.to_numeric(hist["team_score"], errors="coerce")
+        hist["opp_score"] = pd.to_numeric(hist["opp_score"], errors="coerce")
+        hist["minutes"] = pd.to_numeric(hist["minutes"], errors="coerce").fillna(0)
+        hist = hist.assign(role=[
+            classify_role(p, a) for p, a in zip(hist["position"], hist["position_abbr"])
+        ])
+
+        wide = pd.concat([df, hist], ignore_index=True)
+        players = self._build_player_profiles(wide)
+        wide_avg_goals = self._build_league_context(wide)["avg_team_goals"]
+        return players, wide_avg_goals
 
     # -- flags ------------------------------------------------------------- #
     def _load_flags(self) -> dict:
