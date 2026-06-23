@@ -77,9 +77,9 @@ class Predictor:
 
     def __init__(self, store: DataStore) -> None:
         self.store = store
-        players = store.players.set_index("player_id")
+        players = store.predictor_players.set_index("player_id")
         self.players = players
-        self.avg_goals = store.league["avg_team_goals"]
+        self.avg_goals = store.predictor_avg_goals
         self._compute_reference()
 
     # -- league reference so an average XI normalises to ~1.0 -------------- #
