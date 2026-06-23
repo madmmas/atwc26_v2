@@ -50,3 +50,6 @@ v2_scripts/
 data/.gitkeep
 
 .pytest_cache
+
+# k6 baseline JSON summaries (local only)
+reports/

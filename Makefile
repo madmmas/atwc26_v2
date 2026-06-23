@@ -9,6 +9,8 @@ FRONTEND_DIR  := $(ROOT)/frontend
 ETL_DIR       := $(ROOT)/etl
 SCRAPER_DIR   := $(ETL_DIR)/scrape
 E2E_DIR       := $(ROOT)/e2e
+K6_DIR        := $(ROOT)/k6
+K6_BASE_URL   ?= https://atwc26.com
 BACKEND_VENV  := $(BACKEND_DIR)/.venv
 BACKEND_PY    := $(BACKEND_VENV)/bin/python
 BACKEND_PIP   := $(BACKEND_VENV)/bin/pip
@@ -17,7 +19,7 @@ PIP           ?= pip3
 
 .PHONY: help setup setup-backend setup-frontend setup-scraper setup-test verify \
         backend frontend dev schedule scrape scrape-force analyze events squads \
-        test-e2e up docker down restart-backend health
+        test-e2e k6-smoke k6-journey up docker down restart-backend health
 
 help: ## Show available targets
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make <target>\n\nTargets:\n"} \
@@ -55,6 +57,12 @@ setup-test: setup-backend ## pytest + httpx in backend venv
 
 test-e2e: setup-test ## Run v1 API end-to-end tests (in-process, no server)
 	$(BACKEND_PY) -m pytest $(E2E_DIR) -q -c $(E2E_DIR)/pytest.ini
+
+k6-smoke: ## k6 smoke test against v1 API (default: production)
+	ATWC26_BASE_URL=$(K6_BASE_URL) $(K6_DIR)/run.sh smoke
+
+k6-journey: ## k6 user journey + baseline JSON in reports/
+	ATWC26_BASE_URL=$(K6_BASE_URL) $(K6_DIR)/run.sh journey
 
 verify: ## Check whether one-time setup steps are done
 	@echo "venv:      $$([ -d $(BACKEND_VENV) ] && echo OK || echo MISSING)"

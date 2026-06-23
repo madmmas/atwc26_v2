@@ -153,7 +153,51 @@ predict probabilities sum to 1.0, empty XI returns 400).
 
 CI runs the same suite on pull requests via `.github/workflows/ci.yml`.
 
-## 6. Suggested automation stack
+---
+
+## 6. Performance baseline (k6)
+
+Establish **v1 production baselines** before the v2 refactor. Scripts live under
+`k6/`; see [k6/README.md](../k6/README.md) for install steps.
+
+**Prerequisites:** [k6](https://grafana.com/docs/k6/latest/set-up/install-k6/)
+(`brew install k6` on macOS).
+
+| Target | Command |
+|--------|---------|
+| Smoke (health + overview) | `make k6-smoke` |
+| Full API journey + JSON report | `make k6-journey` |
+
+Default target is production (`https://atwc26.com`). Override for local Docker:
+
+```bash
+ATWC26_BASE_URL=http://localhost:8080 make k6-smoke
+ATWC26_BASE_URL=http://localhost:8080 make k6-journey
+```
+
+**Environment variables**
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `ATWC26_BASE_URL` | `https://atwc26.com` | API origin (Makefile: `K6_BASE_URL`) |
+| `ATWC26_REPORT_DIR` | `reports/` | Journey baseline JSON output directory |
+| `ATWC26_K6_PAUSE_SEC` | `0.15` | Pause between API calls (production rate limit) |
+
+`make k6-journey` writes `reports/baseline-<timestamp>.json` with aggregate
+latency (`p95`), error rate, and per-endpoint timings. That file is the v1
+reference for v2 A/B comparison (refactor Issue 8). Reports are gitignored.
+
+**Typical baseline run (against production):**
+
+```bash
+make k6-smoke
+make k6-journey
+ls reports/baseline-*.json
+```
+
+---
+
+## 7. Suggested automation stack
 
 | Layer | Tool | Why |
 |---|---|---|
@@ -221,7 +265,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 7. Negative & edge cases to cover
+## 8. Negative & edge cases to cover
 
 - `POST /api/predict` with **empty** players → 400.
 - Same team on both sides (UI disables Predict when `teamA === teamB`).
@@ -235,7 +279,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 8. Smoke checklist (manual, ~2 min)
+## 9. Smoke checklist (manual, ~2 min)
 
 - [ ] `/api/health` returns `200` with non-zero `players`/`teams`.
 - [ ] Overview page shows KPIs, the team chart, and three leaderboards.
@@ -246,7 +290,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 9. Notes for reliable runs
+## 10. Notes for reliable runs
 
 - The dataset is **read-only** and deterministic, so tests are reproducible for a
   given `data/` snapshot. If `data/` is refreshed, exact numbers change but the
