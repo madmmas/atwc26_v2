@@ -8,6 +8,8 @@ BACKEND_DIR   := $(ROOT)/backend
 FRONTEND_DIR  := $(ROOT)/frontend
 ETL_DIR       := $(ROOT)/etl
 SCRAPER_DIR   := $(ETL_DIR)/scrape
+ETL_DIR       := $(ROOT)/etl
+SCRAPER_DIR   := $(ETL_DIR)/scrape
 BACKEND_VENV  := $(BACKEND_DIR)/.venv
 BACKEND_PY    := $(BACKEND_VENV)/bin/python
 BACKEND_PIP   := $(BACKEND_VENV)/bin/pip
@@ -42,6 +44,8 @@ setup-frontend: ## Frontend npm packages + .env.local
 
 setup-scraper: ## ETL scraper deps (etl/requirements.txt)
 	$(PIP) install -r $(ETL_DIR)/requirements.txt
+setup-scraper: ## ETL scraper deps (etl/requirements.txt)
+	$(PIP) install -r $(ETL_DIR)/requirements.txt
 	@$(PYTHON) -c "import pandas, pyarrow" 2>/dev/null \
 		|| (echo "Scraper deps missing." && exit 1)
 	@echo "scraper: OK"
@@ -71,10 +75,15 @@ schedule: ## Discover WC26 fixtures (gameId + kickoff time) from ESPN
 
 scrape: ## Incremental scrape from etl/scrape/game_links.csv
 	$(PYTHON) $(SCRAPER_DIR)/scrape_wc26.py
+scrape: ## Incremental scrape from etl/scrape/game_links.csv
+	$(PYTHON) $(SCRAPER_DIR)/scrape_wc26.py
 
 scrape-force: ## Re-scrape all games from scratch
 	$(PYTHON) $(SCRAPER_DIR)/scrape_wc26.py --force
+	$(PYTHON) $(SCRAPER_DIR)/scrape_wc26.py --force
 
+analyze: ## Re-execute notebooks/analysis.ipynb in place
+	jupyter nbconvert --to notebook --execute --inplace notebooks/analysis.ipynb
 analyze: ## Re-execute notebooks/analysis.ipynb in place
 	jupyter nbconvert --to notebook --execute --inplace notebooks/analysis.ipynb
 
