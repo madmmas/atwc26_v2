@@ -8,17 +8,16 @@ BACKEND_DIR   := $(ROOT)/backend
 FRONTEND_DIR  := $(ROOT)/frontend
 ETL_DIR       := $(ROOT)/etl
 SCRAPER_DIR   := $(ETL_DIR)/scrape
-ETL_DIR       := $(ROOT)/etl
-SCRAPER_DIR   := $(ETL_DIR)/scrape
+E2E_DIR       := $(ROOT)/e2e
 BACKEND_VENV  := $(BACKEND_DIR)/.venv
 BACKEND_PY    := $(BACKEND_VENV)/bin/python
 BACKEND_PIP   := $(BACKEND_VENV)/bin/pip
 PYTHON        ?= python3
 PIP           ?= pip3
 
-.PHONY: help setup setup-backend setup-frontend setup-scraper verify \
-        backend frontend dev schedule scrape scrape-force analyze events squads history \
-        up docker down restart-backend health
+.PHONY: help setup setup-backend setup-frontend setup-scraper setup-test verify \
+        backend frontend dev schedule scrape scrape-force analyze events squads \
+        test-e2e up docker down restart-backend health
 
 help: ## Show available targets
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make <target>\n\nTargets:\n"} \
@@ -49,6 +48,15 @@ setup-scraper: ## ETL scraper deps (etl/requirements.txt)
 	@$(PYTHON) -c "import pandas, pyarrow" 2>/dev/null \
 		|| (echo "Scraper deps missing." && exit 1)
 	@echo "scraper: OK"
+
+setup-test: setup-backend ## pytest + httpx in backend venv
+	$(BACKEND_PIP) install -r $(E2E_DIR)/requirements-dev.txt
+	@$(BACKEND_PY) -c "import pytest, httpx" 2>/dev/null \
+		|| (echo "Test deps missing." && exit 1)
+	@echo "e2e: OK"
+
+test-e2e: setup-test ## Run v1 API end-to-end tests (in-process, no server)
+	$(BACKEND_PY) -m pytest $(E2E_DIR) -q -c $(E2E_DIR)/pytest.ini
 
 verify: ## Check whether one-time setup steps are done
 	@echo "venv:      $$([ -d $(BACKEND_VENV) ] && echo OK || echo MISSING)"

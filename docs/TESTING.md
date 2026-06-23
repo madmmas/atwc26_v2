@@ -139,7 +139,21 @@ If you need more, add `data-testid`s in the component and note them here (see
 
 ---
 
-## 5. Suggested automation stack
+## 5. Automated API tests (pytest)
+
+In-process tests against the v1 FastAPI app — **no running server required**.
+
+```bash
+make test-e2e
+# or: pip install -r e2e/requirements-dev.txt && pytest e2e -q -c e2e/pytest.ini
+```
+
+Implemented in `e2e/test_api_e2e.py` (health, overview, teams, players, matches,
+predict probabilities sum to 1.0, empty XI returns 400).
+
+CI runs the same suite on pull requests via `.github/workflows/ci.yml`.
+
+## 6. Suggested automation stack
 
 | Layer | Tool | Why |
 |---|---|---|
@@ -207,7 +221,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 6. Negative & edge cases to cover
+## 7. Negative & edge cases to cover
 
 - `POST /api/predict` with **empty** players → 400.
 - Same team on both sides (UI disables Predict when `teamA === teamB`).
@@ -221,7 +235,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 7. Smoke checklist (manual, ~2 min)
+## 8. Smoke checklist (manual, ~2 min)
 
 - [ ] `/api/health` returns `200` with non-zero `players`/`teams`.
 - [ ] Overview page shows KPIs, the team chart, and three leaderboards.
@@ -232,7 +246,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 8. Notes for reliable runs
+## 9. Notes for reliable runs
 
 - The dataset is **read-only** and deterministic, so tests are reproducible for a
   given `data/` snapshot. If `data/` is refreshed, exact numbers change but the
