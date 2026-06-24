@@ -14,8 +14,8 @@ this one just lists fixtures (cheap, ~1 request per date).
 
 Usage
 -----
-  python3 fetch_schedule.py                       # full WC26 date range
-  python3 fetch_schedule.py --start 2026-06-11 --end 2026-07-19
+  python3 etl/scrape/fetch_schedule.py                       # full WC26 date range
+  python3 etl/scrape/fetch_schedule.py --start 2026-06-11 --end 2026-07-19
 """
 
 from __future__ import annotations
@@ -31,8 +31,8 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
-REPO_ROOT = Path(__file__).resolve().parent
-SCRAPER_DIR = REPO_ROOT / "etl" / "scrape"
+SCRAPER_DIR = Path(__file__).resolve().parent
+REPO_ROOT = SCRAPER_DIR.parent.parent
 LINKS_CSV = SCRAPER_DIR / "game_links.csv"
 DATA_DIR = REPO_ROOT / "data"
 SCHEDULE_FILE = DATA_DIR / "schedule.json"

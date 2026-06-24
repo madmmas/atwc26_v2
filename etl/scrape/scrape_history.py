@@ -33,9 +33,9 @@ the live refresh cron. Safe to re-run — already-scraped games are skipped.
 
 Usage
 -----
-  python3 scrape_history.py                  # last 365 days, all leagues
-  python3 scrape_history.py --days 180
-  python3 scrape_history.py --leagues fifa.friendly,fifa.worldq.uefa
+  python3 etl/scrape/scrape_history.py                  # last 365 days, all leagues
+  python3 etl/scrape/scrape_history.py --days 180
+  python3 etl/scrape/scrape_history.py --leagues fifa.friendly,fifa.worldq.uefa
 """
 
 from __future__ import annotations
@@ -55,14 +55,15 @@ from urllib3.util.retry import Retry
 
 import scrape_wc26
 
-ROOT = Path(__file__).resolve().parent
+SCRAPER_DIR = Path(__file__).resolve().parent
+ROOT = SCRAPER_DIR.parent.parent
 DATA_DIR = ROOT / "data"
 SQUADS_RAW = DATA_DIR / "squads_raw.json"
 HISTORY_RAW_DIR = DATA_DIR / "history_raw"
 HISTORY_GAMES_DIR = DATA_DIR / "history_games"
 STATE_FILE = DATA_DIR / "historical_state.json"
 OUTPUT_PARQUET = DATA_DIR / "historical_form.parquet"
-LOG_FILE = ROOT / "scrape_history.log"
+LOG_FILE = SCRAPER_DIR / "scrape_history.log"
 
 LEAGUES = [
     "fifa.worldq.uefa", "fifa.worldq.concacaf", "fifa.worldq.conmebol",

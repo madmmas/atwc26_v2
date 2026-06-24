@@ -85,25 +85,25 @@ dev: setup ## Run backend + frontend together (Ctrl-C stops both)
 	wait
 
 schedule: ## Discover WC26 fixtures (gameId + kickoff time) from ESPN
-	$(PYTHON) fetch_schedule.py
+	$(PYTHON) $(SCRAPER_DIR)/fetch_schedule.py
 
 scrape: ## Incremental scrape from game_links.csv
-	$(PYTHON) scrape_wc26.py
+	$(PYTHON) $(SCRAPER_DIR)/scrape_wc26.py
 
 scrape-force: ## Re-scrape all games from scratch
-	$(PYTHON) scrape_wc26.py --force
+	$(PYTHON) $(SCRAPER_DIR)/scrape_wc26.py --force
 
-analyze: ## Re-execute analysis.ipynb in place
-	jupyter nbconvert --to notebook --execute --inplace analysis.ipynb
+analyze: ## Re-execute notebooks/analysis.ipynb in place
+	jupyter nbconvert --to notebook --execute --inplace notebooks/analysis.ipynb
 
 events: ## Rebuild match timelines/momentum from data/raw/*.json
-	$(PYTHON) build_match_events.py
+	$(PYTHON) $(ETL_DIR)/build_match_events.py
 
 squads: ## Refresh full WC26 squad rosters (incl. players who haven't played)
 	$(PYTHON) $(SCRAPER_DIR)/scrape_squads.py
 
 history: ## Backfill ~1yr of qualifier/friendly history (Predictor ratings only)
-	$(PYTHON) scrape_history.py
+	$(PYTHON) $(SCRAPER_DIR)/scrape_history.py
 
 up: ## Build and run full stack via Docker (http://localhost:8080)
 	docker compose up --build

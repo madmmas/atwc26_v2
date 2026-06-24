@@ -21,7 +21,7 @@ import json
 import math
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parent.parent
 RAW_DIR = ROOT / "data" / "raw"
 OUT_FILE = ROOT / "data" / "match_events.json"
 
