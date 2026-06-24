@@ -106,6 +106,7 @@ export const api = {
   matches: () => get<{ matches: MatchListItem[] }>("/api/matches"),
   matchDetail: (id: string) => get<MatchDetail>(`/api/matches/${id}`),
   playerDetail: (id: number) => get<PlayerDetail>(`/api/players/${id}`),
+  standings: () => get<{ groups: Record<string, GroupStandings> }>("/api/standings"),
 };
 
 // --- Match Analysis ---
@@ -162,6 +163,35 @@ export type PlayerMatch = {
   minutes: number;
   stats: Record<string, number | null>;
 };
+// --- Group Standings ---
+export type GroupTeam = {
+  team_id: string;
+  team_name: string;
+  flag_url?: string | null;
+  rank: number;
+  GP: number;
+  W: number;
+  D: number;
+  L: number;
+  F: number;
+  A: number;
+  GD: number;
+  P: number;
+  advanced: boolean;
+};
+export type RemainingMatch = {
+  game_id: string;
+  kickoff_utc: string;
+  home_team_id: string;
+  home_team: string;
+  away_team_id: string;
+  away_team: string;
+};
+export type GroupStandings = {
+  teams: GroupTeam[];
+  remaining_matches: RemainingMatch[];
+};
+
 export type PlayerDetail = {
   player: {
     player_id: number;

@@ -18,7 +18,7 @@ PYTHON        ?= python3
 PIP           ?= pip3
 
 .PHONY: help setup setup-backend setup-frontend setup-scraper setup-test verify \
-        backend frontend dev schedule scrape scrape-force analyze events squads \
+        backend frontend dev schedule scrape scrape-force analyze events squads groups \
         test-e2e k6-smoke k6-journey up docker down restart-backend health
 
 help: ## Show available targets
@@ -105,6 +105,9 @@ squads: ## Refresh full WC26 squad rosters (incl. players who haven't played)
 history: ## Backfill ~1yr of qualifier/friendly history (Predictor ratings only)
 	$(PYTHON) $(SCRAPER_DIR)/scrape_history.py
 
+groups: ## Refresh group standings + remaining group-stage fixtures
+	$(PYTHON) $(SCRAPER_DIR)/fetch_groups.py
+
 up: ## Build and run full stack via Docker (http://localhost:8080)
 	docker compose up --build
 
@@ -121,4 +124,4 @@ health: ## Poll API health endpoint
 
 refresh: scrape events restart-backend ## Scrape new games, rebuild timelines, restart Docker backend
 
-refresh-full: schedule scrape events squads restart-backend ## Discover new fixtures/squads, then refresh
+refresh-full: schedule scrape events squads groups restart-backend ## Discover new fixtures/squads/groups, then refresh

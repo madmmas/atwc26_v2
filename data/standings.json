@@ -1,0 +1,938 @@
+{
+  "Group A": {
+    "remaining_matches": [
+      {
+        "away_team": "Mexico",
+        "away_team_id": "203",
+        "game_id": "760467",
+        "home_team": "Czechia",
+        "home_team_id": "450",
+        "kickoff_utc": "2026-06-25T01:00Z"
+      },
+      {
+        "away_team": "South Korea",
+        "away_team_id": "451",
+        "game_id": "760466",
+        "home_team": "South Africa",
+        "home_team_id": "467",
+        "kickoff_utc": "2026-06-25T01:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 0,
+        "D": 0,
+        "F": 3,
+        "GD": 3,
+        "GP": 2,
+        "L": 0,
+        "P": 6,
+        "W": 2,
+        "advanced": true,
+        "rank": 1,
+        "team_id": "203",
+        "team_name": "Mexico"
+      },
+      {
+        "A": 2,
+        "D": 0,
+        "F": 2,
+        "GD": 0,
+        "GP": 2,
+        "L": 1,
+        "P": 3,
+        "W": 1,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "451",
+        "team_name": "South Korea"
+      },
+      {
+        "A": 3,
+        "D": 1,
+        "F": 2,
+        "GD": -1,
+        "GP": 2,
+        "L": 1,
+        "P": 1,
+        "W": 0,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "450",
+        "team_name": "Czechia"
+      },
+      {
+        "A": 3,
+        "D": 1,
+        "F": 1,
+        "GD": -2,
+        "GP": 2,
+        "L": 1,
+        "P": 1,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "467",
+        "team_name": "South Africa"
+      }
+    ]
+  },
+  "Group B": {
+    "remaining_matches": [
+      {
+        "away_team": "Qatar",
+        "away_team_id": "4398",
+        "game_id": "760462",
+        "home_team": "Bosnia-Herzegovina",
+        "home_team_id": "452",
+        "kickoff_utc": "2026-06-24T19:00Z"
+      },
+      {
+        "away_team": "Canada",
+        "away_team_id": "206",
+        "game_id": "760463",
+        "home_team": "Switzerland",
+        "home_team_id": "475",
+        "kickoff_utc": "2026-06-24T19:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 1,
+        "D": 1,
+        "F": 7,
+        "GD": 6,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 1,
+        "team_id": "206",
+        "team_name": "Canada"
+      },
+      {
+        "A": 2,
+        "D": 1,
+        "F": 5,
+        "GD": 3,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "475",
+        "team_name": "Switzerland"
+      },
+      {
+        "A": 5,
+        "D": 1,
+        "F": 2,
+        "GD": -3,
+        "GP": 2,
+        "L": 1,
+        "P": 1,
+        "W": 0,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "452",
+        "team_name": "Bosnia-Herzegovina"
+      },
+      {
+        "A": 7,
+        "D": 1,
+        "F": 1,
+        "GD": -6,
+        "GP": 2,
+        "L": 1,
+        "P": 1,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "4398",
+        "team_name": "Qatar"
+      }
+    ]
+  },
+  "Group C": {
+    "remaining_matches": [
+      {
+        "away_team": "Haiti",
+        "away_team_id": "2654",
+        "game_id": "760464",
+        "home_team": "Morocco",
+        "home_team_id": "2869",
+        "kickoff_utc": "2026-06-24T22:00Z"
+      },
+      {
+        "away_team": "Brazil",
+        "away_team_id": "205",
+        "game_id": "760465",
+        "home_team": "Scotland",
+        "home_team_id": "580",
+        "kickoff_utc": "2026-06-24T22:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 1,
+        "D": 1,
+        "F": 4,
+        "GD": 3,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 1,
+        "team_id": "205",
+        "team_name": "Brazil"
+      },
+      {
+        "A": 1,
+        "D": 1,
+        "F": 2,
+        "GD": 1,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "2869",
+        "team_name": "Morocco"
+      },
+      {
+        "A": 1,
+        "D": 0,
+        "F": 1,
+        "GD": 0,
+        "GP": 2,
+        "L": 1,
+        "P": 3,
+        "W": 1,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "580",
+        "team_name": "Scotland"
+      },
+      {
+        "A": 4,
+        "D": 0,
+        "F": 0,
+        "GD": -4,
+        "GP": 2,
+        "L": 2,
+        "P": 0,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "2654",
+        "team_name": "Haiti"
+      }
+    ]
+  },
+  "Group D": {
+    "remaining_matches": [
+      {
+        "away_team": "Australia",
+        "away_team_id": "628",
+        "game_id": "760469",
+        "home_team": "Paraguay",
+        "home_team_id": "210",
+        "kickoff_utc": "2026-06-26T02:00Z"
+      },
+      {
+        "away_team": "United States",
+        "away_team_id": "660",
+        "game_id": "760470",
+        "home_team": "T\u00fcrkiye",
+        "home_team_id": "465",
+        "kickoff_utc": "2026-06-26T02:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 1,
+        "D": 0,
+        "F": 6,
+        "GD": 5,
+        "GP": 2,
+        "L": 0,
+        "P": 6,
+        "W": 2,
+        "advanced": true,
+        "rank": 1,
+        "team_id": "660",
+        "team_name": "United States"
+      },
+      {
+        "A": 2,
+        "D": 0,
+        "F": 2,
+        "GD": 0,
+        "GP": 2,
+        "L": 1,
+        "P": 3,
+        "W": 1,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "628",
+        "team_name": "Australia"
+      },
+      {
+        "A": 4,
+        "D": 0,
+        "F": 2,
+        "GD": -2,
+        "GP": 2,
+        "L": 1,
+        "P": 3,
+        "W": 1,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "210",
+        "team_name": "Paraguay"
+      },
+      {
+        "A": 3,
+        "D": 0,
+        "F": 0,
+        "GD": -3,
+        "GP": 2,
+        "L": 2,
+        "P": 0,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "465",
+        "team_name": "T\u00fcrkiye"
+      }
+    ]
+  },
+  "Group E": {
+    "remaining_matches": [
+      {
+        "away_team": "Ivory Coast",
+        "away_team_id": "4789",
+        "game_id": "760473",
+        "home_team": "Cura\u00e7ao",
+        "home_team_id": "11678",
+        "kickoff_utc": "2026-06-25T20:00Z"
+      },
+      {
+        "away_team": "Germany",
+        "away_team_id": "481",
+        "game_id": "760468",
+        "home_team": "Ecuador",
+        "home_team_id": "209",
+        "kickoff_utc": "2026-06-25T20:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 2,
+        "D": 0,
+        "F": 9,
+        "GD": 7,
+        "GP": 2,
+        "L": 0,
+        "P": 6,
+        "W": 2,
+        "advanced": true,
+        "rank": 1,
+        "team_id": "481",
+        "team_name": "Germany"
+      },
+      {
+        "A": 2,
+        "D": 0,
+        "F": 2,
+        "GD": 0,
+        "GP": 2,
+        "L": 1,
+        "P": 3,
+        "W": 1,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "4789",
+        "team_name": "Ivory Coast"
+      },
+      {
+        "A": 1,
+        "D": 1,
+        "F": 0,
+        "GD": -1,
+        "GP": 2,
+        "L": 1,
+        "P": 1,
+        "W": 0,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "209",
+        "team_name": "Ecuador"
+      },
+      {
+        "A": 7,
+        "D": 1,
+        "F": 1,
+        "GD": -6,
+        "GP": 2,
+        "L": 1,
+        "P": 1,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "11678",
+        "team_name": "Cura\u00e7ao"
+      }
+    ]
+  },
+  "Group F": {
+    "remaining_matches": [
+      {
+        "away_team": "Sweden",
+        "away_team_id": "466",
+        "game_id": "760471",
+        "home_team": "Japan",
+        "home_team_id": "627",
+        "kickoff_utc": "2026-06-25T23:00Z"
+      },
+      {
+        "away_team": "Netherlands",
+        "away_team_id": "449",
+        "game_id": "760472",
+        "home_team": "Tunisia",
+        "home_team_id": "659",
+        "kickoff_utc": "2026-06-25T23:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 3,
+        "D": 1,
+        "F": 7,
+        "GD": 4,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 1,
+        "team_id": "449",
+        "team_name": "Netherlands"
+      },
+      {
+        "A": 2,
+        "D": 1,
+        "F": 6,
+        "GD": 4,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "627",
+        "team_name": "Japan"
+      },
+      {
+        "A": 6,
+        "D": 0,
+        "F": 6,
+        "GD": 0,
+        "GP": 2,
+        "L": 1,
+        "P": 3,
+        "W": 1,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "466",
+        "team_name": "Sweden"
+      },
+      {
+        "A": 9,
+        "D": 0,
+        "F": 1,
+        "GD": -8,
+        "GP": 2,
+        "L": 2,
+        "P": 0,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "659",
+        "team_name": "Tunisia"
+      }
+    ]
+  },
+  "Group G": {
+    "remaining_matches": [
+      {
+        "away_team": "Iran",
+        "away_team_id": "469",
+        "game_id": "760476",
+        "home_team": "Egypt",
+        "home_team_id": "2620",
+        "kickoff_utc": "2026-06-27T03:00Z"
+      },
+      {
+        "away_team": "Belgium",
+        "away_team_id": "459",
+        "game_id": "760477",
+        "home_team": "New Zealand",
+        "home_team_id": "2666",
+        "kickoff_utc": "2026-06-27T03:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 2,
+        "D": 1,
+        "F": 4,
+        "GD": 2,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 1,
+        "team_id": "2620",
+        "team_name": "Egypt"
+      },
+      {
+        "A": 2,
+        "D": 2,
+        "F": 2,
+        "GD": 0,
+        "GP": 2,
+        "L": 0,
+        "P": 2,
+        "W": 0,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "469",
+        "team_name": "Iran"
+      },
+      {
+        "A": 1,
+        "D": 2,
+        "F": 1,
+        "GD": 0,
+        "GP": 2,
+        "L": 0,
+        "P": 2,
+        "W": 0,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "459",
+        "team_name": "Belgium"
+      },
+      {
+        "A": 5,
+        "D": 1,
+        "F": 3,
+        "GD": -2,
+        "GP": 2,
+        "L": 1,
+        "P": 1,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "2666",
+        "team_name": "New Zealand"
+      }
+    ]
+  },
+  "Group H": {
+    "remaining_matches": [
+      {
+        "away_team": "Saudi Arabia",
+        "away_team_id": "655",
+        "game_id": "760478",
+        "home_team": "Cape Verde",
+        "home_team_id": "2597",
+        "kickoff_utc": "2026-06-27T00:00Z"
+      },
+      {
+        "away_team": "Spain",
+        "away_team_id": "164",
+        "game_id": "760479",
+        "home_team": "Uruguay",
+        "home_team_id": "212",
+        "kickoff_utc": "2026-06-27T00:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 0,
+        "D": 1,
+        "F": 4,
+        "GD": 4,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 1,
+        "team_id": "164",
+        "team_name": "Spain"
+      },
+      {
+        "A": 3,
+        "D": 2,
+        "F": 3,
+        "GD": 0,
+        "GP": 2,
+        "L": 0,
+        "P": 2,
+        "W": 0,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "212",
+        "team_name": "Uruguay"
+      },
+      {
+        "A": 2,
+        "D": 2,
+        "F": 2,
+        "GD": 0,
+        "GP": 2,
+        "L": 0,
+        "P": 2,
+        "W": 0,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "2597",
+        "team_name": "Cape Verde"
+      },
+      {
+        "A": 5,
+        "D": 1,
+        "F": 1,
+        "GD": -4,
+        "GP": 2,
+        "L": 1,
+        "P": 1,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "655",
+        "team_name": "Saudi Arabia"
+      }
+    ]
+  },
+  "Group I": {
+    "remaining_matches": [
+      {
+        "away_team": "France",
+        "away_team_id": "478",
+        "game_id": "760475",
+        "home_team": "Norway",
+        "home_team_id": "464",
+        "kickoff_utc": "2026-06-26T19:00Z"
+      },
+      {
+        "away_team": "Iraq",
+        "away_team_id": "4375",
+        "game_id": "760474",
+        "home_team": "Senegal",
+        "home_team_id": "654",
+        "kickoff_utc": "2026-06-26T19:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 1,
+        "D": 0,
+        "F": 6,
+        "GD": 5,
+        "GP": 2,
+        "L": 0,
+        "P": 6,
+        "W": 2,
+        "advanced": true,
+        "rank": 1,
+        "team_id": "478",
+        "team_name": "France"
+      },
+      {
+        "A": 3,
+        "D": 0,
+        "F": 7,
+        "GD": 4,
+        "GP": 2,
+        "L": 0,
+        "P": 6,
+        "W": 2,
+        "advanced": true,
+        "rank": 2,
+        "team_id": "464",
+        "team_name": "Norway"
+      },
+      {
+        "A": 6,
+        "D": 0,
+        "F": 3,
+        "GD": -3,
+        "GP": 2,
+        "L": 2,
+        "P": 0,
+        "W": 0,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "654",
+        "team_name": "Senegal"
+      },
+      {
+        "A": 7,
+        "D": 0,
+        "F": 1,
+        "GD": -6,
+        "GP": 2,
+        "L": 2,
+        "P": 0,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "4375",
+        "team_name": "Iraq"
+      }
+    ]
+  },
+  "Group J": {
+    "remaining_matches": [
+      {
+        "away_team": "Austria",
+        "away_team_id": "474",
+        "game_id": "760484",
+        "home_team": "Algeria",
+        "home_team_id": "624",
+        "kickoff_utc": "2026-06-28T02:00Z"
+      },
+      {
+        "away_team": "Argentina",
+        "away_team_id": "202",
+        "game_id": "760483",
+        "home_team": "Jordan",
+        "home_team_id": "2917",
+        "kickoff_utc": "2026-06-28T02:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 0,
+        "D": 0,
+        "F": 5,
+        "GD": 5,
+        "GP": 2,
+        "L": 0,
+        "P": 6,
+        "W": 2,
+        "advanced": true,
+        "rank": 1,
+        "team_id": "202",
+        "team_name": "Argentina"
+      },
+      {
+        "A": 3,
+        "D": 0,
+        "F": 3,
+        "GD": 0,
+        "GP": 2,
+        "L": 1,
+        "P": 3,
+        "W": 1,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "474",
+        "team_name": "Austria"
+      },
+      {
+        "A": 4,
+        "D": 0,
+        "F": 2,
+        "GD": -2,
+        "GP": 2,
+        "L": 1,
+        "P": 3,
+        "W": 1,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "624",
+        "team_name": "Algeria"
+      },
+      {
+        "A": 5,
+        "D": 0,
+        "F": 2,
+        "GD": -3,
+        "GP": 2,
+        "L": 2,
+        "P": 0,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "2917",
+        "team_name": "Jordan"
+      }
+    ]
+  },
+  "Group K": {
+    "remaining_matches": [
+      {
+        "away_team": "Portugal",
+        "away_team_id": "482",
+        "game_id": "760481",
+        "home_team": "Colombia",
+        "home_team_id": "208",
+        "kickoff_utc": "2026-06-27T23:30Z"
+      },
+      {
+        "away_team": "Uzbekistan",
+        "away_team_id": "2570",
+        "game_id": "760482",
+        "home_team": "Congo DR",
+        "home_team_id": "2850",
+        "kickoff_utc": "2026-06-27T23:30Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 1,
+        "D": 0,
+        "F": 4,
+        "GD": 3,
+        "GP": 2,
+        "L": 0,
+        "P": 6,
+        "W": 2,
+        "advanced": true,
+        "rank": 1,
+        "team_id": "208",
+        "team_name": "Colombia"
+      },
+      {
+        "A": 1,
+        "D": 1,
+        "F": 6,
+        "GD": 5,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "482",
+        "team_name": "Portugal"
+      },
+      {
+        "A": 2,
+        "D": 1,
+        "F": 1,
+        "GD": -1,
+        "GP": 2,
+        "L": 1,
+        "P": 1,
+        "W": 0,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "2850",
+        "team_name": "Congo DR"
+      },
+      {
+        "A": 8,
+        "D": 0,
+        "F": 1,
+        "GD": -7,
+        "GP": 2,
+        "L": 2,
+        "P": 0,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "2570",
+        "team_name": "Uzbekistan"
+      }
+    ]
+  },
+  "Group L": {
+    "remaining_matches": [
+      {
+        "away_team": "Ghana",
+        "away_team_id": "4469",
+        "game_id": "760480",
+        "home_team": "Croatia",
+        "home_team_id": "477",
+        "kickoff_utc": "2026-06-27T21:00Z"
+      },
+      {
+        "away_team": "England",
+        "away_team_id": "448",
+        "game_id": "760485",
+        "home_team": "Panama",
+        "home_team_id": "2659",
+        "kickoff_utc": "2026-06-27T21:00Z"
+      }
+    ],
+    "teams": [
+      {
+        "A": 2,
+        "D": 1,
+        "F": 4,
+        "GD": 2,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 1,
+        "team_id": "448",
+        "team_name": "England"
+      },
+      {
+        "A": 0,
+        "D": 1,
+        "F": 1,
+        "GD": 1,
+        "GP": 2,
+        "L": 0,
+        "P": 4,
+        "W": 1,
+        "advanced": false,
+        "rank": 2,
+        "team_id": "4469",
+        "team_name": "Ghana"
+      },
+      {
+        "A": 4,
+        "D": 0,
+        "F": 3,
+        "GD": -1,
+        "GP": 2,
+        "L": 1,
+        "P": 3,
+        "W": 1,
+        "advanced": false,
+        "rank": 3,
+        "team_id": "477",
+        "team_name": "Croatia"
+      },
+      {
+        "A": 2,
+        "D": 0,
+        "F": 0,
+        "GD": -2,
+        "GP": 2,
+        "L": 2,
+        "P": 0,
+        "W": 0,
+        "advanced": false,
+        "rank": 4,
+        "team_id": "2659",
+        "team_name": "Panama"
+      }
+    ]
+  }
+}

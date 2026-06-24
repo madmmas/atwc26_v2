@@ -124,6 +124,7 @@ class DataStore:
         # top of WC26 data) — see _load_predictor_inputs.
         self.predictor_players: pd.DataFrame | None = None
         self.predictor_avg_goals: float = 0.0
+        self.standings: dict = {}
 
     # -- loading ----------------------------------------------------------- #
     def load(self, force: bool = False) -> None:
@@ -149,6 +150,7 @@ class DataStore:
             self.raw = df
             self.flags = self._load_flags()
             self.events = self._load_events()
+            self.standings = self._load_standings()
             self.players = self._build_player_profiles(df)
             self.teams = self._build_team_profiles(df)
             self.matches = self._build_matches(df)
@@ -270,6 +272,25 @@ class DataStore:
             return json.loads(config.MATCH_EVENTS.read_text())
         except Exception:
             return {}
+
+    # -- group standings ----------------------------------------------------- #
+    def _load_standings(self) -> dict:
+        """Group name -> {teams[], remaining_matches[]}.
+
+        Built by fetch_groups.py from ESPN's own group-stage standings (real
+        data, ESPN's own tiebreak already applied) plus the not-yet-played
+        fixtures for that group. The frontend computes any "what-if" scoring
+        client-side on top of this real baseline — nothing here is mutated
+        by user input, so a page reload always shows this real data again.
+        """
+        try:
+            groups = json.loads(config.STANDINGS.read_text())
+        except Exception:
+            return {}
+        for g in groups.values():
+            for t in g.get("teams", []):
+                t["flag_url"] = self.flag(t["team_name"])
+        return groups
 
     # -- player profiles --------------------------------------------------- #
     def _build_player_profiles(self, df: pd.DataFrame) -> pd.DataFrame:

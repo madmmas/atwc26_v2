@@ -140,6 +140,13 @@ def player_detail(player_id: int):
     return _clean(detail)
 
 
+@app.get("/api/standings")
+def standings():
+    """Group-stage tables (real ESPN data) + each group's remaining fixtures."""
+    store = get_store()
+    return _clean({"groups": store.standings})
+
+
 @app.get("/api/leaderboard")
 def leaderboard(metric: str = Query("expectedGoals_p90"),
                 role: str | None = None,
