@@ -30,14 +30,24 @@ function resolveSlot(
       ? { name: team.team_name, flag_url: team.flag_url, resolved: true }
       : { name: `Group ${slot.group} ${slot.rank === 1 ? "Winner" : "Runner-up"}`, resolved: false };
   }
-  // third_place: which of this slot's candidate groups has a qualifying 3rd-placed team?
-  for (const g of slot.candidate_groups) {
-    const team = rankedGroups[`Group ${g}`]?.find((t) => t.rank === 3);
-    if (team && qualifyingThirds.has(team.team_id)) {
-      return { name: team.team_name, flag_url: team.flag_url, resolved: true };
+  if (slot.type === "third_place") {
+    // which of this slot's candidate groups has a qualifying 3rd-placed team?
+    for (const g of slot.candidate_groups) {
+      const team = rankedGroups[`Group ${g}`]?.find((t) => t.rank === 3);
+      if (team && qualifyingThirds.has(team.team_id)) {
+        return { name: team.team_name, flag_url: team.flag_url, resolved: true };
+      }
     }
+    return { name: `3rd Place (${slot.candidate_groups.join("/")})`, resolved: false };
   }
-  return { name: `3rd Place (${slot.candidate_groups.join("/")})`, resolved: false };
+  // match_winner/match_loser: a Round of 16+ slot that depends on an
+  // earlier knockout match we haven't actually played yet. The bracket
+  // display only resolves group-stage-derived slots (above) — it doesn't
+  // simulate knockout rounds itself (tournament.py's Monte Carlo simulator
+  // does that, for the winner-probability chart) — so this always shows
+  // ESPN's own "Round of X N Winner/Loser" reference as readable text.
+  const suffix = slot.type === "match_winner" ? "Winner" : "Loser";
+  return { name: `${slot.round} ${slot.position} ${suffix}`, resolved: false };
 }
 
 export function Bracket({

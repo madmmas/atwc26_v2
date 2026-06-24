@@ -198,7 +198,8 @@ export type GroupStandings = {
 export type BracketSlot =
   | { type: "group_rank"; group: string; rank: number }
   | { type: "third_place"; candidate_groups: string[] }
-  | { type: "team"; team_id: string; team_name: string; flag_url?: string | null };
+  | { type: "team"; team_id: string; team_name: string; flag_url?: string | null }
+  | { type: "match_winner" | "match_loser"; round: string; position: number };
 export type BracketMatch = {
   game_id: string;
   kickoff_utc: string;
