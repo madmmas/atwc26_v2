@@ -11,10 +11,21 @@ score inputs for the matches still to come.
   remaining fixtures: scoreboard events with season.slug == "group-stage"
                        and status not completed
 
-Output: data/standings.json
-  {"Group A": {"teams": [{team_id, team_name, GP, W, D, L, F, A, GD, P, rank}, ...],
-               "remaining_matches": [{game_id, kickoff_utc, home_team, away_team}, ...]},
-   ...}
+Also pulls the Round-of-32-through-Final knockout bracket skeleton from the
+same scoreboard sweep. ESPN already encodes each slot structurally —
+competitor `team.abbreviation` is "1A".."2L" for a group winner/runner-up,
+or "3RD" (with the candidate groups spelled out in `displayName`, e.g.
+"Third Place Group A/B/C/D/F") for the four third-place wildcard slots —
+so slot meaning is parsed once here rather than by the frontend.
+
+Output: data/standings.json (see above) and data/bracket.json
+  {"rounds": [{"name": "Round of 32", "matches": [
+      {"game_id", "kickoff_utc", "completed",
+       "slot_a"/"slot_b": {"type": "group_rank", "group": "A", "rank": 1}
+                          | {"type": "third_place", "candidate_groups": ["A","B","C","D","F"]}
+                          | {"type": "team", "team_id", "team_name"},
+       "score_a", "score_b"},
+      ...]}, ...]}
 
 Usage
 -----
@@ -27,6 +38,7 @@ from __future__ import annotations
 import argparse
 import json
 import logging
+import re
 import sys
 from datetime import date, timedelta
 from pathlib import Path
@@ -39,7 +51,18 @@ SCRAPER_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRAPER_DIR.parent.parent
 DATA_DIR = REPO_ROOT / "data"
 STANDINGS_FILE = DATA_DIR / "standings.json"
+BRACKET_FILE = DATA_DIR / "bracket.json"
 LOG_FILE = SCRAPER_DIR / "scrape.log"
+
+# season.slug -> display name, in bracket order.
+ROUND_SLUGS = [
+    ("round-of-32", "Round of 32"),
+    ("round-of-16", "Round of 16"),
+    ("quarterfinals", "Quarterfinals"),
+    ("semifinals", "Semifinals"),
+    ("3rd-place-match", "Third Place Match"),
+    ("final", "Final"),
+]
 
 DEFAULT_LEAGUE = "fifa.world"
 DEFAULT_SEASON = 2026
@@ -105,42 +128,104 @@ def fetch_standings(session: requests.Session, league: str, season: int) -> dict
     return groups
 
 
-def fetch_remaining_matches(session: requests.Session, league: str,
-                             start: date, end: date) -> list[dict]:
-    """Not-yet-played group-stage fixtures across the tournament window."""
-    remaining = []
+def fetch_all_events(session: requests.Session, league: str,
+                      start: date, end: date) -> list[dict]:
+    """One day-by-day sweep of the scoreboard, reused for both group-stage
+    remaining fixtures and the knockout bracket so we don't scan twice."""
+    events = []
     day = start
     while day <= end:
         url = SCOREBOARD_URL.format(league=league, ymd=day.strftime("%Y%m%d"))
         try:
             resp = session.get(url, timeout=REQUEST_TIMEOUT)
             resp.raise_for_status()
-            events = resp.json().get("events", [])
+            events.extend(resp.json().get("events", []))
         except requests.RequestException as exc:
             log.warning("scoreboard fetch failed for %s: %s", day, exc)
-            events = []
-        for event in events:
-            if event.get("season", {}).get("slug") != "group-stage":
-                continue
-            comp = (event.get("competitions") or [{}])[0]
-            status = comp.get("status", {}).get("type", {})
-            if status.get("completed"):
-                continue
-            competitors = comp.get("competitors", [])
-            home = next((c for c in competitors if c.get("homeAway") == "home"), None)
-            away = next((c for c in competitors if c.get("homeAway") == "away"), None)
-            if not home or not away:
-                continue
-            remaining.append({
-                "game_id": event.get("id"),
-                "kickoff_utc": event.get("date"),
-                "home_team_id": str(home["team"]["id"]),
-                "home_team": home["team"]["displayName"],
-                "away_team_id": str(away["team"]["id"]),
-                "away_team": away["team"]["displayName"],
-            })
         day += timedelta(days=1)
+    return events
+
+
+def fetch_remaining_matches(events: list[dict]) -> list[dict]:
+    """Not-yet-played group-stage fixtures."""
+    remaining = []
+    for event in events:
+        if event.get("season", {}).get("slug") != "group-stage":
+            continue
+        comp = (event.get("competitions") or [{}])[0]
+        status = comp.get("status", {}).get("type", {})
+        if status.get("completed"):
+            continue
+        competitors = comp.get("competitors", [])
+        home = next((c for c in competitors if c.get("homeAway") == "home"), None)
+        away = next((c for c in competitors if c.get("homeAway") == "away"), None)
+        if not home or not away:
+            continue
+        remaining.append({
+            "game_id": event.get("id"),
+            "kickoff_utc": event.get("date"),
+            "home_team_id": str(home["team"]["id"]),
+            "home_team": home["team"]["displayName"],
+            "away_team_id": str(away["team"]["id"]),
+            "away_team": away["team"]["displayName"],
+        })
     return remaining
+
+
+# --------------------------------------------------------------------------- #
+# Knockout bracket
+# --------------------------------------------------------------------------- #
+GROUP_RANK_RE = re.compile(r"^([12])([A-L])$")
+THIRD_PLACE_GROUPS_RE = re.compile(r"Group ([A-L](?:/[A-L])*)")
+
+
+def parse_slot(competitor: dict) -> dict:
+    """One bracket competitor -> a real team, a group-rank slot, or a
+    third-place wildcard slot. ESPN encodes this in `abbreviation`
+    ("1A".."2L" for group winner/runner-up, "3RD" for the wildcard slots,
+    spelling out candidate groups in `displayName`) — parsed once here so
+    the frontend never has to interpret ESPN's strings itself.
+    """
+    team = competitor.get("team", {})
+    abbr = team.get("abbreviation", "")
+    m = GROUP_RANK_RE.match(abbr)
+    if m:
+        return {"type": "group_rank", "group": m.group(2), "rank": int(m.group(1))}
+    if abbr == "3RD":
+        m2 = THIRD_PLACE_GROUPS_RE.search(team.get("displayName", ""))
+        groups = m2.group(1).split("/") if m2 else []
+        return {"type": "third_place", "candidate_groups": groups}
+    # Either a real, already-decided team, or a later-round placeholder like
+    # "Round of 32 1 Winner" — both are fine to render as plain text as-is.
+    return {"type": "team", "team_id": str(team.get("id")), "team_name": team.get("displayName")}
+
+
+def fetch_bracket(events: list[dict]) -> dict:
+    slugs = dict(ROUND_SLUGS)
+    rounds: dict[str, list[dict]] = {name: [] for _, name in ROUND_SLUGS}
+    for event in events:
+        slug = event.get("season", {}).get("slug")
+        if slug not in slugs:
+            continue
+        comp = (event.get("competitions") or [{}])[0]
+        status = comp.get("status", {}).get("type", {})
+        competitors = comp.get("competitors", [])
+        a = next((c for c in competitors if c.get("homeAway") == "home"), None)
+        b = next((c for c in competitors if c.get("homeAway") == "away"), None)
+        if not a or not b:
+            continue
+        rounds[slugs[slug]].append({
+            "game_id": event.get("id"),
+            "kickoff_utc": event.get("date"),
+            "completed": bool(status.get("completed")),
+            "slot_a": parse_slot(a),
+            "slot_b": parse_slot(b),
+            "score_a": a.get("score"),
+            "score_b": b.get("score"),
+        })
+    for matches in rounds.values():
+        matches.sort(key=lambda m: m["kickoff_utc"] or "")
+    return {"rounds": [{"name": name, "matches": rounds[name]} for _, name in ROUND_SLUGS]}
 
 
 def attach_remaining_matches(groups: dict, remaining: list[dict]) -> None:
@@ -175,12 +260,19 @@ def main(argv=None) -> int:
     groups = fetch_standings(session, args.league, args.season)
     log.info("fetched standings for %d group(s)", len(groups))
 
-    remaining = fetch_remaining_matches(session, args.league, args.start, args.end)
+    events = fetch_all_events(session, args.league, args.start, args.end)
+
+    remaining = fetch_remaining_matches(events)
     attach_remaining_matches(groups, remaining)
     log.info("found %d remaining group-stage fixture(s)", len(remaining))
-
     STANDINGS_FILE.write_text(json.dumps(groups, indent=2, sort_keys=True))
     log.info("wrote %d group(s) -> %s", len(groups), STANDINGS_FILE.name)
+
+    bracket = fetch_bracket(events)
+    total_matches = sum(len(r["matches"]) for r in bracket["rounds"])
+    BRACKET_FILE.write_text(json.dumps(bracket, indent=2))
+    log.info("wrote %d knockout fixture(s) across %d round(s) -> %s",
+              total_matches, len(bracket["rounds"]), BRACKET_FILE.name)
     return 0
 
 

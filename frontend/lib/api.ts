@@ -107,6 +107,7 @@ export const api = {
   matchDetail: (id: string) => get<MatchDetail>(`/api/matches/${id}`),
   playerDetail: (id: number) => get<PlayerDetail>(`/api/players/${id}`),
   standings: () => get<{ groups: Record<string, GroupStandings> }>("/api/standings"),
+  bracket: () => get<BracketData>("/api/bracket"),
 };
 
 // --- Match Analysis ---
@@ -191,6 +192,23 @@ export type GroupStandings = {
   teams: GroupTeam[];
   remaining_matches: RemainingMatch[];
 };
+
+// --- Knockout Bracket ---
+export type BracketSlot =
+  | { type: "group_rank"; group: string; rank: number }
+  | { type: "third_place"; candidate_groups: string[] }
+  | { type: "team"; team_id: string; team_name: string; flag_url?: string | null };
+export type BracketMatch = {
+  game_id: string;
+  kickoff_utc: string;
+  completed: boolean;
+  slot_a: BracketSlot;
+  slot_b: BracketSlot;
+  score_a: string | null;
+  score_b: string | null;
+};
+export type BracketRound = { name: string; matches: BracketMatch[] };
+export type BracketData = { rounds: BracketRound[] };
 
 export type PlayerDetail = {
   player: {

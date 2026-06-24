@@ -16,6 +16,7 @@ MATCH_EVENTS = DATA_DIR / "match_events.json"
 SQUADS_RAW = DATA_DIR / "squads_raw.json"
 HISTORICAL_FORM = DATA_DIR / "historical_form.parquet"
 STANDINGS = DATA_DIR / "standings.json"
+BRACKET = DATA_DIR / "bracket.json"
 
 # Comma-separated list of allowed CORS origins for the frontend.
 CORS_ORIGINS = os.getenv(

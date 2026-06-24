@@ -147,6 +147,13 @@ def standings():
     return _clean({"groups": store.standings})
 
 
+@app.get("/api/bracket")
+def bracket():
+    """Round-of-32-through-Final knockout fixture skeleton (real ESPN data)."""
+    store = get_store()
+    return _clean(store.bracket)
+
+
 @app.get("/api/leaderboard")
 def leaderboard(metric: str = Query("expectedGoals_p90"),
                 role: str | None = None,

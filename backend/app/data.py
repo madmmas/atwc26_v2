@@ -125,6 +125,7 @@ class DataStore:
         self.predictor_players: pd.DataFrame | None = None
         self.predictor_avg_goals: float = 0.0
         self.standings: dict = {}
+        self.bracket: dict = {}
 
     # -- loading ----------------------------------------------------------- #
     def load(self, force: bool = False) -> None:
@@ -151,6 +152,7 @@ class DataStore:
             self.flags = self._load_flags()
             self.events = self._load_events()
             self.standings = self._load_standings()
+            self.bracket = self._load_bracket()
             self.players = self._build_player_profiles(df)
             self.teams = self._build_team_profiles(df)
             self.matches = self._build_matches(df)
@@ -291,6 +293,28 @@ class DataStore:
             for t in g.get("teams", []):
                 t["flag_url"] = self.flag(t["team_name"])
         return groups
+
+    # -- knockout bracket ---------------------------------------------------- #
+    def _load_bracket(self) -> dict:
+        """Round-of-32-through-Final fixture skeleton from fetch_groups.py.
+
+        Slots are pre-parsed at scrape time into group_rank/third_place/team
+        — the frontend resolves group_rank and third_place slots against the
+        (possibly hypothetical) computed group order; everything else
+        (already-decided teams, or a later-round "Winner of X" placeholder)
+        renders as-is.
+        """
+        try:
+            bracket = json.loads(config.BRACKET.read_text())
+        except Exception:
+            return {}
+        for r in bracket.get("rounds", []):
+            for m in r.get("matches", []):
+                for slot in ("slot_a", "slot_b"):
+                    s = m.get(slot, {})
+                    if s.get("type") == "team":
+                        s["flag_url"] = self.flag(s.get("team_name"))
+        return bracket
 
     # -- player profiles --------------------------------------------------- #
     def _build_player_profiles(self, df: pd.DataFrame) -> pd.DataFrame:

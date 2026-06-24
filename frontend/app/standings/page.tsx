@@ -1,15 +1,41 @@
 "use client";
-import { useEffect, useState } from "react";
-import { api, GroupStandings } from "@/lib/api";
+import { useEffect, useMemo, useState } from "react";
+import { api, BracketData, GroupStandings } from "@/lib/api";
 import { Spinner } from "@/components/ui";
-import { GroupTable } from "@/components/GroupTable";
+import { GroupTable, Predictions, applyHypotheticalResults } from "@/components/GroupTable";
+import { Bracket } from "@/components/Bracket";
 
 export default function Standings() {
   const [groups, setGroups] = useState<Record<string, GroupStandings> | null>(null);
+  const [bracket, setBracket] = useState<BracketData | null>(null);
+  const [predictions, setPredictions] = useState<Predictions>({});
 
   useEffect(() => {
     api.standings().then((r) => setGroups(r.groups));
+    api.bracket().then(setBracket);
   }, []);
+
+  const rankedGroups = useMemo(() => {
+    if (!groups) return {};
+    return Object.fromEntries(
+      Object.entries(groups).map(([name, g]) => [name, applyHypotheticalResults(g, predictions)])
+    );
+  }, [groups, predictions]);
+
+  function setScore(gameId: string, side: "home" | "away", v: number | "") {
+    setPredictions((prev) => ({
+      ...prev,
+      [gameId]: { home: prev[gameId]?.home ?? "", away: prev[gameId]?.away ?? "", [side]: v },
+    }));
+  }
+
+  function resetGroup(gameIds: string[]) {
+    setPredictions((prev) => {
+      const next = { ...prev };
+      for (const gid of gameIds) delete next[gid];
+      return next;
+    });
+  }
 
   if (!groups) return <Spinner label="Loading standings…" />;
 
@@ -21,16 +47,26 @@ export default function Standings() {
         <h1 className="text-2xl font-black text-fg">Group Standings</h1>
         <p className="text-sm text-muted">
           Real group tables from every played match. Try a score for the remaining
-          fixture(s) below any group to see how the table would change — predictions
-          aren't saved, reload to reset.
+          fixture(s) below any group to see how the table — and the knockout bracket
+          below — would change. Predictions aren&apos;t saved, reload to reset.
         </p>
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
         {names.map((name) => (
-          <GroupTable key={name} name={name} group={groups[name]} />
+          <GroupTable
+            key={name}
+            name={name}
+            group={groups[name]}
+            ranked={rankedGroups[name]}
+            predictions={predictions}
+            onSetScore={setScore}
+            onReset={resetGroup}
+          />
         ))}
       </div>
+
+      {bracket && <Bracket bracket={bracket} rankedGroups={rankedGroups} />}
     </div>
   );
 }

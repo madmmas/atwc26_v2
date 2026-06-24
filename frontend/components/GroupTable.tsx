@@ -1,14 +1,14 @@
 "use client";
-import { useMemo, useState } from "react";
 import { GroupStandings, GroupTeam } from "@/lib/api";
 import { TeamLabel } from "@/components/Flag";
 
-type ScoreInput = { home: number | ""; away: number | "" };
-type Predictions = Record<string, ScoreInput>;
+export type ScoreInput = { home: number | ""; away: number | "" };
+export type Predictions = Record<string, ScoreInput>;
 
 // Real GP/W/D/L/F/A + any filled-in hypothetical remaining-match scores ->
-// a freshly ranked table. Pure function so the bracket (added separately)
-// can reuse the exact same "what would the group look like" computation.
+// a freshly ranked table. Pure function, shared with Bracket.tsx so the
+// knockout slots resolve against the exact same "what would the group look
+// like" computation as the table itself.
 export function applyHypotheticalResults(
   group: GroupStandings,
   predictions: Predictions
@@ -78,20 +78,26 @@ function ScoreCell({
   );
 }
 
-export function GroupTable({ name, group }: { name: string; group: GroupStandings }) {
-  const [predictions, setPredictions] = useState<Predictions>({});
-  const hasPredictions = Object.values(predictions).some((p) => p.home !== "" && p.away !== "");
-  const ranked = useMemo(
-    () => applyHypotheticalResults(group, predictions),
-    [group, predictions]
-  );
-
-  function setScore(gameId: string, side: "home" | "away", v: number | "") {
-    setPredictions((prev) => ({
-      ...prev,
-      [gameId]: { home: prev[gameId]?.home ?? "", away: prev[gameId]?.away ?? "", [side]: v },
-    }));
-  }
+export function GroupTable({
+  name,
+  group,
+  ranked,
+  predictions,
+  onSetScore,
+  onReset,
+}: {
+  name: string;
+  group: GroupStandings;
+  ranked: GroupTeam[];
+  predictions: Predictions;
+  onSetScore: (gameId: string, side: "home" | "away", v: number | "") => void;
+  onReset: (gameIds: string[]) => void;
+}) {
+  const groupGameIds = group.remaining_matches.map((m) => m.game_id);
+  const hasPredictions = groupGameIds.some((gid) => {
+    const p = predictions[gid];
+    return p && (p.home !== "" || p.away !== "");
+  });
 
   return (
     <div className="card p-4">
@@ -99,7 +105,7 @@ export function GroupTable({ name, group }: { name: string; group: GroupStanding
         <h3 className="text-sm font-bold text-fg">{name}</h3>
         {hasPredictions && (
           <button
-            onClick={() => setPredictions({})}
+            onClick={() => onReset(groupGameIds)}
             className="text-[11px] font-semibold text-faint hover:text-fg"
           >
             Reset
@@ -157,12 +163,12 @@ export function GroupTable({ name, group }: { name: string; group: GroupStanding
                 </span>
                 <ScoreCell
                   value={predictions[m.game_id]?.home ?? ""}
-                  onChange={(v) => setScore(m.game_id, "home", v)}
+                  onChange={(v) => onSetScore(m.game_id, "home", v)}
                 />
                 <span className="text-faint">–</span>
                 <ScoreCell
                   value={predictions[m.game_id]?.away ?? ""}
-                  onChange={(v) => setScore(m.game_id, "away", v)}
+                  onChange={(v) => onSetScore(m.game_id, "away", v)}
                 />
                 <span className="min-w-0 flex-1 truncate text-fg-soft">{m.away_team}</span>
               </div>
