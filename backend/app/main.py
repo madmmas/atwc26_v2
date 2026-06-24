@@ -14,6 +14,7 @@ from . import config
 from .data import get_store
 from .prediction import get_predictor
 from .schemas import PredictRequest
+from .tournament import get_winner_probabilities
 
 app = FastAPI(title=config.APP_NAME, version=config.APP_VERSION)
 
@@ -41,6 +42,7 @@ def _clean(obj):
 def _warm() -> None:
     store = get_store()
     get_predictor(store)          # build reference ratings up front
+    get_winner_probabilities(store)  # run the ~6s Monte Carlo sim up front, not on first request
 
 
 @app.get("/api/health")
@@ -152,6 +154,21 @@ def bracket():
     """Round-of-32-through-Final knockout fixture skeleton (real ESPN data)."""
     store = get_store()
     return _clean(store.bracket)
+
+
+@app.get("/api/winner-probabilities")
+def winner_probabilities():
+    """Monte Carlo World Cup winner probability per team — see
+    backend/app/tournament.py and docs/WINNER_PROBABILITY_MODEL.md."""
+    store = get_store()
+    probs = get_winner_probabilities(store)
+    teams = sorted(
+        ({"team_name": name, "flag_url": store.flag(name),
+          "probability": round(p, 4), "eliminated": p == 0.0}
+         for name, p in probs.items()),
+        key=lambda t: -t["probability"],
+    )
+    return _clean({"teams": teams})
 
 
 @app.get("/api/leaderboard")

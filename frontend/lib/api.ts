@@ -108,6 +108,7 @@ export const api = {
   playerDetail: (id: number) => get<PlayerDetail>(`/api/players/${id}`),
   standings: () => get<{ groups: Record<string, GroupStandings> }>("/api/standings"),
   bracket: () => get<BracketData>("/api/bracket"),
+  winnerProbabilities: () => get<{ teams: WinnerProbability[] }>("/api/winner-probabilities"),
 };
 
 // --- Match Analysis ---
@@ -209,6 +210,14 @@ export type BracketMatch = {
 };
 export type BracketRound = { name: string; matches: BracketMatch[] };
 export type BracketData = { rounds: BracketRound[] };
+
+// --- Winner Probability ---
+export type WinnerProbability = {
+  team_name: string;
+  flag_url?: string | null;
+  probability: number;
+  eliminated: boolean;
+};
 
 export type PlayerDetail = {
   player: {

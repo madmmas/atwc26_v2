@@ -177,30 +177,61 @@ def fetch_remaining_matches(events: list[dict]) -> list[dict]:
 # --------------------------------------------------------------------------- #
 GROUP_RANK_RE = re.compile(r"^([12])([A-L])$")
 THIRD_PLACE_GROUPS_RE = re.compile(r"Group ([A-L](?:/[A-L])*)")
+# "Round of 32 3 Winner" / "Quarterfinal 1 Winner" / "Semifinal 2 Loser" —
+# ESPN's own placeholder text for a later round referencing an earlier one.
+MATCH_REF_RE = re.compile(
+    r"^(Round of \d+|Quarterfinal|Semifinal) (\d+) (Winner|Loser)$"
+)
+# Normalizes the round name as it appears *inside* a reference string to
+# match this script's own round display names (see ROUND_SLUGS).
+MATCH_REF_ROUND_NAME = {
+    "Round of 32": "Round of 32",
+    "Round of 16": "Round of 16",
+    "Quarterfinal": "Quarterfinals",
+    "Semifinal": "Semifinals",
+}
 
 
 def parse_slot(competitor: dict) -> dict:
-    """One bracket competitor -> a real team, a group-rank slot, or a
-    third-place wildcard slot. ESPN encodes this in `abbreviation`
-    ("1A".."2L" for group winner/runner-up, "3RD" for the wildcard slots,
-    spelling out candidate groups in `displayName`) — parsed once here so
-    the frontend never has to interpret ESPN's strings itself.
+    """One bracket competitor -> a real team, a group-rank slot, a
+    third-place wildcard slot, or a reference to another round's
+    not-yet-played result.
+
+    ESPN encodes all of this in `abbreviation`/`displayName`: "1A".."2L"
+    for a group winner/runner-up, "3RD" (+ candidate groups spelled out in
+    `displayName`) for the four wildcard slots, or plain text like "Round
+    of 32 3 Winner" for anything that depends on an earlier knockout round
+    — parsed once here so neither the simulator nor the frontend has to
+    interpret ESPN's strings themselves.
     """
     team = competitor.get("team", {})
     abbr = team.get("abbreviation", "")
+    name = team.get("displayName", "")
     m = GROUP_RANK_RE.match(abbr)
     if m:
         return {"type": "group_rank", "group": m.group(2), "rank": int(m.group(1))}
     if abbr == "3RD":
-        m2 = THIRD_PLACE_GROUPS_RE.search(team.get("displayName", ""))
+        m2 = THIRD_PLACE_GROUPS_RE.search(name)
         groups = m2.group(1).split("/") if m2 else []
         return {"type": "third_place", "candidate_groups": groups}
-    # Either a real, already-decided team, or a later-round placeholder like
-    # "Round of 32 1 Winner" — both are fine to render as plain text as-is.
-    return {"type": "team", "team_id": str(team.get("id")), "team_name": team.get("displayName")}
+    m3 = MATCH_REF_RE.match(name)
+    if m3:
+        kind = "match_winner" if m3.group(3) == "Winner" else "match_loser"
+        return {"type": kind, "round": MATCH_REF_ROUND_NAME[m3.group(1)], "position": int(m3.group(2))}
+    # An already-decided real team.
+    return {"type": "team", "team_id": str(team.get("id")), "team_name": name}
 
 
 def fetch_bracket(events: list[dict]) -> dict:
+    """Build the Round-of-32-through-Final fixture skeleton.
+
+    Each round's matches are kept in ESPN's own discovery order (NOT
+    re-sorted by kickoff) and given an explicit 1-indexed `position` —
+    confirmed empirically that this position is exactly the match number
+    later rounds reference in placeholder text (e.g. position 3 in Round
+    of 32 is "Round of 32 3 Winner" wherever it's referenced in Round of
+    16). Re-sorting here would silently break that linkage.
+    """
     slugs = dict(ROUND_SLUGS)
     rounds: dict[str, list[dict]] = {name: [] for _, name in ROUND_SLUGS}
     for event in events:
@@ -224,7 +255,8 @@ def fetch_bracket(events: list[dict]) -> dict:
             "score_b": b.get("score"),
         })
     for matches in rounds.values():
-        matches.sort(key=lambda m: m["kickoff_utc"] or "")
+        for i, m in enumerate(matches):
+            m["position"] = i + 1
     return {"rounds": [{"name": name, "matches": rounds[name]} for _, name in ROUND_SLUGS]}
 
 

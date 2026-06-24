@@ -18,7 +18,8 @@
             "rank": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 1
         },
         {
           "game_id": "760487",
@@ -35,7 +36,8 @@
             "rank": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 2
         },
         {
           "game_id": "760489",
@@ -57,7 +59,8 @@
             ]
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 3
         },
         {
           "game_id": "760488",
@@ -74,7 +77,8 @@
             "rank": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 4
         },
         {
           "game_id": "760490",
@@ -91,7 +95,8 @@
             "rank": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 5
         },
         {
           "game_id": "760492",
@@ -113,7 +118,8 @@
             ]
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 6
         },
         {
           "game_id": "760491",
@@ -135,7 +141,8 @@
             ]
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 7
         },
         {
           "game_id": "760495",
@@ -157,7 +164,8 @@
             ]
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 8
         },
         {
           "game_id": "760493",
@@ -179,7 +187,8 @@
             ]
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 9
         },
         {
           "game_id": "760494",
@@ -201,7 +210,8 @@
             ]
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 10
         },
         {
           "game_id": "760497",
@@ -218,7 +228,8 @@
             "rank": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 11
         },
         {
           "game_id": "760496",
@@ -235,7 +246,8 @@
             "rank": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 12
         },
         {
           "game_id": "760498",
@@ -257,7 +269,8 @@
             ]
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 13
         },
         {
           "game_id": "760499",
@@ -274,7 +287,8 @@
             "rank": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 14
         },
         {
           "game_id": "760500",
@@ -291,7 +305,8 @@
             "rank": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 15
         },
         {
           "game_id": "760501",
@@ -313,7 +328,8 @@
             ]
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 16
         }
       ]
     },
@@ -325,136 +341,144 @@
           "kickoff_utc": "2026-07-04T17:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "131525",
-            "team_name": "Round of 32 1 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 1
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "131527",
-            "team_name": "Round of 32 3 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 3
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 1
         },
         {
           "game_id": "760503",
           "kickoff_utc": "2026-07-04T21:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "131526",
-            "team_name": "Round of 32 2 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 2
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "131529",
-            "team_name": "Round of 32 5 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 5
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 2
         },
         {
           "game_id": "760504",
           "kickoff_utc": "2026-07-05T20:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "131528",
-            "team_name": "Round of 32 4 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 4
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "131530",
-            "team_name": "Round of 32 6 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 6
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 3
         },
         {
           "game_id": "760505",
           "kickoff_utc": "2026-07-06T00:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "131531",
-            "team_name": "Round of 32 7 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 7
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "131532",
-            "team_name": "Round of 32 8 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 8
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 4
         },
         {
           "game_id": "760506",
           "kickoff_utc": "2026-07-06T19:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "131535",
-            "team_name": "Round of 32 11 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 11
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "131536",
-            "team_name": "Round of 32 12 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 12
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 5
         },
         {
           "game_id": "760507",
           "kickoff_utc": "2026-07-07T00:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "131533",
-            "team_name": "Round of 32 9 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 9
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "131534",
-            "team_name": "Round of 32 10 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 10
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 6
         },
         {
           "game_id": "760509",
           "kickoff_utc": "2026-07-07T16:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "131538",
-            "team_name": "Round of 32 14 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 14
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "131540",
-            "team_name": "Round of 32 16 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 16
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 7
         },
         {
           "game_id": "760508",
           "kickoff_utc": "2026-07-07T20:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "131537",
-            "team_name": "Round of 32 13 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 13
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "131539",
-            "team_name": "Round of 32 15 Winner"
+            "type": "match_winner",
+            "round": "Round of 32",
+            "position": 15
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 8
         }
       ]
     },
@@ -466,68 +490,72 @@
           "kickoff_utc": "2026-07-09T20:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "19282",
-            "team_name": "Round of 16 1 Winner"
+            "type": "match_winner",
+            "round": "Round of 16",
+            "position": 1
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "19283",
-            "team_name": "Round of 16 2 Winner"
+            "type": "match_winner",
+            "round": "Round of 16",
+            "position": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 1
         },
         {
           "game_id": "760511",
           "kickoff_utc": "2026-07-10T19:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "19278",
-            "team_name": "Round of 16 5 Winner"
+            "type": "match_winner",
+            "round": "Round of 16",
+            "position": 5
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "19279",
-            "team_name": "Round of 16 6 Winner"
+            "type": "match_winner",
+            "round": "Round of 16",
+            "position": 6
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 2
         },
         {
           "game_id": "760512",
           "kickoff_utc": "2026-07-11T21:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "19284",
-            "team_name": "Round of 16 3 Winner"
+            "type": "match_winner",
+            "round": "Round of 16",
+            "position": 3
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "19285",
-            "team_name": "Round of 16 4 Winner"
+            "type": "match_winner",
+            "round": "Round of 16",
+            "position": 4
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 3
         },
         {
           "game_id": "760513",
           "kickoff_utc": "2026-07-12T01:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "19280",
-            "team_name": "Round of 16 7 Winner"
+            "type": "match_winner",
+            "round": "Round of 16",
+            "position": 7
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "19281",
-            "team_name": "Round of 16 8 Winner"
+            "type": "match_winner",
+            "round": "Round of 16",
+            "position": 8
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 4
         }
       ]
     },
@@ -539,34 +567,36 @@
           "kickoff_utc": "2026-07-14T19:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "17631",
-            "team_name": "Quarterfinal 1 Winner"
+            "type": "match_winner",
+            "round": "Quarterfinals",
+            "position": 1
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "17629",
-            "team_name": "Quarterfinal 2 Winner"
+            "type": "match_winner",
+            "round": "Quarterfinals",
+            "position": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 1
         },
         {
           "game_id": "760515",
           "kickoff_utc": "2026-07-15T19:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "17630",
-            "team_name": "Quarterfinal 3 Winner"
+            "type": "match_winner",
+            "round": "Quarterfinals",
+            "position": 3
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "17632",
-            "team_name": "Quarterfinal 4 Winner"
+            "type": "match_winner",
+            "round": "Quarterfinals",
+            "position": 4
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 2
         }
       ]
     },
@@ -578,17 +608,18 @@
           "kickoff_utc": "2026-07-18T21:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "5958",
-            "team_name": "Semifinal 1 Loser"
+            "type": "match_loser",
+            "round": "Semifinals",
+            "position": 1
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "5959",
-            "team_name": "Semifinal 2 Loser"
+            "type": "match_loser",
+            "round": "Semifinals",
+            "position": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 1
         }
       ]
     },
@@ -600,17 +631,18 @@
           "kickoff_utc": "2026-07-19T19:00Z",
           "completed": false,
           "slot_a": {
-            "type": "team",
-            "team_id": "5960",
-            "team_name": "Semifinal 1 Winner"
+            "type": "match_winner",
+            "round": "Semifinals",
+            "position": 1
           },
           "slot_b": {
-            "type": "team",
-            "team_id": "5961",
-            "team_name": "Semifinal 2 Winner"
+            "type": "match_winner",
+            "round": "Semifinals",
+            "position": 2
           },
           "score_a": "0",
-          "score_b": "0"
+          "score_b": "0",
+          "position": 1
         }
       ]
     }

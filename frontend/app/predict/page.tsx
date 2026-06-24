@@ -3,6 +3,7 @@ import { useEffect, useMemo, useState } from "react";
 import { api, Overview, Player, Prediction } from "@/lib/api";
 import { RoleChip, Spinner } from "@/components/ui";
 import { PredictionResult } from "@/components/PredictionResult";
+import { WinnerProbabilityChart } from "@/components/WinnerProbabilityChart";
 
 const FORMATIONS: Record<string, { GK: number; DEF: number; MID: number; FWD: number }> = {
   "4-3-3": { GK: 1, DEF: 4, MID: 3, FWD: 3 },
@@ -216,6 +217,8 @@ export default function Predict() {
 
   return (
     <div className="space-y-6">
+      <WinnerProbabilityChart />
+
       <div className="flex flex-wrap items-center justify-between gap-3">
         <div>
           <h1 className="text-2xl font-black text-fg">Match Predictor</h1>
