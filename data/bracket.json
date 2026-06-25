@@ -8,14 +8,14 @@
           "kickoff_utc": "2026-06-28T19:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "A",
-            "rank": 2
+            "type": "team",
+            "team_id": "467",
+            "team_name": "South Africa"
           },
           "slot_b": {
-            "type": "group_rank",
-            "group": "B",
-            "rank": 2
+            "type": "team",
+            "team_id": "206",
+            "team_name": "Canada"
           },
           "score_a": "0",
           "score_b": "0",
@@ -26,9 +26,9 @@
           "kickoff_utc": "2026-06-29T17:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "C",
-            "rank": 1
+            "type": "team",
+            "team_id": "205",
+            "team_name": "Brazil"
           },
           "slot_b": {
             "type": "group_rank",
@@ -72,9 +72,9 @@
             "rank": 1
           },
           "slot_b": {
-            "type": "group_rank",
-            "group": "C",
-            "rank": 2
+            "type": "team",
+            "team_id": "2869",
+            "team_name": "Morocco"
           },
           "score_a": "0",
           "score_b": "0",
@@ -254,9 +254,9 @@
           "kickoff_utc": "2026-07-03T03:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "B",
-            "rank": 1
+            "type": "team",
+            "team_id": "475",
+            "team_name": "Switzerland"
           },
           "slot_b": {
             "type": "third_place",

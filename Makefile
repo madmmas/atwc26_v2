@@ -122,6 +122,6 @@ restart-backend: ## Reload backend after a data refresh (Docker)
 health: ## Poll API health endpoint
 	@curl -fs http://localhost:8000/api/health && echo
 
-refresh: scrape events restart-backend ## Scrape new games, rebuild timelines, restart Docker backend
+refresh: scrape events groups restart-backend ## Scrape new games, rebuild timelines/standings/bracket, restart Docker backend
 
-refresh-full: schedule scrape events squads groups restart-backend ## Discover new fixtures/squads/groups, then refresh
+refresh-full: schedule scrape events squads groups restart-backend ## Discover new fixtures/squads, then refresh

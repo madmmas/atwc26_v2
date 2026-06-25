@@ -7,10 +7,10 @@ import { ThemeToggle } from "@/components/ThemeToggle";
 
 const links = [
   { href: "/", label: "Overview" },
+  { href: "/standings", label: "Standings" },
   { href: "/explore", label: "Explore" },
   { href: "/matches", label: "Matches" },
   { href: "/players", label: "Players" },
-  { href: "/standings", label: "Standings" },
   { href: "/predict", label: "Predictor" },
 ];
 
