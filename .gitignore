@@ -53,3 +53,7 @@ data/.gitkeep
 
 # k6 baseline JSON summaries (local only)
 reports/
+
+# Personal/company marketing content -- never goes in the repo
+PUBLICITY_KIT.md
+
