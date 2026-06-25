@@ -113,6 +113,20 @@ a team is short at a position) and rated once via the existing
 (~6 seconds total) since only the cheap Poisson draw repeats per trial, not
 the rating computation.
 
+**Selection uses real WC26 minutes; rating uses blended stats — these are
+deliberately different inputs.** `team_ratings()` picks each team's XI from
+`store.players` (real tournament minutes only), then rates those specific
+players from `store.predictor_players` (the WC26 + history blend). This was
+a real bug caught during testing, not a hypothetical: an earlier version
+selected the XI from the *blended* minutes too, which let a player with
+heavy qualifier/friendly history but little-to-no actual WC26 involvement
+outrank a real current starter — caught via Belgium, where the auto-pick
+chose Doku/Theate/Castagne/Raskin (minimal real WC26 minutes) over
+Trossard/Tielemans/Mechele/Ngoy (each playing 150-180 real minutes this
+tournament). Fixed by decoupling: *who's on the pitch* must reflect this
+tournament; *how reliably we know their rate stats* is what the history
+blend is for.
+
 ### Resolving who's actually in a future bracket match
 This is the part that needed real verification, not assumption. ESPN
 publishes the entire Round-of-32-through-Final fixture skeleton in advance,

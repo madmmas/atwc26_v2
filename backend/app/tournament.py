@@ -60,10 +60,22 @@ def auto_pick_xi(players_df: pd.DataFrame, team_name: str) -> list[dict]:
 
 
 def team_ratings(store: DataStore, predictor: Predictor) -> dict[str, TeamRatings]:
-    players_df = store.predictor_players
+    """Who's selected must reflect who's actually playing *this tournament*
+    (store.players, WC26-only minutes) — not blended minutes. Selecting by
+    blended minutes let a player with heavy qualifier/friendly history but
+    little-to-no real WC26 involvement outrank an actual current starter
+    (caught via Belgium: the auto-pick chose Doku/Theate/Castagne/Raskin —
+    minimal real WC26 minutes — over Trossard/Tielemans/Mechele/Ngoy, who
+    are actually playing 150-180 real minutes this tournament).
+
+    Once the real XI is selected, `predictor._rate_team()` still rates each
+    of those specific players from `store.predictor_players` (blended) —
+    that's the part that's *supposed* to benefit from the larger historical
+    sample, for players with thin WC26 minutes so far.
+    """
     ratings: dict[str, TeamRatings] = {}
-    for name in players_df["team_name"].dropna().unique():
-        xi = auto_pick_xi(players_df, name)
+    for name in store.players["team_name"].dropna().unique():
+        xi = auto_pick_xi(store.players, name)
         if xi:
             ratings[name] = predictor._rate_team(xi)
     return ratings
