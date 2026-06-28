@@ -25,13 +25,10 @@ SERVICES_DIR  := $(ROOT)/services
 CONTRACT_DIR  := $(ROOT)/tests/contract
 BUILD_SCRIPT  := $(ROOT)/infra/scripts/build_frontend_static.sh
 
-CORE_PKG      := $(ROOT)/packages/atwc26_core
-
-.PHONY: help setup setup-backend setup-frontend setup-scraper setup-test setup-etl setup-services setup-etl verify \
+.PHONY: help setup setup-backend setup-frontend setup-scraper setup-test setup-etl setup-services verify \
         backend analytics predict dev dev-v2 frontend schedule scrape scrape-force analyze events squads groups \
         test-e2e test-etl test-contract e2e-v2-local etl-local etl-publish \
         build-frontend-static build-frontend-static-v2 serve-frontend-static \
-        test-etl etl-local etl-publish \
         k6-smoke k6-journey k6-load k6-stress k6-ab \
         up docker down restart-backend health
 
@@ -62,11 +59,6 @@ setup-scraper: ## Root Python deps (scraper + notebook)
 	@$(PYTHON) -c "import pandas, pyarrow" 2>/dev/null \
 		|| (echo "Scraper deps missing." && exit 1)
 	@echo "scraper: OK"
-
-setup-etl: setup-scraper ## ETL pipeline deps (atwc26_core + pytest + boto3)
-	$(PIP) install -e $(CORE_PKG)
-	$(PIP) install pytest boto3
-	@echo "etl: OK"
 
 setup-etl: setup-scraper ## ETL pipeline deps (atwc26_core + pytest + boto3)
 	$(PIP) install -e $(CORE_PKG)
@@ -112,16 +104,6 @@ build-frontend-static-v2: ## Static export with split API URLs (local :8001/:800
 serve-frontend-static: ## Serve frontend/out/ on http://localhost:3000 (preview static export)
 	@test -d $(FRONTEND_DIR)/out || (echo "Run make build-frontend-static-v2 first" && exit 1)
 	npx --yes serve $(FRONTEND_DIR)/out -p 3000
-
-test-etl: setup-etl ## Run ETL unit + QA tests
-	cd $(ROOT) && PYTHONPATH=$(ROOT) $(PYTHON) -m pytest tests/etl etl/qa -q
-
-etl-local: setup-etl ## Transform scraped data + run QA checks (local manifest)
-	cd $(ROOT) && $(PYTHON) -m etl.transform
-	cd $(ROOT) && $(PYTHON) -m etl.qa
-
-etl-publish: setup-etl ## Publish artifacts to S3/DynamoDB (or local staging)
-	cd $(ROOT) && $(PYTHON) -m etl.publish
 
 test-etl: setup-etl ## Run ETL unit + QA tests
 	cd $(ROOT) && PYTHONPATH=$(ROOT) $(PYTHON) -m pytest tests/etl etl/qa -q
