@@ -18,14 +18,14 @@ PYTHON        ?= python3
 PIP           ?= pip3
 
 CORE_PKG      := $(ROOT)/packages/atwc26_core
-
-CORE_PKG      := $(ROOT)/packages/atwc26_core
 SERVICES_DIR  := $(ROOT)/services
 CONTRACT_DIR  := $(ROOT)/tests/contract
+BUILD_SCRIPT  := $(ROOT)/infra/scripts/build_frontend_static.sh
 
 .PHONY: help setup setup-backend setup-frontend setup-scraper setup-test setup-etl setup-services verify \
         backend analytics predict dev dev-v2 frontend schedule scrape scrape-force analyze events squads groups \
-        test-e2e test-etl test-contract etl-local etl-publish \
+        test-e2e test-etl test-contract e2e-v2-local etl-local etl-publish \
+        build-frontend-static build-frontend-static-v2 serve-frontend-static \
         k6-smoke k6-journey up docker down restart-backend health
 
 help: ## Show available targets
@@ -78,6 +78,28 @@ test-e2e: setup-test ## Run v1 API end-to-end tests (in-process, no server)
 
 test-contract: setup-services ## Contract tests for split analytics + predict APIs
 	cd $(ROOT) && PYTHONPATH=$(ROOT) $(BACKEND_PY) -m pytest $(CONTRACT_DIR) -q
+
+e2e-v2-local: setup-etl setup-services ## v2 smoke: ETL + QA + contract tests (no servers)
+	@$(MAKE) verify
+	$(MAKE) etl-local
+	$(MAKE) test-etl
+	$(MAKE) test-contract
+	@echo ""
+	@echo "v2 local E2E checks passed."
+	@echo "Next — live stack:  make dev-v2"
+	@echo "Next — static CDN:  make build-frontend-static-v2 && make serve-frontend-static"
+
+build-frontend-static: ## Static export (v1 monolith API URL default)
+	$(BUILD_SCRIPT)
+
+build-frontend-static-v2: ## Static export with split API URLs (local :8001/:8000 defaults)
+	NEXT_PUBLIC_ANALYTICS_API_URL=$${NEXT_PUBLIC_ANALYTICS_API_URL:-http://localhost:8001} \
+	NEXT_PUBLIC_PREDICT_API_URL=$${NEXT_PUBLIC_PREDICT_API_URL:-http://localhost:8000} \
+	$(BUILD_SCRIPT)
+
+serve-frontend-static: ## Serve frontend/out/ on http://localhost:3000 (preview static export)
+	@test -d $(FRONTEND_DIR)/out || (echo "Run make build-frontend-static-v2 first" && exit 1)
+	npx --yes serve $(FRONTEND_DIR)/out -p 3000
 
 test-etl: setup-etl ## Run ETL unit + QA tests
 	cd $(ROOT) && PYTHONPATH=$(ROOT) $(PYTHON) -m pytest tests/etl etl/qa -q

@@ -297,3 +297,80 @@ test("build two XIs and predict a result", async ({ page }) => {
   **invariants in §3 still hold** — assert on invariants, not hard-coded values.
 - Run API and E2E suites against the **same** running stack (Docker `:8080` is
   closest to production).
+
+---
+
+## 11. Local v2 E2E smoke path
+
+End-to-end check for the **v2 candidate stack** on your laptop: ETL → `data/` →
+split APIs → frontend (dev or static). No AWS required for the automated part.
+
+### Automated gate (no running servers)
+
+```bash
+make e2e-v2-local
+```
+
+Runs, in order:
+
+1. `make verify` — data artifacts present
+2. `make etl-local` — transform + QA manifest
+3. `make test-etl` — ETL unit tests
+4. `make test-contract` — analytics/predict split boundaries
+
+### Live UI + split APIs
+
+```bash
+# frontend/.env.local should set:
+#   NEXT_PUBLIC_ANALYTICS_API_URL=http://localhost:8001
+#   NEXT_PUBLIC_PREDICT_API_URL=http://localhost:8000
+make dev-v2
+```
+
+Open **http://localhost:3000** — overview/matches use analytics (`:8001`);
+predict page uses predict API (`:8000`).
+
+Readiness:
+
+```bash
+curl -fs http://localhost:8001/api/health && echo "analytics OK"
+curl -fs http://localhost:8000/api/health && echo "predict OK"
+```
+
+### Static frontend (mimics S3 + CloudFront)
+
+With split APIs running (`make analytics` + `make predict` in other terminals):
+
+```bash
+make build-frontend-static-v2
+make serve-frontend-static    # http://localhost:3000
+```
+
+Or override API origins (e.g. API Gateway URL after `terraform apply`):
+
+```bash
+NEXT_PUBLIC_ANALYTICS_API_URL=https://xxxx.execute-api.us-east-1.amazonaws.com \
+NEXT_PUBLIC_PREDICT_API_URL=https://xxxx.execute-api.us-east-1.amazonaws.com \
+make build-frontend-static-v2
+```
+
+**CORS:** APIs must allow the static preview origin (`http://localhost:3000`).
+`make analytics` / `make predict` set `ATWC26_CORS_ORIGINS` accordingly.
+
+### Optional: dry-run S3 publish
+
+```bash
+make etl-publish
+# without ATWC26_S3_BUCKET → stages to data/.etl/publish-staging/
+```
+
+Local split APIs still read **`data/`** directly (not staging). Real S3 publish +
+Lambda bootstrap is covered in [infra/README.md](../infra/README.md).
+
+### v2 local checklist (~5 min)
+
+- [ ] `make e2e-v2-local` passes
+- [ ] `make dev-v2` — overview and matches load
+- [ ] Predict page returns a result (probabilities sum ≈ 1)
+- [ ] `make build-frontend-static-v2 && make serve-frontend-static` — same flows work from static bundle
+- [ ] *(optional AWS)* `make etl-publish` with `ATWC26_S3_BUCKET` + `terraform apply`

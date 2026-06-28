@@ -69,6 +69,12 @@ origin until Issue 7 splits APIs).
 
 # Or override for a staging/local backend:
 NEXT_PUBLIC_API_URL=http://localhost:8000 ./infra/scripts/build_frontend_static.sh
+
+# v2 split APIs (local or API Gateway):
+NEXT_PUBLIC_ANALYTICS_API_URL=http://localhost:8001 \
+NEXT_PUBLIC_PREDICT_API_URL=http://localhost:8000 \
+./infra/scripts/build_frontend_static.sh
+# or: make build-frontend-static-v2
 ```
 
 **Preview locally:**
