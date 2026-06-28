@@ -1,0 +1,59 @@
+name: ETL
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 6 * * *"
+
+jobs:
+  etl-local:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ETL dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e packages/atwc26_core
+          pip install pytest boto3
+
+      - name: Transform + QA (uses committed data artifacts)
+        run: |
+          make etl-local
+
+      - name: ETL tests
+        run: |
+          PYTHONPATH=. pytest tests/etl etl/qa -q
+
+  etl-publish:
+    if: github.event_name == 'workflow_dispatch'
+    needs: etl-local
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ETL dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e packages/atwc26_core
+          pip install boto3
+
+      - name: Publish to S3 + DynamoDB
+        env:
+          ATWC26_S3_BUCKET: ${{ secrets.ATWC26_S3_BUCKET }}
+          ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: make etl-publish

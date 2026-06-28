@@ -48,6 +48,7 @@ frontend/out/
 v2_scripts/
 
 data/.gitkeep
+data/.etl/
 
 .pytest_cache
 

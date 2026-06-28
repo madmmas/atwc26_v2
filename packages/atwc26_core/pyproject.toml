@@ -1,0 +1,23 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "atwc26-core"
+version = "0.1.0"
+description = "Shared data, prediction, and tournament logic for AnalyseThisWC26"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "pandas>=2.0",
+    "pyarrow>=12.0",
+    "pydantic>=2.0",
+    "numpy>=1.24",
+]
+
+[project.optional-dependencies]
+publish = ["boto3>=1.28"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["atwc26_core*"]

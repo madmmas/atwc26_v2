@@ -17,9 +17,12 @@ BACKEND_PIP   := $(BACKEND_VENV)/bin/pip
 PYTHON        ?= python3
 PIP           ?= pip3
 
-.PHONY: help setup setup-backend setup-frontend setup-scraper setup-test verify \
+CORE_PKG      := $(ROOT)/packages/atwc26_core
+
+.PHONY: help setup setup-backend setup-frontend setup-scraper setup-test setup-etl verify \
         backend frontend dev schedule scrape scrape-force analyze events squads groups \
-        test-e2e k6-smoke k6-journey up docker down restart-backend health deploy
+        test-e2e test-etl etl-local etl-publish \
+        k6-smoke k6-journey up docker down restart-backend health
 
 help: ## Show available targets
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make <target>\n\nTargets:\n"} \
@@ -49,6 +52,11 @@ setup-scraper: ## Root Python deps (scraper + notebook)
 		|| (echo "Scraper deps missing." && exit 1)
 	@echo "scraper: OK"
 
+setup-etl: setup-scraper ## ETL pipeline deps (atwc26_core + pytest + boto3)
+	$(PIP) install -e $(CORE_PKG)
+	$(PIP) install pytest boto3
+	@echo "etl: OK"
+
 setup-test: setup-backend ## pytest + httpx in backend venv
 	$(BACKEND_PIP) install -r $(E2E_DIR)/requirements-dev.txt
 	@$(BACKEND_PY) -c "import pytest, httpx" 2>/dev/null \
@@ -57,6 +65,16 @@ setup-test: setup-backend ## pytest + httpx in backend venv
 
 test-e2e: setup-test ## Run v1 API end-to-end tests (in-process, no server)
 	$(BACKEND_PY) -m pytest $(E2E_DIR) -q -c $(E2E_DIR)/pytest.ini
+
+test-etl: setup-etl ## Run ETL unit + QA tests
+	cd $(ROOT) && PYTHONPATH=$(ROOT) $(PYTHON) -m pytest tests/etl etl/qa -q
+
+etl-local: setup-etl ## Transform scraped data + run QA checks (local manifest)
+	cd $(ROOT) && $(PYTHON) -m etl.transform
+	cd $(ROOT) && $(PYTHON) -m etl.qa
+
+etl-publish: setup-etl ## Publish artifacts to S3/DynamoDB (or local staging)
+	cd $(ROOT) && $(PYTHON) -m etl.publish
 
 k6-smoke: ## k6 smoke test against v1 API (default: production)
 	ATWC26_BASE_URL=$(K6_BASE_URL) $(K6_DIR)/run.sh smoke
