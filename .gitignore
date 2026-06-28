@@ -58,3 +58,13 @@ reports/
 PUBLICITY_KIT.md
 
 frontend/tsconfig.tsbuildinfo
+
+# Terraform (local state; do not commit secrets)
+**/.terraform/
+*.tfstate
+*.tfstate.*
+**/terraform.tfvars
+!**/terraform.tfvars.example
+**/backend.hcl
+!**/backend.hcl.example
+**/crash.log

@@ -78,12 +78,31 @@ npx serve frontend/out
 # open http://localhost:3000 — API calls go to NEXT_PUBLIC_API_URL baked at build time
 ```
 
-**Deploy to S3** (manual until Issue 5 Terraform):
+**Deploy with Terraform (Issue 5 — S3 + CloudFront):**
+
+```bash
+cd infra/terraform/envs/dev
+cp terraform.tfvars.example terraform.tfvars
+terraform init && terraform apply
+
+# Build with v1 API URL from Terraform output:
+NEXT_PUBLIC_API_URL="$(terraform output -raw backend_api_url)" \
+  ../../../scripts/build_frontend_static.sh
+
+# Sync to bucket + invalidate CloudFront:
+../../../scripts/deploy_frontend_from_tf.sh
+```
+
+Add `terraform output cors_origin_hint` to **`ATWC26_CORS_ORIGINS`** on the v1
+backend so the browser can call the API from the CloudFront origin.
+
+See [infra/README.md](../infra/README.md) for full variable/output reference.
+
+**Manual deploy** (without Terraform outputs helper):
 
 ```bash
 export ATWC26_FRONTEND_BUCKET=your-bucket-name
-# optional after CloudFront exists (Issue 5):
-# export ATWC26_CLOUDFRONT_DISTRIBUTION_ID=E1234567890
+export ATWC26_CLOUDFRONT_DISTRIBUTION_ID=E1234567890
 ./infra/scripts/deploy_frontend.sh
 ```
 

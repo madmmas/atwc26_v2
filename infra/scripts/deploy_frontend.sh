@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Sync frontend/out/ to an S3 bucket (manual deploy until Issue 5 Terraform/CloudFront).
+# Sync frontend/out/ to the S3 origin bucket; invalidate CloudFront if configured.
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "$0")/../.." && pwd)"

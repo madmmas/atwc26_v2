@@ -1,0 +1,11 @@
+# Copy to terraform.tfvars and adjust before terraform apply.
+# Candidate stack — separate name_prefix from production v1.
+
+aws_region      = "us-east-1"
+name_prefix     = "atwc26-v2"
+environment     = "dev"
+backend_api_url = "https://atwc26.com"
+
+# Optional custom domain (certificate must be in us-east-1):
+# aliases             = ["v2-dev.example.com"]
+# acm_certificate_arn = "arn:aws:acm:us-east-1:123456789012:certificate/..."
