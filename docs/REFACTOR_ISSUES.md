@@ -2,18 +2,37 @@
 
 Production ([atwc26.com](https://atwc26.com)) runs the **v1 monolith** on `main` until Issue 10 cutover.
 
+## Current status *(updated June 2026)*
+
+| Milestone | Status |
+|-----------|--------|
+| **Track A — Issues 1–3** | **Complete** on `main` |
+| **ETL layout follow-up** | **Complete** — [#25](https://github.com/neunov/AnalyseThisWC26/issues/25) merged (PR #26) |
+| **`refactor/v2-integration`** | **Created** from `main`; merge `main` into it after doc/plan updates |
+| **Track B — Issues 4–10** | **Open** on GitHub — see mapping below |
+| **`v1-baseline` tag** | Optional — not yet applied |
+| **`docs/CUTOVER.md`** | Not created yet *(Issue 10 prep)* |
+
+After this doc PR merges to `main`, sync the integration branch:
+
+```bash
+git checkout refactor/v2-integration && git merge main && git push
+```
+
+---
+
 ## Two tracks
 
-| Track | Issues | Target branch | When |
-|-------|--------|---------------|------|
-| **v1 prep** | 1–3 | `main` | Now — improve v1 before refactor |
-| **v2 refactor** | 4–10 | `refactor/v2-integration` | After Issue 3 merges to `main` |
+| Track | Issues | Target branch | Status |
+|-------|--------|---------------|--------|
+| **v1 prep** | 1–3 | `main` | **Done** |
+| **v2 refactor** | 4–10 | `refactor/v2-integration` | **In progress** |
 
 ```text
-main ──► Issue 1 ──► Issue 2 ──► Issue 3 ──► (tag v1-baseline optional)
+main ──► Issue 1 ──► Issue 2 ──► Issue 3 ──► (tag v1-baseline optional)  ✓ done
                                               │
                                               ▼
-                              refactor/v2-integration
+                              refactor/v2-integration  ✓ exists
                               Issue 4 → … → Issue 10 → merge to main
 ```
 
@@ -21,14 +40,36 @@ main ──► Issue 1 ──► Issue 2 ──► Issue 3 ──► (tag v1-bas
 
 | Doc | Purpose |
 |-----|---------|
-| **[REFACTOR_GITHUB_ISSUES.md](REFACTOR_GITHUB_ISSUES.md)** | Copy-paste all 10 issue titles and bodies |
-| **[CUTOVER.md](CUTOVER.md)** | Production cutover checklist *(v2)* |
+| **[REFACTOR_GITHUB_ISSUES.md](REFACTOR_GITHUB_ISSUES.md)** | Issue titles, bodies, acceptance criteria |
+| **[CUTOVER.md](CUTOVER.md)** | Production cutover checklist *(create before Issue 10)* |
+
+---
+
+## Plan # → GitHub issue mapping
+
+Plan numbers (1–10) are the refactor sequence. GitHub issue numbers differ for v2 work:
+
+| Plan # | GitHub | Title | Status |
+|--------|--------|-------|--------|
+| 1 | — | reorganize docs, notebooks, scrapers | Merged to `main` |
+| 1b | [#25](https://github.com/neunov/AnalyseThisWC26/issues/25) | complete ETL file moves + Makefile | Merged to `main` |
+| 2 | — | e2e tests for v1 API | Merged to `main` |
+| 3 | — | k6 baseline vs production | Merged to `main` |
+| 4 | [#30](https://github.com/neunov/AnalyseThisWC26/issues/30) | static export frontend for S3 | Open |
+| 5 | [#27](https://github.com/neunov/AnalyseThisWC26/issues/27) | S3 + CloudFront static frontend | Open |
+| 6 | [#28](https://github.com/neunov/AnalyseThisWC26/issues/28) | ETL pipeline with S3, DynamoDB, QA | Open |
+| 7 | [#29](https://github.com/neunov/AnalyseThisWC26/issues/29) | split analytics + predict Lambdas | Open |
+| 8 | [#31](https://github.com/neunov/AnalyseThisWC26/issues/31) | k6 A/B compare v1 and v2 | Open |
+| 9 | [#32](https://github.com/neunov/AnalyseThisWC26/issues/32) | complete CI/CD pipeline | Open |
+| 10 | [#33](https://github.com/neunov/AnalyseThisWC26/issues/33) | cut over to v2, remove v1 monolith | Open |
+
+Use **plan #** in PR bodies (`Closes #30` for plan Issue 4, etc.).
 
 ---
 
 ## Branch strategy
 
-### Track A — v1 prep (Issues 1–3)
+### Track A — v1 prep (Issues 1–3) ✓
 
 | Setting | Value |
 |---------|--------|
@@ -37,20 +78,7 @@ main ──► Issue 1 ──► Issue 2 ──► Issue 3 ──► (tag v1-bas
 | Merge into | **`main`** directly |
 | Label | `refactor-v1` |
 
-**PR rules:**
-
-1. One issue = one PR to `main`.
-2. Merge in order: 1 → 2 → 3.
-3. Do not start `refactor/v2-integration` until Issue 3 is on `main`.
-
-**Suggested checkpoint after Issue 3:**
-
-```bash
-git checkout main && git pull
-git tag v1-baseline   # optional
-git checkout -b refactor/v2-integration
-git push -u origin refactor/v2-integration
-```
+**Also merged (follow-up):** `fix/etl-paths-makefile` → `main` ([#25](https://github.com/neunov/AnalyseThisWC26/issues/25)).
 
 ### Track B — v2 refactor (Issues 4–10)
 
@@ -64,15 +92,16 @@ git push -u origin refactor/v2-integration
 
 **PR rules:**
 
-1. Do **not** PR v2 feature branches directly to `main` (except final cutover).
-2. One issue = one PR; `Closes #N` in body.
-3. Merge order: 4 → 10.
+1. Do **not** PR v2 feature branches directly to `main` (except final cutover and doc/plan fixes).
+2. One issue = one PR; `Closes #N` in body (use GitHub # from mapping table).
+3. Merge order: 4 → 10 (Issues 4 and 6 can run in parallel after integration branch exists).
 4. Candidate AWS: separate `name_prefix` (e.g. `atwc26-v2`).
 5. Tag `main` before final merge: `v1-monolith`.
+6. After merging doc or v1 fixes to `main`, merge `main` into `refactor/v2-integration`.
 
 ### Labels
 
-- `refactor-v1` — Issues 1–3
+- `refactor-v1` — Issues 1–3 *(complete)*
 - `refactor-v2` — Issues 4–10
 - `blocked` — waiting on upstream
 - `ops` — Issue 10 cutover
@@ -133,30 +162,31 @@ Full issue bodies: [REFACTOR_GITHUB_ISSUES.md](REFACTOR_GITHUB_ISSUES.md)
 ```text
 Refactor is split across two tracks:
 
-v1 on main (do first):
+v1 on main — DONE:
   #1 reorganize docs / notebooks / etl/scrape
-  #2 e2e tests for v1 API
+  #25 complete ETL moves (fetch_schedule, scrape_history, build_match_events)
+  #2 e2e tests (e2e/) for v1 API
   #3 k6 baseline vs atwc26.com
 
-Then create refactor/v2-integration from main:
-
-v2 on integration branch:
-  #4–5 static frontend + S3/CloudFront (still v1 API)
-  #6 ETL + S3 + DynamoDB + shared package
-  #7 split Lambdas (analytics + predict)
-  #8 k6 A/B v1 vs v2
-  #9 full CI/CD
-  #10 cutover → main
+v2 on refactor/v2-integration (GitHub #27–#33):
+  #4  GH #30 — static frontend + S3
+  #5  GH #27 — S3/CloudFront (still v1 API)
+  #6  GH #28 — ETL + S3 + DynamoDB + shared package
+  #7  GH #29 — split Lambdas (analytics + predict)
+  #8  GH #31 — k6 A/B v1 vs v2
+  #9  GH #32 — full CI/CD
+  #10 GH #33 — cutover → main
 
 Docs: docs/REFACTOR_GITHUB_ISSUES.md
 ```
 
 ---
 
-## Suggested first actions
+## Next actions
 
-1. Create labels `refactor-v1` and `refactor-v2`.
-2. Open PR **Issue 1** → `main`.
-3. After Issues 1–3 merge, tag `v1-baseline` (optional) and push `refactor/v2-integration`.
-4. Open PRs **Issues 4–9** → `refactor/v2-integration` in order.
-5. Issue 10: integration → `main` after k6 A/B and cutover checklist.
+1. ~~Create labels `refactor-v1` and `refactor-v2`.~~ Done
+2. ~~Merge Issues 1–3 to `main`.~~ Done
+3. ~~Create `refactor/v2-integration` from `main`.~~ Done
+4. **Open PRs for Issues 4–9** → `refactor/v2-integration` (GitHub #30, #27, #28, #29, #31, #32).
+5. Optional: tag `main` as `v1-baseline`.
+6. Issue 10 (GH #33): integration → `main` after k6 A/B and `docs/CUTOVER.md` checklist.
