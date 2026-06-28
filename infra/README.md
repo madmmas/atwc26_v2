@@ -11,10 +11,21 @@ infra/
   scripts/
     build_frontend_static.sh   # Issue 4 — Next.js → frontend/out/
     deploy_frontend.sh         # aws s3 sync + optional CloudFront invalidation
-    deploy_frontend_from_tf.sh   # reads bucket + distribution from Terraform outputs
+    deploy_frontend_from_tf.sh # reads bucket + distribution from Terraform outputs
+    package_lambdas.sh         # Issue 7 — layer + analytics/predict zip artifacts
+  lambda-layer/
+    requirements.txt           # shared Lambda layer dependencies
   terraform/
     modules/frontend-cdn/      # Issue 5 — S3 + CloudFront (OAC)
+    modules/s3-data/           # Issue 7 — ETL data bucket
+    modules/dynamodb/          # Issue 7 — publish manifest table
+    modules/lambda-analytics/  # Issue 7
+    modules/lambda-predict/    # Issue 7
+    modules/api-gateway/       # Issue 7 — HTTP API routes
     envs/dev/                  # dev/candidate wiring
+services/
+  analytics_api/               # Issue 7 — read-only tournament API
+  predict_api/                 # Issue 7 — POST /api/predict
 ```
 
 ## Prerequisites
@@ -91,6 +102,50 @@ Open `terraform output cloudfront_url` and verify pages load; API calls should r
 ```bash
 terraform -chdir=infra/terraform/envs/dev init -backend=false
 terraform -chdir=infra/terraform/envs/dev validate
+```
+
+## Issue 7 — Split analytics + predict Lambdas
+
+### Local services
+
+```bash
+make setup-services
+make analytics    # http://localhost:8001
+make predict      # http://localhost:8000
+make dev-v2       # split APIs + frontend
+make test-contract
+```
+
+Frontend uses `NEXT_PUBLIC_ANALYTICS_API_URL` and `NEXT_PUBLIC_PREDICT_API_URL` (see `frontend/.env.example`).
+
+### Package Lambdas
+
+```bash
+./infra/scripts/package_lambdas.sh
+# writes infra/build/lambdas/{layer,analytics,predict}.zip
+```
+
+### Terraform apply (candidate API stack)
+
+After packaging:
+
+```bash
+cd infra/terraform/envs/dev
+terraform apply
+```
+
+Outputs:
+
+```bash
+terraform output api_gateway_url          # both analytics + predict routes
+terraform output data_bucket_name         # sync ETL artifacts here
+terraform output dynamodb_table_name
+```
+
+Publish data before invoking Lambdas in AWS:
+
+```bash
+ATWC26_S3_BUCKET="$(terraform output -raw data_bucket_name)" make etl-publish
 ```
 
 ## Variables (dev)

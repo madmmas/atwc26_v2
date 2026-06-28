@@ -1,0 +1,11 @@
+output "function_name" {
+  value = aws_lambda_function.analytics.function_name
+}
+
+output "function_arn" {
+  value = aws_lambda_function.analytics.arn
+}
+
+output "invoke_arn" {
+  value = aws_lambda_function.analytics.invoke_arn
+}

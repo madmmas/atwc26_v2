@@ -33,3 +33,21 @@ variable "acm_certificate_arn" {
   type        = string
   default     = null
 }
+
+variable "data_s3_prefix" {
+  description = "S3 key prefix for ETL-published data artifacts."
+  type        = string
+  default     = "data"
+}
+
+variable "cors_allow_origins" {
+  description = "CORS origins for API Gateway and Lambda services."
+  type        = list(string)
+  default     = ["*"]
+}
+
+variable "lambda_package_dir" {
+  description = "Optional override for Lambda zip directory (default: infra/build/lambdas)."
+  type        = string
+  default     = ""
+}

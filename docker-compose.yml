@@ -1,28 +1,58 @@
-# AnalyseThisWC26 full stack: nginx (public) -> frontend (Next.js) + backend (FastAPI).
-# Bring up with:  docker compose up --build
-# Then open:      http://localhost:8080
+# AnalyseThisWC26 full stack.
+# v1 (monolith):  docker compose up --build  -> http://localhost:8080
+# v2 (split APIs): docker compose --profile v2 up --build
+#   analytics :8001, predict :8000
 
 services:
   backend:
     build: ./backend
     environment:
-      # Same-origin frontend through nginx; relax/extend for other hosts.
       ATWC26_CORS_ORIGINS: "http://localhost:8080,http://127.0.0.1:8080"
       WEB_CONCURRENCY: "4"
       ATWC26_DATA_DIR: "/data"
     volumes:
-      # Mount the scraped dataset read-only. Refreshed by etl/scrape/scrape_wc26.py.
       - ./data:/data:ro
     expose:
       - "8000"
+    restart: unless-stopped
+
+  analytics-api:
+    profiles: ["v2"]
+    build:
+      context: .
+      dockerfile: services/analytics_api/Dockerfile
+    environment:
+      ATWC26_CORS_ORIGINS: "http://localhost:3000,http://127.0.0.1:3000,http://localhost:8080"
+      ATWC26_DATA_DIR: "/data"
+      WEB_CONCURRENCY: "2"
+    volumes:
+      - ./data:/data:ro
+    ports:
+      - "8001:8001"
+    restart: unless-stopped
+
+  predict-api:
+    profiles: ["v2"]
+    build:
+      context: .
+      dockerfile: services/predict_api/Dockerfile
+    environment:
+      ATWC26_CORS_ORIGINS: "http://localhost:3000,http://127.0.0.1:3000,http://localhost:8080"
+      ATWC26_DATA_DIR: "/data"
+      WEB_CONCURRENCY: "2"
+    volumes:
+      - ./data:/data:ro
+    ports:
+      - "8000:8000"
     restart: unless-stopped
 
   frontend:
     build:
       context: ./frontend
       args:
-        # Empty -> the browser calls same-origin /api, which nginx routes.
         NEXT_PUBLIC_API_URL: ""
+        NEXT_PUBLIC_ANALYTICS_API_URL: "http://localhost:8001"
+        NEXT_PUBLIC_PREDICT_API_URL: "http://localhost:8000"
     expose:
       - "3000"
     depends_on:

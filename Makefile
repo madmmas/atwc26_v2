@@ -19,9 +19,13 @@ PIP           ?= pip3
 
 CORE_PKG      := $(ROOT)/packages/atwc26_core
 
-.PHONY: help setup setup-backend setup-frontend setup-scraper setup-test setup-etl verify \
-        backend frontend dev schedule scrape scrape-force analyze events squads groups \
-        test-e2e test-etl etl-local etl-publish \
+CORE_PKG      := $(ROOT)/packages/atwc26_core
+SERVICES_DIR  := $(ROOT)/services
+CONTRACT_DIR  := $(ROOT)/tests/contract
+
+.PHONY: help setup setup-backend setup-frontend setup-scraper setup-test setup-etl setup-services verify \
+        backend analytics predict dev dev-v2 frontend schedule scrape scrape-force analyze events squads groups \
+        test-e2e test-etl test-contract etl-local etl-publish \
         k6-smoke k6-journey up docker down restart-backend health
 
 help: ## Show available targets
@@ -63,8 +67,17 @@ setup-test: setup-backend ## pytest + httpx in backend venv
 		|| (echo "Test deps missing." && exit 1)
 	@echo "e2e: OK"
 
+setup-services: setup-backend ## v2 split API deps (analytics + predict)
+	$(BACKEND_PIP) install -e $(CORE_PKG)
+	$(BACKEND_PIP) install -r $(SERVICES_DIR)/analytics_api/requirements.txt
+	$(BACKEND_PIP) install -r $(SERVICES_DIR)/predict_api/requirements.txt
+	@echo "services: OK"
+
 test-e2e: setup-test ## Run v1 API end-to-end tests (in-process, no server)
 	$(BACKEND_PY) -m pytest $(E2E_DIR) -q -c $(E2E_DIR)/pytest.ini
+
+test-contract: setup-services ## Contract tests for split analytics + predict APIs
+	cd $(ROOT) && PYTHONPATH=$(ROOT) $(BACKEND_PY) -m pytest $(CONTRACT_DIR) -q
 
 test-etl: setup-etl ## Run ETL unit + QA tests
 	cd $(ROOT) && PYTHONPATH=$(ROOT) $(PYTHON) -m pytest tests/etl etl/qa -q
@@ -90,16 +103,31 @@ verify: ## Check whether one-time setup steps are done
 	@echo "data:      $$([ -f data/all_players_stats.parquet ] && echo OK || echo MISSING)"
 	@echo "timelines: $$([ -f data/match_events.json ] && echo OK || echo MISSING)"
 
-backend: setup-backend ## Run FastAPI dev server (http://localhost:8000)
+backend: setup-backend ## Run v1 FastAPI monolith (http://localhost:8000)
 	cd $(BACKEND_DIR) && ATWC26_CORS_ORIGINS="http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001" \
 		$(BACKEND_PY) -m uvicorn app.main:app --reload --port 8000
+
+analytics: setup-services ## Run v2 analytics API (http://localhost:8001)
+	cd $(ROOT) && ATWC26_CORS_ORIGINS="http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001" \
+		PYTHONPATH=$(ROOT) $(BACKEND_PY) -m uvicorn analytics_api.main:app --reload --port 8001 --app-dir $(SERVICES_DIR)/analytics_api
+
+predict: setup-services ## Run v2 predict API (http://localhost:8000)
+	cd $(ROOT) && ATWC26_CORS_ORIGINS="http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001" \
+		PYTHONPATH=$(ROOT) $(BACKEND_PY) -m uvicorn predict_api.main:app --reload --port 8000 --app-dir $(SERVICES_DIR)/predict_api
 
 frontend: setup-frontend ## Run Next.js dev server (http://localhost:3000)
 	cd $(FRONTEND_DIR) && npm run dev
 
-dev: setup ## Run backend + frontend together (Ctrl-C stops both)
+dev: setup ## Run v1 backend + frontend together (Ctrl-C stops both)
 	@trap 'kill 0' INT TERM; \
 	$(MAKE) backend & \
+	$(MAKE) frontend & \
+	wait
+
+dev-v2: setup-services setup-frontend ## Run split APIs + frontend (analytics :8001, predict :8000)
+	@trap 'kill 0' INT TERM; \
+	$(MAKE) analytics & \
+	$(MAKE) predict & \
 	$(MAKE) frontend & \
 	wait
 

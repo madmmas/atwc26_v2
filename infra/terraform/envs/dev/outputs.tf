@@ -20,5 +20,38 @@ output "cors_origin_hint" {
 
 output "backend_api_url" {
   value       = module.frontend_cdn.backend_api_url
-  description = "Use as NEXT_PUBLIC_API_URL when running build_frontend_static.sh"
+  description = "Legacy v1 monolith URL (use api_gateway_url for v2 split APIs)"
+}
+
+output "api_gateway_url" {
+  value       = module.api_gateway.api_endpoint
+  description = "v2 HTTP API base URL (analytics + predict routes)"
+}
+
+output "analytics_api_url" {
+  value       = module.api_gateway.api_endpoint
+  description = "Use as NEXT_PUBLIC_ANALYTICS_API_URL at static build time"
+}
+
+output "predict_api_url" {
+  value       = module.api_gateway.api_endpoint
+  description = "Use as NEXT_PUBLIC_PREDICT_API_URL at static build time"
+}
+
+output "data_bucket_name" {
+  value       = module.s3_data.bucket_name
+  description = "S3 bucket for ETL-published parquet/JSON artifacts"
+}
+
+output "dynamodb_table_name" {
+  value       = module.dynamodb.table_name
+  description = "DynamoDB manifest table for published data"
+}
+
+output "lambda_analytics_name" {
+  value = module.lambda_analytics.function_name
+}
+
+output "lambda_predict_name" {
+  value = module.lambda_predict.function_name
 }

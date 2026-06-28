@@ -41,6 +41,9 @@ etl/scrape/*.log
 # than for the live WC26 pipeline.
 data/history_raw/
 
+# Shared Lambda build artifacts
+infra/build/
+
 # frontend
 frontend/out/
 

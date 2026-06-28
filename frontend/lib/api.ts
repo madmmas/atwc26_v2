@@ -1,8 +1,15 @@
-// Thin typed client for the AnalyseThisWC26 backend.
-// `??` (not `||`) so an explicit empty string means "same-origin" — used when
-// the app is served behind Nginx that routes /api to the backend.
-export const API_BASE =
+// Split v2 API bases (Issue 7). Falls back to monolith NEXT_PUBLIC_API_URL for v1.
+const MONOLITH_BASE =
   process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+
+export const ANALYTICS_BASE =
+  process.env.NEXT_PUBLIC_ANALYTICS_API_URL ?? MONOLITH_BASE;
+
+export const PREDICT_BASE =
+  process.env.NEXT_PUBLIC_PREDICT_API_URL ?? MONOLITH_BASE;
+
+// Kept for backwards compatibility with single-URL builds.
+export const API_BASE = MONOLITH_BASE;
 
 export type Player = {
   player_id: number;
@@ -78,7 +85,7 @@ export type Prediction = {
 };
 
 async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${API_BASE}${path}`, { cache: "no-store" });
+  const res = await fetch(`${ANALYTICS_BASE}${path}`, { cache: "no-store" });
   if (!res.ok) throw new Error(`API ${path} -> ${res.status}`);
   return res.json();
 }
@@ -95,7 +102,7 @@ export const api = {
       `/api/leaderboard?metric=${metric}${role ? `&role=${role}` : ""}`
     ),
   predict: async (body: unknown): Promise<Prediction> => {
-    const res = await fetch(`${API_BASE}/api/predict`, {
+    const res = await fetch(`${PREDICT_BASE}/api/predict`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
