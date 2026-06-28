@@ -20,7 +20,8 @@ A two-service web app plus a reverse proxy:
 ```
 
 * **Frontend** — Next.js (React/TS/Tailwind/Recharts). Static-ish; calls the API
-  from the browser. Served as a self-contained `standalone` build.
+  from the browser. Served as a self-contained `standalone` build (Docker) or
+  as a **static export** (`frontend/out/`) for S3 + CloudFront (v2).
 * **Backend** — FastAPI app, run by Gunicorn with Uvicorn workers. Loads the
   scraped parquet once at startup and caches all aggregates in memory.
 * **Nginx** — single public origin: routes `/api/*` to the backend and everything
@@ -51,6 +52,50 @@ cp .env.example .env.local        # one-time — NEXT_PUBLIC_API_URL=http://loca
 npm install                       # one-time (re-run when package.json changes)
 npm run dev                        # http://localhost:3000
 ```
+
+---
+
+## 2a. Static frontend export (S3 / CloudFront)
+
+For v2, the frontend can be built as **pure static files** and uploaded to S3.
+The browser calls the **v1 backend URL** directly (CORS must allow the CDN
+origin until Issue 7 splits APIs).
+
+**Build** (writes `frontend/out/`):
+
+```bash
+# Default API: https://atwc26.com (v1 production)
+./infra/scripts/build_frontend_static.sh
+
+# Or override for a staging/local backend:
+NEXT_PUBLIC_API_URL=http://localhost:8000 ./infra/scripts/build_frontend_static.sh
+```
+
+**Preview locally:**
+
+```bash
+npx serve frontend/out
+# open http://localhost:3000 — API calls go to NEXT_PUBLIC_API_URL baked at build time
+```
+
+**Deploy to S3** (manual until Issue 5 Terraform):
+
+```bash
+export ATWC26_FRONTEND_BUCKET=your-bucket-name
+# optional after CloudFront exists (Issue 5):
+# export ATWC26_CLOUDFRONT_DISTRIBUTION_ID=E1234567890
+./infra/scripts/deploy_frontend.sh
+```
+
+| Variable | Default | Purpose |
+|---|---|---|
+| `NEXT_PUBLIC_API_URL` | `https://atwc26.com` | Backend API baked into the static bundle |
+| `NEXT_OUTPUT_MODE` | *(unset)* | Set to `export` by the build script; Docker uses `standalone` |
+| `ATWC26_FRONTEND_BUCKET` | — | Required for `deploy_frontend.sh` |
+| `ATWC26_CLOUDFRONT_DISTRIBUTION_ID` | — | Optional CloudFront invalidation after sync |
+
+Docker Compose (`make docker`) continues to use `output: "standalone"` — static
+export is a separate build path and does not replace the v1 monolith stack.
 
 ---
 
@@ -143,7 +188,14 @@ serve tens of thousands of concurrent fans for this workload.
 **Frontend**
 | Var | Default | Purpose |
 |---|---|---|
-| `NEXT_PUBLIC_API_URL` | `http://localhost:8000` | API base; set `""` for same-origin behind Nginx |
+| `NEXT_PUBLIC_API_URL` | `http://localhost:8000` | API base; set `""` for same-origin behind Nginx; set full URL for static S3 export |
+| `NEXT_OUTPUT_MODE` | *(unset → standalone)* | `export` for static S3 build (set by `build_frontend_static.sh`) |
+
+**Static deploy (S3)**
+| Var | Default | Purpose |
+|---|---|---|
+| `ATWC26_FRONTEND_BUCKET` | — | Target S3 bucket for `deploy_frontend.sh` |
+| `ATWC26_CLOUDFRONT_DISTRIBUTION_ID` | — | Optional invalidation after S3 sync |
 
 ---
 
