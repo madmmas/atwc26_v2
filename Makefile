@@ -73,7 +73,8 @@ verify: ## Check whether one-time setup steps are done
 	@echo "timelines: $$([ -f data/match_events.json ] && echo OK || echo MISSING)"
 
 backend: setup-backend ## Run FastAPI dev server (http://localhost:8000)
-	cd $(BACKEND_DIR) && $(BACKEND_PY) -m uvicorn app.main:app --reload --port 8000
+	cd $(BACKEND_DIR) && ATWC26_CORS_ORIGINS="http://localhost:3000,http://127.0.0.1:3000,http://localhost:3001,http://127.0.0.1:3001" \
+		$(BACKEND_PY) -m uvicorn app.main:app --reload --port 8000
 
 frontend: setup-frontend ## Run Next.js dev server (http://localhost:3000)
 	cd $(FRONTEND_DIR) && npm run dev
