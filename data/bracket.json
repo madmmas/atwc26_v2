@@ -31,9 +31,9 @@
             "team_name": "Brazil"
           },
           "slot_b": {
-            "type": "group_rank",
-            "group": "F",
-            "rank": 2
+            "type": "team",
+            "team_id": "627",
+            "team_name": "Japan"
           },
           "score_a": "0",
           "score_b": "0",
@@ -49,14 +49,9 @@
             "team_name": "Germany"
           },
           "slot_b": {
-            "type": "third_place",
-            "candidate_groups": [
-              "A",
-              "B",
-              "C",
-              "D",
-              "F"
-            ]
+            "type": "team",
+            "team_id": "210",
+            "team_name": "Paraguay"
           },
           "score_a": "0",
           "score_b": "0",
@@ -67,9 +62,9 @@
           "kickoff_utc": "2026-06-30T01:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "F",
-            "rank": 1
+            "type": "team",
+            "team_id": "449",
+            "team_name": "Netherlands"
           },
           "slot_b": {
             "type": "team",
@@ -85,14 +80,14 @@
           "kickoff_utc": "2026-06-30T17:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "E",
-            "rank": 2
+            "type": "team",
+            "team_id": "4789",
+            "team_name": "Ivory Coast"
           },
           "slot_b": {
-            "type": "group_rank",
-            "group": "I",
-            "rank": 2
+            "type": "team",
+            "team_id": "464",
+            "team_name": "Norway"
           },
           "score_a": "0",
           "score_b": "0",
@@ -103,19 +98,14 @@
           "kickoff_utc": "2026-06-30T21:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "I",
-            "rank": 1
+            "type": "team",
+            "team_id": "478",
+            "team_name": "France"
           },
           "slot_b": {
-            "type": "third_place",
-            "candidate_groups": [
-              "C",
-              "D",
-              "F",
-              "G",
-              "H"
-            ]
+            "type": "team",
+            "team_id": "466",
+            "team_name": "Sweden"
           },
           "score_a": "0",
           "score_b": "0",
@@ -131,14 +121,9 @@
             "team_name": "Mexico"
           },
           "slot_b": {
-            "type": "third_place",
-            "candidate_groups": [
-              "C",
-              "E",
-              "F",
-              "H",
-              "I"
-            ]
+            "type": "team",
+            "team_id": "209",
+            "team_name": "Ecuador"
           },
           "score_a": "0",
           "score_b": "0",
@@ -149,19 +134,14 @@
           "kickoff_utc": "2026-07-01T16:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "L",
-            "rank": 1
+            "type": "team",
+            "team_id": "448",
+            "team_name": "England"
           },
           "slot_b": {
-            "type": "third_place",
-            "candidate_groups": [
-              "E",
-              "H",
-              "I",
-              "J",
-              "K"
-            ]
+            "type": "team",
+            "team_id": "2850",
+            "team_name": "Congo DR"
           },
           "score_a": "0",
           "score_b": "0",
@@ -172,19 +152,14 @@
           "kickoff_utc": "2026-07-01T20:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "G",
-            "rank": 1
+            "type": "team",
+            "team_id": "459",
+            "team_name": "Belgium"
           },
           "slot_b": {
-            "type": "third_place",
-            "candidate_groups": [
-              "A",
-              "E",
-              "H",
-              "I",
-              "J"
-            ]
+            "type": "team",
+            "team_id": "654",
+            "team_name": "Senegal"
           },
           "score_a": "0",
           "score_b": "0",
@@ -200,14 +175,9 @@
             "team_name": "United States"
           },
           "slot_b": {
-            "type": "third_place",
-            "candidate_groups": [
-              "B",
-              "E",
-              "F",
-              "I",
-              "J"
-            ]
+            "type": "team",
+            "team_id": "452",
+            "team_name": "Bosnia-Herzegovina"
           },
           "score_a": "0",
           "score_b": "0",
@@ -218,14 +188,14 @@
           "kickoff_utc": "2026-07-02T19:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "H",
-            "rank": 1
+            "type": "team",
+            "team_id": "164",
+            "team_name": "Spain"
           },
           "slot_b": {
-            "type": "group_rank",
-            "group": "J",
-            "rank": 2
+            "type": "team",
+            "team_id": "474",
+            "team_name": "Austria"
           },
           "score_a": "0",
           "score_b": "0",
@@ -236,14 +206,14 @@
           "kickoff_utc": "2026-07-02T23:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "K",
-            "rank": 2
+            "type": "team",
+            "team_id": "482",
+            "team_name": "Portugal"
           },
           "slot_b": {
-            "type": "group_rank",
-            "group": "L",
-            "rank": 2
+            "type": "team",
+            "team_id": "477",
+            "team_name": "Croatia"
           },
           "score_a": "0",
           "score_b": "0",
@@ -259,14 +229,9 @@
             "team_name": "Switzerland"
           },
           "slot_b": {
-            "type": "third_place",
-            "candidate_groups": [
-              "E",
-              "F",
-              "G",
-              "I",
-              "J"
-            ]
+            "type": "team",
+            "team_id": "624",
+            "team_name": "Algeria"
           },
           "score_a": "0",
           "score_b": "0",
@@ -277,14 +242,14 @@
           "kickoff_utc": "2026-07-03T18:00Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "D",
-            "rank": 2
+            "type": "team",
+            "team_id": "628",
+            "team_name": "Australia"
           },
           "slot_b": {
-            "type": "group_rank",
-            "group": "G",
-            "rank": 2
+            "type": "team",
+            "team_id": "2620",
+            "team_name": "Egypt"
           },
           "score_a": "0",
           "score_b": "0",
@@ -300,9 +265,9 @@
             "team_name": "Argentina"
           },
           "slot_b": {
-            "type": "group_rank",
-            "group": "H",
-            "rank": 2
+            "type": "team",
+            "team_id": "2597",
+            "team_name": "Cape Verde"
           },
           "score_a": "0",
           "score_b": "0",
@@ -313,19 +278,14 @@
           "kickoff_utc": "2026-07-04T01:30Z",
           "completed": false,
           "slot_a": {
-            "type": "group_rank",
-            "group": "K",
-            "rank": 1
+            "type": "team",
+            "team_id": "208",
+            "team_name": "Colombia"
           },
           "slot_b": {
-            "type": "third_place",
-            "candidate_groups": [
-              "D",
-              "E",
-              "I",
-              "J",
-              "L"
-            ]
+            "type": "team",
+            "team_id": "4469",
+            "team_name": "Ghana"
           },
           "score_a": "0",
           "score_b": "0",
