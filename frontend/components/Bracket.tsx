@@ -50,6 +50,15 @@ function resolveSlot(
   return { name: `${slot.round} ${slot.position} ${suffix}`, resolved: false };
 }
 
+// Browser-local date/time — no explicit timeZone, so Intl picks up the
+// viewer's own locale/timezone automatically rather than a fixed one.
+function formatKickoff(iso: string): string {
+  return new Date(iso).toLocaleString(undefined, {
+    weekday: "short", month: "short", day: "numeric",
+    hour: "numeric", minute: "2-digit",
+  });
+}
+
 export function Bracket({
   bracket,
   rankedGroups,
@@ -76,6 +85,9 @@ export function Bracket({
               const b = resolveSlot(m.slot_b, rankedGroups, qualifyingThirds);
               return (
                 <div key={m.game_id} className="rounded-lg border border-pitch-edge/60 bg-pitch-card p-2">
+                  <div className="mb-1 text-center text-[10px] text-faint">
+                    {m.completed ? "Final" : formatKickoff(m.kickoff_utc)}
+                  </div>
                   {[a, b].map((slot, i) => (
                     <div
                       key={i}

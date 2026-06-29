@@ -19,7 +19,7 @@ PIP           ?= pip3
 
 .PHONY: help setup setup-backend setup-frontend setup-scraper setup-test verify \
         backend frontend dev schedule scrape scrape-force analyze events squads groups \
-        test-e2e k6-smoke k6-journey up docker down restart-backend health
+        test-e2e k6-smoke k6-journey up docker down restart-backend health deploy
 
 help: ## Show available targets
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make <target>\n\nTargets:\n"} \
@@ -124,5 +124,9 @@ health: ## Poll API health endpoint
 	@curl -fs http://localhost:8000/api/health && echo
 
 refresh: scrape events groups restart-backend ## Scrape new games, rebuild timelines/standings/bracket, restart Docker backend
+
+deploy: ## Rebuild + restart the stack, then immediately refresh data (instead of waiting for the next cron tick)
+	docker compose up -d --build
+	$(MAKE) refresh
 
 refresh-full: schedule scrape events squads groups restart-backend ## Discover new fixtures/squads, then refresh
