@@ -11,6 +11,9 @@ SCRAPER_DIR   := $(ETL_DIR)/scrape
 E2E_DIR       := $(ROOT)/e2e
 K6_DIR        := $(ROOT)/k6
 K6_BASE_URL   ?= https://atwc26.com
+K6_BASELINE_URL ?= https://atwc26.com
+K6_CANDIDATE_ANALYTICS_URL ?= http://localhost:8001
+K6_CANDIDATE_PREDICT_URL ?= http://localhost:8000
 BACKEND_VENV  := $(BACKEND_DIR)/.venv
 BACKEND_PY    := $(BACKEND_VENV)/bin/python
 BACKEND_PIP   := $(BACKEND_VENV)/bin/pip
@@ -29,7 +32,8 @@ CORE_PKG      := $(ROOT)/packages/atwc26_core
         test-e2e test-etl test-contract e2e-v2-local etl-local etl-publish \
         build-frontend-static build-frontend-static-v2 serve-frontend-static \
         test-etl etl-local etl-publish \
-        k6-smoke k6-journey up docker down restart-backend health
+        k6-smoke k6-journey k6-load k6-stress k6-ab \
+        up docker down restart-backend health
 
 help: ## Show available targets
 	@awk 'BEGIN {FS = ":.*##"; printf "Usage: make <target>\n\nTargets:\n"} \
@@ -134,6 +138,18 @@ k6-smoke: ## k6 smoke test against v1 API (default: production)
 
 k6-journey: ## k6 user journey + baseline JSON in reports/
 	ATWC26_BASE_URL=$(K6_BASE_URL) $(K6_DIR)/run.sh journey
+
+k6-load: ## k6 ramped load test (5 VUs) + JSON report
+	ATWC26_BASE_URL=$(K6_BASE_URL) $(K6_DIR)/run.sh load
+
+k6-stress: ## k6 stress test (10 VUs) + JSON report
+	ATWC26_BASE_URL=$(K6_BASE_URL) $(K6_DIR)/run.sh stress
+
+k6-ab: ## A/B compare v1 baseline vs v2 candidate; writes reports/ab-diff-*.json
+	ATWC26_PERF_BASELINE_URL=$(K6_BASELINE_URL) \
+	ATWC26_PERF_CANDIDATE_ANALYTICS_URL=$(K6_CANDIDATE_ANALYTICS_URL) \
+	ATWC26_PERF_CANDIDATE_PREDICT_URL=$(K6_CANDIDATE_PREDICT_URL) \
+	$(K6_DIR)/compare_ab.sh
 
 verify: ## Check whether one-time setup steps are done
 	@echo "venv:      $$([ -d $(BACKEND_VENV) ] && echo OK || echo MISSING)"

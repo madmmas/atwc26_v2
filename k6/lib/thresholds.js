@@ -17,3 +17,15 @@ export const journey = {
   'http_req_duration{endpoint:predict}': ['p(95)<10000'],
   checks: ['rate>0.90'],
 };
+
+export const load = {
+  http_req_failed: ['rate<0.15'],
+  http_req_duration: ['p(95)<10000'],
+  checks: ['rate>0.85'],
+};
+
+export const stress = {
+  http_req_failed: ['rate<0.25'],
+  http_req_duration: ['p(95)<15000'],
+  checks: ['rate>0.75'],
+};

@@ -29,11 +29,41 @@ function endpointMetrics(data) {
   return out;
 }
 
+function urlsFromEnv() {
+  const base = (__ENV.ATWC26_BASE_URL || 'https://atwc26.com').replace(/\/$/, '');
+  const analytics = (
+    __ENV.ATWC26_ANALYTICS_URL ||
+    __ENV.ATWC26_PERF_CANDIDATE_ANALYTICS_URL ||
+    base
+  ).replace(/\/$/, '');
+  const predict = (
+    __ENV.ATWC26_PREDICT_URL ||
+    __ENV.ATWC26_PERF_CANDIDATE_PREDICT_URL ||
+    base
+  ).replace(/\/$/, '');
+  return { base, analytics, predict };
+}
+
+export function reportFilename(testType = 'journey') {
+  const stamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const stack = __ENV.ATWC26_K6_STACK || 'baseline';
+  const dir = __ENV.ATWC26_REPORT_DIR || 'reports';
+  if (stack === 'baseline' && !__ENV.ATWC26_K6_STACK) {
+    return `${dir}/baseline-${stamp}.json`;
+  }
+  return `${dir}/${testType}-${stack}-${stamp}.json`;
+}
+
 export function baselineSummary(data) {
+  const urls = urlsFromEnv();
+  const testType = __ENV.ATWC26_K6_TEST_TYPE || 'journey';
   return {
     generated_at: new Date().toISOString(),
-    base_url: baseUrlFromEnv(),
-    test_type: 'journey',
+    stack: __ENV.ATWC26_K6_STACK || 'baseline',
+    base_url: urls.base,
+    analytics_url: urls.analytics,
+    predict_url: urls.predict,
+    test_type: testType,
     state: data.state || {},
     metrics: {
       http_req_duration: metricValues(data, 'http_req_duration'),
@@ -45,10 +75,6 @@ export function baselineSummary(data) {
     endpoints: endpointMetrics(data),
     threshold_results: summarizeThresholds(data),
   };
-}
-
-function baseUrlFromEnv() {
-  return (__ENV.ATWC26_BASE_URL || 'https://atwc26.com').replace(/\/$/, '');
 }
 
 function summarizeThresholds(data) {

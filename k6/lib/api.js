@@ -1,13 +1,13 @@
 import http from 'k6/http';
 import { check, sleep } from 'k6';
 
-import { baseUrl, defaultHeaders } from './config.js';
+import { analyticsUrl, defaultHeaders, predictUrl } from './config.js';
 
 const FORMATION = { GK: 1, DEF: 4, MID: 3, FWD: 3 };
 const PAUSE_SEC = Number(__ENV.ATWC26_K6_PAUSE_SEC || 0.15);
 
 export function getJson(path, endpoint) {
-  const res = http.get(`${baseUrl}${path}`, {
+  const res = http.get(`${analyticsUrl}${path}`, {
     headers: defaultHeaders,
     tags: { endpoint },
   });
@@ -26,7 +26,7 @@ export function getJson(path, endpoint) {
 }
 
 export function postJson(path, body, endpoint) {
-  const res = http.post(`${baseUrl}${path}`, JSON.stringify(body), {
+  const res = http.post(`${predictUrl}${path}`, JSON.stringify(body), {
     headers: defaultHeaders,
     tags: { endpoint },
   });

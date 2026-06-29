@@ -17,7 +17,7 @@ fi
 
 SCRIPT="${1:-}"
 if [[ -z "$SCRIPT" ]]; then
-  echo "usage: $0 smoke|journey" >&2
+  echo "usage: $0 smoke|journey|load|stress" >&2
   exit 1
 fi
 
@@ -30,8 +30,16 @@ case "$SCRIPT" in
   journey)
     exec k6 run "$K6_DIR/scripts/journey.js"
     ;;
+  load)
+    export ATWC26_K6_TEST_TYPE=load
+    exec k6 run "$K6_DIR/scripts/load.js"
+    ;;
+  stress)
+    export ATWC26_K6_TEST_TYPE=stress
+    exec k6 run "$K6_DIR/scripts/stress.js"
+    ;;
   *)
-    echo "unknown script: $SCRIPT (expected smoke or journey)" >&2
+    echo "unknown script: $SCRIPT (expected smoke, journey, load, or stress)" >&2
     exit 1
     ;;
 esac

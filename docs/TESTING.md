@@ -195,6 +195,60 @@ make k6-journey
 ls reports/baseline-*.json
 ```
 
+### 6a. k6 A/B — v1 baseline vs v2 candidate (Issue 8)
+
+Compare production (or any v1 URL) against the v2 split API stack:
+
+```bash
+make k6-ab \
+  K6_BASELINE_URL=https://atwc26.com \
+  K6_CANDIDATE_ANALYTICS_URL=https://xxxx.execute-api.us-east-1.amazonaws.com \
+  K6_CANDIDATE_PREDICT_URL=https://xxxx.execute-api.us-east-1.amazonaws.com
+```
+
+Local candidate (split APIs on laptop):
+
+```bash
+make k6-ab \
+  K6_BASELINE_URL=https://atwc26.com \
+  K6_CANDIDATE_ANALYTICS_URL=http://localhost:8001 \
+  K6_CANDIDATE_PREDICT_URL=http://localhost:8000
+```
+
+Writes:
+
+- `reports/journey-v1-<timestamp>.json` — baseline run
+- `reports/journey-v2-<timestamp>.json` — candidate run
+- `reports/ab-diff-<timestamp>.json` — comparison result
+
+**Load / stress** (single stack, no A/B):
+
+```bash
+make k6-load    # ramp to 5 VUs
+make k6-stress  # ramp to 10 VUs
+```
+
+**A/B pass thresholds** (enforced by `k6/compare_summaries.py`):
+
+| Metric | Pass rule |
+|--------|-----------|
+| `http_req_failed.rate` | ≤ 10% and ≤ baseline × 1.10 |
+| `http_req_duration.p95` (global) | ≤ baseline × 1.25 |
+| Endpoint p95 (`health`, `overview`, `teams`, `predict`) | ≤ baseline × 1.25 |
+
+Cutover checklist: [CUTOVER.md](CUTOVER.md). CI: `.github/workflows/performance.yml` (manual dispatch).
+
+**Environment variables (A/B)**
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `K6_BASELINE_URL` | `https://atwc26.com` | v1 monolith for baseline journey |
+| `K6_CANDIDATE_ANALYTICS_URL` | `http://localhost:8001` | v2 analytics API |
+| `K6_CANDIDATE_PREDICT_URL` | `http://localhost:8000` | v2 predict API |
+| `ATWC26_ANALYTICS_URL` | *(falls back to `ATWC26_BASE_URL`)* | Analytics origin in k6 scripts |
+| `ATWC26_PREDICT_URL` | *(falls back to `ATWC26_BASE_URL`)* | Predict origin in k6 scripts |
+| `ATWC26_K6_STACK` | `baseline` | Report filename prefix (`v1`, `v2`, …) |
+
 ---
 
 ## 7. Suggested automation stack

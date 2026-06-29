@@ -1,7 +1,9 @@
-# k6 performance baseline (v1)
+# k6 performance baseline (v1) and A/B (v2)
 
 Establish latency and error-rate baselines for the v1 monolith before the v2
 refactor. Default target is production: [atwc26.com](https://atwc26.com).
+
+Issue 8 adds **A/B comparison** against the v2 split API stack.
 
 ## Prerequisites
 
@@ -10,14 +12,6 @@ Install [k6](https://grafana.com/docs/k6/latest/set-up/install-k6/):
 ```bash
 # macOS
 brew install k6
-
-# Linux (Debian/Ubuntu) — see docs for other distros
-sudo gpg -k
-sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg \
-  --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
-echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" \
-  | sudo tee /etc/apt/sources.list.d/k6.list
-sudo apt-get update && sudo apt-get install k6
 ```
 
 ## Quick start
@@ -27,76 +21,57 @@ From the repo root:
 ```bash
 make k6-smoke      # 1 VU, health + overview
 make k6-journey    # ramped VUs, full API journey + JSON report
+make k6-load       # 5 VU load test
+make k6-stress     # 10 VU stress test
+make k6-ab         # v1 vs v2 A/B (needs candidate URLs)
 ```
 
-Or run the wrapper directly:
+## A/B comparison (v1 vs v2)
 
 ```bash
-./k6/run.sh smoke
-./k6/run.sh journey
+make k6-ab \
+  K6_BASELINE_URL=https://atwc26.com \
+  K6_CANDIDATE_ANALYTICS_URL=http://localhost:8001 \
+  K6_CANDIDATE_PREDICT_URL=http://localhost:8000
 ```
+
+Outputs `reports/ab-diff-<timestamp>.json`. See [docs/CUTOVER.md](../docs/CUTOVER.md)
+for pass thresholds.
 
 ## Environment variables
 
 | Variable | Default | Purpose |
 |----------|---------|---------|
-| `ATWC26_BASE_URL` | `https://atwc26.com` | API origin (no trailing slash) |
-| `ATWC26_REPORT_DIR` | `reports/` | Where journey baseline JSON is written |
-| `ATWC26_K6_PAUSE_SEC` | `0.15` | Pause between API calls (respects prod rate limits) |
-
-Examples:
-
-```bash
-# Local Docker stack (nginx on :8080)
-ATWC26_BASE_URL=http://localhost:8080 make k6-smoke
-
-# Custom report location
-ATWC26_REPORT_DIR=/tmp/atwc26-reports make k6-journey
-```
+| `ATWC26_BASE_URL` | `https://atwc26.com` | v1 monolith API origin |
+| `ATWC26_ANALYTICS_URL` | falls back to base | v2 analytics origin |
+| `ATWC26_PREDICT_URL` | falls back to base | v2 predict origin |
+| `ATWC26_REPORT_DIR` | `reports/` | JSON report output |
+| `ATWC26_K6_PAUSE_SEC` | `0.15` | Pause between calls (prod rate limit) |
+| `ATWC26_K6_STACK` | `baseline` | Report prefix (`v1`, `v2`) |
+| `K6_BASELINE_URL` | `https://atwc26.com` | Makefile: v1 A/B baseline |
+| `K6_CANDIDATE_ANALYTICS_URL` | `http://localhost:8001` | Makefile: v2 analytics |
+| `K6_CANDIDATE_PREDICT_URL` | `http://localhost:8000` | Makefile: v2 predict |
 
 ## Layout
 
 ```text
 k6/
   lib/
-    config.js      # base URL, headers
-    scenarios.js   # VU / duration profiles
+    config.js      # base + split API URLs
+    scenarios.js   # smoke, journey, load, stress profiles
     thresholds.js  # pass/fail gates
     api.js         # shared HTTP helpers + user journey
-    summary.js     # baseline JSON shape for Issue 8 A/B
+    summary.js     # baseline JSON shape + report paths
   scripts/
-    smoke.js       # minimal readiness check
-    journey.js     # overview → explore → predict flow
+    smoke.js
+    journey.js
+    load.js
+    stress.js
+  compare_ab.sh      # run v1 + v2 journeys, diff summaries
+  compare_summaries.py
   run.sh
   README.md
-reports/           # gitignored baseline JSON (journey only)
+reports/           # gitignored JSON baselines and ab-diff files
 ```
 
-## Scripts
-
-### `smoke.js`
-
-Single iteration against `/api/health` and `/api/overview`. Use after deploys or
-before a longer journey run.
-
-### `journey.js`
-
-Simulates a typical session:
-
-1. Health + overview
-2. Teams list, players, leaderboard
-3. Match list + first match detail
-4. Build two 4-3-3 XIs and `POST /api/predict`
-
-Writes `reports/baseline-<timestamp>.json` with aggregate latency, error rate,
-and per-endpoint `p95` values. This file is the v1 reference for v2 A/B
-comparison (Issue 8).
-
-## Makefile targets
-
-| Target | Description |
-|--------|-------------|
-| `make k6-smoke` | Fast smoke test |
-| `make k6-journey` | Journey + baseline JSON |
-
-See also [docs/TESTING.md](../docs/TESTING.md) for the full QA guide.
+See [docs/TESTING.md](../docs/TESTING.md) for the full QA guide.

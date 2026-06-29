@@ -1,0 +1,47 @@
+name: Performance
+
+on:
+  workflow_dispatch:
+    inputs:
+      baseline_url:
+        description: v1 baseline API URL
+        required: false
+        default: https://atwc26.com
+      candidate_analytics_url:
+        description: v2 analytics API URL
+        required: true
+      candidate_predict_url:
+        description: v2 predict API URL
+        required: true
+
+jobs:
+  k6-ab:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install k6
+        run: |
+          sudo gpg -k
+          sudo gpg --no-default-keyring --keyring /usr/share/keyrings/k6-archive-keyring.gpg \
+            --keyserver hkp://keyserver.ubuntu.com:80 \
+            --recv-keys C5AD17C747E3415A3642D57D77C6C491D6AC1D69
+          echo "deb [signed-by=/usr/share/keyrings/k6-archive-keyring.gpg] https://dl.k6.io/deb stable main" \
+            | sudo tee /etc/apt/sources.list.d/k6.list
+          sudo apt-get update
+          sudo apt-get install -y k6
+
+      - name: Run k6 A/B comparison
+        run: |
+          make k6-ab \
+            K6_BASELINE_URL="${{ inputs.baseline_url }}" \
+            K6_CANDIDATE_ANALYTICS_URL="${{ inputs.candidate_analytics_url }}" \
+            K6_CANDIDATE_PREDICT_URL="${{ inputs.candidate_predict_url }}"
+
+      - name: Upload reports
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: k6-ab-reports
+          path: reports/
+          if-no-files-found: warn
