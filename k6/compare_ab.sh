@@ -27,12 +27,27 @@ mkdir -p "$REPORTS_DIR"
 STAMP="$(date -u +%Y-%m-%dT%H-%M-%SZ)"
 DIFF_PATH="$REPORTS_DIR/ab-diff-${STAMP}.json"
 
+preflight_candidate() {
+  echo "==> preflight candidate APIs"
+  curl -fsS "${CANDIDATE_ANALYTICS}/api/health" >/dev/null \
+    || { echo "error: analytics not reachable at ${CANDIDATE_ANALYTICS} (run: make analytics)" >&2; exit 1; }
+  curl -fsS "${CANDIDATE_PREDICT}/api/health" >/dev/null \
+    || { echo "error: predict not reachable at ${CANDIDATE_PREDICT} (run: make predict)" >&2; exit 1; }
+  echo "candidate APIs OK"
+}
+
+# --no-thresholds: pass/fail gate is compare_summaries.py, not per-run k6 thresholds.
 echo "==> v1 baseline journey: $BASELINE_URL"
-ATWC26_BASE_URL="$BASELINE_URL" \
-ATWC26_REPORT_DIR="$REPORTS_DIR" \
-ATWC26_K6_STACK=v1 \
-ATWC26_K6_TEST_TYPE=journey \
-k6 run "$K6_DIR/scripts/journey.js"
+(
+  unset ATWC26_ANALYTICS_URL ATWC26_PREDICT_URL \
+        ATWC26_PERF_CANDIDATE_ANALYTICS_URL ATWC26_PERF_CANDIDATE_PREDICT_URL
+  export ATWC26_BASE_URL="$BASELINE_URL"
+  export ATWC26_REPORT_DIR="$REPORTS_DIR"
+  export ATWC26_K6_STACK=v1
+  export ATWC26_K6_TEST_TYPE=journey
+  export ATWC26_K6_PAUSE_SEC="${ATWC26_K6_PAUSE_SEC:-0.15}"
+  k6 run --no-thresholds "$K6_DIR/scripts/journey.js"
+)
 
 BASELINE_JSON="$(ls -t "$REPORTS_DIR"/journey-v1-*.json 2>/dev/null | head -1)"
 if [[ -z "$BASELINE_JSON" ]]; then
@@ -44,12 +59,17 @@ if [[ -z "$BASELINE_JSON" || ! -f "$BASELINE_JSON" ]]; then
 fi
 
 echo "==> v2 candidate journey: analytics=$CANDIDATE_ANALYTICS predict=$CANDIDATE_PREDICT"
-ATWC26_ANALYTICS_URL="$CANDIDATE_ANALYTICS" \
-ATWC26_PREDICT_URL="$CANDIDATE_PREDICT" \
-ATWC26_REPORT_DIR="$REPORTS_DIR" \
-ATWC26_K6_STACK=v2 \
-ATWC26_K6_TEST_TYPE=journey \
-k6 run "$K6_DIR/scripts/journey.js"
+preflight_candidate
+(
+  unset ATWC26_BASE_URL ATWC26_PERF_CANDIDATE_ANALYTICS_URL ATWC26_PERF_CANDIDATE_PREDICT_URL
+  export ATWC26_ANALYTICS_URL="$CANDIDATE_ANALYTICS"
+  export ATWC26_PREDICT_URL="$CANDIDATE_PREDICT"
+  export ATWC26_REPORT_DIR="$REPORTS_DIR"
+  export ATWC26_K6_STACK=v2
+  export ATWC26_K6_TEST_TYPE=journey
+  export ATWC26_K6_PAUSE_SEC="${ATWC26_K6_PAUSE_SEC:-0.15}"
+  k6 run --no-thresholds "$K6_DIR/scripts/journey.js"
+)
 
 CANDIDATE_JSON="$(ls -t "$REPORTS_DIR"/journey-v2-*.json 2>/dev/null | head -1)"
 if [[ -z "$CANDIDATE_JSON" || ! -f "$CANDIDATE_JSON" ]]; then

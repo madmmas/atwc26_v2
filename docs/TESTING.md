@@ -206,14 +206,20 @@ make k6-ab \
   K6_CANDIDATE_PREDICT_URL=https://xxxx.execute-api.us-east-1.amazonaws.com
 ```
 
-Local candidate (split APIs on laptop):
+Local candidate (split APIs on laptop — **both must be running**):
 
 ```bash
+make analytics   # terminal 1 — :8001
+make predict     # terminal 2 — :8000
 make k6-ab \
   K6_BASELINE_URL=https://atwc26.com \
   K6_CANDIDATE_ANALYTICS_URL=http://localhost:8001 \
   K6_CANDIDATE_PREDICT_URL=http://localhost:8000
 ```
+
+`compare_ab.sh` isolates env per run so v1 always hits `K6_BASELINE_URL`
+(not localhost). k6 thresholds are disabled during A/B; pass/fail is
+`compare_summaries.py`.
 
 Writes:
 
