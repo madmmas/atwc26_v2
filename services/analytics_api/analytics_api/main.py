@@ -4,8 +4,16 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-# Repo root on path for services.shared and editable atwc26_core in local dev.
-_REPO_ROOT = Path(__file__).resolve().parents[3]
+# Repo root on path for services.shared (local dev + Lambda zip layout).
+def _repo_root() -> Path:
+    here = Path(__file__).resolve()
+    for parent in (here.parent, *here.parents):
+        if (parent / "services" / "shared").is_dir():
+            return parent
+    return here.parents[3]
+
+
+_REPO_ROOT = _repo_root()
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 

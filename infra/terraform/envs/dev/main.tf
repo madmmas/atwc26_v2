@@ -50,13 +50,25 @@ module "dynamodb" {
   tags        = local.tags
 }
 
+resource "aws_s3_object" "lambda_layer" {
+  count = local.has_lambda_zips ? 1 : 0
+
+  bucket = module.s3_data.bucket_name
+  key    = "lambda/layer-${filebase64sha256(local.layer_zip)}.zip"
+  source = local.layer_zip
+  etag   = filemd5(local.layer_zip)
+}
+
 resource "aws_lambda_layer_version" "core" {
   count = local.has_lambda_zips ? 1 : 0
 
-  layer_name          = "${var.name_prefix}-${var.environment}-core"
-  filename            = local.layer_zip
-  compatible_runtimes = ["python3.11"]
+  layer_name               = "${var.name_prefix}-${var.environment}-core"
+  s3_bucket                = aws_s3_object.lambda_layer[0].bucket
+  s3_key                   = aws_s3_object.lambda_layer[0].key
+  compatible_runtimes      = ["python3.11"]
   compatible_architectures = ["arm64"]
+
+  depends_on = [aws_s3_object.lambda_layer]
 }
 
 module "lambda_analytics" {

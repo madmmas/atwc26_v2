@@ -125,6 +125,10 @@ Frontend uses `NEXT_PUBLIC_ANALYTICS_API_URL` and `NEXT_PUBLIC_PREDICT_API_URL` 
 # writes infra/build/lambdas/{layer,analytics,predict}.zip
 ```
 
+Builds **Linux arm64** wheels (Lambda architecture), strips tests/boto3, and prunes
+pyarrow headers. If `layer.zip` is large, Terraform uploads it via S3 automatically
+(see `aws_s3_object.lambda_layer` in `envs/dev/main.tf`).
+
 ### Terraform apply (candidate API stack)
 
 After packaging:
