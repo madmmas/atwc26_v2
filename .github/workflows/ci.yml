@@ -2,11 +2,55 @@ name: CI
 
 on:
   pull_request:
+    branches: [main, refactor/v2-integration]
   push:
-    branches: [main]
+    branches: [main, refactor/v2-integration]
 
 jobs:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      etl: ${{ steps.filter.outputs.etl }}
+      services: ${{ steps.filter.outputs.services }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+      infra: ${{ steps.filter.outputs.infra }}
+      k6: ${{ steps.filter.outputs.k6 }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'backend/**'
+              - 'e2e/**'
+            etl:
+              - 'etl/**'
+              - 'packages/atwc26_core/**'
+              - 'tests/etl/**'
+              - 'requirements.txt'
+              - 'etl/requirements.txt'
+            services:
+              - 'services/**'
+              - 'packages/atwc26_core/**'
+              - 'tests/contract/**'
+            frontend:
+              - 'frontend/**'
+              - 'infra/scripts/build_frontend_static.sh'
+            infra:
+              - 'infra/**'
+            k6:
+              - 'k6/**'
+              - 'tests/k6/**'
+
   api-e2e:
+    needs: changes
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/main') ||
+      github.event.pull_request.base.ref == 'main' ||
+      needs.changes.outputs.backend == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -22,3 +66,130 @@ jobs:
 
       - name: Run API end-to-end tests
         run: pytest e2e -q -c e2e/pytest.ini
+
+  etl:
+    needs: changes
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/refactor/v2-integration' ||
+       github.event.pull_request.base.ref == 'refactor/v2-integration') &&
+      needs.changes.outputs.etl == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ETL dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e packages/atwc26_core
+          pip install pytest
+
+      - name: Transform + QA
+        run: make etl-local
+
+      - name: ETL tests
+        run: PYTHONPATH=. pytest tests/etl etl/qa -q
+
+  contract:
+    needs: changes
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/refactor/v2-integration' ||
+       github.event.pull_request.base.ref == 'refactor/v2-integration') &&
+      needs.changes.outputs.services == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install service dependencies
+        run: make setup-services
+
+      - name: Contract tests
+        run: make test-contract
+
+  v2-smoke:
+    needs: changes
+    if: |
+      (github.event_name == 'push' && github.ref == 'refs/heads/refactor/v2-integration' ||
+       github.event.pull_request.base.ref == 'refactor/v2-integration') &&
+      (needs.changes.outputs.etl == 'true' || needs.changes.outputs.services == 'true')
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: v2 local E2E gate
+        run: make e2e-v2-local
+
+  frontend-build:
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Static export build check
+        run: |
+          NEXT_PUBLIC_ANALYTICS_API_URL=http://localhost:8001 \
+          NEXT_PUBLIC_PREDICT_API_URL=http://localhost:8000 \
+          ./infra/scripts/build_frontend_static.sh
+
+  terraform-validate:
+    needs: changes
+    if: needs.changes.outputs.infra == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.0"
+
+      - name: Terraform validate
+        run: |
+          terraform -chdir=infra/terraform/envs/dev init -backend=false
+          terraform -chdir=infra/terraform/envs/dev validate
+
+  lambda-package:
+    needs: changes
+    if: needs.changes.outputs.infra == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Package Lambda artifacts
+        run: ./infra/scripts/package_lambdas.sh
+
+  k6-compare:
+    needs: changes
+    if: needs.changes.outputs.k6 == 'true'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: k6 compare_summaries unit tests
+        run: PYTHONPATH=. pytest tests/k6 -q

@@ -2,6 +2,11 @@ name: ETL
 
 on:
   workflow_dispatch:
+    inputs:
+      run_scrape:
+        description: Scrape ESPN before transform (network; manual only)
+        type: boolean
+        default: false
   schedule:
     - cron: "0 6 * * *"
 
@@ -22,13 +27,16 @@ jobs:
           pip install -e packages/atwc26_core
           pip install pytest boto3
 
-      - name: Transform + QA (uses committed data artifacts)
+      - name: Scrape ESPN data
+        if: github.event_name == 'workflow_dispatch' && inputs.run_scrape == true
         run: |
-          make etl-local
+          make schedule scrape events squads groups
+
+      - name: Transform + QA (uses committed data artifacts)
+        run: make etl-local
 
       - name: ETL tests
-        run: |
-          PYTHONPATH=. pytest tests/etl etl/qa -q
+        run: PYTHONPATH=. pytest tests/etl etl/qa -q
 
   etl-publish:
     if: github.event_name == 'workflow_dispatch'

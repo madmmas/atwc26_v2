@@ -1,0 +1,207 @@
+name: Deploy v2 candidate
+
+on:
+  workflow_dispatch:
+    inputs:
+      terraform_action:
+        description: Terraform plan or apply
+        type: choice
+        options:
+          - plan
+          - apply
+        default: plan
+      publish_etl:
+        description: Publish ETL artifacts to data bucket before deploy
+        type: boolean
+        default: false
+      deploy_frontend:
+        description: Build and sync static frontend after apply
+        type: boolean
+        default: true
+
+jobs:
+  etl-publish:
+    if: inputs.publish_etl
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install ETL dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install -e packages/atwc26_core
+          pip install boto3
+
+      - name: Transform + publish
+        env:
+          ATWC26_S3_BUCKET: ${{ secrets.ATWC26_S3_BUCKET }}
+          ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
+          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+          GITHUB_SHA: ${{ github.sha }}
+        run: |
+          make etl-local
+          make etl-publish
+
+  package-lambdas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Package Lambda artifacts
+        run: ./infra/scripts/package_lambdas.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lambda-zips
+          path: infra/build/lambdas/*.zip
+          retention-days: 1
+
+  terraform:
+    needs: [package-lambdas, etl-publish]
+    if: |
+      always() &&
+      needs.package-lambdas.result == 'success' &&
+      (needs.etl-publish.result == 'success' || needs.etl-publish.result == 'skipped')
+    runs-on: ubuntu-latest
+    env:
+      TF_DIR: infra/terraform/envs/dev
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: lambda-zips
+          path: infra/build/lambdas/
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.0"
+
+      - name: Write terraform.tfvars
+        if: env.TFVARS != ''
+        env:
+          TFVARS: ${{ secrets.ATWC26_TFVARS }}
+        run: printf '%s\n' "$TFVARS" > "$TF_DIR/terraform.tfvars"
+
+      - name: Terraform init
+        run: |
+          if [[ -n "${{ secrets.ATWC26_TF_STATE_BUCKET }}" ]]; then
+            terraform -chdir="$TF_DIR" init -input=false -reconfigure \
+              -backend-config="bucket=${{ secrets.ATWC26_TF_STATE_BUCKET }}" \
+              -backend-config="key=atwc26-v2/dev/terraform.tfstate" \
+              -backend-config="region=${AWS_REGION:-us-east-1}" \
+              -backend-config="encrypt=true"
+          else
+            echo "::warning::ATWC26_TF_STATE_BUCKET not set — init with -backend=false (apply will not persist state)"
+            terraform -chdir="$TF_DIR" init -input=false -backend=false
+          fi
+
+      - name: Terraform plan
+        if: inputs.terraform_action == 'plan'
+        run: terraform -chdir="$TF_DIR" plan -input=false -no-color
+
+      - name: Terraform apply
+        if: inputs.terraform_action == 'apply'
+        run: terraform -chdir="$TF_DIR" apply -input=false -auto-approve -no-color
+
+      - name: Capture Terraform outputs
+        id: tf
+        if: inputs.terraform_action == 'apply'
+        run: |
+          {
+            echo "api_gateway_url=$(terraform -chdir="$TF_DIR" output -raw api_gateway_url)"
+            echo "cloudfront_url=$(terraform -chdir="$TF_DIR" output -raw cloudfront_url)"
+            echo "data_bucket_name=$(terraform -chdir="$TF_DIR" output -raw data_bucket_name)"
+          } >> "$GITHUB_OUTPUT"
+
+      - name: Candidate URLs (for k6 A/B)
+        if: inputs.terraform_action == 'apply'
+        run: |
+          {
+            echo "## v2 candidate URLs"
+            echo ""
+            echo "| Target | URL |"
+            echo "|--------|-----|"
+            echo "| Frontend (CloudFront) | ${{ steps.tf.outputs.cloudfront_url }} |"
+            echo "| API Gateway (analytics + predict) | ${{ steps.tf.outputs.api_gateway_url }} |"
+            echo "| ETL data bucket | ${{ steps.tf.outputs.data_bucket_name }} |"
+            echo ""
+            echo "### k6 A/B inputs"
+            echo ""
+            echo '```bash'
+            echo "make k6-ab \\"
+            echo "  K6_BASELINE_URL=https://atwc26.com \\"
+            echo "  K6_CANDIDATE_ANALYTICS_URL=${{ steps.tf.outputs.api_gateway_url }} \\"
+            echo "  K6_CANDIDATE_PREDICT_URL=${{ steps.tf.outputs.api_gateway_url }}"
+            echo '```'
+            echo ""
+            echo "Or trigger **Performance** workflow with the candidate API Gateway URL."
+          } >> "$GITHUB_STEP_SUMMARY"
+
+  deploy-frontend:
+    needs: [terraform]
+    if: |
+      inputs.terraform_action == 'apply' &&
+      inputs.deploy_frontend &&
+      needs.terraform.result == 'success'
+    runs-on: ubuntu-latest
+    env:
+      TF_DIR: infra/terraform/envs/dev
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.0"
+
+      - name: Terraform init (read outputs)
+        run: |
+          if [[ -n "${{ secrets.ATWC26_TF_STATE_BUCKET }}" ]]; then
+            terraform -chdir="$TF_DIR" init -input=false -reconfigure \
+              -backend-config="bucket=${{ secrets.ATWC26_TF_STATE_BUCKET }}" \
+              -backend-config="key=atwc26-v2/dev/terraform.tfstate" \
+              -backend-config="region=${{ secrets.AWS_REGION }}" \
+              -backend-config="encrypt=true"
+          else
+            terraform -chdir="$TF_DIR" init -input=false -backend=false
+          fi
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Build static frontend (v2 API URLs)
+        run: |
+          API_URL="$(terraform -chdir="$TF_DIR" output -raw api_gateway_url)"
+          NEXT_PUBLIC_ANALYTICS_API_URL="$API_URL" \
+          NEXT_PUBLIC_PREDICT_API_URL="$API_URL" \
+          ./infra/scripts/build_frontend_static.sh
+
+      - name: Deploy to S3 + invalidate CloudFront
+        run: ./infra/scripts/deploy_frontend_from_tf.sh
