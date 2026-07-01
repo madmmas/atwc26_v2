@@ -21,6 +21,8 @@ locals {
   analytics_zip    = "${local.lambda_build_dir}/analytics.zip"
   predict_zip      = "${local.lambda_build_dir}/predict.zip"
   has_lambda_zips  = fileexists(local.analytics_zip) && fileexists(local.predict_zip) && fileexists(local.layer_zip)
+  layer_zip_sha256 = local.has_lambda_zips ? filebase64sha256(local.layer_zip) : ""
+  layer_zip_md5    = local.has_lambda_zips ? filemd5(local.layer_zip) : ""
 }
 
 module "frontend_cdn" {
@@ -54,9 +56,9 @@ resource "aws_s3_object" "lambda_layer" {
   count = local.has_lambda_zips ? 1 : 0
 
   bucket = module.s3_data.bucket_name
-  key    = "lambda/layer-${filebase64sha256(local.layer_zip)}.zip"
+  key    = "lambda/layer-${local.layer_zip_sha256}.zip"
   source = local.layer_zip
-  etag   = filemd5(local.layer_zip)
+  etag   = local.layer_zip_md5
 }
 
 resource "aws_lambda_layer_version" "core" {
