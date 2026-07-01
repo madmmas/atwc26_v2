@@ -47,7 +47,12 @@ cp terraform.tfvars.example terraform.tfvars
 ### 2. Plan / apply
 
 ```bash
-terraform init
+# Validate only (no remote state):
+terraform init -backend=false
+
+# Apply with remote state (recommended for CI and shared dev):
+cp backend.hcl.example backend.hcl   # edit bucket/key
+terraform init -backend-config=backend.hcl
 terraform plan
 terraform apply
 ```
@@ -173,15 +178,65 @@ ATWC26_S3_BUCKET="$(terraform output -raw data_bucket_name)" make etl-publish
 | `cors_origin_hint` | v1 `ATWC26_CORS_ORIGINS` |
 | `backend_api_url` | `build_frontend_static.sh` |
 
+## GitHub Actions (Issue 9)
+
+| Workflow | Trigger | Purpose |
+|----------|---------|---------|
+| [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) | PR/push to `main` or `refactor/v2-integration` | Path-filtered tests (e2e, ETL, contract, frontend build, terraform validate, Lambda package) |
+| [`.github/workflows/etl.yml`](../.github/workflows/etl.yml) | Daily cron + `workflow_dispatch` | Transform + QA; optional ESPN scrape + S3 publish on manual run |
+| [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) | `workflow_dispatch` | Package Lambdas → Terraform plan/apply → static frontend deploy; writes candidate URLs for k6 A/B |
+| [`.github/workflows/performance.yml`](../.github/workflows/performance.yml) | `workflow_dispatch` | k6 A/B v1 vs v2 |
+
+### CI path filters (`refactor/v2-integration`)
+
+| Job | Paths |
+|-----|-------|
+| `api-e2e` | `backend/**`, `e2e/**` (always on PRs to `main`) |
+| `etl` | `etl/**`, `packages/atwc26_core/**`, `tests/etl/**` |
+| `contract` | `services/**`, `packages/atwc26_core/**`, `tests/contract/**` |
+| `v2-smoke` | ETL or services paths → `make e2e-v2-local` |
+| `frontend-build` | `frontend/**` |
+| `terraform-validate` / `lambda-package` | `infra/**` |
+| `k6-compare` | `k6/**`, `tests/k6/**` |
+
+### Deploy workflow
+
+1. **Actions → Deploy v2 candidate → Run workflow**
+2. Choose `plan` (dry-run) or `apply` (provision/update stack).
+3. Optionally enable **Publish ETL** (uploads parquet/JSON to the data bucket first).
+4. After **apply**, the job summary lists **CloudFront URL** and **API Gateway URL** — use the latter as `K6_CANDIDATE_ANALYTICS_URL` / `K6_CANDIDATE_PREDICT_URL` in the Performance workflow or `make k6-ab`.
+
+Remote Terraform state is **required** for `apply` in CI. Set `ATWC26_TF_STATE_BUCKET` (see secrets table below).
+
+### ETL workflow
+
+- **Scheduled** (06:00 UTC): transform + QA + tests on committed `data/` artifacts.
+- **Manual** with **Run scrape** enabled: `schedule` → `scrape` → `events` → `squads` → `groups` → transform → QA → tests → publish.
+
 ## GitHub secrets / vars (Issue 9)
 
-For CI deploy workflows, store:
+Configure under **Settings → Secrets and variables → Actions**.
 
-| Name | Source |
-|------|--------|
-| `ATWC26_FRONTEND_BUCKET` | `terraform output bucket_name` |
-| `ATWC26_CLOUDFRONT_DISTRIBUTION_ID` | `terraform output cloudfront_distribution_id` |
-| `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` | IAM user or OIDC role for sync |
+| Name | Required for | Source |
+|------|----------------|--------|
+| `AWS_ACCESS_KEY_ID` | ETL publish, deploy | IAM user or OIDC role |
+| `AWS_SECRET_ACCESS_KEY` | ETL publish, deploy | IAM credentials |
+| `AWS_REGION` | All AWS jobs | e.g. `us-east-1` |
+| `ATWC26_S3_BUCKET` | ETL publish | `terraform output data_bucket_name` |
+| `ATWC26_DYNAMODB_TABLE` | ETL publish | `terraform output dynamodb_table_name` |
+| `ATWC26_TF_STATE_BUCKET` | Deploy `apply` | S3 bucket for Terraform state |
+| `ATWC26_TFVARS` | Deploy (optional) | Multiline HCL — copy of `terraform.tfvars` if not using defaults |
+| `ATWC26_FRONTEND_BUCKET` | Manual `deploy_frontend.sh` only | `terraform output bucket_name` |
+| `ATWC26_CLOUDFRONT_DISTRIBUTION_ID` | Manual deploy / invalidation | `terraform output cloudfront_distribution_id` |
+
+Deploy workflow reads frontend bucket and distribution from Terraform outputs when `deploy_frontend` is enabled — separate frontend secrets are only needed for manual `deploy_frontend.sh` outside CI.
+
+### IAM permissions (deploy role)
+
+- S3: data bucket, frontend bucket, Lambda layer upload prefix
+- DynamoDB: manifest table
+- Lambda, API Gateway, CloudFront, IAM (for Lambda execution roles)
+- Optional: S3 state bucket for `ATWC26_TF_STATE_BUCKET`
 
 ## Related docs
 

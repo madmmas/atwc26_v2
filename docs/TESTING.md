@@ -264,7 +264,7 @@ Cutover checklist: [CUTOVER.md](CUTOVER.md). CI: `.github/workflows/performance.
 | API tests | **pytest + httpx** (or `requests`) | fast, asserts the contract above |
 | Component/E2E | **Playwright** (TS or Python) | drives the real UI via `data-testid` |
 | Load/perf | **k6** or **Locust** | the API is CPU-bound & cacheable; easy to load |
-| CI | GitHub Actions | run API tests + `next build` + Playwright on PRs |
+| CI | GitHub Actions | `ci.yml` — path-filtered on `refactor/v2-integration`; `etl.yml` / `deploy.yml` manual dispatch |
 
 ### Example: API test (pytest + httpx)
 ```python
