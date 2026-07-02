@@ -24,7 +24,9 @@ Output: data/standings.json (see above) and data/bracket.json
        "slot_a"/"slot_b": {"type": "group_rank", "group": "A", "rank": 1}
                           | {"type": "third_place", "candidate_groups": ["A","B","C","D","F"]}
                           | {"type": "team", "team_id", "team_name"},
-       "score_a", "score_b"},
+       "score_a", "score_b",
+       "shootout_a", "shootout_b": int | None, set only when the draw was
+                                    resolved on penalties},
       ...]}, ...]}
 
 Usage
@@ -253,6 +255,12 @@ def fetch_bracket(events: list[dict]) -> dict:
             "slot_b": parse_slot(b),
             "score_a": a.get("score"),
             "score_b": b.get("score"),
+            # Only present when a knockout draw was resolved on penalties
+            # (ESPN sets this directly on the competitor; status.type.id
+            # "47"/"STATUS_FINAL_PEN" is the same signal, but the score
+            # fields are simpler for the frontend to key off of).
+            "shootout_a": a.get("shootoutScore"),
+            "shootout_b": b.get("shootoutScore"),
         })
     for matches in rounds.values():
         for i, m in enumerate(matches):

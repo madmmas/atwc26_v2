@@ -99,7 +99,8 @@ POLITE_DELAY = 0.35           # seconds between per-player stat requests
 IDENTITY_COLS = [
     "game_id", "match_date", "competition", "season",
     "team_id", "team_name", "home_away", "is_winner", "formation",
-    "team_score", "opp_team_id", "opp_team_name", "opp_score",
+    "team_score", "team_shootout_score",
+    "opp_team_id", "opp_team_name", "opp_score", "opp_shootout_score",
     "player_id", "player_name", "jersey", "position", "position_abbr",
     "starter", "subbed_in", "subbed_out", "minutes", "appearances",
     "scraped_at",
@@ -281,6 +282,8 @@ def scrape_game(
 
     competitors = comp.get("competitors", [])
     score_by_team = {c["team"]["id"]: c.get("score") for c in competitors}
+    # Only set when a knockout draw was resolved on penalties.
+    shootout_by_team = {c["team"]["id"]: c.get("shootoutScore") for c in competitors}
     name_by_team = {c["team"]["id"]: c["team"]["displayName"] for c in competitors}
 
     raw_player_payloads: dict[str, dict] = {}
@@ -339,9 +342,11 @@ def scrape_game(
                 "is_winner": is_winner,
                 "formation": formation,
                 "team_score": score_by_team.get(team_id),
+                "team_shootout_score": shootout_by_team.get(team_id),
                 "opp_team_id": opp_id,
                 "opp_team_name": name_by_team.get(opp_id),
                 "opp_score": score_by_team.get(opp_id),
+                "opp_shootout_score": shootout_by_team.get(opp_id),
                 "player_id": pid,
                 "player_name": athlete.get("displayName"),
                 "jersey": entry.get("jersey"),
