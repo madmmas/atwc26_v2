@@ -1,218 +1,165 @@
-# TODO - v2 Production Architecture Execution Plan (No WAF)
+# TODO — v2 Production Architecture (No WAF)
 
-This plan implements the target architecture:
-- CloudFront (CDN + TLS only, no WAF)
-- S3 static frontend
-- API Gateway path routing
-- Lambda for read-heavy endpoints
-- ECS/Fargate for compute-heavy endpoints
-- S3 as source of truth for artifacts
-- DynamoDB for manifest + selected API-ready cache items
+Target: **zero AWS compute for reads and Monte Carlo**; **one small ECS task for predict only** (~$7/mo Spot).
 
-## 0) Ground Rules
+## Compute placement (core insight)
 
-- [ ] Keep WAF out of Terraform/docs/diagrams for this phase.
-- [ ] Keep existing v1 behavior available until v2 cutover checks pass.
-- [ ] Make each phase deployable independently.
-- [ ] Add rollback note for each phase.
+| Workload | Where | Why |
+|----------|-------|-----|
+| 10k Monte Carlo (`tournament.py`) | GHA `etl/simulate` after publish | ~30s, once per data change, tiny JSON output |
+| Bracket path predictions | GHA `etl/simulate` (same step) | Needs Predictor but not per-request |
+| Per-90 player/team profiles | GHA `etl/transform` | Never parse parquet at Lambda cold start |
+| Standings, matches, players, overview, leaderboard | GHA `etl/publish` → DynamoDB API cache + S3 | Lambda reads one item per request |
+| `GET /api/winner-probabilities` | Analytics Lambda (read precomputed JSON/cache) | Not compute — no MC at request time |
+| `POST /api/predict` | ECS Fargate (warm Predictor) | 2–3s cold start unacceptable for interactive UI |
+
+**Only recurring AWS compute:** ECS Fargate `0.25 vCPU / 512 MB` for predict.
+
+## Ground rules
+
+- [x] Keep WAF out of Terraform/docs/diagrams for this phase.
+- [x] Keep v1 monolith available until v2 cutover checks pass.
+- [ ] Each phase deployable independently with rollback note.
+- [ ] GitHub Actions OIDC (no long-lived `AWS_ACCESS_KEY_ID` secrets).
 
 ---
 
-## 1) Infra Routing and Edge (CloudFront + API Gateway, no WAF)
+## Completed — Phases A–F (infra + API cache foundation)
+
+- [x] **A** CloudFront `/api/*` → API Gateway; static → S3
+- [x] **B–D** DynamoDB API cache (`API#standings`, teams, matches, players)
+- [x] **E** Lambda/ECS refresh via `ATWC26_DATA_VERSION` on publish
+- [x] **F** CI path filters, deploy workflow, docs skeleton
+
+Rollback: revert Terraform module flags; analytics falls back to `DataStore` + S3 sync.
+
+---
+
+## Phase G — `etl/simulate` (Monte Carlo offline)
 
 ### Files
-- [ ] `infra/terraform/modules/frontend-cdn/main.tf`
-- [ ] `infra/terraform/modules/frontend-cdn/variables.tf`
-- [ ] `infra/terraform/modules/frontend-cdn/outputs.tf`
-- [ ] `infra/terraform/modules/api-gateway/main.tf`
-- [ ] `infra/terraform/modules/api-gateway/variables.tf`
-- [ ] `infra/terraform/modules/api-gateway/outputs.tf`
-- [ ] `infra/terraform/envs/dev/main.tf`
-- [ ] `infra/terraform/envs/dev/outputs.tf`
+- [ ] `etl/simulate/run.py`
+- [ ] `packages/atwc26_core/atwc26_core/config.py` — `WINNER_PROBABILITIES`, `BRACKET_PREDICTIONS`
+- [ ] `packages/atwc26_core/atwc26_core/artifacts.py`
+- [ ] `Makefile` — `etl-simulate`; wire into `etl-local`
+- [ ] `tests/etl/test_simulate.py`
 
 ### Work
-- [ ] Ensure CloudFront routes static paths to S3 origin.
-- [ ] Ensure CloudFront routes `/api/*` to API Gateway origin.
-- [ ] Ensure API Gateway routes:
-  - [ ] read endpoints -> Lambda integration
-  - [ ] `/api/predict` -> ECS integration
-  - [ ] `/api/winner-probabilities` -> ECS integration
-- [ ] Confirm no WAF resource/module associations.
+- [ ] Run 10k-trial MC + bracket path after transform; write JSON artifacts to `data/`.
+- [ ] Register artifacts in manifest for S3 publish.
+- [ ] `ATWC26_SIMULATE_TRIALS` env for fast local/CI runs (default 10_000).
 
 ### Validation
-- [ ] `terraform validate` passes.
-- [ ] `terraform plan` shows expected route-only changes.
-- [ ] Smoke test static path + `/api/health` through CloudFront URL.
+- [ ] `make etl-simulate` produces `winner_probabilities.json` + `bracket_predictions.json`.
+- [ ] Unit test with `trials=50`.
+
+Rollback: delete JSON files; endpoints fall back to runtime sim (dev only until Phase H).
 
 ---
 
-## 2) Service Boundary Enforcement (Lambda vs ECS)
+## Phase H — Winner probabilities on read path
 
 ### Files
 - [ ] `services/analytics_api/analytics_api/main.py`
 - [ ] `services/predict_api/predict_api/main.py`
-- [ ] `services/shared/bootstrap.py`
+- [ ] `infra/terraform/modules/api-gateway/main.tf`
 - [ ] `tests/contract/test_split.py`
-- [ ] `tests/contract/conftest.py`
 
 ### Work
-- [ ] Keep analytics service read-only endpoints.
-- [ ] Keep predict + winner-probabilities on ECS path/service.
-- [ ] Remove accidental heavy startup compute from Lambda read service.
-- [ ] Keep consistent response schemas across route split.
+- [ ] Serve `GET /api/winner-probabilities` from analytics (precomputed JSON / API cache).
+- [ ] Remove endpoint + MC warmup from predict service.
+- [ ] API Gateway: only `POST /api/predict` → compute; winner-probs → analytics `$default`.
 
 ### Validation
-- [ ] Contract tests cover route ownership and 404 on wrong service.
-- [ ] Cold-start behavior checked for Lambda read service.
+- [ ] Contract tests: winner-probs on analytics, 404 on predict.
+- [ ] Predict startup no longer runs Monte Carlo.
+
+Rollback: restore predict route in API Gateway + predict handler.
 
 ---
 
-## 3) ETL Publish: Materialize DynamoDB API Cache
+## Phase I — Per-90 profiles in transform
 
 ### Files
-- [ ] `etl/publish/publish.py`
-- [ ] `etl/publish/refresh.py`
-- [ ] `etl/publish/__init__.py` (if needed)
-- [ ] `etl/README.md`
-- [ ] `packages/atwc26_core/atwc26_core/config.py`
-- [ ] `packages/atwc26_core/atwc26_core/artifacts.py`
-
-### New helper modules (to add)
-- [ ] `packages/atwc26_core/atwc26_core/api_cache/keys.py`
-- [ ] `packages/atwc26_core/atwc26_core/api_cache/store.py`
-- [ ] `packages/atwc26_core/atwc26_core/api_cache/builders.py`
-
-### Work
-- [ ] Keep existing `LATEST` manifest behavior.
-- [ ] Add publish-time API cache upserts for:
-  - [ ] `API#standings`
-  - [ ] `API#teams`
-  - [ ] `API#team#{name}` players
-  - [ ] `API#matches`
-  - [ ] `API#match#{game_id}` detail
-  - [ ] `API#player#{player_id}` detail
-- [ ] Include source artifact hash metadata per cache item.
-- [ ] Write local dry-run cache under `data/.etl/` when no S3 bucket.
-
-### Validation
-- [ ] Idempotent publish: unchanged artifact hashes skip unnecessary writes.
-- [ ] Unit tests for each cache builder and item schema.
-- [ ] Manual run: `make etl-publish` with and without AWS env vars.
-
----
-
-## 4) Lambda Read Path: DynamoDB First, S3 Fallback
-
-### Files
-- [ ] `services/analytics_api/analytics_api/main.py`
-- [ ] `services/shared/data_sync.py`
-- [ ] `services/shared/json_util.py`
+- [ ] `etl/transform/profiles.py`
+- [ ] `etl/transform/run.py`
 - [ ] `packages/atwc26_core/atwc26_core/data.py`
-- [ ] `packages/atwc26_core/atwc26_core/reload.py`
+- [ ] `packages/atwc26_core/atwc26_core/config.py` — `PLAYER_PROFILES`, `TEAM_PROFILES`
 
 ### Work
-- [ ] Add read abstraction:
-  - [ ] in-memory cache (warm container)
-  - [ ] DynamoDB API cache item
-  - [ ] S3/local artifact fallback
-- [ ] Incrementally migrate endpoints:
-  - [ ] `/api/standings`
-  - [ ] `/api/teams`
-  - [ ] `/api/teams/{team}/players`
-  - [ ] `/api/matches`
-  - [ ] `/api/matches/{game_id}`
-  - [ ] `/api/players/{player_id}`
-- [ ] Keep response shape backward-compatible.
+- [ ] Transform writes `player_profiles.parquet` + `team_profiles.parquet`.
+- [ ] `DataStore.load()` reads precomputed profiles when present (skip `_build_*` on hot path).
 
 ### Validation
-- [ ] Contract tests unchanged.
-- [ ] Endpoint-level tests for cache hit/miss paths.
-- [ ] Confirm no full parquet read for migrated simple endpoints.
+- [ ] Transform regenerates profiles when master parquet changes.
+- [ ] QA + contract tests pass.
+
+Rollback: delete profile parquets; DataStore rebuilds from master parquet.
 
 ---
 
-## 5) ECS Refresh and Data Versioning
+## Phase J — Full read cache + light Lambda startup
 
 ### Files
+- [ ] `packages/atwc26_core/atwc26_core/api_cache/{keys,builders}.py`
+- [ ] `etl/publish/api_cache.py`
+- [ ] `services/analytics_api/analytics_api/main.py`
+
+### Work
+- [ ] Publish API cache: `API#overview`, `API#bracket`, `API#winner-probabilities`.
+- [ ] Analytics endpoints: overview, bracket, leaderboard, winner-probs → `read_cached`.
+- [ ] Remove `get_bracket_predictions` from analytics startup; health uses minimal load.
+
+### Validation
+- [ ] No parquet parse on migrated read endpoints (cache hit path).
+- [ ] `make e2e-v2-local` green.
+
+Rollback: endpoints fall back to `DataStore` computation.
+
+---
+
+## Phase K — GHA pipeline (path-filtered jobs)
+
+### Files
+- [ ] `.github/workflows/etl.yml`
+- [ ] `.github/workflows/deploy.yml` (split or path-filter jobs)
 - [ ] `etl/publish/refresh.py`
-- [ ] `.github/workflows/etl.yml`
-- [ ] `.github/workflows/deploy.yml`
-- [ ] `infra/terraform/modules/*` (task/service env vars if needed)
 
 ### Work
-- [ ] Keep Lambda refresh via `ATWC26_DATA_VERSION`.
-- [ ] Re-introduce ECS refresh only if required for compute freshness:
-  - [ ] workflow-driven rolling deploy, or
-  - [ ] EventBridge-triggered rollout
-- [ ] Ensure ECS and Lambda both receive same publish version stamp.
+- [ ] ETL job: scrape (optional) → transform → simulate → publish → warm ECS predict only.
+- [ ] Separate deploy triggers: analytics Lambda, predict ECS image, frontend static.
+- [ ] Data-only commits do not redeploy code.
 
 ### Validation
-- [ ] ETL publish updates running compute to new data version.
-- [ ] No stale winner-probability/predict responses after publish.
+- [ ] Scheduled ETL runs simulate + tests.
+- [ ] Publish bumps analytics Lambda + ECS predict data version.
+
+Rollback: revert workflow YAML; manual `make etl-publish`.
 
 ---
 
-## 6) CI/CD Hardening
+## Phase L — GitHub OIDC
 
 ### Files
-- [ ] `.github/workflows/ci.yml`
-- [ ] `.github/workflows/etl.yml`
-- [ ] `.github/workflows/deploy.yml`
-- [ ] `.github/workflows/performance.yml`
+- [ ] `infra/terraform/modules/github-oidc/`
+- [ ] `.github/workflows/etl.yml`, `deploy.yml` — `aws-actions/configure-aws-credentials` with `role-to-assume`
 
 ### Work
-- [ ] Add tests for API cache schema + fallback behavior.
-- [ ] Add route-split smoke test (read route vs compute route).
-- [ ] Keep path-filter optimization accurate.
-- [ ] Ensure deploy workflow reports:
-  - [ ] CloudFront URL
-  - [ ] API Gateway URL
-  - [ ] data version / publish id
+- [ ] IAM role trusts `token.actions.githubusercontent.com` for this repo only.
+- [ ] Replace `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` with `ATWC26_AWS_ROLE_ARN` secret.
 
 ### Validation
-- [ ] CI green for ETL, contract, and route smoke checks.
-- [ ] Manual deploy run with `plan` and `apply`.
+- [ ] ETL publish + deploy plan succeed via OIDC in GHA.
+
+Rollback: re-enable access-key secrets in workflows.
 
 ---
 
-## 7) Docs and Showcase Readiness
+## Exit criteria
 
-### Files
-- [ ] `docs/DEPLOY.md`
-- [ ] `docs/TESTING.md`
-- [ ] `docs/CUTOVER.md`
-- [ ] `infra/README.md`
-- [ ] `etl/README.md`
-- [ ] `docs/REFACTOR_ISSUES.md`
-
-### Work
-- [ ] Ensure architecture docs match implementation exactly.
-- [ ] Explicitly state "no WAF" for this phase.
-- [ ] Add troubleshooting notes for cache misses and stale version.
-- [ ] Add client-friendly architecture diagram and request flow.
-
-### Validation
-- [ ] End-to-end walkthrough from deploy to perf test is reproducible.
-
----
-
-## Suggested Execution Sequence
-
-- [ ] Phase A: Infra route split (CloudFront/API Gateway)
-- [ ] Phase B: Standings cache slice (baseline pattern)
-- [ ] Phase C: Teams + team players cache slices
-- [ ] Phase D: Matches + match detail + player detail cache slices
-- [ ] Phase E: ECS refresh/versioning finalization
-- [ ] Phase F: CI/doc hardening and cutover rehearsal
-
----
-
-## Exit Criteria (Production-Grade Demo)
-
-- [ ] CloudFront serves frontend + `/api/*` correctly (no WAF).
-- [ ] Read endpoints served by Lambda with DynamoDB/S3-backed data path.
-- [ ] Compute endpoints served by ECS with fresh data after ETL publish.
-- [ ] ETL publish is idempotent and versioned.
-- [ ] CI and performance checks pass.
-- [ ] Docs fully aligned with deployed architecture.
-
+- [ ] CloudFront serves frontend + `/api/*` (no WAF).
+- [ ] Read endpoints: DynamoDB cache or S3 JSON only — no Monte Carlo, no parquet on Lambda.
+- [ ] `POST /api/predict` on warm ECS only.
+- [ ] ETL: transform → simulate → publish idempotent and versioned.
+- [ ] GHA OIDC; path-filtered deploy jobs.
+- [ ] Docs match deployed architecture.

@@ -24,7 +24,7 @@ infra/
     modules/lambda-analytics/  # Issue 7
     modules/lambda-predict/    # Issue 7
     modules/api-gateway/       # Issue 7 — HTTP API routes
-    modules/ecs-compute/       # Phase A — Fargate for predict + winner-prob
+    modules/ecs-compute/       # Fargate for POST /api/predict only
     envs/dev/                  # dev/candidate wiring
 services/
   analytics_api/               # Issue 7 — read-only tournament API
@@ -79,8 +79,7 @@ CloudFront serves:
 API Gateway routes:
 
 - `POST /api/predict` → compute (ECS when `enable_ecs_compute=true`, else predict Lambda)
-- `GET /api/winner-probabilities` → compute
-- all other paths → analytics Lambda
+- all other paths (including `GET /api/winner-probabilities`) → analytics Lambda
 
 Set `enable_ecs_compute = true` and `ecs_container_image` in `terraform.tfvars` to use Fargate for compute routes.
 
@@ -172,18 +171,20 @@ terraform output dynamodb_table_name
 
 ### Route ownership (target state)
 
-- `analytics_api` (Lambda): read-heavy endpoints (`/api/overview`, `/api/teams`, `/api/matches`, `/api/standings`, `/api/bracket`, `/api/leaderboard`, and incremental read slices).
-- `predict` compute path (ECS/Fargate): `POST /api/predict`, `GET /api/winner-probabilities`.
+- `analytics_api` (Lambda): all read endpoints including `GET /api/winner-probabilities` (precomputed JSON / DynamoDB cache — no Monte Carlo at request time).
+- `predict` compute path (ECS/Fargate): `POST /api/predict` only.
 - API Gateway performs route split; CloudFront forwards `/api/*` to API Gateway.
 
 ### Execution phases (from `TODO.md`)
 
-1. Infra route split (CloudFront -> API Gateway + path-based backends)
-2. Standings cache slice (`API#standings`)
-3. Teams + team players cache slices
-4. Matches + match detail + player detail cache slices
-5. ECS refresh/versioning finalization
-6. CI + docs hardening
+Phases A–F (infra + API cache) are done. Remaining:
+
+1. **G** — `etl/simulate` (offline Monte Carlo → S3 JSON)
+2. **H** — winner-probs on analytics read path
+3. **I** — per-90 profiles in transform
+4. **J** — full read cache + light Lambda startup
+5. **K** — path-filtered GHA jobs
+6. **L** — GitHub OIDC
 
 Publish data before invoking Lambdas in AWS:
 

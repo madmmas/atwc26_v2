@@ -1,7 +1,8 @@
 # ETL — data collection and v2 publish pipeline
 
 Scrapers live under `etl/scrape/`. Post-scrape transforms live under `etl/transform/`.
-QA checks live under `etl/qa/`. AWS publish lives under `etl/publish/`.
+Monte Carlo + bracket path simulation live under `etl/simulate/`. QA checks live under
+`etl/qa/`. AWS publish lives under `etl/publish/`.
 
 Outputs go to `data/` at the repo root. Transform writes a manifest to `data/.etl/manifest.json`.
 
@@ -33,21 +34,25 @@ make groups              # refresh standings + bracket
 ### v2 transform / QA / publish
 
 ```bash
-make etl-local           # transform + QA (writes data/.etl/manifest.json)
-make etl-publish         # upload to S3 + DynamoDB (or local staging without AWS)
+make etl-local           # transform + simulate + QA (writes data/.etl/manifest.json)
+make etl-simulate        # Monte Carlo + bracket predictions → JSON artifacts
+make etl-publish         # upload to S3 + DynamoDB + API cache (or local staging)
 make test-etl            # pytest tests/etl etl/qa -q
 ```
 
-`etl-local` runs `python -m etl.transform` then `python -m etl.qa`. It rebuilds match timelines via `etl/build_match_events.py` and records SHA-256 hashes for every artifact.
+`etl-local` runs `python -m etl.transform`, `python -m etl.simulate`, then `python -m etl.qa`.
+Transform rebuilds match timelines, precomputes player/team profiles, and records SHA-256
+hashes. Simulate runs the 10k-trial tournament MC in GHA (not in Lambda/ECS).
 
 ## Pipeline layout
 
 | Stage | Module | Purpose |
 |-------|--------|---------|
 | Scrape | `etl/scrape/` | ESPN fixtures, per-game stats, squads, history |
-| Transform | `etl/transform/` | Derived artifacts + manifest |
+| Transform | `etl/transform/` | Profiles, derived artifacts + manifest |
+| Simulate | `etl/simulate/` | 10k MC winner probs + bracket predictions (GHA) |
 | QA | `etl/qa/` | Validate parquet/JSON + `DataStore` load |
-| Publish | `etl/publish/` | S3 upload + DynamoDB manifest (idempotent) |
+| Publish | `etl/publish/` | S3 upload + DynamoDB manifest + API cache |
 
 ## Artifacts
 
@@ -61,6 +66,10 @@ make test-etl            # pytest tests/etl etl/qa -q
 | `data/bracket.json` | no | knockout bracket |
 | `data/glossary.csv` | no | column glossary |
 | `data/team_flags.json` | no | flag URLs |
+| `data/player_profiles.parquet` | no | precomputed per-90 player profiles |
+| `data/team_profiles.parquet` | no | precomputed team aggregates |
+| `data/winner_probabilities.json` | no | offline Monte Carlo output |
+| `data/bracket_predictions.json` | no | deterministic bracket path |
 
 ## S3 keys
 
