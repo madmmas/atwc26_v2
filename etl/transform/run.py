@@ -11,6 +11,8 @@ from pathlib import Path
 from atwc26_core.artifacts import ARTIFACTS, ArtifactSpec, s3_key_for
 from atwc26_core import config
 
+from .profiles import build_profiles
+
 ETL_DIR = Path(__file__).resolve().parents[1]
 REPO_ROOT = ETL_DIR.parent
 MANIFEST_DIR = config.DATA_DIR / ".etl"
@@ -71,6 +73,7 @@ def run_transform(*, skip_match_events: bool = False) -> Path:
     """Execute transform steps and write manifest.json."""
     if not skip_match_events:
         run_match_events()
+    build_profiles()
     return write_manifest()
 
 

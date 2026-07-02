@@ -153,8 +153,12 @@ class DataStore:
             self.events = self._load_events()
             self.standings = self._load_standings()
             self.bracket = self._load_bracket()
-            self.players = self._build_player_profiles(df)
-            self.teams = self._build_team_profiles(df)
+            if config.PLAYER_PROFILES.exists() and config.TEAM_PROFILES.exists():
+                self.players = pd.read_parquet(config.PLAYER_PROFILES)
+                self.teams = pd.read_parquet(config.TEAM_PROFILES)
+            else:
+                self.players = self._build_player_profiles(df)
+                self.teams = self._build_team_profiles(df)
             self.matches = self._build_matches(df)
             self.league = self._build_league_context(df)
             self.predictor_players, self.predictor_avg_goals = self._load_predictor_inputs(df)
