@@ -23,7 +23,11 @@ from fastapi.middleware.cors import CORSMiddleware
 from atwc26_core import config
 from atwc26_core.api_cache import keys
 from atwc26_core.data import get_store
-from atwc26_core.tournament import get_bracket_predictions
+from atwc26_core.simulation_artifacts import (
+    load_winner_probabilities,
+    winner_probabilities_api_payload,
+)
+from atwc26_core.tournament import get_bracket_predictions, get_winner_probabilities
 from services.shared.api_reader import read_cached
 from services.shared.bootstrap import ensure_data_available
 from services.shared.json_util import clean_json
@@ -42,8 +46,15 @@ app.add_middleware(
 @app.on_event("startup")
 def _warm() -> None:
     ensure_data_available()
+
+
+@app.get("/api/winner-probabilities")
+def winner_probabilities():
     store = get_store()
-    get_bracket_predictions(store)
+    probs = load_winner_probabilities()
+    if probs is None:
+        probs = get_winner_probabilities(store)
+    return clean_json(winner_probabilities_api_payload(probs, flag_lookup=store.flag))
 
 
 @app.get("/api/health")

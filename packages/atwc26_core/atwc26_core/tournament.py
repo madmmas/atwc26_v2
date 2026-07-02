@@ -433,14 +433,28 @@ _bracket_predictions: dict[str, dict] | None = None
 def get_winner_probabilities(store: DataStore) -> dict[str, float]:
     global _probabilities
     if _probabilities is None:
-        from .prediction import get_predictor
-        _probabilities = run_simulation(store, get_predictor(store))
+        from .simulation_artifacts import load_winner_probabilities
+
+        precomputed = load_winner_probabilities()
+        if precomputed is not None:
+            _probabilities = precomputed
+        else:
+            from .prediction import get_predictor
+
+            _probabilities = run_simulation(store, get_predictor(store))
     return _probabilities
 
 
 def get_bracket_predictions(store: DataStore) -> dict[str, dict]:
     global _bracket_predictions
     if _bracket_predictions is None:
-        from .prediction import get_predictor
-        _bracket_predictions = predict_bracket_path(store, get_predictor(store))
+        from .simulation_artifacts import load_bracket_predictions
+
+        precomputed = load_bracket_predictions()
+        if precomputed is not None:
+            _bracket_predictions = precomputed
+        else:
+            from .prediction import get_predictor
+
+            _bracket_predictions = predict_bracket_path(store, get_predictor(store))
     return _bracket_predictions

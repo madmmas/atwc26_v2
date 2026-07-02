@@ -263,7 +263,7 @@ Use this checklist to verify the TODO execution plan in a deployed candidate:
 
 - [x] **Edge pathing:** CloudFront serves static pages and forwards `/api/*` to API Gateway (Terraform wired; smoke on deploy).
 - [x] **No WAF:** candidate distribution has no attached WAF ACL.
-- [x] **Service ownership:** `POST /api/predict` and `GET /api/winner-probabilities` on predict/compute path; read APIs on analytics Lambda (`tests/contract/test_split.py`).
+- [x] **Service ownership:** `GET /api/winner-probabilities` on analytics (precomputed JSON); `POST /api/predict` on compute path (`tests/contract/test_split.py`).
 - [x] **Data freshness:** ETL publish bumps `ATWC26_DATA_VERSION` and can trigger ECS rolling deploy when configured.
 - [x] **Cache behavior:** DynamoDB API cache with local dry-run and `DataStore` fallback (`tests/etl/test_api_cache.py`).
 

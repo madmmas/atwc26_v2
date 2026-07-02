@@ -23,7 +23,6 @@ from atwc26_core import config
 from atwc26_core.data import get_store
 from atwc26_core.prediction import get_predictor
 from atwc26_core.schemas import PredictRequest
-from atwc26_core.tournament import get_winner_probabilities
 from services.shared.bootstrap import ensure_data_available
 from services.shared.json_util import clean_json
 
@@ -43,7 +42,6 @@ def _warm() -> None:
     ensure_data_available()
     store = get_store()
     get_predictor(store)
-    get_winner_probabilities(store)
 
 
 @app.get("/api/health")
@@ -67,22 +65,3 @@ def predict(req: PredictRequest):
     if not a["players"] or not b["players"]:
         raise HTTPException(400, "Each team needs at least one selected player.")
     return clean_json(predictor.predict(a, b))
-
-
-@app.get("/api/winner-probabilities")
-def winner_probabilities():
-    store = get_store()
-    probs = get_winner_probabilities(store)
-    teams = sorted(
-        (
-            {
-                "team_name": name,
-                "flag_url": store.flag(name),
-                "probability": round(p, 4),
-                "eliminated": p == 0.0,
-            }
-            for name, p in probs.items()
-        ),
-        key=lambda t: -t["probability"],
-    )
-    return clean_json({"teams": teams})

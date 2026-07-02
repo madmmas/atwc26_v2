@@ -54,12 +54,6 @@ resource "aws_apigatewayv2_route" "predict" {
   target    = "integrations/${local.compute_integration_id}"
 }
 
-resource "aws_apigatewayv2_route" "winner_probabilities" {
-  api_id    = aws_apigatewayv2_api.http.id
-  route_key = "GET /api/winner-probabilities"
-  target    = "integrations/${local.compute_integration_id}"
-}
-
 resource "aws_apigatewayv2_route" "analytics" {
   api_id    = aws_apigatewayv2_api.http.id
   route_key = "$default"
