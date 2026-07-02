@@ -24,6 +24,7 @@ infra/
     modules/lambda-analytics/  # Issue 7
     modules/lambda-predict/    # Issue 7
     modules/api-gateway/       # Issue 7 — HTTP API routes
+    modules/ecs-compute/       # Phase A — Fargate for predict + winner-prob
     envs/dev/                  # dev/candidate wiring
 services/
   analytics_api/               # Issue 7 — read-only tournament API
@@ -63,9 +64,25 @@ Note outputs:
 
 ```bash
 terraform output cloudfront_url
-terraform output cors_origin_hint      # add to v1 backend ATWC26_CORS_ORIGINS
-terraform output backend_api_url        # use at static build time
+terraform output site_url              # unified URL (static + /api/* via CloudFront)
+terraform output api_gateway_url       # direct API Gateway (debug)
+terraform output cors_origin_hint
 ```
+
+### Edge routing (Phase A)
+
+CloudFront serves:
+
+- default behavior → S3 static frontend (`frontend/out/`)
+- `/api/*` → API Gateway HTTP API (no WAF)
+
+API Gateway routes:
+
+- `POST /api/predict` → compute (ECS when `enable_ecs_compute=true`, else predict Lambda)
+- `GET /api/winner-probabilities` → compute
+- all other paths → analytics Lambda
+
+Set `enable_ecs_compute = true` and `ecs_container_image` in `terraform.tfvars` to use Fargate for compute routes.
 
 ### 3. CORS on v1 backend
 
