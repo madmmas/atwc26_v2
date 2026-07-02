@@ -129,7 +129,10 @@ jobs:
           {
             echo "api_gateway_url=$(terraform -chdir="$TF_DIR" output -raw api_gateway_url)"
             echo "cloudfront_url=$(terraform -chdir="$TF_DIR" output -raw cloudfront_url)"
+            echo "site_url=$(terraform -chdir="$TF_DIR" output -raw site_url)"
             echo "data_bucket_name=$(terraform -chdir="$TF_DIR" output -raw data_bucket_name)"
+            echo "ecs_cluster_name=$(terraform -chdir="$TF_DIR" output -raw ecs_cluster_name 2>/dev/null || echo '')"
+            echo "ecs_service_name=$(terraform -chdir="$TF_DIR" output -raw ecs_service_name 2>/dev/null || echo '')"
           } >> "$GITHUB_OUTPUT"
 
       - name: Candidate URLs (for k6 A/B)
@@ -141,8 +144,13 @@ jobs:
             echo "| Target | URL |"
             echo "|--------|-----|"
             echo "| Frontend (CloudFront) | ${{ steps.tf.outputs.cloudfront_url }} |"
-            echo "| API Gateway (analytics + predict) | ${{ steps.tf.outputs.api_gateway_url }} |"
+            echo "| Unified site (static + /api/*) | ${{ steps.tf.outputs.site_url }} |"
+            echo "| API Gateway (direct) | ${{ steps.tf.outputs.api_gateway_url }} |"
             echo "| ETL data bucket | ${{ steps.tf.outputs.data_bucket_name }} |"
+            if [ -n "${{ steps.tf.outputs.ecs_cluster_name }}" ]; then
+              echo "| ECS cluster (compute) | ${{ steps.tf.outputs.ecs_cluster_name }} |"
+              echo "| ECS service (compute) | ${{ steps.tf.outputs.ecs_service_name }} |"
+            fi
             echo ""
             echo "### k6 A/B inputs"
             echo ""
@@ -198,10 +206,17 @@ jobs:
 
       - name: Build static frontend (v2 API URLs)
         run: |
+          SITE_URL="$(terraform -chdir="$TF_DIR" output -raw site_url 2>/dev/null || true)"
           API_URL="$(terraform -chdir="$TF_DIR" output -raw api_gateway_url)"
-          NEXT_PUBLIC_ANALYTICS_API_URL="$API_URL" \
-          NEXT_PUBLIC_PREDICT_API_URL="$API_URL" \
-          ./infra/scripts/build_frontend_static.sh
+          if [ -n "$SITE_URL" ] && [ "$SITE_URL" != "null" ]; then
+            NEXT_PUBLIC_ANALYTICS_API_URL="$SITE_URL" \
+            NEXT_PUBLIC_PREDICT_API_URL="$SITE_URL" \
+            ./infra/scripts/build_frontend_static.sh
+          else
+            NEXT_PUBLIC_ANALYTICS_API_URL="$API_URL" \
+            NEXT_PUBLIC_PREDICT_API_URL="$API_URL" \
+            ./infra/scripts/build_frontend_static.sh
+          fi
 
       - name: Deploy to S3 + invalidate CloudFront
         run: ./infra/scripts/deploy_frontend_from_tf.sh
