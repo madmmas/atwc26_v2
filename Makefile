@@ -80,7 +80,7 @@ setup-services: setup-backend ## v2 split API deps (analytics + predict)
 test-e2e: setup-test ## Run v1 API end-to-end tests (in-process, no server)
 	$(BACKEND_PY) -m pytest $(E2E_DIR) -q -c $(E2E_DIR)/pytest.ini
 
-test-contract: setup-services ## Contract tests for split analytics + predict APIs
+test-contract: setup-services setup-test ## Contract tests for split analytics + predict APIs
 	cd $(ROOT) && PYTHONPATH=$(ROOT) $(BACKEND_PY) -m pytest $(CONTRACT_DIR) -q
 
 e2e-v2-local: setup-etl setup-services ## v2 smoke: ETL + QA + contract tests (no servers)
