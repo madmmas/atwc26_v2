@@ -22,6 +22,10 @@ ARTIFACTS: tuple[ArtifactSpec, ...] = (
     ArtifactSpec("squads_raw", config.SQUADS_RAW, False, "json"),
     ArtifactSpec("standings", config.STANDINGS, False, "json"),
     ArtifactSpec("bracket", config.BRACKET, False, "json"),
+    ArtifactSpec("player_profiles", config.PLAYER_PROFILES, False, "parquet"),
+    ArtifactSpec("team_profiles", config.TEAM_PROFILES, False, "parquet"),
+    ArtifactSpec("winner_probabilities", config.WINNER_PROBABILITIES, False, "json"),
+    ArtifactSpec("bracket_predictions", config.BRACKET_PREDICTIONS, False, "json"),
     ArtifactSpec("glossary", config.GLOSSARY_CSV, False, "csv"),
     ArtifactSpec("team_flags", config.TEAM_FLAGS, False, "json"),
 )

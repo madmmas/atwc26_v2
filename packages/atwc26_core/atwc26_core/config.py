@@ -16,6 +16,10 @@ SQUADS_RAW = DATA_DIR / "squads_raw.json"
 HISTORICAL_FORM = DATA_DIR / "historical_form.parquet"
 STANDINGS = DATA_DIR / "standings.json"
 BRACKET = DATA_DIR / "bracket.json"
+PLAYER_PROFILES = DATA_DIR / "player_profiles.parquet"
+TEAM_PROFILES = DATA_DIR / "team_profiles.parquet"
+WINNER_PROBABILITIES = DATA_DIR / "winner_probabilities.json"
+BRACKET_PREDICTIONS = DATA_DIR / "bracket_predictions.json"
 
 # S3 publish targets (v2 ETL)
 S3_BUCKET = os.getenv("ATWC26_S3_BUCKET", "")
