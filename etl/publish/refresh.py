@@ -43,3 +43,29 @@ def refresh_lambda_functions(publish_id: str) -> list[str]:
         )
         refreshed.append(name)
     return refreshed
+
+
+def _ecs_service_names() -> list[str]:
+    return [s.strip() for s in os.getenv("ATWC26_ECS_SERVICES", "").split(",") if s.strip()]
+
+
+def refresh_ecs_services() -> list[str]:
+    """Trigger rolling deployment on configured ECS services."""
+    if boto3 is None:
+        return []
+
+    cluster = os.getenv("ATWC26_ECS_CLUSTER", "").strip()
+    services = _ecs_service_names()
+    if not cluster or not services:
+        return []
+
+    client = boto3.client("ecs", region_name=config.AWS_REGION)
+    refreshed: list[str] = []
+    for service in services:
+        client.update_service(
+            cluster=cluster,
+            service=service,
+            forceNewDeployment=True,
+        )
+        refreshed.append(service)
+    return refreshed

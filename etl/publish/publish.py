@@ -10,7 +10,7 @@ from atwc26_core import config
 from atwc26_core.artifacts import ARTIFACTS, s3_key_for
 
 from ..transform.run import MANIFEST_FILE, build_manifest, write_manifest
-from .refresh import refresh_lambda_functions
+from .refresh import refresh_ecs_services, refresh_lambda_functions
 
 try:
     import boto3
@@ -132,7 +132,12 @@ def publish_aws(manifest: dict) -> dict:
     return {"uploaded": uploaded, "skipped": skipped, "publish_id": publish_id}
 
 
-def run_publish(*, refresh_manifest: bool = True, refresh_lambdas: bool = True) -> int:
+def run_publish(
+    *,
+    refresh_manifest: bool = True,
+    refresh_lambdas: bool = True,
+    refresh_ecs: bool = True,
+) -> int:
     if refresh_manifest:
         manifest = build_manifest()
         write_manifest(manifest)
@@ -141,10 +146,15 @@ def run_publish(*, refresh_manifest: bool = True, refresh_lambdas: bool = True) 
 
     if config.S3_BUCKET:
         result = publish_aws(manifest)
-        if refresh_lambdas and result.get("uploaded"):
-            refreshed = refresh_lambda_functions(result["publish_id"])
-            if refreshed:
-                print(f"refreshed Lambda(s): {', '.join(refreshed)}")
+        if result.get("uploaded"):
+            if refresh_lambdas:
+                lambdas = refresh_lambda_functions(result["publish_id"])
+                if lambdas:
+                    print(f"refreshed Lambda(s): {', '.join(lambdas)}")
+            if refresh_ecs:
+                services = refresh_ecs_services()
+                if services:
+                    print(f"refreshed ECS service(s): {', '.join(services)}")
     else:
         publish_local(manifest)
         print("set ATWC26_S3_BUCKET (+ AWS creds) to publish to S3")

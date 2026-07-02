@@ -97,7 +97,10 @@ Table: `ATWC26_DYNAMODB_TABLE` (default `atwc26-data-manifest`).
 
 Publish is **idempotent**: artifacts whose `sha256` matches the `LATEST` record are skipped on upload.
 
-When new artifacts are uploaded and `ATWC26_LAMBDA_ANALYTICS_NAME` / `ATWC26_LAMBDA_PREDICT_NAME` are set, publish bumps `ATWC26_DATA_VERSION` on those Lambdas to force fresh containers.
+When new artifacts are uploaded:
+
+- With `ATWC26_LAMBDA_ANALYTICS_NAME` / `ATWC26_LAMBDA_PREDICT_NAME` set, publish bumps `ATWC26_DATA_VERSION` on those Lambdas to force fresh containers.
+- With `ATWC26_ECS_CLUSTER` + `ATWC26_ECS_SERVICES` set, publish triggers a rolling ECS deployment on those services.
 
 ## Scripts (direct)
 
