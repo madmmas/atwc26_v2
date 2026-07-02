@@ -21,8 +21,10 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from atwc26_core import config
+from atwc26_core.api_cache import keys
 from atwc26_core.data import get_store
 from atwc26_core.tournament import get_bracket_predictions
+from services.shared.api_reader import read_cached
 from services.shared.bootstrap import ensure_data_available
 from services.shared.json_util import clean_json
 
@@ -121,24 +123,36 @@ def overview():
 
 @app.get("/api/teams")
 def teams():
-    store = get_store()
-    return clean_json({"teams": store.teams.to_dict("records")})
+    pk = keys.dataset_pk()
+
+    def _fallback():
+        store = get_store()
+        return {"teams": store.teams.to_dict("records")}
+
+    return clean_json(read_cached(pk, keys.teams_sk(), _fallback))
 
 
 @app.get("/api/teams/{team_name}/players")
 def team_players(team_name: str):
-    store = get_store()
-    sub = store.players[store.players["team_name"] == team_name]
-    if sub.empty:
-        raise HTTPException(404, f"No players found for team '{team_name}'")
-    return clean_json(
-        {
+    pk = keys.dataset_pk()
+    sk = keys.team_players_sk(team_name)
+
+    def _fallback():
+        store = get_store()
+        sub = store.players[store.players["team_name"] == team_name]
+        if sub.empty:
+            raise HTTPException(404, f"No players found for team '{team_name}'")
+        return {
             "team_name": team_name,
             "players": sub.sort_values(
                 ["role", "minutes"], ascending=[True, False]
             ).to_dict("records"),
         }
-    )
+
+    try:
+        return clean_json(read_cached(pk, sk, _fallback))
+    except HTTPException:
+        raise
 
 
 @app.get("/api/players")
@@ -162,32 +176,60 @@ def players(
 
 @app.get("/api/matches")
 def matches():
-    store = get_store()
-    return clean_json({"matches": store.matches})
+    pk = keys.dataset_pk()
+
+    def _fallback():
+        store = get_store()
+        return {"matches": store.matches}
+
+    return clean_json(read_cached(pk, keys.matches_sk(), _fallback))
 
 
 @app.get("/api/matches/{game_id}")
 def match_detail(game_id: str):
-    store = get_store()
-    detail = store.match_detail(game_id)
-    if detail is None:
-        raise HTTPException(404, f"No match data for game {game_id}")
-    return clean_json(detail)
+    pk = keys.dataset_pk()
+    sk = keys.match_detail_sk(game_id)
+
+    def _fallback():
+        store = get_store()
+        detail = store.match_detail(game_id)
+        if detail is None:
+            raise HTTPException(404, f"No match data for game {game_id}")
+        return detail
+
+    try:
+        return clean_json(read_cached(pk, sk, _fallback))
+    except HTTPException:
+        raise
 
 
 @app.get("/api/players/{player_id}")
 def player_detail(player_id: int):
-    store = get_store()
-    detail = store.player_detail(player_id)
-    if detail is None:
-        raise HTTPException(404, f"No data for player {player_id}")
-    return clean_json(detail)
+    pk = keys.dataset_pk()
+    sk = keys.player_detail_sk(player_id)
+
+    def _fallback():
+        store = get_store()
+        detail = store.player_detail(player_id)
+        if detail is None:
+            raise HTTPException(404, f"No data for player {player_id}")
+        return detail
+
+    try:
+        return clean_json(read_cached(pk, sk, _fallback))
+    except HTTPException:
+        raise
 
 
 @app.get("/api/standings")
 def standings():
-    store = get_store()
-    return clean_json({"groups": store.standings})
+    pk = keys.dataset_pk()
+
+    def _fallback():
+        store = get_store()
+        return {"groups": store.standings}
+
+    return clean_json(read_cached(pk, keys.standings_sk(), _fallback))
 
 
 @app.get("/api/bracket")

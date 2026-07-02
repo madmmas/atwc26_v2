@@ -438,6 +438,8 @@ class DataStore:
             home_name = row["team_name"]
             away_name = row["opp_team_name"]
             hs, as_ = row["team_score"], row["opp_score"]
+            hso = row.get("team_shootout_score")
+            aso = row.get("opp_shootout_score")
             matches.append({
                 "game_id": str(gid),
                 "date": row["match_date"],
@@ -447,6 +449,8 @@ class DataStore:
                 "away_flag": self.flag(away_name),
                 "home_score": None if pd.isna(hs) else int(hs),
                 "away_score": None if pd.isna(as_) else int(as_),
+                "home_shootout_score": None if pd.isna(hso) else int(hso),
+                "away_shootout_score": None if pd.isna(aso) else int(aso),
             })
         matches.sort(key=lambda m: m["date"] or "", reverse=True)
         return matches
@@ -463,11 +467,17 @@ class DataStore:
 
         def team_block(team):
             t = g[g["team_name"] == team]
+            has_shootout = (
+                "team_shootout_score" in t.columns
+                and not t["team_shootout_score"].isna().all()
+            )
             return t, {
                 "team_name": team,
                 "flag_url": self.flag(team),
                 "score": (None if t["team_score"].isna().all()
                           else int(t["team_score"].iloc[0])),
+                "shootout_score": (int(t["team_shootout_score"].iloc[0])
+                                    if has_shootout else None),
             }
 
         ta, a = team_block(teams[0])

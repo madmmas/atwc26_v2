@@ -10,6 +10,7 @@ from atwc26_core import config
 from atwc26_core.artifacts import ARTIFACTS, s3_key_for
 
 from ..transform.run import MANIFEST_FILE, build_manifest, write_manifest
+from .api_cache import publish_api_cache, publish_matches_cache, publish_teams_cache
 from .refresh import refresh_ecs_services, refresh_lambda_functions
 
 try:
@@ -132,6 +133,19 @@ def publish_aws(manifest: dict) -> dict:
     return {"uploaded": uploaded, "skipped": skipped, "publish_id": publish_id}
 
 
+def _publish_api_caches(manifest: dict) -> None:
+    from atwc26_core.data import get_store
+
+    store = get_store()
+    s = publish_api_cache(manifest, store=store)
+    t = publish_teams_cache(manifest, store=store)
+    m = publish_matches_cache(manifest, store=store)
+    total_written = s["written"] + t["written"] + m["written"]
+    total_skipped = s["skipped"] + t["skipped"] + m["skipped"]
+    if total_written or total_skipped:
+        print(f"api cache: {total_written} written, {total_skipped} unchanged")
+
+
 def run_publish(
     *,
     refresh_manifest: bool = True,
@@ -158,6 +172,8 @@ def run_publish(
     else:
         publish_local(manifest)
         print("set ATWC26_S3_BUCKET (+ AWS creds) to publish to S3")
+
+    _publish_api_caches(manifest)
     return 0
 
 
