@@ -5,7 +5,7 @@ import pytest
 
 from atwc26_core import config
 from atwc26_core.api_cache import keys
-from atwc26_core.api_cache.builders import build_standings
+from atwc26_core.api_cache.builders import build_standings, build_winner_probabilities
 from atwc26_core.api_cache.store import ApiCacheStore
 from atwc26_core.data import get_store
 from etl.publish.api_cache import publish_api_cache, publish_matches_cache, publish_teams_cache
@@ -35,13 +35,22 @@ def test_build_standings_payload():
     assert sources == ["standings"]
 
 
+def test_build_winner_probabilities_payload():
+    store = get_store()
+    manifest = build_manifest()
+    payload, sha, sources = build_winner_probabilities(store, manifest)
+    assert payload and "teams" in payload
+    assert sha
+    assert sources == ["winner_probabilities"]
+
+
 def test_publish_standings_local_idempotent(local_cache_dir):
     store = get_store()
     manifest = build_manifest()
     first = publish_api_cache(manifest, store=store)
     second = publish_api_cache(manifest, store=store)
-    assert first["written"] == 1
-    assert second["skipped"] == 1
+    assert first["written"] >= 1
+    assert second["skipped"] >= 1
 
     cache = ApiCacheStore()
     item = cache.get_item(keys.dataset_pk(), keys.standings_sk())

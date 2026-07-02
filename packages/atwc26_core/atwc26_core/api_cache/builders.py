@@ -78,6 +78,103 @@ def build_player_detail(
     return detail, source_sha, ["all_players_stats"]
 
 
+def build_overview(store: DataStore, manifest: dict) -> tuple[dict, str, list[str]]:
+    players = store.players
+    top_scorers = (
+        players.sort_values("totalGoals_total", ascending=False)
+        .head(8)[
+            [
+                "player_id",
+                "player_name",
+                "team_name",
+                "flag_url",
+                "role",
+                "totalGoals_total",
+                "expectedGoals_total",
+                "minutes",
+            ]
+        ]
+        .to_dict("records")
+    )
+    top_xg = (
+        players.sort_values("expectedGoals_p90", ascending=False)
+        .query("minutes >= 90")
+        .head(8)[
+            [
+                "player_id",
+                "player_name",
+                "team_name",
+                "flag_url",
+                "role",
+                "expectedGoals_p90",
+                "minutes",
+            ]
+        ]
+        .to_dict("records")
+    )
+    top_creators = (
+        players.sort_values("expectedAssists_p90", ascending=False)
+        .query("minutes >= 90")
+        .head(8)[
+            [
+                "player_id",
+                "player_name",
+                "team_name",
+                "flag_url",
+                "role",
+                "expectedAssists_p90",
+                "minutes",
+            ]
+        ]
+        .to_dict("records")
+    )
+    payload = {
+        "league": store.league,
+        "teams": store.teams.to_dict("records"),
+        "top_scorers": top_scorers,
+        "top_xg_per90": top_xg,
+        "top_creators_per90": top_creators,
+    }
+    source_sha = _artifact_hash(
+        manifest, "player_profiles", "team_profiles", "all_players_stats"
+    )
+    return payload, source_sha, ["player_profiles", "team_profiles", "all_players_stats"]
+
+
+def build_winner_probabilities(
+    store: DataStore, manifest: dict
+) -> tuple[dict | None, str, list[str]]:
+    from ..simulation_artifacts import load_winner_probabilities, winner_probabilities_api_payload
+    from ..tournament import get_winner_probabilities
+
+    probs = load_winner_probabilities()
+    if probs is None:
+        probs = get_winner_probabilities(store)
+    payload = winner_probabilities_api_payload(probs, flag_lookup=store.flag)
+    source_sha = _artifact_hash(manifest, "winner_probabilities")
+    return payload, source_sha, ["winner_probabilities"]
+
+
+def build_bracket(store: DataStore, manifest: dict) -> tuple[dict, str, list[str]]:
+    from ..tournament import get_bracket_predictions
+
+    preds = get_bracket_predictions(store)
+    payload = {
+        "rounds": [
+            {
+                **round_def,
+                "matches": [
+                    {**m, "prediction": preds.get(str(m["game_id"]))}
+                    for m in round_def["matches"]
+                ],
+            }
+            for round_def in store.bracket.get("rounds", [])
+        ]
+    }
+    source_sha = _artifact_hash(manifest, "bracket", "bracket_predictions")
+    return payload, source_sha, ["bracket", "bracket_predictions"]
+
+
 def publish_standings(store: DataStore, manifest: dict, cache_store) -> bool:
     payload, source_sha, sources = build_standings(store, manifest)
     pk, sk = keys.dataset_pk(), keys.standings_sk()

@@ -33,6 +33,16 @@ def publish_api_cache(manifest: dict, *, store: DataStore | None = None) -> dict
     payload, sha, sources = builders.build_standings(store, manifest)
     _upsert(keys.standings_sk(), payload, sha, sources)
 
+    overview, osha, osources = builders.build_overview(store, manifest)
+    _upsert(keys.overview_sk(), overview, osha, osources)
+
+    wpayload, wsha, wsources = builders.build_winner_probabilities(store, manifest)
+    if wpayload is not None:
+        _upsert(keys.winner_probabilities_sk(), wpayload, wsha, wsources)
+
+    bracket, bsha, bsources = builders.build_bracket(store, manifest)
+    _upsert(keys.bracket_sk(), bracket, bsha, bsources)
+
     return {"written": written, "skipped": skipped}
 
 

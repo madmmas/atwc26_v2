@@ -21,13 +21,13 @@ from fastapi import FastAPI, HTTPException, Query
 from fastapi.middleware.cors import CORSMiddleware
 
 from atwc26_core import config
-from atwc26_core.api_cache import keys
+from atwc26_core.api_cache import builders, keys
 from atwc26_core.data import get_store
 from atwc26_core.simulation_artifacts import (
     load_winner_probabilities,
     winner_probabilities_api_payload,
 )
-from atwc26_core.tournament import get_bracket_predictions, get_winner_probabilities
+from atwc26_core.tournament import get_winner_probabilities
 from services.shared.api_reader import read_cached
 from services.shared.bootstrap import ensure_data_available
 from services.shared.json_util import clean_json
@@ -50,11 +50,17 @@ def _warm() -> None:
 
 @app.get("/api/winner-probabilities")
 def winner_probabilities():
-    store = get_store()
-    probs = load_winner_probabilities()
-    if probs is None:
-        probs = get_winner_probabilities(store)
-    return clean_json(winner_probabilities_api_payload(probs, flag_lookup=store.flag))
+    pk = keys.dataset_pk()
+
+    def _fallback():
+        store = get_store()
+        payload, _, _ = builders.build_winner_probabilities(store, {})
+        if payload is None:
+            probs = load_winner_probabilities() or get_winner_probabilities(store)
+            payload = winner_probabilities_api_payload(probs, flag_lookup=store.flag)
+        return payload
+
+    return clean_json(read_cached(pk, keys.winner_probabilities_sk(), _fallback))
 
 
 @app.get("/api/health")
@@ -71,65 +77,14 @@ def health():
 
 @app.get("/api/overview")
 def overview():
-    store = get_store()
-    players = store.players
-    top_scorers = (
-        players.sort_values("totalGoals_total", ascending=False)
-        .head(8)[
-            [
-                "player_id",
-                "player_name",
-                "team_name",
-                "flag_url",
-                "role",
-                "totalGoals_total",
-                "expectedGoals_total",
-                "minutes",
-            ]
-        ]
-        .to_dict("records")
-    )
-    top_xg = (
-        players.sort_values("expectedGoals_p90", ascending=False)
-        .query("minutes >= 90")
-        .head(8)[
-            [
-                "player_id",
-                "player_name",
-                "team_name",
-                "flag_url",
-                "role",
-                "expectedGoals_p90",
-                "minutes",
-            ]
-        ]
-        .to_dict("records")
-    )
-    top_creators = (
-        players.sort_values("expectedAssists_p90", ascending=False)
-        .query("minutes >= 90")
-        .head(8)[
-            [
-                "player_id",
-                "player_name",
-                "team_name",
-                "flag_url",
-                "role",
-                "expectedAssists_p90",
-                "minutes",
-            ]
-        ]
-        .to_dict("records")
-    )
-    return clean_json(
-        {
-            "league": store.league,
-            "teams": store.teams.to_dict("records"),
-            "top_scorers": top_scorers,
-            "top_xg_per90": top_xg,
-            "top_creators_per90": top_creators,
-        }
-    )
+    pk = keys.dataset_pk()
+
+    def _fallback():
+        store = get_store()
+        payload, _, _ = builders.build_overview(store, {})
+        return payload
+
+    return clean_json(read_cached(pk, keys.overview_sk(), _fallback))
 
 
 @app.get("/api/teams")
@@ -245,21 +200,14 @@ def standings():
 
 @app.get("/api/bracket")
 def bracket():
-    store = get_store()
-    preds = get_bracket_predictions(store)
-    result = {
-        "rounds": [
-            {
-                **round_def,
-                "matches": [
-                    {**m, "prediction": preds.get(str(m["game_id"]))}
-                    for m in round_def["matches"]
-                ],
-            }
-            for round_def in store.bracket.get("rounds", [])
-        ]
-    }
-    return clean_json(result)
+    pk = keys.dataset_pk()
+
+    def _fallback():
+        store = get_store()
+        payload, _, _ = builders.build_bracket(store, {})
+        return payload
+
+    return clean_json(read_cached(pk, keys.bracket_sk(), _fallback))
 
 
 @app.get("/api/leaderboard")

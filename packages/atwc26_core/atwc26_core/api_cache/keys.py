@@ -30,3 +30,15 @@ def match_detail_sk(game_id: str) -> str:
 
 def player_detail_sk(player_id: int | str) -> str:
     return f"API#player#{player_id}"
+
+
+def winner_probabilities_sk() -> str:
+    return "API#winner-probabilities"
+
+
+def bracket_sk() -> str:
+    return "API#bracket"
+
+
+def overview_sk() -> str:
+    return "API#overview"
