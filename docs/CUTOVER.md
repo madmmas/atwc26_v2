@@ -34,7 +34,12 @@ See [TESTING.md](TESTING.md) §6a for full k6 A/B documentation.
 - [ ] `make test-contract` passes
 - [ ] k6 A/B **PASS** (artifact saved from CI or local run)
 - [ ] Static frontend smoke on CloudFront URL
+- [ ] CloudFront routes static assets to S3 and `/api/*` to API Gateway
+- [ ] Candidate stack runs **without WAF** (CloudFront CDN + TLS only)
+- [ ] API Gateway split verified: read APIs on Lambda, compute APIs on ECS
+- [ ] DynamoDB API cache + S3 fallback behavior smoke-tested for read endpoints
 - [ ] ETL publish + Lambda cold-start verified in AWS dev
+- [ ] ETL publish updates compute data version (`ATWC26_DATA_VERSION`) and refreshes ECS predict path
 - [ ] Rollback plan documented (revert DNS / CloudFront origin to v1)
 
 ## Tag v1 before merge

@@ -4,6 +4,8 @@ Terraform and deploy scripts for the **v2 candidate stack**. Production v1 (`atw
 
 Use a distinct `name_prefix` (default `atwc26-v2`) so candidate resources never collide with production.
 
+> Scope note: this v2 candidate path intentionally uses **CloudFront without WAF** for now (CDN + TLS only).
+
 ## Layout
 
 ```text
@@ -151,6 +153,21 @@ terraform output data_bucket_name         # sync ETL artifacts here
 terraform output dynamodb_table_name
 ```
 
+### Route ownership (target state)
+
+- `analytics_api` (Lambda): read-heavy endpoints (`/api/overview`, `/api/teams`, `/api/matches`, `/api/standings`, `/api/bracket`, `/api/leaderboard`, and incremental read slices).
+- `predict` compute path (ECS/Fargate): `POST /api/predict`, `GET /api/winner-probabilities`.
+- API Gateway performs route split; CloudFront forwards `/api/*` to API Gateway.
+
+### Execution phases (from `TODO.md`)
+
+1. Infra route split (CloudFront -> API Gateway + path-based backends)
+2. Standings cache slice (`API#standings`)
+3. Teams + team players cache slices
+4. Matches + match detail + player detail cache slices
+5. ECS refresh/versioning finalization
+6. CI + docs hardening
+
 Publish data before invoking Lambdas in AWS:
 
 ```bash
@@ -236,6 +253,7 @@ Deploy workflow reads frontend bucket and distribution from Terraform outputs wh
 - S3: data bucket, frontend bucket, Lambda layer upload prefix
 - DynamoDB: manifest table
 - Lambda, API Gateway, CloudFront, IAM (for Lambda execution roles)
+- ECS (predict service refresh path)
 - Optional: S3 state bucket for `ATWC26_TF_STATE_BUCKET`
 
 ## Related docs

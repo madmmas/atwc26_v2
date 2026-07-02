@@ -158,6 +158,17 @@ Pick based on how much ops you want to own:
 | **Containers at scale** | ECS/Fargate or GKE/EKS | same | Put both behind an ALB/Ingress; scale backend replicas horizontally. |
 | **Kubernetes** | Deployment+Service | Deployment+Service+HPA | HPA on CPU; readiness probe `GET /api/health`. |
 
+### v2 target routing (no WAF in this phase)
+
+Use this flow for the candidate stack:
+
+- `CloudFront` for CDN + TLS only (**no WAF** attached in this phase)
+- static frontend paths -> S3 origin
+- `/api/*` -> API Gateway origin
+- API Gateway route split:
+  - read-heavy endpoints -> Lambda (`analytics_api`)
+  - compute-heavy endpoints -> ECS/Fargate (`predict` + `winner-probabilities`)
+
 ### TLS
 Terminate HTTPS at Nginx (uncomment the `443` block + mount certs) or at the
 cloud load balancer. Then enable the HSTS header in `deploy/nginx.conf`.
@@ -195,7 +206,7 @@ serve tens of thousands of concurrent fans for this workload.
 - [x] CORS locked to known origins (`ATWC26_CORS_ORIGINS`); same-origin in prod.
 - [x] No secrets in the codebase; all config via env vars.
 - [ ] Enable **TLS + HSTS** (certs at the proxy or LB).
-- [ ] Put a WAF/CDN (Cloudflare/CloudFront) in front for DDoS protection.
+- [ ] Keep CloudFront-only edge for v2 candidate (no WAF in this phase).
 - [ ] Add request-size limits and a short read timeout (set: 60s).
 - [ ] Pin and scan images (`docker scout` / Trivy) in CI before deploy.
 

@@ -257,7 +257,28 @@ Cutover checklist: [CUTOVER.md](CUTOVER.md). CI: `.github/workflows/performance.
 
 ---
 
-## 7. Suggested automation stack
+## 7. Route-split + cache validation (v2 target)
+
+Use this checklist to verify the TODO execution plan in a deployed candidate:
+
+- [ ] **Edge pathing:** CloudFront serves static pages and forwards `/api/*` to API Gateway.
+- [ ] **No WAF:** candidate distribution has no attached WAF ACL.
+- [ ] **Service ownership:** `POST /api/predict` and `GET /api/winner-probabilities` are served by ECS; read APIs are served by Lambda.
+- [ ] **Data freshness:** after ETL publish, `ATWC26_DATA_VERSION` changes and predict/winner outputs reflect the latest dataset.
+- [ ] **Cache behavior:** DynamoDB-backed items (standings/teams/match/player detail) return on warm paths; fallback to S3/local artifacts still works when cache item is missing.
+
+Quick smoke commands (replace URLs as needed):
+
+```bash
+curl -fsS "$CLOUDFRONT_URL/" >/dev/null
+curl -fsS "$CLOUDFRONT_URL/api/health"
+curl -fsS "$CLOUDFRONT_URL/api/standings" | jq '.groups | length'
+curl -fsS "$CLOUDFRONT_URL/api/winner-probabilities" | jq '.teams | length'
+```
+
+---
+
+## 8. Suggested automation stack
 
 | Layer | Tool | Why |
 |---|---|---|
@@ -325,7 +346,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 8. Negative & edge cases to cover
+## 9. Negative & edge cases to cover
 
 - `POST /api/predict` with **empty** players → 400.
 - Same team on both sides (UI disables Predict when `teamA === teamB`).
@@ -339,7 +360,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 9. Smoke checklist (manual, ~2 min)
+## 10. Smoke checklist (manual, ~2 min)
 
 - [ ] `/api/health` returns `200` with non-zero `players`/`teams`.
 - [ ] Overview page shows KPIs, the team chart, and three leaderboards.
@@ -350,7 +371,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 10. Notes for reliable runs
+## 11. Notes for reliable runs
 
 - The dataset is **read-only** and deterministic, so tests are reproducible for a
   given `data/` snapshot. If `data/` is refreshed, exact numbers change but the
@@ -360,7 +381,7 @@ test("build two XIs and predict a result", async ({ page }) => {
 
 ---
 
-## 11. Local v2 E2E smoke path
+## 12. Local v2 E2E smoke path
 
 End-to-end check for the **v2 candidate stack** on your laptop: ETL → `data/` →
 split APIs → frontend (dev or static). No AWS required for the automated part.

@@ -102,6 +102,32 @@ When new artifacts are uploaded:
 - With `ATWC26_LAMBDA_ANALYTICS_NAME` / `ATWC26_LAMBDA_PREDICT_NAME` set, publish bumps `ATWC26_DATA_VERSION` on those Lambdas to force fresh containers.
 - With `ATWC26_ECS_CLUSTER` + `ATWC26_ECS_SERVICES` set, publish triggers a rolling ECS deployment on those services.
 
+## Planned DynamoDB API cache items (execution phases)
+
+Beyond the manifest, v2 rollout phases materialize selected API responses into the same DynamoDB table (partitioned by dataset), while S3 remains the source of truth.
+
+Planned cache keys:
+
+- `API#standings`
+- `API#teams`
+- `API#team#{name}` (team roster payload)
+- `API#matches`
+- `API#match#{game_id}` (match detail payload)
+- `API#player#{player_id}` (player detail payload)
+
+Each item will include:
+
+- `published_at`
+- `source_artifacts` (which ETL artifacts produced the payload)
+- `source_sha256` (combined source hash for idempotent upserts)
+- `payload` (API-ready JSON body)
+
+Read path target:
+
+1. in-memory cache (warm container)
+2. DynamoDB API item
+3. S3/local artifact fallback
+
 ## Scripts (direct)
 
 ```bash

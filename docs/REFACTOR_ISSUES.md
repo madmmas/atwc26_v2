@@ -11,7 +11,7 @@ Production ([atwc26.com](https://atwc26.com)) runs the **v1 monolith** on `main`
 | **`refactor/v2-integration`** | **Created** from `main`; merge `main` into it after doc/plan updates |
 | **Track B — Issues 4–10** | **Open** on GitHub — see mapping below |
 | **`v1-baseline` tag** | Optional — not yet applied |
-| **`docs/CUTOVER.md`** | Not created yet *(Issue 10 prep)* |
+| **`docs/CUTOVER.md`** | Created; keep updating during Issues 8–10 |
 
 After this doc PR merges to `main`, sync the integration branch:
 
@@ -41,7 +41,24 @@ main ──► Issue 1 ──► Issue 2 ──► Issue 3 ──► (tag v1-bas
 | Doc | Purpose |
 |-----|---------|
 | **[REFACTOR_GITHUB_ISSUES.md](REFACTOR_GITHUB_ISSUES.md)** | Issue titles, bodies, acceptance criteria |
-| **[CUTOVER.md](CUTOVER.md)** | Production cutover checklist *(create before Issue 10)* |
+| **[CUTOVER.md](CUTOVER.md)** | Production cutover checklist |
+| **[../TODO.md](../TODO.md)** | File-by-file execution checklist (no WAF phase) |
+
+### Current architecture constraints (v2 candidate)
+
+- CloudFront is CDN + TLS only (**no WAF in this phase**).
+- CloudFront routes `/api/*` to API Gateway.
+- API Gateway performs route split (Lambda read endpoints vs ECS compute endpoints).
+- S3 remains source-of-truth ETL storage; DynamoDB expands from manifest to selected API cache slices over phased execution.
+
+### Execution tracker issues (phase-by-phase)
+
+- [#58](https://github.com/neunov/AnalyseThisWC26/issues/58) Phase A - Infra route split (CloudFront/API Gateway, no WAF)
+- [#59](https://github.com/neunov/AnalyseThisWC26/issues/59) Phase B - Standings cache slice (`API#standings`)
+- [#60](https://github.com/neunov/AnalyseThisWC26/issues/60) Phase C - Teams + team players cache slices
+- [#61](https://github.com/neunov/AnalyseThisWC26/issues/61) Phase D - Matches + match detail + player detail cache slices
+- [#62](https://github.com/neunov/AnalyseThisWC26/issues/62) Phase E - ECS refresh + data versioning finalization
+- [#63](https://github.com/neunov/AnalyseThisWC26/issues/63) Phase F - CI hardening + docs/cutover rehearsal
 
 ---
 
