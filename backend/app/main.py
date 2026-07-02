@@ -14,7 +14,7 @@ from . import config
 from .data import get_store
 from .prediction import get_predictor
 from .schemas import PredictRequest
-from .tournament import get_winner_probabilities
+from .tournament import get_bracket_predictions, get_winner_probabilities
 
 app = FastAPI(title=config.APP_NAME, version=config.APP_VERSION)
 
@@ -43,6 +43,7 @@ def _warm() -> None:
     store = get_store()
     get_predictor(store)          # build reference ratings up front
     get_winner_probabilities(store)  # run the ~6s Monte Carlo sim up front, not on first request
+    get_bracket_predictions(store)   # rate all teams for the bracket up front too
 
 
 @app.get("/api/health")
@@ -151,9 +152,22 @@ def standings():
 
 @app.get("/api/bracket")
 def bracket():
-    """Round-of-32-through-Final knockout fixture skeleton (real ESPN data)."""
+    """Knockout bracket with per-match predictions for unplayed fixtures."""
     store = get_store()
-    return _clean(store.bracket)
+    preds = get_bracket_predictions(store)
+    result = {
+        "rounds": [
+            {
+                **round_def,
+                "matches": [
+                    {**m, "prediction": preds.get(str(m["game_id"]))}
+                    for m in round_def["matches"]
+                ],
+            }
+            for round_def in store.bracket.get("rounds", [])
+        ]
+    }
+    return _clean(result)
 
 
 @app.get("/api/winner-probabilities")

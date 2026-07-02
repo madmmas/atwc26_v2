@@ -315,11 +315,131 @@ def run_simulation(
     }
 
 
-# Module-level cached singleton, mirroring prediction.py's get_predictor —
+# --------------------------------------------------------------------------- #
+# Deterministic bracket prediction (for bracket display)
+# --------------------------------------------------------------------------- #
+def _match_forecast(ra: TeamRatings, rb: TeamRatings, avg_goals: float) -> dict:
+    """Most-likely scoreline + each side's probability of *advancing* for one
+    knockout tie. Uses the same Poisson scoreline matrix as prediction.py's
+    match predictor, then splits the draw mass by expected-goal share — the
+    same extra-time/penalties proxy the Monte Carlo simulator uses — so the two
+    views stay consistent.
+    """
+    from .prediction import MAX_GOALS, _poisson_pmf
+
+    lam_a = min(max(avg_goals * ra.attack / rb.defense / rb.gk, LAMBDA_CLAMP[0]), LAMBDA_CLAMP[1])
+    lam_b = min(max(avg_goals * rb.attack / ra.defense / ra.gk, LAMBDA_CLAMP[0]), LAMBDA_CLAMP[1])
+    pa = [_poisson_pmf(i, lam_a) for i in range(MAX_GOALS + 1)]
+    pb = [_poisson_pmf(j, lam_b) for j in range(MAX_GOALS + 1)]
+    win_a = win_b = draw = 0.0
+    for i in range(MAX_GOALS + 1):
+        for j in range(MAX_GOALS + 1):
+            p = pa[i] * pb[j]
+            if i > j:
+                win_a += p
+            elif j > i:
+                win_b += p
+            else:
+                draw += p
+    total = win_a + win_b + draw or 1.0
+    win_a, win_b, draw = win_a / total, win_b / total, draw / total
+    share_a = lam_a / (lam_a + lam_b)
+    advance_a = win_a + draw * share_a
+    advance_b = win_b + draw * (1 - share_a)
+    return {
+        "score_a": round(lam_a),
+        "score_b": round(lam_b),
+        "advance_a": advance_a,
+        "advance_b": advance_b,
+    }
+
+
+def predict_bracket_path(store: DataStore, predictor: Predictor) -> dict[str, dict]:
+    """Walk rounds in order using real standings + actual results for completed
+    matches, Poisson most-likely score for upcoming ones. Predicted winners
+    cascade so every future round can be predicted, not just the first one.
+
+    Returns {game_id: {team_a_name, team_a_flag, team_b_name, team_b_flag,
+                        predicted_score_a, predicted_score_b, predicted_winner}}
+    for unplayed matches only.
+    """
+    ratings = team_ratings(store, predictor)
+    avg_goals = predictor.avg_goals
+
+    # Rank groups from real standings — no randomness.
+    ranked_groups: dict[str, list[dict]] = {}
+    for gname, g in store.standings.items():
+        ranked = sorted(
+            [dict(t) for t in g["teams"]],
+            key=lambda t: (-t["P"], -t.get("GD", 0), -t.get("F", 0), t["team_name"]),
+        )
+        for i, t in enumerate(ranked):
+            t["rank"] = i + 1
+        ranked_groups[gname] = ranked
+
+    qualifying_thirds = qualifying_third_place(ranked_groups)
+    round_results: dict[tuple[str, int, str], tuple[str, str]] = {}
+    predictions: dict[str, dict] = {}
+
+    for round_def in store.bracket.get("rounds", []):
+        rname = round_def["name"]
+        for m in round_def["matches"]:
+            gid = str(m["game_id"])
+            if m.get("completed"):
+                a_id = m["slot_a"].get("team_id")
+                a_name = m["slot_a"].get("team_name")
+                b_id = m["slot_b"].get("team_id")
+                b_name = m["slot_b"].get("team_name")
+                sa, sb = int(m.get("score_a") or 0), int(m.get("score_b") or 0)
+                if sa != sb:
+                    winner = (a_id, a_name) if sa > sb else (b_id, b_name)
+                    loser = (b_id, b_name) if sa > sb else (a_id, a_name)
+                    round_results[(rname, m["position"], "match_winner")] = winner
+                    round_results[(rname, m["position"], "match_loser")] = loser
+            else:
+                a_id, a_name = resolve_slot(
+                    m["slot_a"], ranked_groups, qualifying_thirds, round_results
+                )
+                b_id, b_name = resolve_slot(
+                    m["slot_b"], ranked_groups, qualifying_thirds, round_results
+                )
+                ra = ratings.get(a_name) if a_name else None
+                rb = ratings.get(b_name) if b_name else None
+                pred: dict = {
+                    "team_a_name": a_name,
+                    "team_a_flag": store.flag(a_name) if a_name else None,
+                    "team_b_name": b_name,
+                    "team_b_flag": store.flag(b_name) if b_name else None,
+                    "predicted_score_a": None,
+                    "predicted_score_b": None,
+                    "predicted_winner": None,
+                    # Advancing probability of the predicted winner, 0..1.
+                    "win_probability": None,
+                }
+                if ra and rb and a_id and b_id:
+                    f = _match_forecast(ra, rb, avg_goals)
+                    pred["predicted_score_a"] = f["score_a"]
+                    pred["predicted_score_b"] = f["score_b"]
+                    if f["advance_a"] >= f["advance_b"]:
+                        w_id, w_name, l_id, l_name = a_id, a_name, b_id, b_name
+                        pred["win_probability"] = round(f["advance_a"], 4)
+                    else:
+                        w_id, w_name, l_id, l_name = b_id, b_name, a_id, a_name
+                        pred["win_probability"] = round(f["advance_b"], 4)
+                    pred["predicted_winner"] = w_name
+                    round_results[(rname, m["position"], "match_winner")] = (w_id, w_name)
+                    round_results[(rname, m["position"], "match_loser")] = (l_id, l_name)
+                predictions[gid] = pred
+
+    return predictions
+
+
+# Module-level cached singletons, mirroring prediction.py's get_predictor —
 # recomputed once per process. The existing refresh cron restarts the
 # backend after every data refresh, which is what "rerun after every
 # finished match" maps to (no separate scheduling needed).
 _probabilities: dict[str, float] | None = None
+_bracket_predictions: dict[str, dict] | None = None
 
 
 def get_winner_probabilities(store: DataStore) -> dict[str, float]:
@@ -328,3 +448,14 @@ def get_winner_probabilities(store: DataStore) -> dict[str, float]:
         from .prediction import get_predictor
         _probabilities = run_simulation(store, get_predictor(store))
     return _probabilities
+
+
+def get_bracket_predictions(store: DataStore) -> dict[str, dict]:
+    """Cached per-match bracket predictions. Rating all 48 teams takes a few
+    seconds, so — like the winner probabilities — compute once per process and
+    reuse; the refresh cron's backend restart is what recomputes them."""
+    global _bracket_predictions
+    if _bracket_predictions is None:
+        from .prediction import get_predictor
+        _bracket_predictions = predict_bracket_path(store, get_predictor(store))
+    return _bracket_predictions
