@@ -1,5 +1,6 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { api, MatchDetail, MatchListItem } from "@/lib/api";
 import { Flag } from "@/components/Flag";
 import { SectionTitle, Spinner } from "@/components/ui";
@@ -37,6 +38,11 @@ function MatchCard({
       <span className="flex-1 truncate text-xs font-semibold text-fg">{m.home_team}</span>
       <span className="rounded bg-pitch-edge px-1.5 py-0.5 text-xs font-black text-fg">
         {m.home_score}-{m.away_score}
+        {m.home_shootout_score != null && m.away_shootout_score != null && (
+          <span className="ml-1 font-semibold text-faint">
+            ({m.home_shootout_score}-{m.away_shootout_score})
+          </span>
+        )}
       </span>
       <span className="flex-1 truncate text-right text-xs font-semibold text-fg">{m.away_team}</span>
       <Flag src={m.away_flag} name={m.away_team} size={18} />
@@ -75,7 +81,9 @@ function CompareRow({
   );
 }
 
-export default function Matches() {
+function Matches() {
+  // Optional ?game=<id> deep link (e.g. clicking a finished match in the bracket).
+  const requestedGame = useSearchParams().get("game");
   const [list, setList] = useState<MatchListItem[]>([]);
   const [selected, setSelected] = useState<string | null>(null);
   const [detail, setDetail] = useState<MatchDetail | null>(null);
@@ -85,9 +93,11 @@ export default function Matches() {
     api.matches().then((r) => {
       setList(r.matches);
       setLoading(false);
-      if (r.matches.length) setSelected(r.matches[0].game_id);
+      if (!r.matches.length) return;
+      const deepLinked = requestedGame && r.matches.some((m) => m.game_id === requestedGame);
+      setSelected(deepLinked ? requestedGame : r.matches[0].game_id);
     });
-  }, []);
+  }, [requestedGame]);
 
   useEffect(() => {
     if (!selected) return;
@@ -132,6 +142,11 @@ export default function Matches() {
             </div>
             <div className="shrink-0 whitespace-nowrap text-2xl font-black stat-grad sm:text-4xl">
               {detail.team_a.score}–{detail.team_b.score}
+              {detail.team_a.shootout_score != null && detail.team_b.shootout_score != null && (
+                <span className="ml-1.5 text-base font-bold text-faint sm:text-xl">
+                  ({detail.team_a.shootout_score}–{detail.team_b.shootout_score})
+                </span>
+              )}
             </div>
             <div className="flex min-w-0 flex-1 items-center gap-2 sm:gap-3">
               <Flag src={detail.team_b.flag_url} name={detail.team_b.team_name} size={28} />
@@ -158,5 +173,14 @@ export default function Matches() {
         </div>
       )}
     </div>
+  );
+}
+
+// useSearchParams() requires a Suspense boundary in the Next 14 App Router.
+export default function MatchesPage() {
+  return (
+    <Suspense fallback={<Spinner label="Loading matches…" />}>
+      <Matches />
+    </Suspense>
   );
 }

@@ -121,6 +121,9 @@ export type MatchListItem = {
   away_flag?: string | null;
   home_score: number | null;
   away_score: number | null;
+  // Only set when the match was decided on penalties.
+  home_shootout_score?: number | null;
+  away_shootout_score?: number | null;
 };
 export type MatchIndicator = {
   key: string;
@@ -145,10 +148,17 @@ export type MatchTimeline = {
   momentum: MomentumPoint[];
   duration: number;
 };
+export type MatchTeamBlock = {
+  team_name: string;
+  flag_url?: string | null;
+  score: number | null;
+  // Only set when the match was decided on penalties.
+  shootout_score?: number | null;
+};
 export type MatchDetail = {
   meta: MatchListItem;
-  team_a: { team_name: string; flag_url?: string | null; score: number | null };
-  team_b: { team_name: string; flag_url?: string | null; score: number | null };
+  team_a: MatchTeamBlock;
+  team_b: MatchTeamBlock;
   indicators: MatchIndicator[];
   timeline: MatchTimeline | null;
 };
@@ -200,14 +210,31 @@ export type BracketSlot =
   | { type: "third_place"; candidate_groups: string[] }
   | { type: "team"; team_id: string; team_name: string; flag_url?: string | null }
   | { type: "match_winner" | "match_loser"; round: string; position: number };
+export type BracketPrediction = {
+  team_a_name: string | null;
+  team_a_flag: string | null;
+  team_b_name: string | null;
+  team_b_flag: string | null;
+  predicted_score_a: number | null;
+  predicted_score_b: number | null;
+  predicted_winner: string | null;
+  // Advancing probability of the predicted winner, 0..1.
+  win_probability?: number | null;
+};
 export type BracketMatch = {
   game_id: string;
+  position: number;
   kickoff_utc: string;
   completed: boolean;
   slot_a: BracketSlot;
   slot_b: BracketSlot;
   score_a: string | null;
   score_b: string | null;
+  // Only set when the draw was resolved on penalties.
+  shootout_a?: number | null;
+  shootout_b?: number | null;
+  // Only present on unplayed matches.
+  prediction?: BracketPrediction | null;
 };
 export type BracketRound = { name: string; matches: BracketMatch[] };
 export type BracketData = { rounds: BracketRound[] };

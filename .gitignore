@@ -57,3 +57,4 @@ reports/
 # Personal/company marketing content -- never goes in the repo
 PUBLICITY_KIT.md
 
+frontend/tsconfig.tsbuildinfo
