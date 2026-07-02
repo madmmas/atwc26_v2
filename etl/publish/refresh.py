@@ -1,4 +1,8 @@
-"""Refresh compute after ETL publish (Lambda env bump, ECS rolling deploy)."""
+"""Refresh compute after ETL publish (Lambda env bump, ECS rolling deploy).
+
+ECS refresh warms the predict Fargate task only (POST /api/predict). Analytics
+Lambda refresh invalidates read caches; Monte Carlo runs in GHA simulate, not AWS.
+"""
 from __future__ import annotations
 
 import os

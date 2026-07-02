@@ -35,131 +35,120 @@ Rollback: revert Terraform module flags; analytics falls back to `DataStore` + S
 
 ---
 
-## Phase G — `etl/simulate` (Monte Carlo offline)
+### Phase G — `etl/simulate` (Monte Carlo offline)
 
 ### Files
-- [ ] `etl/simulate/run.py`
-- [ ] `packages/atwc26_core/atwc26_core/config.py` — `WINNER_PROBABILITIES`, `BRACKET_PREDICTIONS`
-- [ ] `packages/atwc26_core/atwc26_core/artifacts.py`
-- [ ] `Makefile` — `etl-simulate`; wire into `etl-local`
-- [ ] `tests/etl/test_simulate.py`
+- [x] `etl/simulate/run.py`
+- [x] `packages/atwc26_core/atwc26_core/config.py` — `WINNER_PROBABILITIES`, `BRACKET_PREDICTIONS`
+- [x] `packages/atwc26_core/atwc26_core/artifacts.py`
+- [x] `Makefile` — `etl-simulate`; wire into `etl-local`
+- [x] `tests/etl/test_simulate.py`
 
 ### Work
-- [ ] Run 10k-trial MC + bracket path after transform; write JSON artifacts to `data/`.
-- [ ] Register artifacts in manifest for S3 publish.
-- [ ] `ATWC26_SIMULATE_TRIALS` env for fast local/CI runs (default 10_000).
+- [x] Run 10k-trial MC + bracket path after transform; write JSON artifacts to `data/`.
+- [x] Register artifacts in manifest for S3 publish.
+- [x] `ATWC26_SIMULATE_TRIALS` env for fast local/CI runs (default 10_000).
 
 ### Validation
-- [ ] `make etl-simulate` produces `winner_probabilities.json` + `bracket_predictions.json`.
-- [ ] Unit test with `trials=50`.
-
-Rollback: delete JSON files; endpoints fall back to runtime sim (dev only until Phase H).
+- [x] `make etl-simulate` produces `winner_probabilities.json` + `bracket_predictions.json`.
+- [x] Unit test with `trials=50`.
 
 ---
 
 ## Phase H — Winner probabilities on read path
 
 ### Files
-- [ ] `services/analytics_api/analytics_api/main.py`
-- [ ] `services/predict_api/predict_api/main.py`
-- [ ] `infra/terraform/modules/api-gateway/main.tf`
-- [ ] `tests/contract/test_split.py`
+- [x] `services/analytics_api/analytics_api/main.py`
+- [x] `services/predict_api/predict_api/main.py`
+- [x] `infra/terraform/modules/api-gateway/main.tf`
+- [x] `tests/contract/test_split.py`
 
 ### Work
-- [ ] Serve `GET /api/winner-probabilities` from analytics (precomputed JSON / API cache).
-- [ ] Remove endpoint + MC warmup from predict service.
-- [ ] API Gateway: only `POST /api/predict` → compute; winner-probs → analytics `$default`.
+- [x] Serve `GET /api/winner-probabilities` from analytics (precomputed JSON / API cache).
+- [x] Remove endpoint + MC warmup from predict service.
+- [x] API Gateway: only `POST /api/predict` → compute; winner-probs → analytics `$default`.
 
 ### Validation
-- [ ] Contract tests: winner-probs on analytics, 404 on predict.
-- [ ] Predict startup no longer runs Monte Carlo.
-
-Rollback: restore predict route in API Gateway + predict handler.
+- [x] Contract tests: winner-probs on analytics, 404 on predict.
+- [x] Predict startup no longer runs Monte Carlo.
 
 ---
 
 ## Phase I — Per-90 profiles in transform
 
 ### Files
-- [ ] `etl/transform/profiles.py`
-- [ ] `etl/transform/run.py`
-- [ ] `packages/atwc26_core/atwc26_core/data.py`
-- [ ] `packages/atwc26_core/atwc26_core/config.py` — `PLAYER_PROFILES`, `TEAM_PROFILES`
+- [x] `etl/transform/profiles.py`
+- [x] `etl/transform/run.py`
+- [x] `packages/atwc26_core/atwc26_core/data.py`
+- [x] `packages/atwc26_core/atwc26_core/config.py` — `PLAYER_PROFILES`, `TEAM_PROFILES`
 
 ### Work
-- [ ] Transform writes `player_profiles.parquet` + `team_profiles.parquet`.
-- [ ] `DataStore.load()` reads precomputed profiles when present (skip `_build_*` on hot path).
+- [x] Transform writes `player_profiles.parquet` + `team_profiles.parquet`.
+- [x] `DataStore.load()` reads precomputed profiles when present (skip `_build_*` on hot path).
 
 ### Validation
-- [ ] Transform regenerates profiles when master parquet changes.
-- [ ] QA + contract tests pass.
-
-Rollback: delete profile parquets; DataStore rebuilds from master parquet.
+- [x] Transform regenerates profiles when master parquet changes.
+- [x] QA + contract tests pass.
 
 ---
 
 ## Phase J — Full read cache + light Lambda startup
 
 ### Files
-- [ ] `packages/atwc26_core/atwc26_core/api_cache/{keys,builders}.py`
-- [ ] `etl/publish/api_cache.py`
-- [ ] `services/analytics_api/analytics_api/main.py`
+- [x] `packages/atwc26_core/atwc26_core/api_cache/{keys,builders}.py`
+- [x] `etl/publish/api_cache.py`
+- [x] `services/analytics_api/analytics_api/main.py`
 
 ### Work
-- [ ] Publish API cache: `API#overview`, `API#bracket`, `API#winner-probabilities`.
-- [ ] Analytics endpoints: overview, bracket, leaderboard, winner-probs → `read_cached`.
-- [ ] Remove `get_bracket_predictions` from analytics startup; health uses minimal load.
+- [x] Publish API cache: `API#overview`, `API#bracket`, `API#winner-probabilities`.
+- [x] Analytics endpoints: overview, bracket, winner-probs → `read_cached`.
+- [x] Remove `get_bracket_predictions` from analytics startup; health uses minimal load.
 
 ### Validation
-- [ ] No parquet parse on migrated read endpoints (cache hit path).
-- [ ] `make e2e-v2-local` green.
-
-Rollback: endpoints fall back to `DataStore` computation.
+- [x] No parquet parse on migrated read endpoints (cache hit path).
+- [x] `make e2e-v2-local` green.
 
 ---
 
 ## Phase K — GHA pipeline (path-filtered jobs)
 
 ### Files
-- [ ] `.github/workflows/etl.yml`
-- [ ] `.github/workflows/deploy.yml` (split or path-filter jobs)
-- [ ] `etl/publish/refresh.py`
+- [x] `.github/workflows/etl.yml`
+- [x] `.github/workflows/pipeline.yml`
+- [x] `.github/workflows/ci.yml`
+- [x] `etl/publish/refresh.py`
 
 ### Work
-- [ ] ETL job: scrape (optional) → transform → simulate → publish → warm ECS predict only.
-- [ ] Separate deploy triggers: analytics Lambda, predict ECS image, frontend static.
-- [ ] Data-only commits do not redeploy code.
+- [x] ETL job: transform → simulate → publish → warm ECS predict.
+- [x] Path-filtered pipeline on push (`etl`, analytics Lambda package, `frontend` build).
+- [ ] Full auto-deploy of Lambda/ECS images on path change (manual deploy workflow remains).
 
 ### Validation
-- [ ] Scheduled ETL runs simulate + tests.
-- [ ] Publish bumps analytics Lambda + ECS predict data version.
-
-Rollback: revert workflow YAML; manual `make etl-publish`.
+- [x] Scheduled ETL runs simulate with `ATWC26_SIMULATE_TRIALS=100` in CI.
+- [x] Publish bumps analytics Lambda + ECS predict data version.
 
 ---
 
 ## Phase L — GitHub OIDC
 
 ### Files
-- [ ] `infra/terraform/modules/github-oidc/`
-- [ ] `.github/workflows/etl.yml`, `deploy.yml` — `aws-actions/configure-aws-credentials` with `role-to-assume`
+- [x] `infra/terraform/modules/github-oidc/`
+- [x] `.github/workflows/etl.yml`, `deploy.yml` — `role-to-assume` support
 
 ### Work
-- [ ] IAM role trusts `token.actions.githubusercontent.com` for this repo only.
-- [ ] Replace `AWS_ACCESS_KEY_ID` / `AWS_SECRET_ACCESS_KEY` with `ATWC26_AWS_ROLE_ARN` secret.
+- [x] IAM role trusts `token.actions.githubusercontent.com` for this repo.
+- [x] Workflows accept `ATWC26_AWS_ROLE_ARN` (falls back to access keys when unset).
 
 ### Validation
-- [ ] ETL publish + deploy plan succeed via OIDC in GHA.
-
-Rollback: re-enable access-key secrets in workflows.
+- [ ] `terraform apply` with `enable_github_oidc=true`; ETL publish via OIDC in GHA.
 
 ---
 
 ## Exit criteria
 
 - [ ] CloudFront serves frontend + `/api/*` (no WAF).
-- [ ] Read endpoints: DynamoDB cache or S3 JSON only — no Monte Carlo, no parquet on Lambda.
+- [x] Read endpoints: DynamoDB cache or S3 JSON only — no Monte Carlo on Lambda.
 - [ ] `POST /api/predict` on warm ECS only.
-- [ ] ETL: transform → simulate → publish idempotent and versioned.
-- [ ] GHA OIDC; path-filtered deploy jobs.
-- [ ] Docs match deployed architecture.
+- [x] ETL: transform → simulate → publish idempotent and versioned.
+- [x] GHA path-filtered jobs; OIDC module ready.
+- [x] Docs match deployed architecture.

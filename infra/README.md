@@ -254,8 +254,9 @@ Configure under **Settings → Secrets and variables → Actions**.
 
 | Name | Required for | Source |
 |------|----------------|--------|
-| `AWS_ACCESS_KEY_ID` | ETL publish, deploy | IAM user or OIDC role |
-| `AWS_SECRET_ACCESS_KEY` | ETL publish, deploy | IAM credentials |
+| `AWS_ACCESS_KEY_ID` | ETL publish, deploy (legacy) | IAM user — prefer OIDC |
+| `AWS_SECRET_ACCESS_KEY` | ETL publish, deploy (legacy) | IAM credentials |
+| `ATWC26_AWS_ROLE_ARN` | ETL publish, deploy (preferred) | `terraform output github_actions_role_arn` when `enable_github_oidc=true` |
 | `AWS_REGION` | All AWS jobs | e.g. `us-east-1` |
 | `ATWC26_S3_BUCKET` | ETL publish | `terraform output data_bucket_name` |
 | `ATWC26_DYNAMODB_TABLE` | ETL publish | `terraform output dynamodb_table_name` |

@@ -75,3 +75,8 @@ output "compute_alb_dns" {
   value       = var.enable_ecs_compute ? module.ecs_compute[0].alb_dns_name : null
   description = "Public ALB for ECS compute (debug only; use API Gateway/CloudFront in prod)"
 }
+
+output "github_actions_role_arn" {
+  value       = var.enable_github_oidc ? module.github_oidc[0].role_arn : null
+  description = "Set as ATWC26_AWS_ROLE_ARN GitHub secret for OIDC auth"
+}

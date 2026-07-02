@@ -53,7 +53,7 @@ variable "lambda_package_dir" {
 }
 
 variable "enable_ecs_compute" {
-  description = "Run predict + winner-probabilities on ECS/Fargate instead of predict Lambda."
+  description = "Run POST /api/predict on ECS/Fargate instead of predict Lambda."
   type        = bool
   default     = false
 }
@@ -62,4 +62,22 @@ variable "ecs_container_image" {
   description = "ECR image URI for ECS compute service (required when enable_ecs_compute=true)."
   type        = string
   default     = ""
+}
+
+variable "enable_github_oidc" {
+  description = "Create GitHub Actions OIDC IAM role for CI/CD (set ATWC26_AWS_ROLE_ARN in GHA)."
+  type        = bool
+  default     = false
+}
+
+variable "github_org" {
+  description = "GitHub org/user for OIDC trust policy."
+  type        = string
+  default     = "neunov"
+}
+
+variable "github_repo" {
+  description = "GitHub repository name for OIDC trust policy."
+  type        = string
+  default     = "AnalyseThisWC26"
 }
