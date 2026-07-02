@@ -9,4 +9,5 @@ def reload_data() -> None:
     """Force DataStore reload and clear derived singleton caches."""
     prediction._predictor = None  # noqa: SLF001
     tournament._probabilities = None  # noqa: SLF001
+    tournament._bracket_predictions = None  # noqa: SLF001
     store.load(force=True)

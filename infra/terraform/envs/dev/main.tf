@@ -25,17 +25,6 @@ locals {
   layer_zip_md5    = local.has_lambda_zips ? filemd5(local.layer_zip) : ""
 }
 
-module "frontend_cdn" {
-  source = "../../modules/frontend-cdn"
-
-  name_prefix         = var.name_prefix
-  environment         = var.environment
-  backend_api_url     = var.backend_api_url
-  aliases             = var.aliases
-  acm_certificate_arn = var.acm_certificate_arn
-  tags                = local.tags
-}
-
 module "s3_data" {
   source = "../../modules/s3-data"
 
@@ -101,6 +90,20 @@ module "lambda_predict" {
   package_path        = local.has_lambda_zips ? local.predict_zip : ""
 }
 
+module "ecs_compute" {
+  count  = var.enable_ecs_compute ? 1 : 0
+  source = "../../modules/ecs-compute"
+
+  name_prefix         = var.name_prefix
+  environment         = var.environment
+  tags                = local.tags
+  container_image     = var.ecs_container_image
+  s3_bucket_name      = module.s3_data.bucket_name
+  dynamodb_table_name = module.dynamodb.table_name
+  s3_prefix           = var.data_s3_prefix
+  cors_origins        = join(",", var.cors_allow_origins)
+}
+
 module "api_gateway" {
   source = "../../modules/api-gateway"
 
@@ -111,5 +114,18 @@ module "api_gateway" {
   predict_invoke_arn      = module.lambda_predict.invoke_arn
   analytics_function_name = module.lambda_analytics.function_name
   predict_function_name   = module.lambda_predict.function_name
+  compute_listener_arn    = var.enable_ecs_compute ? module.ecs_compute[0].alb_listener_arn : null
   cors_allow_origins      = var.cors_allow_origins
+}
+
+module "frontend_cdn" {
+  source = "../../modules/frontend-cdn"
+
+  name_prefix          = var.name_prefix
+  environment          = var.environment
+  backend_api_url      = var.backend_api_url
+  aliases              = var.aliases
+  acm_certificate_arn  = var.acm_certificate_arn
+  api_gateway_domain   = module.api_gateway.api_domain
+  tags                 = local.tags
 }

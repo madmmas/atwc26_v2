@@ -10,7 +10,12 @@ output "cloudfront_distribution_id" {
 
 output "cloudfront_url" {
   value       = module.frontend_cdn.cloudfront_url
-  description = "Candidate static frontend URL"
+  description = "Unified CloudFront URL (static + /api/*)"
+}
+
+output "site_url" {
+  value       = module.frontend_cdn.site_url
+  description = "Same as cloudfront_url — use for static build NEXT_PUBLIC_* when routing via CDN"
 }
 
 output "cors_origin_hint" {
@@ -54,4 +59,19 @@ output "lambda_analytics_name" {
 
 output "lambda_predict_name" {
   value = module.lambda_predict.function_name
+}
+
+output "ecs_cluster_name" {
+  value       = var.enable_ecs_compute ? module.ecs_compute[0].cluster_name : null
+  description = "ECS cluster for compute routes (when enable_ecs_compute=true)"
+}
+
+output "ecs_service_name" {
+  value       = var.enable_ecs_compute ? module.ecs_compute[0].service_name : null
+  description = "ECS service to pass to ATWC26_ECS_SERVICES after publish"
+}
+
+output "compute_alb_dns" {
+  value       = var.enable_ecs_compute ? module.ecs_compute[0].alb_dns_name : null
+  description = "Public ALB for ECS compute (debug only; use API Gateway/CloudFront in prod)"
 }

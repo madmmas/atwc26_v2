@@ -38,3 +38,9 @@ variable "backend_api_url" {
   type        = string
   default     = "https://atwc26.com"
 }
+
+variable "api_gateway_domain" {
+  description = "API Gateway hostname for CloudFront /api/* origin (no scheme)."
+  type        = string
+  default     = null
+}

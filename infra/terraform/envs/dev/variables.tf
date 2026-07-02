@@ -51,3 +51,15 @@ variable "lambda_package_dir" {
   type        = string
   default     = ""
 }
+
+variable "enable_ecs_compute" {
+  description = "Run predict + winner-probabilities on ECS/Fargate instead of predict Lambda."
+  type        = bool
+  default     = false
+}
+
+variable "ecs_container_image" {
+  description = "ECR image URI for ECS compute service (required when enable_ecs_compute=true)."
+  type        = string
+  default     = ""
+}

@@ -1,5 +1,7 @@
 locals {
   api_name = "${var.name_prefix}-${var.environment}-api"
+
+  use_ecs_compute = var.compute_listener_arn != null && var.compute_listener_arn != ""
 }
 
 resource "aws_apigatewayv2_api" "http" {
@@ -23,17 +25,39 @@ resource "aws_apigatewayv2_integration" "analytics" {
   payload_format_version = "2.0"
 }
 
-resource "aws_apigatewayv2_integration" "predict" {
+resource "aws_apigatewayv2_integration" "predict_lambda" {
+  count = local.use_ecs_compute ? 0 : 1
+
   api_id                 = aws_apigatewayv2_api.http.id
   integration_type       = "AWS_PROXY"
   integration_uri        = var.predict_invoke_arn
   payload_format_version = "2.0"
 }
 
+resource "aws_apigatewayv2_integration" "compute" {
+  count = local.use_ecs_compute ? 1 : 0
+
+  api_id               = aws_apigatewayv2_api.http.id
+  integration_type     = "HTTP_PROXY"
+  integration_method   = "ANY"
+  integration_uri      = var.compute_listener_arn
+  payload_format_version = "1.0"
+}
+
+locals {
+  compute_integration_id = local.use_ecs_compute ? aws_apigatewayv2_integration.compute[0].id : aws_apigatewayv2_integration.predict_lambda[0].id
+}
+
 resource "aws_apigatewayv2_route" "predict" {
   api_id    = aws_apigatewayv2_api.http.id
   route_key = "POST /api/predict"
-  target    = "integrations/${aws_apigatewayv2_integration.predict.id}"
+  target    = "integrations/${local.compute_integration_id}"
+}
+
+resource "aws_apigatewayv2_route" "winner_probabilities" {
+  api_id    = aws_apigatewayv2_api.http.id
+  route_key = "GET /api/winner-probabilities"
+  target    = "integrations/${local.compute_integration_id}"
 }
 
 resource "aws_apigatewayv2_route" "analytics" {
@@ -58,6 +82,8 @@ resource "aws_lambda_permission" "analytics" {
 }
 
 resource "aws_lambda_permission" "predict" {
+  count = local.use_ecs_compute ? 0 : 1
+
   statement_id  = "AllowAPIGatewayInvokePredict"
   action        = "lambda:InvokeFunction"
   function_name = var.predict_function_name

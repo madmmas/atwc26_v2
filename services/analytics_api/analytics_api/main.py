@@ -22,7 +22,7 @@ from fastapi.middleware.cors import CORSMiddleware
 
 from atwc26_core import config
 from atwc26_core.data import get_store
-from atwc26_core.tournament import get_winner_probabilities
+from atwc26_core.tournament import get_bracket_predictions
 from services.shared.bootstrap import ensure_data_available
 from services.shared.json_util import clean_json
 
@@ -41,7 +41,7 @@ app.add_middleware(
 def _warm() -> None:
     ensure_data_available()
     store = get_store()
-    get_winner_probabilities(store)
+    get_bracket_predictions(store)
 
 
 @app.get("/api/health")
@@ -193,26 +193,20 @@ def standings():
 @app.get("/api/bracket")
 def bracket():
     store = get_store()
-    return clean_json(store.bracket)
-
-
-@app.get("/api/winner-probabilities")
-def winner_probabilities():
-    store = get_store()
-    probs = get_winner_probabilities(store)
-    teams = sorted(
-        (
+    preds = get_bracket_predictions(store)
+    result = {
+        "rounds": [
             {
-                "team_name": name,
-                "flag_url": store.flag(name),
-                "probability": round(p, 4),
-                "eliminated": p == 0.0,
+                **round_def,
+                "matches": [
+                    {**m, "prediction": preds.get(str(m["game_id"]))}
+                    for m in round_def["matches"]
+                ],
             }
-            for name, p in probs.items()
-        ),
-        key=lambda t: -t["probability"],
-    )
-    return clean_json({"teams": teams})
+            for round_def in store.bracket.get("rounds", [])
+        ]
+    }
+    return clean_json(result)
 
 
 @app.get("/api/leaderboard")

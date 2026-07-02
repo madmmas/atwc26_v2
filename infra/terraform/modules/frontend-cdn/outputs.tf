@@ -19,7 +19,12 @@ output "cloudfront_domain_name" {
 }
 
 output "cloudfront_url" {
-  description = "HTTPS URL for the static site."
+  description = "HTTPS URL for the static site (+ /api/* when API origin is wired)."
+  value       = "https://${aws_cloudfront_distribution.site.domain_name}"
+}
+
+output "site_url" {
+  description = "Unified CloudFront URL for frontend and /api/* (when API origin is set)."
   value       = "https://${aws_cloudfront_distribution.site.domain_name}"
 }
 

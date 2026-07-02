@@ -34,6 +34,19 @@ def test_predict_not_on_analytics_service(analytics_client: TestClient) -> None:
     assert response.status_code == 404
 
 
+def test_winner_probabilities_not_on_analytics(analytics_client: TestClient) -> None:
+    response = analytics_client.get("/api/winner-probabilities")
+    assert response.status_code == 404
+
+
+def test_winner_probabilities_on_predict(predict_client: TestClient) -> None:
+    response = predict_client.get("/api/winner-probabilities")
+    assert response.status_code == 200
+    body = response.json()
+    assert body["teams"]
+    assert sum(t["probability"] for t in body["teams"]) > 0
+
+
 def test_analytics_overview(analytics_client: TestClient) -> None:
     response = analytics_client.get("/api/overview")
     assert response.status_code == 200
