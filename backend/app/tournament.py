@@ -185,6 +185,8 @@ def eliminated_teams(store: DataStore) -> set[str]:
             if not m.get("completed"):
                 continue
             sa, sb = int(m["score_a"] or 0), int(m["score_b"] or 0)
+            if sa == sb:  # penalty-decided tie -> the shootout loser is the one eliminated
+                sa, sb = int(m.get("shootout_a") or 0), int(m.get("shootout_b") or 0)
             if sa == sb:
                 continue
             loser_slot = m["slot_a"] if sb > sa else m["slot_b"]
@@ -282,6 +284,8 @@ def run_simulation(
                     a_id, a_name = m["slot_a"]["team_id"], m["slot_a"]["team_name"]
                     b_id, b_name = m["slot_b"]["team_id"], m["slot_b"]["team_name"]
                     sa, sb = int(m["score_a"] or 0), int(m["score_b"] or 0)
+                    if sa == sb:  # penalty-decided knockout tie -> shootout advances a team
+                        sa, sb = int(m.get("shootout_a") or 0), int(m.get("shootout_b") or 0)
                 else:
                     a_id, a_name = resolve_slot(m["slot_a"], ranked_groups, qualifying_thirds, round_results)
                     b_id, b_name = resolve_slot(m["slot_b"], ranked_groups, qualifying_thirds, round_results)
@@ -391,6 +395,8 @@ def predict_bracket_path(store: DataStore, predictor: Predictor) -> dict[str, di
                 b_id = m["slot_b"].get("team_id")
                 b_name = m["slot_b"].get("team_name")
                 sa, sb = int(m.get("score_a") or 0), int(m.get("score_b") or 0)
+                if sa == sb:  # penalty-decided tie -> use the shootout result
+                    sa, sb = int(m.get("shootout_a") or 0), int(m.get("shootout_b") or 0)
                 if sa != sb:
                     winner = (a_id, a_name) if sa > sb else (b_id, b_name)
                     loser = (b_id, b_name) if sa > sb else (a_id, a_name)
