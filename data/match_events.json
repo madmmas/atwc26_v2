@@ -37078,5 +37078,5487 @@
       }
     ],
     "duration": 90
+  },
+  "760486": {
+    "home_team": "South Africa",
+    "away_team": "Canada",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "First Half begins.",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+4'",
+        "type": "halftime",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'",
+        "type": "substitution",
+        "team": "South Africa",
+        "label": "Thalente Mbatha Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 53.9,
+        "display": "54'",
+        "type": "yellow-card",
+        "team": "Canada",
+        "label": "Nathan Saliba Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 58.1,
+        "display": "59'",
+        "type": "substitution",
+        "team": "Canada",
+        "label": "Niko Sigur Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 58.1,
+        "display": "59'",
+        "type": "substitution",
+        "team": "Canada",
+        "label": "Luc de Fougerolles Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 66.6,
+        "display": "67'",
+        "type": "yellow-card",
+        "team": "Canada",
+        "label": "Niko Sigur Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 69.8,
+        "display": "70'",
+        "type": "substitution",
+        "team": "Canada",
+        "label": "Promise David Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 70.0,
+        "display": "70'",
+        "type": "substitution",
+        "team": "Canada",
+        "label": "Jacob Shaffelburg Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 74.3,
+        "display": "75'",
+        "type": "substitution",
+        "team": "Canada",
+        "label": "Alphonso Davies Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 85.7,
+        "display": "86'",
+        "type": "substitution",
+        "team": "South Africa",
+        "label": "Iqraam Rayners Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 85.9,
+        "display": "86'",
+        "type": "substitution",
+        "team": "South Africa",
+        "label": "Tshepang Moremi Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+2'",
+        "type": "goal",
+        "team": "Canada",
+        "label": "Stephen Eust\u00e1quio Goal",
+        "scoring": true
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+7'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "Second Half ends, South Africa 0, Canada 1.",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": 0.0
+      },
+      {
+        "minute": 1,
+        "value": 0.0
+      },
+      {
+        "minute": 2,
+        "value": 0.0
+      },
+      {
+        "minute": 3,
+        "value": 0.6
+      },
+      {
+        "minute": 4,
+        "value": 0.4
+      },
+      {
+        "minute": 5,
+        "value": 0.4
+      },
+      {
+        "minute": 6,
+        "value": 0.2
+      },
+      {
+        "minute": 7,
+        "value": 0.2
+      },
+      {
+        "minute": 8,
+        "value": -0.4
+      },
+      {
+        "minute": 9,
+        "value": -0.2
+      },
+      {
+        "minute": 10,
+        "value": -0.2
+      },
+      {
+        "minute": 11,
+        "value": 0.0
+      },
+      {
+        "minute": 12,
+        "value": 0.0
+      },
+      {
+        "minute": 13,
+        "value": -0.2
+      },
+      {
+        "minute": 14,
+        "value": -0.4
+      },
+      {
+        "minute": 15,
+        "value": -0.4
+      },
+      {
+        "minute": 16,
+        "value": -0.4
+      },
+      {
+        "minute": 17,
+        "value": -0.4
+      },
+      {
+        "minute": 18,
+        "value": -0.2
+      },
+      {
+        "minute": 19,
+        "value": -0.6
+      },
+      {
+        "minute": 20,
+        "value": -0.3
+      },
+      {
+        "minute": 21,
+        "value": -0.3
+      },
+      {
+        "minute": 22,
+        "value": -0.3
+      },
+      {
+        "minute": 23,
+        "value": -0.3
+      },
+      {
+        "minute": 24,
+        "value": 0.3
+      },
+      {
+        "minute": 25,
+        "value": 0.0
+      },
+      {
+        "minute": 26,
+        "value": 0.0
+      },
+      {
+        "minute": 27,
+        "value": 0.0
+      },
+      {
+        "minute": 28,
+        "value": 0.0
+      },
+      {
+        "minute": 29,
+        "value": 0.0
+      },
+      {
+        "minute": 30,
+        "value": 0.0
+      },
+      {
+        "minute": 31,
+        "value": 0.0
+      },
+      {
+        "minute": 32,
+        "value": -0.4
+      },
+      {
+        "minute": 33,
+        "value": -0.2
+      },
+      {
+        "minute": 34,
+        "value": -0.2
+      },
+      {
+        "minute": 35,
+        "value": -0.2
+      },
+      {
+        "minute": 36,
+        "value": -0.2
+      },
+      {
+        "minute": 37,
+        "value": 0.2
+      },
+      {
+        "minute": 38,
+        "value": -0.2
+      },
+      {
+        "minute": 39,
+        "value": -0.2
+      },
+      {
+        "minute": 40,
+        "value": -0.4
+      },
+      {
+        "minute": 41,
+        "value": -1.3
+      },
+      {
+        "minute": 42,
+        "value": -1.3
+      },
+      {
+        "minute": 43,
+        "value": -1.1
+      },
+      {
+        "minute": 44,
+        "value": -1.1
+      },
+      {
+        "minute": 45,
+        "value": -0.9
+      },
+      {
+        "minute": 46,
+        "value": 0.0
+      },
+      {
+        "minute": 47,
+        "value": 0.0
+      },
+      {
+        "minute": 48,
+        "value": 0.0
+      },
+      {
+        "minute": 49,
+        "value": 0.0
+      },
+      {
+        "minute": 50,
+        "value": 0.0
+      },
+      {
+        "minute": 51,
+        "value": 0.0
+      },
+      {
+        "minute": 52,
+        "value": 0.0
+      },
+      {
+        "minute": 53,
+        "value": 0.0
+      },
+      {
+        "minute": 54,
+        "value": 0.0
+      },
+      {
+        "minute": 55,
+        "value": 0.0
+      },
+      {
+        "minute": 56,
+        "value": 0.0
+      },
+      {
+        "minute": 57,
+        "value": 0.0
+      },
+      {
+        "minute": 58,
+        "value": 0.0
+      },
+      {
+        "minute": 59,
+        "value": 0.2
+      },
+      {
+        "minute": 60,
+        "value": 0.2
+      },
+      {
+        "minute": 61,
+        "value": 0.2
+      },
+      {
+        "minute": 62,
+        "value": -0.6
+      },
+      {
+        "minute": 63,
+        "value": -0.8
+      },
+      {
+        "minute": 64,
+        "value": -1.0
+      },
+      {
+        "minute": 65,
+        "value": -1.0
+      },
+      {
+        "minute": 66,
+        "value": -1.0
+      },
+      {
+        "minute": 67,
+        "value": -0.2
+      },
+      {
+        "minute": 68,
+        "value": 0.0
+      },
+      {
+        "minute": 69,
+        "value": 0.0
+      },
+      {
+        "minute": 70,
+        "value": 0.0
+      },
+      {
+        "minute": 71,
+        "value": 0.0
+      },
+      {
+        "minute": 72,
+        "value": 0.2
+      },
+      {
+        "minute": 73,
+        "value": 0.0
+      },
+      {
+        "minute": 74,
+        "value": 0.0
+      },
+      {
+        "minute": 75,
+        "value": -0.6
+      },
+      {
+        "minute": 76,
+        "value": -0.6
+      },
+      {
+        "minute": 77,
+        "value": -0.8
+      },
+      {
+        "minute": 78,
+        "value": -0.6
+      },
+      {
+        "minute": 79,
+        "value": -0.6
+      },
+      {
+        "minute": 80,
+        "value": 0.0
+      },
+      {
+        "minute": 81,
+        "value": 0.0
+      },
+      {
+        "minute": 82,
+        "value": 0.2
+      },
+      {
+        "minute": 83,
+        "value": 0.2
+      },
+      {
+        "minute": 84,
+        "value": 0.2
+      },
+      {
+        "minute": 85,
+        "value": 0.2
+      },
+      {
+        "minute": 86,
+        "value": 0.2
+      },
+      {
+        "minute": 87,
+        "value": 0.0
+      },
+      {
+        "minute": 88,
+        "value": -1.1
+      },
+      {
+        "minute": 89,
+        "value": -1.1
+      },
+      {
+        "minute": 90,
+        "value": -1.1
+      }
+    ],
+    "duration": 90
+  },
+  "760487": {
+    "home_team": "Brazil",
+    "away_team": "Japan",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 11.5,
+        "display": "12'",
+        "type": "yellow-card",
+        "team": "Japan",
+        "label": "Kaishu Sano Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 14.0,
+        "display": "14'",
+        "type": "yellow-card",
+        "team": "Brazil",
+        "label": "Casemiro Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 28.8,
+        "display": "29'",
+        "type": "goal",
+        "team": "Japan",
+        "label": "Kaishu Sano Goal",
+        "scoring": true
+      },
+      {
+        "minute": 44.5,
+        "display": "45'",
+        "type": "yellow-card",
+        "team": "Japan",
+        "label": "Daichi Kamada Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+4'",
+        "type": "halftime",
+        "team": null,
+        "label": "First Half ends, Brazil 0, Japan 1.",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'",
+        "type": "substitution",
+        "team": "Brazil",
+        "label": "Endrick Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 47.6,
+        "display": "48'",
+        "type": "yellow-card",
+        "team": "Brazil",
+        "label": "Danilo Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 55.1,
+        "display": "56'",
+        "type": "goal---header",
+        "team": "Brazil",
+        "label": "Casemiro Goal - Header",
+        "scoring": true
+      },
+      {
+        "minute": 65.2,
+        "display": "66'",
+        "type": "substitution",
+        "team": "Brazil",
+        "label": "Gabriel Martinelli Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 65.5,
+        "display": "66'",
+        "type": "substitution",
+        "team": "Japan",
+        "label": "Junnosuke Suzuki Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 65.7,
+        "display": "66'",
+        "type": "substitution",
+        "team": "Japan",
+        "label": "Yukinari Sugawara Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 77.3,
+        "display": "78'",
+        "type": "substitution",
+        "team": "Japan",
+        "label": "Shuto Machino Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 77.5,
+        "display": "78'",
+        "type": "substitution",
+        "team": "Japan",
+        "label": "Ao Tanaka Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 83.2,
+        "display": "84'",
+        "type": "yellow-card",
+        "team": "Japan",
+        "label": "Junnosuke Suzuki Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+3'",
+        "type": "substitution",
+        "team": "Brazil",
+        "label": "Fabinho Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+5'",
+        "type": "goal",
+        "team": "Brazil",
+        "label": "Gabriel Martinelli Goal",
+        "scoring": true
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+7'",
+        "type": "substitution",
+        "team": "Japan",
+        "label": "Koki Ogawa Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+8'",
+        "type": "substitution",
+        "team": "Brazil",
+        "label": "Danilo Santos Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+11'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": 0.83
+      },
+      {
+        "minute": 1,
+        "value": 0.62
+      },
+      {
+        "minute": 2,
+        "value": 0.5
+      },
+      {
+        "minute": 3,
+        "value": 0.5
+      },
+      {
+        "minute": 4,
+        "value": 0.0
+      },
+      {
+        "minute": 5,
+        "value": 0.0
+      },
+      {
+        "minute": 6,
+        "value": 0.0
+      },
+      {
+        "minute": 7,
+        "value": 0.3
+      },
+      {
+        "minute": 8,
+        "value": 0.3
+      },
+      {
+        "minute": 9,
+        "value": 0.3
+      },
+      {
+        "minute": 10,
+        "value": 0.3
+      },
+      {
+        "minute": 11,
+        "value": 0.9
+      },
+      {
+        "minute": 12,
+        "value": 0.6
+      },
+      {
+        "minute": 13,
+        "value": 0.1
+      },
+      {
+        "minute": 14,
+        "value": 0.1
+      },
+      {
+        "minute": 15,
+        "value": 0.1
+      },
+      {
+        "minute": 16,
+        "value": -0.5
+      },
+      {
+        "minute": 17,
+        "value": -0.5
+      },
+      {
+        "minute": 18,
+        "value": 0.0
+      },
+      {
+        "minute": 19,
+        "value": 0.0
+      },
+      {
+        "minute": 20,
+        "value": 0.0
+      },
+      {
+        "minute": 21,
+        "value": 0.0
+      },
+      {
+        "minute": 22,
+        "value": 0.0
+      },
+      {
+        "minute": 23,
+        "value": 0.0
+      },
+      {
+        "minute": 24,
+        "value": -0.2
+      },
+      {
+        "minute": 25,
+        "value": -0.4
+      },
+      {
+        "minute": 26,
+        "value": -1.6
+      },
+      {
+        "minute": 27,
+        "value": -1.6
+      },
+      {
+        "minute": 28,
+        "value": -1.6
+      },
+      {
+        "minute": 29,
+        "value": -1.4
+      },
+      {
+        "minute": 30,
+        "value": -1.1
+      },
+      {
+        "minute": 31,
+        "value": 0.7
+      },
+      {
+        "minute": 32,
+        "value": 1.0
+      },
+      {
+        "minute": 33,
+        "value": 1.0
+      },
+      {
+        "minute": 34,
+        "value": 1.0
+      },
+      {
+        "minute": 35,
+        "value": 1.5
+      },
+      {
+        "minute": 36,
+        "value": 0.9
+      },
+      {
+        "minute": 37,
+        "value": 0.6
+      },
+      {
+        "minute": 38,
+        "value": 0.6
+      },
+      {
+        "minute": 39,
+        "value": 0.6
+      },
+      {
+        "minute": 40,
+        "value": 0.0
+      },
+      {
+        "minute": 41,
+        "value": 0.0
+      },
+      {
+        "minute": 42,
+        "value": -0.3
+      },
+      {
+        "minute": 43,
+        "value": 0.0
+      },
+      {
+        "minute": 44,
+        "value": 0.0
+      },
+      {
+        "minute": 45,
+        "value": 0.0
+      },
+      {
+        "minute": 46,
+        "value": 0.0
+      },
+      {
+        "minute": 47,
+        "value": 0.3
+      },
+      {
+        "minute": 48,
+        "value": 0.0
+      },
+      {
+        "minute": 49,
+        "value": 0.6
+      },
+      {
+        "minute": 50,
+        "value": 0.8
+      },
+      {
+        "minute": 51,
+        "value": 1.1
+      },
+      {
+        "minute": 52,
+        "value": 1.1
+      },
+      {
+        "minute": 53,
+        "value": 2.3
+      },
+      {
+        "minute": 54,
+        "value": 1.7
+      },
+      {
+        "minute": 55,
+        "value": 2.3
+      },
+      {
+        "minute": 56,
+        "value": 2.0
+      },
+      {
+        "minute": 57,
+        "value": 2.0
+      },
+      {
+        "minute": 58,
+        "value": 0.8
+      },
+      {
+        "minute": 59,
+        "value": 0.8
+      },
+      {
+        "minute": 60,
+        "value": 0.0
+      },
+      {
+        "minute": 61,
+        "value": -0.6
+      },
+      {
+        "minute": 62,
+        "value": -0.6
+      },
+      {
+        "minute": 63,
+        "value": -0.6
+      },
+      {
+        "minute": 64,
+        "value": -0.6
+      },
+      {
+        "minute": 65,
+        "value": -0.6
+      },
+      {
+        "minute": 66,
+        "value": 0.0
+      },
+      {
+        "minute": 67,
+        "value": 0.0
+      },
+      {
+        "minute": 68,
+        "value": 0.0
+      },
+      {
+        "minute": 69,
+        "value": 0.0
+      },
+      {
+        "minute": 70,
+        "value": 0.0
+      },
+      {
+        "minute": 71,
+        "value": 0.5
+      },
+      {
+        "minute": 72,
+        "value": 0.5
+      },
+      {
+        "minute": 73,
+        "value": 0.5
+      },
+      {
+        "minute": 74,
+        "value": 0.7
+      },
+      {
+        "minute": 75,
+        "value": 0.7
+      },
+      {
+        "minute": 76,
+        "value": 0.2
+      },
+      {
+        "minute": 77,
+        "value": 0.2
+      },
+      {
+        "minute": 78,
+        "value": 0.2
+      },
+      {
+        "minute": 79,
+        "value": 0.0
+      },
+      {
+        "minute": 80,
+        "value": 0.0
+      },
+      {
+        "minute": 81,
+        "value": 0.0
+      },
+      {
+        "minute": 82,
+        "value": 0.2
+      },
+      {
+        "minute": 83,
+        "value": 0.2
+      },
+      {
+        "minute": 84,
+        "value": 0.2
+      },
+      {
+        "minute": 85,
+        "value": 0.2
+      },
+      {
+        "minute": 86,
+        "value": 0.7
+      },
+      {
+        "minute": 87,
+        "value": 0.5
+      },
+      {
+        "minute": 88,
+        "value": 2.1
+      },
+      {
+        "minute": 89,
+        "value": 2.1
+      },
+      {
+        "minute": 90,
+        "value": 2.1
+      }
+    ],
+    "duration": 90
+  },
+  "760488": {
+    "home_team": "Netherlands",
+    "away_team": "Morocco",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "First Half begins.",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+7'",
+        "type": "halftime",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 46.3,
+        "display": "47'",
+        "type": "yellow-card",
+        "team": "Morocco",
+        "label": "Issa Diop Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 70.3,
+        "display": "71'",
+        "type": "substitution",
+        "team": "Netherlands",
+        "label": "Teun Koopmeiners Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 70.5,
+        "display": "71'",
+        "type": "substitution",
+        "team": "Netherlands",
+        "label": "Wout Weghorst Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 71.4,
+        "display": "72'",
+        "type": "goal",
+        "team": "Netherlands",
+        "label": "Cody Gakpo Goal",
+        "scoring": true
+      },
+      {
+        "minute": 74.9,
+        "display": "75'",
+        "type": "substitution",
+        "team": "Morocco",
+        "label": "Anass Salah-Eddine Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 78.5,
+        "display": "79'",
+        "type": "substitution",
+        "team": "Morocco",
+        "label": "Gessime Yassine Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 78.7,
+        "display": "79'",
+        "type": "substitution",
+        "team": "Morocco",
+        "label": "Samir El Mourabet Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 85.8,
+        "display": "86'",
+        "type": "substitution",
+        "team": "Morocco",
+        "label": "Soufiane Rahimi Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 85.8,
+        "display": "86'",
+        "type": "substitution",
+        "team": "Netherlands",
+        "label": "Jorrel Hato Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 85.9,
+        "display": "86'",
+        "type": "substitution",
+        "team": "Netherlands",
+        "label": "Quinten Timber Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 86.0,
+        "display": "87'",
+        "type": "substitution",
+        "team": "Morocco",
+        "label": "Chemsdine Talbi Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+1'",
+        "type": "goal---header",
+        "team": "Morocco",
+        "label": "Issa Diop Goal - Header",
+        "scoring": true
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+7'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "Second Half ends, Netherlands 1, Morocco 1.",
+        "scoring": false
+      },
+      {
+        "minute": 109.9,
+        "display": "110'",
+        "type": "substitution",
+        "team": "Netherlands",
+        "label": "Marten de Roon Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 112.8,
+        "display": "113'",
+        "type": "substitution",
+        "team": "Netherlands",
+        "label": "Justin Kluivert Substitution",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": 0.33
+      },
+      {
+        "minute": 1,
+        "value": 0.25
+      },
+      {
+        "minute": 2,
+        "value": 0.2
+      },
+      {
+        "minute": 3,
+        "value": 0.2
+      },
+      {
+        "minute": 4,
+        "value": 0.5
+      },
+      {
+        "minute": 5,
+        "value": 0.3
+      },
+      {
+        "minute": 6,
+        "value": 0.3
+      },
+      {
+        "minute": 7,
+        "value": 0.3
+      },
+      {
+        "minute": 8,
+        "value": 0.3
+      },
+      {
+        "minute": 9,
+        "value": 0.0
+      },
+      {
+        "minute": 10,
+        "value": 0.0
+      },
+      {
+        "minute": 11,
+        "value": 0.0
+      },
+      {
+        "minute": 12,
+        "value": 0.0
+      },
+      {
+        "minute": 13,
+        "value": 0.1
+      },
+      {
+        "minute": 14,
+        "value": 0.1
+      },
+      {
+        "minute": 15,
+        "value": 0.1
+      },
+      {
+        "minute": 16,
+        "value": -0.1
+      },
+      {
+        "minute": 17,
+        "value": -0.9
+      },
+      {
+        "minute": 18,
+        "value": -1.8
+      },
+      {
+        "minute": 19,
+        "value": -1.8
+      },
+      {
+        "minute": 20,
+        "value": -1.8
+      },
+      {
+        "minute": 21,
+        "value": -1.6
+      },
+      {
+        "minute": 22,
+        "value": -0.8
+      },
+      {
+        "minute": 23,
+        "value": 0.0
+      },
+      {
+        "minute": 24,
+        "value": 0.0
+      },
+      {
+        "minute": 25,
+        "value": 0.0
+      },
+      {
+        "minute": 26,
+        "value": 0.0
+      },
+      {
+        "minute": 27,
+        "value": 0.0
+      },
+      {
+        "minute": 28,
+        "value": 0.0
+      },
+      {
+        "minute": 29,
+        "value": 0.0
+      },
+      {
+        "minute": 30,
+        "value": 0.1
+      },
+      {
+        "minute": 31,
+        "value": 0.1
+      },
+      {
+        "minute": 32,
+        "value": 0.1
+      },
+      {
+        "minute": 33,
+        "value": 0.3
+      },
+      {
+        "minute": 34,
+        "value": 0.8
+      },
+      {
+        "minute": 35,
+        "value": 0.7
+      },
+      {
+        "minute": 36,
+        "value": 0.7
+      },
+      {
+        "minute": 37,
+        "value": 0.7
+      },
+      {
+        "minute": 38,
+        "value": 0.5
+      },
+      {
+        "minute": 39,
+        "value": 0.0
+      },
+      {
+        "minute": 40,
+        "value": 0.0
+      },
+      {
+        "minute": 41,
+        "value": 0.4
+      },
+      {
+        "minute": 42,
+        "value": 0.4
+      },
+      {
+        "minute": 43,
+        "value": 0.2
+      },
+      {
+        "minute": 44,
+        "value": 0.2
+      },
+      {
+        "minute": 45,
+        "value": 0.6
+      },
+      {
+        "minute": 46,
+        "value": 0.2
+      },
+      {
+        "minute": 47,
+        "value": 0.2
+      },
+      {
+        "minute": 48,
+        "value": 0.4
+      },
+      {
+        "minute": 49,
+        "value": 0.4
+      },
+      {
+        "minute": 50,
+        "value": 0.0
+      },
+      {
+        "minute": 51,
+        "value": 0.0
+      },
+      {
+        "minute": 52,
+        "value": 0.0
+      },
+      {
+        "minute": 53,
+        "value": -0.2
+      },
+      {
+        "minute": 54,
+        "value": -0.2
+      },
+      {
+        "minute": 55,
+        "value": -0.8
+      },
+      {
+        "minute": 56,
+        "value": -0.5
+      },
+      {
+        "minute": 57,
+        "value": -0.5
+      },
+      {
+        "minute": 58,
+        "value": -0.5
+      },
+      {
+        "minute": 59,
+        "value": -1.1
+      },
+      {
+        "minute": 60,
+        "value": -0.5
+      },
+      {
+        "minute": 61,
+        "value": -0.8
+      },
+      {
+        "minute": 62,
+        "value": -0.8
+      },
+      {
+        "minute": 63,
+        "value": -0.6
+      },
+      {
+        "minute": 64,
+        "value": 0.0
+      },
+      {
+        "minute": 65,
+        "value": 0.0
+      },
+      {
+        "minute": 66,
+        "value": 0.0
+      },
+      {
+        "minute": 67,
+        "value": 0.0
+      },
+      {
+        "minute": 68,
+        "value": 0.0
+      },
+      {
+        "minute": 69,
+        "value": 1.2
+      },
+      {
+        "minute": 70,
+        "value": 1.2
+      },
+      {
+        "minute": 71,
+        "value": 1.2
+      },
+      {
+        "minute": 72,
+        "value": 1.2
+      },
+      {
+        "minute": 73,
+        "value": 1.2
+      },
+      {
+        "minute": 74,
+        "value": -0.2
+      },
+      {
+        "minute": 75,
+        "value": -0.5
+      },
+      {
+        "minute": 76,
+        "value": -0.5
+      },
+      {
+        "minute": 77,
+        "value": -0.5
+      },
+      {
+        "minute": 78,
+        "value": -0.5
+      },
+      {
+        "minute": 79,
+        "value": -0.3
+      },
+      {
+        "minute": 80,
+        "value": 0.0
+      },
+      {
+        "minute": 81,
+        "value": 0.0
+      },
+      {
+        "minute": 82,
+        "value": 0.0
+      },
+      {
+        "minute": 83,
+        "value": 0.0
+      },
+      {
+        "minute": 84,
+        "value": 0.0
+      },
+      {
+        "minute": 85,
+        "value": 0.2
+      },
+      {
+        "minute": 86,
+        "value": 0.2
+      },
+      {
+        "minute": 87,
+        "value": 0.2
+      },
+      {
+        "minute": 88,
+        "value": -1.0
+      },
+      {
+        "minute": 89,
+        "value": -1.0
+      },
+      {
+        "minute": 90,
+        "value": -1.2
+      },
+      {
+        "minute": 91,
+        "value": -1.2
+      },
+      {
+        "minute": 92,
+        "value": -1.2
+      },
+      {
+        "minute": 93,
+        "value": 0.0
+      },
+      {
+        "minute": 94,
+        "value": -0.8
+      },
+      {
+        "minute": 95,
+        "value": -0.8
+      },
+      {
+        "minute": 96,
+        "value": -0.8
+      },
+      {
+        "minute": 97,
+        "value": -0.8
+      },
+      {
+        "minute": 98,
+        "value": -0.8
+      },
+      {
+        "minute": 99,
+        "value": 0.0
+      },
+      {
+        "minute": 100,
+        "value": 0.0
+      },
+      {
+        "minute": 101,
+        "value": 0.0
+      },
+      {
+        "minute": 102,
+        "value": 0.0
+      },
+      {
+        "minute": 103,
+        "value": 0.0
+      },
+      {
+        "minute": 104,
+        "value": 0.0
+      },
+      {
+        "minute": 105,
+        "value": 0.0
+      },
+      {
+        "minute": 106,
+        "value": 0.0
+      },
+      {
+        "minute": 107,
+        "value": 0.0
+      },
+      {
+        "minute": 108,
+        "value": 0.0
+      },
+      {
+        "minute": 109,
+        "value": 0.0
+      },
+      {
+        "minute": 110,
+        "value": 0.0
+      },
+      {
+        "minute": 111,
+        "value": 0.0
+      },
+      {
+        "minute": 112,
+        "value": 0.0
+      },
+      {
+        "minute": 113,
+        "value": 0.0
+      },
+      {
+        "minute": 114,
+        "value": 0.0
+      },
+      {
+        "minute": 115,
+        "value": 0.0
+      },
+      {
+        "minute": 116,
+        "value": 0.0
+      },
+      {
+        "minute": 117,
+        "value": 0.0
+      },
+      {
+        "minute": 118,
+        "value": 0.0
+      },
+      {
+        "minute": 119,
+        "value": 0.0
+      },
+      {
+        "minute": 120,
+        "value": 0.0
+      }
+    ],
+    "duration": 120
+  },
+  "760489": {
+    "home_team": "Germany",
+    "away_team": "Paraguay",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 41.3,
+        "display": "42'",
+        "type": "goal---header",
+        "team": "Paraguay",
+        "label": "Julio Enciso Goal - Header",
+        "scoring": true
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+6'",
+        "type": "halftime",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'",
+        "type": "substitution",
+        "team": "Germany",
+        "label": "Leon Goretzka Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 53.7,
+        "display": "54'",
+        "type": "goal---header",
+        "team": "Germany",
+        "label": "Kai Havertz Goal - Header",
+        "scoring": true
+      },
+      {
+        "minute": 54.8,
+        "display": "55'",
+        "type": "substitution",
+        "team": "Paraguay",
+        "label": "Gustavo Caballero Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 56.9,
+        "display": "57'",
+        "type": "substitution",
+        "team": "Paraguay",
+        "label": "Maur\u00edcio Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 62.8,
+        "display": "63'",
+        "type": "substitution",
+        "team": "Germany",
+        "label": "Jamal Musiala Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 64.2,
+        "display": "65'",
+        "type": "yellow-card",
+        "team": "Paraguay",
+        "label": "Andr\u00e9s Cubas Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 78.7,
+        "display": "79'",
+        "type": "substitution",
+        "team": "Germany",
+        "label": "Waldemar Anton Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 87.5,
+        "display": "88'",
+        "type": "substitution",
+        "team": "Germany",
+        "label": "Nick Woltemade Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+6'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'",
+        "type": "substitution",
+        "team": "Paraguay",
+        "label": "Gustavo Vel\u00e1zquez Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 98.5,
+        "display": "99'",
+        "type": "substitution",
+        "team": "Paraguay",
+        "label": "Braian Ojeda Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 98.9,
+        "display": "99'",
+        "type": "substitution",
+        "team": "Paraguay",
+        "label": "Antonio Sanabria Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 105.7,
+        "display": "106'",
+        "type": "yellow-card",
+        "team": "Germany",
+        "label": "Kai Havertz Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 109.3,
+        "display": "110'",
+        "type": "substitution",
+        "team": "Germany",
+        "label": "Nadiem Amiri Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 109.3,
+        "display": "110'",
+        "type": "substitution",
+        "team": "Germany",
+        "label": "Malick Thiaw Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 114.8,
+        "display": "115'",
+        "type": "yellow-card",
+        "team": "Germany",
+        "label": "Jamal Musiala Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 116.8,
+        "display": "117'",
+        "type": "yellow-card",
+        "team": "Paraguay",
+        "label": "Mat\u00edas Galarza Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 120.0,
+        "display": "120'+2'",
+        "type": "substitution",
+        "team": "Paraguay",
+        "label": "Fabi\u00e1n Balbuena Substitution",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": -1.83
+      },
+      {
+        "minute": 1,
+        "value": -1.38
+      },
+      {
+        "minute": 2,
+        "value": -1.1
+      },
+      {
+        "minute": 3,
+        "value": -0.4
+      },
+      {
+        "minute": 4,
+        "value": 0.4
+      },
+      {
+        "minute": 5,
+        "value": 0.6
+      },
+      {
+        "minute": 6,
+        "value": 0.6
+      },
+      {
+        "minute": 7,
+        "value": 0.6
+      },
+      {
+        "minute": 8,
+        "value": 0.4
+      },
+      {
+        "minute": 9,
+        "value": 0.2
+      },
+      {
+        "minute": 10,
+        "value": 0.0
+      },
+      {
+        "minute": 11,
+        "value": 0.2
+      },
+      {
+        "minute": 12,
+        "value": 0.2
+      },
+      {
+        "minute": 13,
+        "value": 0.2
+      },
+      {
+        "minute": 14,
+        "value": 0.2
+      },
+      {
+        "minute": 15,
+        "value": 0.2
+      },
+      {
+        "minute": 16,
+        "value": 0.0
+      },
+      {
+        "minute": 17,
+        "value": 0.0
+      },
+      {
+        "minute": 18,
+        "value": 0.0
+      },
+      {
+        "minute": 19,
+        "value": 0.0
+      },
+      {
+        "minute": 20,
+        "value": 0.0
+      },
+      {
+        "minute": 21,
+        "value": 0.0
+      },
+      {
+        "minute": 22,
+        "value": 0.0
+      },
+      {
+        "minute": 23,
+        "value": 0.0
+      },
+      {
+        "minute": 24,
+        "value": 0.0
+      },
+      {
+        "minute": 25,
+        "value": 0.0
+      },
+      {
+        "minute": 26,
+        "value": 0.1
+      },
+      {
+        "minute": 27,
+        "value": 0.1
+      },
+      {
+        "minute": 28,
+        "value": 0.1
+      },
+      {
+        "minute": 29,
+        "value": 0.1
+      },
+      {
+        "minute": 30,
+        "value": 0.4
+      },
+      {
+        "minute": 31,
+        "value": 0.3
+      },
+      {
+        "minute": 32,
+        "value": 0.3
+      },
+      {
+        "minute": 33,
+        "value": 0.3
+      },
+      {
+        "minute": 34,
+        "value": 0.3
+      },
+      {
+        "minute": 35,
+        "value": 0.0
+      },
+      {
+        "minute": 36,
+        "value": 0.2
+      },
+      {
+        "minute": 37,
+        "value": 0.2
+      },
+      {
+        "minute": 38,
+        "value": 0.0
+      },
+      {
+        "minute": 39,
+        "value": -1.2
+      },
+      {
+        "minute": 40,
+        "value": -1.2
+      },
+      {
+        "minute": 41,
+        "value": -1.4
+      },
+      {
+        "minute": 42,
+        "value": -1.2
+      },
+      {
+        "minute": 43,
+        "value": -0.1
+      },
+      {
+        "minute": 44,
+        "value": 1.1
+      },
+      {
+        "minute": 45,
+        "value": 1.1
+      },
+      {
+        "minute": 46,
+        "value": 1.2
+      },
+      {
+        "minute": 47,
+        "value": 0.8
+      },
+      {
+        "minute": 48,
+        "value": -0.1
+      },
+      {
+        "minute": 49,
+        "value": -0.1
+      },
+      {
+        "minute": 50,
+        "value": -0.1
+      },
+      {
+        "minute": 51,
+        "value": 1.0
+      },
+      {
+        "minute": 52,
+        "value": 1.2
+      },
+      {
+        "minute": 53,
+        "value": 1.8
+      },
+      {
+        "minute": 54,
+        "value": 1.8
+      },
+      {
+        "minute": 55,
+        "value": 1.8
+      },
+      {
+        "minute": 56,
+        "value": 0.0
+      },
+      {
+        "minute": 57,
+        "value": 0.0
+      },
+      {
+        "minute": 58,
+        "value": -0.6
+      },
+      {
+        "minute": 59,
+        "value": -0.6
+      },
+      {
+        "minute": 60,
+        "value": -0.6
+      },
+      {
+        "minute": 61,
+        "value": 0.0
+      },
+      {
+        "minute": 62,
+        "value": 0.0
+      },
+      {
+        "minute": 63,
+        "value": 0.3
+      },
+      {
+        "minute": 64,
+        "value": 0.7
+      },
+      {
+        "minute": 65,
+        "value": 0.7
+      },
+      {
+        "minute": 66,
+        "value": 0.5
+      },
+      {
+        "minute": 67,
+        "value": 0.3
+      },
+      {
+        "minute": 68,
+        "value": 0.0
+      },
+      {
+        "minute": 69,
+        "value": -0.4
+      },
+      {
+        "minute": 70,
+        "value": -0.4
+      },
+      {
+        "minute": 71,
+        "value": -0.2
+      },
+      {
+        "minute": 72,
+        "value": 0.0
+      },
+      {
+        "minute": 73,
+        "value": 0.0
+      },
+      {
+        "minute": 74,
+        "value": -0.1
+      },
+      {
+        "minute": 75,
+        "value": 0.5
+      },
+      {
+        "minute": 76,
+        "value": 0.5
+      },
+      {
+        "minute": 77,
+        "value": 0.8
+      },
+      {
+        "minute": 78,
+        "value": 0.8
+      },
+      {
+        "minute": 79,
+        "value": 0.9
+      },
+      {
+        "minute": 80,
+        "value": 0.3
+      },
+      {
+        "minute": 81,
+        "value": 0.3
+      },
+      {
+        "minute": 82,
+        "value": 0.0
+      },
+      {
+        "minute": 83,
+        "value": 0.5
+      },
+      {
+        "minute": 84,
+        "value": 0.5
+      },
+      {
+        "minute": 85,
+        "value": 0.5
+      },
+      {
+        "minute": 86,
+        "value": 0.5
+      },
+      {
+        "minute": 87,
+        "value": 0.5
+      },
+      {
+        "minute": 88,
+        "value": 0.6
+      },
+      {
+        "minute": 89,
+        "value": 0.6
+      },
+      {
+        "minute": 90,
+        "value": 1.2
+      },
+      {
+        "minute": 91,
+        "value": 1.2
+      },
+      {
+        "minute": 92,
+        "value": 1.4
+      },
+      {
+        "minute": 93,
+        "value": 0.8
+      },
+      {
+        "minute": 94,
+        "value": 1.3
+      },
+      {
+        "minute": 95,
+        "value": 0.7
+      },
+      {
+        "minute": 96,
+        "value": 0.7
+      },
+      {
+        "minute": 97,
+        "value": 0.5
+      },
+      {
+        "minute": 98,
+        "value": 0.5
+      },
+      {
+        "minute": 99,
+        "value": 0.2
+      },
+      {
+        "minute": 100,
+        "value": 0.2
+      },
+      {
+        "minute": 101,
+        "value": 0.2
+      },
+      {
+        "minute": 102,
+        "value": 0.2
+      },
+      {
+        "minute": 103,
+        "value": 0.6
+      },
+      {
+        "minute": 104,
+        "value": 0.2
+      },
+      {
+        "minute": 105,
+        "value": 0.2
+      },
+      {
+        "minute": 106,
+        "value": 0.2
+      },
+      {
+        "minute": 107,
+        "value": 0.4
+      },
+      {
+        "minute": 108,
+        "value": 0.5
+      },
+      {
+        "minute": 109,
+        "value": 0.7
+      },
+      {
+        "minute": 110,
+        "value": 0.7
+      },
+      {
+        "minute": 111,
+        "value": 0.7
+      },
+      {
+        "minute": 112,
+        "value": 0.5
+      },
+      {
+        "minute": 113,
+        "value": 0.0
+      },
+      {
+        "minute": 114,
+        "value": 0.0
+      },
+      {
+        "minute": 115,
+        "value": 0.2
+      },
+      {
+        "minute": 116,
+        "value": 0.8
+      },
+      {
+        "minute": 117,
+        "value": 0.8
+      },
+      {
+        "minute": 118,
+        "value": 1.0
+      },
+      {
+        "minute": 119,
+        "value": 1.0
+      },
+      {
+        "minute": 120,
+        "value": 0.8
+      }
+    ],
+    "duration": 120
+  },
+  "760490": {
+    "home_team": "Ivory Coast",
+    "away_team": "Norway",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "First Half begins.",
+        "scoring": false
+      },
+      {
+        "minute": 38.8,
+        "display": "39'",
+        "type": "goal",
+        "team": "Norway",
+        "label": "Antonio Nusa Goal",
+        "scoring": true
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+1'",
+        "type": "yellow-card",
+        "team": "Norway",
+        "label": "Antonio Nusa Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+4'",
+        "type": "halftime",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 59.5,
+        "display": "60'",
+        "type": "substitution",
+        "team": "Ivory Coast",
+        "label": "Amad Diallo Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 59.5,
+        "display": "60'",
+        "type": "substitution",
+        "team": "Ivory Coast",
+        "label": "Elye Wahi Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 70.7,
+        "display": "71'",
+        "type": "substitution",
+        "team": "Norway",
+        "label": "Andreas Schjelderup Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 70.9,
+        "display": "71'",
+        "type": "substitution",
+        "team": "Norway",
+        "label": "Oscar Bobb Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 73.5,
+        "display": "74'",
+        "type": "goal",
+        "team": "Ivory Coast",
+        "label": "Amad Diallo Goal",
+        "scoring": true
+      },
+      {
+        "minute": 82.6,
+        "display": "83'",
+        "type": "substitution",
+        "team": "Norway",
+        "label": "Fredrik Aursnes Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 85.4,
+        "display": "86'",
+        "type": "goal",
+        "team": "Norway",
+        "label": "Erling Haaland Goal",
+        "scoring": true
+      },
+      {
+        "minute": 87.0,
+        "display": "87'",
+        "type": "substitution",
+        "team": "Ivory Coast",
+        "label": "Oumar Diakit\u00e9 Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+3'",
+        "type": "substitution",
+        "team": "Ivory Coast",
+        "label": "Evann Guessand Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+3'",
+        "type": "substitution",
+        "team": "Ivory Coast",
+        "label": "Bazoumana Tour\u00e9 Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+8'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "Second Half ends, C\u00f4te d'Ivoire 1, Norway 2.",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": -0.67
+      },
+      {
+        "minute": 1,
+        "value": -0.5
+      },
+      {
+        "minute": 2,
+        "value": -0.4
+      },
+      {
+        "minute": 3,
+        "value": -0.4
+      },
+      {
+        "minute": 4,
+        "value": -0.4
+      },
+      {
+        "minute": 5,
+        "value": 0.4
+      },
+      {
+        "minute": 6,
+        "value": 0.4
+      },
+      {
+        "minute": 7,
+        "value": 0.4
+      },
+      {
+        "minute": 8,
+        "value": 0.4
+      },
+      {
+        "minute": 9,
+        "value": 0.4
+      },
+      {
+        "minute": 10,
+        "value": 0.0
+      },
+      {
+        "minute": 11,
+        "value": 0.0
+      },
+      {
+        "minute": 12,
+        "value": 0.2
+      },
+      {
+        "minute": 13,
+        "value": 0.2
+      },
+      {
+        "minute": 14,
+        "value": 0.2
+      },
+      {
+        "minute": 15,
+        "value": 0.2
+      },
+      {
+        "minute": 16,
+        "value": 0.2
+      },
+      {
+        "minute": 17,
+        "value": 0.0
+      },
+      {
+        "minute": 18,
+        "value": 0.2
+      },
+      {
+        "minute": 19,
+        "value": 0.2
+      },
+      {
+        "minute": 20,
+        "value": 0.0
+      },
+      {
+        "minute": 21,
+        "value": 0.0
+      },
+      {
+        "minute": 22,
+        "value": 0.0
+      },
+      {
+        "minute": 23,
+        "value": -0.2
+      },
+      {
+        "minute": 24,
+        "value": -0.2
+      },
+      {
+        "minute": 25,
+        "value": 0.4
+      },
+      {
+        "minute": 26,
+        "value": 0.4
+      },
+      {
+        "minute": 27,
+        "value": 0.6
+      },
+      {
+        "minute": 28,
+        "value": 0.8
+      },
+      {
+        "minute": 29,
+        "value": 0.8
+      },
+      {
+        "minute": 30,
+        "value": 0.6
+      },
+      {
+        "minute": 31,
+        "value": 0.8
+      },
+      {
+        "minute": 32,
+        "value": 1.2
+      },
+      {
+        "minute": 33,
+        "value": 1.0
+      },
+      {
+        "minute": 34,
+        "value": 0.4
+      },
+      {
+        "minute": 35,
+        "value": -0.1
+      },
+      {
+        "minute": 36,
+        "value": -1.5
+      },
+      {
+        "minute": 37,
+        "value": -2.1
+      },
+      {
+        "minute": 38,
+        "value": -2.1
+      },
+      {
+        "minute": 39,
+        "value": -2.2
+      },
+      {
+        "minute": 40,
+        "value": -1.9
+      },
+      {
+        "minute": 41,
+        "value": -0.5
+      },
+      {
+        "minute": 42,
+        "value": -0.3
+      },
+      {
+        "minute": 43,
+        "value": 0.0
+      },
+      {
+        "minute": 44,
+        "value": 0.7
+      },
+      {
+        "minute": 45,
+        "value": 0.7
+      },
+      {
+        "minute": 46,
+        "value": 0.7
+      },
+      {
+        "minute": 47,
+        "value": 0.5
+      },
+      {
+        "minute": 48,
+        "value": 0.2
+      },
+      {
+        "minute": 49,
+        "value": 0.4
+      },
+      {
+        "minute": 50,
+        "value": 0.4
+      },
+      {
+        "minute": 51,
+        "value": 0.2
+      },
+      {
+        "minute": 52,
+        "value": 0.8
+      },
+      {
+        "minute": 53,
+        "value": 0.8
+      },
+      {
+        "minute": 54,
+        "value": 1.2
+      },
+      {
+        "minute": 55,
+        "value": 1.2
+      },
+      {
+        "minute": 56,
+        "value": 1.6
+      },
+      {
+        "minute": 57,
+        "value": 1.0
+      },
+      {
+        "minute": 58,
+        "value": 1.0
+      },
+      {
+        "minute": 59,
+        "value": 0.4
+      },
+      {
+        "minute": 60,
+        "value": 0.6
+      },
+      {
+        "minute": 61,
+        "value": 0.4
+      },
+      {
+        "minute": 62,
+        "value": 0.2
+      },
+      {
+        "minute": 63,
+        "value": -0.1
+      },
+      {
+        "minute": 64,
+        "value": -0.1
+      },
+      {
+        "minute": 65,
+        "value": -0.4
+      },
+      {
+        "minute": 66,
+        "value": -0.6
+      },
+      {
+        "minute": 67,
+        "value": -0.4
+      },
+      {
+        "minute": 68,
+        "value": -0.1
+      },
+      {
+        "minute": 69,
+        "value": 0.1
+      },
+      {
+        "minute": 70,
+        "value": 0.2
+      },
+      {
+        "minute": 71,
+        "value": 1.4
+      },
+      {
+        "minute": 72,
+        "value": 1.4
+      },
+      {
+        "minute": 73,
+        "value": 1.4
+      },
+      {
+        "minute": 74,
+        "value": 1.2
+      },
+      {
+        "minute": 75,
+        "value": 1.2
+      },
+      {
+        "minute": 76,
+        "value": 0.1
+      },
+      {
+        "minute": 77,
+        "value": 0.1
+      },
+      {
+        "minute": 78,
+        "value": 0.1
+      },
+      {
+        "minute": 79,
+        "value": 0.1
+      },
+      {
+        "minute": 80,
+        "value": 0.1
+      },
+      {
+        "minute": 81,
+        "value": 0.0
+      },
+      {
+        "minute": 82,
+        "value": 0.0
+      },
+      {
+        "minute": 83,
+        "value": -1.2
+      },
+      {
+        "minute": 84,
+        "value": -1.2
+      },
+      {
+        "minute": 85,
+        "value": -1.2
+      },
+      {
+        "minute": 86,
+        "value": -1.2
+      },
+      {
+        "minute": 87,
+        "value": -1.4
+      },
+      {
+        "minute": 88,
+        "value": 1.0
+      },
+      {
+        "minute": 89,
+        "value": 1.0
+      },
+      {
+        "minute": 90,
+        "value": 1.0
+      }
+    ],
+    "duration": 90
+  },
+  "760491": {
+    "home_team": "Mexico",
+    "away_team": "Ecuador",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 21.2,
+        "display": "22'",
+        "type": "goal",
+        "team": "Mexico",
+        "label": "Juli\u00e1n Qui\u00f1ones Goal",
+        "scoring": true
+      },
+      {
+        "minute": 30.5,
+        "display": "31'",
+        "type": "goal",
+        "team": "Mexico",
+        "label": "Ra\u00fal Jim\u00e9nez Goal",
+        "scoring": true
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+1'",
+        "type": "yellow-card",
+        "team": "Ecuador",
+        "label": "Alan Franco Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+6'",
+        "type": "halftime",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'",
+        "type": "substitution",
+        "team": "Ecuador",
+        "label": "\u00c1ngelo Preciado Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'",
+        "type": "substitution",
+        "team": "Ecuador",
+        "label": "Yaimar Medina Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 57.9,
+        "display": "58'",
+        "type": "substitution",
+        "team": "Mexico",
+        "label": "Brian Guti\u00e9rrez Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 58.2,
+        "display": "59'",
+        "type": "substitution",
+        "team": "Ecuador",
+        "label": "Kevin Rodr\u00edguez Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 72.9,
+        "display": "73'",
+        "type": "substitution",
+        "team": "Mexico",
+        "label": "Obed Vargas Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 73.1,
+        "display": "74'",
+        "type": "substitution",
+        "team": "Mexico",
+        "label": "Santiago Gimenez Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 78.2,
+        "display": "79'",
+        "type": "substitution",
+        "team": "Ecuador",
+        "label": "Jordy Caicedo Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 78.4,
+        "display": "79'",
+        "type": "substitution",
+        "team": "Ecuador",
+        "label": "Kendry P\u00e1ez Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 79.1,
+        "display": "80'",
+        "type": "substitution",
+        "team": "Mexico",
+        "label": "Orbel\u00edn Pineda Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 79.2,
+        "display": "80'",
+        "type": "substitution",
+        "team": "Mexico",
+        "label": "Israel Reyes Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+3'",
+        "type": "yellow-card",
+        "team": "Ecuador",
+        "label": "Kendry P\u00e1ez Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+5'",
+        "type": "red-card",
+        "team": "Ecuador",
+        "label": "Piero Hincapi\u00e9 Red Card",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+9'",
+        "type": "yellow-card",
+        "team": "Ecuador",
+        "label": "Mois\u00e9s Caicedo Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+9'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": 0.0
+      },
+      {
+        "minute": 1,
+        "value": 0.38
+      },
+      {
+        "minute": 2,
+        "value": 0.5
+      },
+      {
+        "minute": 3,
+        "value": 0.7
+      },
+      {
+        "minute": 4,
+        "value": 0.9
+      },
+      {
+        "minute": 5,
+        "value": 0.9
+      },
+      {
+        "minute": 6,
+        "value": 0.6
+      },
+      {
+        "minute": 7,
+        "value": 0.4
+      },
+      {
+        "minute": 8,
+        "value": 0.2
+      },
+      {
+        "minute": 9,
+        "value": 0.0
+      },
+      {
+        "minute": 10,
+        "value": 0.0
+      },
+      {
+        "minute": 11,
+        "value": 0.5
+      },
+      {
+        "minute": 12,
+        "value": 0.7
+      },
+      {
+        "minute": 13,
+        "value": 0.7
+      },
+      {
+        "minute": 14,
+        "value": 0.7
+      },
+      {
+        "minute": 15,
+        "value": 0.7
+      },
+      {
+        "minute": 16,
+        "value": 0.2
+      },
+      {
+        "minute": 17,
+        "value": 0.0
+      },
+      {
+        "minute": 18,
+        "value": 0.0
+      },
+      {
+        "minute": 19,
+        "value": 1.2
+      },
+      {
+        "minute": 20,
+        "value": 1.2
+      },
+      {
+        "minute": 21,
+        "value": 1.2
+      },
+      {
+        "minute": 22,
+        "value": 1.2
+      },
+      {
+        "minute": 23,
+        "value": 1.2
+      },
+      {
+        "minute": 24,
+        "value": 0.0
+      },
+      {
+        "minute": 25,
+        "value": 0.0
+      },
+      {
+        "minute": 26,
+        "value": 0.0
+      },
+      {
+        "minute": 27,
+        "value": 0.0
+      },
+      {
+        "minute": 28,
+        "value": 1.2
+      },
+      {
+        "minute": 29,
+        "value": 1.2
+      },
+      {
+        "minute": 30,
+        "value": 1.0
+      },
+      {
+        "minute": 31,
+        "value": 1.0
+      },
+      {
+        "minute": 32,
+        "value": 1.0
+      },
+      {
+        "minute": 33,
+        "value": -0.2
+      },
+      {
+        "minute": 34,
+        "value": -0.2
+      },
+      {
+        "minute": 35,
+        "value": 0.0
+      },
+      {
+        "minute": 36,
+        "value": 0.0
+      },
+      {
+        "minute": 37,
+        "value": -0.8
+      },
+      {
+        "minute": 38,
+        "value": -1.0
+      },
+      {
+        "minute": 39,
+        "value": -1.2
+      },
+      {
+        "minute": 40,
+        "value": -1.2
+      },
+      {
+        "minute": 41,
+        "value": -1.0
+      },
+      {
+        "minute": 42,
+        "value": 0.0
+      },
+      {
+        "minute": 43,
+        "value": 0.2
+      },
+      {
+        "minute": 44,
+        "value": 0.4
+      },
+      {
+        "minute": 45,
+        "value": 0.4
+      },
+      {
+        "minute": 46,
+        "value": 0.2
+      },
+      {
+        "minute": 47,
+        "value": 0.0
+      },
+      {
+        "minute": 48,
+        "value": -0.2
+      },
+      {
+        "minute": 49,
+        "value": 0.1
+      },
+      {
+        "minute": 50,
+        "value": 0.0
+      },
+      {
+        "minute": 51,
+        "value": 0.0
+      },
+      {
+        "minute": 52,
+        "value": 0.0
+      },
+      {
+        "minute": 53,
+        "value": 0.2
+      },
+      {
+        "minute": 54,
+        "value": -0.1
+      },
+      {
+        "minute": 55,
+        "value": 0.0
+      },
+      {
+        "minute": 56,
+        "value": 0.0
+      },
+      {
+        "minute": 57,
+        "value": 0.0
+      },
+      {
+        "minute": 58,
+        "value": 0.0
+      },
+      {
+        "minute": 59,
+        "value": 0.0
+      },
+      {
+        "minute": 60,
+        "value": -0.2
+      },
+      {
+        "minute": 61,
+        "value": -0.2
+      },
+      {
+        "minute": 62,
+        "value": -0.2
+      },
+      {
+        "minute": 63,
+        "value": 0.0
+      },
+      {
+        "minute": 64,
+        "value": 1.0
+      },
+      {
+        "minute": 65,
+        "value": 1.2
+      },
+      {
+        "minute": 66,
+        "value": 1.2
+      },
+      {
+        "minute": 67,
+        "value": 1.2
+      },
+      {
+        "minute": 68,
+        "value": 1.0
+      },
+      {
+        "minute": 69,
+        "value": -0.2
+      },
+      {
+        "minute": 70,
+        "value": -0.2
+      },
+      {
+        "minute": 71,
+        "value": -0.4
+      },
+      {
+        "minute": 72,
+        "value": -0.4
+      },
+      {
+        "minute": 73,
+        "value": -0.4
+      },
+      {
+        "minute": 74,
+        "value": -0.2
+      },
+      {
+        "minute": 75,
+        "value": -0.2
+      },
+      {
+        "minute": 76,
+        "value": 0.0
+      },
+      {
+        "minute": 77,
+        "value": 0.0
+      },
+      {
+        "minute": 78,
+        "value": 0.0
+      },
+      {
+        "minute": 79,
+        "value": -0.2
+      },
+      {
+        "minute": 80,
+        "value": -0.2
+      },
+      {
+        "minute": 81,
+        "value": -0.2
+      },
+      {
+        "minute": 82,
+        "value": -0.4
+      },
+      {
+        "minute": 83,
+        "value": -0.4
+      },
+      {
+        "minute": 84,
+        "value": -0.2
+      },
+      {
+        "minute": 85,
+        "value": -0.4
+      },
+      {
+        "minute": 86,
+        "value": -0.7
+      },
+      {
+        "minute": 87,
+        "value": -0.5
+      },
+      {
+        "minute": 88,
+        "value": -0.3
+      },
+      {
+        "minute": 89,
+        "value": -0.3
+      },
+      {
+        "minute": 90,
+        "value": -0.1
+      }
+    ],
+    "duration": 90
+  },
+  "760492": {
+    "home_team": "France",
+    "away_team": "Sweden",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "First Half begins.",
+        "scoring": false
+      },
+      {
+        "minute": 44.7,
+        "display": "45'",
+        "type": "goal",
+        "team": "France",
+        "label": "Kylian Mbapp\u00e9 Goal",
+        "scoring": true
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+4'",
+        "type": "halftime",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 52.1,
+        "display": "53'",
+        "type": "goal",
+        "team": "France",
+        "label": "Bradley Barcola Goal",
+        "scoring": true
+      },
+      {
+        "minute": 65.0,
+        "display": "66'",
+        "type": "substitution",
+        "team": "Sweden",
+        "label": "Taha Ali Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 65.1,
+        "display": "66'",
+        "type": "substitution",
+        "team": "Sweden",
+        "label": "Besfort Zeneli Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 73.3,
+        "display": "74'",
+        "type": "goal",
+        "team": "France",
+        "label": "Kylian Mbapp\u00e9 Goal",
+        "scoring": true
+      },
+      {
+        "minute": 74.2,
+        "display": "75'",
+        "type": "substitution",
+        "team": "France",
+        "label": "D\u00e9sir\u00e9 Dou\u00e9 Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 74.2,
+        "display": "75'",
+        "type": "substitution",
+        "team": "France",
+        "label": "Malo Gusto Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 77.8,
+        "display": "78'",
+        "type": "substitution",
+        "team": "France",
+        "label": "Theo Hern\u00e1ndez Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 81.5,
+        "display": "82'",
+        "type": "substitution",
+        "team": "Sweden",
+        "label": "Mattias Svanberg Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 81.6,
+        "display": "82'",
+        "type": "substitution",
+        "team": "Sweden",
+        "label": "Benjamin Nygren Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 84.1,
+        "display": "85'",
+        "type": "substitution",
+        "team": "France",
+        "label": "Jean-Philippe Mateta Substitutio",
+        "scoring": false
+      },
+      {
+        "minute": 84.2,
+        "display": "85'",
+        "type": "substitution",
+        "team": "France",
+        "label": "Rayan Cherki Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 89.0,
+        "display": "89'",
+        "type": "substitution",
+        "team": "Sweden",
+        "label": "Gustaf Nilsson Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+4'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "Second Half ends, France 3, Sweden 0.",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": -1.0
+      },
+      {
+        "minute": 1,
+        "value": -0.75
+      },
+      {
+        "minute": 2,
+        "value": -0.6
+      },
+      {
+        "minute": 3,
+        "value": -0.6
+      },
+      {
+        "minute": 4,
+        "value": -0.6
+      },
+      {
+        "minute": 5,
+        "value": 0.0
+      },
+      {
+        "minute": 6,
+        "value": 0.0
+      },
+      {
+        "minute": 7,
+        "value": 0.0
+      },
+      {
+        "minute": 8,
+        "value": 0.0
+      },
+      {
+        "minute": 9,
+        "value": 0.0
+      },
+      {
+        "minute": 10,
+        "value": 0.0
+      },
+      {
+        "minute": 11,
+        "value": 0.0
+      },
+      {
+        "minute": 12,
+        "value": 0.8
+      },
+      {
+        "minute": 13,
+        "value": 0.8
+      },
+      {
+        "minute": 14,
+        "value": 1.4
+      },
+      {
+        "minute": 15,
+        "value": 1.4
+      },
+      {
+        "minute": 16,
+        "value": 1.6
+      },
+      {
+        "minute": 17,
+        "value": 0.9
+      },
+      {
+        "minute": 18,
+        "value": 0.9
+      },
+      {
+        "minute": 19,
+        "value": 0.3
+      },
+      {
+        "minute": 20,
+        "value": 0.3
+      },
+      {
+        "minute": 21,
+        "value": 0.1
+      },
+      {
+        "minute": 22,
+        "value": 0.0
+      },
+      {
+        "minute": 23,
+        "value": 0.0
+      },
+      {
+        "minute": 24,
+        "value": 0.0
+      },
+      {
+        "minute": 25,
+        "value": 0.3
+      },
+      {
+        "minute": 26,
+        "value": 0.3
+      },
+      {
+        "minute": 27,
+        "value": 1.1
+      },
+      {
+        "minute": 28,
+        "value": 1.3
+      },
+      {
+        "minute": 29,
+        "value": 1.3
+      },
+      {
+        "minute": 30,
+        "value": 1.2
+      },
+      {
+        "minute": 31,
+        "value": 1.2
+      },
+      {
+        "minute": 32,
+        "value": 0.4
+      },
+      {
+        "minute": 33,
+        "value": 0.4
+      },
+      {
+        "minute": 34,
+        "value": 0.4
+      },
+      {
+        "minute": 35,
+        "value": 0.2
+      },
+      {
+        "minute": 36,
+        "value": 0.4
+      },
+      {
+        "minute": 37,
+        "value": 1.0
+      },
+      {
+        "minute": 38,
+        "value": 0.8
+      },
+      {
+        "minute": 39,
+        "value": 1.0
+      },
+      {
+        "minute": 40,
+        "value": 1.2
+      },
+      {
+        "minute": 41,
+        "value": 1.3
+      },
+      {
+        "minute": 42,
+        "value": 2.7
+      },
+      {
+        "minute": 43,
+        "value": 2.4
+      },
+      {
+        "minute": 44,
+        "value": 2.2
+      },
+      {
+        "minute": 45,
+        "value": 2.0
+      },
+      {
+        "minute": 46,
+        "value": 1.7
+      },
+      {
+        "minute": 47,
+        "value": -0.1
+      },
+      {
+        "minute": 48,
+        "value": 0.2
+      },
+      {
+        "minute": 49,
+        "value": 0.3
+      },
+      {
+        "minute": 50,
+        "value": 1.5
+      },
+      {
+        "minute": 51,
+        "value": 1.5
+      },
+      {
+        "minute": 52,
+        "value": 1.3
+      },
+      {
+        "minute": 53,
+        "value": 1.1
+      },
+      {
+        "minute": 54,
+        "value": 0.8
+      },
+      {
+        "minute": 55,
+        "value": -0.4
+      },
+      {
+        "minute": 56,
+        "value": -0.4
+      },
+      {
+        "minute": 57,
+        "value": -0.4
+      },
+      {
+        "minute": 58,
+        "value": 0.6
+      },
+      {
+        "minute": 59,
+        "value": 0.8
+      },
+      {
+        "minute": 60,
+        "value": 0.8
+      },
+      {
+        "minute": 61,
+        "value": 0.8
+      },
+      {
+        "minute": 62,
+        "value": 1.3
+      },
+      {
+        "minute": 63,
+        "value": 0.8
+      },
+      {
+        "minute": 64,
+        "value": 0.8
+      },
+      {
+        "minute": 65,
+        "value": 0.8
+      },
+      {
+        "minute": 66,
+        "value": 0.8
+      },
+      {
+        "minute": 67,
+        "value": 0.3
+      },
+      {
+        "minute": 68,
+        "value": 0.6
+      },
+      {
+        "minute": 69,
+        "value": 0.6
+      },
+      {
+        "minute": 70,
+        "value": 0.6
+      },
+      {
+        "minute": 71,
+        "value": 1.8
+      },
+      {
+        "minute": 72,
+        "value": 1.8
+      },
+      {
+        "minute": 73,
+        "value": 1.2
+      },
+      {
+        "minute": 74,
+        "value": 1.2
+      },
+      {
+        "minute": 75,
+        "value": 1.2
+      },
+      {
+        "minute": 76,
+        "value": 0.0
+      },
+      {
+        "minute": 77,
+        "value": 0.0
+      },
+      {
+        "minute": 78,
+        "value": 0.6
+      },
+      {
+        "minute": 79,
+        "value": 1.4
+      },
+      {
+        "minute": 80,
+        "value": 1.4
+      },
+      {
+        "minute": 81,
+        "value": 1.4
+      },
+      {
+        "minute": 82,
+        "value": 1.4
+      },
+      {
+        "minute": 83,
+        "value": 0.6
+      },
+      {
+        "minute": 84,
+        "value": -0.1
+      },
+      {
+        "minute": 85,
+        "value": -0.1
+      },
+      {
+        "minute": 86,
+        "value": -0.7
+      },
+      {
+        "minute": 87,
+        "value": -0.7
+      },
+      {
+        "minute": 88,
+        "value": -1.2
+      },
+      {
+        "minute": 89,
+        "value": -1.3
+      },
+      {
+        "minute": 90,
+        "value": -1.3
+      }
+    ],
+    "duration": 90
+  },
+  "760493": {
+    "home_team": "Belgium",
+    "away_team": "Senegal",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 24.0,
+        "display": "24'",
+        "type": "goal",
+        "team": "Senegal",
+        "label": "Habib Diarra Goal",
+        "scoring": true
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+6'",
+        "type": "halftime",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'",
+        "type": "substitution",
+        "team": "Belgium",
+        "label": "Romelu Lukaku Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 50.6,
+        "display": "51'",
+        "type": "goal",
+        "team": "Senegal",
+        "label": "Isma\u00efla Sarr Goal",
+        "scoring": true
+      },
+      {
+        "minute": 55.6,
+        "display": "56'",
+        "type": "substitution",
+        "team": "Belgium",
+        "label": "Dodi Luk\u00e9bakio Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 55.7,
+        "display": "56'",
+        "type": "substitution",
+        "team": "Belgium",
+        "label": "Nicolas Raskin Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 62.5,
+        "display": "63'",
+        "type": "substitution",
+        "team": "Belgium",
+        "label": "Diego Moreira Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 63.1,
+        "display": "64'",
+        "type": "yellow-card",
+        "team": "Belgium",
+        "label": "Brandon Mechele Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 65.8,
+        "display": "66'",
+        "type": "substitution",
+        "team": "Senegal",
+        "label": "Lamine Camara Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 66.8,
+        "display": "67'",
+        "type": "yellow-card",
+        "team": "Senegal",
+        "label": "Lamine Camara Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 72.2,
+        "display": "73'",
+        "type": "substitution",
+        "team": "Senegal",
+        "label": "Ibrahim Mbaye Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 72.8,
+        "display": "73'",
+        "type": "substitution",
+        "team": "Senegal",
+        "label": "Pape Matar Sarr Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 77.7,
+        "display": "78'",
+        "type": "substitution",
+        "team": "Belgium",
+        "label": "Thomas Meunier Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 85.6,
+        "display": "86'",
+        "type": "goal",
+        "team": "Belgium",
+        "label": "Romelu Lukaku Goal",
+        "scoring": true
+      },
+      {
+        "minute": 88.2,
+        "display": "89'",
+        "type": "goal---header",
+        "team": "Belgium",
+        "label": "Youri Tielemans Goal - Header",
+        "scoring": true
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+8'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 93.0,
+        "display": "94'",
+        "type": "substitution",
+        "team": "Senegal",
+        "label": "Nicolas Jackson Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 93.0,
+        "display": "94'",
+        "type": "substitution",
+        "team": "Senegal",
+        "label": "El Hadji Malick Diouf Substituti",
+        "scoring": false
+      },
+      {
+        "minute": 95.0,
+        "display": "96'",
+        "type": "substitution",
+        "team": "Senegal",
+        "label": "Bara Sapoko Ndiaye Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 108.7,
+        "display": "109'",
+        "type": "substitution",
+        "team": "Belgium",
+        "label": "Amadou Onana Substitution",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": 0.0
+      },
+      {
+        "minute": 1,
+        "value": 0.0
+      },
+      {
+        "minute": 2,
+        "value": 0.0
+      },
+      {
+        "minute": 3,
+        "value": 0.0
+      },
+      {
+        "minute": 4,
+        "value": 0.0
+      },
+      {
+        "minute": 5,
+        "value": 0.0
+      },
+      {
+        "minute": 6,
+        "value": 0.6
+      },
+      {
+        "minute": 7,
+        "value": 0.6
+      },
+      {
+        "minute": 8,
+        "value": 0.6
+      },
+      {
+        "minute": 9,
+        "value": 0.6
+      },
+      {
+        "minute": 10,
+        "value": 0.4
+      },
+      {
+        "minute": 11,
+        "value": -0.2
+      },
+      {
+        "minute": 12,
+        "value": -0.2
+      },
+      {
+        "minute": 13,
+        "value": -0.2
+      },
+      {
+        "minute": 14,
+        "value": -0.8
+      },
+      {
+        "minute": 15,
+        "value": -0.4
+      },
+      {
+        "minute": 16,
+        "value": -0.6
+      },
+      {
+        "minute": 17,
+        "value": -0.7
+      },
+      {
+        "minute": 18,
+        "value": -0.7
+      },
+      {
+        "minute": 19,
+        "value": -0.1
+      },
+      {
+        "minute": 20,
+        "value": -0.3
+      },
+      {
+        "minute": 21,
+        "value": -0.1
+      },
+      {
+        "minute": 22,
+        "value": -1.2
+      },
+      {
+        "minute": 23,
+        "value": -1.2
+      },
+      {
+        "minute": 24,
+        "value": -1.2
+      },
+      {
+        "minute": 25,
+        "value": -1.2
+      },
+      {
+        "minute": 26,
+        "value": -1.2
+      },
+      {
+        "minute": 27,
+        "value": 0.0
+      },
+      {
+        "minute": 28,
+        "value": 0.0
+      },
+      {
+        "minute": 29,
+        "value": 0.0
+      },
+      {
+        "minute": 30,
+        "value": 0.0
+      },
+      {
+        "minute": 31,
+        "value": 0.0
+      },
+      {
+        "minute": 32,
+        "value": 0.0
+      },
+      {
+        "minute": 33,
+        "value": 0.0
+      },
+      {
+        "minute": 34,
+        "value": -0.6
+      },
+      {
+        "minute": 35,
+        "value": -0.6
+      },
+      {
+        "minute": 36,
+        "value": -0.6
+      },
+      {
+        "minute": 37,
+        "value": -0.6
+      },
+      {
+        "minute": 38,
+        "value": -0.6
+      },
+      {
+        "minute": 39,
+        "value": 0.0
+      },
+      {
+        "minute": 40,
+        "value": 0.0
+      },
+      {
+        "minute": 41,
+        "value": 0.2
+      },
+      {
+        "minute": 42,
+        "value": 1.0
+      },
+      {
+        "minute": 43,
+        "value": 0.8
+      },
+      {
+        "minute": 44,
+        "value": 0.8
+      },
+      {
+        "minute": 45,
+        "value": 0.8
+      },
+      {
+        "minute": 46,
+        "value": 0.6
+      },
+      {
+        "minute": 47,
+        "value": -0.2
+      },
+      {
+        "minute": 48,
+        "value": -1.4
+      },
+      {
+        "minute": 49,
+        "value": -1.4
+      },
+      {
+        "minute": 50,
+        "value": -1.4
+      },
+      {
+        "minute": 51,
+        "value": -1.4
+      },
+      {
+        "minute": 52,
+        "value": -1.4
+      },
+      {
+        "minute": 53,
+        "value": 0.0
+      },
+      {
+        "minute": 54,
+        "value": 0.2
+      },
+      {
+        "minute": 55,
+        "value": 0.2
+      },
+      {
+        "minute": 56,
+        "value": 0.2
+      },
+      {
+        "minute": 57,
+        "value": 1.0
+      },
+      {
+        "minute": 58,
+        "value": 1.0
+      },
+      {
+        "minute": 59,
+        "value": 1.0
+      },
+      {
+        "minute": 60,
+        "value": 1.0
+      },
+      {
+        "minute": 61,
+        "value": 1.0
+      },
+      {
+        "minute": 62,
+        "value": 0.3
+      },
+      {
+        "minute": 63,
+        "value": 0.3
+      },
+      {
+        "minute": 64,
+        "value": 0.1
+      },
+      {
+        "minute": 65,
+        "value": 0.1
+      },
+      {
+        "minute": 66,
+        "value": 0.1
+      },
+      {
+        "minute": 67,
+        "value": 0.0
+      },
+      {
+        "minute": 68,
+        "value": 0.0
+      },
+      {
+        "minute": 69,
+        "value": 0.0
+      },
+      {
+        "minute": 70,
+        "value": 0.0
+      },
+      {
+        "minute": 71,
+        "value": 0.0
+      },
+      {
+        "minute": 72,
+        "value": 0.0
+      },
+      {
+        "minute": 73,
+        "value": 0.0
+      },
+      {
+        "minute": 74,
+        "value": 0.3
+      },
+      {
+        "minute": 75,
+        "value": 0.5
+      },
+      {
+        "minute": 76,
+        "value": 0.5
+      },
+      {
+        "minute": 77,
+        "value": 0.5
+      },
+      {
+        "minute": 78,
+        "value": 0.5
+      },
+      {
+        "minute": 79,
+        "value": 0.2
+      },
+      {
+        "minute": 80,
+        "value": 0.2
+      },
+      {
+        "minute": 81,
+        "value": 0.4
+      },
+      {
+        "minute": 82,
+        "value": 0.3
+      },
+      {
+        "minute": 83,
+        "value": 1.5
+      },
+      {
+        "minute": 84,
+        "value": 1.5
+      },
+      {
+        "minute": 85,
+        "value": 1.1
+      },
+      {
+        "minute": 86,
+        "value": 2.1
+      },
+      {
+        "minute": 87,
+        "value": 2.2
+      },
+      {
+        "minute": 88,
+        "value": 1.3
+      },
+      {
+        "minute": 89,
+        "value": 1.3
+      },
+      {
+        "minute": 90,
+        "value": 1.5
+      },
+      {
+        "minute": 91,
+        "value": 0.3
+      },
+      {
+        "minute": 92,
+        "value": 0.3
+      },
+      {
+        "minute": 93,
+        "value": 0.0
+      },
+      {
+        "minute": 94,
+        "value": 0.0
+      },
+      {
+        "minute": 95,
+        "value": 0.0
+      },
+      {
+        "minute": 96,
+        "value": 0.0
+      },
+      {
+        "minute": 97,
+        "value": 0.0
+      },
+      {
+        "minute": 98,
+        "value": 0.0
+      },
+      {
+        "minute": 99,
+        "value": 0.0
+      },
+      {
+        "minute": 100,
+        "value": 0.0
+      },
+      {
+        "minute": 101,
+        "value": 0.3
+      },
+      {
+        "minute": 102,
+        "value": 0.3
+      },
+      {
+        "minute": 103,
+        "value": 0.3
+      },
+      {
+        "minute": 104,
+        "value": 0.5
+      },
+      {
+        "minute": 105,
+        "value": 0.5
+      },
+      {
+        "minute": 106,
+        "value": 0.0
+      },
+      {
+        "minute": 107,
+        "value": 0.0
+      },
+      {
+        "minute": 108,
+        "value": 0.0
+      },
+      {
+        "minute": 109,
+        "value": -0.2
+      },
+      {
+        "minute": 110,
+        "value": -0.8
+      },
+      {
+        "minute": 111,
+        "value": -0.8
+      },
+      {
+        "minute": 112,
+        "value": -0.8
+      },
+      {
+        "minute": 113,
+        "value": -0.8
+      },
+      {
+        "minute": 114,
+        "value": -0.8
+      },
+      {
+        "minute": 115,
+        "value": -0.2
+      },
+      {
+        "minute": 116,
+        "value": 0.0
+      },
+      {
+        "minute": 117,
+        "value": 0.0
+      },
+      {
+        "minute": 118,
+        "value": -1.0
+      },
+      {
+        "minute": 119,
+        "value": -1.0
+      },
+      {
+        "minute": 120,
+        "value": -1.0
+      }
+    ],
+    "duration": 120
+  },
+  "760494": {
+    "home_team": "United States",
+    "away_team": "Bosnia-Herzegovina",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 44.3,
+        "display": "45'",
+        "type": "goal",
+        "team": "United States",
+        "label": "Folarin Balogun Goal",
+        "scoring": true
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+10'",
+        "type": "halftime",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 50.5,
+        "display": "51'",
+        "type": "substitution",
+        "team": "Bosnia-Herzegovina",
+        "label": "Esmir Bajraktarevic Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 50.8,
+        "display": "51'",
+        "type": "substitution",
+        "team": "Bosnia-Herzegovina",
+        "label": "Benjamin Tahirovic Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 51.0,
+        "display": "51'",
+        "type": "substitution",
+        "team": "Bosnia-Herzegovina",
+        "label": "Ermin Mahmic Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 63.5,
+        "display": "64'",
+        "type": "red-card",
+        "team": "United States",
+        "label": "Folarin Balogun Red Card",
+        "scoring": false
+      },
+      {
+        "minute": 74.6,
+        "display": "75'",
+        "type": "substitution",
+        "team": "Bosnia-Herzegovina",
+        "label": "Haris Tabakovic Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 74.8,
+        "display": "75'",
+        "type": "substitution",
+        "team": "Bosnia-Herzegovina",
+        "label": "Amar Memic Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 79.9,
+        "display": "80'",
+        "type": "yellow-card",
+        "team": "Bosnia-Herzegovina",
+        "label": "Stjepan Radeljic Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 87.0,
+        "display": "87'",
+        "type": "substitution",
+        "team": "United States",
+        "label": "Sebastian Berhalter Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 87.4,
+        "display": "88'",
+        "type": "substitution",
+        "team": "United States",
+        "label": "Ricardo Pepi Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+5'",
+        "type": "substitution",
+        "team": "United States",
+        "label": "Giovanni Reyna Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+10'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "Second Half ends, USA 2, Bosnia and Herzegovina 0.",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": -0.33
+      },
+      {
+        "minute": 1,
+        "value": 0.38
+      },
+      {
+        "minute": 2,
+        "value": 0.5
+      },
+      {
+        "minute": 3,
+        "value": 0.7
+      },
+      {
+        "minute": 4,
+        "value": 0.7
+      },
+      {
+        "minute": 5,
+        "value": 0.7
+      },
+      {
+        "minute": 6,
+        "value": 0.2
+      },
+      {
+        "minute": 7,
+        "value": -0.8
+      },
+      {
+        "minute": 8,
+        "value": -0.8
+      },
+      {
+        "minute": 9,
+        "value": -0.8
+      },
+      {
+        "minute": 10,
+        "value": -0.8
+      },
+      {
+        "minute": 11,
+        "value": -0.8
+      },
+      {
+        "minute": 12,
+        "value": 0.2
+      },
+      {
+        "minute": 13,
+        "value": 0.2
+      },
+      {
+        "minute": 14,
+        "value": 0.2
+      },
+      {
+        "minute": 15,
+        "value": 0.2
+      },
+      {
+        "minute": 16,
+        "value": 0.2
+      },
+      {
+        "minute": 17,
+        "value": 0.0
+      },
+      {
+        "minute": 18,
+        "value": 0.2
+      },
+      {
+        "minute": 19,
+        "value": 0.2
+      },
+      {
+        "minute": 20,
+        "value": 0.2
+      },
+      {
+        "minute": 21,
+        "value": 0.2
+      },
+      {
+        "minute": 22,
+        "value": 0.2
+      },
+      {
+        "minute": 23,
+        "value": 0.0
+      },
+      {
+        "minute": 24,
+        "value": 0.0
+      },
+      {
+        "minute": 25,
+        "value": 0.0
+      },
+      {
+        "minute": 26,
+        "value": 0.0
+      },
+      {
+        "minute": 27,
+        "value": 0.0
+      },
+      {
+        "minute": 28,
+        "value": 0.1
+      },
+      {
+        "minute": 29,
+        "value": 0.1
+      },
+      {
+        "minute": 30,
+        "value": 0.1
+      },
+      {
+        "minute": 31,
+        "value": 0.1
+      },
+      {
+        "minute": 32,
+        "value": 0.1
+      },
+      {
+        "minute": 33,
+        "value": 0.0
+      },
+      {
+        "minute": 34,
+        "value": 0.0
+      },
+      {
+        "minute": 35,
+        "value": 0.0
+      },
+      {
+        "minute": 36,
+        "value": 0.0
+      },
+      {
+        "minute": 37,
+        "value": 0.0
+      },
+      {
+        "minute": 38,
+        "value": 0.0
+      },
+      {
+        "minute": 39,
+        "value": 0.2
+      },
+      {
+        "minute": 40,
+        "value": 0.2
+      },
+      {
+        "minute": 41,
+        "value": 0.2
+      },
+      {
+        "minute": 42,
+        "value": 1.4
+      },
+      {
+        "minute": 43,
+        "value": 1.4
+      },
+      {
+        "minute": 44,
+        "value": 1.2
+      },
+      {
+        "minute": 45,
+        "value": 1.4
+      },
+      {
+        "minute": 46,
+        "value": 1.4
+      },
+      {
+        "minute": 47,
+        "value": 0.2
+      },
+      {
+        "minute": 48,
+        "value": 0.2
+      },
+      {
+        "minute": 49,
+        "value": 0.2
+      },
+      {
+        "minute": 50,
+        "value": 0.0
+      },
+      {
+        "minute": 51,
+        "value": 0.0
+      },
+      {
+        "minute": 52,
+        "value": 0.0
+      },
+      {
+        "minute": 53,
+        "value": -0.2
+      },
+      {
+        "minute": 54,
+        "value": -0.2
+      },
+      {
+        "minute": 55,
+        "value": -0.2
+      },
+      {
+        "minute": 56,
+        "value": -0.2
+      },
+      {
+        "minute": 57,
+        "value": -0.2
+      },
+      {
+        "minute": 58,
+        "value": 0.0
+      },
+      {
+        "minute": 59,
+        "value": 0.0
+      },
+      {
+        "minute": 60,
+        "value": 0.0
+      },
+      {
+        "minute": 61,
+        "value": 0.0
+      },
+      {
+        "minute": 62,
+        "value": 0.0
+      },
+      {
+        "minute": 63,
+        "value": -0.6
+      },
+      {
+        "minute": 64,
+        "value": -0.6
+      },
+      {
+        "minute": 65,
+        "value": -1.2
+      },
+      {
+        "minute": 66,
+        "value": -1.2
+      },
+      {
+        "minute": 67,
+        "value": -1.2
+      },
+      {
+        "minute": 68,
+        "value": -0.6
+      },
+      {
+        "minute": 69,
+        "value": -0.6
+      },
+      {
+        "minute": 70,
+        "value": -0.2
+      },
+      {
+        "minute": 71,
+        "value": -0.5
+      },
+      {
+        "minute": 72,
+        "value": -0.5
+      },
+      {
+        "minute": 73,
+        "value": -0.5
+      },
+      {
+        "minute": 74,
+        "value": -0.8
+      },
+      {
+        "minute": 75,
+        "value": -0.6
+      },
+      {
+        "minute": 76,
+        "value": 0.1
+      },
+      {
+        "minute": 77,
+        "value": 0.1
+      },
+      {
+        "minute": 78,
+        "value": 0.1
+      },
+      {
+        "minute": 79,
+        "value": 0.4
+      },
+      {
+        "minute": 80,
+        "value": 0.4
+      },
+      {
+        "minute": 81,
+        "value": 0.0
+      },
+      {
+        "minute": 82,
+        "value": 0.0
+      },
+      {
+        "minute": 83,
+        "value": 0.0
+      },
+      {
+        "minute": 84,
+        "value": 0.0
+      },
+      {
+        "minute": 85,
+        "value": 0.0
+      },
+      {
+        "minute": 86,
+        "value": 0.0
+      },
+      {
+        "minute": 87,
+        "value": -0.3
+      },
+      {
+        "minute": 88,
+        "value": -0.6
+      },
+      {
+        "minute": 89,
+        "value": -0.6
+      },
+      {
+        "minute": 90,
+        "value": -0.6
+      }
+    ],
+    "duration": 90
+  },
+  "760495": {
+    "home_team": "England",
+    "away_team": "Congo DR",
+    "events": [
+      {
+        "minute": 0.0,
+        "display": "KO",
+        "type": "kickoff",
+        "team": null,
+        "label": "",
+        "scoring": false
+      },
+      {
+        "minute": 6.5,
+        "display": "7'",
+        "type": "goal",
+        "team": "Congo DR",
+        "label": "Brian Cipenga Goal",
+        "scoring": true
+      },
+      {
+        "minute": 18.7,
+        "display": "19'",
+        "type": "yellow-card",
+        "team": "England",
+        "label": "Jude Bellingham Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 27.0,
+        "display": "28'",
+        "type": "yellow-card",
+        "team": "Congo DR",
+        "label": "Noah Sadiki Yellow Card",
+        "scoring": false
+      },
+      {
+        "minute": 45.0,
+        "display": "45'+7'",
+        "type": "halftime",
+        "team": null,
+        "label": "First Half ends, England 0, Congo DR 1.",
+        "scoring": false
+      },
+      {
+        "minute": 60.0,
+        "display": "61'",
+        "type": "substitution",
+        "team": "England",
+        "label": "Bukayo Saka Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 60.2,
+        "display": "61'",
+        "type": "substitution",
+        "team": "England",
+        "label": "Anthony Gordon Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 63.5,
+        "display": "64'",
+        "type": "substitution",
+        "team": "Congo DR",
+        "label": "Meschack Elia Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 69.9,
+        "display": "70'",
+        "type": "substitution",
+        "team": "England",
+        "label": "Eberechi Eze Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 74.0,
+        "display": "75'",
+        "type": "goal---header",
+        "team": "England",
+        "label": "Harry Kane Goal - Header",
+        "scoring": true
+      },
+      {
+        "minute": 75.5,
+        "display": "76'",
+        "type": "substitution",
+        "team": "Congo DR",
+        "label": "Th\u00e9o Bongonda Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 75.8,
+        "display": "76'",
+        "type": "substitution",
+        "team": "Congo DR",
+        "label": "Edo Kayembe Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 85.5,
+        "display": "86'",
+        "type": "goal",
+        "team": "England",
+        "label": "Harry Kane Goal",
+        "scoring": true
+      },
+      {
+        "minute": 88.5,
+        "display": "89'",
+        "type": "substitution",
+        "team": "Congo DR",
+        "label": "Joris Kayembe Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 88.5,
+        "display": "89'",
+        "type": "substitution",
+        "team": "Congo DR",
+        "label": "Fiston Mayele Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+1'",
+        "type": "substitution",
+        "team": "England",
+        "label": "John Stones Substitution",
+        "scoring": false
+      },
+      {
+        "minute": 90.0,
+        "display": "90'+7'",
+        "type": "end-regular-time",
+        "team": null,
+        "label": "Second Half ends, England 2, Congo DR 1.",
+        "scoring": false
+      }
+    ],
+    "momentum": [
+      {
+        "minute": 0,
+        "value": -0.17
+      },
+      {
+        "minute": 1,
+        "value": -0.12
+      },
+      {
+        "minute": 2,
+        "value": -0.1
+      },
+      {
+        "minute": 3,
+        "value": -0.1
+      },
+      {
+        "minute": 4,
+        "value": -1.2
+      },
+      {
+        "minute": 5,
+        "value": -1.2
+      },
+      {
+        "minute": 6,
+        "value": -1.2
+      },
+      {
+        "minute": 7,
+        "value": -1.2
+      },
+      {
+        "minute": 8,
+        "value": -1.2
+      },
+      {
+        "minute": 9,
+        "value": 0.0
+      },
+      {
+        "minute": 10,
+        "value": 0.0
+      },
+      {
+        "minute": 11,
+        "value": 0.2
+      },
+      {
+        "minute": 12,
+        "value": 0.2
+      },
+      {
+        "minute": 13,
+        "value": 0.2
+      },
+      {
+        "minute": 14,
+        "value": 0.2
+      },
+      {
+        "minute": 15,
+        "value": 0.2
+      },
+      {
+        "minute": 16,
+        "value": 0.0
+      },
+      {
+        "minute": 17,
+        "value": 0.0
+      },
+      {
+        "minute": 18,
+        "value": 0.0
+      },
+      {
+        "minute": 19,
+        "value": 0.0
+      },
+      {
+        "minute": 20,
+        "value": 0.0
+      },
+      {
+        "minute": 21,
+        "value": 0.0
+      },
+      {
+        "minute": 22,
+        "value": 0.0
+      },
+      {
+        "minute": 23,
+        "value": 0.0
+      },
+      {
+        "minute": 24,
+        "value": 0.0
+      },
+      {
+        "minute": 25,
+        "value": 0.0
+      },
+      {
+        "minute": 26,
+        "value": 0.0
+      },
+      {
+        "minute": 27,
+        "value": 0.6
+      },
+      {
+        "minute": 28,
+        "value": 0.6
+      },
+      {
+        "minute": 29,
+        "value": 0.4
+      },
+      {
+        "minute": 30,
+        "value": 0.4
+      },
+      {
+        "minute": 31,
+        "value": 0.4
+      },
+      {
+        "minute": 32,
+        "value": 0.6
+      },
+      {
+        "minute": 33,
+        "value": 0.9
+      },
+      {
+        "minute": 34,
+        "value": 1.1
+      },
+      {
+        "minute": 35,
+        "value": 1.0
+      },
+      {
+        "minute": 36,
+        "value": 1.3
+      },
+      {
+        "minute": 37,
+        "value": 0.3
+      },
+      {
+        "minute": 38,
+        "value": 0.0
+      },
+      {
+        "minute": 39,
+        "value": 0.0
+      },
+      {
+        "minute": 40,
+        "value": 0.1
+      },
+      {
+        "minute": 41,
+        "value": -0.2
+      },
+      {
+        "minute": 42,
+        "value": 0.0
+      },
+      {
+        "minute": 43,
+        "value": 1.3
+      },
+      {
+        "minute": 44,
+        "value": 1.3
+      },
+      {
+        "minute": 45,
+        "value": 1.3
+      },
+      {
+        "minute": 46,
+        "value": 1.5
+      },
+      {
+        "minute": 47,
+        "value": 1.7
+      },
+      {
+        "minute": 48,
+        "value": 0.6
+      },
+      {
+        "minute": 49,
+        "value": 0.6
+      },
+      {
+        "minute": 50,
+        "value": 0.6
+      },
+      {
+        "minute": 51,
+        "value": 0.6
+      },
+      {
+        "minute": 52,
+        "value": 0.3
+      },
+      {
+        "minute": 53,
+        "value": 0.1
+      },
+      {
+        "minute": 54,
+        "value": 0.1
+      },
+      {
+        "minute": 55,
+        "value": 0.1
+      },
+      {
+        "minute": 56,
+        "value": -0.1
+      },
+      {
+        "minute": 57,
+        "value": 0.0
+      },
+      {
+        "minute": 58,
+        "value": 0.0
+      },
+      {
+        "minute": 59,
+        "value": -0.5
+      },
+      {
+        "minute": 60,
+        "value": -1.0
+      },
+      {
+        "minute": 61,
+        "value": -1.0
+      },
+      {
+        "minute": 62,
+        "value": -1.0
+      },
+      {
+        "minute": 63,
+        "value": -1.0
+      },
+      {
+        "minute": 64,
+        "value": -0.5
+      },
+      {
+        "minute": 65,
+        "value": 0.0
+      },
+      {
+        "minute": 66,
+        "value": 0.0
+      },
+      {
+        "minute": 67,
+        "value": 0.0
+      },
+      {
+        "minute": 68,
+        "value": 0.0
+      },
+      {
+        "minute": 69,
+        "value": 0.2
+      },
+      {
+        "minute": 70,
+        "value": 0.2
+      },
+      {
+        "minute": 71,
+        "value": 0.2
+      },
+      {
+        "minute": 72,
+        "value": 1.4
+      },
+      {
+        "minute": 73,
+        "value": 1.4
+      },
+      {
+        "minute": 74,
+        "value": 1.2
+      },
+      {
+        "minute": 75,
+        "value": 1.2
+      },
+      {
+        "minute": 76,
+        "value": 1.4
+      },
+      {
+        "minute": 77,
+        "value": 0.2
+      },
+      {
+        "minute": 78,
+        "value": 0.2
+      },
+      {
+        "minute": 79,
+        "value": 0.2
+      },
+      {
+        "minute": 80,
+        "value": 0.2
+      },
+      {
+        "minute": 81,
+        "value": 0.0
+      },
+      {
+        "minute": 82,
+        "value": -0.4
+      },
+      {
+        "minute": 83,
+        "value": 1.4
+      },
+      {
+        "minute": 84,
+        "value": 1.4
+      },
+      {
+        "minute": 85,
+        "value": 1.4
+      },
+      {
+        "minute": 86,
+        "value": 1.4
+      },
+      {
+        "minute": 87,
+        "value": 2.0
+      },
+      {
+        "minute": 88,
+        "value": 0.0
+      },
+      {
+        "minute": 89,
+        "value": 0.0
+      },
+      {
+        "minute": 90,
+        "value": 0.0
+      }
+    ],
+    "duration": 90
   }
 }
