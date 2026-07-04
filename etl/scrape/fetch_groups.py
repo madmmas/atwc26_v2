@@ -227,12 +227,17 @@ def parse_slot(competitor: dict) -> dict:
 def fetch_bracket(events: list[dict]) -> dict:
     """Build the Round-of-32-through-Final fixture skeleton.
 
-    Each round's matches are kept in ESPN's own discovery order (NOT
-    re-sorted by kickoff) and given an explicit 1-indexed `position` —
-    confirmed empirically that this position is exactly the match number
-    later rounds reference in placeholder text (e.g. position 3 in Round
-    of 32 is "Round of 32 3 Winner" wherever it's referenced in Round of
-    16). Re-sorting here would silently break that linkage.
+    Each round's matches are sorted by ESPN's numeric event id and given an
+    explicit 1-indexed `position`. ESPN assigns event ids sequentially in
+    bracket-construction order, so this id ordering is exactly the match
+    number later rounds reference in placeholder text (e.g. the 3rd Round-of-32
+    match by event id is "Round of 32 3 Winner" wherever a Round-of-16 match
+    references it). This must NOT be keyed off discovery order: `events` is
+    assembled by scanning the scoreboard day-by-day, and that order is not
+    stable across scrapes — when it diverges from ESPN's canonical numbering
+    a placeholder like "Round of 32 16 Winner" resolves to the wrong feeder
+    (the "Egypt vs Egypt" Round-of-16 bug). Sorting by event id is stable and
+    reproduces ESPN's numbering identically on every run.
     """
     slugs = dict(ROUND_SLUGS)
     rounds: dict[str, list[dict]] = {name: [] for _, name in ROUND_SLUGS}
@@ -263,6 +268,9 @@ def fetch_bracket(events: list[dict]) -> dict:
             "shootout_b": b.get("shootoutScore"),
         })
     for matches in rounds.values():
+        # Numeric event-id order == ESPN's canonical match numbering (see
+        # docstring); fall back to string sort if an id is ever non-numeric.
+        matches.sort(key=lambda m: int(m["game_id"]) if str(m["game_id"]).isdigit() else m["game_id"])
         for i, m in enumerate(matches):
             m["position"] = i + 1
     return {"rounds": [{"name": name, "matches": rounds[name]} for _, name in ROUND_SLUGS]}
