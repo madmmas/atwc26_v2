@@ -75,6 +75,15 @@ STANDINGS_URL = (
     "https://site.web.api.espn.com/apis/v2/sports/soccer/{league}/standings?season={season}"
 )
 SCOREBOARD_URL = "https://site.api.espn.com/apis/site/v2/sports/soccer/{league}/scoreboard?dates={ymd}"
+# The scoreboard feed does NOT expose a match number; the core API does, at
+# `competitions[0].matchNumber` — ESPN's canonical bracket numbering (group
+# stage 1-72, Round of 32 73-88, Round of 16 89-96, QF 97-100, SF 101-102,
+# 3rd-place 103, Final 104). This is the number later rounds reference in
+# placeholder text ("Round of 32 15 Winner"), so it's what `position` must key
+# off of. See fetch_bracket().
+CORE_EVENT_URL = (
+    "https://sports.core.api.espn.com/v2/sports/soccer/leagues/{league}/events/{event_id}"
+)
 
 HEADERS = {
     "User-Agent": (
@@ -224,20 +233,45 @@ def parse_slot(competitor: dict) -> dict:
     return {"type": "team", "team_id": str(team.get("id")), "team_name": name}
 
 
-def fetch_bracket(events: list[dict]) -> dict:
+def fetch_match_number(session: requests.Session, league: str, event_id: str):
+    """ESPN's canonical bracket match number for an event, or None.
+
+    Read from the core API's `competitions[0].matchNumber` (the scoreboard
+    feed doesn't carry it). This is the fixed, structural number that later
+    rounds reference in placeholder text — it is NOT the same as the event id
+    or the kickoff order (e.g. Australia-Egypt kicks off before Argentina-Cape
+    Verde and has the smaller event id, yet is the *later* bracket match, #16
+    vs #14), which is exactly why keying off either of those mis-pairs the
+    Round of 16.
+    """
+    url = CORE_EVENT_URL.format(league=league, event_id=event_id)
+    try:
+        resp = session.get(url, timeout=REQUEST_TIMEOUT)
+        resp.raise_for_status()
+        comp = (resp.json().get("competitions") or [{}])[0]
+        number = comp.get("matchNumber")
+        return int(number) if number is not None else None
+    except (requests.RequestException, ValueError, TypeError) as exc:
+        log.warning("no matchNumber for event %s: %s", event_id, exc)
+        return None
+
+
+def fetch_bracket(session: requests.Session, league: str, events: list[dict]) -> dict:
     """Build the Round-of-32-through-Final fixture skeleton.
 
-    Each round's matches are sorted by ESPN's numeric event id and given an
-    explicit 1-indexed `position`. ESPN assigns event ids sequentially in
-    bracket-construction order, so this id ordering is exactly the match
-    number later rounds reference in placeholder text (e.g. the 3rd Round-of-32
-    match by event id is "Round of 32 3 Winner" wherever a Round-of-16 match
-    references it). This must NOT be keyed off discovery order: `events` is
-    assembled by scanning the scoreboard day-by-day, and that order is not
-    stable across scrapes — when it diverges from ESPN's canonical numbering
-    a placeholder like "Round of 32 16 Winner" resolves to the wrong feeder
-    (the "Egypt vs Egypt" Round-of-16 bug). Sorting by event id is stable and
-    reproduces ESPN's numbering identically on every run.
+    Each round's matches are sorted by ESPN's canonical `matchNumber` (fetched
+    per event from the core API) and given an explicit 1-indexed `position`.
+    That number is exactly what later rounds reference in placeholder text
+    (e.g. Round-of-32 match #15 is "Round of 32 15 Winner" wherever a
+    Round-of-16 match references it), so `position` must equal it.
+
+    This must NOT be keyed off discovery order (the order `events` are scanned
+    day-by-day, which isn't stable across scrapes) NOR off the event id / kickoff
+    time (which don't match ESPN's bracket numbering — Australia-Egypt has an
+    earlier kickoff and smaller event id than Argentina-Cape Verde yet is the
+    later bracket match). Any of those mis-pair the Round of 16 — e.g. resolving
+    "Egypt vs Colombia" / "Switzerland vs Argentina" instead of the correct
+    "Argentina vs Egypt" / "Switzerland vs Colombia".
     """
     slugs = dict(ROUND_SLUGS)
     rounds: dict[str, list[dict]] = {name: [] for _, name in ROUND_SLUGS}
@@ -268,9 +302,20 @@ def fetch_bracket(events: list[dict]) -> dict:
             "shootout_b": b.get("shootoutScore"),
         })
     for matches in rounds.values():
-        # Numeric event-id order == ESPN's canonical match numbering (see
-        # docstring); fall back to string sort if an id is ever non-numeric.
-        matches.sort(key=lambda m: int(m["game_id"]) if str(m["game_id"]).isdigit() else m["game_id"])
+        # Sort by ESPN's canonical matchNumber so `position` equals the number
+        # placeholders reference. Fall back to event id if matchNumber is ever
+        # unavailable (network hiccup) — still deterministic, just not
+        # guaranteed canonical for that scrape.
+        gid = lambda m: int(m["game_id"]) if str(m["game_id"]).isdigit() else 0
+        numbers = {
+            m["game_id"]: fetch_match_number(session, league, m["game_id"])
+            for m in matches
+        }
+        matches.sort(key=lambda m: (
+            numbers[m["game_id"]] is None,          # unknowns sort last
+            numbers[m["game_id"]] if numbers[m["game_id"]] is not None else 0,
+            gid(m),
+        ))
         for i, m in enumerate(matches):
             m["position"] = i + 1
     return {"rounds": [{"name": name, "matches": rounds[name]} for _, name in ROUND_SLUGS]}
@@ -316,7 +361,7 @@ def main(argv=None) -> int:
     STANDINGS_FILE.write_text(json.dumps(groups, indent=2, sort_keys=True))
     log.info("wrote %d group(s) -> %s", len(groups), STANDINGS_FILE.name)
 
-    bracket = fetch_bracket(events)
+    bracket = fetch_bracket(session, args.league, events)
     total_matches = sum(len(r["matches"]) for r in bracket["rounds"])
     BRACKET_FILE.write_text(json.dumps(bracket, indent=2))
     log.info("wrote %d knockout fixture(s) across %d round(s) -> %s",
