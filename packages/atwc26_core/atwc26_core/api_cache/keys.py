@@ -42,3 +42,12 @@ def bracket_sk() -> str:
 
 def overview_sk() -> str:
     return "API#overview"
+
+
+def players_all_sk(sort: str = "minutes") -> str:
+    return f"API#players#all#{sort}"
+
+
+def leaderboard_sk(metric: str, role: str | None = None, min_minutes: int = 90) -> str:
+    role_part = role or "all"
+    return f"API#leaderboard#{metric}#{role_part}#{min_minutes}"

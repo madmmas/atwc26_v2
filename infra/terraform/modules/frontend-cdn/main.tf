@@ -64,6 +64,34 @@ data "aws_cloudfront_cache_policy" "caching_disabled" {
   name = "Managed-CachingDisabled"
 }
 
+resource "aws_cloudfront_cache_policy" "api_respect_origin" {
+  name        = "${var.name_prefix}-${var.environment}-api-respect-origin-cc"
+  comment     = "Honour Cache-Control from analytics API origin"
+  min_ttl     = 0
+  default_ttl = 0
+  max_ttl     = 86400
+
+  parameters_in_cache_key_and_forwarded_to_origin {
+    cookies_config {
+      cookie_behavior = "none"
+    }
+
+    headers_config {
+      header_behavior = "none"
+    }
+
+    query_strings_config {
+      query_string_behavior = "whitelist"
+      query_strings {
+        items = ["team", "role", "sort", "limit", "metric", "min_minutes"]
+      }
+    }
+
+    enable_accept_encoding_gzip   = true
+    enable_accept_encoding_brotli = true
+  }
+}
+
 data "aws_cloudfront_origin_request_policy" "all_viewer" {
   name = "Managed-AllViewer"
 }
@@ -170,7 +198,7 @@ resource "aws_cloudfront_distribution" "site" {
       cached_methods         = ["GET", "HEAD"]
       compress               = true
 
-      cache_policy_id            = data.aws_cloudfront_cache_policy.caching_disabled.id
+      cache_policy_id            = aws_cloudfront_cache_policy.api_respect_origin.id
       origin_request_policy_id   = aws_cloudfront_origin_request_policy.api_gateway.id
       response_headers_policy_id = data.aws_cloudfront_response_headers_policy.security_headers.id
     }
