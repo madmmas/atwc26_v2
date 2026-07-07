@@ -219,7 +219,8 @@ ATWC26_S3_BUCKET="$(terraform output -raw data_bucket_name)" make etl-publish
 |----------|---------|---------|
 | [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) | PR/push to `main` or `refactor/v2-integration` | Path-filtered tests (e2e, ETL, contract, frontend build, terraform validate, Lambda package) |
 | [`.github/workflows/etl.yml`](../.github/workflows/etl.yml) | Daily cron + `workflow_dispatch` | Transform + QA; optional ESPN scrape + S3 publish on manual run |
-| [`.github/workflows/deploy.yml`](../.github/workflows/deploy.yml) | `workflow_dispatch` | Package Lambdas → Terraform plan/apply → static frontend deploy; writes candidate URLs for k6 A/B |
+| [`.github/workflows/terraform.yml`](../.github/workflows/terraform.yml) | `workflow_dispatch` | Package Lambdas → Terraform plan/apply; writes stack URLs for k6 A/B |
+| [`.github/workflows/deploy-frontend.yml`](../.github/workflows/deploy-frontend.yml) | Push to `main` (frontend paths) + `workflow_dispatch` | Build and sync static frontend to S3/CloudFront |
 | [`.github/workflows/performance.yml`](../.github/workflows/performance.yml) | `workflow_dispatch` | k6 A/B v1 vs v2 |
 
 ### CI path filters (`refactor/v2-integration`)
@@ -234,12 +235,13 @@ ATWC26_S3_BUCKET="$(terraform output -raw data_bucket_name)" make etl-publish
 | `terraform-validate` / `lambda-package` | `infra/**` |
 | `k6-compare` | `k6/**`, `tests/k6/**` |
 
-### Deploy workflow
+### Terraform workflow
 
-1. **Actions → Deploy v2 candidate → Run workflow**
+1. **Actions → Terraform dev → Run workflow**
 2. Choose `plan` (dry-run) or `apply` (provision/update stack).
-3. Optionally enable **Publish ETL** (uploads parquet/JSON to the data bucket first).
-4. After **apply**, the job summary lists **CloudFront URL** and **API Gateway URL** — use the latter as `K6_CANDIDATE_ANALYTICS_URL` / `K6_CANDIDATE_PREDICT_URL` in the Performance workflow or `make k6-ab`.
+3. After **apply**, the job summary lists **CloudFront URL** and **API Gateway URL** — use the latter as `K6_CANDIDATE_ANALYTICS_URL` / `K6_CANDIDATE_PREDICT_URL` in the Performance workflow or `make k6-ab`.
+
+Frontend deploy and ETL publish are separate workflows (`deploy-frontend.yml`, `etl.yml`).
 
 Remote Terraform state is **required** for `apply` in CI. Set `ATWC26_TF_STATE_BUCKET` (see secrets table below).
 
