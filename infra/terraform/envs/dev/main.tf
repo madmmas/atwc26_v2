@@ -139,3 +139,22 @@ module "github_oidc" {
   role_name  = "${var.name_prefix}-${var.environment}-github-actions"
   tags       = local.tags
 }
+
+module "etl_scheduler" {
+  count  = var.enable_etl_scheduler ? 1 : 0
+  source = "../../modules/etl-scheduler"
+
+  name_prefix           = var.name_prefix
+  environment           = var.environment
+  github_org            = var.github_org
+  github_repo           = var.github_repo
+  github_dispatch_token = var.github_dispatch_token
+  tags                  = local.tags
+}
+
+check "etl_scheduler_token" {
+  assert {
+    condition     = !var.enable_etl_scheduler || length(var.github_dispatch_token) > 0
+    error_message = "Set github_dispatch_token (TF_VAR_github_dispatch_token) when enable_etl_scheduler is true."
+  }
+}

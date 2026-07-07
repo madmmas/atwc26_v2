@@ -81,3 +81,16 @@ variable "github_repo" {
   type        = string
   default     = "AnalyseThisWC26"
 }
+
+variable "enable_etl_scheduler" {
+  description = "EventBridge rate(15 minutes) → Lambda → GitHub workflow_dispatch for ETL."
+  type        = bool
+  default     = false
+}
+
+variable "github_dispatch_token" {
+  description = "GitHub PAT with actions:write (required when enable_etl_scheduler=true). Set via TF_VAR_github_dispatch_token."
+  type        = string
+  sensitive   = true
+  default     = ""
+}

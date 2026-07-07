@@ -11,10 +11,8 @@ on:
         description: Skip S3/DynamoDB publish after transform
         type: boolean
         default: false
-  # GitHub schedule is best-effort — avoid :00/:15/:30/:45 (peak load, jobs dropped).
-  # Four offsets ≈ every 15 minutes; expect 15–45 min jitter on busy runners.
-  schedule:
-    - cron: "7,22,37,52 * * * *"
+  # Scheduled runs use AWS EventBridge (rate(15 minutes)) → Lambda → workflow_dispatch.
+  # See infra/terraform/modules/etl-scheduler and enable_etl_scheduler in dev tfvars.
 
 concurrency:
   group: etl-${{ github.ref }}

@@ -80,3 +80,13 @@ output "github_actions_role_arn" {
   value       = var.enable_github_oidc ? module.github_oidc[0].role_arn : null
   description = "Set as ATWC26_AWS_ROLE_ARN GitHub secret for OIDC auth"
 }
+
+output "etl_schedule_rule_name" {
+  value       = var.enable_etl_scheduler ? module.etl_scheduler[0].schedule_rule_name : null
+  description = "EventBridge rule that triggers ETL every 15 minutes"
+}
+
+output "etl_dispatch_lambda_name" {
+  value       = var.enable_etl_scheduler ? module.etl_scheduler[0].dispatch_lambda_name : null
+  description = "Lambda that dispatches the GitHub ETL workflow"
+}
