@@ -61,6 +61,11 @@ output "lambda_predict_name" {
   value = module.lambda_predict.function_name
 }
 
+output "ecr_predict_url" {
+  value       = aws_ecr_repository.predict.repository_url
+  description = "ECR repository URL for predict ECS image (no tag suffix)"
+}
+
 output "ecs_cluster_name" {
   value       = var.enable_ecs_compute ? module.ecs_compute[0].cluster_name : null
   description = "ECS cluster for compute routes (when enable_ecs_compute=true)"

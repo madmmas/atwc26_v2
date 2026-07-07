@@ -22,6 +22,8 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 20
+    env:
+      TF_DIR: infra/terraform/envs/dev
 
     steps:
       - uses: actions/checkout@v4
@@ -31,6 +33,65 @@ jobs:
         with:
           role-to-assume: ${{ secrets.ATWC26_AWS_ROLE_ARN }}
           aws-region: ${{ secrets.AWS_REGION }}
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.0"
+
+      - name: Resolve deploy targets
+        id: targets
+        run: |
+          set -euo pipefail
+
+          if [[ -n "${{ secrets.ATWC26_TF_STATE_BUCKET }}" ]]; then
+            terraform -chdir="$TF_DIR" init -input=false -reconfigure \
+              -backend-config="bucket=${{ secrets.ATWC26_TF_STATE_BUCKET }}" \
+              -backend-config="key=atwc26-v2/dev/terraform.tfstate" \
+              -backend-config="region=${{ secrets.AWS_REGION }}" \
+              -backend-config="encrypt=true"
+          else
+            terraform -chdir="$TF_DIR" init -input=false -backend=false
+          fi
+
+          tf_json() {
+            terraform -chdir="$TF_DIR" output -json "$1" 2>/dev/null | jq -r 'if . == null then "" else . end'
+          }
+
+          ECR_URL="${{ secrets.ATWC26_ECR_PREDICT_URL }}"
+          if [[ -z "$ECR_URL" ]]; then
+            ECR_URL="$(tf_json ecr_predict_url)"
+          fi
+
+          if [[ -z "$ECR_URL" ]]; then
+            ACCOUNT="$(aws sts get-caller-identity --query Account --output text)"
+            REGION="${{ secrets.AWS_REGION }}"
+            REPO="atwc26-v2-dev-predict"
+            ECR_URL="${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${REPO}"
+            if ! aws ecr describe-repositories --repository-names "$REPO" >/dev/null 2>&1; then
+              echo "::error::ECR repository ${REPO} not found. Run terraform apply in ${TF_DIR} (creates aws_ecr_repository.predict) or set ATWC26_ECR_PREDICT_URL."
+              exit 1
+            fi
+          fi
+
+          ECS_CLUSTER="${{ secrets.ATWC26_ECS_CLUSTER }}"
+          if [[ -z "$ECS_CLUSTER" ]]; then
+            ECS_CLUSTER="$(tf_json ecs_cluster_name)"
+          fi
+
+          ECS_SERVICE="${{ secrets.ATWC26_ECS_PREDICT_SERVICE }}"
+          if [[ -z "$ECS_SERVICE" ]]; then
+            ECS_SERVICE="$(tf_json ecs_service_name)"
+          fi
+
+          ALB_DNS="$(tf_json compute_alb_dns)"
+
+          echo "ecr_url=${ECR_URL}" >> "$GITHUB_OUTPUT"
+          echo "ecs_cluster=${ECS_CLUSTER}" >> "$GITHUB_OUTPUT"
+          echo "ecs_service=${ECS_SERVICE}" >> "$GITHUB_OUTPUT"
+          echo "alb_dns=${ALB_DNS}" >> "$GITHUB_OUTPUT"
+          echo "ECR repository: ${ECR_URL}"
+          echo "ECS cluster: ${ECS_CLUSTER:-<not configured>}"
+          echo "ECS service: ${ECS_SERVICE:-<not configured>}"
 
       - name: Log in to ECR
         uses: aws-actions/amazon-ecr-login@v2
@@ -45,33 +106,48 @@ jobs:
           file: services/predict_api/Dockerfile
           push: true
           tags: |
-            ${{ secrets.ATWC26_ECR_PREDICT_URL }}:latest
-            ${{ secrets.ATWC26_ECR_PREDICT_URL }}:${{ github.sha }}
-          cache-from: type=registry,ref=${{ secrets.ATWC26_ECR_PREDICT_URL }}:cache
-          cache-to: type=registry,ref=${{ secrets.ATWC26_ECR_PREDICT_URL }}:cache,mode=max
+            ${{ steps.targets.outputs.ecr_url }}:latest
+            ${{ steps.targets.outputs.ecr_url }}:${{ github.sha }}
+          cache-from: type=registry,ref=${{ steps.targets.outputs.ecr_url }}:cache
+          cache-to: type=registry,ref=${{ steps.targets.outputs.ecr_url }}:cache,mode=max
 
       - name: Force new ECS deployment
+        if: steps.targets.outputs.ecs_cluster != '' && steps.targets.outputs.ecs_service != ''
         run: |
           aws ecs update-service \
-            --cluster  ${{ secrets.ATWC26_ECS_CLUSTER }} \
-            --service  ${{ secrets.ATWC26_ECS_PREDICT_SERVICE }} \
+            --cluster  "${{ steps.targets.outputs.ecs_cluster }}" \
+            --service  "${{ steps.targets.outputs.ecs_service }}" \
             --force-new-deployment \
-            --region   ${{ secrets.AWS_REGION }}
+            --region   "${{ secrets.AWS_REGION }}"
 
       - name: Wait for service stability
+        if: steps.targets.outputs.ecs_cluster != '' && steps.targets.outputs.ecs_service != ''
         run: |
           aws ecs wait services-stable \
-            --cluster  ${{ secrets.ATWC26_ECS_CLUSTER }} \
-            --services ${{ secrets.ATWC26_ECS_PREDICT_SERVICE }} \
-            --region   ${{ secrets.AWS_REGION }}
+            --cluster  "${{ steps.targets.outputs.ecs_cluster }}" \
+            --services "${{ steps.targets.outputs.ecs_service }}" \
+            --region   "${{ secrets.AWS_REGION }}"
 
       - name: Smoke test health endpoint
+        if: steps.targets.outputs.alb_dns != ''
         run: |
-          ALB_URL=$(aws elbv2 describe-load-balancers \
-            --region ${{ secrets.AWS_REGION }} \
-            --query "LoadBalancers[?contains(LoadBalancerName,'predict')].DNSName" \
-            --output text | head -1)
           HTTP=$(curl -sf -o /dev/null -w "%{http_code}" \
-            "http://${ALB_URL}/api/health" --max-time 10)
+            "http://${{ steps.targets.outputs.alb_dns }}/api/health" --max-time 10)
           echo "Health: HTTP $HTTP"
           [ "$HTTP" = "200" ] || exit 1
+
+      - name: Run summary
+        if: always()
+        run: |
+          {
+            echo "## Predict ECS deploy"
+            echo ""
+            echo "| | |"
+            echo "|---|---|"
+            echo "| ECR image | \`${{ steps.targets.outputs.ecr_url }}:${{ github.sha }}\` |"
+            if [[ -n "${{ steps.targets.outputs.ecs_cluster }}" ]]; then
+              echo "| ECS deploy | \`${{ steps.targets.outputs.ecs_cluster }}/${{ steps.targets.outputs.ecs_service }}\` |"
+            else
+              echo "| ECS deploy | skipped — set \`enable_ecs_compute=true\` and run terraform apply |"
+            fi
+          } >> "$GITHUB_STEP_SUMMARY"

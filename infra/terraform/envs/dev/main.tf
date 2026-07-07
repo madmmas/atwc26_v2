@@ -16,6 +16,10 @@ locals {
     Environment = var.environment
   }
 
+  predict_ecr_name    = "${var.name_prefix}-${var.environment}-predict"
+  ecr_predict_url     = aws_ecr_repository.predict.repository_url
+  ecs_container_image = var.ecs_container_image != "" ? var.ecs_container_image : "${local.ecr_predict_url}:latest"
+
   lambda_build_dir = abspath("${path.module}/../../../build/lambdas")
   layer_zip        = "${local.lambda_build_dir}/layer.zip"
   analytics_zip    = "${local.lambda_build_dir}/analytics.zip"
@@ -39,6 +43,18 @@ module "dynamodb" {
   name_prefix = var.name_prefix
   environment = var.environment
   tags        = local.tags
+}
+
+resource "aws_ecr_repository" "predict" {
+  name                 = local.predict_ecr_name
+  image_tag_mutability = "MUTABLE"
+  force_delete         = true
+
+  image_scanning_configuration {
+    scan_on_push = true
+  }
+
+  tags = local.tags
 }
 
 resource "aws_s3_object" "lambda_layer" {
@@ -97,7 +113,7 @@ module "ecs_compute" {
   name_prefix         = var.name_prefix
   environment         = var.environment
   tags                = local.tags
-  container_image     = var.ecs_container_image
+  container_image     = local.ecs_container_image
   s3_bucket_name      = module.s3_data.bucket_name
   dynamodb_table_name = module.dynamodb.table_name
   s3_prefix           = var.data_s3_prefix
