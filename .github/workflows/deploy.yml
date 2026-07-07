@@ -248,17 +248,12 @@ jobs:
 
       - name: Build static frontend (v2 API URLs)
         run: |
-          SITE_URL="$(terraform -chdir="$TF_DIR" output -raw site_url 2>/dev/null || true)"
+          # Use API Gateway directly until CloudFront /api/* routing is verified.
+          # (CloudFront same-origin /api/* requires the API origin cache behavior from terraform apply.)
           API_URL="$(terraform -chdir="$TF_DIR" output -raw api_gateway_url)"
-          if [ -n "$SITE_URL" ] && [ "$SITE_URL" != "null" ]; then
-            NEXT_PUBLIC_ANALYTICS_API_URL="$SITE_URL" \
-            NEXT_PUBLIC_PREDICT_API_URL="$SITE_URL" \
-            ./infra/scripts/build_frontend_static.sh
-          else
-            NEXT_PUBLIC_ANALYTICS_API_URL="$API_URL" \
-            NEXT_PUBLIC_PREDICT_API_URL="$API_URL" \
-            ./infra/scripts/build_frontend_static.sh
-          fi
+          NEXT_PUBLIC_ANALYTICS_API_URL="$API_URL" \
+          NEXT_PUBLIC_PREDICT_API_URL="$API_URL" \
+          ./infra/scripts/build_frontend_static.sh
 
       - name: Deploy to S3 + invalidate CloudFront
         run: ./infra/scripts/deploy_frontend_from_tf.sh
