@@ -80,6 +80,7 @@ data "aws_iam_policy_document" "iam_read_access" {
     actions = [
       "iam:GetRole",
       "iam:GetRolePolicy",
+      "iam:ListAttachedRolePolicies",
       "iam:ListRolePolicies",
     ]
     resources = [
