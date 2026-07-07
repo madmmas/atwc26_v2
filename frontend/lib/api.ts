@@ -107,7 +107,10 @@ export const api = {
     get<{ team_name: string; players: Player[] }>(
       `/api/teams/${encodeURIComponent(team)}/players`
     ),
-  players: (q: string) => get<{ count: number; players: Player[] }>(`/api/players?${q}`),
+  players: (q: string) =>
+    get<{ count: number; page_size: number; next_cursor: string | null; players: Player[] }>(
+      `/api/players?${q}`
+    ),
   leaderboard: (metric: string, role?: string) =>
     get<{ metric: string; leaders: Player[] }>(
       `/api/leaderboard?metric=${metric}${role ? `&role=${role}` : ""}`

@@ -1,7 +1,9 @@
 """AnalyseThisWC26 predict API — match outcome prediction."""
 from __future__ import annotations
 
+import os as _os
 import sys
+import threading
 from pathlib import Path
 
 def _repo_root() -> Path:
@@ -16,7 +18,7 @@ _REPO_ROOT = _repo_root()
 if str(_REPO_ROOT) not in sys.path:
     sys.path.insert(0, str(_REPO_ROOT))
 
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from atwc26_core import config
@@ -24,6 +26,9 @@ from atwc26_core.prediction import get_predictor
 from atwc26_core.schemas import PredictRequest
 from services.shared.json_util import clean_json
 from services.shared.predict_bootstrap import build_predictor_store, ensure_predictor_data
+
+_RELOAD_SECRET = _os.getenv("ATWC26_RELOAD_SECRET", "")
+_reload_lock = threading.Lock()
 
 app = FastAPI(title=f"{config.APP_NAME} Predict", version=config.APP_VERSION)
 
@@ -76,3 +81,34 @@ def predict(req: PredictRequest):
     if not a["players"] or not b["players"]:
         raise HTTPException(400, "Each team needs at least one selected player.")
     return clean_json(predictor.predict(a, b))
+
+
+@app.post("/api/predict/reload")
+def reload_predictor(request: Request):
+    """
+    Hot-reload player profiles from S3 and rebuild the Predictor.
+    Called by ETL publish after new player_profiles.parquet is uploaded.
+    No container restart needed.
+    """
+    from atwc26_core import prediction as _pred
+
+    if _RELOAD_SECRET:
+        if request.headers.get("X-Reload-Secret", "") != _RELOAD_SECRET:
+            raise HTTPException(403, "Invalid reload secret")
+
+    if not _reload_lock.acquire(blocking=False):
+        return {"status": "reload_in_progress"}
+
+    try:
+        updated = ensure_predictor_data()
+        global _store
+        _store = build_predictor_store()
+        _pred._predictor = None
+        get_predictor(_store)
+        return {
+            "status": "reloaded",
+            "updated": updated,
+            "players": len(_store.predictor_players),
+        }
+    finally:
+        _reload_lock.release()

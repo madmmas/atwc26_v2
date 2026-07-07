@@ -64,7 +64,7 @@ jobs:
       - name: Transform + simulate + QA
         if: steps.detect.outputs.changed == 'true'
         env:
-          ATWC26_SIMULATE_TRIALS: "100"
+          ATWC26_SIMULATE_TRIALS: "1000"
         run: make etl-local
 
       - name: ETL tests
@@ -103,6 +103,8 @@ jobs:
           ATWC26_LAMBDA_PREDICT_NAME: ${{ secrets.ATWC26_LAMBDA_PREDICT_NAME }}
           ATWC26_ECS_CLUSTER: ${{ secrets.ATWC26_ECS_CLUSTER }}
           ATWC26_ECS_SERVICES: ${{ secrets.ATWC26_ECS_SERVICES }}
+          ATWC26_PREDICT_SERVICE_URL: ${{ secrets.ATWC26_PREDICT_SERVICE_URL }}
+          ATWC26_RELOAD_SECRET: ${{ secrets.ATWC26_RELOAD_SECRET }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           GITHUB_SHA: ${{ github.sha }}
         run: make etl-publish

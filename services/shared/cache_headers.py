@@ -5,8 +5,12 @@ from fastapi import Request, Response
 from starlette.middleware.base import BaseHTTPMiddleware
 
 CACHE_RULES: list[tuple[str, str]] = [
-    # Exact or prefix matches — first match wins.
+    # Specific sub-paths FIRST — startswith() matches the first hit
     ("/api/health", "no-store"),
+    ("/api/matches/", "public, max-age=86400, stale-while-revalidate=3600"),
+    ("/api/players/", "public, max-age=3600, stale-while-revalidate=600"),
+    ("/api/teams/", "public, max-age=300, stale-while-revalidate=120"),
+    # Generic collection endpoints AFTER sub-paths
     ("/api/standings", "public, max-age=60, stale-while-revalidate=30"),
     ("/api/matches", "public, max-age=30, stale-while-revalidate=15"),
     ("/api/bracket", "public, max-age=300, stale-while-revalidate=60"),
@@ -14,13 +18,6 @@ CACHE_RULES: list[tuple[str, str]] = [
     ("/api/overview", "public, max-age=120, stale-while-revalidate=60"),
     ("/api/teams", "public, max-age=300, stale-while-revalidate=120"),
     ("/api/leaderboard", "public, max-age=120, stale-while-revalidate=60"),
-    # Per-match detail: immutable after full-time
-    ("/api/matches/", "public, max-age=86400, stale-while-revalidate=3600"),
-    # Per-player detail: stable during tournament
-    ("/api/players/", "public, max-age=3600, stale-while-revalidate=600"),
-    # Team squad: changes only on injury replacement
-    ("/api/teams/", "public, max-age=300, stale-while-revalidate=120"),
-    # Player list (filterable, dynamic — shorter TTL)
     ("/api/players", "public, max-age=60, stale-while-revalidate=30"),
 ]
 

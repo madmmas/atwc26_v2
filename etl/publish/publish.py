@@ -16,7 +16,7 @@ from .api_cache import (
     publish_matches_cache,
     publish_teams_cache,
 )
-from .refresh import refresh_ecs_services, refresh_lambda_functions
+from .refresh import refresh_ecs_services, refresh_lambda_functions, refresh_predict_service
 
 try:
     import boto3
@@ -175,6 +175,7 @@ def run_publish(
                 services = refresh_ecs_services()
                 if services:
                     print(f"refreshed ECS service(s): {', '.join(services)}")
+                refresh_predict_service(result["publish_id"])
     else:
         publish_local(manifest)
         print("set ATWC26_S3_BUCKET (+ AWS creds) to publish to S3")
