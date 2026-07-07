@@ -32,9 +32,10 @@ resource "aws_apigatewayv2_integration" "analytics" {
 resource "aws_apigatewayv2_integration" "predict" {
   api_id                 = aws_apigatewayv2_api.http.id
   integration_type       = local.use_ecs_compute ? "HTTP_PROXY" : "AWS_PROXY"
-  integration_uri        = local.use_ecs_compute ? var.compute_listener_arn : var.predict_invoke_arn
+  integration_uri        = local.use_ecs_compute ? "http://${var.compute_alb_dns}" : var.predict_invoke_arn
   integration_method     = local.use_ecs_compute ? "ANY" : null
   payload_format_version = local.use_ecs_compute ? "1.0" : "2.0"
+  connection_type        = local.use_ecs_compute ? "INTERNET" : null
 
   lifecycle {
     create_before_destroy = true

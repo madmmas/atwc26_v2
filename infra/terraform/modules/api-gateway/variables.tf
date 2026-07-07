@@ -22,8 +22,8 @@ variable "enable_ecs_compute" {
   default     = false
 }
 
-variable "compute_listener_arn" {
-  description = "ALB listener ARN for ECS compute routes; required when enable_ecs_compute=true."
+variable "compute_alb_dns" {
+  description = "Public ALB DNS name for ECS predict; required when enable_ecs_compute=true."
   type        = string
   default     = null
 }
