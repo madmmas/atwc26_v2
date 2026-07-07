@@ -130,6 +130,7 @@ module "api_gateway" {
   predict_invoke_arn      = module.lambda_predict.invoke_arn
   analytics_function_name = module.lambda_analytics.function_name
   predict_function_name   = module.lambda_predict.function_name
+  enable_ecs_compute      = var.enable_ecs_compute
   compute_listener_arn    = var.enable_ecs_compute ? module.ecs_compute[0].alb_listener_arn : null
   cors_allow_origins      = var.cors_allow_origins
 }

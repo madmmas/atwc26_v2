@@ -2,8 +2,8 @@ locals {
   api_name = "${var.name_prefix}-${var.environment}-api"
 
   # POST /api/predict → ECS Fargate via ALB (see ecs-compute module).
-  # There is no Lambda for predict when compute_listener_arn is set.
-  use_ecs_compute = var.compute_listener_arn != null && var.compute_listener_arn != ""
+  # There is no Lambda for predict when enable_ecs_compute is true.
+  use_ecs_compute = var.enable_ecs_compute
 }
 
 resource "aws_apigatewayv2_api" "http" {
