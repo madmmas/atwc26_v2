@@ -75,12 +75,15 @@ data "aws_iam_policy_document" "iam_read_access" {
   }
 
   statement {
-    sid    = "AllowReadLambdaExecutionRoles"
+    sid    = "AllowReadRoleMetadata"
     effect = "Allow"
     actions = [
       "iam:GetRole",
+      "iam:GetRolePolicy",
+      "iam:ListRolePolicies",
     ]
     resources = [
+      "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-github-actions",
       "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-analytics-role",
       "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-predict-role",
     ]
