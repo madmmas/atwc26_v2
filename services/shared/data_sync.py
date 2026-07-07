@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from atwc26_core import config
+from atwc26_core.api_cache.store import _from_dynamo
 from atwc26_core.artifacts import ARTIFACTS, s3_key_for
 
 DATASET = "wc26"
@@ -25,7 +26,8 @@ def _local_hashes() -> dict[str, str]:
 
 def _fetch_latest_manifest(table) -> dict | None:
     resp = table.get_item(Key={"PK": f"DATASET#{DATASET}", "SK": "LATEST"})
-    return resp.get("Item")
+    item = resp.get("Item")
+    return _from_dynamo(item) if item else None
 
 
 def sync_from_manifest(*, force: bool = False) -> list[str]:

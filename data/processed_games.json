@@ -433,162 +433,184 @@
   },
   "760486": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760486",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:38+00:00"
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-07-07T08:15:41+00:00"
   },
   "760487": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760487",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:38+00:00"
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-07-07T08:16:25+00:00"
   },
   "760488": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760488",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:38+00:00"
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-07-07T08:16:46+00:00"
   },
   "760489": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760489",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:38+00:00"
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-07-07T08:17:06+00:00"
   },
   "760490": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760490",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:38+00:00"
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-07-07T08:17:26+00:00"
   },
   "760491": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760491",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:38+00:00"
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-07-07T08:17:47+00:00"
   },
   "760492": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760492",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:38+00:00"
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-07-07T08:18:07+00:00"
   },
   "760493": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760493",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:38+00:00"
+    "status": "ok",
+    "players": 34,
+    "scraped_at": "2026-07-07T08:18:27+00:00"
   },
   "760494": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760494",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-07-07T08:18:47+00:00"
   },
   "760495": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760495",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-07-07T08:19:07+00:00"
   },
   "760496": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760496",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-07-07T08:19:28+00:00"
   },
   "760497": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760497",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-07-07T08:19:49+00:00"
   },
   "760498": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760498",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-07-07T08:20:08+00:00"
   },
   "760499": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760499",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-07-07T08:20:27+00:00"
   },
   "760500": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760500",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 33,
+    "scraped_at": "2026-07-07T08:20:47+00:00"
   },
   "760501": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760501",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-07-07T08:21:08+00:00"
   },
   "760502": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760502",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-07-07T08:21:28+00:00"
   },
   "760503": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760503",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 28,
+    "scraped_at": "2026-07-07T08:21:49+00:00"
   },
   "760504": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760504",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 30,
+    "scraped_at": "2026-07-07T08:22:09+00:00"
   },
   "760505": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760505",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-07-07T08:22:29+00:00"
   },
   "760506": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760506",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 31,
+    "scraped_at": "2026-07-07T08:22:50+00:00"
   },
   "760507": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760507",
-    "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "status": "ok",
+    "players": 32,
+    "scraped_at": "2026-07-07T08:23:10+00:00"
   },
   "760508": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760508",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   },
   "760509": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760509",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   },
   "760510": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760510",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   },
   "760511": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760511",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   },
   "760512": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760512",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   },
   "760513": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760513",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   },
   "760514": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760514",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   },
   "760515": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760515",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   },
   "760516": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760516",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   },
   "760517": {
     "url": "https://www.espn.com/soccer/player-stats/_/gameId/760517",
     "status": "pending",
-    "checked_at": "2026-06-28T06:18:39+00:00"
+    "checked_at": "2026-07-07T08:23:10+00:00"
   }
 }

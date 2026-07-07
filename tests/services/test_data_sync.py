@@ -18,6 +18,68 @@ def test_sync_from_manifest_no_aws_is_noop(monkeypatch):
     assert sync_from_manifest() == []
 
 
+def test_sync_writes_manifest_with_dynamodb_decimals(tmp_path, monkeypatch):
+    """DynamoDB returns Decimal for numbers; sync manifest must json.dumps cleanly."""
+    from decimal import Decimal
+
+    pytest.importorskip("boto3")
+    monkeypatch.setattr(config, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(config, "S3_BUCKET", "test-bucket")
+    monkeypatch.setattr(config, "DYNAMODB_TABLE", "test-manifest")
+
+    master = tmp_path / "all_players_stats.parquet"
+    fake_artifacts = (
+        type("S", (), {"name": "master_parquet", "path": master, "required": True})(),
+    )
+
+    import services.shared.data_sync as data_sync_mod
+
+    monkeypatch.setattr(data_sync_mod, "ARTIFACTS", fake_artifacts)
+    monkeypatch.setattr(data_sync_mod, "SYNC_MANIFEST", tmp_path / ".etl" / "sync-manifest.json")
+
+    latest = {
+        "latest_publish_sk": "PUBLISH#1",
+        "published_at": "2026-07-01T00:00:00+00:00",
+        "artifacts": {
+            "master_parquet": {
+                "sha256": "aaa",
+                "s3_key": "data/all_players_stats.parquet",
+                "size_bytes": Decimal("12345"),
+            },
+        },
+    }
+
+    class FakeS3:
+        def download_file(self, bucket, key, dest):
+            Path(dest).write_bytes(b"parquet")
+
+    class FakeTable:
+        def get_item(self, Key):
+            return {"Item": latest}
+
+    import sys
+
+    fake_boto = type(
+        "Boto",
+        (),
+        {
+            "client": staticmethod(lambda *a, **k: FakeS3()),
+            "resource": staticmethod(
+                lambda *a, **k: type("R", (), {"Table": staticmethod(lambda t: FakeTable())})()
+            ),
+        },
+    )
+    monkeypatch.setitem(sys.modules, "boto3", fake_boto)
+
+    from services.shared.data_sync import sync_from_manifest
+
+    updated = sync_from_manifest()
+    assert updated == ["master_parquet"]
+
+    manifest = json.loads((tmp_path / ".etl" / "sync-manifest.json").read_text())
+    assert manifest["artifacts"]["master_parquet"]["size_bytes"] == 12345
+
+
 def test_sync_downloads_only_changed_artifacts(tmp_path, monkeypatch):
     pytest.importorskip("boto3")
     monkeypatch.setattr(config, "DATA_DIR", tmp_path)

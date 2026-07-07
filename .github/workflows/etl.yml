@@ -3,8 +3,12 @@ name: ETL
 on:
   workflow_dispatch:
     inputs:
-      run_scrape:
-        description: Scrape ESPN before transform (network; manual only)
+      skip_scrape:
+        description: Skip ESPN scrape (use committed data/ artifacts only)
+        type: boolean
+        default: false
+      skip_publish:
+        description: Skip S3/DynamoDB publish after transform
         type: boolean
         default: false
   schedule:
@@ -32,11 +36,11 @@ jobs:
           pip install pytest boto3
 
       - name: Scrape ESPN data
-        if: github.event_name == 'workflow_dispatch' && inputs.run_scrape == true
+        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
         run: |
           make schedule scrape events squads groups
 
-      - name: Transform + simulate + QA (uses committed data artifacts)
+      - name: Transform + simulate + QA
         env:
           ATWC26_SIMULATE_TRIALS: "100"
         run: make etl-local
@@ -45,7 +49,7 @@ jobs:
         run: PYTHONPATH=. pytest tests/etl etl/qa -q
 
   etl-publish:
-    if: github.event_name == 'workflow_dispatch'
+    if: github.event_name != 'workflow_dispatch' || inputs.skip_publish != true
     needs: etl-local
     runs-on: ubuntu-latest
     steps:

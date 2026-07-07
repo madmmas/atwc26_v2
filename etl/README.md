@@ -35,6 +35,8 @@ make groups              # refresh standings + bracket
 
 ```bash
 make etl-local           # transform + simulate + QA (writes data/.etl/manifest.json)
+make etl-scrape          # discover fixtures + scrape ESPN → data/raw + parquet
+make etl-refresh         # scrape ESPN, then etl-local (full local refresh)
 make etl-simulate        # Monte Carlo + bracket predictions → JSON artifacts
 make etl-publish         # upload to S3 + DynamoDB + API cache (or local staging)
 make test-etl            # pytest tests/etl etl/qa -q
@@ -144,6 +146,6 @@ python etl/build_match_events.py
 
 ## CI
 
-`.github/workflows/etl.yml` runs `make etl-local` and `pytest tests/etl etl/qa -q` on a schedule. Manual `workflow_dispatch` can run the publish job when AWS secrets are configured.
+`.github/workflows/etl.yml` runs `make schedule scrape events squads groups`, then `make etl-local`, then `make etl-publish` on the daily schedule. Manual `workflow_dispatch` can opt out with **skip_scrape** or **skip_publish**.
 
 See [docs/RUN.md](../docs/RUN.md) for the full v1 refresh workflow.

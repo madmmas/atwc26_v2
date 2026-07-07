@@ -2,10 +2,13 @@
 from __future__ import annotations
 
 import json
-import os
+import math
 from datetime import datetime, timezone
+from decimal import Decimal
 from pathlib import Path
 from typing import Any
+
+import numpy as np
 
 from atwc26_core import config
 
@@ -15,6 +18,41 @@ except ImportError:  # pragma: no cover
     boto3 = None  # type: ignore[assignment]
 
 LOCAL_CACHE_DIR = config.DATA_DIR / ".etl" / "api-cache"
+
+
+def _to_dynamo(value: Any) -> Any:
+    """Recursively convert Python/pandas values for DynamoDB put_item."""
+    if isinstance(value, float):
+        if math.isnan(value) or math.isinf(value):
+            return None
+        return Decimal(str(value))
+    if isinstance(value, np.floating):
+        f = float(value)
+        if math.isnan(f) or math.isinf(f):
+            return None
+        return Decimal(str(f))
+    if isinstance(value, (np.integer,)):
+        return int(value)
+    if isinstance(value, np.bool_):
+        return bool(value)
+    if isinstance(value, dict):
+        return {k: _to_dynamo(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_to_dynamo(v) for v in value]
+    return value
+
+
+def _from_dynamo(value: Any) -> Any:
+    """Recursively convert DynamoDB types to JSON-friendly Python values."""
+    if isinstance(value, Decimal):
+        if value % 1 == 0:
+            return int(value)
+        return float(value)
+    if isinstance(value, dict):
+        return {k: _from_dynamo(v) for k, v in value.items()}
+    if isinstance(value, list):
+        return [_from_dynamo(v) for v in value]
+    return value
 
 
 def _local_path(pk: str, sk: str) -> Path:
@@ -35,7 +73,8 @@ class ApiCacheStore:
     def get_item(self, pk: str, sk: str) -> dict[str, Any] | None:
         if self._table is not None:
             resp = self._table.get_item(Key={"PK": pk, "SK": sk})
-            return resp.get("Item")
+            item = resp.get("Item")
+            return _from_dynamo(item) if item else None
 
         path = _local_path(pk, sk)
         if path.exists():
@@ -69,7 +108,7 @@ class ApiCacheStore:
         }
 
         if self._table is not None:
-            self._table.put_item(Item=item)
+            self._table.put_item(Item=_to_dynamo(item))
             return
 
         LOCAL_CACHE_DIR.mkdir(parents=True, exist_ok=True)

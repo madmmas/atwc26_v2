@@ -6,7 +6,7 @@
         {
           "game_id": "760486",
           "kickoff_utc": "2026-06-28T19:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "467",
@@ -18,13 +18,15 @@
             "team_name": "Canada"
           },
           "score_a": "0",
-          "score_b": "0",
+          "score_b": "1",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 1
         },
         {
           "game_id": "760487",
           "kickoff_utc": "2026-06-29T17:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "205",
@@ -35,14 +37,16 @@
             "team_id": "627",
             "team_name": "Japan"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "2",
+          "score_b": "1",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 2
         },
         {
           "game_id": "760489",
           "kickoff_utc": "2026-06-29T20:30Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "481",
@@ -53,14 +57,16 @@
             "team_id": "210",
             "team_name": "Paraguay"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "1",
+          "score_b": "1",
+          "shootout_a": 3,
+          "shootout_b": 4,
           "position": 3
         },
         {
           "game_id": "760488",
           "kickoff_utc": "2026-06-30T01:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "449",
@@ -71,14 +77,16 @@
             "team_id": "2869",
             "team_name": "Morocco"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "1",
+          "score_b": "1",
+          "shootout_a": 2,
+          "shootout_b": 3,
           "position": 4
         },
         {
           "game_id": "760490",
           "kickoff_utc": "2026-06-30T17:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "4789",
@@ -89,14 +97,16 @@
             "team_id": "464",
             "team_name": "Norway"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "1",
+          "score_b": "2",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 5
         },
         {
           "game_id": "760492",
           "kickoff_utc": "2026-06-30T21:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "478",
@@ -107,14 +117,16 @@
             "team_id": "466",
             "team_name": "Sweden"
           },
-          "score_a": "0",
+          "score_a": "3",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 6
         },
         {
           "game_id": "760491",
-          "kickoff_utc": "2026-07-01T01:00Z",
-          "completed": false,
+          "kickoff_utc": "2026-07-01T02:00Z",
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "203",
@@ -125,14 +137,16 @@
             "team_id": "209",
             "team_name": "Ecuador"
           },
-          "score_a": "0",
+          "score_a": "2",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 7
         },
         {
           "game_id": "760495",
           "kickoff_utc": "2026-07-01T16:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "448",
@@ -143,14 +157,16 @@
             "team_id": "2850",
             "team_name": "Congo DR"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "2",
+          "score_b": "1",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 8
         },
         {
           "game_id": "760493",
           "kickoff_utc": "2026-07-01T20:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "459",
@@ -161,14 +177,16 @@
             "team_id": "654",
             "team_name": "Senegal"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "3",
+          "score_b": "2",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 9
         },
         {
           "game_id": "760494",
           "kickoff_utc": "2026-07-02T00:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "660",
@@ -179,14 +197,16 @@
             "team_id": "452",
             "team_name": "Bosnia-Herzegovina"
           },
-          "score_a": "0",
+          "score_a": "2",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 10
         },
         {
           "game_id": "760497",
           "kickoff_utc": "2026-07-02T19:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "164",
@@ -197,14 +217,16 @@
             "team_id": "474",
             "team_name": "Austria"
           },
-          "score_a": "0",
+          "score_a": "3",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 11
         },
         {
           "game_id": "760496",
           "kickoff_utc": "2026-07-02T23:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "482",
@@ -215,14 +237,16 @@
             "team_id": "477",
             "team_name": "Croatia"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "2",
+          "score_b": "1",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 12
         },
         {
           "game_id": "760498",
           "kickoff_utc": "2026-07-03T03:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "475",
@@ -233,14 +257,16 @@
             "team_id": "624",
             "team_name": "Algeria"
           },
-          "score_a": "0",
+          "score_a": "2",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 13
         },
         {
           "game_id": "760499",
           "kickoff_utc": "2026-07-03T18:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "628",
@@ -251,14 +277,16 @@
             "team_id": "2620",
             "team_name": "Egypt"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "1",
+          "score_b": "1",
+          "shootout_a": 2,
+          "shootout_b": 4,
           "position": 14
         },
         {
           "game_id": "760500",
           "kickoff_utc": "2026-07-03T22:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "202",
@@ -269,14 +297,16 @@
             "team_id": "2597",
             "team_name": "Cape Verde"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "3",
+          "score_b": "2",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 15
         },
         {
           "game_id": "760501",
           "kickoff_utc": "2026-07-04T01:30Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "208",
@@ -287,8 +317,10 @@
             "team_id": "4469",
             "team_name": "Ghana"
           },
-          "score_a": "0",
+          "score_a": "1",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 16
         }
       ]
@@ -299,109 +331,121 @@
         {
           "game_id": "760502",
           "kickoff_utc": "2026-07-04T17:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 1
+            "type": "team",
+            "team_id": "206",
+            "team_name": "Canada"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 3
+            "type": "team",
+            "team_id": "2869",
+            "team_name": "Morocco"
           },
           "score_a": "0",
-          "score_b": "0",
+          "score_b": "3",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 1
         },
         {
           "game_id": "760503",
           "kickoff_utc": "2026-07-04T21:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 2
+            "type": "team",
+            "team_id": "210",
+            "team_name": "Paraguay"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 5
+            "type": "team",
+            "team_id": "478",
+            "team_name": "France"
           },
           "score_a": "0",
-          "score_b": "0",
+          "score_b": "1",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 2
         },
         {
           "game_id": "760504",
           "kickoff_utc": "2026-07-05T20:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 4
+            "type": "team",
+            "team_id": "205",
+            "team_name": "Brazil"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 6
+            "type": "team",
+            "team_id": "464",
+            "team_name": "Norway"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "1",
+          "score_b": "2",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 3
         },
         {
           "game_id": "760505",
-          "kickoff_utc": "2026-07-06T00:00Z",
-          "completed": false,
+          "kickoff_utc": "2026-07-06T01:00Z",
+          "completed": true,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 7
+            "type": "team",
+            "team_id": "203",
+            "team_name": "Mexico"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 8
+            "type": "team",
+            "team_id": "448",
+            "team_name": "England"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "2",
+          "score_b": "3",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 4
         },
         {
           "game_id": "760506",
           "kickoff_utc": "2026-07-06T19:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 11
+            "type": "team",
+            "team_id": "482",
+            "team_name": "Portugal"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 12
+            "type": "team",
+            "team_id": "164",
+            "team_name": "Spain"
           },
           "score_a": "0",
-          "score_b": "0",
+          "score_b": "1",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 5
         },
         {
           "game_id": "760507",
           "kickoff_utc": "2026-07-07T00:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 9
+            "type": "team",
+            "team_id": "660",
+            "team_name": "United States"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 10
+            "type": "team",
+            "team_id": "459",
+            "team_name": "Belgium"
           },
-          "score_a": "0",
-          "score_b": "0",
+          "score_a": "1",
+          "score_b": "4",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 6
         },
         {
@@ -409,17 +453,19 @@
           "kickoff_utc": "2026-07-07T16:00Z",
           "completed": false,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 14
+            "type": "team",
+            "team_id": "202",
+            "team_name": "Argentina"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 16
+            "type": "team",
+            "team_id": "2620",
+            "team_name": "Egypt"
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 7
         },
         {
@@ -427,17 +473,19 @@
           "kickoff_utc": "2026-07-07T20:00Z",
           "completed": false,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 13
+            "type": "team",
+            "team_id": "475",
+            "team_name": "Switzerland"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 32",
-            "position": 15
+            "type": "team",
+            "team_id": "208",
+            "team_name": "Colombia"
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 8
         }
       ]
@@ -450,17 +498,19 @@
           "kickoff_utc": "2026-07-09T20:00Z",
           "completed": false,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 16",
-            "position": 1
+            "type": "team",
+            "team_id": "478",
+            "team_name": "France"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 16",
-            "position": 2
+            "type": "team",
+            "team_id": "2869",
+            "team_name": "Morocco"
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 1
         },
         {
@@ -468,17 +518,19 @@
           "kickoff_utc": "2026-07-10T19:00Z",
           "completed": false,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 16",
-            "position": 5
+            "type": "team",
+            "team_id": "164",
+            "team_name": "Spain"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 16",
-            "position": 6
+            "type": "team",
+            "team_id": "459",
+            "team_name": "Belgium"
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 2
         },
         {
@@ -486,17 +538,19 @@
           "kickoff_utc": "2026-07-11T21:00Z",
           "completed": false,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Round of 16",
-            "position": 3
+            "type": "team",
+            "team_id": "464",
+            "team_name": "Norway"
           },
           "slot_b": {
-            "type": "match_winner",
-            "round": "Round of 16",
-            "position": 4
+            "type": "team",
+            "team_id": "448",
+            "team_name": "England"
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 3
         },
         {
@@ -515,6 +569,8 @@
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 4
         }
       ]
@@ -538,6 +594,8 @@
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 1
         },
         {
@@ -556,6 +614,8 @@
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 2
         }
       ]
@@ -579,6 +639,8 @@
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 1
         }
       ]
@@ -602,6 +664,8 @@
           },
           "score_a": "0",
           "score_b": "0",
+          "shootout_a": null,
+          "shootout_b": null,
           "position": 1
         }
       ]

@@ -1,12 +1,14 @@
 """Tests for DynamoDB API cache publish and read."""
 from __future__ import annotations
 
+from decimal import Decimal
+
 import pytest
 
 from atwc26_core import config
 from atwc26_core.api_cache import keys
-from atwc26_core.api_cache.builders import build_standings, build_winner_probabilities
-from atwc26_core.api_cache.store import ApiCacheStore
+from atwc26_core.api_cache.builders import build_overview, build_standings, build_winner_probabilities
+from atwc26_core.api_cache.store import ApiCacheStore, _from_dynamo, _to_dynamo
 from atwc26_core.data import get_store
 from etl.publish.api_cache import publish_api_cache, publish_matches_cache, publish_teams_cache
 from etl.transform.run import build_manifest
@@ -23,6 +25,68 @@ def local_cache_dir(tmp_path, monkeypatch):
     monkeypatch.setenv("ATWC26_S3_BUCKET", "")
     get_store.cache_clear() if hasattr(get_store, "cache_clear") else None
     yield cache_dir
+
+
+def test_to_dynamo_converts_floats_and_numpy():
+    import numpy as np
+
+    payload = {
+        "score": 1.5,
+        "count": np.int64(3),
+        "rate": np.float64(0.75),
+        "nested": [{"xg": 0.42}],
+    }
+    dynamo = _to_dynamo(payload)
+    assert isinstance(dynamo["score"], Decimal)
+    assert dynamo["count"] == 3
+    assert isinstance(dynamo["rate"], Decimal)
+    assert isinstance(dynamo["nested"][0]["xg"], Decimal)
+
+    roundtrip = _from_dynamo(dynamo)
+    assert roundtrip["score"] == 1.5
+    assert roundtrip["count"] == 3
+    assert roundtrip["rate"] == 0.75
+    assert roundtrip["nested"][0]["xg"] == 0.42
+
+
+def test_put_item_serializes_overview_for_dynamodb(monkeypatch):
+    pytest.importorskip("boto3")
+    store = get_store()
+    manifest = build_manifest()
+    overview, sha, sources = build_overview(store, manifest)
+
+    captured: dict = {}
+
+    class FakeTable:
+        def put_item(self, Item):
+            captured["item"] = Item
+
+    monkeypatch.setattr(config, "S3_BUCKET", "test-bucket")
+    monkeypatch.setattr(config, "DYNAMODB_TABLE", "test-table")
+    cache = ApiCacheStore(table_name="test-table")
+    cache._table = FakeTable()
+
+    cache.put_item(
+        pk=keys.dataset_pk(),
+        sk=keys.overview_sk(),
+        payload=overview,
+        source_sha256=sha,
+        source_artifacts=sources,
+    )
+
+    assert captured["item"]
+    assert not any(isinstance(v, float) for v in _walk_values(captured["item"]))
+
+
+def _walk_values(obj):
+    if isinstance(obj, dict):
+        for v in obj.values():
+            yield from _walk_values(v)
+    elif isinstance(obj, list):
+        for v in obj:
+            yield from _walk_values(v)
+    else:
+        yield obj
 
 
 def test_build_standings_payload():

@@ -276,8 +276,6 @@
               "awayShootoutScore": "0",
               "gameResult": "W",
               "competitionName": "2026 International Friendly",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "214",
                 "uid": "s:600~t:214",
@@ -319,7 +317,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/crc.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/crc.png",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly"
             },
             {
               "id": "401860828",
@@ -661,8 +661,6 @@
               "awayShootoutScore": "0",
               "gameResult": "L",
               "competitionName": "2026 International Friendly",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "207",
                 "uid": "s:600~t:207",
@@ -704,7 +702,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/chi.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/chi.png",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly"
             },
             {
               "id": "401871169",
@@ -727,8 +727,6 @@
               "awayShootoutScore": "0",
               "gameResult": "D",
               "competitionName": "2026 International Friendly",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "479",
                 "uid": "s:600~t:479",
@@ -770,7 +768,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/den.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/den.png",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly"
             }
           ]
         }
@@ -786,8 +786,8 @@
             "abbreviation": "ENG",
             "displayName": "England",
             "shortDisplayName": "England",
-            "color": "ffffff",
-            "alternateColor": "EA1F29",
+            "color": "EA1F29",
+            "alternateColor": "FFFFFF",
             "logo": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
             "uniform": {
               "type": "home",
@@ -1204,8 +1204,6 @@
             "awayShootoutScore": "0",
             "gameResult": "W",
             "competitionName": "2026 International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "2666",
               "uid": "s:600~t:2666",
@@ -1247,7 +1245,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nzl.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           },
           {
             "id": "401860829",
@@ -1270,8 +1270,6 @@
             "awayShootoutScore": "0",
             "gameResult": "W",
             "competitionName": "2026 International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "214",
               "uid": "s:600~t:214",
@@ -1313,7 +1311,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/crc.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/crc.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           },
           {
             "id": "760437",
@@ -2868,7 +2868,7 @@
             }
           ]
         },
-        "details": "ENG -1.5",
+        "details": "ENG -330",
         "overUnder": 2.5,
         "spread": -1.5,
         "overOdds": -110.0,
@@ -3130,7 +3130,7 @@
             }
           ]
         },
-        "details": "ENG -1.5",
+        "details": "ENG -330",
         "overUnder": 2.5,
         "spread": -1.5,
         "overOdds": -110.0,
@@ -3475,32 +3475,48 @@
       },
       "articles": [
         {
-          "id": 48939282,
-          "nowId": "1-48939282",
-          "contentKey": "48939282-1-6-1",
-          "dataSourceIdentifier": "24be77b738bbc",
+          "id": 48964271,
+          "nowId": "1-48964271",
+          "contentKey": "48964271-1-6-1",
+          "dataSourceIdentifier": "132285bc37687",
           "type": "Story",
-          "headline": "2026 FIFA World Cup match schedule: Fixtures, results, features",
-          "description": "Check out all the fixtures, features and results for the 2026 FIFA World Cup in the United States, Mexico and Canada.",
-          "lastModified": "2026-07-02T04:42:49Z",
-          "published": "2026-07-02T04:42:49Z",
+          "headline": "World Cup 2026 referees: Complete list of officials and VAR teams",
+          "description": "Find out who the 170 officials are for the 2026 World Cup and when will we find out who is refereeing which game?",
+          "lastModified": "2026-07-07T07:25:23Z",
+          "published": "2026-07-07T07:25:23Z",
           "images": [
             {
-              "dataSourceIdentifier": "0c311d0681a3c",
-              "id": 47201908,
+              "dataSourceIdentifier": "17c2b46b62ce9",
+              "id": 35314659,
               "type": "header",
-              "name": "World Cup trophy DC [1296x729]",
-              "credit": "Michael Regan - FIFA/FIFA via Getty Images",
+              "name": "Szymon Marciniak [1296x729]",
+              "credit": "Chris Brunskill/Fantasista/Getty Images",
               "height": 729,
               "width": 1296,
-              "url": "https://a.espncdn.com/photo/2025/1204/r1584809_2_1296x729_16-9.jpg"
+              "url": "https://a.espncdn.com/photo/2022/1224/r1110287_1296x729_16-9.jpg"
             },
             {
-              "type": "Media",
-              "name": "Klinsmann: USA has quality to beat Belgium without Balogun",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0701/dm_260701_COM_SOC_ANALYSIS_Klinsmann_USA_have_quality_to_beat_Belgium_without_Balogun_2026_7_1/dm_260701_COM_SOC_ANALYSIS_Klinsmann_USA_have_quality_to_beat_Belgium_without_Balogun_2026_7_1.jpg"
+              "dataSourceIdentifier": "90ed9d1597dcd",
+              "id": 48954827,
+              "type": "header",
+              "name": "A general view of the FIFA World Cup trophy on display prior to the FIFA World Cup 2026 Play-Off Tournament and European Play-Off Draw at Home of FIFA [1296x729]",
+              "caption": "The 2026 World Cup begins on June 11 and ends on July 19 when the final will be played at MetLife Stadium in New Jersey.",
+              "alt": "A general view of the FIFA World Cup trophy on display prior to the FIFA World Cup 2026 Play-Off Tournament and European Play-Off Draw at Home of FIFA",
+              "credit": "Marcio Machado - FIFA/FIFA via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0603/r1667565_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "8656c4a55f4ab",
+              "id": 48964245,
+              "type": "header",
+              "name": "Siphiwe Tshabalala [1296x729]",
+              "alt": "Siphiwe Tshabalala of South Africa celebrates after scoring the opening goal while Ricardo Osorio (R) and goalkeeper Oscar Perez of Mexico look dejected during the 2010 FIFA World Cup South Africa Group A match between South Africa and Mexico at Soccer Ci",
+              "credit": "Jamie Squire - FIFA/FIFA via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0604/r1668035_2_1296x729_16-9.jpg"
             }
           ],
           "categories": [
@@ -3567,189 +3583,72 @@
           "premium": false,
           "links": {
             "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/48939282/2026-fifa-world-cup-fixtures-results-match-schedule-group-stage-knockout-rounds-bracket"
+              "href": "https://www.espn.com/soccer/story/_/id/48964271/world-cup-2026-referees-complete-list-officials-var-teams"
             },
             "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=48939282"
+              "href": "http://m.espn.go.com/soccer/story?storyId=48964271"
             },
             "api": {
               "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/48939282"
+                "href": "https://content.core.api.espn.com/v1/sports/news/48964271"
               }
             },
             "app": {
               "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=48939282"
+                "href": "sportscenter://x-callback-url/showStory?uid=48964271"
               }
             }
           },
-          "byline": "ESPN"
+          "byline": "Tom Masters"
         },
         {
-          "id": 48953200,
-          "nowId": "1-48953200",
-          "contentKey": "48953200-1-6-1",
-          "dataSourceIdentifier": "574769529ccb5",
-          "type": "Story",
-          "headline": "USMNT World Cup bracket scenarios, odds to advance, predicted path to knockouts",
-          "description": "Who will Team USA face in the World Cup knockout rounds? What's the likely path? What are the odds? What do projection models say?",
-          "lastModified": "2026-07-02T04:34:19Z",
-          "published": "2026-07-02T04:34:19Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "99244c3e37267",
-              "id": 49244351,
-              "type": "header",
-              "name": "US celeb vs Bosnia_260701 [1296x729]",
-              "caption": "U.S. players celebrate after beating Bosnia at the World Cup to reach the round of 16.",
-              "alt": "U.S. players celebrate after beating Bosnia at the World Cup to reach the round of 16.",
-              "credit": "Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0702/r1683153_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Klinsmann: USA has quality to beat Belgium without Balogun",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0701/dm_260701_COM_SOC_ANALYSIS_Klinsmann_USA_have_quality_to_beat_Belgium_without_Balogun_2026_7_1/dm_260701_COM_SOC_ANALYSIS_Klinsmann_USA_have_quality_to_beat_Belgium_without_Balogun_2026_7_1.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72593,
-              "type": "team",
-              "uid": "s:600~t:660",
-              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714",
-              "description": "United States",
-              "sportId": 600,
-              "teamId": 660,
-              "team": {
-                "id": 660,
-                "description": "United States",
-                "abbreviation": "USA",
-                "shortDisplayName": "USA",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/48953200/usmnt-usa-world-cup-scenarios-bracket-permutations-qualify-betting-odds-projections-predictions"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=48953200"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/48953200"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=48953200"
-              }
-            }
-          },
-          "byline": "ESPN"
-        },
-        {
-          "id": 49245007,
-          "nowId": "1-49245007",
-          "contentKey": "49245007-1-293-1",
-          "dataSourceIdentifier": "1639eaefc6e67",
+          "id": 49293733,
+          "nowId": "1-49293733",
+          "contentKey": "49293733-1-293-1",
+          "dataSourceIdentifier": "e1fbf93fe8b3e",
           "type": "Media",
-          "headline": "Richards: Time for USMNT to start a streak vs. European nations",
-          "description": "Richards: Time for USMNT to start a streak vs. European nations",
-          "lastModified": "2026-07-02T04:21:31Z",
-          "published": "2026-07-02T04:21:31Z",
+          "headline": "Scaloni: Argentina 'will give everything' in Egypt clash",
+          "description": "Scaloni: Argentina 'will give everything' in Egypt clash",
+          "lastModified": "2026-07-07T07:24:59Z",
+          "published": "2026-07-07T07:24:59Z",
           "images": [
             {
-              "name": "Richards: Time for USMNT to start a streak vs. European nations",
-              "caption": "Richards: Time for USMNT to start a streak vs. European nations",
+              "name": "Scaloni: Argentina 'will give everything' in Egypt clash",
+              "caption": "Scaloni: Argentina 'will give everything' in Egypt clash",
               "alt": "",
               "height": 324,
               "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0702/dm_260702_COM_SOC_Interview_Richards_Time_for_USMNT_to_start_a_streak_vs_European_nations_20260701_GLOBA/dm_260702_COM_SOC_Interview_Richards_Time_for_USMNT_to_start_a_streak_vs_European_nations_20260701_GLOBA.jpg"
+              "url": "https://a.espncdn.com/media/motion/2026/0707/dm_260707_Scaloni_Argentina_will_give_everything_in_Egypt_clash/dm_260707_Scaloni_Argentina_will_give_everything_in_Egypt_clash.jpg"
             }
           ],
           "categories": [
+            {
+              "id": 72569,
+              "type": "team",
+              "uid": "s:600~t:202",
+              "guid": "892f805f-fef9-c22d-8f87-ba08b1b4d256",
+              "description": "Argentina",
+              "sportId": 600,
+              "teamId": 202,
+              "team": {
+                "id": 202,
+                "description": "Argentina",
+                "abbreviation": "ARG",
+                "shortDisplayName": "Argentina",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/202/argentina"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/202/argentina"
+                    }
+                  }
+                }
+              }
+            },
             {
               "id": 33303,
               "type": "league",
@@ -3802,44 +3701,27 @@
               }
             },
             {
-              "id": 72593,
-              "type": "team",
-              "uid": "s:600~t:660",
-              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714",
-              "description": "United States",
-              "sportId": 600,
-              "teamId": 660,
-              "team": {
-                "id": 660,
-                "description": "United States",
-                "abbreviation": "USA",
-                "shortDisplayName": "USA",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
-                    }
-                  }
-                }
-              }
+              "id": 664674,
+              "type": "editorialindicator",
+              "guid": "467e5496-7942-3006-b2f4-a6ef95021dce",
+              "description": "Team Boost"
             },
             {
               "type": "event",
-              "uid": "s:600~l:606~e:760507",
-              "guid": "43405c45-63a2-3e88-8063-7ced09d7a36c",
-              "description": "Belgium @ United States",
-              "eventId": 760507,
+              "uid": "s:600~l:606~e:760509",
+              "guid": "9ce647ae-b373-3de4-99fc-223bd351fd4f",
+              "description": "Egypt @ Argentina",
+              "eventId": 760509,
               "event": {
-                "id": 760507,
+                "id": 760509,
                 "sport": "soccer",
                 "league": "fifa.world",
-                "description": "Belgium @ United States"
+                "description": "Egypt @ Argentina"
               }
+            },
+            {
+              "type": "guid",
+              "guid": "892f805f-fef9-c22d-8f87-ba08b1b4d256"
             },
             {
               "type": "guid",
@@ -3851,53 +3733,549 @@
             },
             {
               "type": "guid",
-              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714"
+              "guid": "467e5496-7942-3006-b2f4-a6ef95021dce"
             },
             {
               "type": "guid",
-              "guid": "43405c45-63a2-3e88-8063-7ced09d7a36c"
+              "guid": "9ce647ae-b373-3de4-99fc-223bd351fd4f"
             }
           ],
           "premium": false,
           "links": {
             "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49245007/usmnt-start-streak-vs-european-nations",
+              "href": "https://www.espn.com/video/clip/_/id/49293733/argentina-give-everything-egypt-clash",
               "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49245007/usmnt-start-streak-vs-european-nations",
+                "href": "https://www.espn.com/video/clip/_/id/49293733/argentina-give-everything-egypt-clash",
                 "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=1639eaefc6e67"
+                  "href": "https://www.espn.com/video/clip?id=e1fbf93fe8b3e"
                 }
               }
             },
             "api": {
               "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49245007"
+                "href": "https://content.core.api.espn.com/v1/video/clips/49293733"
               },
               "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/a4f9965a-e5f6-411d-8ced-bf208ec1f4fe"
+                "href": "https://artwork.api.espn.com/artwork/collections/media/3313c9ed-eb0d-4e85-bcdd-31431f03792c"
               }
             },
             "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49245007&videoDSI=1639eaefc6e67"
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49293733&videoDSI=e1fbf93fe8b3e"
             }
           }
         },
         {
-          "id": 49244711,
-          "nowId": "1-49244711",
-          "contentKey": "49244711-1-293-1",
-          "dataSourceIdentifier": "d9aba238d367a",
-          "type": "Media",
-          "headline": "What should USMNT expect from Belgium?",
-          "lastModified": "2026-07-02T03:21:44Z",
-          "published": "2026-07-02T03:21:44Z",
+          "id": 48945011,
+          "nowId": "1-48945011",
+          "contentKey": "48945011-1-6-1",
+          "dataSourceIdentifier": "b8862c9d3cdcc",
+          "type": "Story",
+          "headline": "Why are there hydration breaks at the 2026 World Cup, and why has FIFA been criticised?",
+          "description": "All 104 matches at the 2026 World Cup are stopping for two hydration breaks. Why have they been stipulated by FIFA, and why have they been criticised?",
+          "lastModified": "2026-07-07T07:24:53Z",
+          "published": "2026-07-07T07:24:53Z",
           "images": [
             {
-              "name": "What should USMNT expect from Belgium?",
+              "dataSourceIdentifier": "745592f767206",
+              "id": 49072941,
+              "type": "header",
+              "name": "Players of Tunisia take drinks at the hydration break during the FIFA World Cup 2026 Group F match between Sweden and Tunisia at Monterrey Stadium\n [1296x729]",
+              "alt": "Players of Tunisia take drinks at the hydration break during the FIFA World Cup 2026 Group F match between Sweden and Tunisia at Monterrey Stadium",
+              "credit": "Luke Hales/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673607_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "11ccbd877db1d",
+              "id": 48945048,
+              "type": "header",
+              "name": "Enzo Fernandez #8 of Chelsea FC drinks water in a hydration break during the FIFA Club World Cup 2025 semi-final match between Fluminense FC and Chelsea FC at MetLife Stadium [1296x729]",
+              "caption": "Argentina's Enzo Fern\u00e1ndez said he felt \"dizzy\" while playing in \"very dangerous\" temperatures during last summer's Club World Cup in the United States.",
+              "alt": "Enzo Fernandez #8 of Chelsea FC drinks water in a hydration break during the FIFA Club World Cup 2025 semi-final match between Fluminense FC and Chelsea FC at MetLife Stadium",
+              "credit": "Elsa - FIFA/FIFA via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0602/r1667049_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "5b5b5414257af",
+              "id": 49072899,
+              "type": "header",
+              "name": "Electronic screen displaying hydration break information during the FIFA World Cup 2026 Group C match between Haiti and Scotland at Boston Stadium\n [1296x729]",
+              "caption": "Advertising is prominent on stadium screens during drinks breaks at the World Cup.",
+              "alt": "Electronic screen displaying hydration break information during the FIFA World Cup 2026 Group C match between Haiti and Scotland at Boston Stadium",
+              "credit": "Visionhaus/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673604_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "31393416b2fe2",
+              "id": 49073221,
+              "type": "header",
+              "name": "Virgil van Dijk (Netherlands) looks on during Group F FIFA World Cup 2026, Netherlands and Japan, Dallas Stadium\n [1296x729]",
+              "caption": "Virgil van Dijk has been critical of the hydration breaks introduced at this summer's World Cup.",
+              "alt": "Virgil van Dijk (Netherlands) looks on during Group F FIFA World Cup 2026, Netherlands and Japan, Dallas Stadium",
+              "credit": "Ulrik Pedersen/NurPhoto via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673624_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "5fadcc347e3cd",
+              "id": 49073422,
+              "type": "header",
+              "name": "The Brazil team talk during a hydration break during the FIFA World Cup 2026 Group C match between Brazil and Morocco at New York New Jersey Stadium\n [1296x729]",
+              "caption": "Carlo Ancelotti was thankful for the opportunity to speak to his players when Brazil found themselves a goal behind to Morocco in the first half of their World Cup opener.",
+              "alt": "The Brazil team talk during a hydration break during the FIFA World Cup 2026 Group C match between Brazil and Morocco at New York New Jersey Stadium",
+              "credit": "MB Media/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673634_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "ce5ece8ae41c9",
+              "id": 49072991,
+              "type": "header",
+              "name": "Myung-Bo Hong, Head Coach of Korea Republic, gives his players instructions during a hydration break during the FIFA World Cup 2026 Group A match between Korea Republic and Czechia\n [1296x729]",
+              "caption": "Hydration breaks provide a window for coaches to gather their players and tweak their tactics.",
+              "alt": "Myung-Bo Hong, Head Coach of Korea Republic, gives his players instructions during a hydration break during the FIFA World Cup 2026 Group A match between Korea Republic and Czechia",
+              "credit": "Lars Baron/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673612_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "8a21f4b70129f",
+              "id": 48945125,
+              "type": "header",
+              "name": "Germany's forward #26 Deniz Undav, Germany's midfielder #13 Pascal Gross, Germany's midfielder #17 Florian Wirtz, Germany's midfielder #05 Aleksandar Pavlovic and teammates celebrate\n [1296x729]",
+              "caption": "Drinks breaks could have a major effect on the outcome of matches at the World Cup.",
+              "alt": "Germany's forward #26 Deniz Undav, Germany's midfielder #13 Pascal Gross, Germany's midfielder #17 Florian Wirtz, Germany's midfielder #05 Aleksandar Pavlovic and teammates celebrate",
+              "credit": "Kirill KUDRYAVTSEV / AFP via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0602/r1667053_1296x729_16-9.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/48945011/why-there-drinks-breaks-2026-world-cup-fifa-criticised"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=48945011"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/48945011"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=48945011"
+              }
+            }
+          },
+          "byline": "Tom Chambers"
+        },
+        {
+          "id": 48945570,
+          "nowId": "1-48945570",
+          "contentKey": "48945570-1-6-1",
+          "dataSourceIdentifier": "b3a6f516adcc9",
+          "type": "Story",
+          "headline": "Free World Cup 2026 predictor: Simulate your road to the final",
+          "description": "Put your football knowledge to the test with ESPN's free World Cup 2026 predictor games and forecast every twist and turn of the tournament.",
+          "lastModified": "2026-07-07T07:23:54Z",
+          "published": "2026-07-07T07:23:54Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "44a4f497e8576",
+              "id": 48837976,
+              "type": "header",
+              "name": "Messi Argentina [1296x729]",
+              "caption": "Once the group stage finishes, fill out your selections in the Knockout Bracket Challenge.",
+              "alt": "Argentina World Cup",
+              "credit": "AP Photo/Martin Meissner, File",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0521/r1661625_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "40e398495509c",
+              "id": 48945486,
+              "type": "header",
+              "name": "World Cup group stage challenge [642x361]",
+              "caption": "Predict the final standings in every group by dragging and dropping the teams into first through fourth.",
+              "alt": "Predict the final standings in every group by dragging and dropping the teams into first through fourth.",
+              "credit": "ESPN",
+              "height": 361,
+              "width": 642,
+              "url": "https://a.espncdn.com/photo/2026/0602/r1667066_642x361_16-9.png"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 133852,
+              "type": "topic",
+              "guid": "4a692b96-9c7a-6b07-4a8b-7f0c0e64e7fe",
+              "description": "news - uk football",
+              "sportId": 0,
+              "topicId": 156
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "4a692b96-9c7a-6b07-4a8b-7f0c0e64e7fe"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/48945570/2026-fifa-world-cup-predictions-simulator"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=48945570"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/48945570"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=48945570"
+              }
+            }
+          },
+          "byline": "ESPN"
+        },
+        {
+          "id": 49292862,
+          "nowId": "1-49292862",
+          "contentKey": "49292862-1-6-1",
+          "dataSourceIdentifier": "ffd79f9b80997",
+          "type": "Story",
+          "headline": "Neymar was Ancelotti's gamble at the World Cup, and it failed",
+          "description": "Carlo Ancelotti calling up Neymar to Brazil's World Cup squad was always a risk, and it backfired badly when they got eliminated to Norway in the round of 16.",
+          "lastModified": "2026-07-07T07:05:46Z",
+          "published": "2026-07-07T07:05:46Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "b18df9be5c869",
+              "id": 49292784,
+              "type": "header",
+              "name": "Neymar [1296x729]",
+              "credit": "(Photo by Tom Weller/picture alliance via Getty Images)",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0707/r1685711_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Why Brazil's loss to Norway is so disappointing",
+              "caption": "Why Brazil's loss to Norway is so disappointing",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0706/dm_260706_Brazil_IA_post_Norway/dm_260706_Brazil_IA_post_Norway.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72571,
+              "type": "team",
+              "uid": "s:600~t:205",
+              "guid": "2a051c42-4444-8263-799a-6cdd866bd8f7",
+              "description": "Brazil",
+              "sportId": 600,
+              "teamId": 205,
+              "team": {
+                "id": 205,
+                "description": "Brazil",
+                "abbreviation": "BRA",
+                "shortDisplayName": "Brazil",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/205/brazil"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/205/brazil"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 276557,
+              "type": "athlete",
+              "uid": "s:600~a:132948",
+              "guid": "dacc5245-132e-26d2-1e61-fe996765eb0d",
+              "description": "Neymar",
+              "sportId": 600,
+              "athleteId": 132948,
+              "athlete": {
+                "id": 132948,
+                "description": "Neymar",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/132948/neymar"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/132948/neymar"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 701572,
+              "type": "contributor",
+              "guid": "e4a2540c-2ce9-3799-8f84-bacd09963f64",
+              "description": "Tim Vickery",
+              "slug": "tim-vickery",
+              "contributor": {
+                "id": 2064,
+                "description": "Tim Vickery"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "2a051c42-4444-8263-799a-6cdd866bd8f7"
+            },
+            {
+              "type": "guid",
+              "guid": "dacc5245-132e-26d2-1e61-fe996765eb0d"
+            },
+            {
+              "type": "guid",
+              "guid": "e4a2540c-2ce9-3799-8f84-bacd09963f64"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49292862/neymar-was-ancelottis-gamble-world-cup-failed"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49292862"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49292862"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49292862"
+              }
+            }
+          },
+          "byline": "Tim Vickery"
+        },
+        {
+          "id": 49293650,
+          "nowId": "1-49293650",
+          "contentKey": "49293650-1-293-1",
+          "dataSourceIdentifier": "cfe61559734fc",
+          "type": "Media",
+          "headline": "Pochettino: USA were not good enough vs. Belgium",
+          "description": "Pochettino: USA were not good enough vs. Belgium",
+          "lastModified": "2026-07-07T06:48:18Z",
+          "published": "2026-07-07T06:48:18Z",
+          "images": [
+            {
+              "name": "Pochettino: USA were not good enough vs. Belgium",
+              "caption": "Pochettino: USA were not good enough vs. Belgium",
               "alt": "",
               "height": 324,
               "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0701/dm_260701_COM_SOC_ANALYSIS_What_should_USMNT_expect_from_Belgium_2026_7_1/dm_260701_COM_SOC_ANALYSIS_What_should_USMNT_expect_from_Belgium_2026_7_1.jpg"
+              "url": "https://a.espncdn.com/media/motion/2026/0707/dm_260707_COM_SOC_Presser_Pochettino_USA_were_not_good_enough_vs_Belgium_20260707_GLOBAL_FIFA_WORLD_CUP/dm_260707_COM_SOC_Presser_Pochettino_USA_were_not_good_enough_vs_Belgium_20260707_GLOBAL_FIFA_WORLD_CUP.jpg"
             }
           ],
           "categories": [
@@ -3955,33 +4333,6 @@
               }
             },
             {
-              "id": 142454,
-              "type": "team",
-              "uid": "s:600~t:654",
-              "guid": "3d969454-cda7-bf55-21fb-33a8c2ca21ee",
-              "description": "Senegal",
-              "sportId": 600,
-              "teamId": 654,
-              "team": {
-                "id": 654,
-                "description": "Senegal",
-                "abbreviation": "SEN",
-                "shortDisplayName": "Senegal",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/654/senegal"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/654/senegal"
-                    }
-                  }
-                }
-              }
-            },
-            {
               "id": 81497,
               "type": "league",
               "uid": "s:600",
@@ -4007,146 +4358,10 @@
               }
             },
             {
-              "type": "event",
-              "uid": "s:600~l:606~e:760493",
-              "guid": "ebf1ecd1-2c7c-3b4b-9700-828da1b5c10e",
-              "description": "Senegal @ Belgium",
-              "eventId": 760493,
-              "event": {
-                "id": 760493,
-                "sport": "soccer",
-                "league": "fifa.world",
-                "description": "Senegal @ Belgium"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "4084f797-3877-2af0-b70f-570d25a1a141"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "3d969454-cda7-bf55-21fb-33a8c2ca21ee"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "ebf1ecd1-2c7c-3b4b-9700-828da1b5c10e"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49244711/what-usmnt-expect-belgium",
-              "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49244711/what-usmnt-expect-belgium",
-                "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=d9aba238d367a"
-                }
-              }
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49244711"
-              },
-              "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/faf506d0-4de1-4336-983a-e81c80a29904"
-              }
-            },
-            "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49244711&videoDSI=d9aba238d367a"
-            }
-          }
-        },
-        {
-          "id": 49244675,
-          "nowId": "1-49244675",
-          "contentKey": "49244675-1-6-1",
-          "dataSourceIdentifier": "f86a9a3cf4f95",
-          "type": "Story",
-          "headline": "USMNT's multifaceted win vs. Bosnia-Herzegovina bodes well for World Cup hopes",
-          "description": "The U.S. has found a winning formula at this World Cup, but it had to pivot vs. Bosnia-Herzegovina. It worked, and now a World Cup run looks possible.",
-          "lastModified": "2026-07-02T03:51:14Z",
-          "published": "2026-07-02T03:51:14Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "8a0b6abe94f0f",
-              "id": 49244649,
-              "type": "header",
-              "name": "Folarin Balogun 260701 [1296x729]",
-              "caption": "Folarin Balogun",
-              "alt": "Folarin Balogun",
-              "credit": "Alex Pantling - FIFA/FIFA via Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0702/r1683164_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Gomez: USMNT will grow from win vs. Bosnia-Herzegovina",
-              "caption": "Gomez: USMNT will grow from win vs. Bosnia-Herzegovina",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0701/ss_20260701_222349702_3581714/ss_20260701_222349702_3581714.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
+              "id": 664674,
+              "type": "editorialindicator",
+              "guid": "467e5496-7942-3006-b2f4-a6ef95021dce",
+              "description": "Team Boost"
             },
             {
               "id": 72593,
@@ -4176,27 +4391,25 @@
               }
             },
             {
-              "id": 696446,
-              "type": "contributor",
-              "guid": "989b38a0-5870-3a49-a6f3-211bd3b85535",
-              "description": "Jeff Carlisle",
-              "slug": "jeff-carlisle",
-              "contributor": {
-                "id": 1275,
-                "description": "Jeff Carlisle",
-                "links": {
-                  "web": {
-                    "contributors": {
-                      "href": "https://www.espn.com/contributor/jeff-carlisle"
-                    }
-                  },
-                  "mobile": {
-                    "contributors": {
-                      "href": "https://www.espn.com/contributor/jeff-carlisle"
-                    }
-                  }
-                }
+              "type": "event",
+              "uid": "s:600~l:606~e:760507",
+              "guid": "43405c45-63a2-3e88-8063-7ced09d7a36c",
+              "description": "Belgium @ United States",
+              "eventId": 760507,
+              "event": {
+                "id": 760507,
+                "sport": "soccer",
+                "league": "fifa.world",
+                "description": "Belgium @ United States"
               }
+            },
+            {
+              "type": "guid",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
             },
             {
               "type": "guid",
@@ -4204,7 +4417,7 @@
             },
             {
               "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+              "guid": "467e5496-7942-3006-b2f4-a6ef95021dce"
             },
             {
               "type": "guid",
@@ -4212,139 +4425,32 @@
             },
             {
               "type": "guid",
-              "guid": "989b38a0-5870-3a49-a6f3-211bd3b85535"
+              "guid": "43405c45-63a2-3e88-8063-7ced09d7a36c"
             }
           ],
           "premium": false,
           "links": {
             "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49244675/usmnt-multifaceted-win-vs-bosnia-herzegovina-bodes-well-world-cup-hopes"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49244675"
-            },
-            "api": {
+              "href": "https://www.espn.com/video/clip/_/id/49293650/usa-were-not-good-enough-vs-belgium",
               "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49244675"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49244675"
-              }
-            }
-          },
-          "byline": "Jeff Carlisle"
-        },
-        {
-          "id": 49243099,
-          "nowId": "1-49243099",
-          "contentKey": "49243099-1-6-1",
-          "dataSourceIdentifier": "4cee03453f6a5",
-          "type": "Story",
-          "headline": "FIFA World Cup 2026 stats: Kane joins Messi, passes Pel\u00e9, Tielemans goal the latest ever, USA's 4",
-          "description": "ESPN's By The Numbers brings you best stats from the World Cup action on July 1.",
-          "lastModified": "2026-07-02T02:55:24Z",
-          "published": "2026-07-02T02:55:24Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "2c9dc3e23c43b",
-              "id": 49241295,
-              "type": "header",
-              "name": "Harry Kane [608x342]",
-              "alt": "Harry Kane celebrates his winner against Congo DR.",
-              "credit": "(Photo by Megan Briggs/Getty Images)",
-              "height": 342,
-              "width": 608,
-              "url": "https://a.espncdn.com/photo/2026/0701/r1682964_608x342_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "b974e1111c3c1",
-              "id": 49242676,
-              "type": "header",
-              "name": "Belgium alt celeb Senegal_260701 [608x342]",
-              "caption": "Belgium players celebrate after scoring a goal against Senegal at the World Cup.",
-              "alt": "Belgium players celebrate after scoring a goal against Senegal at the World Cup.",
-              "credit": "Getty Images",
-              "height": 342,
-              "width": 608,
-              "url": "https://a.espncdn.com/photo/2026/0701/r1683048_608x342_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "bdc02f6fb8a72",
-              "id": 49243967,
-              "type": "header",
-              "name": "Malik Tillman Celebration - USA vs Bosnia and Herzegovina - FIFA World Cup 2026 [608x342]",
-              "credit": "Maja Hitij - FIFA/FIFA via Getty Images",
-              "height": 342,
-              "width": 608,
-              "url": "https://a.espncdn.com/photo/2026/0702/r1683118_608x342_16-9.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 597350,
-              "type": "topic",
-              "guid": "147d7cce-39ac-4614-3400-18871da01772",
-              "description": "blog - espn fc united",
-              "sportId": 0,
-              "topicId": 68
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
+                "href": "https://www.espn.com/video/clip/_/id/49293650/usa-were-not-good-enough-vs-belgium",
+                "dsi": {
+                  "href": "https://www.espn.com/video/clip?id=cfe61559734fc"
                 }
               }
             },
-            {
-              "type": "guid",
-              "guid": "147d7cce-39ac-4614-3400-18871da01772"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49243099/fifa-world-cup-2026-stats-harry-kane-joins-lionel-messi-passes-pele-youri-tielemans-goal-latest-ever-usa-4"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49243099"
-            },
             "api": {
               "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49243099"
+                "href": "https://content.core.api.espn.com/v1/video/clips/49293650"
+              },
+              "artwork": {
+                "href": "https://artwork.api.espn.com/artwork/collections/media/0208fe43-57d9-4def-8949-c02522d3b5c2"
               }
             },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49243099"
-              }
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49293650&videoDSI=cfe61559734fc"
             }
-          },
-          "byline": "Aaditya Narayan"
+          }
         }
       ]
     },
@@ -4356,8 +4462,8 @@
           "id": "448",
           "abbreviation": "ENG",
           "displayName": "England",
-          "color": "ffffff",
-          "alternateColor": "EA1F29",
+          "color": "EA1F29",
+          "alternateColor": "FFFFFF",
           "logos": [
             {
               "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
@@ -14888,8 +14994,8 @@
                 "abbreviation": "ENG",
                 "displayName": "England",
                 "shortDisplayName": "England",
-                "color": "ffffff",
-                "alternateColor": "EA1F29",
+                "color": "EA1F29",
+                "alternateColor": "FFFFFF",
                 "logos": [
                   {
                     "href": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
@@ -14928,7 +15034,7 @@
                     "text": "Clubhouse"
                   }
                 ],
-                "form": "WWDWW"
+                "form": "WWWDW"
               },
               "score": "2",
               "linescores": [
@@ -15478,6 +15584,25 @@
             ],
             "href": "https://www.espn.com/soccer/teams/_/league/fifa.world",
             "text": "Teams"
+          },
+          {
+            "rel": [
+              "playoff-bracket",
+              "desktop",
+              "league"
+            ],
+            "href": "https://www.espn.com/soccer/bracket",
+            "text": "Bracket"
+          },
+          {
+            "rel": [
+              "playoff-bracket",
+              "sportscenter",
+              "app",
+              "league"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~l:606&section=bracket",
+            "text": "Bracket"
           }
         ],
         "logos": [
@@ -15662,290 +15787,7 @@
           "url": "https://a.espncdn.com/media/motion/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR.jpg"
         }
       ],
-      "video": [
-        {
-          "id": 49241378,
-          "dataSourceIdentifier": "0b2cd48f6333e",
-          "cerebroId": "6a45836de8cdce5d0b56a034",
-          "pccId": "eebf5533-4250-4412-b364-2ac6da4aeeb3",
-          "source": "espn",
-          "headline": "Harry Kane plays role of hero vs. tough Congo DR side",
-          "shortHeadline": "Harry Kane plays role of hero vs. tough Congo DR side",
-          "caption": "Harry Kane plays role of hero vs. tough Congo DR side",
-          "title": "Harry Kane plays role of hero vs. tough Congo DR side",
-          "description": "Harry Kane plays role of hero vs. tough Congo DR side",
-          "shortDescription": "Harry Kane plays role of hero vs. tough Congo DR side",
-          "lastModified": "2026-07-01T21:17:32Z",
-          "originalPublishDate": "2026-07-01T21:15:26Z",
-          "premium": false,
-          "syndicatable": true,
-          "duration": 76,
-          "videoRatio": "16:9,9:16",
-          "timeRestrictions": {
-            "embargoDate": "2026-07-01T21:10:36Z",
-            "expirationDate": "2026-07-04T21:10:36Z"
-          },
-          "deviceRestrictions": {
-            "type": "whitelist",
-            "devices": [
-              "settop",
-              "tablet",
-              "handset",
-              "ipad",
-              "desktop"
-            ]
-          },
-          "gameId": 760495,
-          "thumbnail": "https://a.espncdn.com/media/motion/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR.jpg",
-          "images": [
-            {
-              "name": "Poster Image",
-              "caption": "",
-              "alt": "",
-              "credit": "",
-              "height": 324,
-              "width": 576,
-              "url": "https://media.video-cdn.espn.com/images/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR.jpg"
-            }
-          ],
-          "posterImages": {
-            "default": {
-              "href": "https://espnmedia-cdn.akamaized.net/espn/media/common/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR_default.jpg",
-              "width": 576,
-              "height": 324
-            },
-            "full": {
-              "href": "https://espnmedia-cdn.akamaized.net/espn/media/common/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR.jpg"
-            },
-            "wide": {
-              "href": "https://espnmedia-cdn.akamaized.net/espn/media/common/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR_5x2.jpg"
-            },
-            "square": {
-              "href": "https://espnmedia-cdn.akamaized.net/espn/media/common/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR_1x1.jpg"
-            },
-            "vertical": {
-              "href": "https://espnmedia-cdn.akamaized.net/espn/media/common/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR_9x16.jpg"
-            },
-            "verticalFirstFrame": {
-              "href": "https://service-pkgespn.akamaized.net/opp/img/espn/9x16/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR/thumb-1-w406-h720-f4.jpg"
-            }
-          },
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49241378/harry-kane-plays-role-hero-vs-tough-congo-dr-side",
-              "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49241378/harry-kane-plays-role-hero-vs-tough-congo-dr-side",
-                "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=0b2cd48f6333e"
-                }
-              }
-            },
-            "mobile": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/eebf5533-4250-4412-b364-2ac6da4aeeb3/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49241378/harry-kane-plays-role-hero-vs-tough-congo-dr-side",
-              "source": {
-                "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR.mp4"
-              },
-              "alert": {
-                "href": "https://m.espn.com/general/video/videoAlert?vid=49241378"
-              },
-              "streaming": {
-                "href": "https://watch.auth.api.espn.com/video/auth/brightcove/eebf5533-4250-4412-b364-2ac6da4aeeb3/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49241378/harry-kane-plays-role-hero-vs-tough-congo-dr-side"
-              },
-              "progressiveDownload": {
-                "href": "https://watch.auth.api.espn.com/video/auth/brightcove/eebf5533-4250-4412-b364-2ac6da4aeeb3/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49241378/harry-kane-plays-role-hero-vs-tough-congo-dr-side"
-              }
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49241378"
-              },
-              "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/eebf5533-4250-4412-b364-2ac6da4aeeb3"
-              }
-            },
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR_360p30_1464k.mp4",
-              "mezzanine": {
-                "href": "https://media.video-origin.espn.com/espnvideo/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR.mp4"
-              },
-              "flash": {
-                "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR.smil"
-              },
-              "hds": {
-                "href": "https://hds.video-cdn.espn.com/z/motion/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR_rel.smil/manifest.f4m"
-              },
-              "HLS": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR/playlist.m3u8",
-                "HD": {
-                  "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR/playlist.m3u8"
-                },
-                "cmaf": {
-                  "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR/playlist.m3u8",
-                  "9x16": {
-                    "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/9x16/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR/playlist.m3u8"
-                  }
-                },
-                "9x16": {
-                  "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/9x16/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR/playlist.m3u8"
-                },
-                "shield": {
-                  "href": "https://watch.auth.api.espn.com/video/auth/media/eebf5533-4250-4412-b364-2ac6da4aeeb3/asset"
-                }
-              },
-              "HD": {
-                "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR_720p30_2896k.mp4"
-              },
-              "full": {
-                "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Ogden_on_England_win_over_Congo_DR/dm_260701_Ogden_on_England_win_over_Congo_DR_360p30_1464k.mp4"
-              }
-            },
-            "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49241378&videoDSI=0b2cd48f6333e"
-            }
-          },
-          "categories": [
-            {
-              "id": 142408,
-              "type": "team",
-              "uid": "s:600~t:2850",
-              "guid": "cd8dd04b-5ed0-76ae-d6b5-70a11562557d",
-              "description": "Congo DR",
-              "sportId": 600,
-              "teamId": 2850,
-              "team": {
-                "id": 2850,
-                "description": "Congo DR",
-                "abbreviation": "COD",
-                "shortDisplayName": "Congo DR",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2850/congo-dr"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2850/congo-dr"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72576,
-              "type": "team",
-              "uid": "s:600~t:448",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
-              "description": "England",
-              "sportId": 600,
-              "teamId": 448,
-              "team": {
-                "id": 448,
-                "description": "England",
-                "abbreviation": "ENG",
-                "shortDisplayName": "England",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 711824,
-              "type": "editorialindicator",
-              "guid": "d348c764-47d9-3e31-bd75-d39dfde52c26",
-              "description": "SC4U  - Eligible"
-            },
-            {
-              "id": 718171,
-              "type": "editorialindicator",
-              "guid": "2a4cc294-9e85-38be-b7ed-12d8b3f3c646",
-              "description": "SC4U - InstantAnalysis"
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "event",
-              "uid": "s:600~l:606~e:760495",
-              "guid": "12c1f828-feb5-3113-8bfe-0d7b96114e9a",
-              "description": "Congo DR @ England",
-              "eventId": 760495,
-              "event": {
-                "id": 760495,
-                "sport": "soccer",
-                "league": "fifa.world",
-                "description": "Congo DR @ England"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "cd8dd04b-5ed0-76ae-d6b5-70a11562557d"
-            },
-            {
-              "type": "guid",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
-            },
-            {
-              "type": "guid",
-              "guid": "d348c764-47d9-3e31-bd75-d39dfde52c26"
-            },
-            {
-              "type": "guid",
-              "guid": "2a4cc294-9e85-38be-b7ed-12d8b3f3c646"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "12c1f828-feb5-3113-8bfe-0d7b96114e9a"
-            }
-          ],
-          "ad": {
-            "sport": "Soccer",
-            "bundle": "sportscenter"
-          },
-          "tracking": {
-            "sportName": "Soccer",
-            "leagueName": "FIFA World Cup",
-            "coverageType": "InstantAnalysis",
-            "trackingName": "SC4U_WC InstantAnalysis (Harry Kane plays role of hero vs. tough Congo DR side) 2026/7/1",
-            "trackingId": "dm_260701_Ogden_on_England_win_over_Congo_DR"
-          }
-        }
-      ],
+      "video": [],
       "categories": [
         {
           "id": 81497,
@@ -16532,109 +16374,6 @@
           "coverageType": "PressConference",
           "trackingName": "COM_SOC Presser (Anthony Gordon compares Kane to the \u2018greatest of all time\u2019 Messi) 2026/07/01 GLOBAL FIFA WORLD CUP",
           "trackingId": "dm_260701_COM_SOC_Presser_Anthony_Gordon_compares_Kane_to_the_greatest_of_all_time_Messi_20260701_GLOBAL"
-        }
-      },
-      {
-        "id": 49240657,
-        "cerebroId": "6a45719b9e9ddb13b19d315c",
-        "source": "espn",
-        "headline": "Harry Kane on his Golden Boot race with 'incredible' Messi and Mbapp\u00e9",
-        "description": "Harry Kane on his Golden Boot race with 'incredible' Messi and Mbapp\u00e9",
-        "lastModified": "2026-07-01T20:05:44Z",
-        "originalPublishDate": "2026-07-01T19:59:23Z",
-        "duration": 51,
-        "timeRestrictions": {
-          "embargoDate": "2026-07-01T19:57:40Z",
-          "expirationDate": "2026-07-04T19:57:40Z"
-        },
-        "deviceRestrictions": {
-          "type": "whitelist",
-          "devices": [
-            "settop",
-            "tablet",
-            "handset",
-            "ipad",
-            "desktop"
-          ]
-        },
-        "thumbnail": "https://a.espncdn.com/media/motion/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe.jpg",
-        "links": {
-          "web": {
-            "href": "https://www.espn.com/video/clip/_/id/49240657/harry-kane-golden-boot-race-incredible-messi-mbappe",
-            "self": {
-              "href": "https://www.espn.com/video/clip/_/id/49240657/harry-kane-golden-boot-race-incredible-messi-mbappe",
-              "dsi": {
-                "href": "https://www.espn.com/video/clip?id=3bf8116d33941"
-              }
-            }
-          },
-          "mobile": {
-            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/eeab1d18-443d-4ce9-8303-05b805bea884/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49240657/harry-kane-golden-boot-race-incredible-messi-mbappe",
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe.mp4"
-            },
-            "alert": {
-              "href": "https://m.espn.com/general/video/videoAlert?vid=49240657"
-            },
-            "streaming": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/eeab1d18-443d-4ce9-8303-05b805bea884/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49240657/harry-kane-golden-boot-race-incredible-messi-mbappe"
-            },
-            "progressiveDownload": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/eeab1d18-443d-4ce9-8303-05b805bea884/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49240657/harry-kane-golden-boot-race-incredible-messi-mbappe"
-            }
-          },
-          "api": {
-            "self": {
-              "href": "https://content.core.api.espn.com/v1/video/clips/49240657"
-            },
-            "artwork": {
-              "href": "https://artwork.api.espn.com/artwork/collections/media/eeab1d18-443d-4ce9-8303-05b805bea884"
-            }
-          },
-          "source": {
-            "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe_360p30_1464k.mp4",
-            "mezzanine": {
-              "href": "https://media.video-origin.espn.com/espnvideo/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe.mp4"
-            },
-            "flash": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe.smil"
-            },
-            "hds": {
-              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe_rel.smil/manifest.f4m"
-            },
-            "HLS": {
-              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/playlist.m3u8",
-              "HD": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/playlist.m3u8"
-              },
-              "cmaf": {
-                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/playlist.m3u8"
-              },
-              "shield": {
-                "href": "https://watch.auth.api.espn.com/video/auth/media/eeab1d18-443d-4ce9-8303-05b805bea884/asset"
-              }
-            },
-            "HD": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe_720p30_2896k.mp4"
-            },
-            "full": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0701/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe/dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe_360p30_1464k.mp4"
-            }
-          },
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showVideo?videoID=49240657&videoDSI=3bf8116d33941"
-          }
-        },
-        "ad": {
-          "sport": "Soccer",
-          "bundle": "espnfc"
-        },
-        "tracking": {
-          "sportName": "soccer",
-          "leagueName": "FIFA World Cup",
-          "coverageType": "PressConference",
-          "trackingName": "COM_SOC Presser (Harry Kane on his Golden Boot race with \u2018incredible\u2019 Messi and Mbapp\u00e9) 2026/07/01",
-          "trackingId": "dm_260701_Harry_Kane_on_his_Golden_Boot_race_with_incredible_Messi_and_Mbappe"
         }
       },
       {
