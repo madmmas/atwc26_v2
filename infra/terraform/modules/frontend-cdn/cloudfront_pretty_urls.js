@@ -4,6 +4,11 @@ function handler(event) {
   var request = event.request;
   var uri = request.uri;
 
+  // /api/* is served by a separate CloudFront behavior — never rewrite API paths.
+  if (uri.startsWith("/api/")) {
+    return request;
+  }
+
   if (uri.endsWith("/")) {
     request.uri += "index.html";
   } else if (!uri.includes(".")) {

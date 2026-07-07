@@ -17,15 +17,18 @@ if [[ -n "${NEXT_PUBLIC_SAME_ORIGIN_API:-}" ]]; then
   export NEXT_PUBLIC_SAME_ORIGIN_API
 fi
 
-# Default for CI/terraform builds: direct API Gateway URLs (works cross-origin once
-# Lambda CORS middleware is disabled). Same-origin /api/* requires an explicit
-# NEXT_PUBLIC_SAME_ORIGIN_API=true after the CloudFront API origin fix is applied.
+# CloudFront static deploy: same-origin /api/* (no CORS preflight; POST /api/predict works via /api/* behavior).
 if [[ -z "${NEXT_PUBLIC_ANALYTICS_API_URL:-}" && -z "${NEXT_PUBLIC_PREDICT_API_URL:-}" && -z "${NEXT_PUBLIC_SAME_ORIGIN_API:-}" ]]; then
   if command -v terraform >/dev/null 2>&1 && [[ -d "$TF_DIR" ]]; then
-    API_URL="$(terraform -chdir="$TF_DIR" output -raw api_gateway_url 2>/dev/null || true)"
-    if [[ -n "$API_URL" && "$API_URL" != "null" ]]; then
-      export NEXT_PUBLIC_ANALYTICS_API_URL="$API_URL"
-      export NEXT_PUBLIC_PREDICT_API_URL="$API_URL"
+    SITE_URL="$(terraform -chdir="$TF_DIR" output -raw site_url 2>/dev/null || true)"
+    if [[ -n "$SITE_URL" && "$SITE_URL" != "null" ]]; then
+      export NEXT_PUBLIC_SAME_ORIGIN_API=true
+    else
+      API_URL="$(terraform -chdir="$TF_DIR" output -raw api_gateway_url 2>/dev/null || true)"
+      if [[ -n "$API_URL" && "$API_URL" != "null" ]]; then
+        export NEXT_PUBLIC_ANALYTICS_API_URL="$API_URL"
+        export NEXT_PUBLIC_PREDICT_API_URL="$API_URL"
+      fi
     fi
   fi
 fi
