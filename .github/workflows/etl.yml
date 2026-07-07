@@ -12,7 +12,7 @@ on:
         type: boolean
         default: false
   schedule:
-    - cron: "0 6 * * *"
+    - cron: "*/15 * * * *"
 
 permissions:
   contents: read
@@ -21,6 +21,8 @@ permissions:
 jobs:
   etl-local:
     runs-on: ubuntu-latest
+    outputs:
+      data_changed: ${{ steps.detect.outputs.changed }}
     steps:
       - uses: actions/checkout@v4
 
@@ -35,21 +37,42 @@ jobs:
           pip install -e packages/atwc26_core
           pip install pytest boto3
 
+      - name: Snapshot data fingerprint
+        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
+        run: python -m etl.changed snapshot /tmp/etl-fp.json
+
       - name: Scrape ESPN data
         if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
         run: |
           make schedule scrape events squads groups
 
+      - name: Detect data changes
+        id: detect
+        run: |
+          if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.skip_scrape }}" == "true" ]]; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "skip_scrape — running transform on committed data"
+          elif python -m etl.changed compare /tmp/etl-fp.json; then
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No new scraped data — skipping transform and publish."
+          fi
+
       - name: Transform + simulate + QA
+        if: steps.detect.outputs.changed == 'true'
         env:
           ATWC26_SIMULATE_TRIALS: "100"
         run: make etl-local
 
       - name: ETL tests
+        if: steps.detect.outputs.changed == 'true'
         run: PYTHONPATH=. pytest tests/etl etl/qa -q
 
   etl-publish:
-    if: github.event_name != 'workflow_dispatch' || inputs.skip_publish != true
+    if: |
+      needs.etl-local.outputs.data_changed == 'true' &&
+      (github.event_name != 'workflow_dispatch' || inputs.skip_publish != true)
     needs: etl-local
     runs-on: ubuntu-latest
     steps:
