@@ -53,15 +53,9 @@ jobs:
             terraform -chdir="$TF_DIR" init -input=false -backend=false
           fi
 
-          # Safe read — output may be missing until terraform apply runs.
-          tf_json() {
-            local raw
-            raw="$(terraform -chdir="$TF_DIR" output -json "$1" 2>/dev/null || true)"
-            if [[ -z "$raw" ]]; then
-              echo ""
-              return 0
-            fi
-            echo "$raw" | jq -r 'if . == null then "" else . end' 2>/dev/null || echo ""
+          # Safe read — outputs may be missing until terraform apply provisions ECS.
+          tf_output() {
+            terraform -chdir="$TF_DIR" output -raw "$1" 2>/dev/null || true
           }
 
           ACCOUNT="$(aws sts get-caller-identity --query Account --output text)"
@@ -70,7 +64,7 @@ jobs:
 
           ECR_URL="${{ secrets.ATWC26_ECR_PREDICT_URL }}"
           if [[ -z "$ECR_URL" ]]; then
-            ECR_URL="$(tf_json ecr_predict_url)"
+            ECR_URL="$(tf_output ecr_predict_url)"
           fi
           if [[ -z "$ECR_URL" ]]; then
             ECR_URL="${ACCOUNT}.dkr.ecr.${REGION}.amazonaws.com/${REPO}"
@@ -87,19 +81,31 @@ jobs:
 
           ECS_CLUSTER="${{ secrets.ATWC26_ECS_CLUSTER }}"
           if [[ -z "$ECS_CLUSTER" ]]; then
-            ECS_CLUSTER="$(tf_json ecs_cluster_name)"
+            ECS_CLUSTER="$(tf_output ecs_cluster_name)"
           fi
 
           ECS_SERVICE="${{ secrets.ATWC26_ECS_PREDICT_SERVICE }}"
           if [[ -z "$ECS_SERVICE" ]]; then
-            ECS_SERVICE="$(tf_json ecs_service_name)"
+            ECS_SERVICE="$(tf_output ecs_service_name)"
           fi
-          # Default service name matches ecs-compute module convention.
-          if [[ -z "$ECS_SERVICE" ]]; then
+          if [[ -z "$ECS_SERVICE" && -n "$ECS_CLUSTER" ]]; then
             ECS_SERVICE="${REPO}"
           fi
 
-          ALB_DNS="$(tf_json compute_alb_dns)"
+          ALB_DNS="$(tf_output compute_alb_dns)"
+
+          if [[ -n "$ECS_CLUSTER" ]]; then
+            if ! aws ecs describe-clusters \
+                --clusters "$ECS_CLUSTER" \
+                --region "$REGION" \
+                --query 'clusters[?status==`ACTIVE`].clusterName' \
+                --output text | grep -q .; then
+              echo "::warning::ECS cluster ${ECS_CLUSTER} not found — pushing image only. Run Terraform apply with enable_ecs_compute=true first."
+              ECS_CLUSTER=""
+              ECS_SERVICE=""
+              ALB_DNS=""
+            fi
+          fi
 
           echo "ecr_url=${ECR_URL}" >> "$GITHUB_OUTPUT"
           echo "ecs_cluster=${ECS_CLUSTER}" >> "$GITHUB_OUTPUT"
@@ -139,7 +145,8 @@ jobs:
           status=$?
           set -e
           if [[ $status -ne 0 ]]; then
-            echo "::warning::ECS update-service failed (cluster/service may not exist yet). Image was still pushed to ECR."
+            echo "::warning::ECS update-service failed for ${{ steps.targets.outputs.ecs_cluster }}/${{ steps.targets.outputs.ecs_service }}. Image was still pushed to ECR."
+            exit 0
           fi
 
       - name: Wait for service stability
