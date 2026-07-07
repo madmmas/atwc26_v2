@@ -10,7 +10,8 @@ from atwc26_core.data import DataStore
 def build_profiles(*, store: DataStore | None = None) -> tuple[Path, Path]:
     """Write player_profiles.parquet and team_profiles.parquet under data/."""
     store = store or DataStore()
-    store.load()
+    # Always derive from the master parquet — never round-trip stale profile files.
+    store.load(force=True, rebuild_profiles=True)
 
     player_path = config.PLAYER_PROFILES
     team_path = config.TEAM_PROFILES
