@@ -37,6 +37,12 @@ resource "aws_apigatewayv2_integration" "predict" {
   payload_format_version = local.use_ecs_compute ? "1.0" : "2.0"
   connection_type        = local.use_ecs_compute ? "INTERNET" : null
 
+  # HTTP_PROXY to a bare ALB DNS sends POST to "/" unless the request path is set
+  # explicitly — FastAPI then returns 404 and CloudFront serves the S3 404.html page.
+  request_parameters = local.use_ecs_compute ? {
+    "overwrite:path" = "$request.path"
+  } : null
+
   lifecycle {
     create_before_destroy = true
   }

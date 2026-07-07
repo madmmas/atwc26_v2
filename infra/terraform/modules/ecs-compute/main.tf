@@ -218,6 +218,10 @@ resource "aws_ecs_service" "predict" {
   desired_count   = var.desired_count
   launch_type     = "FARGATE"
 
+  # Predictor warm-up (S3 sync + parquet load) can exceed the ALB health-check
+  # window; without grace the target group stays empty and API GW returns 503.
+  health_check_grace_period_seconds = 300
+
   network_configuration {
     subnets          = data.aws_subnets.default.ids
     security_groups  = [aws_security_group.tasks.id]
