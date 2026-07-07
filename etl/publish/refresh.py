@@ -66,10 +66,20 @@ def refresh_ecs_services() -> list[str]:
     client = boto3.client("ecs", region_name=config.AWS_REGION)
     refreshed: list[str] = []
     for service in services:
-        client.update_service(
-            cluster=cluster,
-            service=service,
-            forceNewDeployment=True,
-        )
+        try:
+            client.update_service(
+                cluster=cluster,
+                service=service,
+                forceNewDeployment=True,
+            )
+        except client.exceptions.ClusterNotFoundException:
+            print(
+                f"warning: ECS cluster {cluster!r} not found — "
+                "skipping ECS refresh (clear ATWC26_ECS_CLUSTER if compute is disabled)"
+            )
+            return refreshed
+        except client.exceptions.ServiceNotFoundException:
+            print(f"warning: ECS service {service!r} not found in {cluster!r} — skipping")
+            continue
         refreshed.append(service)
     return refreshed
