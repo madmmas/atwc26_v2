@@ -175,6 +175,55 @@ def build_bracket(store: DataStore, manifest: dict) -> tuple[dict, str, list[str
     return payload, source_sha, ["bracket", "bracket_predictions"]
 
 
+DEFAULT_LEADERBOARD_COMBOS = [
+    ("expectedGoals_p90", None, 90),
+    ("expectedAssists_p90", None, 90),
+    ("totalGoals_total", None, 0),
+    ("defensiveInterventions_p90", "DEF", 90),
+    ("saves_p90", "GK", 90),
+    ("expectedGoals_p90", "FWD", 90),
+    ("expectedGoals_p90", "MID", 90),
+]
+
+
+def build_players_all(store: DataStore, manifest: dict) -> tuple[dict, str, list[str]]:
+    """Cache /api/players (default sort=minutes, no filter)."""
+    df = store.players.sort_values("minutes", ascending=False)
+    payload = {"count": int(len(df)), "players": df.to_dict("records")}
+    source_sha = _hash_payload(payload)
+    return payload, source_sha, ["player_profiles"]
+
+
+def build_leaderboard(
+    store: DataStore,
+    metric: str,
+    role: str | None,
+    min_minutes: int,
+    manifest: dict,
+    limit: int = 20,
+) -> tuple[dict | None, str, list[str]]:
+    df = store.players
+    if metric not in df.columns:
+        return None, "", []
+    df = df[df["minutes"] >= min_minutes]
+    if role:
+        df = df[df["role"] == role.upper()]
+    df = df.sort_values(metric, ascending=False).head(limit)
+    cols = [
+        "player_id",
+        "player_name",
+        "team_name",
+        "flag_url",
+        "role",
+        "minutes",
+        metric,
+    ]
+    cols = [c for c in cols if c in df.columns]
+    payload = {"metric": metric, "leaders": df[cols].to_dict("records")}
+    source_sha = _hash_payload(payload)
+    return payload, source_sha, ["player_profiles"]
+
+
 def publish_standings(store: DataStore, manifest: dict, cache_store) -> bool:
     payload, source_sha, sources = build_standings(store, manifest)
     pk, sk = keys.dataset_pk(), keys.standings_sk()

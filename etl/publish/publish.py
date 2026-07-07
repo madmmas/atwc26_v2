@@ -10,7 +10,12 @@ from atwc26_core import config
 from atwc26_core.artifacts import ARTIFACTS, s3_key_for
 
 from ..transform.run import MANIFEST_FILE, build_manifest, write_manifest
-from .api_cache import publish_api_cache, publish_matches_cache, publish_teams_cache
+from .api_cache import (
+    publish_api_cache,
+    publish_leaderboards_cache,
+    publish_matches_cache,
+    publish_teams_cache,
+)
 from .refresh import refresh_ecs_services, refresh_lambda_functions
 
 try:
@@ -140,8 +145,9 @@ def _publish_api_caches(manifest: dict) -> None:
     s = publish_api_cache(manifest, store=store)
     t = publish_teams_cache(manifest, store=store)
     m = publish_matches_cache(manifest, store=store)
-    total_written = s["written"] + t["written"] + m["written"]
-    total_skipped = s["skipped"] + t["skipped"] + m["skipped"]
+    l = publish_leaderboards_cache(manifest, store=store)
+    total_written = s["written"] + t["written"] + m["written"] + l["written"]
+    total_skipped = s["skipped"] + t["skipped"] + m["skipped"] + l["skipped"]
     if total_written or total_skipped:
         print(f"api cache: {total_written} written, {total_skipped} unchanged")
 

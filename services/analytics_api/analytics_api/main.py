@@ -30,6 +30,7 @@ from atwc26_core.simulation_artifacts import (
 from atwc26_core.tournament import get_winner_probabilities
 from services.shared.api_reader import read_cached
 from services.shared.bootstrap import ensure_data_available
+from services.shared.cache_headers import CacheControlMiddleware
 from services.shared.json_util import clean_json
 
 app = FastAPI(title=f"{config.APP_NAME} Analytics", version=config.APP_VERSION)
@@ -42,6 +43,8 @@ if config.use_cors_middleware():
         allow_methods=["GET"],
         allow_headers=["*"],
     )
+
+app.add_middleware(CacheControlMiddleware)
 
 
 @app.on_event("startup")
@@ -129,6 +132,17 @@ def players(
     sort: str = Query("minutes"),
     limit: int = Query(100, le=2000),
 ):
+    if team is None and role is None and sort == "minutes" and limit == 100:
+        pk = keys.dataset_pk()
+        sk = keys.players_all_sk("minutes")
+
+        def _fallback():
+            store = get_store()
+            df = store.players.sort_values("minutes", ascending=False)
+            return {"count": int(len(df)), "players": df.to_dict("records")}
+
+        return clean_json(read_cached(pk, sk, _fallback))
+
     store = get_store()
     df = store.players
     if team:
@@ -218,21 +232,33 @@ def leaderboard(
     min_minutes: int = 90,
     limit: int = 20,
 ):
-    store = get_store()
-    df = store.players
-    if metric not in df.columns:
-        raise HTTPException(400, f"Unknown metric '{metric}'")
-    df = df[df["minutes"] >= min_minutes]
-    if role:
-        df = df[df["role"] == role.upper()]
-    df = df.sort_values(metric, ascending=False).head(limit)
-    cols = [
-        "player_id",
-        "player_name",
-        "team_name",
-        "flag_url",
-        "role",
-        "minutes",
-        metric,
-    ]
-    return clean_json({"metric": metric, "leaders": df[cols].to_dict("records")})
+    pk = keys.dataset_pk()
+    sk = keys.leaderboard_sk(metric, role, min_minutes)
+
+    def _fallback():
+        store = get_store()
+        df = store.players
+        if metric not in df.columns:
+            raise HTTPException(400, f"Unknown metric '{metric}'")
+        df = df[df["minutes"] >= min_minutes]
+        if role:
+            df = df[df["role"] == role.upper()]
+        df = df.sort_values(metric, ascending=False).head(limit)
+        cols = [
+            "player_id",
+            "player_name",
+            "team_name",
+            "flag_url",
+            "role",
+            "minutes",
+            metric,
+        ]
+        return {
+            "metric": metric,
+            "leaders": df[[c for c in cols if c in df.columns]].to_dict("records"),
+        }
+
+    try:
+        return clean_json(read_cached(pk, sk, _fallback))
+    except HTTPException:
+        raise
