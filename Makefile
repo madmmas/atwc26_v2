@@ -168,7 +168,7 @@ frontend: setup-frontend ## Run Next.js dev server (http://localhost:3000)
 dev: setup ## Run v1 backend + frontend together (Ctrl-C stops both)
 	@trap 'kill 0' INT TERM; \
 	$(MAKE) backend & \
-	$(MAKE) frontend & \
+	cd $(FRONTEND_DIR) && NEXT_PUBLIC_ANALYTICS_API_URL=http://localhost:8000 NEXT_PUBLIC_PREDICT_API_URL=http://localhost:8000 npm run dev & \
 	wait
 
 dev-v2: setup-services setup-frontend ## Run split APIs + frontend (analytics :8001, predict :8000)

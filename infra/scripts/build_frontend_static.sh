@@ -15,11 +15,17 @@ if [[ -n "${NEXT_PUBLIC_PREDICT_API_URL:-}" ]]; then
   export NEXT_PUBLIC_PREDICT_API_URL
 fi
 
-# Auto-detect v2 API Gateway URL from Terraform when split URLs are not provided.
+# Auto-detect v2 API base URL from Terraform when split URLs are not provided.
+# Prefer the unified CloudFront site URL (same-origin /api/*) so POST /api/predict
+# does not rely on cross-origin CORS to API Gateway.
 if [[ -z "${NEXT_PUBLIC_ANALYTICS_API_URL:-}" && -z "${NEXT_PUBLIC_PREDICT_API_URL:-}" ]]; then
   if command -v terraform >/dev/null 2>&1 && [[ -d "$TF_DIR" ]]; then
+    SITE_URL="$(terraform -chdir="$TF_DIR" output -raw site_url 2>/dev/null || true)"
     API_URL="$(terraform -chdir="$TF_DIR" output -raw api_gateway_url 2>/dev/null || true)"
-    if [[ -n "$API_URL" && "$API_URL" != "null" ]]; then
+    if [[ -n "$SITE_URL" && "$SITE_URL" != "null" ]]; then
+      export NEXT_PUBLIC_ANALYTICS_API_URL="$SITE_URL"
+      export NEXT_PUBLIC_PREDICT_API_URL="$SITE_URL"
+    elif [[ -n "$API_URL" && "$API_URL" != "null" ]]; then
       export NEXT_PUBLIC_ANALYTICS_API_URL="$API_URL"
       export NEXT_PUBLIC_PREDICT_API_URL="$API_URL"
     fi
