@@ -44,3 +44,7 @@ export function Spinner({ label }: { label?: string }) {
     </div>
   );
 }
+
+export function Skeleton({ className = "" }: { className?: string }) {
+  return <div className={`animate-pulse rounded bg-pitch-edge/70 ${className}`} />;
+}

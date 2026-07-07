@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { api, Overview, Player } from "@/lib/api";
-import { RoleChip, SectionTitle, Spinner } from "@/components/ui";
+import { RoleChip, SectionTitle, Skeleton } from "@/components/ui";
 import { Flag } from "@/components/Flag";
 
 const METRICS: { key: string; label: string; fmt?: (n: number) => string }[] = [
@@ -126,7 +126,12 @@ export default function Explore() {
 
       {/* Table */}
       {loading ? (
-        <Spinner />
+        <div className="card space-y-2 p-4">
+          <Skeleton className="h-10" />
+          {Array.from({ length: 12 }).map((_, i) => (
+            <Skeleton key={i} className="h-8" />
+          ))}
+        </div>
       ) : (
         <div className="card overflow-hidden">
           <table className="w-full text-sm">

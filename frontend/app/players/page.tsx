@@ -3,7 +3,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, Overview, Player, PlayerDetail } from "@/lib/api";
 import { Flag } from "@/components/Flag";
-import { RoleChip, Spinner } from "@/components/ui";
+import { RoleChip, Skeleton } from "@/components/ui";
 
 const RESULT_COLOR: Record<string, string> = {
   W: "bg-emerald-500/20 text-emerald-300",
@@ -13,9 +13,38 @@ const RESULT_COLOR: Record<string, string> = {
 
 export default function Players() {
   return (
-    <Suspense fallback={<Spinner label="Loading player analysis…" />}>
+    <Suspense fallback={<PlayersSkeleton />}>
       <PlayersContent />
     </Suspense>
+  );
+}
+
+function PlayersSkeleton() {
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-black text-fg">Player Analysis</h1>
+        <p className="text-sm text-muted">
+          Pick a country and player to see their key performance indicators — across
+          the whole tournament or a single match.
+        </p>
+      </div>
+      <div className="card flex flex-wrap items-center gap-3 p-4">
+        <Skeleton className="h-10 w-44" />
+        <Skeleton className="h-10 w-52" />
+      </div>
+      <div className="card p-5">
+        <Skeleton className="h-16 w-full" />
+      </div>
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <div key={i} className="card p-3">
+            <Skeleton className="h-3 w-16" />
+            <Skeleton className="mt-2 h-7 w-12" />
+          </div>
+        ))}
+      </div>
+    </div>
   );
 }
 
@@ -153,7 +182,32 @@ function PlayersContent() {
       </div>
 
       {!detail ? (
-        playerId ? <Spinner /> : (
+        playerId ? (
+          <div className="space-y-5">
+            <div className="card p-5">
+              <Skeleton className="h-16 w-full" />
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {Array.from({ length: 4 }).map((_, i) => (
+                <Skeleton key={i} className="h-8 w-24 rounded-lg" />
+              ))}
+            </div>
+            <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div key={i} className="card p-3">
+                  <Skeleton className="h-3 w-16" />
+                  <Skeleton className="mt-2 h-7 w-12" />
+                </div>
+              ))}
+            </div>
+            <div className="card space-y-2 p-4">
+              <Skeleton className="h-8" />
+              {Array.from({ length: 5 }).map((_, i) => (
+                <Skeleton key={i} className="h-7" />
+              ))}
+            </div>
+          </div>
+        ) : (
           <div className="card p-8 text-center text-faint">
             Select a country and player to begin.
           </div>

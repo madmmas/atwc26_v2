@@ -3,7 +3,7 @@ import { Suspense, useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, MatchDetail, MatchListItem } from "@/lib/api";
 import { Flag } from "@/components/Flag";
-import { SectionTitle, Spinner } from "@/components/ui";
+import { Skeleton } from "@/components/ui";
 import { MatchTimelineChart } from "@/components/MatchTimeline";
 
 function fmtDate(d?: string) {
@@ -105,8 +105,6 @@ function Matches() {
     api.matchDetail(selected).then(setDetail);
   }, [selected]);
 
-  if (loading) return <Spinner label="Loading matches…" />;
-
   return (
     <div className="space-y-6">
       <div>
@@ -118,19 +116,37 @@ function Matches() {
 
       {/* Match picker */}
       <div className="flex gap-3 overflow-x-auto pb-2">
-        {list.map((m) => (
-          <MatchCard
-            key={m.game_id}
-            m={m}
-            active={selected === m.game_id}
-            onClick={() => setSelected(m.game_id)}
-          />
-        ))}
+        {loading ? (
+          Array.from({ length: 6 }).map((_, i) => (
+            <Skeleton key={i} className="h-12 min-w-[220px] shrink-0 rounded-2xl" />
+          ))
+        ) : (
+          list.map((m) => (
+            <MatchCard
+              key={m.game_id}
+              m={m}
+              active={selected === m.game_id}
+              onClick={() => setSelected(m.game_id)}
+            />
+          ))
+        )}
       </div>
 
       {/* Comparison */}
       {!detail ? (
-        <Spinner />
+        <div className="space-y-5">
+          <div className="card p-6">
+            <Skeleton className="mx-auto h-10 w-48" />
+          </div>
+          <div className="card p-5">
+            <Skeleton className="h-40 w-full rounded-xl" />
+          </div>
+          <div className="card space-y-3 p-5">
+            {Array.from({ length: 8 }).map((_, i) => (
+              <Skeleton key={i} className="h-8" />
+            ))}
+          </div>
+        </div>
       ) : (
         <div data-testid="match-detail" className="space-y-5">
           {/* Scoreline header */}
@@ -177,9 +193,32 @@ function Matches() {
 }
 
 // useSearchParams() requires a Suspense boundary in the Next 14 App Router.
+function MatchesSkeleton() {
+  return (
+    <div className="space-y-6">
+      <div>
+        <h1 className="text-2xl font-black text-fg">Match Analysis</h1>
+        <p className="text-sm text-muted">
+          Pick a played match to compare both teams across the key indicators.
+        </p>
+      </div>
+      <div className="flex gap-3 overflow-x-auto pb-2">
+        {Array.from({ length: 6 }).map((_, i) => (
+          <Skeleton key={i} className="h-12 min-w-[220px] shrink-0 rounded-2xl" />
+        ))}
+      </div>
+      <div className="card space-y-3 p-5">
+        {Array.from({ length: 8 }).map((_, i) => (
+          <Skeleton key={i} className="h-8" />
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export default function MatchesPage() {
   return (
-    <Suspense fallback={<Spinner label="Loading matches…" />}>
+    <Suspense fallback={<MatchesSkeleton />}>
       <Matches />
     </Suspense>
   );

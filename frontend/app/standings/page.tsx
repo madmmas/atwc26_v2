@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { api, BracketData, GroupStandings } from "@/lib/api";
-import { Spinner } from "@/components/ui";
+import { Skeleton } from "@/components/ui";
 import { GroupTable, Predictions, applyHypotheticalResults } from "@/components/GroupTable";
 import { Bracket } from "@/components/Bracket";
 
@@ -37,13 +37,17 @@ export default function Standings() {
     });
   }
 
-  if (!groups) return <Spinner label="Loading standings…" />;
-
-  const names = Object.keys(groups).sort();
+  const names = groups ? Object.keys(groups).sort() : [];
 
   return (
     <div className="space-y-6">
-      {bracket && <Bracket bracket={bracket} rankedGroups={rankedGroups} />}
+      {bracket ? (
+        <Bracket bracket={bracket} rankedGroups={rankedGroups} />
+      ) : (
+        <div className="card p-5">
+          <Skeleton className="h-48 w-full rounded-xl" />
+        </div>
+      )}
 
       <div>
         <h1 className="text-2xl font-black text-fg">Group Standings</h1>
@@ -55,17 +59,28 @@ export default function Standings() {
       </div>
 
       <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {names.map((name) => (
-          <GroupTable
-            key={name}
-            name={name}
-            group={groups[name]}
-            ranked={rankedGroups[name]}
-            predictions={predictions}
-            onSetScore={setScore}
-            onReset={resetGroup}
-          />
-        ))}
+        {groups ? (
+          names.map((name) => (
+            <GroupTable
+              key={name}
+              name={name}
+              group={groups[name]}
+              ranked={rankedGroups[name]}
+              predictions={predictions}
+              onSetScore={setScore}
+              onReset={resetGroup}
+            />
+          ))
+        ) : (
+          Array.from({ length: 12 }).map((_, i) => (
+            <div key={i} className="card space-y-2 p-4">
+              <Skeleton className="h-5 w-8" />
+              {Array.from({ length: 4 }).map((_, j) => (
+                <Skeleton key={j} className="h-7" />
+              ))}
+            </div>
+          ))
+        )}
       </div>
     </div>
   );

@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { api, WinnerProbability } from "@/lib/api";
 import { TeamLabel } from "@/components/Flag";
-import { SectionTitle, Spinner } from "@/components/ui";
+import { SectionTitle, Skeleton } from "@/components/ui";
 
 const DEFAULT_SHOWN = 16;
 
@@ -14,7 +14,21 @@ export function WinnerProbabilityChart() {
     api.winnerProbabilities().then((r) => setTeams(r.teams));
   }, []);
 
-  if (!teams) return <Spinner label="Running tournament simulation…" />;
+  if (!teams) {
+    return (
+      <div className="card p-5">
+        <SectionTitle
+          title="World Cup Winner Probability"
+          hint="Loading simulation…"
+        />
+        <div className="space-y-2">
+          {Array.from({ length: 10 }).map((_, i) => (
+            <Skeleton key={i} className="h-4" />
+          ))}
+        </div>
+      </div>
+    );
+  }
 
   const top = Math.max(...teams.map((t) => t.probability), 0.001);
   const shown = showAll ? teams : teams.slice(0, DEFAULT_SHOWN);

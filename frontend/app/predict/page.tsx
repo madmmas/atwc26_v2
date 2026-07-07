@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { api, Overview, Player, Prediction } from "@/lib/api";
-import { RoleChip, Spinner } from "@/components/ui";
+import { RoleChip, Skeleton } from "@/components/ui";
 import { PredictionResult } from "@/components/PredictionResult";
 import { WinnerProbabilityChart } from "@/components/WinnerProbabilityChart";
 
@@ -90,7 +90,11 @@ function TeamColumn({
       </div>
 
       {loading ? (
-        <Spinner />
+        <div className="mt-4 space-y-1.5">
+          {slots.map((_, idx) => (
+            <Skeleton key={idx} className="h-9" />
+          ))}
+        </div>
       ) : (
         <div className="mt-4 space-y-1.5">
           {slots.map((s, idx) => {
