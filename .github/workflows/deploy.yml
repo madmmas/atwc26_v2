@@ -41,12 +41,21 @@ jobs:
           pip install -e packages/atwc26_core
           pip install boto3
 
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ATWC26_AWS_ROLE_ARN }}
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
       - name: Transform + publish
         env:
           ATWC26_S3_BUCKET: ${{ secrets.ATWC26_S3_BUCKET }}
           ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
-          AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          ATWC26_LAMBDA_ANALYTICS_NAME: ${{ secrets.ATWC26_LAMBDA_ANALYTICS_NAME }}
+          ATWC26_LAMBDA_PREDICT_NAME: ${{ secrets.ATWC26_LAMBDA_PREDICT_NAME }}
+          ATWC26_ECS_CLUSTER: ${{ secrets.ATWC26_ECS_CLUSTER }}
+          ATWC26_ECS_SERVICES: ${{ secrets.ATWC26_ECS_SERVICES }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           GITHUB_SHA: ${{ github.sha }}
         run: |
