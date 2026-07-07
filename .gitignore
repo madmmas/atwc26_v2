@@ -72,3 +72,5 @@ frontend/tsconfig.tsbuildinfo
 **/backend.hcl
 !**/backend.hcl.example
 **/crash.log
+/fix-files
+/fix-further-ecs

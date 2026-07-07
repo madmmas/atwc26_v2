@@ -1,6 +1,8 @@
 """AnalyseThisWC26 analytics API — tournament data and leaderboards."""
 from __future__ import annotations
 
+import base64
+import math
 import sys
 from pathlib import Path
 
@@ -45,6 +47,35 @@ if config.use_cors_middleware():
     )
 
 app.add_middleware(CacheControlMiddleware)
+
+_SLIM_FIELDS = {
+    "player_id",
+    "player_name",
+    "team_name",
+    "flag_url",
+    "role",
+    "minutes",
+    "played",
+    "games",
+}
+
+
+def _encode_cursor(sort_val, player_id: int) -> str:
+    raw = f"{sort_val}|{player_id}"
+    return base64.urlsafe_b64encode(raw.encode()).decode()
+
+
+def _decode_cursor(cursor: str):
+    try:
+        raw = base64.urlsafe_b64decode(cursor.encode()).decode()
+        sv, pid = raw.rsplit("|", 1)
+        try:
+            sv = float(sv)
+        except ValueError:
+            pass
+        return sv, int(pid)
+    except Exception:
+        return None, None
 
 
 @app.on_event("startup")
@@ -130,29 +161,65 @@ def players(
     team: str | None = None,
     role: str | None = None,
     sort: str = Query("minutes"),
-    limit: int = Query(100, le=2000),
+    dir: str = Query("desc", pattern="^(asc|desc)$"),
+    min_minutes: int = Query(0),
+    limit: int = Query(50, ge=1, le=200),
+    cursor: str | None = None,
+    fields: str = Query("full", pattern="^(full|slim)$"),
 ):
-    if team is None and role is None and sort == "minutes" and limit == 100:
-        pk = keys.dataset_pk()
-        sk = keys.players_all_sk("minutes")
-
-        def _fallback():
-            store = get_store()
-            df = store.players.sort_values("minutes", ascending=False)
-            return {"count": int(len(df)), "players": df.to_dict("records")}
-
-        return clean_json(read_cached(pk, sk, _fallback))
-
     store = get_store()
-    df = store.players
+    df = store.players.copy()
+
     if team:
         df = df[df["team_name"] == team]
     if role:
         df = df[df["role"] == role.upper()]
+    if min_minutes > 0:
+        df = df[df["minutes"] >= min_minutes]
     if sort not in df.columns:
         raise HTTPException(400, f"Unknown sort field '{sort}'")
-    df = df.sort_values(sort, ascending=False).head(limit)
-    return clean_json({"count": int(len(df)), "players": df.to_dict("records")})
+
+    total_count = int(len(df))
+    ascending = dir == "asc"
+
+    df = df.sort_values(
+        [sort, "player_id"],
+        ascending=[ascending, True],
+        na_position="last",
+    )
+
+    if cursor:
+        sort_val, pid = _decode_cursor(cursor)
+        if sort_val is not None and pid is not None:
+            sv_col = df[sort].fillna(float("inf") if ascending else float("-inf"))
+            if ascending:
+                mask = (sv_col > sort_val) | ((sv_col == sort_val) & (df["player_id"] > pid))
+            else:
+                mask = (sv_col < sort_val) | ((sv_col == sort_val) & (df["player_id"] > pid))
+            df = df[mask]
+
+    page_df = df.head(limit)
+    has_more = len(df) > limit
+
+    next_cursor = None
+    if has_more and not page_df.empty:
+        last = page_df.iloc[-1]
+        sv = last[sort]
+        sv = None if (isinstance(sv, float) and math.isnan(sv)) else sv
+        next_cursor = _encode_cursor(sv, int(last["player_id"]))
+
+    if fields == "slim":
+        keep = _SLIM_FIELDS | {sort}
+        page_df = page_df[[c for c in page_df.columns if c in keep]]
+
+    return clean_json(
+        {
+            "count": total_count,
+            "page_size": limit,
+            "next_cursor": next_cursor,
+            "players": page_df.to_dict("records"),
+        }
+    )
 
 
 @app.get("/api/matches")

@@ -83,3 +83,36 @@ def refresh_ecs_services() -> list[str]:
             continue
         refreshed.append(service)
     return refreshed
+
+
+def refresh_predict_service(publish_id: str) -> bool:
+    """
+    POST /api/predict/reload on the running ECS predict service.
+    Only fires when ATWC26_PREDICT_SERVICE_URL is set (ECS path).
+    Lambda path: skipped — Lambda gets a new container via env-var bump.
+    """
+    import json as _json
+    import urllib.request as _req
+
+    url = os.getenv("ATWC26_PREDICT_SERVICE_URL", "").rstrip("/")
+    secret = os.getenv("ATWC26_RELOAD_SECRET", "")
+    if not url:
+        return False
+
+    body = _json.dumps({"publish_id": publish_id}).encode()
+    request = _req.Request(
+        f"{url}/api/predict/reload",
+        data=body,
+        method="POST",
+        headers={
+            "Content-Type": "application/json",
+            "X-Reload-Secret": secret,
+        },
+    )
+    try:
+        with _req.urlopen(request, timeout=30) as resp:
+            print(f"predict reload: HTTP {resp.status}")
+            return resp.status == 200
+    except Exception as exc:
+        print(f"warning: predict reload failed — {exc}")
+        return False

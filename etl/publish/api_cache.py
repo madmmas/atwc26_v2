@@ -122,14 +122,6 @@ def publish_leaderboards_cache(manifest: dict, *, store: DataStore | None = None
     written = 0
     skipped = 0
 
-    payload, sha, sources = builders.build_players_all(store, manifest)
-    sk = keys.players_all_sk("minutes")
-    if not cache.should_skip(pk, sk, sha):
-        cache.put_item(pk=pk, sk=sk, payload=payload, source_sha256=sha, source_artifacts=sources)
-        written += 1
-    else:
-        skipped += 1
-
     for metric, role, min_min in builders.DEFAULT_LEADERBOARD_COMBOS:
         payload, sha, sources = builders.build_leaderboard(
             store, metric, role, min_min, manifest

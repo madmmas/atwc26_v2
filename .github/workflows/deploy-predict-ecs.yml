@@ -1,0 +1,77 @@
+name: Deploy predict service (ECS)
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - "services/predict_api/**"
+      - "services/shared/predict_bootstrap.py"
+      - "packages/atwc26_core/atwc26_core/prediction.py"
+      - "packages/atwc26_core/atwc26_core/data.py"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-predict-ecs
+  cancel-in-progress: false
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ATWC26_AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Log in to ECR
+        uses: aws-actions/amazon-ecr-login@v2
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Build and push predict image
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          file: services/predict_api/Dockerfile
+          push: true
+          tags: |
+            ${{ secrets.ATWC26_ECR_PREDICT_URL }}:latest
+            ${{ secrets.ATWC26_ECR_PREDICT_URL }}:${{ github.sha }}
+          cache-from: type=registry,ref=${{ secrets.ATWC26_ECR_PREDICT_URL }}:cache
+          cache-to: type=registry,ref=${{ secrets.ATWC26_ECR_PREDICT_URL }}:cache,mode=max
+
+      - name: Force new ECS deployment
+        run: |
+          aws ecs update-service \
+            --cluster  ${{ secrets.ATWC26_ECS_CLUSTER }} \
+            --service  ${{ secrets.ATWC26_ECS_PREDICT_SERVICE }} \
+            --force-new-deployment \
+            --region   ${{ secrets.AWS_REGION }}
+
+      - name: Wait for service stability
+        run: |
+          aws ecs wait services-stable \
+            --cluster  ${{ secrets.ATWC26_ECS_CLUSTER }} \
+            --services ${{ secrets.ATWC26_ECS_PREDICT_SERVICE }} \
+            --region   ${{ secrets.AWS_REGION }}
+
+      - name: Smoke test health endpoint
+        run: |
+          ALB_URL=$(aws elbv2 describe-load-balancers \
+            --region ${{ secrets.AWS_REGION }} \
+            --query "LoadBalancers[?contains(LoadBalancerName,'predict')].DNSName" \
+            --output text | head -1)
+          HTTP=$(curl -sf -o /dev/null -w "%{http_code}" \
+            "http://${ALB_URL}/api/health" --max-time 10)
+          echo "Health: HTTP $HTTP"
+          [ "$HTTP" = "200" ] || exit 1
