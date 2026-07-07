@@ -16,7 +16,13 @@ COPY services/shared /services/shared
 ENV PYTHONPATH=/app:/services \
     ATWC26_DATA_DIR=/data
 
-RUN useradd -m appuser
+# curl: ECS container health check; /data: writable cache for S3-synced artifacts
+RUN apt-get update \
+    && apt-get install -y --no-install-recommends curl \
+    && rm -rf /var/lib/apt/lists/* \
+    && useradd -m appuser \
+    && mkdir -p /data \
+    && chown appuser:appuser /data
 USER appuser
 
 EXPOSE 8000

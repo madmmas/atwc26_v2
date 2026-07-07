@@ -293,12 +293,41 @@ jobs:
           echo "deployed=true" >> "$GITHUB_OUTPUT"
 
       - name: Wait for service stability
+        id: ecs_stable
         if: steps.ecs_deploy.outputs.deployed == 'true' && steps.targets.outputs.alb_dns != ''
         run: |
+          set +e
           aws ecs wait services-stable \
             --cluster  "${{ steps.targets.outputs.ecs_cluster }}" \
             --services "${{ steps.targets.outputs.ecs_service }}" \
             --region   "${{ secrets.AWS_REGION }}"
+          status=$?
+          set -e
+          if [[ $status -ne 0 ]]; then
+            echo "::error::ECS service did not stabilize — recent events and stopped tasks:"
+            aws ecs describe-services \
+              --cluster "${{ steps.targets.outputs.ecs_cluster }}" \
+              --services "${{ steps.targets.outputs.ecs_service }}" \
+              --region "${{ secrets.AWS_REGION }}" \
+              --query 'services[0].events[0:8]' \
+              --output table || true
+            TASK_ARNS=$(aws ecs list-tasks \
+              --cluster "${{ steps.targets.outputs.ecs_cluster }}" \
+              --service-name "${{ steps.targets.outputs.ecs_service }}" \
+              --desired-status STOPPED \
+              --region "${{ secrets.AWS_REGION }}" \
+              --query 'taskArns' \
+              --output text 2>/dev/null || true)
+            if [[ -n "$TASK_ARNS" && "$TASK_ARNS" != "None" ]]; then
+              aws ecs describe-tasks \
+                --cluster "${{ steps.targets.outputs.ecs_cluster }}" \
+                --tasks $TASK_ARNS \
+                --region "${{ secrets.AWS_REGION }}" \
+                --query 'tasks[*].{task:taskArn,stopCode:stopCode,stoppedReason:stoppedReason,containers:containers[*].{name:name,reason:reason,exitCode:exitCode}}' \
+                --output table || true
+            fi
+            exit $status
+          fi
 
       - name: Smoke test health endpoint
         if: steps.ecs_deploy.outputs.deployed == 'true' && steps.targets.outputs.alb_dns != ''

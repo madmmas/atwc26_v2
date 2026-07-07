@@ -204,7 +204,7 @@ resource "aws_ecs_task_definition" "predict" {
       interval    = 30
       timeout     = 5
       retries     = 3
-      startPeriod = 60
+      startPeriod = 180
     }
   }])
 
