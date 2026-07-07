@@ -15,16 +15,22 @@ import { Flag } from "@/components/Flag";
 // The bracket structure is fixed for the whole tournament, so we pin it here and
 // look each match up by (round, position) regardless of resolution state.
 //
-// Positions verified against the pre-resolution bracket:
-//   R16#1←R32 1,3   R16#2←R32 2,5   R16#3←R32 4,6   R16#4←R32 7,8
+// Feeder positions verified against the live bracket.json slot references
+// (Round of 16 -> Round of 32, etc.), under ESPN's canonical matchNumber
+// numbering — the R32 `position` now equals matchNumber - 72, so this table is
+// stable and won't drift again as long as the ETL keeps that numbering:
+//   R16#1←R32 2,5   R16#2←R32 1,3   R16#3←R32 4,6   R16#4←R32 7,8
 //   R16#5←R32 11,12 R16#6←R32 9,10  R16#7←R32 14,16 R16#8←R32 13,15
 //   QF#1←R16 1,2  QF#2←R16 5,6  QF#3←R16 3,4  QF#4←R16 7,8
 //   SF#1←QF 1,2   SF#2←QF 3,4   Final←SF 1,2
+// So each half's R32 column is ordered to sit directly above/below the R16
+// match it feeds (pairs top-to-bottom): left half feeds QF 1,2 (SF#1); right
+// half feeds QF 3,4 (SF#2).
 // ─────────────────────────────────────────────────────────────────────────── //
 type Col = { round: string; pos: number[] };
 
 const LEFT_COLS: Col[] = [
-  { round: "Round of 32", pos: [1, 3, 2, 5, 11, 12, 9, 10] },
+  { round: "Round of 32", pos: [2, 5, 1, 3, 11, 12, 9, 10] },
   { round: "Round of 16", pos: [1, 2, 5, 6] },
   { round: "Quarterfinals", pos: [1, 2] },
   { round: "Semifinals", pos: [1] },
@@ -396,7 +402,7 @@ export function Bracket({ bracket, rankedGroups }: { bracket: BracketData; ranke
         <div
           ref={captureRef}
           style={{ transform: `scale(${scale})`, transformOrigin: "top left" }}
-          className="inline-block bg-pitch-bg p-3"
+          className="relative inline-block bg-pitch-bg p-3"
         >
         <div className="flex items-start" style={{ minHeight: H }}>
           {/* Left half: R32 → SF */}
@@ -435,6 +441,21 @@ export function Bracket({ bracket, rankedGroups }: { bracket: BracketData; ranke
             <MatchCard v={describe(thirdMatch, flagOf)} href={hrefOf(thirdMatch)} />
           </div>
         )}
+
+        {/* Branding, baked into the bottom-left of every downloaded/shared image.
+            Plain <img> (not next/image) so html-to-image inlines it cleanly. */}
+        <div className="absolute bottom-3 left-3 flex flex-col items-start gap-0.5">
+          <img
+            src="/NewLogoAnalyseThis.png"
+            alt="AnalyseThisWC26"
+            width={1854}
+            height={302}
+            className="h-8 w-auto shrink-0"
+          />
+          <span className="whitespace-nowrap pl-0.5 text-[9px] font-semibold uppercase tracking-wider text-faint">
+            by NeuNov Technologies
+          </span>
+        </div>
         </div>
         </div>
       </div>

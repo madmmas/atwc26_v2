@@ -43,12 +43,14 @@ export default function Standings() {
 
   return (
     <div className="space-y-6">
+      {bracket && <Bracket bracket={bracket} rankedGroups={rankedGroups} />}
+
       <div>
         <h1 className="text-2xl font-black text-fg">Group Standings</h1>
         <p className="text-sm text-muted">
           Real group tables from every played match. Try a score for the remaining
           fixture(s) below any group to see how the table — and the knockout bracket
-          below — would change. Predictions aren&apos;t saved, reload to reset.
+          above — would change. Predictions aren&apos;t saved, reload to reset.
         </p>
       </div>
 
@@ -65,8 +67,6 @@ export default function Standings() {
           />
         ))}
       </div>
-
-      {bracket && <Bracket bracket={bracket} rankedGroups={rankedGroups} />}
     </div>
   );
 }
