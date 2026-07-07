@@ -105,6 +105,14 @@ locals {
   api_origin_enabled = var.api_gateway_domain != null && var.api_gateway_domain != ""
 }
 
+resource "aws_cloudfront_function" "pretty_urls" {
+  name    = "${var.name_prefix}-${var.environment}-pretty-urls"
+  runtime = "cloudfront-js-2.0"
+  comment = "Next.js static export: /standings -> /standings/index.html"
+  publish = true
+  code    = file("${path.module}/cloudfront_pretty_urls.js")
+}
+
 resource "aws_cloudfront_distribution" "site" {
   enabled             = true
   is_ipv6_enabled     = true
@@ -145,6 +153,11 @@ resource "aws_cloudfront_distribution" "site" {
 
     cache_policy_id            = data.aws_cloudfront_cache_policy.caching_optimized.id
     response_headers_policy_id = data.aws_cloudfront_response_headers_policy.security_headers.id
+
+    function_association {
+      event_type   = "viewer-request"
+      function_arn = aws_cloudfront_function.pretty_urls.arn
+    }
   }
 
   dynamic "ordered_cache_behavior" {
@@ -163,13 +176,7 @@ resource "aws_cloudfront_distribution" "site" {
     }
   }
 
-  # Next.js static export: folder routes (e.g. /predict/index.html). SPA fallback for deep links.
-  custom_error_response {
-    error_code         = 403
-    response_code      = 200
-    response_page_path = "/index.html"
-  }
-
+  # Real 404s from S3 (after pretty-url rewrite) serve the exported 404 page.
   custom_error_response {
     error_code         = 404
     response_code      = 404
