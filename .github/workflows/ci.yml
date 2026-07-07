@@ -2,9 +2,9 @@ name: CI
 
 on:
   pull_request:
-    branches: [main, refactor/v2-integration]
+    branches: [main]
   push:
-    branches: [main, refactor/v2-integration]
+    branches: [main]
 
 # paths-filter reads changed files from the PR API.
 permissions:
@@ -74,10 +74,7 @@ jobs:
 
   etl:
     needs: changes
-    if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/refactor/v2-integration' ||
-       github.event.pull_request.base.ref == 'refactor/v2-integration') &&
-      needs.changes.outputs.etl == 'true'
+    if: needs.changes.outputs.etl == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -103,10 +100,7 @@ jobs:
 
   contract:
     needs: changes
-    if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/refactor/v2-integration' ||
-       github.event.pull_request.base.ref == 'refactor/v2-integration') &&
-      needs.changes.outputs.services == 'true'
+    if: needs.changes.outputs.services == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -123,10 +117,7 @@ jobs:
 
   v2-smoke:
     needs: changes
-    if: |
-      (github.event_name == 'push' && github.ref == 'refs/heads/refactor/v2-integration' ||
-       github.event.pull_request.base.ref == 'refactor/v2-integration') &&
-      (needs.changes.outputs.etl == 'true' || needs.changes.outputs.services == 'true')
+    if: needs.changes.outputs.etl == 'true' || needs.changes.outputs.services == 'true'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
