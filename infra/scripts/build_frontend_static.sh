@@ -6,26 +6,24 @@ ROOT="$(cd "$(dirname "$0")/../.." && pwd)"
 FRONTEND="$ROOT/frontend"
 TF_DIR="${ATWC26_TF_DIR:-$ROOT/infra/terraform/envs/dev}"
 
-# v2 split APIs (Issue 7). When unset, api.ts falls back to NEXT_PUBLIC_API_URL.
-# Do not export empty strings — Next.js treats them as set and skips ?? fallback.
+# Optional explicit API bases. When unset, build_frontend_static.sh may read Terraform outputs.
 if [[ -n "${NEXT_PUBLIC_ANALYTICS_API_URL:-}" ]]; then
   export NEXT_PUBLIC_ANALYTICS_API_URL
 fi
 if [[ -n "${NEXT_PUBLIC_PREDICT_API_URL:-}" ]]; then
   export NEXT_PUBLIC_PREDICT_API_URL
 fi
+if [[ -n "${NEXT_PUBLIC_SAME_ORIGIN_API:-}" ]]; then
+  export NEXT_PUBLIC_SAME_ORIGIN_API
+fi
 
-# Auto-detect v2 API base URL from Terraform when split URLs are not provided.
-# Prefer the unified CloudFront site URL (same-origin /api/*) so POST /api/predict
-# does not rely on cross-origin CORS to API Gateway.
-if [[ -z "${NEXT_PUBLIC_ANALYTICS_API_URL:-}" && -z "${NEXT_PUBLIC_PREDICT_API_URL:-}" ]]; then
+# Default for CI/terraform builds: direct API Gateway URLs (works cross-origin once
+# Lambda CORS middleware is disabled). Same-origin /api/* requires an explicit
+# NEXT_PUBLIC_SAME_ORIGIN_API=true after the CloudFront API origin fix is applied.
+if [[ -z "${NEXT_PUBLIC_ANALYTICS_API_URL:-}" && -z "${NEXT_PUBLIC_PREDICT_API_URL:-}" && -z "${NEXT_PUBLIC_SAME_ORIGIN_API:-}" ]]; then
   if command -v terraform >/dev/null 2>&1 && [[ -d "$TF_DIR" ]]; then
-    SITE_URL="$(terraform -chdir="$TF_DIR" output -raw site_url 2>/dev/null || true)"
     API_URL="$(terraform -chdir="$TF_DIR" output -raw api_gateway_url 2>/dev/null || true)"
-    if [[ -n "$SITE_URL" && "$SITE_URL" != "null" ]]; then
-      export NEXT_PUBLIC_ANALYTICS_API_URL="$SITE_URL"
-      export NEXT_PUBLIC_PREDICT_API_URL="$SITE_URL"
-    elif [[ -n "$API_URL" && "$API_URL" != "null" ]]; then
+    if [[ -n "$API_URL" && "$API_URL" != "null" ]]; then
       export NEXT_PUBLIC_ANALYTICS_API_URL="$API_URL"
       export NEXT_PUBLIC_PREDICT_API_URL="$API_URL"
     fi
@@ -37,7 +35,9 @@ export NEXT_PUBLIC_API_URL="${NEXT_PUBLIC_API_URL:-https://atwc26.com}"
 export NEXT_OUTPUT_MODE=export
 export NEXT_TELEMETRY_DISABLED=1
 
-if [[ -n "${NEXT_PUBLIC_ANALYTICS_API_URL:-}" || -n "${NEXT_PUBLIC_PREDICT_API_URL:-}" ]]; then
+if [[ "${NEXT_PUBLIC_SAME_ORIGIN_API:-}" == "true" ]]; then
+  echo "Building static frontend (same-origin /api/* via CloudFront)"
+elif [[ -n "${NEXT_PUBLIC_ANALYTICS_API_URL:-}" || -n "${NEXT_PUBLIC_PREDICT_API_URL:-}" ]]; then
   echo "Building static frontend (v2 split APIs):"
   echo "  analytics: ${NEXT_PUBLIC_ANALYTICS_API_URL:-<falls back to NEXT_PUBLIC_API_URL>}"
   echo "  predict:   ${NEXT_PUBLIC_PREDICT_API_URL:-<falls back to NEXT_PUBLIC_API_URL>}"

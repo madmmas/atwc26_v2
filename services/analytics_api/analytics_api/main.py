@@ -34,13 +34,14 @@ from services.shared.json_util import clean_json
 
 app = FastAPI(title=f"{config.APP_NAME} Analytics", version=config.APP_VERSION)
 
-app.add_middleware(
-    CORSMiddleware,
-    allow_origins=config.CORS_ORIGINS,
-    allow_credentials=False,
-    allow_methods=["GET"],
-    allow_headers=["*"],
-)
+if config.use_cors_middleware():
+    app.add_middleware(
+        CORSMiddleware,
+        allow_origins=config.CORS_ORIGINS,
+        allow_credentials=False,
+        allow_methods=["GET"],
+        allow_headers=["*"],
+    )
 
 
 @app.on_event("startup")

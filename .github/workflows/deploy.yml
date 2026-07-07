@@ -215,9 +215,7 @@ jobs:
 
       - name: Build static frontend (same-origin /api via CloudFront)
         run: |
-          SITE_URL="$(terraform -chdir="$TF_DIR" output -raw site_url)"
-          NEXT_PUBLIC_ANALYTICS_API_URL="$SITE_URL" \
-          NEXT_PUBLIC_PREDICT_API_URL="$SITE_URL" \
+          NEXT_PUBLIC_SAME_ORIGIN_API=true \
           ./infra/scripts/build_frontend_static.sh
 
       - name: Deploy to S3 + invalidate CloudFront

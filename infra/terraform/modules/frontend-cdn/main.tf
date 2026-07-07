@@ -68,6 +68,35 @@ data "aws_cloudfront_origin_request_policy" "all_viewer" {
   name = "Managed-AllViewer"
 }
 
+# Do not forward the viewer Host header — API Gateway needs its own hostname.
+resource "aws_cloudfront_origin_request_policy" "api_gateway" {
+  name    = "${var.name_prefix}-${var.environment}-api-origin"
+  comment = "API Gateway origin (preserve execute-api Host header)"
+
+  cookies_config {
+    cookie_behavior = "none"
+  }
+
+  headers_config {
+    header_behavior = "whitelist"
+    headers {
+      items = [
+        "Accept",
+        "Accept-Language",
+        "Authorization",
+        "Content-Length",
+        "Content-Type",
+        "Origin",
+        "Referer",
+      ]
+    }
+  }
+
+  query_strings_config {
+    query_string_behavior = "all"
+  }
+}
+
 data "aws_cloudfront_response_headers_policy" "security_headers" {
   name = "Managed-SecurityHeadersPolicy"
 }
@@ -129,7 +158,7 @@ resource "aws_cloudfront_distribution" "site" {
       compress               = true
 
       cache_policy_id            = data.aws_cloudfront_cache_policy.caching_disabled.id
-      origin_request_policy_id   = data.aws_cloudfront_origin_request_policy.all_viewer.id
+      origin_request_policy_id   = aws_cloudfront_origin_request_policy.api_gateway.id
       response_headers_policy_id = data.aws_cloudfront_response_headers_policy.security_headers.id
     }
   }

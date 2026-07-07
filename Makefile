@@ -175,7 +175,7 @@ dev-v2: setup-services setup-frontend ## Run split APIs + frontend (analytics :8
 	@trap 'kill 0' INT TERM; \
 	$(MAKE) analytics & \
 	$(MAKE) predict & \
-	$(MAKE) frontend & \
+	cd $(FRONTEND_DIR) && NEXT_PUBLIC_ANALYTICS_API_URL=http://localhost:8001 NEXT_PUBLIC_PREDICT_API_URL=http://localhost:8000 npm run dev & \
 	wait
 
 schedule: ## Discover WC26 fixtures (gameId + kickoff time) from ESPN

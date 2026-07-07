@@ -4,11 +4,20 @@ function envOr<T>(value: string | undefined, fallback: T): string | T {
   return value && value.trim() !== "" ? value : fallback;
 }
 
-const MONOLITH_BASE = envOr(process.env.NEXT_PUBLIC_API_URL, "http://localhost:8000");
+// Static export on CloudFront: call same-origin /api/* (proxied to API Gateway).
+const SAME_ORIGIN_API = process.env.NEXT_PUBLIC_SAME_ORIGIN_API === "true";
 
-export const ANALYTICS_BASE = envOr(process.env.NEXT_PUBLIC_ANALYTICS_API_URL, MONOLITH_BASE);
+const MONOLITH_BASE = SAME_ORIGIN_API
+  ? ""
+  : envOr(process.env.NEXT_PUBLIC_API_URL, "http://localhost:8000");
 
-export const PREDICT_BASE = envOr(process.env.NEXT_PUBLIC_PREDICT_API_URL, MONOLITH_BASE);
+export const ANALYTICS_BASE = SAME_ORIGIN_API
+  ? ""
+  : envOr(process.env.NEXT_PUBLIC_ANALYTICS_API_URL, MONOLITH_BASE);
+
+export const PREDICT_BASE = SAME_ORIGIN_API
+  ? ""
+  : envOr(process.env.NEXT_PUBLIC_PREDICT_API_URL, MONOLITH_BASE);
 
 // Kept for backwards compatibility with single-URL builds.
 export const API_BASE = MONOLITH_BASE;

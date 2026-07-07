@@ -35,5 +35,15 @@ CORS_ORIGINS = os.getenv(
     "http://localhost:3000,http://127.0.0.1:3000",
 ).split(",")
 
+
+def use_cors_middleware() -> bool:
+    """Use FastAPI CORS locally; skip on Lambda where API Gateway already adds ACAO headers."""
+    flag = os.getenv("ATWC26_CORS_MIDDLEWARE", "auto").lower()
+    if flag in ("0", "false", "no", "off"):
+        return False
+    if flag in ("1", "true", "yes", "on"):
+        return True
+    return not bool(os.getenv("AWS_LAMBDA_FUNCTION_NAME"))
+
 APP_NAME = "AnalyseThisWC26"
 APP_VERSION = "1.0.0"
