@@ -27,33 +27,31 @@ resource "aws_apigatewayv2_integration" "analytics" {
   payload_format_version = "2.0"
 }
 
-resource "aws_apigatewayv2_integration" "predict_lambda" {
-  count = local.use_ecs_compute ? 0 : 1
-
+# Single predict integration — create_before_destroy ensures route can be
+# repointed before the old integration is removed when switching Lambda ↔ ECS.
+resource "aws_apigatewayv2_integration" "predict" {
   api_id                 = aws_apigatewayv2_api.http.id
-  integration_type       = "AWS_PROXY"
-  integration_uri        = var.predict_invoke_arn
-  payload_format_version = "2.0"
+  integration_type       = local.use_ecs_compute ? "HTTP_PROXY" : "AWS_PROXY"
+  integration_uri        = local.use_ecs_compute ? var.compute_listener_arn : var.predict_invoke_arn
+  integration_method     = local.use_ecs_compute ? "ANY" : null
+  payload_format_version = local.use_ecs_compute ? "1.0" : "2.0"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 }
 
-resource "aws_apigatewayv2_integration" "compute" {
-  count = local.use_ecs_compute ? 1 : 0
-
-  api_id               = aws_apigatewayv2_api.http.id
-  integration_type     = "HTTP_PROXY"
-  integration_method   = "ANY"
-  integration_uri      = var.compute_listener_arn
-  payload_format_version = "1.0"
-}
-
-locals {
-  compute_integration_id = local.use_ecs_compute ? aws_apigatewayv2_integration.compute[0].id : aws_apigatewayv2_integration.predict_lambda[0].id
+moved {
+  from = aws_apigatewayv2_integration.predict_lambda[0]
+  to   = aws_apigatewayv2_integration.predict
 }
 
 resource "aws_apigatewayv2_route" "predict" {
   api_id    = aws_apigatewayv2_api.http.id
   route_key = "POST /api/predict"
-  target    = "integrations/${local.compute_integration_id}"
+  target    = "integrations/${aws_apigatewayv2_integration.predict.id}"
+
+  depends_on = [aws_apigatewayv2_integration.predict]
 }
 
 resource "aws_apigatewayv2_route" "analytics" {

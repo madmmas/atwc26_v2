@@ -37,7 +37,7 @@ resource "aws_iam_role_policy_attachment" "basic" {
 
 data "aws_iam_policy_document" "data_access" {
   statement {
-    actions   = ["s3:GetObject", "s3:ListBucket"]
+    actions = ["s3:GetObject", "s3:ListBucket"]
     resources = [
       "arn:aws:s3:::${var.s3_bucket_name}",
       "arn:aws:s3:::${var.s3_bucket_name}/*",
@@ -72,11 +72,11 @@ resource "aws_lambda_function" "analytics" {
 
   environment {
     variables = {
-      ATWC26_DATA_DIR        = "/tmp/data"
-      ATWC26_S3_BUCKET       = var.s3_bucket_name
-      ATWC26_S3_PREFIX       = var.s3_prefix
-      ATWC26_DYNAMODB_TABLE  = var.dynamodb_table_name
-      ATWC26_CORS_ORIGINS    = var.cors_origins
+      ATWC26_DATA_DIR       = "/tmp/data"
+      ATWC26_S3_BUCKET      = var.s3_bucket_name
+      ATWC26_S3_PREFIX      = var.s3_prefix
+      ATWC26_DYNAMODB_TABLE = var.dynamodb_table_name
+      ATWC26_CORS_ORIGINS   = var.cors_origins
     }
   }
 

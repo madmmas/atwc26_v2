@@ -142,7 +142,7 @@ resource "aws_iam_role" "task" {
 
 data "aws_iam_policy_document" "task" {
   statement {
-    actions   = ["s3:GetObject", "s3:ListBucket"]
+    actions = ["s3:GetObject", "s3:ListBucket"]
     resources = [
       "arn:aws:s3:::${var.s3_bucket_name}",
       "arn:aws:s3:::${var.s3_bucket_name}/*",
@@ -195,7 +195,7 @@ resource "aws_ecs_task_definition" "predict" {
       logDriver = "awslogs"
       options = {
         awslogs-group         = aws_cloudwatch_log_group.predict.name
-        awslogs-region        = data.aws_region.current.name
+        awslogs-region        = var.aws_region
         awslogs-stream-prefix = "ecs"
       }
     }
@@ -210,8 +210,6 @@ resource "aws_ecs_task_definition" "predict" {
 
   tags = local.common_tags
 }
-
-data "aws_region" "current" {}
 
 resource "aws_ecs_service" "predict" {
   name            = local.service_name

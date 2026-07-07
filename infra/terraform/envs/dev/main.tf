@@ -118,6 +118,7 @@ module "ecs_compute" {
   dynamodb_table_name = module.dynamodb.table_name
   s3_prefix           = var.data_s3_prefix
   cors_origins        = join(",", var.cors_allow_origins)
+  aws_region          = var.aws_region
 }
 
 module "api_gateway" {
@@ -138,23 +139,23 @@ module "api_gateway" {
 module "frontend_cdn" {
   source = "../../modules/frontend-cdn"
 
-  name_prefix          = var.name_prefix
-  environment          = var.environment
-  backend_api_url      = var.backend_api_url
-  aliases              = var.aliases
-  acm_certificate_arn  = var.acm_certificate_arn
-  api_gateway_domain   = module.api_gateway.api_domain
-  tags                 = local.tags
+  name_prefix         = var.name_prefix
+  environment         = var.environment
+  backend_api_url     = var.backend_api_url
+  aliases             = var.aliases
+  acm_certificate_arn = var.acm_certificate_arn
+  api_gateway_domain  = module.api_gateway.api_domain
+  tags                = local.tags
 }
 
 module "github_oidc" {
   count  = var.enable_github_oidc ? 1 : 0
   source = "../../modules/github-oidc"
 
-  github_org = var.github_org
+  github_org  = var.github_org
   github_repo = var.github_repo
-  role_name  = "${var.name_prefix}-${var.environment}-github-actions"
-  tags       = local.tags
+  role_name   = "${var.name_prefix}-${var.environment}-github-actions"
+  tags        = local.tags
 }
 
 module "etl_scheduler" {

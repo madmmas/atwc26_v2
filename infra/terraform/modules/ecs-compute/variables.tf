@@ -48,3 +48,7 @@ variable "desired_count" {
   type    = number
   default = 1
 }
+
+variable "aws_region" {
+  type = string
+}
