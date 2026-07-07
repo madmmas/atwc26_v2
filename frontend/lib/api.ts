@@ -1,12 +1,14 @@
 // Split v2 API bases (Issue 7). Falls back to monolith NEXT_PUBLIC_API_URL for v1.
-const MONOLITH_BASE =
-  process.env.NEXT_PUBLIC_API_URL ?? "http://localhost:8000";
+// Treat "" as unset — build scripts may export empty split URLs before fallback runs.
+function envOr<T>(value: string | undefined, fallback: T): string | T {
+  return value && value.trim() !== "" ? value : fallback;
+}
 
-export const ANALYTICS_BASE =
-  process.env.NEXT_PUBLIC_ANALYTICS_API_URL ?? MONOLITH_BASE;
+const MONOLITH_BASE = envOr(process.env.NEXT_PUBLIC_API_URL, "http://localhost:8000");
 
-export const PREDICT_BASE =
-  process.env.NEXT_PUBLIC_PREDICT_API_URL ?? MONOLITH_BASE;
+export const ANALYTICS_BASE = envOr(process.env.NEXT_PUBLIC_ANALYTICS_API_URL, MONOLITH_BASE);
+
+export const PREDICT_BASE = envOr(process.env.NEXT_PUBLIC_PREDICT_API_URL, MONOLITH_BASE);
 
 // Kept for backwards compatibility with single-URL builds.
 export const API_BASE = MONOLITH_BASE;

@@ -11,7 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { api, Overview, Player } from "@/lib/api";
-import { RoleChip, SectionTitle, Spinner, StatCard } from "@/components/ui";
+import { RoleChip, SectionTitle, StatCard } from "@/components/ui";
 import { Flag } from "@/components/Flag";
 
 function LeaderList({ players, metric, fmt }: { players: Player[]; metric: string; fmt?: (n: number) => string }) {
@@ -50,21 +50,15 @@ export default function Home() {
   useEffect(() => {
     api.overview().then(setData).catch((e) => setErr(String(e)));
   }, []);
-
-  if (err)
-    return (
-      <div className="card mt-10 p-6 text-rose-300">
-        Could not reach the API. Is the backend running? <br />
-        <span className="text-xs text-faint">{err}</span>
-      </div>
-    );
-  if (!data) return <Spinner label="Loading tournament data…" />;
+  const isLoading = !data && !err;
 
   // All tournament teams in alphabetical order (easy to find a country);
   // teams that haven't played sit at zero.
-  const chart = [...data.teams]
-    .sort((a, b) => a.team_name.localeCompare(b.team_name))
-    .map((t) => ({ name: t.team_name, xG: t.xg_per_game, xGA: t.xga_per_game }));
+  const chart = data
+    ? [...data.teams]
+        .sort((a, b) => a.team_name.localeCompare(b.team_name))
+        .map((t) => ({ name: t.team_name, xG: t.xg_per_game, xGA: t.xga_per_game }))
+    : [];
   const chartWidth = Math.max(chart.length * 46, 640); // horizontal scroll for 48 teams
 
   return (
@@ -91,53 +85,105 @@ export default function Home() {
         </div>
       </section>
 
+      {err && (
+        <div className="card p-4 text-sm text-rose-300">
+          Could not load dashboard data right now. <span className="text-faint">Showing static UI only.</span>
+          <div className="mt-1 text-xs text-faint">{err}</div>
+        </div>
+      )}
+
       {/* KPIs */}
       <section className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        <StatCard label="Teams" value={data.league.teams} />
-        <StatCard label="Players tracked" value={data.league.players} />
-        <StatCard label="Games" value={data.league.games} />
-        <StatCard label="Avg goals / team" value={data.league.avg_team_goals} />
+        {data ? (
+          <>
+            <StatCard label="Teams" value={data.league.teams} />
+            <StatCard label="Players tracked" value={data.league.players} />
+            <StatCard label="Games" value={data.league.games} />
+            <StatCard label="Avg goals / team" value={data.league.avg_team_goals} />
+          </>
+        ) : (
+          Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="card p-4">
+              <div className="h-3 w-24 animate-pulse rounded bg-pitch-edge/70" />
+              <div className="mt-3 h-8 w-14 animate-pulse rounded bg-pitch-edge/70" />
+            </div>
+          ))
+        )}
       </section>
 
       {/* Team xG chart */}
       <section>
         <SectionTitle
           title="Team attacking output"
-          hint={`all ${chart.length} teams · xG vs. conceded (xGA) per game · scroll →`}
+          hint={
+            data
+              ? `all ${chart.length} teams · xG vs. conceded (xGA) per game · scroll →`
+              : "Loading chart data…"
+          }
         />
-        <div className="card overflow-x-auto p-4">
-          <div style={{ width: chartWidth, height: 340 }}>
-            <ResponsiveContainer width="100%" height="100%">
-              <BarChart data={chart} margin={{ top: 8, right: 8, bottom: 56, left: -10 }}>
-                <CartesianGrid stroke="#94a3b8" strokeOpacity={0.18} vertical={false} />
-                <XAxis dataKey="name" angle={-45} textAnchor="end" interval={0} height={70} tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                <Tooltip
-                  cursor={{ fill: "#94a3b8", fillOpacity: 0.1 }}
-                  contentStyle={{ background: "rgb(var(--card))", border: "1px solid rgb(var(--edge))", borderRadius: 12, color: "rgb(var(--fg))" }}
-                  labelStyle={{ color: "rgb(var(--fg))" }}
-                />
-                <Bar dataKey="xG" fill="#10b981" radius={[4, 4, 0, 0]} />
-                <Bar dataKey="xGA" fill="#f59e0b" radius={[4, 4, 0, 0]} />
-              </BarChart>
-            </ResponsiveContainer>
+        {data ? (
+          <div className="card overflow-x-auto p-4">
+            <div style={{ width: chartWidth, height: 340 }}>
+              <ResponsiveContainer width="100%" height="100%">
+                <BarChart data={chart} margin={{ top: 8, right: 8, bottom: 56, left: -10 }}>
+                  <CartesianGrid stroke="#94a3b8" strokeOpacity={0.18} vertical={false} />
+                  <XAxis dataKey="name" angle={-45} textAnchor="end" interval={0} height={70} tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                  <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
+                  <Tooltip
+                    cursor={{ fill: "#94a3b8", fillOpacity: 0.1 }}
+                    contentStyle={{ background: "rgb(var(--card))", border: "1px solid rgb(var(--edge))", borderRadius: 12, color: "rgb(var(--fg))" }}
+                    labelStyle={{ color: "rgb(var(--fg))" }}
+                  />
+                  <Bar dataKey="xG" fill="#10b981" radius={[4, 4, 0, 0]} />
+                  <Bar dataKey="xGA" fill="#f59e0b" radius={[4, 4, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
           </div>
-        </div>
+        ) : (
+          <div className="card p-5">
+            <div className="h-64 w-full animate-pulse rounded-xl bg-pitch-edge/70" />
+          </div>
+        )}
       </section>
 
       {/* Leaderboards */}
       <section className="grid gap-6 lg:grid-cols-3">
         <div>
           <SectionTitle title="Top scorers" hint="goals" />
-          <LeaderList players={data.top_scorers} metric="totalGoals_total" />
+          {data ? (
+            <LeaderList players={data.top_scorers} metric="totalGoals_total" />
+          ) : (
+            <div className="card space-y-2 p-4">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="h-8 animate-pulse rounded bg-pitch-edge/70" />
+              ))}
+            </div>
+          )}
         </div>
         <div>
           <SectionTitle title="Sharpest finishers" hint="xG / 90" />
-          <LeaderList players={data.top_xg_per90} metric="expectedGoals_p90" fmt={(n) => n?.toFixed(2)} />
+          {data ? (
+            <LeaderList players={data.top_xg_per90} metric="expectedGoals_p90" fmt={(n) => n?.toFixed(2)} />
+          ) : (
+            <div className="card space-y-2 p-4">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="h-8 animate-pulse rounded bg-pitch-edge/70" />
+              ))}
+            </div>
+          )}
         </div>
         <div>
           <SectionTitle title="Top creators" hint="xA / 90" />
-          <LeaderList players={data.top_creators_per90} metric="expectedAssists_p90" fmt={(n) => n?.toFixed(2)} />
+          {data ? (
+            <LeaderList players={data.top_creators_per90} metric="expectedAssists_p90" fmt={(n) => n?.toFixed(2)} />
+          ) : (
+            <div className="card space-y-2 p-4">
+              {Array.from({ length: 6 }).map((_, i) => (
+                <div key={i} className="h-8 animate-pulse rounded bg-pitch-edge/70" />
+              ))}
+            </div>
+          )}
         </div>
       </section>
     </div>

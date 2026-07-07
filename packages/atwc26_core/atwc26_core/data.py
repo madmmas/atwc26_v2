@@ -128,7 +128,7 @@ class DataStore:
         self.bracket: dict = {}
 
     # -- loading ----------------------------------------------------------- #
-    def load(self, force: bool = False) -> None:
+    def load(self, force: bool = False, *, rebuild_profiles: bool = False) -> None:
         with self._lock:
             if self._loaded and not force:
                 return
@@ -153,7 +153,11 @@ class DataStore:
             self.events = self._load_events()
             self.standings = self._load_standings()
             self.bracket = self._load_bracket()
-            if config.PLAYER_PROFILES.exists() and config.TEAM_PROFILES.exists():
+            if (
+                not rebuild_profiles
+                and config.PLAYER_PROFILES.exists()
+                and config.TEAM_PROFILES.exists()
+            ):
                 self.players = pd.read_parquet(config.PLAYER_PROFILES)
                 self.teams = pd.read_parquet(config.TEAM_PROFILES)
             else:
