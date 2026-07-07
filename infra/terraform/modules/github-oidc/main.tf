@@ -62,7 +62,17 @@ resource "aws_iam_role_policy_attachment" "admin" {
   policy_arn = "arn:aws:iam::aws:policy/PowerUserAccess"
 }
 
-data "aws_iam_policy_document" "iam_read_access" {
+locals {
+  project_role_arns = [
+    "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-analytics-role",
+    "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-predict-role",
+    "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-etl-dispatch-role",
+    "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-predict-exec",
+    "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-predict-task",
+  ]
+}
+
+data "aws_iam_policy_document" "iam_project_roles" {
   statement {
     sid    = "AllowReadOidcProvider"
     effect = "Allow"
@@ -75,7 +85,29 @@ data "aws_iam_policy_document" "iam_read_access" {
   }
 
   statement {
-    sid    = "AllowReadRoleMetadata"
+    sid    = "AllowManageProjectRoles"
+    effect = "Allow"
+    actions = [
+      "iam:AttachRolePolicy",
+      "iam:CreateRole",
+      "iam:DeleteRole",
+      "iam:DeleteRolePolicy",
+      "iam:DetachRolePolicy",
+      "iam:GetRole",
+      "iam:GetRolePolicy",
+      "iam:ListAttachedRolePolicies",
+      "iam:ListRolePolicies",
+      "iam:PassRole",
+      "iam:PutRolePolicy",
+      "iam:TagRole",
+      "iam:UntagRole",
+      "iam:UpdateRole",
+    ]
+    resources = local.project_role_arns
+  }
+
+  statement {
+    sid    = "AllowReadGithubActionsRole"
     effect = "Allow"
     actions = [
       "iam:GetRole",
@@ -85,14 +117,12 @@ data "aws_iam_policy_document" "iam_read_access" {
     ]
     resources = [
       "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-github-actions",
-      "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-analytics-role",
-      "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/*-predict-role",
     ]
   }
 }
 
-resource "aws_iam_role_policy" "iam_read_access" {
-  name   = "${var.role_name}-iam-read"
+resource "aws_iam_role_policy" "iam_project_roles" {
+  name   = "${var.role_name}-iam-project-roles"
   role   = aws_iam_role.github_actions.id
-  policy = data.aws_iam_policy_document.iam_read_access.json
+  policy = data.aws_iam_policy_document.iam_project_roles.json
 }
