@@ -61,6 +61,16 @@ resource "aws_apigatewayv2_route" "predict" {
   depends_on = [aws_apigatewayv2_integration.predict]
 }
 
+# GET /api/health is served by analytics ($default). Predict model availability
+# lives on the predict service at /api/predict/health (used by the static frontend).
+resource "aws_apigatewayv2_route" "predict_health" {
+  api_id    = aws_apigatewayv2_api.http.id
+  route_key = "GET /api/predict/health"
+  target    = "integrations/${aws_apigatewayv2_integration.predict.id}"
+
+  depends_on = [aws_apigatewayv2_integration.predict]
+}
+
 resource "aws_apigatewayv2_route" "analytics" {
   api_id    = aws_apigatewayv2_api.http.id
   route_key = "$default"

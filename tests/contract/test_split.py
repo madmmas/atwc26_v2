@@ -23,7 +23,23 @@ def test_analytics_health(analytics_client: TestClient) -> None:
 def test_predict_health(predict_client: TestClient) -> None:
     response = predict_client.get("/api/health")
     assert response.status_code == 200
-    assert response.json()["service"] == "predict"
+    body = response.json()
+    assert body["service"] == "predict"
+    assert "models_available" in body
+    assert "poisson" in body["models_available"]
+
+
+def test_predict_health_namespaced_route(predict_client: TestClient) -> None:
+    response = predict_client.get("/api/predict/health")
+    assert response.status_code == 200
+    body = response.json()
+    assert body["service"] == "predict"
+    assert "models_available" in body
+
+
+def test_predict_health_not_on_analytics(analytics_client: TestClient) -> None:
+    response = analytics_client.get("/api/predict/health")
+    assert response.status_code == 404
 
 
 def test_predict_not_on_analytics_service(analytics_client: TestClient) -> None:

@@ -152,7 +152,8 @@ export const api = {
     return res.json();
   },
   predictHealth: async (): Promise<{ models_available: string[] }> => {
-    const res = await fetch(`${PREDICT_BASE}/api/health`, { cache: "no-store" });
+    // Same-origin /api/health hits analytics on API Gateway; predict health is namespaced.
+    const res = await fetch(`${PREDICT_BASE}/api/predict/health`, { cache: "no-store" });
     if (!res.ok) throw new Error(`predict health -> ${res.status}`);
     const data = await res.json();
     return { models_available: data.models_available ?? [] };

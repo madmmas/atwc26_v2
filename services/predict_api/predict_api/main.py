@@ -62,8 +62,7 @@ def _get_store():
     return _store
 
 
-@app.get("/api/health")
-def health():
+def _health_payload() -> dict:
     store = _get_store()
     return {
         "status": "ok",
@@ -73,6 +72,17 @@ def health():
         "models_available": list(available_engines().keys()),
         **store.league,
     }
+
+
+@app.get("/api/health")
+def health():
+    return _health_payload()
+
+
+@app.get("/api/predict/health")
+def predict_health():
+    """Routed via API Gateway on CloudFront (GET /api/health hits analytics)."""
+    return _health_payload()
 
 
 @app.post("/api/predict")
