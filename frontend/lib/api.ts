@@ -76,23 +76,31 @@ export type KeyPlayer = {
 
 export type TeamBlock = {
   team_name: string;
-  attack_rating: number;
-  defense_rating: number;
-  gk_rating: number;
-  expected_goals: number;
+  attack_rating?: number;
+  defense_rating?: number;
+  gk_rating?: number;
+  expected_goals?: number;
   win_probability: number;
-  key_players: KeyPlayer[];
+  elo_rating?: number;
+  key_players?: KeyPlayer[];
 };
 
 export type Prediction = {
   team_a: TeamBlock;
   team_b: TeamBlock;
   draw_prob: number;
-  most_likely_score: { a: number; b: number; prob: number };
-  top_scorelines: { a: number; b: number; prob: number }[];
-  radar: { dimensions: string[]; [team: string]: any };
-  narrative: string;
-  model: { type: string; avg_team_goals_baseline: number; assumptions: string };
+  most_likely_score?: { a: number; b: number; prob: number };
+  top_scorelines?: { a: number; b: number; prob: number }[];
+  radar?: { dimensions: string[]; [team: string]: any };
+  narrative?: string;
+  model: {
+    type?: string;
+    name?: string;
+    version?: string;
+    description?: string;
+    avg_team_goals_baseline?: number;
+    assumptions?: string;
+  };
   comparison?: Record<
     string,
     {
