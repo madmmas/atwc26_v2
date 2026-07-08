@@ -83,7 +83,7 @@ resource "aws_cloudfront_cache_policy" "api_respect_origin" {
     query_strings_config {
       query_string_behavior = "whitelist"
       query_strings {
-        items = ["team", "role", "sort", "limit", "metric", "min_minutes"]
+        items = ["team", "role", "sort", "dir", "limit", "cursor", "fields", "metric", "min_minutes"]
       }
     }
 
