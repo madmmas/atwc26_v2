@@ -36,6 +36,10 @@ def ensure_predictor_data() -> list[str]:
         ("historical_form", config.HISTORICAL_FORM),
         ("squads_raw", config.SQUADS_RAW),
         ("master_parquet", config.MASTER_PARQUET),
+        ("elo_ratings", config.ELO_RATINGS),
+        ("dc_params", config.DC_PARAMS),
+        ("xgb_model", config.XGB_MODEL),
+        ("xgb_features", config.XGB_FEATURES),
     ]
 
     updated = []
