@@ -10,11 +10,45 @@ export type FixtureRow = {
   away_flag?: string | null;
   home_score: number | null;
   away_score: number | null;
+  home_shootout_score?: number | null;
+  away_shootout_score?: number | null;
   status: "FT" | "LIVE" | "upcoming";
   kickoff_utc?: string;
   group?: string;
   completed: boolean;
 };
+
+type ScoreFields = Pick<
+  FixtureRow,
+  "home_score" | "away_score" | "home_shootout_score" | "away_shootout_score"
+>;
+
+export function hasShootout(row: ScoreFields): boolean {
+  return row.home_shootout_score != null && row.away_shootout_score != null;
+}
+
+export function resolveWinner(row: ScoreFields): "home" | "away" | null {
+  const hs = row.home_score ?? 0;
+  const as = row.away_score ?? 0;
+  if (hs > as) return "home";
+  if (as > hs) return "away";
+  if (hasShootout(row)) {
+    if (row.home_shootout_score! > row.away_shootout_score!) return "home";
+    if (row.away_shootout_score! > row.home_shootout_score!) return "away";
+  }
+  return null;
+}
+
+export function formatMatchScore(
+  row: ScoreFields & Pick<FixtureRow, "completed">
+): string {
+  if (!row.completed) return "vs";
+  const base = `${row.home_score ?? 0}–${row.away_score ?? 0}`;
+  if (hasShootout(row)) {
+    return `${base} (${row.home_shootout_score}–${row.away_shootout_score})`;
+  }
+  return base;
+}
 
 function slotTeam(slot: BracketSlot): string | null {
   if (slot.type === "team") return slot.team_name;
@@ -55,6 +89,8 @@ export function playedToFixture(m: MatchListItem, group?: string): FixtureRow {
     away_flag: m.away_flag,
     home_score: m.home_score,
     away_score: m.away_score,
+    home_shootout_score: m.home_shootout_score,
+    away_shootout_score: m.away_shootout_score,
     status: "FT",
     group,
     completed: true,

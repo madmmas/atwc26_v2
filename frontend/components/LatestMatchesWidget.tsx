@@ -9,14 +9,23 @@ import {
   FixtureRow,
   buildFixtures,
   formatKickoff,
+  formatMatchScore,
+  hasShootout,
   isWithin24h,
+  resolveWinner,
 } from "@/lib/fixtures";
 
 function StatusBadge({ row }: { row: FixtureRow }) {
   if (row.status === "FT") {
+    const pens = hasShootout(row);
     return (
-      <span className="rounded px-1.5 py-0.5 text-[10px] font-bold bg-[#1a3a2a] text-[#4caf85]">
-        FT
+      <span
+        className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${
+          pens ? "bg-[#2a2a1a] text-[#d4a843]" : "bg-[#1a3a2a] text-[#4caf85]"
+        }`}
+        title={pens ? "Decided on penalties" : undefined}
+      >
+        {pens ? "PENS" : "FT"}
       </span>
     );
   }
@@ -37,6 +46,7 @@ function StatusBadge({ row }: { row: FixtureRow }) {
 
 function MatchRow({ row }: { row: FixtureRow }) {
   const href = row.completed ? `/matches?game=${row.game_id}` : `/matches`;
+  const winner = row.completed ? resolveWinner(row) : null;
   return (
     <Link
       href={href}
@@ -44,13 +54,23 @@ function MatchRow({ row }: { row: FixtureRow }) {
     >
       <div className="flex min-w-0 flex-1 items-center gap-2">
         <Flag src={row.home_flag} name={row.home_team} size={18} />
-        <span className="truncate text-sm font-semibold text-fg">{row.home_team}</span>
+        <span
+          className={`truncate text-sm font-semibold ${
+            winner === "home" ? "text-emerald-400" : winner === "away" ? "text-faint" : "text-fg"
+          }`}
+        >
+          {row.home_team}
+        </span>
       </div>
-      <div className="shrink-0 text-sm font-black text-fg">
-        {row.completed ? `${row.home_score}–${row.away_score}` : "vs"}
-      </div>
+      <div className="shrink-0 text-sm font-black text-fg">{formatMatchScore(row)}</div>
       <div className="flex min-w-0 flex-1 items-center justify-end gap-2">
-        <span className="truncate text-sm font-semibold text-fg">{row.away_team}</span>
+        <span
+          className={`truncate text-sm font-semibold ${
+            winner === "away" ? "text-emerald-400" : winner === "home" ? "text-faint" : "text-fg"
+          }`}
+        >
+          {row.away_team}
+        </span>
         <Flag src={row.away_flag} name={row.away_team} size={18} />
       </div>
       <StatusBadge row={row} />

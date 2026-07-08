@@ -11,6 +11,9 @@ import { MatchTimelineChart } from "@/components/MatchTimeline";
 import {
   FixtureRow,
   buildFixtures,
+  formatMatchScore,
+  hasShootout,
+  resolveWinner,
 } from "@/lib/fixtures";
 import {
   GROUP_LETTERS,
@@ -65,6 +68,8 @@ function MatchCard({
   active: boolean;
   onClick: () => void;
 }) {
+  const winner = row.completed ? resolveWinner(row) : null;
+  const pens = row.completed && hasShootout(row);
   return (
     <div
       className={`card flex min-w-[240px] items-center gap-2 px-3 py-2.5 transition-colors ${
@@ -73,11 +78,26 @@ function MatchCard({
     >
       <button onClick={onClick} data-testid="match-card" className="flex min-w-0 flex-1 items-center gap-2 text-left">
         <Flag src={row.home_flag} name={row.home_team} size={18} />
-        <span className="flex-1 truncate text-xs font-semibold text-fg">{row.home_team}</span>
-        <span className="rounded bg-pitch-edge px-1.5 py-0.5 text-xs font-black text-fg">
-          {row.completed ? `${row.home_score}-${row.away_score}` : "vs"}
+        <span
+          className={`flex-1 truncate text-xs font-semibold ${
+            winner === "home" ? "text-emerald-400" : winner === "away" ? "text-faint" : "text-fg"
+          }`}
+        >
+          {row.home_team}
         </span>
-        <span className="flex-1 truncate text-right text-xs font-semibold text-fg">{row.away_team}</span>
+        <span
+          className="rounded bg-pitch-edge px-1.5 py-0.5 text-xs font-black text-fg"
+          title={pens ? "Decided on penalties" : undefined}
+        >
+          {formatMatchScore(row)}
+        </span>
+        <span
+          className={`flex-1 truncate text-right text-xs font-semibold ${
+            winner === "away" ? "text-emerald-400" : winner === "home" ? "text-faint" : "text-fg"
+          }`}
+        >
+          {row.away_team}
+        </span>
         <Flag src={row.away_flag} name={row.away_team} size={18} />
       </button>
       {row.completed ? (
