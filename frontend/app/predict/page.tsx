@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useState } from "react";
 import { api, Overview, Player, Prediction } from "@/lib/api";
 import { RoleChip, Skeleton } from "@/components/ui";
 import { PredictionResult } from "@/components/PredictionResult";
@@ -16,6 +16,7 @@ type Slot = { role: Role; player_id: number | null };
 
 function slotsFor(formation: string): Slot[] {
   const f = FORMATIONS[formation];
+  if (!f) return [];
   const out: Slot[] = [];
   (["GK", "DEF", "MID", "FWD"] as Role[]).forEach((r) =>
     Array.from({ length: f[r] }).forEach(() => out.push({ role: r, player_id: null }))
@@ -23,7 +24,18 @@ function slotsFor(formation: string): Slot[] {
   return out;
 }
 
-// Greedy auto-fill: best players (by minutes) per role, falling back across roles.
+function remap(prev: Slot[], f: string): Slot[] {
+  const fresh = slotsFor(f);
+  (["GK", "DEF", "MID", "FWD"] as Role[]).forEach((r) => {
+    const old = prev.filter((s) => s.role === r && s.player_id);
+    let k = 0;
+    fresh.forEach((s) => {
+      if (s.role === r && k < old.length) s.player_id = old[k++].player_id;
+    });
+  });
+  return fresh;
+}
+
 function autoFill(players: Player[], slots: Slot[]): Slot[] {
   const used = new Set<number>();
   const byRole = (r: Role) =>
@@ -33,10 +45,15 @@ function autoFill(players: Player[], slots: Slot[]): Slot[] {
   const anyLeft = () =>
     players.filter((p) => !used.has(p.player_id)).sort((a, b) => b.minutes - a.minutes);
   return slots.map((s) => {
-    let pick = byRole(s.role)[0] || anyLeft()[0];
+    const pick = byRole(s.role)[0] || anyLeft()[0];
     if (pick) used.add(pick.player_id);
     return { ...s, player_id: pick ? pick.player_id : null };
   });
+}
+
+function FadeIn({ show, children }: { show: boolean; children: React.ReactNode }) {
+  if (!show) return null;
+  return <div className="animate-fade-in">{children}</div>;
 }
 
 function TeamColumn({
@@ -44,6 +61,8 @@ function TeamColumn({
   teams,
   team,
   setTeam,
+  formation,
+  setFormation,
   players,
   slots,
   setSlots,
@@ -53,95 +72,139 @@ function TeamColumn({
   teams: string[];
   team: string;
   setTeam: (t: string) => void;
+  formation: string;
+  setFormation: (f: string) => void;
   players: Player[];
   slots: Slot[];
   setSlots: (s: Slot[]) => void;
   loading: boolean;
 }) {
-  const accent = side === "a" ? "text-pitch-accent" : "text-pitch-accent2";
-  const nameById = useMemo(
-    () => Object.fromEntries(players.map((p) => [p.player_id, p])),
-    [players]
-  );
   const chosen = new Set(slots.map((s) => s.player_id).filter(Boolean) as number[]);
+  const step = !team ? 1 : !formation ? 2 : 3;
+
+  function handleTeamChange(value: string) {
+    setTeam(value);
+    if (!value) {
+      setFormation("");
+      setSlots([]);
+    }
+  }
+
+  function handleFormationChange(value: string) {
+    setFormation(value);
+    if (value) {
+      setSlots(remap(slots.length ? slots : slotsFor(value), value));
+    } else {
+      setSlots([]);
+    }
+  }
 
   return (
     <div className="card p-4" data-testid={`team-col-${side}`}>
-      <div className="flex items-center justify-between">
-        <select
-          value={team}
-          onChange={(e) => setTeam(e.target.value)}
-          className="select font-bold"
-          data-testid={`team-select-${side}`}
-        >
-          <option value="">Select team…</option>
-          {teams.map((t) => (
-            <option key={t} value={t}>{t}</option>
-          ))}
-        </select>
-        <button
-          className="btn-ghost"
-          data-testid={`autopick-${side}`}
-          disabled={!players.length}
-          onClick={() => setSlots(autoFill(players, slots))}
-        >
-          Auto-pick XI
-        </button>
-      </div>
+      <select
+        value={team}
+        onChange={(e) => handleTeamChange(e.target.value)}
+        className="select w-full font-bold"
+        data-testid={`team-select-${side}`}
+      >
+        <option value="">Select team…</option>
+        {teams.map((t) => (
+          <option key={t} value={t}>
+            {t}
+          </option>
+        ))}
+      </select>
 
-      {loading ? (
-        <div className="mt-4 space-y-1.5">
-          {slots.map((_, idx) => (
-            <Skeleton key={idx} className="h-9" />
-          ))}
+      <FadeIn show={step >= 2}>
+        <div className="mt-3 flex flex-wrap items-center gap-2">
+          <span className="text-xs text-faint">Formation</span>
+          <select
+            value={formation}
+            onChange={(e) => handleFormationChange(e.target.value)}
+            className="select flex-1"
+            data-testid={`formation-select-${side}`}
+          >
+            <option value="">Choose formation…</option>
+            {Object.keys(FORMATIONS).map((f) => (
+              <option key={f} value={f}>
+                {f}
+              </option>
+            ))}
+          </select>
         </div>
-      ) : (
-        <div className="mt-4 space-y-1.5">
-          {slots.map((s, idx) => {
-            const opts = players
-              .filter((p) => p.role === s.role || s.player_id === p.player_id)
-              .sort((a, b) => b.minutes - a.minutes);
-            return (
-              <div key={idx} className="flex items-center gap-2">
-                <RoleChip role={s.role} />
-                <select
-                  className="select flex-1"
-                  value={s.player_id ?? ""}
-                  onChange={(e) => {
-                    const v = e.target.value ? Number(e.target.value) : null;
-                    setSlots(slots.map((x, i) => (i === idx ? { ...x, player_id: v } : x)));
-                  }}
-                >
-                  <option value="">— empty —</option>
-                  {opts.map((p) => (
-                    <option key={p.player_id} value={p.player_id} disabled={chosen.has(p.player_id) && p.player_id !== s.player_id}>
-                      {p.player_name} · {p.minutes > 0 ? `${p.minutes}m` : "DNP"}
-                    </option>
-                  ))}
-                </select>
-              </div>
-            );
-          })}
+      </FadeIn>
+
+      <FadeIn show={step >= 3}>
+        <div className="mt-3 flex justify-end">
+          <button
+            className="btn-ghost"
+            data-testid={`autopick-${side}`}
+            disabled={!players.length || loading}
+            onClick={() => setSlots(autoFill(players, slots))}
+          >
+            Auto-pick XI
+          </button>
         </div>
-      )}
-      <div className="mt-3 text-right text-xs text-faint">
-        {chosen.size}/{slots.length} selected
-      </div>
+
+        {loading ? (
+          <div className="mt-4 space-y-1.5">
+            {Array.from({ length: 11 }).map((_, idx) => (
+              <Skeleton key={idx} className="h-9" />
+            ))}
+          </div>
+        ) : (
+          <div className="mt-4 space-y-1.5">
+            {slots.map((s, idx) => {
+              const opts = players
+                .filter((p) => p.role === s.role || s.player_id === p.player_id)
+                .sort((a, b) => b.minutes - a.minutes);
+              return (
+                <div key={idx} className="flex items-center gap-2">
+                  <RoleChip role={s.role} />
+                  <select
+                    className="select flex-1"
+                    value={s.player_id ?? ""}
+                    onChange={(e) => {
+                      const v = e.target.value ? Number(e.target.value) : null;
+                      setSlots(slots.map((x, i) => (i === idx ? { ...x, player_id: v } : x)));
+                    }}
+                  >
+                    <option value="">— select —</option>
+                    {opts.map((p) => (
+                      <option
+                        key={p.player_id}
+                        value={p.player_id}
+                        disabled={chosen.has(p.player_id) && p.player_id !== s.player_id}
+                      >
+                        {p.player_name} · {p.minutes > 0 ? `${p.minutes}m` : "DNP"}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+              );
+            })}
+          </div>
+        )}
+        <div className="mt-3 text-right text-xs text-faint">
+          {chosen.size}/{slots.length} selected
+        </div>
+      </FadeIn>
     </div>
   );
 }
 
 export default function Predict() {
   const [teams, setTeams] = useState<string[]>([]);
-  const [formation, setFormation] = useState("4-3-3");
+  const [formationA, setFormationA] = useState("");
+  const [formationB, setFormationB] = useState("");
   const [teamA, setTeamA] = useState("");
   const [teamB, setTeamB] = useState("");
   const [playersA, setPlayersA] = useState<Player[]>([]);
   const [playersB, setPlayersB] = useState<Player[]>([]);
   const [loadA, setLoadA] = useState(false);
   const [loadB, setLoadB] = useState(false);
-  const [slotsA, setSlotsA] = useState<Slot[]>(slotsFor("4-3-3"));
-  const [slotsB, setSlotsB] = useState<Slot[]>(slotsFor("4-3-3"));
+  const [slotsA, setSlotsA] = useState<Slot[]>([]);
+  const [slotsB, setSlotsB] = useState<Slot[]>([]);
   const [homeSide, setHomeSide] = useState<"a" | "b" | "none">("none");
   const [result, setResult] = useState<Prediction | null>(null);
   const [busy, setBusy] = useState(false);
@@ -153,47 +216,46 @@ export default function Predict() {
     );
   }, []);
 
-  // re-shape slots when formation changes (keeps any still-valid picks by role order)
   useEffect(() => {
-    setSlotsA((prev) => remap(prev, formation));
-    setSlotsB((prev) => remap(prev, formation));
-  }, [formation]);
-
-  function remap(prev: Slot[], f: string): Slot[] {
-    const fresh = slotsFor(f);
-    (["GK", "DEF", "MID", "FWD"] as Role[]).forEach((r) => {
-      const old = prev.filter((s) => s.role === r && s.player_id);
-      let k = 0;
-      fresh.forEach((s) => {
-        if (s.role === r && k < old.length) s.player_id = old[k++].player_id;
-      });
-    });
-    return fresh;
-  }
-
-  useEffect(() => {
-    if (!teamA) return;
+    if (!teamA) {
+      setPlayersA([]);
+      return;
+    }
     setLoadA(true);
     api.teamPlayers(teamA).then((r) => {
       setPlayersA(r.players);
-      setSlotsA((s) => autoFill(r.players, slotsFor(formation)));
       setLoadA(false);
     });
-  }, [teamA]); // eslint-disable-line
+  }, [teamA]);
 
   useEffect(() => {
-    if (!teamB) return;
+    if (!teamB) {
+      setPlayersB([]);
+      return;
+    }
     setLoadB(true);
     api.teamPlayers(teamB).then((r) => {
       setPlayersB(r.players);
-      setSlotsB((s) => autoFill(r.players, slotsFor(formation)));
       setLoadB(false);
     });
-  }, [teamB]); // eslint-disable-line
+  }, [teamB]);
+
+  useEffect(() => {
+    if (formationA) setSlotsA((prev) => remap(prev.length ? prev : slotsFor(formationA), formationA));
+  }, [formationA]);
+
+  useEffect(() => {
+    if (formationB) setSlotsB((prev) => remap(prev.length ? prev : slotsFor(formationB), formationB));
+  }, [formationB]);
 
   const ready =
-    teamA && teamB && teamA !== teamB &&
-    slotsA.some((s) => s.player_id) && slotsB.some((s) => s.player_id);
+    teamA &&
+    teamB &&
+    teamA !== teamB &&
+    formationA &&
+    formationB &&
+    slotsA.every((s) => s.player_id) &&
+    slotsB.every((s) => s.player_id);
 
   async function runPredict() {
     setBusy(true);
@@ -223,27 +285,39 @@ export default function Predict() {
     <div className="space-y-6">
       <WinnerProbabilityChart />
 
-      <div className="flex flex-wrap items-center justify-between gap-3">
-        <div>
-          <h1 className="text-2xl font-black text-fg">Match Predictor</h1>
-          <p className="text-sm text-muted">
-            Pick two teams, build an XI for each, and the engine predicts the result from
-            tournament form.
-          </p>
-        </div>
-        <div className="flex items-center gap-2 text-sm">
-          <span className="text-faint">Formation</span>
-          <select value={formation} onChange={(e) => setFormation(e.target.value)} className="select">
-            {Object.keys(FORMATIONS).map((f) => (
-              <option key={f} value={f}>{f}</option>
-            ))}
-          </select>
-        </div>
+      <div>
+        <h1 className="text-2xl font-black text-fg">Match Predictor</h1>
+        <p className="text-sm text-muted">
+          Pick two teams, choose a formation for each, build your XI, and the engine predicts the
+          result from tournament form.
+        </p>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <TeamColumn side="a" teams={teams} team={teamA} setTeam={setTeamA} players={playersA} slots={slotsA} setSlots={setSlotsA} loading={loadA} />
-        <TeamColumn side="b" teams={teams} team={teamB} setTeam={setTeamB} players={playersB} slots={slotsB} setSlots={setSlotsB} loading={loadB} />
+        <TeamColumn
+          side="a"
+          teams={teams}
+          team={teamA}
+          setTeam={setTeamA}
+          formation={formationA}
+          setFormation={setFormationA}
+          players={playersA}
+          slots={slotsA}
+          setSlots={setSlotsA}
+          loading={loadA}
+        />
+        <TeamColumn
+          side="b"
+          teams={teams}
+          team={teamB}
+          setTeam={setTeamB}
+          formation={formationB}
+          setFormation={setFormationB}
+          players={playersB}
+          slots={slotsB}
+          setSlots={setSlotsB}
+          loading={loadB}
+        />
       </div>
 
       <div className="card flex flex-wrap items-center justify-between gap-3 p-4">
