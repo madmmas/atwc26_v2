@@ -31,7 +31,12 @@ export function usePageTab(
       const q = params.toString();
       router.replace(q ? `${pathname}?${q}` : pathname, { scroll: false });
       sessionStorage.setItem(storageKey, tabId);
-      document.getElementById("page-content-top")?.scrollIntoView({ behavior: "smooth" });
+      const reducedMotion =
+        typeof window !== "undefined" &&
+        window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      document.getElementById("predict-top")?.scrollIntoView({
+        behavior: reducedMotion ? "auto" : "smooth",
+      });
     },
     [router, pathname, searchParams, paramName, storageKey, validTabs]
   );

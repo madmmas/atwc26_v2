@@ -3,7 +3,7 @@ import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, Overview, Player, Prediction } from "@/lib/api";
 import { buildPredictUrl, parsePredictUrl } from "@/lib/predictUrl";
-import { PageTabs } from "@/components/PageTabs";
+import { PredictTabs } from "@/components/PredictTabs";
 import { PredictorHintBar } from "@/components/PredictorHintBar";
 import { RoleChip, Skeleton } from "@/components/ui";
 import { PredictionResult } from "@/components/PredictionResult";
@@ -418,14 +418,14 @@ function PredictContent() {
 
   return (
     <div className="space-y-6">
-      <div id="page-content-top">
+      <div id="predict-top">
         <h1 className="text-2xl font-black text-fg">Predictor</h1>
         <p className="text-sm text-muted">
           Explore tournament win probabilities or build your own match prediction.
         </p>
       </div>
 
-      <PageTabs tabs={[...PREDICT_TABS]} activeTab={activeTab} onChange={setTab} />
+      <PredictTabs tabs={[...PREDICT_TABS]} activeTab={activeTab} onChange={setTab} />
 
       {activeTab === "probability" && (
         <div role="tabpanel" id="tabpanel-probability" aria-labelledby="tab-probability">

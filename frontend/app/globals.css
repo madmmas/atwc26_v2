@@ -85,5 +85,11 @@ body {
   animation: fade-in 200ms ease forwards;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { @apply bg-pitch-edge rounded-full; }

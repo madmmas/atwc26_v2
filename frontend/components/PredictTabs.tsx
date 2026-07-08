@@ -1,31 +1,27 @@
 "use client";
 
 import { useCallback, useRef } from "react";
-import styles from "./PageTabs.module.css";
+import styles from "./SectionNavBar.module.css";
 
-export interface PageTab {
+export interface PredictTab {
   id: string;
   label: string;
   labelShort?: string;
   icon?: string;
 }
 
-interface PageTabsProps {
-  tabs: PageTab[];
+interface PredictTabsProps {
+  tabs: PredictTab[];
   activeTab: string;
   onChange: (tabId: string) => void;
 }
 
-export function PageTabs({ tabs, activeTab, onChange }: PageTabsProps) {
+export function PredictTabs({ tabs, activeTab, onChange }: PredictTabsProps) {
   const tabRefs = useRef<(HTMLButtonElement | null)[]>([]);
 
-  const focusTab = useCallback(
-    (index: number) => {
-      const el = tabRefs.current[index];
-      el?.focus();
-    },
-    []
-  );
+  const focusTab = useCallback((index: number) => {
+    tabRefs.current[index]?.focus();
+  }, []);
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>, index: number) => {
     if (e.key === "ArrowRight") {
@@ -50,7 +46,7 @@ export function PageTabs({ tabs, activeTab, onChange }: PageTabsProps) {
   };
 
   return (
-    <div className={styles["page-tab-bar"]} role="tablist">
+    <div className={`${styles.bar} ${styles.barTabs}`} role="tablist">
       {tabs.map((tab, index) => {
         const isActive = activeTab === tab.id;
         const shortLabel = tab.labelShort ?? tab.label;
@@ -66,13 +62,13 @@ export function PageTabs({ tabs, activeTab, onChange }: PageTabsProps) {
             aria-selected={isActive}
             aria-controls={`tabpanel-${tab.id}`}
             tabIndex={isActive ? 0 : -1}
-            className={`${styles["page-tab"]} ${isActive ? styles.active : ""}`}
+            className={`${styles.btn} ${isActive ? styles.btnActive : ""}`}
             onClick={() => onChange(tab.id)}
             onKeyDown={(e) => handleKeyDown(e, index)}
           >
-            {tab.icon && <span className={styles["tab-icon"]}>{tab.icon}</span>}
-            <span className={styles["tab-label-full"]}>{tab.label}</span>
-            <span className={styles["tab-label-short"]}>{shortLabel}</span>
+            {tab.icon && <span className={styles.icon}>{tab.icon}</span>}
+            <span className={styles.labelFull}>{tab.label}</span>
+            <span className={styles.labelShort}>{shortLabel}</span>
           </button>
         );
       })}
