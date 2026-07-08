@@ -139,8 +139,23 @@ export const api = {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
     });
-    if (!res.ok) throw new Error(`predict -> ${res.status}`);
+    if (!res.ok) {
+      let detail = "";
+      try {
+        const err = await res.json();
+        detail = err.detail ? `: ${typeof err.detail === "string" ? err.detail : JSON.stringify(err.detail)}` : "";
+      } catch {
+        /* ignore */
+      }
+      throw new Error(`predict -> ${res.status}${detail}`);
+    }
     return res.json();
+  },
+  predictHealth: async (): Promise<{ models_available: string[] }> => {
+    const res = await fetch(`${PREDICT_BASE}/api/health`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`predict health -> ${res.status}`);
+    const data = await res.json();
+    return { models_available: data.models_available ?? [] };
   },
   matches: () => get<{ matches: MatchListItem[] }>("/api/matches"),
   matchDetail: (id: string) => get<MatchDetail>(`/api/matches/${id}`),

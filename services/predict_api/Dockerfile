@@ -16,9 +16,9 @@ COPY services/shared /services/shared
 ENV PYTHONPATH=/app:/services \
     ATWC26_DATA_DIR=/data
 
-# curl: ECS container health check; /data: writable cache for S3-synced artifacts
+# curl: ECS health check; libgomp1: XGBoost runtime; /data: S3-synced artifacts
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends curl \
+    && apt-get install -y --no-install-recommends curl libgomp1 \
     && rm -rf /var/lib/apt/lists/* \
     && useradd -m appuser \
     && mkdir -p /data \

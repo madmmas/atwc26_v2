@@ -223,6 +223,7 @@ function PredictContent() {
   const [slotsB, setSlotsB] = useState<Slot[]>([]);
   const [homeSide, setHomeSide] = useState<"a" | "b" | "none">("none");
   const [predictModel, setPredictModel] = useState<PredictModel>("all");
+  const [modelsAvailable, setModelsAvailable] = useState<string[]>(["poisson"]);
   const [mobileTab, setMobileTab] = useState<"a" | "b">("a");
   const [result, setResult] = useState<Prediction | null>(null);
   const [busy, setBusy] = useState(false);
@@ -232,7 +233,19 @@ function PredictContent() {
     api.overview().then((o: Overview) =>
       setTeams(o.teams.map((t) => t.team_name).sort((a, b) => a.localeCompare(b)))
     );
+    api.predictHealth()
+      .then((h) => {
+        const available = h.models_available.length ? h.models_available : ["poisson"];
+        setModelsAvailable(available);
+      })
+      .catch(() => setModelsAvailable(["poisson"]));
   }, []);
+
+  useEffect(() => {
+    if (predictModel !== "all" && !modelsAvailable.includes(predictModel)) {
+      setPredictModel(modelsAvailable.length > 1 ? "all" : "poisson");
+    }
+  }, [predictModel, modelsAvailable]);
 
   useEffect(() => {
     if (urlLoaded.current) return;
@@ -459,11 +472,15 @@ function PredictContent() {
               className="select min-w-[11rem]"
               data-testid="predict-model-select"
             >
-              {PREDICT_MODELS.map((m) => (
-                <option key={m.value} value={m.value}>
-                  {m.label}
-                </option>
-              ))}
+              {PREDICT_MODELS.map((m) => {
+                const unavailable = m.value !== "all" && !modelsAvailable.includes(m.value);
+                return (
+                  <option key={m.value} value={m.value} disabled={unavailable}>
+                    {m.label}
+                    {unavailable ? " (unavailable)" : ""}
+                  </option>
+                );
+              })}
             </select>
           </div>
         </div>
