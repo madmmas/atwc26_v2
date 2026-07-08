@@ -64,13 +64,6 @@ body {
     @apply rounded-lg border border-pitch-edge bg-pitch-card px-3 py-1.5 text-sm
            text-fg outline-none focus:border-pitch-accent;
   }
-  .skel-block {
-    @apply rounded bg-pitch-edge/70;
-    animation: skel-pulse 1.2s ease-in-out infinite;
-  }
-  .skeleton-row .skel-block {
-    @apply skel-block;
-  }
 }
 
 @keyframes skel-pulse {
