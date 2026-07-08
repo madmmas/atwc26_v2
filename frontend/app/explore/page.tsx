@@ -1,8 +1,9 @@
 "use client";
 
-import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { Suspense, useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, Overview, Player } from "@/lib/api";
+import { fetchAllPlayers, matchPlayerName } from "@/lib/playerSearch";
 import { Flag } from "@/components/Flag";
 import { StatLabel } from "@/components/StatTooltip";
 import { SkeletonRow } from "@/components/SkeletonRow";
@@ -116,6 +117,9 @@ function ExploreContent() {
   const [role, setRole] = useState("ALL");
   const [sort, setSort] = useState("minutes");
   const [dir, setDir] = useState<SortDir>("desc");
+  const [search, setSearch] = useState("");
+  const [searchDebounced, setSearchDebounced] = useState("");
+  const [searchPool, setSearchPool] = useState<Player[] | null>(null);
   const [loading, setLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
@@ -184,6 +188,31 @@ function ExploreContent() {
     return () => obs.disconnect();
   }, [fetchMore]);
 
+  useEffect(() => {
+    const t = setTimeout(() => setSearchDebounced(search.trim()), 150);
+    return () => clearTimeout(t);
+  }, [search]);
+
+  useEffect(() => {
+    if (!searchDebounced) {
+      setSearchPool(null);
+      return;
+    }
+    let cancelled = false;
+    fetchAllPlayers().then((all) => {
+      if (!cancelled) setSearchPool(all);
+    });
+    return () => {
+      cancelled = true;
+    };
+  }, [searchDebounced]);
+
+  const displayed = useMemo(() => {
+    if (!searchDebounced) return players;
+    const pool = searchPool ?? players;
+    return pool.filter((p) => matchPlayerName(p.player_name, searchDebounced));
+  }, [players, searchPool, searchDebounced]);
+
   function handleSort(key: string) {
     if (key === sort) {
       setDir((d) => (d === "desc" ? "asc" : "desc"));
@@ -195,10 +224,15 @@ function ExploreContent() {
 
   return (
     <div className="space-y-5">
-      <SectionTitle
-        title="Player explorer"
-        hint={loading ? "Loading…" : `${totalCount} players`}
-      />
+      <div>
+        <SectionTitle
+          title="Player explorer"
+          hint={loading ? "Loading…" : `${totalCount} players`}
+        />
+        <p className="text-sm text-muted">
+          Browse and rank all {totalCount || "1,251"} players by any stat
+        </p>
+      </div>
 
       <div className="card flex flex-wrap items-center gap-3 p-4">
         <select value={team} onChange={(e) => setTeam(e.target.value)} className="select">
@@ -224,7 +258,27 @@ function ExploreContent() {
           ))}
         </div>
 
-        <div className="ml-auto flex items-center gap-2 text-sm">
+        <div className="relative min-w-[180px] flex-1">
+          <input
+            type="search"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            placeholder="Search player name…"
+            className="h-[34px] w-full rounded-lg border border-[#2a2a2a] bg-[#1e1e1e] px-3 pr-8 text-sm text-[#ddd] outline-none focus:border-pitch-accent"
+          />
+          {search && (
+            <button
+              type="button"
+              onClick={() => setSearch("")}
+              className="absolute right-2 top-1/2 -translate-y-1/2 text-faint hover:text-fg"
+              aria-label="Clear search"
+            >
+              ×
+            </button>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2 text-sm">
           <span className="text-faint">Sort by</span>
           <select
             value={sort}
@@ -266,6 +320,10 @@ function ExploreContent() {
             </tbody>
           </table>
         </div>
+      ) : displayed.length === 0 ? (
+        <div className="card p-8 text-center text-sm text-muted">
+          No players match &apos;{searchDebounced}&apos;. Try a different name or clear the filters.
+        </div>
       ) : (
         <>
           <div className="card overflow-x-auto p-0">
@@ -291,7 +349,7 @@ function ExploreContent() {
                 </tr>
               </thead>
               <tbody>
-                {players.map((p, i) => (
+                {displayed.map((p, i) => (
                   <tr
                     key={p.player_id}
                     className="border-b border-pitch-edge/40 transition-colors hover:bg-pitch-edge/20"
@@ -326,14 +384,18 @@ function ExploreContent() {
             </table>
           </div>
 
-          <div ref={sentinelRef} className="h-4" />
-          {loadingMore && (
-            <div className="flex justify-center py-4">
-              <div className="h-5 w-5 animate-spin rounded-full border-2 border-pitch-accent border-t-transparent" />
-            </div>
-          )}
-          {!nextCursor && players.length > 0 && (
-            <p className="py-4 text-center text-xs text-faint">All {totalCount} players loaded</p>
+          {!searchDebounced && (
+            <>
+              <div ref={sentinelRef} className="h-4" />
+              {loadingMore && (
+                <div className="flex justify-center py-4">
+                  <div className="h-5 w-5 animate-spin rounded-full border-2 border-pitch-accent border-t-transparent" />
+                </div>
+              )}
+              {!nextCursor && players.length > 0 && (
+                <p className="py-4 text-center text-xs text-faint">All {totalCount} players loaded</p>
+              )}
+            </>
           )}
         </>
       )}
