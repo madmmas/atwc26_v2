@@ -9,6 +9,8 @@ from pathlib import Path
 from atwc26_core import config
 from atwc26_core.artifacts import ARTIFACTS, s3_key_for
 
+from ..changed.detect import fingerprint
+from ..changed.store import read_scrape_state, save_fingerprint, save_scrape_state
 from ..transform.run import MANIFEST_FILE, build_manifest, write_manifest
 from .api_cache import (
     publish_api_cache,
@@ -152,6 +154,14 @@ def _publish_api_caches(manifest: dict) -> None:
         print(f"api cache: {total_written} written, {total_skipped} unchanged")
 
 
+def _persist_etl_state() -> None:
+    """Record scrape inputs + processed_games for the next scheduled CI run."""
+    save_fingerprint(fingerprint())
+    state = read_scrape_state()
+    if state:
+        save_scrape_state(state)
+
+
 def run_publish(
     *,
     refresh_manifest: bool = True,
@@ -166,6 +176,7 @@ def run_publish(
 
     if config.S3_BUCKET:
         result = publish_aws(manifest)
+        _persist_etl_state()
         if result.get("uploaded"):
             if refresh_lambdas:
                 lambdas = refresh_lambda_functions(result["publish_id"])

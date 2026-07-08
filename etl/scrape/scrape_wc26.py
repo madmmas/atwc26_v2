@@ -485,7 +485,8 @@ def process_once(session, args, glossary) -> int:
         save_state(state)
         scraped += 1
 
-    rebuild_master(glossary)
+    if scraped:
+        rebuild_master(glossary)
     return scraped
 
 

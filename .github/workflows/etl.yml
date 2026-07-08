@@ -39,9 +39,31 @@ jobs:
           pip install -e packages/atwc26_core
           pip install pytest boto3
 
-      - name: Snapshot data fingerprint
+      - name: Configure AWS credentials
         if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
-        run: python -m etl.changed snapshot /tmp/etl-fp.json
+        env:
+          AWS_ACCESS_KEY_ID: ""
+          AWS_SECRET_ACCESS_KEY: ""
+          AWS_SESSION_TOKEN: ""
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ATWC26_AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+          audience: sts.amazonaws.com
+
+      - name: Restore scrape state
+        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
+        env:
+          ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: python -m etl.changed restore-state
+
+      - name: Load prior fingerprint
+        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
+        env:
+          ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: python -m etl.changed load-remote /tmp/etl-fp.json
 
       - name: Scrape ESPN data
         if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
@@ -61,6 +83,15 @@ jobs:
             echo "No new scraped data — skipping transform and publish."
           fi
 
+      - name: Persist scrape state
+        if: |
+          steps.detect.outputs.changed == 'false' &&
+          (github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true)
+        env:
+          ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: python -m etl.changed save-scrape-state
+
       - name: Transform + simulate + QA
         if: steps.detect.outputs.changed == 'true'
         env:
@@ -74,9 +105,9 @@ jobs:
       - name: Configure AWS credentials
         if: |
           steps.detect.outputs.changed == 'true' &&
-          (github.event_name != 'workflow_dispatch' || inputs.skip_publish != true)
+          (github.event_name != 'workflow_dispatch' || inputs.skip_publish != true) &&
+          (github.event_name == 'workflow_dispatch' && inputs.skip_scrape == true)
         env:
-          # Prevent stale repo/user keys from bypassing OIDC role assumption.
           AWS_ACCESS_KEY_ID: ""
           AWS_SECRET_ACCESS_KEY: ""
           AWS_SESSION_TOKEN: ""

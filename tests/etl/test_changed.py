@@ -3,7 +3,19 @@ from __future__ import annotations
 from pathlib import Path
 
 import atwc26_core.config as core_config
-from etl.changed.detect import compare_snapshot, fingerprint, save_snapshot
+from etl.changed.detect import (
+    compare_snapshot,
+    data_changed,
+    describe_changes,
+    fingerprint,
+    save_snapshot,
+)
+from etl.changed.store import (
+    load_fingerprint,
+    restore_scrape_state,
+    save_fingerprint,
+    save_scrape_state,
+)
 
 
 def _use_data_dir(tmp_path: Path, monkeypatch) -> Path:
@@ -25,9 +37,22 @@ def test_fingerprint_stable_for_same_files(tmp_path, monkeypatch):
     raw = data / "raw"
     raw.mkdir()
     (raw / "1.json").write_text('{"a": 1}\n')
-    (data / "schedule.json").write_text('{"games": []}\n')
+    (data / "standings.json").write_text('{"groups": {}}\n')
 
     assert fingerprint() == fingerprint()
+
+
+def test_fingerprint_ignores_derived_and_volatile_files(tmp_path, monkeypatch):
+    data = _use_data_dir(tmp_path, monkeypatch)
+    raw = data / "raw"
+    raw.mkdir()
+    (raw / "1.json").write_text('{"a": 1}\n')
+
+    fp1 = fingerprint()
+    (data / "schedule.json").write_text('{"updated": true}\n')
+    (data / "squads_raw.json").write_text('[]\n')
+    (data / "match_events.json").write_text('{}\n')
+    assert fingerprint() == fp1
 
 
 def test_compare_detects_new_raw_file(tmp_path, monkeypatch):
@@ -42,3 +67,59 @@ def test_compare_detects_new_raw_file(tmp_path, monkeypatch):
 
     (raw / "2.json").write_text('{"b": 2}\n')
     assert compare_snapshot(snap) == 0
+
+
+def test_data_changed_ignores_missing_local_raw_files():
+    before = {
+        "data/raw/1.json": "aaa",
+        "data/raw/2.json": "bbb",
+        "data/standings.json": "ccc",
+    }
+    after = {
+        "data/raw/1.json": "aaa",
+        "data/standings.json": "ccc",
+    }
+    assert not data_changed(before, after)
+
+
+def test_data_changed_detects_modified_standings():
+    before = {"data/standings.json": "old"}
+    after = {"data/standings.json": "new"}
+    assert data_changed(before, after)
+    assert "standings" in describe_changes(before, after)
+
+
+def test_save_and_load_fingerprint_round_trip(tmp_path, monkeypatch):
+    monkeypatch.setattr("etl.changed.store.config.DYNAMODB_TABLE", "test-table")
+    items: dict[tuple[str, str], dict] = {}
+
+    class FakeTable:
+        def get_item(self, *, Key):
+            return {"Item": items.get((Key["PK"], Key["SK"]))}
+
+        def put_item(self, *, Item):
+            items[(Item["PK"], Item["SK"])] = Item
+
+    monkeypatch.setattr("etl.changed.store._table", lambda: FakeTable())
+
+    fp = {"data/raw/1.json": "deadbeef"}
+    assert save_fingerprint(fp)
+    assert load_fingerprint() == fp
+
+
+def test_restore_scrape_state_writes_processed_games(tmp_path, monkeypatch):
+    data = _use_data_dir(tmp_path, monkeypatch)
+    monkeypatch.setattr("etl.changed.store.config.DYNAMODB_TABLE", "test-table")
+    monkeypatch.setattr("etl.changed.store.config.DATA_DIR", data)
+    state = {"760001": {"status": "ok"}}
+
+    class FakeTable:
+        def get_item(self, *, Key):
+            if Key["SK"] == "SCRAPE_STATE":
+                return {"Item": {"processed_games": state}}
+            return {}
+
+    monkeypatch.setattr("etl.changed.store._table", lambda: FakeTable())
+
+    assert restore_scrape_state()
+    assert (data / "processed_games.json").exists()

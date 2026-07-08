@@ -8,6 +8,8 @@ from pathlib import Path
 
 from atwc26_core import config as core_config
 
+from .store import load_fingerprint, restore_scrape_state, save_fingerprint, save_scrape_state
+
 ROOT = Path(__file__).resolve().parents[2]
 LINKS_CSV = ROOT / "etl" / "scrape" / "game_links.csv"
 
@@ -34,7 +36,12 @@ def _path_key(path: Path) -> str:
 
 
 def fingerprint() -> dict[str, str]:
-    """Map stable path key -> sha256 for ESPN scrape inputs."""
+    """Map stable path key -> sha256 for ESPN scrape inputs that drive ETL.
+
+    Only source-of-truth files are included — not derived artifacts (parquet,
+    match_events) or files re-fetched every poll with identical content
+    (squads, schedule).
+    """
     out: dict[str, str] = {}
     data = core_config.DATA_DIR
 
@@ -49,19 +56,39 @@ def fingerprint() -> dict[str, str]:
             add(path)
 
     for path in (
-        core_config.MASTER_PARQUET,
-        core_config.MATCH_EVENTS,
-        core_config.SQUADS_RAW,
         core_config.STANDINGS,
         core_config.BRACKET,
-        core_config.GLOSSARY_CSV,
-        core_config.TEAM_FLAGS,
-        data / "schedule.json",
-        LINKS_CSV,
     ):
         add(path)
 
     return out
+
+
+def data_changed(before: dict[str, str], after: dict[str, str]) -> bool:
+    """Return True when ``after`` has new or modified content vs ``before``.
+
+    Keys present in ``before`` but missing locally in ``after`` are ignored so
+    a fresh git checkout (fewer raw JSON files than the last publish) does not
+    force a full transform.
+    """
+    added = set(after) - set(before)
+    if added:
+        return True
+    for key in before.keys() & after.keys():
+        if before[key] != after[key]:
+            return True
+    return False
+
+
+def describe_changes(before: dict[str, str], after: dict[str, str]) -> str:
+    added = sorted(set(after) - set(before))
+    removed = sorted(set(before) - set(after))
+    modified = sorted(k for k in before.keys() & after.keys() if before[k] != after[k])
+    return (
+        f"+{len(added)} -{len(removed)} ~{len(modified)}"
+        + (f" ({', '.join((added + modified)[:5])}{'...' if len(added + modified) > 5 else ''})"
+           if added or modified else "")
+    )
 
 
 def save_snapshot(path: Path) -> int:
@@ -71,20 +98,39 @@ def save_snapshot(path: Path) -> int:
     return 0
 
 
+def load_remote_snapshot(path: Path) -> int:
+    """Write the DynamoDB fingerprint to a local file; fall back to git snapshot."""
+    remote = load_fingerprint()
+    if remote:
+        path.write_text(json.dumps(remote, indent=2, sort_keys=True) + "\n")
+        print(f"loaded remote fingerprint -> {path} ({len(remote)} file(s))")
+        return 0
+    print("no remote fingerprint — falling back to local git snapshot")
+    return save_snapshot(path)
+
+
 def compare_snapshot(path: Path) -> int:
     before = json.loads(path.read_text())
     after = fingerprint()
-    if before == after:
+    if not data_changed(before, after):
         print("no data changes")
         return 1
 
-    added = sorted(set(after) - set(before))
-    removed = sorted(set(before) - set(after))
-    modified = sorted(k for k in before.keys() & after.keys() if before[k] != after[k])
-    print(
-        f"data changed: +{len(added)} -{len(removed)} ~{len(modified)}"
-        + (f" ({', '.join(modified[:5])}{'...' if len(modified) > 5 else ''})" if modified else "")
-    )
+    print(f"data changed: {describe_changes(before, after)}")
+    return 0
+
+
+def restore_state() -> int:
+    restore_scrape_state()
+    return 0
+
+
+def persist_scrape_state() -> int:
+    from .store import read_scrape_state
+
+    state = read_scrape_state()
+    if state:
+        save_scrape_state(state)
     return 0
 
 
@@ -95,10 +141,32 @@ def main(argv: list[str] | None = None) -> int:
     snap = sub.add_parser("snapshot", help="Write a fingerprint JSON file")
     snap.add_argument("path", type=Path)
 
+    load = sub.add_parser("load-remote", help="Load DynamoDB fingerprint (or git fallback)")
+    load.add_argument("path", type=Path)
+
     cmp = sub.add_parser("compare", help="Exit 0 when data changed since snapshot")
     cmp.add_argument("path", type=Path)
+
+    sub.add_parser("restore-state", help="Restore processed_games.json from DynamoDB")
+    sub.add_parser("save-scrape-state", help="Persist processed_games.json to DynamoDB")
 
     args = parser.parse_args(argv)
     if args.command == "snapshot":
         return save_snapshot(args.path)
+    if args.command == "load-remote":
+        return load_remote_snapshot(args.path)
+    if args.command == "restore-state":
+        return restore_state()
+    if args.command == "save-scrape-state":
+        return persist_scrape_state()
     return compare_snapshot(args.path)
+
+
+__all__ = [
+    "data_changed",
+    "describe_changes",
+    "fingerprint",
+    "save_fingerprint",
+    "compare_snapshot",
+    "save_snapshot",
+]
