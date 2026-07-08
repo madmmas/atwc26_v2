@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import {
   PolarAngleAxis,
   PolarGrid,
@@ -34,7 +35,16 @@ function ProbBar({ p }: { p: Prediction }) {
   );
 }
 
-export function PredictionResult({ p }: { p: Prediction }) {
+export function PredictionResult({ p, shareUrl }: { p: Prediction; shareUrl?: string }) {
+  const [copied, setCopied] = useState(false);
+
+  async function copyLink() {
+    if (!shareUrl) return;
+    await navigator.clipboard.writeText(shareUrl);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
   const dims = p.radar.dimensions;
   const radarData = dims.map((d) => ({
     dim: d,
@@ -67,6 +77,14 @@ export function PredictionResult({ p }: { p: Prediction }) {
 
       {/* Win probability bar */}
       <div className="card p-5">
+        <div className="mb-3 flex items-center justify-between gap-3">
+          <div className="text-xs uppercase tracking-widest text-faint">Win probability</div>
+          {shareUrl && (
+            <button type="button" onClick={copyLink} className="btn-ghost shrink-0 text-xs">
+              {copied ? "Copied! ✓" : "Copy link"}
+            </button>
+          )}
+        </div>
         <ProbBar p={p} />
         <p className="mt-4 text-sm leading-relaxed text-fg-soft">{p.narrative}</p>
       </div>
