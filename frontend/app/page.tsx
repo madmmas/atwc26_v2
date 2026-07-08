@@ -2,9 +2,12 @@
 import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { api, Overview, Player } from "@/lib/api";
+import { DataFreshnessLabel } from "@/components/DataFreshnessLabel";
+import { LatestMatchesWidget } from "@/components/LatestMatchesWidget";
 import { SkeletonStatStrip } from "@/components/SkeletonCard";
 import { StatLabel } from "@/components/StatTooltip";
 import { TeamAttackingChart } from "@/components/TeamAttackingChart";
+import { WinnerProbabilityWidget } from "@/components/WinnerProbabilityWidget";
 import { RoleChip, SectionTitle, StatCard } from "@/components/ui";
 import { Flag } from "@/components/Flag";
 
@@ -67,9 +70,16 @@ function LeaderList({ players, metric, fmt }: { players: Player[]; metric: strin
 export default function Home() {
   const [data, setData] = useState<Overview | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  const [fetchedAt, setFetchedAt] = useState<Date | null>(null);
 
   useEffect(() => {
-    api.overview().then(setData).catch((e) => setErr(String(e)));
+    api
+      .overview()
+      .then((d) => {
+        setData(d);
+        setFetchedAt(new Date());
+      })
+      .catch((e) => setErr(String(e)));
   }, []);
   const isLoading = !data && !err;
 
@@ -114,18 +124,25 @@ export default function Home() {
       )}
 
       {/* KPIs */}
-      <section className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {data ? (
-          <>
-            <StatCard label="Teams" value={data.league.teams} />
-            <StatCard label="Players tracked" value={data.league.players} />
-            <StatCard label="Games" value={data.league.games} />
-            <StatCard label="Avg goals / team" value={data.league.avg_team_goals} />
-          </>
-        ) : (
-          Array.from({ length: 4 }).map((_, i) => <SkeletonStatStrip key={i} />)
-        )}
+      <section>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {data ? (
+            <>
+              <StatCard label="Teams" value={data.league.teams} />
+              <StatCard label="Players tracked" value={data.league.players} />
+              <StatCard label="Games" value={data.league.games} />
+              <StatCard label="Avg goals / team" value={data.league.avg_team_goals} />
+            </>
+          ) : (
+            Array.from({ length: 4 }).map((_, i) => <SkeletonStatStrip key={i} />)
+          )}
+        </div>
+        <DataFreshnessLabel fetchedAt={fetchedAt} />
       </section>
+
+      <LatestMatchesWidget />
+
+      <WinnerProbabilityWidget />
 
       {/* Team xG chart */}
       <section>
