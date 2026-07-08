@@ -18,3 +18,4 @@ class TeamSelection(BaseModel):
 class PredictRequest(BaseModel):
     team_a: TeamSelection
     team_b: TeamSelection
+    model: str | None = Field(None, description="poisson|elo|dixon_coles|xgboost|None=all")

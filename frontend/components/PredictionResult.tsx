@@ -136,6 +136,38 @@ export function PredictionResult({ p }: { p: Prediction }) {
           Model: {p.model.type}. {p.model.assumptions}
         </p>
       </div>
+
+      {p.comparison && Object.keys(p.comparison).length > 1 && (
+        <div className="card p-4">
+          <div className="mb-3 text-xs uppercase tracking-wider text-faint">
+            Model comparison
+          </div>
+          <div className="overflow-x-auto text-sm">
+            <table className="w-full text-left">
+              <thead>
+                <tr className="border-b border-pitch-edge/60 text-faint">
+                  <th className="pb-2 pr-4 font-medium">Model</th>
+                  <th className="pb-2 pr-4 font-medium">P(home win)</th>
+                  <th className="pb-2 pr-4 font-medium">P(draw)</th>
+                  <th className="pb-2 font-medium">P(away win)</th>
+                </tr>
+              </thead>
+              <tbody>
+                {Object.entries(p.comparison).map(([key, row]) => (
+                  <tr key={key} className="border-b border-pitch-edge/30">
+                    <td className="py-2 pr-4 capitalize text-fg-soft">
+                      {row.model_name || key.replace(/_/g, " ")}
+                    </td>
+                    <td className="py-2 pr-4">{(row.win_probability_a * 100).toFixed(0)}%</td>
+                    <td className="py-2 pr-4">{(row.draw_probability * 100).toFixed(0)}%</td>
+                    <td className="py-2">{(row.win_probability_b * 100).toFixed(0)}%</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

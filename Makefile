@@ -44,7 +44,7 @@ TF_AWS_ENV = $(if $(AWS_PROFILE),AWS_PROFILE=$(AWS_PROFILE))
 	setup setup-backend setup-frontend setup-scraper setup-etl setup-test setup-services verify \
 	backend analytics predict frontend dev dev-v2 \
 	test-e2e test-etl test-contract e2e-v2-local \
-	etl-scrape etl-local etl-refresh etl-simulate etl-publish \
+	etl-scrape etl-local etl-refresh etl-simulate etl-train etl-publish \
 	schedule scrape scrape-force analyze events squads groups history \
 	build-frontend-static build-frontend-static-v2 serve-frontend-static \
 	k6-smoke k6-journey k6-load k6-stress k6-ab \
@@ -196,15 +196,19 @@ analyze: ## Re-execute notebooks/analysis.ipynb in place
 etl-scrape: setup-scraper ## Discover fixtures + scrape ESPN → data/raw + parquet
 	$(MAKE) schedule scrape events squads groups
 
-etl-local: setup-etl ## Transform + simulate + QA (local manifest)
+etl-local: setup-etl ## Transform + simulate + train + QA (local manifest)
 	cd $(ROOT) && $(PYTHON) -m etl.transform
 	cd $(ROOT) && $(PYTHON) -m etl.simulate
+	cd $(ROOT) && $(PYTHON) -m etl.train
 	cd $(ROOT) && $(PYTHON) -m etl.qa
 
-etl-refresh: etl-scrape etl-local ## Scrape ESPN, then transform + simulate + QA
+etl-refresh: etl-scrape etl-local ## Scrape ESPN, then transform + simulate + train + QA
 
 etl-simulate: setup-etl ## Offline Monte Carlo + bracket predictions → data/*.json
 	cd $(ROOT) && $(PYTHON) -m etl.simulate
+
+etl-train: setup-etl ## Train Elo, Dixon-Coles, XGBoost models
+	cd $(ROOT) && $(PYTHON) -m etl.train
 
 etl-publish: setup-etl ## Publish artifacts to S3/DynamoDB (or local staging)
 	cd $(ROOT) && $(PYTHON) -m etl.publish

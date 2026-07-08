@@ -20,6 +20,11 @@ PLAYER_PROFILES = DATA_DIR / "player_profiles.parquet"
 TEAM_PROFILES = DATA_DIR / "team_profiles.parquet"
 WINNER_PROBABILITIES = DATA_DIR / "winner_probabilities.json"
 BRACKET_PREDICTIONS = DATA_DIR / "bracket_predictions.json"
+ELO_RATINGS = DATA_DIR / "elo_ratings.json"
+DC_PARAMS = DATA_DIR / "dc_params.json"
+XGB_MODEL = DATA_DIR / "xgb_model.ubj"
+XGB_FEATURES = DATA_DIR / "xgb_features.json"
+RELOAD_SECRET = os.getenv("ATWC26_RELOAD_SECRET", "")
 
 # S3 publish targets (v2 ETL)
 S3_BUCKET = os.getenv("ATWC26_S3_BUCKET", "")
