@@ -166,12 +166,18 @@ export function GroupTable({
           <tbody>
             {displayRows.map((t) => {
               const xgb = xgByTeam?.get(t.team_name);
+              const qualified = t.rank <= 2;
+              const groupComplete = group.remaining_matches.length === 0;
+              const eliminated = groupComplete && t.rank > 2;
+              const rowAccent = qualified
+                ? "border-l-[3px] border-l-[#1D9E75] bg-[rgba(29,158,117,0.06)]"
+                : eliminated
+                  ? "border-l-[3px] border-l-[#e05555] bg-[rgba(224,85,85,0.06)]"
+                  : "";
               return (
               <tr
                 key={t.team_id}
-                className={`border-t border-pitch-edge/40 ${
-                  t.rank <= 2 ? "bg-pitch-accent/5" : ""
-                }`}
+                className={`border-t border-pitch-edge/40 ${rowAccent}`}
               >
                 <td className="py-1.5">
                   <TeamLabel name={t.team_name} flag={t.flag_url} size={16} />
@@ -192,6 +198,18 @@ export function GroupTable({
             })}
           </tbody>
         </table>
+      </div>
+
+      <div className="mt-2 flex flex-wrap items-center gap-3 text-[10px] text-faint">
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block h-2 w-2 rounded-sm bg-[#1D9E75]" /> Qualified
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block h-2 w-2 rounded-sm bg-[#e05555]" /> Eliminated
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block h-2 w-2 rounded-sm border border-pitch-edge" /> TBD
+        </span>
       </div>
 
       {group.remaining_matches.length > 0 && (
