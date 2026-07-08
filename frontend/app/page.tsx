@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { api, Overview, Player } from "@/lib/api";
 import { SkeletonStatStrip } from "@/components/SkeletonCard";
@@ -7,6 +7,33 @@ import { StatLabel } from "@/components/StatTooltip";
 import { TeamAttackingChart } from "@/components/TeamAttackingChart";
 import { RoleChip, SectionTitle, StatCard } from "@/components/ui";
 import { Flag } from "@/components/Flag";
+
+function LeaderboardSection({
+  title,
+  hint,
+  exploreHref,
+  children,
+}: {
+  title: string;
+  hint: ReactNode;
+  exploreHref: string;
+  children: ReactNode;
+}) {
+  return (
+    <div>
+      <div className="mb-3 flex items-end justify-between gap-2">
+        <div className="flex items-end gap-2">
+          <h2 className="text-lg font-bold text-fg">{title}</h2>
+          <span className="text-xs text-faint">{hint}</span>
+        </div>
+        <Link href={exploreHref} className="shrink-0 text-xs font-semibold text-faint hover:text-pitch-accent">
+          View full leaderboard →
+        </Link>
+      </div>
+      {children}
+    </div>
+  );
+}
 
 function LeaderList({ players, metric, fmt }: { players: Player[]; metric: string; fmt?: (n: number) => string }) {
   return (
@@ -117,8 +144,11 @@ export default function Home() {
 
       {/* Leaderboards */}
       <section className="grid gap-6 lg:grid-cols-3">
-        <div>
-          <SectionTitle title="Top scorers" hint={<StatLabel stat="Goals" />} />
+        <LeaderboardSection
+          title="Top scorers"
+          hint={<StatLabel stat="Goals" />}
+          exploreHref="/explore?sort=goals&order=desc"
+        >
           {data ? (
             <LeaderList players={data.top_scorers} metric="totalGoals_total" />
           ) : (
@@ -128,9 +158,12 @@ export default function Home() {
               ))}
             </div>
           )}
-        </div>
-        <div>
-          <SectionTitle title="Sharpest finishers" hint={<StatLabel stat="xG / 90" />} />
+        </LeaderboardSection>
+        <LeaderboardSection
+          title="Sharpest finishers"
+          hint={<StatLabel stat="xG / 90" />}
+          exploreHref="/explore?sort=xG90&order=desc"
+        >
           {data ? (
             <LeaderList players={data.top_xg_per90} metric="expectedGoals_p90" fmt={(n) => n?.toFixed(2)} />
           ) : (
@@ -140,9 +173,12 @@ export default function Home() {
               ))}
             </div>
           )}
-        </div>
-        <div>
-          <SectionTitle title="Top creators" hint={<StatLabel stat="xA / 90" />} />
+        </LeaderboardSection>
+        <LeaderboardSection
+          title="Top creators"
+          hint={<StatLabel stat="xA / 90" />}
+          exploreHref="/explore?sort=xA90&order=desc"
+        >
           {data ? (
             <LeaderList players={data.top_creators_per90} metric="expectedAssists_p90" fmt={(n) => n?.toFixed(2)} />
           ) : (
@@ -152,7 +188,7 @@ export default function Home() {
               ))}
             </div>
           )}
-        </div>
+        </LeaderboardSection>
       </section>
     </div>
   );
