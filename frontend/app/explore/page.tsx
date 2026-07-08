@@ -2,6 +2,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { api, Overview, Player } from "@/lib/api";
 import { Flag } from "@/components/Flag";
+import { StatLabel } from "@/components/StatTooltip";
 import { RoleChip, SectionTitle, Skeleton } from "@/components/ui";
 
 const PAGE_SIZE = 50;
@@ -167,8 +168,12 @@ export default function Explore() {
                   <th className="px-4 py-3 font-medium">Player</th>
                   <th className="px-4 py-3 font-medium">Team</th>
                   <th className="px-4 py-3 font-medium">Role</th>
-                  <th className="px-4 py-3 font-medium">Min</th>
-                  <th className="px-4 py-3 font-medium text-right">{metric.label}</th>
+                  <th className="px-4 py-3 font-medium">
+                    <StatLabel stat="Min" />
+                  </th>
+                  <th className="px-4 py-3 font-medium text-right">
+                    <StatLabel stat={metric.label} />
+                  </th>
                 </tr>
               </thead>
               <tbody>

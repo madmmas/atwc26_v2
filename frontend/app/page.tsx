@@ -11,6 +11,7 @@ import {
   YAxis,
 } from "recharts";
 import { api, Overview, Player } from "@/lib/api";
+import { StatLabel } from "@/components/StatTooltip";
 import { RoleChip, SectionTitle, StatCard } from "@/components/ui";
 import { Flag } from "@/components/Flag";
 
@@ -150,7 +151,7 @@ export default function Home() {
       {/* Leaderboards */}
       <section className="grid gap-6 lg:grid-cols-3">
         <div>
-          <SectionTitle title="Top scorers" hint="goals" />
+          <SectionTitle title="Top scorers" hint={<StatLabel stat="Goals" />} />
           {data ? (
             <LeaderList players={data.top_scorers} metric="totalGoals_total" />
           ) : (
@@ -162,7 +163,7 @@ export default function Home() {
           )}
         </div>
         <div>
-          <SectionTitle title="Sharpest finishers" hint="xG / 90" />
+          <SectionTitle title="Sharpest finishers" hint={<StatLabel stat="xG / 90" />} />
           {data ? (
             <LeaderList players={data.top_xg_per90} metric="expectedGoals_p90" fmt={(n) => n?.toFixed(2)} />
           ) : (
@@ -174,7 +175,7 @@ export default function Home() {
           )}
         </div>
         <div>
-          <SectionTitle title="Top creators" hint="xA / 90" />
+          <SectionTitle title="Top creators" hint={<StatLabel stat="xA / 90" />} />
           {data ? (
             <LeaderList players={data.top_creators_per90} metric="expectedAssists_p90" fmt={(n) => n?.toFixed(2)} />
           ) : (

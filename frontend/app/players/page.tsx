@@ -3,6 +3,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, Overview, Player, PlayerDetail } from "@/lib/api";
 import { Flag } from "@/components/Flag";
+import { StatLabel } from "@/components/StatTooltip";
 import { RoleChip, Skeleton } from "@/components/ui";
 
 const RESULT_COLOR: Record<string, string> = {
@@ -251,7 +252,9 @@ function PlayersContent() {
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {detail.indicators.map((ind) => (
               <div key={ind.key} className="card p-3">
-                <div className="text-[11px] uppercase tracking-wider text-faint">{ind.label}</div>
+                <div className="text-[11px] uppercase tracking-wider text-faint">
+                  <StatLabel stat={ind.label} />
+                </div>
                 <div className="mt-1 text-xl font-black stat-grad">{valueFor(ind.key, ind.per90)}</div>
               </div>
             ))}
@@ -266,12 +269,24 @@ function PlayersContent() {
                   <tr>
                     <th className="px-4 py-2.5">Opponent</th>
                     <th className="px-4 py-2.5">Res</th>
-                    <th className="px-4 py-2.5 text-right">Min</th>
-                    <th className="px-4 py-2.5 text-right">G</th>
-                    <th className="px-4 py-2.5 text-right">A</th>
-                    <th className="px-4 py-2.5 text-right">xG</th>
-                    <th className="px-4 py-2.5 text-right">Shots</th>
-                    <th className="px-4 py-2.5 text-right">Passes</th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="Min" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="G" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="A" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="xG" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="Shots" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="Passes" />
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-pitch-edge/40">
