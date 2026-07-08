@@ -3,6 +3,7 @@ import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, Overview, Player, PlayerDetail } from "@/lib/api";
 import { Flag } from "@/components/Flag";
+import { SkeletonCard } from "@/components/SkeletonCard";
 import { StatLabel } from "@/components/StatTooltip";
 import { RoleChip, Skeleton } from "@/components/ui";
 
@@ -194,11 +195,8 @@ function PlayersContent() {
               ))}
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="card p-3">
-                  <Skeleton className="h-3 w-16" />
-                  <Skeleton className="mt-2 h-7 w-12" />
-                </div>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <SkeletonCard key={i} />
               ))}
             </div>
             <div className="card space-y-2 p-4">
@@ -209,8 +207,11 @@ function PlayersContent() {
             </div>
           </div>
         ) : (
-          <div className="card p-8 text-center text-faint">
-            Select a country and player to begin.
+          <div className="card p-8 text-center">
+            <p className="text-sm font-medium text-fg-soft">
+              Pick a country and player to see their full tournament performance.
+            </p>
+            <p className="mt-1 text-xs text-faint">Use the dropdowns above to get started.</p>
           </div>
         )
       ) : detail.matches.length === 0 ? (

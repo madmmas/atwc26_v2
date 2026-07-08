@@ -2,6 +2,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { api, Overview, Player } from "@/lib/api";
+import { SkeletonStatStrip } from "@/components/SkeletonCard";
 import { StatLabel } from "@/components/StatTooltip";
 import { TeamAttackingChart } from "@/components/TeamAttackingChart";
 import { RoleChip, SectionTitle, StatCard } from "@/components/ui";
@@ -95,12 +96,7 @@ export default function Home() {
             <StatCard label="Avg goals / team" value={data.league.avg_team_goals} />
           </>
         ) : (
-          Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="card p-4">
-              <div className="h-3 w-24 animate-pulse rounded bg-pitch-edge/70" />
-              <div className="mt-3 h-8 w-14 animate-pulse rounded bg-pitch-edge/70" />
-            </div>
-          ))
+          Array.from({ length: 4 }).map((_, i) => <SkeletonStatStrip key={i} />)
         )}
       </section>
 

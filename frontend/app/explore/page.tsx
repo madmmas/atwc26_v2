@@ -5,7 +5,8 @@ import { useSearchParams } from "next/navigation";
 import { api, Overview, Player } from "@/lib/api";
 import { Flag } from "@/components/Flag";
 import { StatLabel } from "@/components/StatTooltip";
-import { RoleChip, SectionTitle, Skeleton } from "@/components/ui";
+import { SkeletonRow } from "@/components/SkeletonRow";
+import { RoleChip, SectionTitle } from "@/components/ui";
 
 const PAGE_SIZE = 50;
 
@@ -243,17 +244,27 @@ function ExploreContent() {
       </div>
 
       {loading ? (
-        <div className="card space-y-3 p-4">
-          {Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="flex gap-4">
-              <Skeleton className="h-4 w-6" />
-              <Skeleton className="h-4 flex-1" />
-              <Skeleton className="h-4 w-24" />
-              <Skeleton className="h-4 w-16" />
-              <Skeleton className="h-4 w-16" />
-              <Skeleton className="h-4 w-16" />
-            </div>
-          ))}
+        <div className="card overflow-hidden p-0">
+          <table className="w-full text-sm">
+            <thead>
+              <tr className="border-b border-pitch-edge text-left text-xs text-faint">
+                <th className="px-4 py-3 font-medium">#</th>
+                <th className="px-4 py-3 font-medium">Player</th>
+                <th className="px-4 py-3 font-medium">Team</th>
+                <th className="px-4 py-3 font-medium">Role</th>
+                {METRICS.map((m) => (
+                  <th key={m.key} className="px-4 py-3 text-right font-medium">
+                    {m.label}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {Array.from({ length: 12 }).map((_, i) => (
+                <SkeletonRow key={i} />
+              ))}
+            </tbody>
+          </table>
         </div>
       ) : (
         <>
