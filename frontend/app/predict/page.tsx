@@ -1,6 +1,9 @@
 "use client";
-import { useEffect, useState } from "react";
+import { Suspense, useCallback, useEffect, useRef, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { api, Overview, Player, Prediction } from "@/lib/api";
+import { buildPredictUrl, parsePredictUrl } from "@/lib/predictUrl";
+import { PredictorHintBar } from "@/components/PredictorHintBar";
 import { RoleChip, Skeleton } from "@/components/ui";
 import { PredictionResult } from "@/components/PredictionResult";
 import { WinnerProbabilityChart } from "@/components/WinnerProbabilityChart";
@@ -193,7 +196,11 @@ function TeamColumn({
   );
 }
 
-export default function Predict() {
+function PredictContent() {
+  const searchParams = useSearchParams();
+  const urlLoaded = useRef(false);
+  const autoRan = useRef(false);
+
   const [teams, setTeams] = useState<string[]>([]);
   const [formationA, setFormationA] = useState("");
   const [formationB, setFormationB] = useState("");
@@ -206,6 +213,7 @@ export default function Predict() {
   const [slotsA, setSlotsA] = useState<Slot[]>([]);
   const [slotsB, setSlotsB] = useState<Slot[]>([]);
   const [homeSide, setHomeSide] = useState<"a" | "b" | "none">("none");
+  const [mobileTab, setMobileTab] = useState<"a" | "b">("a");
   const [result, setResult] = useState<Prediction | null>(null);
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState<string | null>(null);
@@ -217,6 +225,17 @@ export default function Predict() {
   }, []);
 
   useEffect(() => {
+    if (urlLoaded.current) return;
+    const parsed = parsePredictUrl(searchParams);
+    if (parsed.teamA) setTeamA(parsed.teamA);
+    if (parsed.teamB) setTeamB(parsed.teamB);
+    if (parsed.formationA) setFormationA(parsed.formationA);
+    if (parsed.formationB) setFormationB(parsed.formationB);
+    if (parsed.homeAdvantage) setHomeSide(parsed.homeAdvantage);
+    urlLoaded.current = true;
+  }, [searchParams]);
+
+  useEffect(() => {
     if (!teamA) {
       setPlayersA([]);
       return;
@@ -225,8 +244,16 @@ export default function Predict() {
     api.teamPlayers(teamA).then((r) => {
       setPlayersA(r.players);
       setLoadA(false);
+      const parsed = parsePredictUrl(searchParams);
+      if (parsed.playersA?.length && parsed.formationA) {
+        const slots = slotsFor(parsed.formationA);
+        parsed.playersA.forEach((id, i) => {
+          if (i < slots.length) slots[i].player_id = id;
+        });
+        setSlotsA(slots);
+      }
     });
-  }, [teamA]);
+  }, [teamA]); // eslint-disable-line
 
   useEffect(() => {
     if (!teamB) {
@@ -237,8 +264,16 @@ export default function Predict() {
     api.teamPlayers(teamB).then((r) => {
       setPlayersB(r.players);
       setLoadB(false);
+      const parsed = parsePredictUrl(searchParams);
+      if (parsed.playersB?.length && parsed.formationB) {
+        const slots = slotsFor(parsed.formationB);
+        parsed.playersB.forEach((id, i) => {
+          if (i < slots.length) slots[i].player_id = id;
+        });
+        setSlotsB(slots);
+      }
     });
-  }, [teamB]);
+  }, [teamB]); // eslint-disable-line
 
   useEffect(() => {
     if (formationA) setSlotsA((prev) => remap(prev.length ? prev : slotsFor(formationA), formationA));
@@ -257,7 +292,21 @@ export default function Predict() {
     slotsA.every((s) => s.player_id) &&
     slotsB.every((s) => s.player_id);
 
-  async function runPredict() {
+  const shareUrl = useCallback(() => {
+    if (typeof window === "undefined") return "";
+    const path = buildPredictUrl({
+      teamA,
+      teamB,
+      formationA,
+      formationB,
+      playersA: slotsA.map((s) => s.player_id).filter(Boolean) as number[],
+      playersB: slotsB.map((s) => s.player_id).filter(Boolean) as number[],
+      homeAdvantage: homeSide,
+    });
+    return `${window.location.origin}${path}`;
+  }, [teamA, teamB, formationA, formationB, slotsA, slotsB, homeSide]);
+
+  const runPredict = useCallback(async () => {
     setBusy(true);
     setErr(null);
     try {
@@ -279,7 +328,48 @@ export default function Predict() {
     } finally {
       setBusy(false);
     }
-  }
+  }, [teamA, teamB, homeSide, slotsA, slotsB]);
+
+  useEffect(() => {
+    if (autoRan.current || !ready) return;
+    const parsed = parsePredictUrl(searchParams);
+    if (parsed.playersA?.length && parsed.playersB?.length) {
+      autoRan.current = true;
+      runPredict();
+    }
+  }, [ready, searchParams, runPredict]);
+
+  const slotsAFull = slotsA.length > 0 && slotsA.every((s) => s.player_id);
+  const slotsBFull = slotsB.length > 0 && slotsB.every((s) => s.player_id);
+
+  const colA = (
+    <TeamColumn
+      side="a"
+      teams={teams}
+      team={teamA}
+      setTeam={setTeamA}
+      formation={formationA}
+      setFormation={setFormationA}
+      players={playersA}
+      slots={slotsA}
+      setSlots={setSlotsA}
+      loading={loadA}
+    />
+  );
+  const colB = (
+    <TeamColumn
+      side="b"
+      teams={teams}
+      team={teamB}
+      setTeam={setTeamB}
+      formation={formationB}
+      setFormation={setFormationB}
+      players={playersB}
+      slots={slotsB}
+      setSlots={setSlotsB}
+      loading={loadB}
+    />
+  );
 
   return (
     <div className="space-y-6">
@@ -293,31 +383,36 @@ export default function Predict() {
         </p>
       </div>
 
-      <div className="grid gap-4 md:grid-cols-2">
-        <TeamColumn
-          side="a"
-          teams={teams}
-          team={teamA}
-          setTeam={setTeamA}
-          formation={formationA}
-          setFormation={setFormationA}
-          players={playersA}
-          slots={slotsA}
-          setSlots={setSlotsA}
-          loading={loadA}
-        />
-        <TeamColumn
-          side="b"
-          teams={teams}
-          team={teamB}
-          setTeam={setTeamB}
-          formation={formationB}
-          setFormation={setFormationB}
-          players={playersB}
-          slots={slotsB}
-          setSlots={setSlotsB}
-          loading={loadB}
-        />
+      <PredictorHintBar
+        teamA={teamA}
+        teamB={teamB}
+        formationA={formationA}
+        formationB={formationB}
+        slotsAFull={slotsAFull}
+        slotsBFull={slotsBFull}
+      />
+
+      <div className="md:hidden">
+        <div className="mb-3 flex gap-2">
+          {(["a", "b"] as const).map((tab) => (
+            <button
+              key={tab}
+              type="button"
+              onClick={() => setMobileTab(tab)}
+              className={`rounded-lg px-3 py-1.5 text-xs font-bold ${
+                mobileTab === tab ? "bg-pitch-accent text-pitch-bg" : "bg-pitch-edge/60 text-fg-soft"
+              }`}
+            >
+              {tab === "a" ? teamA || "Team A" : teamB || "Team B"}
+            </button>
+          ))}
+        </div>
+        {mobileTab === "a" ? colA : colB}
+      </div>
+
+      <div className="hidden gap-4 md:grid md:grid-cols-2">
+        {colA}
+        {colB}
       </div>
 
       <div className="card flex flex-wrap items-center justify-between gap-3 p-4">
@@ -350,7 +445,15 @@ export default function Predict() {
           Prediction failed: {err}
         </div>
       )}
-      {result && <PredictionResult p={result} />}
+      {result && <PredictionResult p={result} shareUrl={shareUrl()} />}
     </div>
+  );
+}
+
+export default function Predict() {
+  return (
+    <Suspense fallback={<div className="card p-8 text-faint">Loading predictor…</div>}>
+      <PredictContent />
+    </Suspense>
   );
 }
