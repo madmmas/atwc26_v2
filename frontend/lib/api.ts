@@ -112,8 +112,8 @@ export type Prediction = {
   >;
 };
 
-async function get<T>(path: string): Promise<T> {
-  const res = await fetch(`${ANALYTICS_BASE}${path}`, { cache: "no-store" });
+async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
+  const res = await fetch(`${ANALYTICS_BASE}${path}`, { cache: "no-store", signal });
   if (!res.ok) throw new Error(`API ${path} -> ${res.status}`);
   return res.json();
 }
@@ -124,9 +124,10 @@ export const api = {
     get<{ team_name: string; players: Player[] }>(
       `/api/teams/${encodeURIComponent(team)}/players`
     ),
-  players: (q: string) =>
+  players: (q: string, signal?: AbortSignal) =>
     get<{ count: number; page_size: number; next_cursor: string | null; players: Player[] }>(
-      `/api/players?${q}`
+      `/api/players?${q}`,
+      signal
     ),
   leaderboard: (metric: string, role?: string) =>
     get<{ metric: string; leaders: Player[] }>(

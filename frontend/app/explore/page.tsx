@@ -42,6 +42,15 @@ const SORT_FROM_URL: Record<string, string> = Object.fromEntries(
   Object.entries(SORT_URL_MAP).map(([k, v]) => [v, k])
 );
 
+function sortFromSearchParams(params: URLSearchParams): { sort: string; dir: SortDir } {
+  const urlSort = params.get("sort");
+  const urlOrder = params.get("order");
+  return {
+    sort: urlSort && SORT_FROM_URL[urlSort] ? SORT_FROM_URL[urlSort] : "minutes",
+    dir: urlOrder === "asc" || urlOrder === "desc" ? urlOrder : "desc",
+  };
+}
+
 const ROLES = ["ALL", "GK", "DEF", "MID", "FWD"];
 
 type SortDir = "asc" | "desc";
@@ -109,14 +118,15 @@ function SortableHeader({
 
 function ExploreContent() {
   const searchParams = useSearchParams();
+  const initialSort = sortFromSearchParams(searchParams);
   const [teamOptions, setTeamOptions] = useState<string[]>([]);
   const [players, setPlayers] = useState<Player[]>([]);
   const [totalCount, setTotalCount] = useState(0);
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [team, setTeam] = useState("ALL");
   const [role, setRole] = useState("ALL");
-  const [sort, setSort] = useState("minutes");
-  const [dir, setDir] = useState<SortDir>("desc");
+  const [sort, setSort] = useState(initialSort.sort);
+  const [dir, setDir] = useState<SortDir>(initialSort.dir);
   const [search, setSearch] = useState("");
   const [searchDebounced, setSearchDebounced] = useState("");
   const [searchPool, setSearchPool] = useState<Player[] | null>(null);
@@ -124,15 +134,12 @@ function ExploreContent() {
   const [loadingMore, setLoadingMore] = useState(false);
   const sentinelRef = useRef<HTMLDivElement>(null);
   const abortRef = useRef<AbortController | null>(null);
-  const urlInit = useRef(false);
+  const fetchGenRef = useRef(0);
 
   useEffect(() => {
-    if (urlInit.current) return;
-    const urlSort = searchParams.get("sort");
-    const urlOrder = searchParams.get("order");
-    if (urlSort && SORT_FROM_URL[urlSort]) setSort(SORT_FROM_URL[urlSort]);
-    if (urlOrder === "asc" || urlOrder === "desc") setDir(urlOrder);
-    urlInit.current = true;
+    const next = sortFromSearchParams(searchParams);
+    setSort(next.sort);
+    setDir(next.dir);
   }, [searchParams]);
 
   useEffect(() => {
@@ -145,17 +152,21 @@ function ExploreContent() {
     abortRef.current?.abort();
     const ctrl = new AbortController();
     abortRef.current = ctrl;
+    const gen = ++fetchGenRef.current;
     setLoading(true);
     setPlayers([]);
     setNextCursor(null);
     try {
-      const data = await api.players(buildQuery({ sort, dir, role, team }));
-      if (ctrl.signal.aborted) return;
+      const data = await api.players(buildQuery({ sort, dir, role, team }), ctrl.signal);
+      if (ctrl.signal.aborted || gen !== fetchGenRef.current) return;
       setPlayers(data.players);
       setTotalCount(data.count);
       setNextCursor(data.next_cursor ?? null);
+    } catch (e) {
+      if (ctrl.signal.aborted || gen !== fetchGenRef.current) return;
+      throw e;
     } finally {
-      if (!ctrl.signal.aborted) setLoading(false);
+      if (!ctrl.signal.aborted && gen === fetchGenRef.current) setLoading(false);
     }
   }, [sort, dir, role, team]);
 
