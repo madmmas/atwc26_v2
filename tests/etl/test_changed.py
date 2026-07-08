@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import json
+from decimal import Decimal
 from pathlib import Path
 
 import atwc26_core.config as core_config
@@ -145,3 +147,28 @@ def test_restore_scrape_state_writes_processed_games(tmp_path, monkeypatch):
 
     assert restore_scrape_state()
     assert (data / "processed_games.json").exists()
+
+
+def test_restore_scrape_state_converts_dynamodb_decimals(tmp_path, monkeypatch):
+    data = _use_data_dir(tmp_path, monkeypatch)
+    monkeypatch.setattr("etl.changed.store.config.DYNAMODB_TABLE", "test-table")
+    monkeypatch.setattr("etl.changed.store.config.DATA_DIR", data)
+    state = {
+        "760001": {
+            "status": "ok",
+            "players": Decimal("32"),
+        }
+    }
+
+    class FakeTable:
+        def get_item(self, *, Key):
+            if Key["SK"] == "SCRAPE_STATE":
+                return {"Item": {"processed_games": state}}
+            return {}
+
+    monkeypatch.setattr("etl.changed.store._table", lambda: FakeTable())
+
+    assert restore_scrape_state()
+    restored = json.loads((data / "processed_games.json").read_text())
+    assert restored["760001"]["players"] == 32
+    assert isinstance(restored["760001"]["players"], int)

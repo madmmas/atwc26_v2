@@ -5,6 +5,7 @@ import json
 from pathlib import Path
 
 from atwc26_core import config
+from atwc26_core.api_cache.store import _from_dynamo
 
 DATASET = "wc26"
 PK = f"DATASET#{DATASET}"
@@ -72,7 +73,7 @@ def load_scrape_state() -> dict | None:
         resp = table.get_item(Key={"PK": PK, "SK": SCRAPE_STATE_SK})
     except Exception:
         return None
-    state = (resp.get("Item") or {}).get("processed_games")
+    state = _from_dynamo((resp.get("Item") or {}).get("processed_games"))
     return state if isinstance(state, dict) else None
 
 
