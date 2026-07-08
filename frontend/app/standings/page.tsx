@@ -3,10 +3,18 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api, BracketData, GroupStandings, Overview, Team } from "@/lib/api";
+import { PageTabs } from "@/components/PageTabs";
 import { Skeleton } from "@/components/ui";
 import { GroupTable, Predictions, applyHypotheticalResults } from "@/components/GroupTable";
 import { Bracket } from "@/components/Bracket";
 import { GROUP_LETTERS } from "@/lib/matchStages";
+import { usePageTab } from "@/hooks/usePageTab";
+
+const STANDINGS_TABS = [
+  { id: "bracket", label: "Knockout Bracket", labelShort: "Bracket", icon: "🗂" },
+  { id: "groups", label: "Group Standings", labelShort: "Groups", icon: "📊" },
+] as const;
+const STANDINGS_TAB_IDS = STANDINGS_TABS.map((t) => t.id);
 
 function GroupTab({
   active,
@@ -33,6 +41,7 @@ function GroupTab({
 function StandingsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
+  const { activeTab, setTab } = usePageTab("tab", "bracket", "standings_active_tab", STANDINGS_TAB_IDS);
   const groupParam = searchParams.get("group");
 
   const [groups, setGroups] = useState<Record<string, GroupStandings> | null>(null);
@@ -48,8 +57,8 @@ function StandingsContent() {
         : "all";
 
   useEffect(() => {
-    api.standings().then((r) => setGroups(r.groups));
     api.bracket().then(setBracket);
+    api.standings().then((r) => setGroups(r.groups));
     api.overview().then((o: Overview) => setTeams(o.teams));
   }, []);
 
@@ -100,59 +109,73 @@ function StandingsContent() {
 
   return (
     <div className="space-y-6">
-      {bracket ? (
-        <Bracket bracket={bracket} rankedGroups={rankedGroups} />
-      ) : (
-        <div className="card p-5">
-          <Skeleton className="h-48 w-full rounded-xl" />
-        </div>
-      )}
-
-      <div>
-        <h1 className="text-2xl font-black text-fg">Group Standings</h1>
+      <div id="page-content-top">
+        <h1 className="text-2xl font-black text-fg">Standings</h1>
         <p className="text-sm text-muted">
-          Real group tables from every played match. Try a score for the remaining
-          fixture(s) below any group to see how the table — and the knockout bracket
-          above — would change. Predictions aren&apos;t saved, reload to reset.
+          Track the knockout bracket and group tables for all 48 teams.
         </p>
       </div>
 
-      <div className="flex gap-2 overflow-x-auto pb-1">
-        <GroupTab active={activeGroup === "all"} onClick={() => setGroupFilter("all")}>
-          All
-        </GroupTab>
-        {GROUP_LETTERS.map((g) => (
-          <GroupTab key={g} active={activeGroup === g} onClick={() => setGroupFilter(g)}>
-            {g}
-          </GroupTab>
-        ))}
-      </div>
+      <PageTabs tabs={[...STANDINGS_TABS]} activeTab={activeTab} onChange={setTab} />
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {groups ? (
-          visibleNames.map((name) => (
-            <GroupTable
-              key={name}
-              name={name}
-              group={groups[name]}
-              ranked={rankedGroups[name]}
-              predictions={predictions}
-              xgByTeam={xgByTeam}
-              onSetScore={setScore}
-              onReset={resetGroup}
-            />
-          ))
-        ) : (
-          Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="card space-y-2 p-4">
-              <Skeleton className="h-5 w-8" />
-              {Array.from({ length: 4 }).map((_, j) => (
-                <Skeleton key={j} className="h-7" />
-              ))}
+      {activeTab === "bracket" && (
+        <div role="tabpanel" id="tabpanel-bracket" aria-labelledby="tab-bracket">
+          {bracket ? (
+            <Bracket bracket={bracket} rankedGroups={rankedGroups} />
+          ) : (
+            <div className="card p-5">
+              <Skeleton className="h-48 w-full rounded-xl" />
             </div>
-          ))
-        )}
-      </div>
+          )}
+        </div>
+      )}
+
+      {activeTab === "groups" && (
+        <div role="tabpanel" id="tabpanel-groups" aria-labelledby="tab-groups" className="space-y-6">
+          <p className="text-sm text-muted">
+            Real group tables from every played match. Try a score for the remaining
+            fixture(s) below any group to see how the table — and the Knockout Bracket
+            (see the Bracket tab) — would change. Predictions aren&apos;t saved, reload to reset.
+          </p>
+
+          <div className="flex gap-2 overflow-x-auto pb-1">
+            <GroupTab active={activeGroup === "all"} onClick={() => setGroupFilter("all")}>
+              All
+            </GroupTab>
+            {GROUP_LETTERS.map((g) => (
+              <GroupTab key={g} active={activeGroup === g} onClick={() => setGroupFilter(g)}>
+                {g}
+              </GroupTab>
+            ))}
+          </div>
+
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+            {groups ? (
+              visibleNames.map((name) => (
+                <GroupTable
+                  key={name}
+                  name={name}
+                  group={groups[name]}
+                  ranked={rankedGroups[name]}
+                  predictions={predictions}
+                  xgByTeam={xgByTeam}
+                  onSetScore={setScore}
+                  onReset={resetGroup}
+                />
+              ))
+            ) : (
+              Array.from({ length: 12 }).map((_, i) => (
+                <div key={i} className="card space-y-2 p-4">
+                  <Skeleton className="h-5 w-8" />
+                  {Array.from({ length: 4 }).map((_, j) => (
+                    <Skeleton key={j} className="h-7" />
+                  ))}
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
     </div>
   );
 }
