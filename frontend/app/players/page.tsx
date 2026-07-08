@@ -2,7 +2,10 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, Overview, Player, PlayerDetail } from "@/lib/api";
+import { fetchAllPlayers, matchPlayerName } from "@/lib/playerSearch";
 import { Flag } from "@/components/Flag";
+import { SkeletonCard } from "@/components/SkeletonCard";
+import { StatLabel } from "@/components/StatTooltip";
 import { RoleChip, Skeleton } from "@/components/ui";
 
 const RESULT_COLOR: Record<string, string> = {
@@ -25,8 +28,7 @@ function PlayersSkeleton() {
       <div>
         <h1 className="text-2xl font-black text-fg">Player Analysis</h1>
         <p className="text-sm text-muted">
-          Pick a country and player to see their key performance indicators — across
-          the whole tournament or a single match.
+          Pick a player to see their full tournament performance
         </p>
       </div>
       <div className="card flex flex-wrap items-center gap-3 p-4">
@@ -61,6 +63,27 @@ function PlayersContent() {
   const [view, setView] = useState<string>("all");
   const [loadingRoster, setLoadingRoster] = useState(false);
   const [deepLinkErr, setDeepLinkErr] = useState<string | null>(null);
+  const [globalSearch, setGlobalSearch] = useState("");
+  const [searchDebounced, setSearchDebounced] = useState("");
+  const [allPlayers, setAllPlayers] = useState<Player[] | null>(null);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  useEffect(() => {
+    const t = setTimeout(() => setSearchDebounced(globalSearch.trim()), 200);
+    return () => clearTimeout(t);
+  }, [globalSearch]);
+
+  useEffect(() => {
+    if (!searchDebounced || allPlayers) return;
+    fetchAllPlayers().then(setAllPlayers);
+  }, [searchDebounced, allPlayers]);
+
+  const searchHits = useMemo(() => {
+    if (!searchDebounced || !allPlayers) return [];
+    return allPlayers
+      .filter((p) => matchPlayerName(p.player_name, searchDebounced))
+      .slice(0, 12);
+  }, [allPlayers, searchDebounced]);
 
   useEffect(() => {
     api.overview().then((o: Overview) =>
@@ -147,8 +170,7 @@ function PlayersContent() {
       <div>
         <h1 className="text-2xl font-black text-fg">Player Analysis</h1>
         <p className="text-sm text-muted">
-          Pick a country and player to see their key performance indicators — across
-          the whole tournament or a single match.
+          Pick a player to see their full tournament performance
         </p>
       </div>
 
@@ -157,7 +179,42 @@ function PlayersContent() {
       )}
 
       {/* Selectors */}
-      <div className="card flex flex-wrap items-center gap-3 p-4">
+      <div className="relative card flex flex-wrap items-center gap-3 p-4">
+        <div className="relative w-full min-w-[220px] sm:w-auto sm:min-w-[260px]">
+          <input
+            type="search"
+            value={globalSearch}
+            onChange={(e) => {
+              setGlobalSearch(e.target.value);
+              setSearchOpen(true);
+            }}
+            onFocus={() => setSearchOpen(true)}
+            placeholder="Search any player…"
+            className="h-[38px] w-full rounded-lg border border-[#2a2a2a] bg-[#1e1e1e] px-3 text-sm text-[#ddd] outline-none focus:border-pitch-accent"
+          />
+          {searchOpen && searchDebounced && searchHits.length > 0 && (
+            <div className="absolute left-0 right-0 top-full z-20 mt-1 max-h-64 overflow-y-auto rounded-lg border border-pitch-edge bg-pitch-card shadow-lg">
+              {searchHits.map((p) => (
+                <button
+                  key={p.player_id}
+                  type="button"
+                  className="flex w-full items-center gap-2 px-3 py-2 text-left text-sm hover:bg-pitch-edge/40"
+                  onClick={() => {
+                    setTeam(p.team_name);
+                    setPlayerId(p.player_id);
+                    setGlobalSearch("");
+                    setSearchOpen(false);
+                  }}
+                >
+                  <span className="font-medium text-fg">{p.player_name}</span>
+                  <span className="text-faint">
+                    — {p.team_name} · {p.role}
+                  </span>
+                </button>
+              ))}
+            </div>
+          )}
+        </div>
         <select value={team} onChange={(e) => setTeam(e.target.value)} className="select" data-testid="pa-team">
           <option value="">Select country…</option>
           {teams.map((t) => (
@@ -193,11 +250,8 @@ function PlayersContent() {
               ))}
             </div>
             <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="card p-3">
-                  <Skeleton className="h-3 w-16" />
-                  <Skeleton className="mt-2 h-7 w-12" />
-                </div>
+              {Array.from({ length: 5 }).map((_, i) => (
+                <SkeletonCard key={i} />
               ))}
             </div>
             <div className="card space-y-2 p-4">
@@ -208,8 +262,11 @@ function PlayersContent() {
             </div>
           </div>
         ) : (
-          <div className="card p-8 text-center text-faint">
-            Select a country and player to begin.
+          <div className="card p-8 text-center">
+            <p className="text-sm font-medium text-fg-soft">
+              Pick a country and player to see their full tournament performance.
+            </p>
+            <p className="mt-1 text-xs text-faint">Use the dropdowns above to get started.</p>
           </div>
         )
       ) : detail.matches.length === 0 ? (
@@ -251,7 +308,9 @@ function PlayersContent() {
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-4">
             {detail.indicators.map((ind) => (
               <div key={ind.key} className="card p-3">
-                <div className="text-[11px] uppercase tracking-wider text-faint">{ind.label}</div>
+                <div className="text-[11px] uppercase tracking-wider text-faint">
+                  <StatLabel stat={ind.label} />
+                </div>
                 <div className="mt-1 text-xl font-black stat-grad">{valueFor(ind.key, ind.per90)}</div>
               </div>
             ))}
@@ -266,12 +325,24 @@ function PlayersContent() {
                   <tr>
                     <th className="px-4 py-2.5">Opponent</th>
                     <th className="px-4 py-2.5">Res</th>
-                    <th className="px-4 py-2.5 text-right">Min</th>
-                    <th className="px-4 py-2.5 text-right">G</th>
-                    <th className="px-4 py-2.5 text-right">A</th>
-                    <th className="px-4 py-2.5 text-right">xG</th>
-                    <th className="px-4 py-2.5 text-right">Shots</th>
-                    <th className="px-4 py-2.5 text-right">Passes</th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="Min" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="G" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="A" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="xG" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="Shots" />
+                    </th>
+                    <th className="px-4 py-2.5 text-right">
+                      <StatLabel stat="Passes" />
+                    </th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-pitch-edge/40">

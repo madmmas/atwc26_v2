@@ -1,6 +1,8 @@
 "use client";
+import { useMemo, useState } from "react";
 import { GroupStandings, GroupTeam } from "@/lib/api";
 import { TeamLabel } from "@/components/Flag";
+import { StatLabel } from "@/components/StatTooltip";
 
 export type ScoreInput = { home: number | ""; away: number | "" };
 export type Predictions = Record<string, ScoreInput>;
@@ -78,11 +80,23 @@ function ScoreCell({
   );
 }
 
+function formatXgBalance(n: number | undefined): string {
+  if (n == null || Number.isNaN(n)) return "—";
+  if (n > 0) return `+${n.toFixed(1)}`;
+  return n.toFixed(1);
+}
+
+function xgBalanceColor(n: number | undefined): string {
+  if (n == null || n === 0) return "text-[#888]";
+  return n > 0 ? "text-[#1D9E75]" : "text-[#e05555]";
+}
+
 export function GroupTable({
   name,
   group,
   ranked,
   predictions,
+  xgByTeam,
   onSetScore,
   onReset,
 }: {
@@ -90,14 +104,25 @@ export function GroupTable({
   group: GroupStandings;
   ranked: GroupTeam[];
   predictions: Predictions;
+  xgByTeam?: Map<string, number>;
   onSetScore: (gameId: string, side: "home" | "away", v: number | "") => void;
   onReset: (gameIds: string[]) => void;
 }) {
+  const [sortByXg, setSortByXg] = useState(false);
   const groupGameIds = group.remaining_matches.map((m) => m.game_id);
   const hasPredictions = groupGameIds.some((gid) => {
     const p = predictions[gid];
     return p && (p.home !== "" || p.away !== "");
   });
+
+  const displayRows = useMemo(() => {
+    if (!sortByXg || !xgByTeam) return ranked;
+    return [...ranked].sort((a, b) => {
+      const xa = xgByTeam.get(a.team_name) ?? -Infinity;
+      const xb = xgByTeam.get(b.team_name) ?? -Infinity;
+      return xb - xa || a.rank - b.rank;
+    });
+  }, [ranked, sortByXg, xgByTeam]);
 
   return (
     <div className="card p-4">
@@ -123,15 +148,36 @@ export function GroupTable({
                   {h}
                 </th>
               ))}
+              <th className="px-1.5 py-1 text-right font-semibold">
+                <button
+                  type="button"
+                  onClick={() => setSortByXg((v) => !v)}
+                  className={`inline-flex items-center gap-0.5 transition-colors ${
+                    sortByXg ? "text-pitch-accent" : "hover:text-fg"
+                  }`}
+                  aria-sort={sortByXg ? "descending" : "none"}
+                >
+                  <StatLabel stat="xG±" />
+                  {sortByXg && <span className="text-pitch-accent">↓</span>}
+                </button>
+              </th>
             </tr>
           </thead>
           <tbody>
-            {ranked.map((t) => (
+            {displayRows.map((t) => {
+              const xgb = xgByTeam?.get(t.team_name);
+              const qualified = t.rank <= 2;
+              const groupComplete = group.remaining_matches.length === 0;
+              const eliminated = groupComplete && t.rank > 2;
+              const rowAccent = qualified
+                ? "border-l-[3px] border-l-[#1D9E75] bg-[rgba(29,158,117,0.06)]"
+                : eliminated
+                  ? "border-l-[3px] border-l-[#e05555] bg-[rgba(224,85,85,0.06)]"
+                  : "";
+              return (
               <tr
                 key={t.team_id}
-                className={`border-t border-pitch-edge/40 ${
-                  t.rank <= 2 ? "bg-pitch-accent/5" : ""
-                }`}
+                className={`border-t border-pitch-edge/40 ${rowAccent}`}
               >
                 <td className="py-1.5">
                   <TeamLabel name={t.team_name} flag={t.flag_url} size={16} />
@@ -144,10 +190,26 @@ export function GroupTable({
                 <td className="px-1.5 text-right text-fg">{t.A}</td>
                 <td className="px-1.5 text-right text-fg">{t.GD > 0 ? `+${t.GD}` : t.GD}</td>
                 <td className="px-1.5 text-right font-bold text-fg">{t.P}</td>
+                <td className={`px-1.5 text-right font-medium ${xgBalanceColor(xgb)}`}>
+                  {formatXgBalance(xgb)}
+                </td>
               </tr>
-            ))}
+            );
+            })}
           </tbody>
         </table>
+      </div>
+
+      <div className="mt-2 flex flex-wrap items-center gap-3 text-[10px] text-faint">
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block h-2 w-2 rounded-sm bg-[#1D9E75]" /> Qualified
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block h-2 w-2 rounded-sm bg-[#e05555]" /> Eliminated
+        </span>
+        <span className="inline-flex items-center gap-1">
+          <span className="inline-block h-2 w-2 rounded-sm border border-pitch-edge" /> TBD
+        </span>
       </div>
 
       {group.remaining_matches.length > 0 && (

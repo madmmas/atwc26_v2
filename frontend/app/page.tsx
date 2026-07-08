@@ -1,18 +1,42 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useState, type ReactNode } from "react";
 import Link from "next/link";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import { api, Overview, Player } from "@/lib/api";
+import { DataFreshnessLabel } from "@/components/DataFreshnessLabel";
+import { LatestMatchesWidget } from "@/components/LatestMatchesWidget";
+import { SkeletonStatStrip } from "@/components/SkeletonCard";
+import { StatLabel } from "@/components/StatTooltip";
+import { TeamAttackingChart } from "@/components/TeamAttackingChart";
+import { WinnerProbabilityWidget } from "@/components/WinnerProbabilityWidget";
 import { RoleChip, SectionTitle, StatCard } from "@/components/ui";
 import { Flag } from "@/components/Flag";
+
+function LeaderboardSection({
+  title,
+  hint,
+  exploreHref,
+  children,
+}: {
+  title: string;
+  hint: ReactNode;
+  exploreHref: string;
+  children: ReactNode;
+}) {
+  return (
+    <div>
+      <div className="mb-3 flex items-end justify-between gap-2">
+        <div className="flex items-end gap-2">
+          <h2 className="text-lg font-bold text-fg">{title}</h2>
+          <span className="text-xs text-faint">{hint}</span>
+        </div>
+        <Link href={exploreHref} className="shrink-0 text-xs font-semibold text-faint hover:text-pitch-accent">
+          View full leaderboard →
+        </Link>
+      </div>
+      {children}
+    </div>
+  );
+}
 
 function LeaderList({ players, metric, fmt }: { players: Player[]; metric: string; fmt?: (n: number) => string }) {
   return (
@@ -46,9 +70,16 @@ function LeaderList({ players, metric, fmt }: { players: Player[]; metric: strin
 export default function Home() {
   const [data, setData] = useState<Overview | null>(null);
   const [err, setErr] = useState<string | null>(null);
+  const [fetchedAt, setFetchedAt] = useState<Date | null>(null);
 
   useEffect(() => {
-    api.overview().then(setData).catch((e) => setErr(String(e)));
+    api
+      .overview()
+      .then((d) => {
+        setData(d);
+        setFetchedAt(new Date());
+      })
+      .catch((e) => setErr(String(e)));
   }, []);
   const isLoading = !data && !err;
 
@@ -93,53 +124,34 @@ export default function Home() {
       )}
 
       {/* KPIs */}
-      <section className="grid grid-cols-2 gap-4 sm:grid-cols-4">
-        {data ? (
-          <>
-            <StatCard label="Teams" value={data.league.teams} />
-            <StatCard label="Players tracked" value={data.league.players} />
-            <StatCard label="Games" value={data.league.games} />
-            <StatCard label="Avg goals / team" value={data.league.avg_team_goals} />
-          </>
-        ) : (
-          Array.from({ length: 4 }).map((_, i) => (
-            <div key={i} className="card p-4">
-              <div className="h-3 w-24 animate-pulse rounded bg-pitch-edge/70" />
-              <div className="mt-3 h-8 w-14 animate-pulse rounded bg-pitch-edge/70" />
-            </div>
-          ))
-        )}
+      <section>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
+          {data ? (
+            <>
+              <StatCard label="Teams" value={data.league.teams} />
+              <StatCard label="Players tracked" value={data.league.players} />
+              <StatCard label="Games" value={data.league.games} />
+              <StatCard label="Avg goals / team" value={data.league.avg_team_goals} />
+            </>
+          ) : (
+            Array.from({ length: 4 }).map((_, i) => <SkeletonStatStrip key={i} />)
+          )}
+        </div>
+        <DataFreshnessLabel fetchedAt={fetchedAt} />
       </section>
+
+      <LatestMatchesWidget />
+
+      <WinnerProbabilityWidget />
 
       {/* Team xG chart */}
       <section>
         <SectionTitle
           title="Team attacking output"
-          hint={
-            data
-              ? `all ${chart.length} teams · xG vs. conceded (xGA) per game · scroll →`
-              : "Loading chart data…"
-          }
+          hint={data ? `all ${chart.length} teams · scroll →` : "Loading chart data…"}
         />
         {data ? (
-          <div className="card overflow-x-auto p-4">
-            <div style={{ width: chartWidth, height: 340 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={chart} margin={{ top: 8, right: 8, bottom: 56, left: -10 }}>
-                  <CartesianGrid stroke="#94a3b8" strokeOpacity={0.18} vertical={false} />
-                  <XAxis dataKey="name" angle={-45} textAnchor="end" interval={0} height={70} tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                  <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                  <Tooltip
-                    cursor={{ fill: "#94a3b8", fillOpacity: 0.1 }}
-                    contentStyle={{ background: "rgb(var(--card))", border: "1px solid rgb(var(--edge))", borderRadius: 12, color: "rgb(var(--fg))" }}
-                    labelStyle={{ color: "rgb(var(--fg))" }}
-                  />
-                  <Bar dataKey="xG" fill="#10b981" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="xGA" fill="#f59e0b" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
+          <TeamAttackingChart data={chart} width={chartWidth} />
         ) : (
           <div className="card p-5">
             <div className="h-64 w-full animate-pulse rounded-xl bg-pitch-edge/70" />
@@ -149,8 +161,11 @@ export default function Home() {
 
       {/* Leaderboards */}
       <section className="grid gap-6 lg:grid-cols-3">
-        <div>
-          <SectionTitle title="Top scorers" hint="goals" />
+        <LeaderboardSection
+          title="Top scorers"
+          hint={<StatLabel stat="Goals" />}
+          exploreHref="/explore?sort=goals&order=desc"
+        >
           {data ? (
             <LeaderList players={data.top_scorers} metric="totalGoals_total" />
           ) : (
@@ -160,9 +175,12 @@ export default function Home() {
               ))}
             </div>
           )}
-        </div>
-        <div>
-          <SectionTitle title="Sharpest finishers" hint="xG / 90" />
+        </LeaderboardSection>
+        <LeaderboardSection
+          title="Sharpest finishers"
+          hint={<StatLabel stat="xG / 90" />}
+          exploreHref="/explore?sort=xG90&order=desc"
+        >
           {data ? (
             <LeaderList players={data.top_xg_per90} metric="expectedGoals_p90" fmt={(n) => n?.toFixed(2)} />
           ) : (
@@ -172,9 +190,12 @@ export default function Home() {
               ))}
             </div>
           )}
-        </div>
-        <div>
-          <SectionTitle title="Top creators" hint="xA / 90" />
+        </LeaderboardSection>
+        <LeaderboardSection
+          title="Top creators"
+          hint={<StatLabel stat="xA / 90" />}
+          exploreHref="/explore?sort=xA90&order=desc"
+        >
           {data ? (
             <LeaderList players={data.top_creators_per90} metric="expectedAssists_p90" fmt={(n) => n?.toFixed(2)} />
           ) : (
@@ -184,7 +205,7 @@ export default function Home() {
               ))}
             </div>
           )}
-        </div>
+        </LeaderboardSection>
       </section>
     </div>
   );

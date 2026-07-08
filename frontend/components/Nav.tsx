@@ -34,14 +34,19 @@ export function Nav() {
         {/* Desktop nav */}
         <nav className="hidden items-center gap-1 md:flex" data-testid="nav">
           {links.map((l) => {
-            const active = l.href === "/players" ? path.startsWith("/players") : path === l.href;
+            const active =
+              l.href === "/"
+                ? path === "/"
+                : l.href === "/players"
+                  ? path.startsWith("/players")
+                  : path === l.href || path.startsWith(l.href + "/");
             return (
               <Link
                 key={l.href}
                 href={l.href}
                 data-testid={`nav-${l.href === "/" ? "overview" : l.href.slice(1)}`}
                 className={`rounded-lg px-2.5 py-1.5 text-sm font-semibold transition-colors ${
-                  active ? "bg-pitch-edge text-fg" : "text-muted hover:text-fg"
+                  active ? "bg-white text-[#111]" : "text-muted hover:text-fg"
                 }`}
               >
                 {l.label}
@@ -83,7 +88,12 @@ export function Nav() {
         >
           <div className="flex flex-col gap-1 py-1">
             {links.map((l) => {
-              const active = l.href === "/players" ? path.startsWith("/players") : path === l.href;
+              const active =
+                l.href === "/"
+                  ? path === "/"
+                  : l.href === "/players"
+                    ? path.startsWith("/players")
+                    : path === l.href || path.startsWith(l.href + "/");
               return (
                 <Link
                   key={l.href}
@@ -91,7 +101,7 @@ export function Nav() {
                   data-testid={`nav-mobile-${l.href === "/" ? "overview" : l.href.slice(1)}`}
                   onClick={() => setOpen(false)}
                   className={`rounded-lg px-3 py-2 text-sm font-semibold transition-colors ${
-                    active ? "bg-pitch-edge text-fg" : "text-muted hover:text-fg"
+                    active ? "bg-white text-[#111]" : "text-muted hover:text-fg"
                   }`}
                 >
                   {l.label}

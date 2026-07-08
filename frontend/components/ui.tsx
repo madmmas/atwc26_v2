@@ -1,4 +1,5 @@
 // Small shared presentational helpers.
+import type { ReactNode } from "react";
 export function RoleChip({ role }: { role: string }) {
   return <span className={`chip role-${role}`}>{role}</span>;
 }
@@ -26,7 +27,7 @@ export function SectionTitle({
   hint,
 }: {
   title: string;
-  hint?: string;
+  hint?: ReactNode;
 }) {
   return (
     <div className="mb-3 flex items-end justify-between">

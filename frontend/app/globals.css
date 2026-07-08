@@ -66,11 +66,24 @@ body {
   }
 }
 
+@keyframes skel-pulse {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 0.7; }
+}
+
 /* role accent chips — readable in both themes */
 .role-GK { @apply bg-amber-500/15 text-amber-700 dark:text-amber-300; }
 .role-DEF { @apply bg-sky-500/15 text-sky-700 dark:text-sky-300; }
 .role-MID { @apply bg-emerald-500/15 text-emerald-700 dark:text-emerald-300; }
 .role-FWD { @apply bg-rose-500/15 text-rose-700 dark:text-rose-300; }
+
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+.animate-fade-in {
+  animation: fade-in 200ms ease forwards;
+}
 
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-thumb { @apply bg-pitch-edge rounded-full; }

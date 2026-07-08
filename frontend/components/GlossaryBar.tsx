@@ -1,5 +1,6 @@
-// Collapsible key-glossary shown in the footer on every page.
-// Curated to the terms the app actually surfaces (not all ~140 raw fields).
+"use client";
+
+import { useEffect, useState } from "react";
 
 type Term = { abbr: string; name: string; desc: string };
 
@@ -44,30 +45,60 @@ const GROUPS: { title: string; terms: Term[] }[] = [
 ];
 
 export function GlossaryBar() {
+  const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    setOpen(sessionStorage.getItem("glossary_open") === "true");
+  }, []);
+
+  function toggle() {
+    setOpen((v) => {
+      const next = !v;
+      sessionStorage.setItem("glossary_open", String(next));
+      return next;
+    });
+  }
+
   return (
-    <details className="mx-auto max-w-7xl px-4">
-      <summary className="cursor-pointer select-none rounded-lg px-3 py-2 text-xs font-semibold text-muted transition-colors hover:bg-pitch-edge/40 hover:text-fg">
-        📖 Glossary — what the stats mean
-      </summary>
-      <div className="mt-2 grid gap-4 rounded-xl border border-pitch-edge bg-pitch-card/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
-        {GROUPS.map((g) => (
-          <div key={g.title}>
-            <div className="mb-2 text-[11px] font-bold uppercase tracking-wider stat-grad">
-              {g.title}
+    <div className="mx-auto max-w-7xl px-4">
+      <button
+        type="button"
+        onClick={toggle}
+        aria-expanded={open}
+        className="flex w-full cursor-pointer select-none items-center gap-2 rounded-lg px-3 py-2 text-left text-xs font-semibold text-muted transition-colors hover:bg-pitch-edge/40 hover:text-fg"
+      >
+        <span>📖 Glossary — what the stats mean</span>
+        <span
+          className={`ml-auto text-faint transition-transform duration-200 ${open ? "rotate-180" : ""}`}
+          aria-hidden
+        >
+          ▾
+        </span>
+      </button>
+      <div
+        className="overflow-hidden transition-[max-height] duration-200 ease-in-out"
+        style={{ maxHeight: open ? "1200px" : "0px" }}
+      >
+        <div className="mt-2 grid gap-4 rounded-xl border border-pitch-edge bg-pitch-card/60 p-4 sm:grid-cols-2 lg:grid-cols-4">
+          {GROUPS.map((g) => (
+            <div key={g.title}>
+              <div className="mb-2 text-[11px] font-bold uppercase tracking-wider stat-grad">
+                {g.title}
+              </div>
+              <dl className="space-y-1.5">
+                {g.terms.map((t) => (
+                  <div key={t.abbr}>
+                    <dt className="text-xs font-semibold text-fg">
+                      {t.abbr} <span className="font-normal text-faint">· {t.name}</span>
+                    </dt>
+                    <dd className="text-[11px] leading-snug text-muted">{t.desc}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
-            <dl className="space-y-1.5">
-              {g.terms.map((t) => (
-                <div key={t.abbr}>
-                  <dt className="text-xs font-semibold text-fg">
-                    {t.abbr} <span className="font-normal text-faint">· {t.name}</span>
-                  </dt>
-                  <dd className="text-[11px] leading-snug text-muted">{t.desc}</dd>
-                </div>
-              ))}
-            </dl>
-          </div>
-        ))}
+          ))}
+        </div>
       </div>
-    </details>
+    </div>
   );
 }
