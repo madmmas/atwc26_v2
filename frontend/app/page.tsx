@@ -1,17 +1,9 @@
 "use client";
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import {
-  Bar,
-  BarChart,
-  CartesianGrid,
-  ResponsiveContainer,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
 import { api, Overview, Player } from "@/lib/api";
 import { StatLabel } from "@/components/StatTooltip";
+import { TeamAttackingChart } from "@/components/TeamAttackingChart";
 import { RoleChip, SectionTitle, StatCard } from "@/components/ui";
 import { Flag } from "@/components/Flag";
 
@@ -116,31 +108,10 @@ export default function Home() {
       <section>
         <SectionTitle
           title="Team attacking output"
-          hint={
-            data
-              ? `all ${chart.length} teams · xG vs. conceded (xGA) per game · scroll →`
-              : "Loading chart data…"
-          }
+          hint={data ? `all ${chart.length} teams · scroll →` : "Loading chart data…"}
         />
         {data ? (
-          <div className="card overflow-x-auto p-4">
-            <div style={{ width: chartWidth, height: 340 }}>
-              <ResponsiveContainer width="100%" height="100%">
-                <BarChart data={chart} margin={{ top: 8, right: 8, bottom: 56, left: -10 }}>
-                  <CartesianGrid stroke="#94a3b8" strokeOpacity={0.18} vertical={false} />
-                  <XAxis dataKey="name" angle={-45} textAnchor="end" interval={0} height={70} tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                  <YAxis tick={{ fill: "#94a3b8", fontSize: 11 }} />
-                  <Tooltip
-                    cursor={{ fill: "#94a3b8", fillOpacity: 0.1 }}
-                    contentStyle={{ background: "rgb(var(--card))", border: "1px solid rgb(var(--edge))", borderRadius: 12, color: "rgb(var(--fg))" }}
-                    labelStyle={{ color: "rgb(var(--fg))" }}
-                  />
-                  <Bar dataKey="xG" fill="#10b981" radius={[4, 4, 0, 0]} />
-                  <Bar dataKey="xGA" fill="#f59e0b" radius={[4, 4, 0, 0]} />
-                </BarChart>
-              </ResponsiveContainer>
-            </div>
-          </div>
+          <TeamAttackingChart data={chart} width={chartWidth} />
         ) : (
           <div className="card p-5">
             <div className="h-64 w-full animate-pulse rounded-xl bg-pitch-edge/70" />
