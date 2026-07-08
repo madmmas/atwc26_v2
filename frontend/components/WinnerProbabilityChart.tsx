@@ -34,7 +34,7 @@ export function WinnerProbabilityChart() {
   const shown = showAll ? teams : teams.slice(0, DEFAULT_SHOWN);
 
   return (
-    <div className="card p-5">
+    <div className="card p-5" id="winner-probability">
       <SectionTitle
         title="World Cup Winner Probability"
         hint="Monte Carlo simulation · updates after every finished match"
