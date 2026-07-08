@@ -4,10 +4,12 @@ from pathlib import Path
 
 import atwc26_core.config as core_config
 from etl.changed.detect import (
+    compare_matches_snapshot,
     compare_snapshot,
     data_changed,
     describe_changes,
     fingerprint,
+    match_fingerprint,
     save_snapshot,
 )
 from etl.changed.store import (
@@ -49,10 +51,12 @@ def test_fingerprint_ignores_derived_and_volatile_files(tmp_path, monkeypatch):
     (raw / "1.json").write_text('{"a": 1}\n')
 
     fp1 = fingerprint()
+    match1 = match_fingerprint()
     (data / "schedule.json").write_text('{"updated": true}\n')
     (data / "squads_raw.json").write_text('[]\n')
     (data / "match_events.json").write_text('{}\n')
     assert fingerprint() == fp1
+    assert match_fingerprint() == match1
 
 
 def test_compare_detects_new_raw_file(tmp_path, monkeypatch):
@@ -64,9 +68,27 @@ def test_compare_detects_new_raw_file(tmp_path, monkeypatch):
     snap = tmp_path / "fp.json"
     save_snapshot(snap)
     assert compare_snapshot(snap) == 1
+    assert compare_matches_snapshot(snap) == 1
 
     (raw / "2.json").write_text('{"b": 2}\n')
     assert compare_snapshot(snap) == 0
+    assert compare_matches_snapshot(snap) == 0
+
+
+def test_compare_matches_ignores_bracket_only_change(tmp_path, monkeypatch):
+    data = _use_data_dir(tmp_path, monkeypatch)
+    raw = data / "raw"
+    raw.mkdir()
+    (raw / "1.json").write_text('{"a": 1}\n')
+    (data / "bracket.json").write_text('{"rounds": []}\n')
+
+    snap = tmp_path / "fp.json"
+    save_snapshot(snap)
+    assert compare_matches_snapshot(snap) == 1
+
+    (data / "bracket.json").write_text('{"rounds": [{"name": "Final"}]}\n')
+    assert compare_snapshot(snap) == 0
+    assert compare_matches_snapshot(snap) == 1
 
 
 def test_data_changed_ignores_missing_local_raw_files():

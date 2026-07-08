@@ -199,7 +199,11 @@ etl-scrape: setup-scraper ## Discover fixtures + scrape ESPN → data/raw + parq
 etl-local: setup-etl ## Transform + simulate + train + QA (local manifest)
 	cd $(ROOT) && $(PYTHON) -m etl.transform
 	cd $(ROOT) && $(PYTHON) -m etl.simulate
+ifeq ($(ATWC26_SKIP_TRAIN),1)
+	@echo "etl-train: skipped (match data unchanged)"
+else
 	cd $(ROOT) && $(PYTHON) -m etl.train
+endif
 	cd $(ROOT) && $(PYTHON) -m etl.qa
 
 etl-refresh: etl-scrape etl-local ## Scrape ESPN, then transform + simulate + train + QA

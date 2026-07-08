@@ -58,6 +58,19 @@ jobs:
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: python -m etl.changed restore-state
 
+      - name: Sync published artifacts
+        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
+        env:
+          ATWC26_S3_BUCKET: ${{ secrets.ATWC26_S3_BUCKET }}
+          ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          PYTHONPATH=. python -c "
+          from services.shared.data_sync import sync_from_manifest
+          updated = sync_from_manifest()
+          print(f'synced {len(updated)} artifact(s) from S3')
+          "
+
       - name: Load prior fingerprint
         if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
         env:
@@ -75,9 +88,16 @@ jobs:
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.skip_scrape }}" == "true" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            echo "train=true" >> "$GITHUB_OUTPUT"
             echo "skip_scrape — running transform on committed data"
           elif python -m etl.changed compare /tmp/etl-fp.json; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
+            if python -m etl.changed compare-matches /tmp/etl-fp.json; then
+              echo "train=true" >> "$GITHUB_OUTPUT"
+            else
+              echo "train=false" >> "$GITHUB_OUTPUT"
+              echo "bracket/standings only — skipping model training"
+            fi
           else
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "No new scraped data — skipping transform and publish."
@@ -96,6 +116,7 @@ jobs:
         if: steps.detect.outputs.changed == 'true'
         env:
           ATWC26_SIMULATE_TRIALS: "1000"
+          ATWC26_SKIP_TRAIN: ${{ steps.detect.outputs.train == 'false' && '1' || '' }}
         run: make etl-local
 
       - name: ETL tests
@@ -151,7 +172,11 @@ jobs:
             echo "| Trigger | \`${{ github.event_name }}\` |"
             echo "| Data changed | \`${{ steps.detect.outputs.changed }}\` |"
             if [[ "${{ steps.detect.outputs.changed }}" == "true" ]]; then
-              echo "| Transform | ran |"
+              if [[ "${{ steps.detect.outputs.train }}" == "false" ]]; then
+                echo "| Transform | ran (train skipped — bracket/standings only) |"
+              else
+                echo "| Transform | ran |"
+              fi
               if [[ "${{ github.event_name }}" != "workflow_dispatch" || "${{ inputs.skip_publish }}" != "true" ]]; then
                 echo "| Publish | ran on this runner (same job as transform) |"
               else

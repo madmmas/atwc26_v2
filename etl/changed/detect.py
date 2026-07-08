@@ -35,6 +35,23 @@ def _path_key(path: Path) -> str:
     return path.as_posix()
 
 
+def _is_raw_key(key: str) -> bool:
+    return key.startswith("data/raw/") and key.endswith(".json")
+
+
+def match_fingerprint() -> dict[str, str]:
+    """Fingerprint raw match payloads only (inputs to model training)."""
+    out: dict[str, str] = {}
+    raw = core_config.DATA_DIR / "raw"
+    if not raw.is_dir():
+        return out
+    for path in sorted(raw.glob("*.json")):
+        if path.name in _IGNORE_NAMES:
+            continue
+        out[_path_key(path)] = _sha256_file(path)
+    return out
+
+
 def fingerprint() -> dict[str, str]:
     """Map stable path key -> sha256 for ESPN scrape inputs that drive ETL.
 
@@ -42,18 +59,13 @@ def fingerprint() -> dict[str, str]:
     match_events) or files re-fetched every poll with identical content
     (squads, schedule).
     """
-    out: dict[str, str] = {}
+    out = match_fingerprint()
     data = core_config.DATA_DIR
 
     def add(path: Path) -> None:
         if not path.is_file() or path.name in _IGNORE_NAMES:
             return
         out[_path_key(path)] = _sha256_file(path)
-
-    raw = data / "raw"
-    if raw.is_dir():
-        for path in sorted(raw.glob("*.json")):
-            add(path)
 
     for path in (
         core_config.STANDINGS,
@@ -120,6 +132,19 @@ def compare_snapshot(path: Path) -> int:
     return 0
 
 
+def compare_matches_snapshot(path: Path) -> int:
+    """Exit 0 when raw match JSON changed since snapshot (training required)."""
+    before = json.loads(path.read_text())
+    before_raw = {k: v for k, v in before.items() if _is_raw_key(k)}
+    after_raw = match_fingerprint()
+    if not data_changed(before_raw, after_raw):
+        print("no match data changes")
+        return 1
+
+    print(f"match data changed: {describe_changes(before_raw, after_raw)}")
+    return 0
+
+
 def restore_state() -> int:
     restore_scrape_state()
     return 0
@@ -147,6 +172,12 @@ def main(argv: list[str] | None = None) -> int:
     cmp = sub.add_parser("compare", help="Exit 0 when data changed since snapshot")
     cmp.add_argument("path", type=Path)
 
+    cmp_matches = sub.add_parser(
+        "compare-matches",
+        help="Exit 0 when raw match JSON changed since snapshot",
+    )
+    cmp_matches.add_argument("path", type=Path)
+
     sub.add_parser("restore-state", help="Restore processed_games.json from DynamoDB")
     sub.add_parser("save-scrape-state", help="Persist processed_games.json to DynamoDB")
 
@@ -159,6 +190,8 @@ def main(argv: list[str] | None = None) -> int:
         return restore_state()
     if args.command == "save-scrape-state":
         return persist_scrape_state()
+    if args.command == "compare-matches":
+        return compare_matches_snapshot(args.path)
     return compare_snapshot(args.path)
 
 
@@ -166,7 +199,9 @@ __all__ = [
     "data_changed",
     "describe_changes",
     "fingerprint",
+    "match_fingerprint",
     "save_fingerprint",
     "compare_snapshot",
+    "compare_matches_snapshot",
     "save_snapshot",
 ]
