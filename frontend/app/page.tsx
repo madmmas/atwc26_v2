@@ -106,7 +106,7 @@ export default function Home() {
             the AI engine predict the result from real per-90 performance.
           </p>
           <div className="mt-5 flex gap-3">
-            <Link href="/predict" className="btn-primary">
+            <Link href="/predict?tab=predictor" className="btn-primary">
               Build a match →
             </Link>
             <Link href="/explore" className="btn-ghost">

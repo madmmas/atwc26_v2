@@ -3,10 +3,18 @@ import { Suspense, useCallback, useEffect, useRef, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { api, Overview, Player, Prediction } from "@/lib/api";
 import { buildPredictUrl, parsePredictUrl } from "@/lib/predictUrl";
+import { PredictTabs } from "@/components/PredictTabs";
 import { PredictorHintBar } from "@/components/PredictorHintBar";
 import { RoleChip, Skeleton } from "@/components/ui";
 import { PredictionResult } from "@/components/PredictionResult";
 import { WinnerProbabilityChart } from "@/components/WinnerProbabilityChart";
+import { usePageTab } from "@/hooks/usePageTab";
+
+const PREDICT_TABS = [
+  { id: "probability", label: "Winner Probability", labelShort: "Probability", icon: "🏆" },
+  { id: "predictor", label: "Match Predictor", labelShort: "Predictor", icon: "⚽" },
+] as const;
+const PREDICT_TAB_IDS = PREDICT_TABS.map((t) => t.id);
 
 const FORMATIONS: Record<string, { GK: number; DEF: number; MID: number; FWD: number }> = {
   "4-3-3": { GK: 1, DEF: 4, MID: 3, FWD: 3 },
@@ -207,9 +215,11 @@ function TeamColumn({
 
 function PredictContent() {
   const searchParams = useSearchParams();
+  const { activeTab, setTab } = usePageTab("tab", "probability", "predict_active_tab", PREDICT_TAB_IDS);
   const urlLoaded = useRef(false);
   const autoRan = useRef(false);
 
+  const [predictorVisited, setPredictorVisited] = useState(activeTab === "predictor");
   const [teams, setTeams] = useState<string[]>([]);
   const [formationA, setFormationA] = useState("");
   const [formationB, setFormationB] = useState("");
@@ -230,6 +240,11 @@ function PredictContent() {
   const [err, setErr] = useState<string | null>(null);
 
   useEffect(() => {
+    if (activeTab === "predictor") setPredictorVisited(true);
+  }, [activeTab]);
+
+  useEffect(() => {
+    if (!predictorVisited) return;
     api.overview().then((o: Overview) =>
       setTeams(o.teams.map((t) => t.team_name).sort((a, b) => a.localeCompare(b)))
     );
@@ -239,7 +254,7 @@ function PredictContent() {
         setModelsAvailable(available);
       })
       .catch(() => setModelsAvailable(["poisson"]));
-  }, []);
+  }, [predictorVisited]);
 
   useEffect(() => {
     if (predictModel !== "all" && !modelsAvailable.includes(predictModel)) {
@@ -361,13 +376,13 @@ function PredictContent() {
   }, [teamA, teamB, homeSide, slotsA, slotsB, predictModel]);
 
   useEffect(() => {
-    if (autoRan.current || !ready) return;
+    if (autoRan.current || !ready || activeTab !== "predictor") return;
     const parsed = parsePredictUrl(searchParams);
     if (parsed.playersA?.length && parsed.playersB?.length) {
       autoRan.current = true;
       runPredict();
     }
-  }, [ready, searchParams, runPredict]);
+  }, [ready, searchParams, runPredict, activeTab]);
 
   const slotsAFull = slotsA.length > 0 && slotsA.every((s) => s.player_id);
   const slotsBFull = slotsB.length > 0 && slotsB.every((s) => s.player_id);
@@ -403,16 +418,23 @@ function PredictContent() {
 
   return (
     <div className="space-y-6">
-      <WinnerProbabilityChart />
-
-      <div>
-        <h1 className="text-2xl font-black text-fg">Match Predictor</h1>
+      <div id="predict-top">
+        <h1 className="text-2xl font-black text-fg">Predictor</h1>
         <p className="text-sm text-muted">
-          Pick two teams, choose a formation for each, build your XI, and the engine predicts the
-          result from tournament form.
+          Explore tournament win probabilities or build your own match prediction.
         </p>
       </div>
 
+      <PredictTabs tabs={[...PREDICT_TABS]} activeTab={activeTab} onChange={setTab} />
+
+      {activeTab === "probability" && (
+        <div role="tabpanel" id="tabpanel-probability" aria-labelledby="tab-probability">
+          <WinnerProbabilityChart />
+        </div>
+      )}
+
+      {activeTab === "predictor" && (
+        <div role="tabpanel" id="tabpanel-predictor" aria-labelledby="tab-predictor" className="space-y-6">
       <PredictorHintBar
         teamA={teamA}
         teamB={teamB}
@@ -500,6 +522,8 @@ function PredictContent() {
         </div>
       )}
       {result && <PredictionResult p={result} shareUrl={shareUrl()} />}
+        </div>
+      )}
     </div>
   );
 }

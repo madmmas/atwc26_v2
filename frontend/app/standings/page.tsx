@@ -3,10 +3,18 @@
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { api, BracketData, GroupStandings, Overview, Team } from "@/lib/api";
+import { StandingsAnchorBar } from "@/components/StandingsAnchorBar";
+import styles from "@/components/SectionNavBar.module.css";
 import { Skeleton } from "@/components/ui";
 import { GroupTable, Predictions, applyHypotheticalResults } from "@/components/GroupTable";
 import { Bracket } from "@/components/Bracket";
 import { GROUP_LETTERS } from "@/lib/matchStages";
+import { useActiveSection } from "@/hooks/useActiveSection";
+
+const STANDINGS_ANCHORS = [
+  { id: "standings-bracket", label: "Knockout Bracket", labelShort: "Bracket", icon: "🗂" },
+  { id: "standings-groups", label: "Group Standings", labelShort: "Groups", icon: "📊" },
+] as const;
 
 function GroupTab({
   active,
@@ -34,6 +42,10 @@ function StandingsContent() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const groupParam = searchParams.get("group");
+  const { activeSection, scrollToSection } = useActiveSection(
+    STANDINGS_ANCHORS.map((a) => a.id),
+    "standings-bracket"
+  );
 
   const [groups, setGroups] = useState<Record<string, GroupStandings> | null>(null);
   const [bracket, setBracket] = useState<BracketData | null>(null);
@@ -48,8 +60,8 @@ function StandingsContent() {
         : "all";
 
   useEffect(() => {
-    api.standings().then((r) => setGroups(r.groups));
     api.bracket().then(setBracket);
+    api.standings().then((r) => setGroups(r.groups));
     api.overview().then((o: Overview) => setTeams(o.teams));
   }, []);
 
@@ -89,7 +101,9 @@ function StandingsContent() {
     if (letter === "all") params.delete("group");
     else params.set("group", letter);
     const q = params.toString();
-    router.replace(q ? `/standings?${q}` : "/standings", { scroll: false });
+    const hash = typeof window !== "undefined" ? window.location.hash : "";
+    const base = q ? `/standings?${q}` : "/standings";
+    router.replace(`${base}${hash}`, { scroll: false });
   }
 
   const names = groups ? Object.keys(groups).sort() : [];
@@ -99,59 +113,73 @@ function StandingsContent() {
       : names.filter((n) => n.replace(/^Group\s+/i, "") === activeGroup);
 
   return (
-    <div className="space-y-6">
-      {bracket ? (
-        <Bracket bracket={bracket} rankedGroups={rankedGroups} />
-      ) : (
-        <div className="card p-5">
-          <Skeleton className="h-48 w-full rounded-xl" />
-        </div>
-      )}
+    <div>
+      <div id="standings-top" className="mb-6">
+        <h1 className="text-2xl font-black text-fg">Standings</h1>
+        <p className="text-sm text-muted">
+          Follow the knockout bracket and group tables — edit scores to simulate outcomes.
+        </p>
+      </div>
 
-      <div>
-        <h1 className="text-2xl font-black text-fg">Group Standings</h1>
+      <StandingsAnchorBar
+        anchors={[...STANDINGS_ANCHORS]}
+        activeSection={activeSection}
+        onNavigate={scrollToSection}
+      />
+
+      <div id="standings-bracket" className={`${styles.standingsSection} mb-6`} aria-labelledby="anchor-standings-bracket">
+        {bracket ? (
+          <Bracket bracket={bracket} rankedGroups={rankedGroups} />
+        ) : (
+          <div className="card p-5">
+            <Skeleton className="h-48 w-full rounded-xl" />
+          </div>
+        )}
+      </div>
+
+      <div id="standings-groups" className={`${styles.standingsSection} space-y-6`} aria-labelledby="anchor-standings-groups">
         <p className="text-sm text-muted">
           Real group tables from every played match. Try a score for the remaining
           fixture(s) below any group to see how the table — and the knockout bracket
           above — would change. Predictions aren&apos;t saved, reload to reset.
         </p>
-      </div>
 
-      <div className="flex gap-2 overflow-x-auto pb-1">
-        <GroupTab active={activeGroup === "all"} onClick={() => setGroupFilter("all")}>
-          All
-        </GroupTab>
-        {GROUP_LETTERS.map((g) => (
-          <GroupTab key={g} active={activeGroup === g} onClick={() => setGroupFilter(g)}>
-            {g}
+        <div className="flex gap-2 overflow-x-auto pb-1">
+          <GroupTab active={activeGroup === "all"} onClick={() => setGroupFilter("all")}>
+            All
           </GroupTab>
-        ))}
-      </div>
+          {GROUP_LETTERS.map((g) => (
+            <GroupTab key={g} active={activeGroup === g} onClick={() => setGroupFilter(g)}>
+              {g}
+            </GroupTab>
+          ))}
+        </div>
 
-      <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
-        {groups ? (
-          visibleNames.map((name) => (
-            <GroupTable
-              key={name}
-              name={name}
-              group={groups[name]}
-              ranked={rankedGroups[name]}
-              predictions={predictions}
-              xgByTeam={xgByTeam}
-              onSetScore={setScore}
-              onReset={resetGroup}
-            />
-          ))
-        ) : (
-          Array.from({ length: 12 }).map((_, i) => (
-            <div key={i} className="card space-y-2 p-4">
-              <Skeleton className="h-5 w-8" />
-              {Array.from({ length: 4 }).map((_, j) => (
-                <Skeleton key={j} className="h-7" />
-              ))}
-            </div>
-          ))
-        )}
+        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {groups ? (
+            visibleNames.map((name) => (
+              <GroupTable
+                key={name}
+                name={name}
+                group={groups[name]}
+                ranked={rankedGroups[name]}
+                predictions={predictions}
+                xgByTeam={xgByTeam}
+                onSetScore={setScore}
+                onReset={resetGroup}
+              />
+            ))
+          ) : (
+            Array.from({ length: 12 }).map((_, i) => (
+              <div key={i} className="card space-y-2 p-4">
+                <Skeleton className="h-5 w-8" />
+                {Array.from({ length: 4 }).map((_, j) => (
+                  <Skeleton key={j} className="h-7" />
+                ))}
+              </div>
+            ))
+          )}
+        </div>
       </div>
     </div>
   );
