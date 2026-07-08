@@ -17,6 +17,15 @@ const FORMATIONS: Record<string, { GK: number; DEF: number; MID: number; FWD: nu
 type Role = "GK" | "DEF" | "MID" | "FWD";
 type Slot = { role: Role; player_id: number | null };
 
+const PREDICT_MODELS = [
+  { value: "all", label: "Compare all models" },
+  { value: "poisson", label: "Poisson" },
+  { value: "elo", label: "Elo" },
+  { value: "dixon_coles", label: "Dixon-Coles" },
+  { value: "xgboost", label: "XGBoost" },
+] as const;
+type PredictModel = (typeof PREDICT_MODELS)[number]["value"];
+
 function slotsFor(formation: string): Slot[] {
   const f = FORMATIONS[formation];
   if (!f) return [];
@@ -213,6 +222,7 @@ function PredictContent() {
   const [slotsA, setSlotsA] = useState<Slot[]>([]);
   const [slotsB, setSlotsB] = useState<Slot[]>([]);
   const [homeSide, setHomeSide] = useState<"a" | "b" | "none">("none");
+  const [predictModel, setPredictModel] = useState<PredictModel>("all");
   const [mobileTab, setMobileTab] = useState<"a" | "b">("a");
   const [result, setResult] = useState<Prediction | null>(null);
   const [busy, setBusy] = useState(false);
@@ -310,7 +320,11 @@ function PredictContent() {
     setBusy(true);
     setErr(null);
     try {
-      const body = {
+      const body: {
+        team_a: { team_name: string; home: boolean; players: { player_id: number | null; role: Role }[] };
+        team_b: { team_name: string; home: boolean; players: { player_id: number | null; role: Role }[] };
+        model?: string;
+      } = {
         team_a: {
           team_name: teamA,
           home: homeSide === "a",
@@ -322,13 +336,16 @@ function PredictContent() {
           players: slotsB.filter((s) => s.player_id).map((s) => ({ player_id: s.player_id, role: s.role })),
         },
       };
+      if (predictModel !== "all") {
+        body.model = predictModel;
+      }
       setResult(await api.predict(body));
     } catch (e) {
       setErr(String(e));
     } finally {
       setBusy(false);
     }
-  }, [teamA, teamB, homeSide, slotsA, slotsB]);
+  }, [teamA, teamB, homeSide, slotsA, slotsB, predictModel]);
 
   useEffect(() => {
     if (autoRan.current || !ready) return;
@@ -416,19 +433,39 @@ function PredictContent() {
       </div>
 
       <div className="card flex flex-wrap items-center justify-between gap-3 p-4">
-        <div className="flex items-center gap-2 text-sm">
-          <span className="text-faint">Home advantage</span>
-          {(["none", "a", "b"] as const).map((h) => (
-            <button
-              key={h}
-              onClick={() => setHomeSide(h)}
-              className={`rounded-lg px-3 py-1.5 text-xs font-bold ${
-                homeSide === h ? "bg-pitch-accent text-pitch-bg" : "bg-pitch-edge/60 text-fg-soft"
-              }`}
+        <div className="flex flex-wrap items-center gap-4">
+          <div className="flex items-center gap-2 text-sm">
+            <span className="text-faint">Home advantage</span>
+            {(["none", "a", "b"] as const).map((h) => (
+              <button
+                key={h}
+                onClick={() => setHomeSide(h)}
+                className={`rounded-lg px-3 py-1.5 text-xs font-bold ${
+                  homeSide === h ? "bg-pitch-accent text-pitch-bg" : "bg-pitch-edge/60 text-fg-soft"
+                }`}
+              >
+                {h === "none" ? "Neutral" : h === "a" ? teamA || "Team A" : teamB || "Team B"}
+              </button>
+            ))}
+          </div>
+          <div className="flex items-center gap-2 text-sm">
+            <label htmlFor="predict-model" className="text-faint">
+              Model
+            </label>
+            <select
+              id="predict-model"
+              value={predictModel}
+              onChange={(e) => setPredictModel(e.target.value as PredictModel)}
+              className="select min-w-[11rem]"
+              data-testid="predict-model-select"
             >
-              {h === "none" ? "Neutral" : h === "a" ? teamA || "Team A" : teamB || "Team B"}
-            </button>
-          ))}
+              {PREDICT_MODELS.map((m) => (
+                <option key={m.value} value={m.value}>
+                  {m.label}
+                </option>
+              ))}
+            </select>
+          </div>
         </div>
         <button
           className="btn-primary"
