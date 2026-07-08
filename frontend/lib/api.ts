@@ -93,6 +93,15 @@ export type Prediction = {
   radar: { dimensions: string[]; [team: string]: any };
   narrative: string;
   model: { type: string; avg_team_goals_baseline: number; assumptions: string };
+  comparison?: Record<
+    string,
+    {
+      win_probability_a: number;
+      draw_probability: number;
+      win_probability_b: number;
+      model_name: string;
+    }
+  >;
 };
 
 async function get<T>(path: string): Promise<T> {

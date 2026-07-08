@@ -17,6 +17,7 @@ dependencies = [
 
 [project.optional-dependencies]
 publish = ["boto3>=1.28"]
+ml = ["scikit-learn>=1.4", "xgboost>=2.0", "scipy>=1.11"]
 
 [tool.setuptools.packages.find]
 where = ["."]

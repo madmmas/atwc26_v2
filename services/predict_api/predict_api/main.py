@@ -1,10 +1,10 @@
 """AnalyseThisWC26 predict API — match outcome prediction."""
 from __future__ import annotations
 
-import os as _os
 import sys
 import threading
 from pathlib import Path
+
 
 def _repo_root() -> Path:
     here = Path(__file__).resolve()
@@ -22,12 +22,13 @@ from fastapi import FastAPI, HTTPException, Request
 from fastapi.middleware.cors import CORSMiddleware
 
 from atwc26_core import config
+from atwc26_core.engines import available_engines, load_engines
 from atwc26_core.prediction import get_predictor
 from atwc26_core.schemas import PredictRequest
 from services.shared.json_util import clean_json
 from services.shared.predict_bootstrap import build_predictor_store, ensure_predictor_data
 
-_RELOAD_SECRET = _os.getenv("ATWC26_RELOAD_SECRET", "")
+_RELOAD_SECRET = config.RELOAD_SECRET
 _reload_lock = threading.Lock()
 
 app = FastAPI(title=f"{config.APP_NAME} Predict", version=config.APP_VERSION)
@@ -48,6 +49,7 @@ def _warm() -> None:
     ensure_predictor_data()
     _store = build_predictor_store()
     get_predictor(_store)
+    load_engines(_store)
 
 
 _store: object | None = None
@@ -68,19 +70,69 @@ def health():
         "service": "predict",
         "app": config.APP_NAME,
         "version": config.APP_VERSION,
+        "models_available": list(available_engines().keys()),
         **store.league,
     }
 
 
 @app.post("/api/predict")
 def predict(req: PredictRequest):
-    store = _get_store()
-    predictor = get_predictor(store)
     a = req.team_a.model_dump()
     b = req.team_b.model_dump()
     if not a["players"] or not b["players"]:
         raise HTTPException(400, "Each team needs at least one selected player.")
-    return clean_json(predictor.predict(a, b))
+
+    store = _get_store()
+    _enrich_players(a["players"], store)
+    _enrich_players(b["players"], store)
+
+    engines = available_engines()
+    if not engines:
+        raise HTTPException(503, "No prediction models available.")
+
+    model_name = req.model
+    if model_name:
+        engine = engines.get(model_name)
+        if engine is None:
+            raise HTTPException(
+                400,
+                f"Model '{model_name}' not available. Available: {list(engines.keys())}",
+            )
+        return clean_json(engine.predict(a, b))
+
+    results = {}
+    for name, engine in engines.items():
+        try:
+            results[name] = engine.predict(a, b)
+        except Exception as exc:
+            results[name] = {"error": str(exc)}
+
+    primary = results.get("poisson", next(iter(results.values())))
+    return clean_json({
+        **primary,
+        "comparison": {
+            name: {
+                "win_probability_a": r.get("win_probability_a"),
+                "draw_probability": r.get("draw_probability"),
+                "win_probability_b": r.get("win_probability_b"),
+                "model_name": r.get("model", {}).get("name"),
+            }
+            for name, r in results.items()
+            if "error" not in r
+        },
+    })
+
+
+def _enrich_players(player_selections: list[dict], store) -> None:
+    """Attach per-90 stats to each player selection dict in-place."""
+    players_df = store.predictor_players.set_index("player_id")
+    p90_cols = [c for c in players_df.columns if c.endswith("_p90")]
+    for sel in player_selections:
+        pid = sel.get("player_id")
+        if pid in players_df.index:
+            row = players_df.loc[pid]
+            for col in p90_cols:
+                sel[col] = float(row.get(col, 0) or 0)
 
 
 @app.post("/api/predict/reload")
@@ -105,6 +157,7 @@ def reload_predictor(request: Request):
         _store = build_predictor_store()
         _pred._predictor = None
         get_predictor(_store)
+        load_engines(_store)
         return {
             "status": "reloaded",
             "updated": updated,
