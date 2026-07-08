@@ -1,5 +1,7 @@
 import { BracketData, GroupStandings, MatchListItem } from "@/lib/api";
 
+export type MatchFilterable = Pick<MatchListItem, "game_id" | "home_team" | "away_team">;
+
 export type StageKey = "all" | "group" | "r16" | "qf" | "sf" | "final";
 
 export const STAGE_TABS: { key: StageKey; label: string }[] = [
@@ -43,7 +45,7 @@ export function buildGameStageMap(bracket: BracketData): Map<string, StageKey> {
 }
 
 export function classifyMatch(
-  m: MatchListItem,
+  m: MatchFilterable,
   teamGroups: Map<string, string>,
   gameStages: Map<string, StageKey>
 ): { stage: StageKey; group?: string } {
@@ -60,12 +62,12 @@ export function classifyMatch(
 }
 
 export function filterMatches(
-  matches: MatchListItem[],
+  matches: MatchFilterable[],
   stage: StageKey,
   group: string | null,
   teamGroups: Map<string, string>,
   gameStages: Map<string, StageKey>
-): MatchListItem[] {
+): MatchFilterable[] {
   return matches.filter((m) => {
     const info = classifyMatch(m, teamGroups, gameStages);
     if (stage === "all") return true;
@@ -78,7 +80,7 @@ export function filterMatches(
 }
 
 export function stageCounts(
-  matches: MatchListItem[],
+  matches: MatchFilterable[],
   teamGroups: Map<string, string>,
   gameStages: Map<string, StageKey>
 ): Record<StageKey, number> {
