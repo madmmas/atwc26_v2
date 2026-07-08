@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
-import { api, BracketData, GroupStandings } from "@/lib/api";
+import { api, BracketData, GroupStandings, Overview, Team } from "@/lib/api";
 import { Skeleton } from "@/components/ui";
 import { GroupTable, Predictions, applyHypotheticalResults } from "@/components/GroupTable";
 import { Bracket } from "@/components/Bracket";
@@ -8,12 +8,23 @@ import { Bracket } from "@/components/Bracket";
 export default function Standings() {
   const [groups, setGroups] = useState<Record<string, GroupStandings> | null>(null);
   const [bracket, setBracket] = useState<BracketData | null>(null);
+  const [teams, setTeams] = useState<Team[]>([]);
   const [predictions, setPredictions] = useState<Predictions>({});
 
   useEffect(() => {
     api.standings().then((r) => setGroups(r.groups));
     api.bracket().then(setBracket);
+    api.overview().then((o: Overview) => setTeams(o.teams));
   }, []);
+
+  const xgByTeam = useMemo(() => {
+    const map = new Map<string, number>();
+    for (const t of teams) {
+      const balance = Math.round((t.xg_per_game - t.xga_per_game) * t.games * 10) / 10;
+      map.set(t.team_name, balance);
+    }
+    return map;
+  }, [teams]);
 
   const rankedGroups = useMemo(() => {
     if (!groups) return {};
@@ -67,6 +78,7 @@ export default function Standings() {
               group={groups[name]}
               ranked={rankedGroups[name]}
               predictions={predictions}
+              xgByTeam={xgByTeam}
               onSetScore={setScore}
               onReset={resetGroup}
             />
