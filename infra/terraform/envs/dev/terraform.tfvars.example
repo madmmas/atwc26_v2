@@ -15,7 +15,7 @@ github_org         = "madmmas"
 github_repo        = "atwc26_v2"
 
 # Match-based ETL: EventBridge rate(5 minutes) → Lambda reads schedule.json
-# and dispatches workflow at estimated match end +5/+20/+40 minutes.
+# and dispatches at kickoff+105m, then every 15m for 16 runs (4 hours).
 # Fine-grained PAT needs Actions: Read and write on this repo.
 # enable_etl_scheduler  = true
 # github_dispatch_token = "github_pat_..."  # or export TF_VAR_github_dispatch_token

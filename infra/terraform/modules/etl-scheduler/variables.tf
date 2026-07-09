@@ -66,8 +66,8 @@ variable "match_duration_minutes" {
 
 variable "trigger_offsets_minutes" {
   type        = list(number)
-  default     = [5, 20, 40]
-  description = "Minutes after estimated match end to dispatch ETL."
+  default     = [0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225]
+  description = "Minutes after kickoff+match_duration to dispatch ETL (16 runs, 15 min apart, 4h window)."
 }
 
 variable "trigger_catchup_minutes" {

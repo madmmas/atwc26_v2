@@ -125,7 +125,7 @@ resource "aws_lambda_function" "dispatch" {
 
 resource "aws_cloudwatch_event_rule" "etl_schedule" {
   name                = "${var.name_prefix}-${var.environment}-etl-match-check"
-  description         = "Poll schedule.json and dispatch ETL after each match ends (+5/+20/+40 min)."
+  description         = "Poll schedule.json and dispatch ETL from kickoff+105m, then every 15m for 16 runs (4h)."
   schedule_expression = var.schedule_expression
   tags                = var.tags
 }

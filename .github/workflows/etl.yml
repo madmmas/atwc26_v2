@@ -12,7 +12,7 @@ on:
         type: boolean
         default: false
   # Scheduled runs: AWS EventBridge cron(*/5 * * * ? *) UTC → Lambda reads data/schedule.json
-  # and dispatches ETL at estimated match end +5/+20/+40 minutes (all times UTC).
+  # and dispatches ETL at kickoff+105m, then every 15m for 16 runs over 4 hours.
 
 concurrency:
   group: etl-${{ github.ref }}
