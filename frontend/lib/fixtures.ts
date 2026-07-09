@@ -15,6 +15,9 @@ export type FixturePrediction = {
   predicted_winner?: string | null;
 };
 
+/** Expected match length — matches ETL schedule_triggers default (105 min). */
+export const MATCH_DURATION_MS = 105 * 60 * 1000;
+
 export type FixtureRow = {
   game_id: string;
   date: string;
@@ -202,7 +205,34 @@ export function buildFixtures(
       if (!playedIds.has(row.game_id)) upcomingById.set(row.game_id, row);
     }
   }
-  return [...played, ...upcomingById.values()];
+  return applyLiveStatus([...played, ...upcomingById.values()]);
+}
+
+export function isLikelyLive(row: FixtureRow, reference = new Date()): boolean {
+  if (row.completed || !row.kickoff_utc) return false;
+  const kickoff = new Date(row.kickoff_utc).getTime();
+  if (Number.isNaN(kickoff)) return false;
+  const now = reference.getTime();
+  return now >= kickoff && now < kickoff + MATCH_DURATION_MS;
+}
+
+export function applyLiveStatus(fixtures: FixtureRow[], reference = new Date()): FixtureRow[] {
+  return fixtures.map((row) =>
+    isLikelyLive(row, reference) ? { ...row, status: "LIVE" as const } : row
+  );
+}
+
+export function liveFixtures(fixtures: FixtureRow[], reference = new Date()): FixtureRow[] {
+  return applyLiveStatus(fixtures, reference).filter((r) => r.status === "LIVE");
+}
+
+export function formatElapsedMinute(kickoffUtc: string, reference = new Date()): string {
+  const kickoff = new Date(kickoffUtc).getTime();
+  if (Number.isNaN(kickoff)) return "—";
+  const elapsed = Math.floor((reference.getTime() - kickoff) / 60_000);
+  if (elapsed < 0) return "0′";
+  if (elapsed > 120) return "120+′";
+  return `${elapsed}′`;
 }
 
 export function fixtureDayKey(row: FixtureRow): string | null {

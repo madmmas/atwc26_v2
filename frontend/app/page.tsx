@@ -4,6 +4,7 @@ import Link from "next/link";
 import { api, Overview, Player } from "@/lib/api";
 import { DataFreshnessLabel } from "@/components/DataFreshnessLabel";
 import { LatestMatchesWidget } from "@/components/LatestMatchesWidget";
+import { LiveMatchTracker } from "@/components/LiveMatchTracker";
 import { TodaysMatchesWidget } from "@/components/TodaysMatchesWidget";
 import { SkeletonStatStrip } from "@/components/SkeletonCard";
 import { StatLabel } from "@/components/StatTooltip";
@@ -123,6 +124,8 @@ export default function Home() {
           <div className="mt-1 text-xs text-faint">{err}</div>
         </div>
       )}
+
+      <LiveMatchTracker />
 
       <TodaysMatchesWidget />
 
