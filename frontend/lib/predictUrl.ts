@@ -52,3 +52,7 @@ export function buildSimplePredictUrl(home: string, away: string): string {
     homeAdvantage: "none",
   });
 }
+
+export function buildPredictorMatchUrl(home: string, away: string): string {
+  return `${buildSimplePredictUrl(home, away)}&tab=predictor`;
+}

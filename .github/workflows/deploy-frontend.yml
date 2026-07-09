@@ -9,6 +9,14 @@ on:
       - "infra/scripts/deploy_frontend_from_tf.sh"
       - "infra/scripts/deploy_frontend.sh"
   workflow_dispatch:
+    inputs:
+      environment:
+        description: Target stack
+        type: choice
+        options:
+          - prod
+          - dev
+        default: prod
 
 permissions:
   contents: read
@@ -21,8 +29,9 @@ concurrency:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.environment == 'prod' && 'production' || '' }}
     env:
-      TF_DIR: infra/terraform/envs/dev
+      TF_DIR: infra/terraform/envs/${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'prod' }}
     steps:
       - uses: actions/checkout@v4
 
@@ -37,10 +46,11 @@ jobs:
 
       - name: Terraform init (read outputs)
         run: |
+          STATE_KEY="atwc26-v2/${{ github.event_name == 'workflow_dispatch' && inputs.environment || 'prod' }}/terraform.tfstate"
           if [[ -n "${{ secrets.ATWC26_TF_STATE_BUCKET }}" ]]; then
             terraform -chdir="$TF_DIR" init -input=false -reconfigure \
               -backend-config="bucket=${{ secrets.ATWC26_TF_STATE_BUCKET }}" \
-              -backend-config="key=atwc26-v2/dev/terraform.tfstate" \
+              -backend-config="key=${STATE_KEY}" \
               -backend-config="region=${{ secrets.AWS_REGION }}" \
               -backend-config="encrypt=true"
           else
@@ -54,11 +64,15 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
 
       - name: Build static frontend (same-origin /api via CloudFront)
+        env:
+          ATWC26_TF_DIR: ${{ env.TF_DIR }}
         run: |
           NEXT_PUBLIC_SAME_ORIGIN_API=true \
           ./infra/scripts/build_frontend_static.sh
 
       - name: Deploy to S3 + invalidate CloudFront
+        env:
+          ATWC26_TF_DIR: ${{ env.TF_DIR }}
         run: ./infra/scripts/deploy_frontend_from_tf.sh
 
       - name: Deployed URL

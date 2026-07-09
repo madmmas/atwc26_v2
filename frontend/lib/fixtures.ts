@@ -1,5 +1,19 @@
-import { BracketData, BracketSlot, GroupStandings, MatchListItem } from "@/lib/api";
+import {
+  BracketData,
+  BracketMatch,
+  BracketPrediction,
+  BracketSlot,
+  GroupStandings,
+  MatchListItem,
+} from "@/lib/api";
 import { buildTeamGroupMap } from "./matchStages";
+
+export type FixturePrediction = {
+  home_win_prob: number;
+  draw_prob?: number;
+  away_win_prob: number;
+  predicted_winner?: string | null;
+};
 
 export type FixtureRow = {
   game_id: string;
@@ -16,6 +30,7 @@ export type FixtureRow = {
   kickoff_utc?: string;
   group?: string;
   completed: boolean;
+  prediction?: FixturePrediction;
 };
 
 type ScoreFields = Pick<
@@ -55,23 +70,82 @@ function slotTeam(slot: BracketSlot): string | null {
   return null;
 }
 
+function upcomingTeams(m: BracketMatch): { home: string; away: string } | null {
+  const home = slotTeam(m.slot_a) ?? m.prediction?.team_a_name ?? null;
+  const away = slotTeam(m.slot_b) ?? m.prediction?.team_b_name ?? null;
+  if (!home || !away) return null;
+  return { home, away };
+}
+
+export function bracketPredictionToFixture(
+  prediction: BracketPrediction,
+  home: string,
+  away: string
+): FixturePrediction | undefined {
+  if (!prediction.predicted_winner || prediction.win_probability == null) return undefined;
+  const winProb = prediction.win_probability;
+  if (prediction.predicted_winner === home) {
+    return {
+      home_win_prob: winProb,
+      away_win_prob: 1 - winProb,
+      predicted_winner: home,
+    };
+  }
+  if (prediction.predicted_winner === away) {
+    return {
+      home_win_prob: 1 - winProb,
+      away_win_prob: winProb,
+      predicted_winner: away,
+    };
+  }
+  return undefined;
+}
+
 export function upcomingFromBracket(bracket: BracketData): FixtureRow[] {
   const rows: FixtureRow[] = [];
   for (const round of bracket.rounds) {
     for (const m of round.matches) {
       if (m.completed) continue;
-      const home = slotTeam(m.slot_a);
-      const away = slotTeam(m.slot_b);
-      if (!home || !away) continue;
+      const teams = upcomingTeams(m);
+      if (!teams) continue;
+      const { home, away } = teams;
       rows.push({
         game_id: m.game_id,
         date: m.kickoff_utc,
         home_team: home,
         away_team: away,
+        home_flag: m.prediction?.team_a_flag ?? null,
+        away_flag: m.prediction?.team_b_flag ?? null,
         home_score: null,
         away_score: null,
         status: "upcoming",
         kickoff_utc: m.kickoff_utc,
+        completed: false,
+        prediction: m.prediction
+          ? bracketPredictionToFixture(m.prediction, home, away)
+          : undefined,
+      });
+    }
+  }
+  return rows.sort((a, b) => (a.kickoff_utc ?? "").localeCompare(b.kickoff_utc ?? ""));
+}
+
+export function upcomingFromStandings(
+  groups: Record<string, GroupStandings>
+): FixtureRow[] {
+  const rows: FixtureRow[] = [];
+  for (const [letter, group] of Object.entries(groups)) {
+    for (const m of group.remaining_matches) {
+      rows.push({
+        game_id: m.game_id,
+        date: m.kickoff_utc,
+        home_team: m.home_team,
+        away_team: m.away_team,
+        home_score: null,
+        away_score: null,
+        status: "upcoming",
+        kickoff_utc: m.kickoff_utc,
+        group: `Group ${letter}`,
         completed: false,
       });
     }
@@ -116,8 +190,69 @@ export function buildFixtures(
   const played = matches.map((m) =>
     playedToFixture(m, groupForMatch(m.home_team, m.away_team, teamGroups))
   );
-  const upcoming = bracket ? upcomingFromBracket(bracket) : [];
-  return [...played, ...upcoming];
+  const playedIds = new Set(played.map((m) => m.game_id));
+  const upcomingById = new Map<string, FixtureRow>();
+  if (groups) {
+    for (const row of upcomingFromStandings(groups)) {
+      if (!playedIds.has(row.game_id)) upcomingById.set(row.game_id, row);
+    }
+  }
+  if (bracket) {
+    for (const row of upcomingFromBracket(bracket)) {
+      if (!playedIds.has(row.game_id)) upcomingById.set(row.game_id, row);
+    }
+  }
+  return [...played, ...upcomingById.values()];
+}
+
+export function fixtureDayKey(row: FixtureRow): string | null {
+  const iso = row.kickoff_utc ?? row.date;
+  if (!iso) return null;
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return null;
+    return `${d.getFullYear()}-${d.getMonth()}-${d.getDate()}`;
+  } catch {
+    return null;
+  }
+}
+
+export function isSameCalendarDay(iso: string, reference = new Date()): boolean {
+  try {
+    const d = new Date(iso);
+    if (Number.isNaN(d.getTime())) return false;
+    return (
+      d.getFullYear() === reference.getFullYear() &&
+      d.getMonth() === reference.getMonth() &&
+      d.getDate() === reference.getDate()
+    );
+  } catch {
+    return false;
+  }
+}
+
+export function fixturesForToday(
+  fixtures: FixtureRow[],
+  reference = new Date()
+): FixtureRow[] {
+  return fixtures
+    .filter((row) => {
+      const iso = row.kickoff_utc ?? row.date;
+      return iso ? isSameCalendarDay(iso, reference) : false;
+    })
+    .sort((a, b) => {
+      const ak = a.kickoff_utc ?? a.date;
+      const bk = b.kickoff_utc ?? b.date;
+      return ak.localeCompare(bk);
+    });
+}
+
+export function formatTodayHeading(reference = new Date()): string {
+  return reference.toLocaleDateString(undefined, {
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+  });
 }
 
 export function isWithin24h(kickoffUtc: string): boolean {
