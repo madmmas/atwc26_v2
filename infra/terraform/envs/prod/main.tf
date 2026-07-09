@@ -127,6 +127,21 @@ module "ecs_predict_image" {
   build_script       = local.ecs_build_script
 }
 
+data "aws_vpc" "default" {
+  count = var.enable_ecs_compute ? 1 : 0
+
+  default = true
+}
+
+data "aws_subnets" "default" {
+  count = var.enable_ecs_compute ? 1 : 0
+
+  filter {
+    name   = "vpc-id"
+    values = [data.aws_vpc.default[0].id]
+  }
+}
+
 module "ecs_compute" {
   count  = var.enable_ecs_compute ? 1 : 0
   source = "../../modules/ecs-compute"
@@ -140,8 +155,9 @@ module "ecs_compute" {
   s3_prefix           = var.data_s3_prefix
   cors_origins        = join(",", var.cors_allow_origins)
   aws_region          = var.aws_region
-
-  depends_on = [module.ecs_predict_image]
+  vpc_id              = data.aws_vpc.default[0].id
+  subnet_ids          = data.aws_subnets.default[0].ids
+  image_build_id = var.build_ecs_image ? module.ecs_predict_image[0].image_build_id : ""
 }
 
 module "api_gateway" {

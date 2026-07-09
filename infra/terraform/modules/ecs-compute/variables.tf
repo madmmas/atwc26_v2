@@ -52,3 +52,19 @@ variable "desired_count" {
 variable "aws_region" {
   type = string
 }
+
+variable "vpc_id" {
+  description = "VPC for ALB, target group, and ECS task networking."
+  type        = string
+}
+
+variable "subnet_ids" {
+  description = "Subnets for ALB and Fargate tasks (must span AZs used by the ALB)."
+  type        = list(string)
+}
+
+variable "image_build_id" {
+  description = "Optional token from ecs-predict-image; ties task definition updates to post-build apply order."
+  type        = string
+  default     = ""
+}

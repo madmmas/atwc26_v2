@@ -3,21 +3,14 @@ locals {
   common_tags  = merge(var.tags, { Component = "ecs-compute" })
 }
 
-data "aws_vpc" "default" {
-  default = true
-}
-
-data "aws_subnets" "default" {
-  filter {
-    name   = "vpc-id"
-    values = [data.aws_vpc.default.id]
-  }
-}
-
 resource "aws_security_group" "alb" {
   name        = "${local.service_name}-alb"
   description = "ALB for predict/compute ECS service"
-  vpc_id      = data.aws_vpc.default.id
+  vpc_id      = var.vpc_id
+
+  lifecycle {
+    create_before_destroy = true
+  }
 
   ingress {
     from_port   = 80
@@ -39,7 +32,11 @@ resource "aws_security_group" "alb" {
 resource "aws_security_group" "tasks" {
   name        = "${local.service_name}-tasks"
   description = "ECS tasks for predict/compute"
-  vpc_id      = data.aws_vpc.default.id
+  vpc_id      = var.vpc_id
+
+  lifecycle {
+    create_before_destroy = true
+  }
 
   ingress {
     from_port       = 8000
@@ -63,7 +60,7 @@ resource "aws_lb" "predict" {
   internal           = false
   load_balancer_type = "application"
   security_groups    = [aws_security_group.alb.id]
-  subnets            = data.aws_subnets.default.ids
+  subnets            = var.subnet_ids
 
   tags = local.common_tags
 }
@@ -72,8 +69,12 @@ resource "aws_lb_target_group" "predict" {
   name        = substr(replace("${local.service_name}-tg", "_", "-"), 0, 32)
   port        = 8000
   protocol    = "HTTP"
-  vpc_id      = data.aws_vpc.default.id
+  vpc_id      = var.vpc_id
   target_type = "ip"
+
+  lifecycle {
+    create_before_destroy = true
+  }
 
   health_check {
     enabled             = true
@@ -183,14 +184,14 @@ resource "aws_ecs_task_definition" "predict" {
       containerPort = 8000
       protocol      = "tcp"
     }]
-    environment = [
+    environment = concat([
       { name = "ATWC26_DATA_DIR", value = "/data" },
       { name = "ATWC26_S3_BUCKET", value = var.s3_bucket_name },
       { name = "ATWC26_S3_PREFIX", value = var.s3_prefix },
       { name = "ATWC26_DYNAMODB_TABLE", value = var.dynamodb_table_name },
       { name = "ATWC26_CORS_ORIGINS", value = var.cors_origins },
       { name = "WEB_CONCURRENCY", value = "2" },
-    ]
+    ], var.image_build_id != "" ? [{ name = "IMAGE_BUILD_ID", value = var.image_build_id }] : [])
     logConfiguration = {
       logDriver = "awslogs"
       options = {
@@ -223,7 +224,7 @@ resource "aws_ecs_service" "predict" {
   health_check_grace_period_seconds = 300
 
   network_configuration {
-    subnets          = data.aws_subnets.default.ids
+    subnets          = var.subnet_ids
     security_groups  = [aws_security_group.tasks.id]
     assign_public_ip = true
   }
