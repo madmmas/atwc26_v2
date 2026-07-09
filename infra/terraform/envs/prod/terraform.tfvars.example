@@ -1,0 +1,29 @@
+# Copy to terraform.tfvars and adjust before terraform apply.
+# Production stack — atwc26.com custom domain + v2 APIs.
+
+aws_region   = "us-east-1"
+name_prefix  = "atwc26-v2"
+environment  = "prod"
+
+backend_api_url = "https://atwc26.com"
+
+# ACM + CloudFront aliases + Route53 A/AAAA alias records (managed in Terraform).
+enable_custom_domain             = true
+domain_zone_name                 = "atwc26.com"
+domain_name                      = "atwc26.com"
+domain_subject_alternative_names = ["www.atwc26.com"]
+manage_dns_alias_records         = true
+
+cors_allow_origins = ["https://atwc26.com", "https://www.atwc26.com"]
+
+enable_github_oidc = true
+github_org         = "madmmas"
+github_repo        = "atwc26_v2"
+
+# ETL scheduler — enable after github_dispatch_token is set:
+# enable_etl_scheduler  = true
+# github_dispatch_token = "github_pat_..."  # or export TF_VAR_github_dispatch_token
+
+enable_ecs_compute  = true
+build_ecs_image     = true
+ecs_container_image = ""

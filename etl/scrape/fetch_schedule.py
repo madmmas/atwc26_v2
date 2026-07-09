@@ -31,6 +31,8 @@ import requests
 from requests.adapters import HTTPAdapter
 from urllib3.util.retry import Retry
 
+from atwc26_core.schedule_time import format_kickoff_utc
+
 SCRAPER_DIR = Path(__file__).resolve().parent
 REPO_ROOT = SCRAPER_DIR.parent.parent
 LINKS_CSV = SCRAPER_DIR / "game_links.csv"
@@ -89,7 +91,7 @@ def parse_event(event: dict) -> tuple[str, dict] | None:
     home = next((c["team"]["displayName"] for c in competitors if c.get("homeAway") == "home"), None)
     away = next((c["team"]["displayName"] for c in competitors if c.get("homeAway") == "away"), None)
     return gid, {
-        "kickoff_utc": event.get("date"),
+        "kickoff_utc": format_kickoff_utc(event.get("date")),
         "home": home,
         "away": away,
         "status_state": status.get("state"),

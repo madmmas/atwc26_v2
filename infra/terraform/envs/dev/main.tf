@@ -18,7 +18,11 @@ locals {
 
   predict_ecr_name    = "${var.name_prefix}-${var.environment}-predict"
   ecr_predict_url     = aws_ecr_repository.predict.repository_url
-  ecs_container_image = var.ecs_container_image != "" ? var.ecs_container_image : "${local.ecr_predict_url}:latest"
+  repo_root           = abspath("${path.module}/../../../..")
+  ecs_build_script    = abspath("${path.module}/../../../scripts/build_push_predict_ecs.sh")
+  ecs_container_image = var.ecs_container_image != "" ? var.ecs_container_image : (
+    var.enable_ecs_compute && var.build_ecs_image ? module.ecs_predict_image[0].image_uri : "${local.ecr_predict_url}:latest"
+  )
 
   lambda_build_dir = abspath("${path.module}/../../../build/lambdas")
   layer_zip        = "${local.lambda_build_dir}/layer.zip"
@@ -106,6 +110,17 @@ module "lambda_predict" {
   package_path        = local.has_lambda_zips ? local.predict_zip : ""
 }
 
+module "ecs_predict_image" {
+  count  = var.enable_ecs_compute && var.build_ecs_image ? 1 : 0
+  source = "../../modules/ecs-predict-image"
+
+  enabled            = true
+  ecr_repository_url = local.ecr_predict_url
+  repo_root          = local.repo_root
+  aws_region         = var.aws_region
+  build_script       = local.ecs_build_script
+}
+
 module "ecs_compute" {
   count  = var.enable_ecs_compute ? 1 : 0
   source = "../../modules/ecs-compute"
@@ -119,6 +134,8 @@ module "ecs_compute" {
   s3_prefix           = var.data_s3_prefix
   cors_origins        = join(",", var.cors_allow_origins)
   aws_region          = var.aws_region
+
+  depends_on = [module.ecs_predict_image]
 }
 
 module "api_gateway" {
@@ -167,6 +184,9 @@ module "etl_scheduler" {
   github_org            = var.github_org
   github_repo           = var.github_repo
   github_dispatch_token = var.github_dispatch_token
+  s3_bucket_name        = module.s3_data.bucket_name
+  dynamodb_table_name   = module.dynamodb.table_name
+  schedule_s3_key       = "${var.data_s3_prefix}/schedule.json"
   tags                  = local.tags
 }
 

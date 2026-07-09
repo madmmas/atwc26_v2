@@ -49,6 +49,29 @@ data "aws_iam_policy_document" "lambda" {
     ]
     resources = [aws_secretsmanager_secret.github_dispatch.arn]
   }
+
+  statement {
+    sid    = "ReadScheduleFromS3"
+    effect = "Allow"
+    actions = [
+      "s3:GetObject",
+    ]
+    resources = [
+      "arn:aws:s3:::${var.s3_bucket_name}/${var.schedule_s3_key}",
+    ]
+  }
+
+  statement {
+    sid    = "RecordEtlTriggers"
+    effect = "Allow"
+    actions = [
+      "dynamodb:GetItem",
+      "dynamodb:PutItem",
+    ]
+    resources = [
+      "arn:aws:dynamodb:*:*:table/${var.dynamodb_table_name}",
+    ]
+  }
 }
 
 resource "aws_iam_role_policy" "lambda" {
@@ -69,7 +92,7 @@ resource "aws_lambda_function" "dispatch" {
   handler       = "index.handler"
   runtime       = "python3.11"
   architectures = ["arm64"]
-  timeout       = 30
+  timeout       = 60
   memory_size   = 128
 
   filename         = data.archive_file.lambda.output_path
@@ -77,11 +100,17 @@ resource "aws_lambda_function" "dispatch" {
 
   environment {
     variables = {
-      GITHUB_TOKEN_SECRET_ARN = aws_secretsmanager_secret.github_dispatch.arn
-      GITHUB_OWNER            = var.github_org
-      GITHUB_REPO             = var.github_repo
-      GITHUB_WORKFLOW         = var.github_workflow_file
-      GITHUB_REF              = var.github_ref
+      GITHUB_TOKEN_SECRET_ARN  = aws_secretsmanager_secret.github_dispatch.arn
+      GITHUB_OWNER             = var.github_org
+      GITHUB_REPO              = var.github_repo
+      GITHUB_WORKFLOW          = var.github_workflow_file
+      GITHUB_REF               = var.github_ref
+      SCHEDULE_S3_BUCKET       = var.s3_bucket_name
+      SCHEDULE_S3_KEY          = var.schedule_s3_key
+      DYNAMODB_TABLE_NAME      = var.dynamodb_table_name
+      MATCH_DURATION_MINUTES   = tostring(var.match_duration_minutes)
+      TRIGGER_OFFSETS_MINUTES  = join(",", [for o in var.trigger_offsets_minutes : tostring(o)])
+      TRIGGER_CATCHUP_MINUTES  = tostring(var.trigger_catchup_minutes)
     }
   }
 
@@ -95,8 +124,8 @@ resource "aws_lambda_function" "dispatch" {
 }
 
 resource "aws_cloudwatch_event_rule" "etl_schedule" {
-  name                = "${var.name_prefix}-${var.environment}-etl-every-15m"
-  description         = "Trigger GitHub Actions ETL workflow every 15 minutes (UTC :00/:15/:30/:45)."
+  name                = "${var.name_prefix}-${var.environment}-etl-match-check"
+  description         = "Poll schedule.json and dispatch ETL after each match ends (+5/+20/+40 min)."
   schedule_expression = var.schedule_expression
   tags                = var.tags
 }

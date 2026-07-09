@@ -1,0 +1,6 @@
+# Copy to backend.hcl (gitignored) for remote Terraform state.
+
+bucket  = "your-tf-state-bucket"
+key     = "atwc26-v2/prod/terraform.tfstate"
+region  = "us-east-1"
+encrypt = true

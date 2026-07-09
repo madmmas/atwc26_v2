@@ -143,8 +143,6 @@
               "matchNote": "Mexico advances.",
               "competitionName": "2026 FIFA World Cup",
               "roundName": "Group Stage",
-              "leagueName": "FIFA World Cup",
-              "leagueAbbreviation": "FIFA World Cup",
               "opponent": {
                 "id": "467",
                 "uid": "s:600~t:467",
@@ -186,7 +184,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
+              "leagueName": "FIFA World Cup",
+              "leagueAbbreviation": "FIFA World Cup"
             },
             {
               "id": "401861776",
@@ -209,8 +209,6 @@
               "awayShootoutScore": "0",
               "gameResult": "W",
               "competitionName": "2026 International Friendly",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "6757",
                 "uid": "s:600~t:6757",
@@ -252,7 +250,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sba.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sba.png",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly"
             },
             {
               "id": "401861775",
@@ -275,8 +275,6 @@
               "awayShootoutScore": "0",
               "gameResult": "W",
               "competitionName": "2026 International Friendly",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "628",
                 "uid": "s:600~t:628",
@@ -318,7 +316,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly"
             },
             {
               "id": "401861774",
@@ -341,8 +341,6 @@
               "awayShootoutScore": "0",
               "gameResult": "W",
               "competitionName": "2026 International Friendly",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "4469",
                 "uid": "s:600~t:4469",
@@ -384,7 +382,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/gha.png",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly"
             }
           ]
         },
@@ -593,6 +593,8 @@
               "awayShootoutScore": "0",
               "gameResult": "W",
               "competitionName": "2026 International Friendly",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "2650",
                 "uid": "s:600~t:2650",
@@ -634,9 +636,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/slv.png",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/slv.png"
             },
             {
               "id": "401872679",
@@ -659,6 +659,8 @@
               "awayShootoutScore": "0",
               "gameResult": "W",
               "competitionName": "2026 International Friendly",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "2627",
                 "uid": "s:600~t:2627",
@@ -700,9 +702,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tri.png",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tri.png"
             },
             {
               "id": "401856596",
@@ -725,6 +725,8 @@
               "awayShootoutScore": "0",
               "gameResult": "L",
               "competitionName": "2026 International Friendly",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "474",
                 "uid": "s:600~t:474",
@@ -766,9 +768,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aut.png"
             }
           ]
         }
@@ -1269,6 +1269,8 @@
             "awayShootoutScore": "0",
             "gameResult": "W",
             "competitionName": "2026 International Friendly",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "628",
               "uid": "s:600~t:628",
@@ -1310,9 +1312,7 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/aus.png"
           },
           {
             "id": "401861776",
@@ -1335,6 +1335,8 @@
             "awayShootoutScore": "0",
             "gameResult": "W",
             "competitionName": "2026 International Friendly",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "6757",
               "uid": "s:600~t:6757",
@@ -1376,9 +1378,7 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sba.png",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sba.png"
           },
           {
             "id": "760415",
@@ -1653,8 +1653,6 @@
             "awayShootoutScore": "0",
             "gameResult": "W",
             "competitionName": "2026 International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "2627",
               "uid": "s:600~t:2627",
@@ -1696,7 +1694,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tri.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tri.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           },
           {
             "id": "401871496",
@@ -1719,8 +1719,6 @@
             "awayShootoutScore": "0",
             "gameResult": "W",
             "competitionName": "2026 International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "2650",
               "uid": "s:600~t:2650",
@@ -1762,7 +1760,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/slv.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/slv.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           },
           {
             "id": "760414",
@@ -1789,8 +1789,6 @@
             "matchNote": "South Korea advances.",
             "competitionName": "2026 FIFA World Cup",
             "roundName": "Group Stage",
-            "leagueName": "FIFA World Cup",
-            "leagueAbbreviation": "FIFA World Cup",
             "opponent": {
               "id": "450",
               "uid": "s:600~t:450",
@@ -1832,7 +1830,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
+            "leagueName": "FIFA World Cup",
+            "leagueAbbreviation": "FIFA World Cup"
           },
           {
             "id": "760441",
@@ -3208,7 +3208,7 @@
             }
           ]
         },
-        "details": "MEX -0.5",
+        "details": "MEX +100",
         "overUnder": 2.5,
         "spread": -0.5,
         "overOdds": 125.0,
@@ -3470,7 +3470,7 @@
             }
           ]
         },
-        "details": "MEX -0.5",
+        "details": "MEX +100",
         "overUnder": 2.5,
         "spread": -0.5,
         "overOdds": 125.0,
@@ -3712,1123 +3712,6 @@
       }
     ],
     "hasOdds": false,
-    "news": {
-      "header": "FIFA World Cup News",
-      "link": {
-        "language": "en",
-        "rel": [
-          "index",
-          "desktop",
-          "league"
-        ],
-        "href": "https://www.espn.com/football/worldcup/",
-        "text": "All FIFA World Cup News",
-        "shortText": "All News",
-        "isExternal": false,
-        "isPremium": false
-      },
-      "articles": [
-        {
-          "id": 48847593,
-          "nowId": "1-48847593",
-          "contentKey": "48847593-1-6-1",
-          "dataSourceIdentifier": "47363117b8228",
-          "type": "Story",
-          "headline": "How many father-son duos have been in the FIFA World Cup?",
-          "description": "Check out a list of every father-son duo that has played in the FIFA World Cup.",
-          "lastModified": "2026-06-19T22:27:37Z",
-          "published": "2026-06-19T22:27:37Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "51c1de4f13098",
-              "id": 33529180,
-              "type": "header",
-              "name": "Reyna Pulisic US roster announcement [608x342]",
-              "caption": "Gio Reyna is one of many soccer players to follow in their father's footsteps.",
-              "alt": "Christian Pulisic and Gio Reyna celebrate after beating Mexico in the Nations League final on June 6, 2021.",
-              "credit": "Getty Images",
-              "height": 342,
-              "width": 608,
-              "url": "https://a.espncdn.com/photo/2022/0317/r987687_608x342_16-9.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 752886,
-              "type": "topic",
-              "guid": "de9705bb-c4dd-3e78-baab-08950b290d46",
-              "description": "seo explainer",
-              "sportId": 0,
-              "topicId": 4265
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "de9705bb-c4dd-3e78-baab-08950b290d46"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/48847593/how-many-father-son-duos-the-fifa-world-cup"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=48847593"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/48847593"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=48847593"
-              }
-            }
-          },
-          "byline": "Keith Jenkins"
-        },
-        {
-          "id": 48939282,
-          "nowId": "1-48939282",
-          "contentKey": "48939282-1-6-1",
-          "dataSourceIdentifier": "24be77b738bbc",
-          "type": "Story",
-          "headline": "2026 FIFA World Cup match schedule: Fixtures, results, features",
-          "description": "Check out all the fixtures, features and results for the 2026 FIFA World Cup in the United States, Mexico and Canada.",
-          "lastModified": "2026-06-19T22:22:21Z",
-          "published": "2026-06-19T22:22:21Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "0c311d0681a3c",
-              "id": 47201908,
-              "type": "header",
-              "name": "World Cup trophy DC [1296x729]",
-              "credit": "Michael Regan - FIFA/FIFA via Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2025/1204/r1584809_2_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Flavors of the game with Bobby Flay: World Cup favorites",
-              "caption": "Flavors of the game with Bobby Flay: World Cup favorites",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0611/dm_260611_COM_SOC_Feature_Flavors_of_the_game_with_Bobby_Flay_World_Cup_favorites_20260611_GLOBAL/dm_260611_COM_SOC_Feature_Flavors_of_the_game_with_Bobby_Flay_World_Cup_favorites_20260611_GLOBAL.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/48939282/2026-fifa-world-cup-fixtures-results-match-schedule-group-stage-knockout-rounds-bracket"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=48939282"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/48939282"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=48939282"
-              }
-            }
-          },
-          "byline": "ESPN"
-        },
-        {
-          "id": 48953200,
-          "nowId": "1-48953200",
-          "contentKey": "48953200-1-6-1",
-          "dataSourceIdentifier": "574769529ccb5",
-          "type": "Story",
-          "headline": "USMNT World Cup bracket scenarios, odds to advance, predicted path to knockouts",
-          "description": "How can Team USA qualify for the World Cup knockout rounds? What's the likely path? What are the odds? What do projection models say?",
-          "lastModified": "2026-06-19T22:29:48Z",
-          "published": "2026-06-19T22:29:48Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "38a70d1b524ec",
-              "id": 49119627,
-              "type": "header",
-              "name": "Folarin Balogun and Antonee Robinson USMNT celebrate June19-2026. [1296x729]",
-              "credit": "Troy Wayrynen-Imagn Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0619/r1676299_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Klinsmann: Doesn't get much better for USMNT after 2-0 win",
-              "caption": "Klinsmann: Doesn't get much better for USMNT after 2-0 win",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0619/dm_260619_COM_SOC_Analysis_Klinsman3A_Doesnt_get_much_better_for_USMNT_after_2-0_win_20262F062F19_GLOBAL_FIFA/dm_260619_COM_SOC_Analysis_Klinsman3A_Doesnt_get_much_better_for_USMNT_after_2-0_win_20262F062F19_GLOBAL_FIFA.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72593,
-              "type": "team",
-              "uid": "s:600~t:660",
-              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714",
-              "description": "United States",
-              "sportId": 600,
-              "teamId": 660,
-              "team": {
-                "id": 660,
-                "description": "United States",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/48953200/usmnt-usa-world-cup-scenarios-bracket-permutations-qualify-betting-odds-projections-predictions"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=48953200"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/48953200"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=48953200"
-              }
-            }
-          },
-          "byline": "ESPN"
-        },
-        {
-          "id": 49120153,
-          "nowId": "1-49120153",
-          "contentKey": "49120153-1-293-1",
-          "dataSourceIdentifier": "9c2603afe0faa",
-          "type": "Media",
-          "headline": "David Raya hopes Spain mimic Arsenal's ability to bounce back",
-          "description": "David Raya hopes Spain mimic Arsenal's ability to bounce back",
-          "lastModified": "2026-06-19T22:09:47Z",
-          "published": "2026-06-19T22:09:47Z",
-          "images": [
-            {
-              "name": "David Raya hopes Spain mimic Arsenal's ability to bounce back",
-              "caption": "David Raya hopes Spain mimic Arsenal's ability to bounce back",
-              "alt": "",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0619/dm_260619_COM_SOC_InterviewDavid_Raya_hopes_Spain_mimic_Arsenals_ability_to_bounce_back_20260619_GLOBAL_F/dm_260619_COM_SOC_InterviewDavid_Raya_hopes_Spain_mimic_Arsenals_ability_to_bounce_back_20260619_GLOBAL_F.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 142299,
-              "type": "team",
-              "uid": "s:600~t:359",
-              "guid": "feb44e87-58fa-9597-2691-b3c32768ebe4",
-              "description": "Arsenal",
-              "sportId": 600,
-              "teamId": 359,
-              "team": {
-                "id": 359,
-                "description": "Arsenal",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/club/_/id/359/arsenal"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/club/_/id/359/arsenal"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 253862,
-              "type": "athlete",
-              "uid": "s:600~a:196176",
-              "guid": "917afc98-2d15-9b9d-6d92-1d4ca9c6f1ae",
-              "description": "David Raya",
-              "sportId": 600,
-              "athleteId": 196176,
-              "athlete": {
-                "id": 196176,
-                "description": "David Raya",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/196176/david-raya"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/196176/david-raya"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 142452,
-              "type": "team",
-              "uid": "s:600~t:655",
-              "guid": "a0bc2139-6270-6732-54a7-a49929b07c85",
-              "description": "Saudi Arabia",
-              "sportId": 600,
-              "teamId": 655,
-              "team": {
-                "id": 655,
-                "description": "Saudi Arabia",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/655/saudi-arabia"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/655/saudi-arabia"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72568,
-              "type": "team",
-              "uid": "s:600~t:164",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
-              "description": "Spain",
-              "sportId": 600,
-              "teamId": 164,
-              "team": {
-                "id": 164,
-                "description": "Spain",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "event",
-              "uid": "s:600~l:606~e:760453",
-              "guid": "78d2e609-1b25-3592-b52a-10748863ae75",
-              "description": "Saudi Arabia @ Spain",
-              "eventId": 760453,
-              "event": {
-                "id": 760453,
-                "sport": "soccer",
-                "league": "fifa.world",
-                "description": "Saudi Arabia @ Spain"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "feb44e87-58fa-9597-2691-b3c32768ebe4"
-            },
-            {
-              "type": "guid",
-              "guid": "917afc98-2d15-9b9d-6d92-1d4ca9c6f1ae"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "a0bc2139-6270-6732-54a7-a49929b07c85"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
-            },
-            {
-              "type": "guid",
-              "guid": "78d2e609-1b25-3592-b52a-10748863ae75"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49120153/david-raya-hopes-spain-mimic-arsenal-ability-bounce-back",
-              "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49120153/david-raya-hopes-spain-mimic-arsenal-ability-bounce-back",
-                "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=9c2603afe0faa"
-                }
-              }
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49120153"
-              },
-              "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/19c91a18-c373-4ca0-94a3-90384706ae70"
-              }
-            },
-            "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49120153&videoDSI=9c2603afe0faa"
-            }
-          }
-        },
-        {
-          "id": 49113556,
-          "nowId": "1-49113556",
-          "contentKey": "49113556-1-6-1",
-          "dataSourceIdentifier": "e7d1b8a86c890",
-          "type": "Story",
-          "headline": "World Cup Daily: Morocco take early lead over Scotland; Brazil return to action",
-          "description": "Day 9 is upon us, with the United States and Brazil among the teams playing as 2026 FIFA World Cup action continues.",
-          "lastModified": "2026-06-19T22:09:13Z",
-          "published": "2026-06-19T22:09:13Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "8cd58091cc5a9",
-              "id": 49120120,
-              "type": "header",
-              "name": "Morocco [1296x729]",
-              "credit": "(Photo by Buda Mendes/Getty Images)",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0619/r1676319_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "f10f1560c8211",
-              "id": 49119997,
-              "type": "header",
-              "name": "Scotland [1296x729]",
-              "credit": "(Photo by Craig Williamson/SNS Group via Getty Images)",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0619/r1676317_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "3673115ad7240",
-              "id": 49115247,
-              "type": "header",
-              "name": "Scotland's Donny the Duck [1296x729]",
-              "credit": "Craig Williamson/SNS Group via Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0619/r1675981_2_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "73b89b2cc77de",
-              "id": 49113534,
-              "type": "header",
-              "name": "Tuchel [1296x729]",
-              "credit": "(Photo by Sydney Schneider/MLB Photos via Getty Images)",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0619/r1675897_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "McKennie: USMNT playing with chip on shoulder at World Cup",
-              "caption": "McKennie: USMNT playing with chip on shoulder at World Cup",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0618/dm_260618_COM_SOC_Interview_McKennie_USMNT_playing_with_chip_on_shoulder_at_World_Cup__20260618_GLOBAL/dm_260618_COM_SOC_Interview_McKennie_USMNT_playing_with_chip_on_shoulder_at_World_Cup__20260618_GLOBAL.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 760055,
-              "type": "topic",
-              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd",
-              "description": "live blog",
-              "sportId": 0,
-              "topicId": 4378
-            },
-            {
-              "id": 142364,
-              "type": "team",
-              "uid": "s:600~t:580",
-              "guid": "cc39ec4a-4e7a-5018-879a-7128a89b4028",
-              "description": "Scotland",
-              "sportId": 600,
-              "teamId": 580,
-              "team": {
-                "id": 580,
-                "description": "Scotland",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/580/scotland"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/580/scotland"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72593,
-              "type": "team",
-              "uid": "s:600~t:660",
-              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714",
-              "description": "United States",
-              "sportId": 600,
-              "teamId": 660,
-              "team": {
-                "id": 660,
-                "description": "United States",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72571,
-              "type": "team",
-              "uid": "s:600~t:205",
-              "guid": "2a051c42-4444-8263-799a-6cdd866bd8f7",
-              "description": "Brazil",
-              "sportId": 600,
-              "teamId": 205,
-              "team": {
-                "id": 205,
-                "description": "Brazil",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/205/brazil"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/205/brazil"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 142317,
-              "type": "team",
-              "uid": "s:600~t:2869",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
-              "description": "Morocco",
-              "sportId": 600,
-              "teamId": 2869,
-              "team": {
-                "id": 2869,
-                "description": "Morocco",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd"
-            },
-            {
-              "type": "guid",
-              "guid": "cc39ec4a-4e7a-5018-879a-7128a89b4028"
-            },
-            {
-              "type": "guid",
-              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714"
-            },
-            {
-              "type": "guid",
-              "guid": "2a051c42-4444-8263-799a-6cdd866bd8f7"
-            },
-            {
-              "type": "guid",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49113556/fifa-world-cup-daily-brazil-usmnt-action-day-9"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49113556"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49113556"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49113556"
-              }
-            }
-          },
-          "byline": "ESPN"
-        },
-        {
-          "id": 49119782,
-          "nowId": "1-49119782",
-          "contentKey": "49119782-1-5-1",
-          "dataSourceIdentifier": "201a55600ed13",
-          "type": "HeadlineNews",
-          "headline": "Sweden coach Potter warns foes of Gy\u00f6keres, Isak 'threat'",
-          "description": "Graham Potter has warned Sweden's World Cup opponents that strike-duo Alexander Isak and Viktor Gy\u00f6keres will get better as the tournament progresses.",
-          "lastModified": "2026-06-19T22:12:48Z",
-          "published": "2026-06-19T22:12:48Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "eb106ac6ff4e4",
-              "id": 49119833,
-              "type": "header",
-              "name": "Gyokeres Isak Sweden warmup [1296x729]",
-              "caption": "Viktor Gy\u00f6keres and Alexander Isak helped Sweden to a 5-1 win in their opening match of the World Cup.",
-              "alt": "Viktor Gy\u00f6keres and Alexander Isak helped Sweden to a 5-1 win in their opening match of the World Cup.",
-              "credit": "Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0619/r1676308_1296x729_16-9.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 142415,
-              "type": "team",
-              "uid": "s:600~t:466",
-              "guid": "1d5c4799-84ee-83ef-14fd-19b310654768",
-              "description": "Sweden",
-              "sportId": 600,
-              "teamId": 466,
-              "team": {
-                "id": 466,
-                "description": "Sweden",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/466/sweden"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/466/sweden"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 273389,
-              "type": "athlete",
-              "uid": "s:600~a:258906",
-              "guid": "ccc49e36-95e1-7186-22da-1b53b2a35bb5",
-              "description": "Viktor Gy\u00f6keres",
-              "sportId": 600,
-              "athleteId": 258906,
-              "athlete": {
-                "id": 258906,
-                "description": "Viktor Gy\u00f6keres",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/258906/viktor-gyokeres"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/258906/viktor-gyokeres"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 253130,
-              "type": "athlete",
-              "uid": "s:600~a:235662",
-              "guid": "d29363ad-0204-25cf-7611-8aff328308b1",
-              "description": "Alexander Isak",
-              "sportId": 600,
-              "athleteId": 235662,
-              "athlete": {
-                "id": 235662,
-                "description": "Alexander Isak",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/235662/alexander-isak"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/235662/alexander-isak"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 696285,
-              "type": "contributor",
-              "guid": "a1a120f9-cadb-3124-93ed-c3f8c7ac3a6b",
-              "description": "James Olley",
-              "slug": "james-olley",
-              "contributor": {
-                "id": 3853,
-                "description": "James Olley"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "1d5c4799-84ee-83ef-14fd-19b310654768"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "ccc49e36-95e1-7186-22da-1b53b2a35bb5"
-            },
-            {
-              "type": "guid",
-              "guid": "d29363ad-0204-25cf-7611-8aff328308b1"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "a1a120f9-cadb-3124-93ed-c3f8c7ac3a6b"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49119782/sweden-coach-potter-warns-foes-gyokeres-isak-threat"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49119782"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49119782"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49119782"
-              }
-            }
-          },
-          "byline": "James Olley"
-        }
-      ]
-    },
     "rosters": [
       {
         "homeAway": "home",
@@ -15162,6 +14045,1282 @@
         "formation": "3-4-2-1"
       }
     ],
+    "news": {
+      "header": "FIFA World Cup News",
+      "link": {
+        "language": "en",
+        "rel": [
+          "index",
+          "desktop",
+          "league"
+        ],
+        "href": "https://www.espn.com/football/worldcup/",
+        "text": "All FIFA World Cup News",
+        "shortText": "All News",
+        "isExternal": false,
+        "isPremium": false
+      },
+      "articles": [
+        {
+          "id": 49312995,
+          "nowId": "1-49312995",
+          "contentKey": "49312995-1-293-1",
+          "dataSourceIdentifier": "2adb113f6178b",
+          "type": "Media",
+          "headline": "Olmo: Spain don't care what the other teams are doing",
+          "description": "Olmo: Spain don't care what the other teams are doing",
+          "lastModified": "2026-07-09T09:54:06Z",
+          "published": "2026-07-09T09:54:06Z",
+          "images": [
+            {
+              "name": "Olmo: Spain don't care what the other teams are doing",
+              "caption": "Olmo: Spain don't care what the other teams are doing",
+              "alt": "",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_Presser_Olmo_Spain_dont_care_what_the_other_teams_are_doing_20260709_GLOBAL_FIFA_WORLD/dm_260709_COM_SOC_Presser_Olmo_Spain_dont_care_what_the_other_teams_are_doing_20260709_GLOBAL_FIFA_WORLD.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 135133,
+              "type": "team",
+              "uid": "s:600~t:459",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141",
+              "description": "Belgium",
+              "sportId": 600,
+              "teamId": 459,
+              "team": {
+                "id": 459,
+                "description": "Belgium",
+                "abbreviation": "BEL",
+                "shortDisplayName": "Belgium",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 238222,
+              "type": "athlete",
+              "uid": "s:600~a:227765",
+              "guid": "4ac1c50f-aad6-d466-47b8-343f613b7e66",
+              "description": "Dani Olmo",
+              "sportId": 600,
+              "athleteId": 227765,
+              "athlete": {
+                "id": 227765,
+                "description": "Dani Olmo",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/227765/dani-olmo"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/227765/dani-olmo"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72568,
+              "type": "team",
+              "uid": "s:600~t:164",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
+              "description": "Spain",
+              "sportId": 600,
+              "teamId": 164,
+              "team": {
+                "id": 164,
+                "description": "Spain",
+                "abbreviation": "ESP",
+                "shortDisplayName": "Spain",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "event",
+              "uid": "s:600~l:606~e:760511",
+              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675",
+              "description": "Belgium @ Spain",
+              "eventId": 760511,
+              "event": {
+                "id": 760511,
+                "sport": "soccer",
+                "league": "fifa.world",
+                "description": "Belgium @ Spain"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141"
+            },
+            {
+              "type": "guid",
+              "guid": "4ac1c50f-aad6-d466-47b8-343f613b7e66"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
+            },
+            {
+              "type": "guid",
+              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/video/clip/_/id/49312995/spain-care-other-teams-doing",
+              "self": {
+                "href": "https://www.espn.com/video/clip/_/id/49312995/spain-care-other-teams-doing",
+                "dsi": {
+                  "href": "https://www.espn.com/video/clip?id=2adb113f6178b"
+                }
+              }
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/video/clips/49312995"
+              },
+              "artwork": {
+                "href": "https://artwork.api.espn.com/artwork/collections/media/68c7efc7-88e0-4485-9a6f-cd28a8fa5d01"
+              }
+            },
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49312995&videoDSI=2adb113f6178b"
+            }
+          }
+        },
+        {
+          "id": 49309123,
+          "nowId": "1-49309123",
+          "contentKey": "49309123-1-6-1",
+          "dataSourceIdentifier": "b74b261a0f52e",
+          "type": "Story",
+          "headline": "World Cup Daily live: Mexico star Mora's high school graduation, France-Morocco kicks off quarterfinals",
+          "description": "Enjoy all the features, news, video analysis and color from around the competition as the first day of the 2026 FIFA World Cup quarterfinals begin.",
+          "lastModified": "2026-07-09T09:34:16Z",
+          "published": "2026-07-09T09:34:16Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "73d008facc8e9",
+              "id": 49312848,
+              "type": "header",
+              "name": "Mexico's Gilberto Mora [1296x729]",
+              "credit": "Carl Recine/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686754_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "ba09ed7f81dee",
+              "id": 49309095,
+              "type": "header",
+              "name": "France [1296x729]",
+              "credit": "(Photo by Elsa/Getty Images)",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0708/r1686580_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Qui\u00f1ones goal causes chaos in Mexico City",
+              "caption": "Qui\u00f1ones goal causes chaos in Mexico City",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0705/dm_260705_Quinones_goal_causes_chaos_in_Mexico_City/dm_260705_Quinones_goal_causes_chaos_in_Mexico_City.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 760055,
+              "type": "topic",
+              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd",
+              "description": "live blog",
+              "sportId": 0,
+              "topicId": 4378
+            },
+            {
+              "id": 72570,
+              "type": "team",
+              "uid": "s:600~t:203",
+              "guid": "9e213fae-5b9d-d331-8b4b-33abdaf57b4f",
+              "description": "Mexico",
+              "sportId": 600,
+              "teamId": 203,
+              "team": {
+                "id": 203,
+                "description": "Mexico",
+                "abbreviation": "MEX",
+                "shortDisplayName": "Mexico",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/203/mexico"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/203/mexico"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 680891,
+              "type": "athlete",
+              "uid": "s:600~a:389575",
+              "guid": "5220f4ae-9d46-35e2-8fa6-0daa0b1578c3",
+              "description": "Gilberto Mora",
+              "sportId": 600,
+              "athleteId": 389575,
+              "athlete": {
+                "id": 389575,
+                "description": "Gilberto Mora",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/389575/gilberto-mora"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/389575/gilberto-mora"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd"
+            },
+            {
+              "type": "guid",
+              "guid": "9e213fae-5b9d-d331-8b4b-33abdaf57b4f"
+            },
+            {
+              "type": "guid",
+              "guid": "5220f4ae-9d46-35e2-8fa6-0daa0b1578c3"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49309123/world-cup-daily-live-mexico-star-mora-high-school-graduation-france-morocco-quarterfinals"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49309123"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49309123"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49309123"
+              }
+            }
+          },
+          "byline": "ESPN"
+        },
+        {
+          "id": 49312820,
+          "nowId": "1-49312820",
+          "contentKey": "49312820-1-293-1",
+          "dataSourceIdentifier": "c238ff1b42947",
+          "type": "Media",
+          "headline": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
+          "description": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
+          "lastModified": "2026-07-09T09:27:12Z",
+          "published": "2026-07-09T09:27:12Z",
+          "images": [
+            {
+              "name": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
+              "caption": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
+              "alt": "",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_News_Morocco_press_conference_chaos_leaves_Brahim_Diaz_forgetting_the_question_20260709/dm_260709_COM_SOC_News_Morocco_press_conference_chaos_leaves_Brahim_Diaz_forgetting_the_question_20260709.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 234376,
+              "type": "athlete",
+              "uid": "s:600~a:246532",
+              "guid": "0673b66c-e4c1-4f58-6277-6a177a3bc1f4",
+              "description": "Brahim D\u00edaz",
+              "sportId": 600,
+              "athleteId": 246532,
+              "athlete": {
+                "id": 246532,
+                "description": "Brahim D\u00edaz",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/246532/brahim-diaz"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/246532/brahim-diaz"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "event",
+              "uid": "s:600~l:606~e:760510",
+              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460",
+              "description": "Morocco @ France",
+              "eventId": 760510,
+              "event": {
+                "id": 760510,
+                "sport": "soccer",
+                "league": "fifa.world",
+                "description": "Morocco @ France"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "0673b66c-e4c1-4f58-6277-6a177a3bc1f4"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/video/clip/_/id/49312820/morocco-press-conference-chaos-leaves-brahim-diaz-forgetting-question",
+              "self": {
+                "href": "https://www.espn.com/video/clip/_/id/49312820/morocco-press-conference-chaos-leaves-brahim-diaz-forgetting-question",
+                "dsi": {
+                  "href": "https://www.espn.com/video/clip?id=c238ff1b42947"
+                }
+              }
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/video/clips/49312820"
+              },
+              "artwork": {
+                "href": "https://artwork.api.espn.com/artwork/collections/media/fada00e5-5290-4a78-a7d1-22549f99b842"
+              }
+            },
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49312820&videoDSI=c238ff1b42947"
+            }
+          }
+        },
+        {
+          "id": 49312811,
+          "nowId": "1-49312811",
+          "contentKey": "49312811-1-5-1",
+          "dataSourceIdentifier": "1dc969dec977d",
+          "type": "HeadlineNews",
+          "headline": "Lamine Yamal: 'Incredible' to see Lionel Messi still starring at World Cup",
+          "description": "Spain winger Lamine Yamal has said he is thrilled to see Lionel Messi defy time and continue to have a starring role at this World Cup.",
+          "lastModified": "2026-07-09T09:30:40Z",
+          "published": "2026-07-09T09:30:40Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "85515ca942c19",
+              "id": 49312824,
+              "type": "header",
+              "name": "Lionel Messi  [1296x729]",
+              "credit": "Photo by Marcel Bonte/Soccrates/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686753_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "9fa38dd2f6ec7",
+              "id": 49312761,
+              "type": "header",
+              "name": " Lamine Yamal [1296x729]",
+              "credit": "Photo by Grzegorz Wajda/SOPA Images/LightRocket via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686752_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Why Spain's substitutes were so important vs. Portugal",
+              "caption": "Alex Kirkland reacts to Spain's late 1-0 win over Portugal to advance to the quarterfinals.",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0707/dm_260707_SPAIN_WC_REAX_16x9_SC4U/dm_260707_SPAIN_WC_REAX_16x9_SC4U.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "id": 596595,
+              "type": "athlete",
+              "uid": "s:600~a:362150",
+              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4",
+              "description": "Lamine Yamal",
+              "sportId": 600,
+              "athleteId": 362150,
+              "athlete": {
+                "id": 362150,
+                "description": "Lamine Yamal",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72568,
+              "type": "team",
+              "uid": "s:600~t:164",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
+              "description": "Spain",
+              "sportId": 600,
+              "teamId": 164,
+              "team": {
+                "id": 164,
+                "description": "Spain",
+                "abbreviation": "ESP",
+                "shortDisplayName": "Spain",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 238474,
+              "type": "athlete",
+              "uid": "s:600~a:45843",
+              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0",
+              "description": "Lionel Messi",
+              "sportId": 600,
+              "athleteId": 45843,
+              "athlete": {
+                "id": 45843,
+                "description": "Lionel Messi",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 702608,
+              "type": "contributor",
+              "guid": "fec4eb72-2649-3b41-a508-b3164b869711",
+              "description": "Adriana Garcia",
+              "slug": "adriana-garcia",
+              "contributor": {
+                "id": 3379,
+                "description": "Adriana Garcia"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            },
+            {
+              "type": "guid",
+              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
+            },
+            {
+              "type": "guid",
+              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0"
+            },
+            {
+              "type": "guid",
+              "guid": "fec4eb72-2649-3b41-a508-b3164b869711"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49312811/incredible-see-lionel-messi-starring-world-cup"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49312811"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49312811"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49312811"
+              }
+            }
+          },
+          "byline": "Adriana Garcia"
+        },
+        {
+          "id": 49312788,
+          "nowId": "1-49312788",
+          "contentKey": "49312788-1-5-1",
+          "dataSourceIdentifier": "b87a1f9b1e7d2",
+          "type": "HeadlineNews",
+          "headline": "Keir Starmer hints at bank holiday if England win World Cup",
+          "description": "An England World Cup win could mean an extra bank holiday, Sir Keir Starmer has hinted ahead of a quarterfinal clash with Norway.",
+          "lastModified": "2026-07-09T09:17:13Z",
+          "published": "2026-07-09T09:17:13Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "408374cca65be",
+              "id": 49312681,
+              "type": "header",
+              "name": "Keir Starmer [1296x729]",
+              "caption": "United Kingdom Prime Minister Keir Starmer and Norway's Prime Minister Jonas Gahr Store greet the media at the Nato summit",
+              "alt": "United Kingdom Prime Minister Keir Starmer and Norway's Prime Minister Jonas Gahr Store greet the media at the Nato summit",
+              "credit": "GettyImages",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686749_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "53069ab990a51",
+              "id": 49287362,
+              "type": "header",
+              "name": "Harry Kane Jude Bellingham [1296x729]",
+              "caption": "Harry Kane (left) and Jude Bellingham (right) celebrate Kane's goal for England on Sunday.",
+              "credit": "Charlotte Wilson/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0706/r1685382_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Odegaard: Norway's quarterfinal against England a 'massive test'",
+              "caption": "Odegaard: Norway's quarterfinal against England a 'massive test'",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "id": 72576,
+              "type": "team",
+              "uid": "s:600~t:448",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
+              "description": "England",
+              "sportId": 600,
+              "teamId": 448,
+              "team": {
+                "id": 448,
+                "description": "England",
+                "abbreviation": "ENG",
+                "shortDisplayName": "England",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            },
+            {
+              "type": "guid",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49312788/uk-prime-minister-keir-starmer-hints-bank-holiday-england-win-world-cup-2026"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49312788"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49312788"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49312788"
+              }
+            }
+          },
+          "byline": "PA"
+        },
+        {
+          "id": 49310007,
+          "nowId": "1-49310007",
+          "contentKey": "49310007-1-5-1",
+          "dataSourceIdentifier": "a87f9b24da6d4",
+          "type": "HeadlineNews",
+          "headline": "Morocco star Saibari to miss World Cup quarterfinal vs. France",
+          "description": "Morocco will be without star forward Ismael Saibari for their World Cup quarterfinal with France on Thursday.",
+          "lastModified": "2026-07-09T08:27:25Z",
+          "published": "2026-07-09T08:27:25Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "0bd0bf703334d",
+              "id": 49310040,
+              "type": "header",
+              "name": "Ismael Saibari [1296x729]",
+              "caption": "Ismael Saibari suffered an injury in Morocco's win over Canada.",
+              "alt": "Ismael Saibari #11 (C) of Morocco reacts after sustaining an injury during the FIFA World Cup 2026 Round of 16 match between Canada and Morocco at Houston Stadium on July 04, 2026 in Houston, Texas.",
+              "credit": "Kevin C. Cox/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0708/r1686644_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "LeBoeuf: France have to 'respect' Morocco",
+              "caption": "LeBoeuf: France have to 'respect' Morocco",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_LeBoeuf_France_have_to_respect_Morocco/dm_260708_LeBoeuf_France_have_to_respect_Morocco.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 441270,
+              "type": "athlete",
+              "uid": "s:600~a:304572",
+              "guid": "2b40e878-1abd-31ac-b76f-5a5d5c9f2ada",
+              "description": "Ismael Saibari",
+              "sportId": 600,
+              "athleteId": 304572,
+              "athlete": {
+                "id": 304572,
+                "description": "Ismael Saibari",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/304572/ismael-saibari"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/304572/ismael-saibari"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 702571,
+              "type": "contributor",
+              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc",
+              "description": "180530 COLUMNIST PROFILE Ed Dove",
+              "slug": "180530-columnist-profile-ed-dove",
+              "contributor": {
+                "id": 3335,
+                "description": "180530 COLUMNIST PROFILE Ed Dove"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "2b40e878-1abd-31ac-b76f-5a5d5c9f2ada"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49310007/morocco-ismael-saibari-injury-france-world-cup-2026-quarterfinal"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49310007"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49310007"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49310007"
+              }
+            }
+          },
+          "byline": "Ed Dove"
+        }
+      ]
+    },
     "article": {
       "id": 49078977,
       "nowId": "1-49078977",
@@ -15397,6 +15556,8 @@
               "team": {
                 "id": 203,
                 "description": "Mexico",
+                "abbreviation": "MEX",
+                "shortDisplayName": "Mexico",
                 "links": {
                   "web": {
                     "teams": {
@@ -15576,6 +15737,8 @@
           "team": {
             "id": 203,
             "description": "Mexico",
+            "abbreviation": "MEX",
+            "shortDisplayName": "Mexico",
             "links": {
               "web": {
                 "teams": {
@@ -15601,6 +15764,8 @@
           "team": {
             "id": 451,
             "description": "South Korea",
+            "abbreviation": "KOR",
+            "shortDisplayName": "South Korea",
             "links": {
               "web": {
                 "teams": {
@@ -15960,7 +16125,7 @@
                   }
                 ],
                 "groups": {
-                  "name": "Group A"
+                  "name": "Quarterfinals"
                 },
                 "links": [
                   {
@@ -15973,7 +16138,7 @@
                     "text": "Clubhouse"
                   }
                 ],
-                "form": "WWWWW"
+                "form": "LWWWW"
               },
               "score": "1",
               "linescores": [
@@ -16044,7 +16209,7 @@
                   }
                 ],
                 "groups": {
-                  "name": "Group A"
+                  "name": "Quarterfinals"
                 },
                 "links": [
                   {
@@ -16057,7 +16222,7 @@
                     "text": "Clubhouse"
                   }
                 ],
-                "form": "LWWWL"
+                "form": "LLWWW"
               },
               "score": "0",
               "linescores": [
@@ -16089,7 +16254,7 @@
           "notes": [
             {
               "type": "event-ingest-note",
-              "date": "2026-06-20T00:47Z",
+              "date": "2026-06-20T08:32Z",
               "text": "Mexico advances.",
               "source": "38"
             }
@@ -16199,7 +16364,7 @@
           },
           "isFinal": false,
           "isThirdPlace": false,
-          "altGameNote": "FIFA World Cup, Group A",
+          "altGameNote": "FIFA World Cup, Quarterfinals",
           "boxscoreMinutes": false,
           "shotMapAvailable": true
         }
@@ -16391,6 +16556,25 @@
             ],
             "href": "https://www.espn.com/soccer/teams/_/league/fifa.world",
             "text": "Teams"
+          },
+          {
+            "rel": [
+              "playoff-bracket",
+              "desktop",
+              "league"
+            ],
+            "href": "https://www.espn.com/soccer/bracket",
+            "text": "Bracket"
+          },
+          {
+            "rel": [
+              "playoff-bracket",
+              "sportscenter",
+              "app",
+              "league"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~l:606&section=bracket",
+            "text": "Bracket"
           }
         ],
         "logos": [
@@ -16506,7 +16690,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T01:00:44Z",
+        "wallclock": "2026-06-19T01:00:45Z",
         "shootout": false
       },
       {
@@ -16542,7 +16726,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T01:04:17Z",
+        "wallclock": "2026-06-19T01:04:18Z",
         "shootout": false
       },
       {
@@ -16671,7 +16855,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T01:49:54Z",
+        "wallclock": "2026-06-19T01:49:55Z",
         "shootout": false
       },
       {
@@ -16729,7 +16913,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T02:09:46Z",
+        "wallclock": "2026-06-19T02:09:47Z",
         "shootout": false,
         "goalPositionY": 51.0,
         "fieldPositionX": 86.8,
@@ -16854,7 +17038,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T02:17:44Z",
+        "wallclock": "2026-06-19T02:17:45Z",
         "shootout": false
       },
       {
@@ -17002,7 +17186,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T02:30:16Z",
+        "wallclock": "2026-06-19T02:30:17Z",
         "shootout": false
       },
       {
@@ -17086,7 +17270,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T02:30:35Z",
+        "wallclock": "2026-06-19T02:30:36Z",
         "shootout": false
       },
       {
@@ -17128,7 +17312,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T02:30:48Z",
+        "wallclock": "2026-06-19T02:30:49Z",
         "shootout": false
       },
       {
@@ -17170,7 +17354,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T02:36:33Z",
+        "wallclock": "2026-06-19T02:36:34Z",
         "shootout": false
       },
       {
@@ -17254,7 +17438,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T02:39:44Z",
+        "wallclock": "2026-06-19T02:39:45Z",
         "shootout": false
       },
       {
@@ -17425,7 +17609,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-19T02:56:08Z",
+        "wallclock": "2026-06-19T02:56:50Z",
         "shootout": false
       }
     ],
@@ -17464,7 +17648,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T01:00:44Z"
+          "wallclock": "2026-06-19T01:00:45Z"
         }
       },
       {
@@ -17736,7 +17920,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T01:04:17Z"
+          "wallclock": "2026-06-19T01:04:18Z"
         }
       },
       {
@@ -17776,7 +17960,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T01:07:02Z",
+          "wallclock": "2026-06-19T01:07:03Z",
           "goalPositionY": 40.8,
           "fieldPositionX": 74.7,
           "fieldPositionY": 39.5,
@@ -17826,7 +18010,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T01:07:43Z",
+          "wallclock": "2026-06-19T01:07:44Z",
           "goalPositionY": 39.0,
           "fieldPositionX": 75.4,
           "fieldPositionY": 60.8,
@@ -18581,7 +18765,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T01:41:23Z",
+          "wallclock": "2026-06-19T01:41:24Z",
           "goalPositionY": 69.4,
           "fieldPositionX": 95.0,
           "fieldPositionY": 67.4,
@@ -18861,7 +19045,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T01:49:54Z"
+          "wallclock": "2026-06-19T01:49:55Z"
         }
       },
       {
@@ -18914,7 +19098,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:08:15Z",
+          "wallclock": "2026-06-19T02:08:16Z",
           "goalPositionY": 57.3,
           "fieldPositionX": 93.3,
           "fieldPositionY": 68.3,
@@ -19009,7 +19193,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:09:46Z",
+          "wallclock": "2026-06-19T02:09:47Z",
           "goalPositionY": 51.0,
           "fieldPositionX": 86.8,
           "fieldPositionY": 51.7,
@@ -19463,7 +19647,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:17:44Z"
+          "wallclock": "2026-06-19T02:17:45Z"
         }
       },
       {
@@ -19804,7 +19988,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:30:16Z"
+          "wallclock": "2026-06-19T02:30:17Z"
         }
       },
       {
@@ -19894,7 +20078,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:30:35Z"
+          "wallclock": "2026-06-19T02:30:36Z"
         }
       },
       {
@@ -19939,7 +20123,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:30:48Z"
+          "wallclock": "2026-06-19T02:30:49Z"
         }
       },
       {
@@ -20266,7 +20450,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:36:33Z"
+          "wallclock": "2026-06-19T02:36:34Z"
         }
       },
       {
@@ -20311,7 +20495,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:37:54Z",
+          "wallclock": "2026-06-19T02:37:55Z",
           "goalPositionY": 49.6,
           "fieldPositionX": 73.8,
           "fieldPositionY": 47.9,
@@ -20406,7 +20590,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:39:44Z"
+          "wallclock": "2026-06-19T02:39:45Z"
         }
       },
       {
@@ -20975,7 +21159,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:53:57Z",
+          "wallclock": "2026-06-19T02:53:58Z",
           "goalPositionY": 42.5,
           "fieldPositionX": 91.2,
           "fieldPositionY": 42.6,
@@ -21043,7 +21227,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-19T02:56:08Z"
+          "wallclock": "2026-06-19T02:56:50Z"
         }
       },
       {
@@ -21058,11 +21242,11 @@
     "wallclockAvailable": true,
     "meta": {
       "gp_topic": "gp-soccer-fifa.world-760441",
-      "gameSwitcherEnabled": true,
+      "gameSwitcherEnabled": false,
       "picker_topic": "picker-soccer-fifa.world",
-      "lastUpdatedAt": "2026-06-19T02:56:08Z",
-      "firstPlayWallClock": "2026-06-19T01:00:44Z",
-      "lastPlayWallClock": "2026-06-19T02:56:08Z",
+      "lastUpdatedAt": "2026-06-19T02:56:50Z",
+      "firstPlayWallClock": "2026-06-19T01:00:45Z",
+      "lastPlayWallClock": "2026-06-19T02:56:50Z",
       "gameState": "post",
       "syncUrl": "https://client.espncdn.com/fauxcast/stats/606/760441/en/us/"
     },
@@ -21089,8 +21273,8 @@
                     "description": "Number of Games Played",
                     "abbreviation": "GP",
                     "type": "gamesplayed",
-                    "value": 2.0,
-                    "displayValue": "2"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "name": "losses",
@@ -21109,8 +21293,8 @@
                     "description": "Goal Difference",
                     "abbreviation": "GD",
                     "type": "pointdifferential",
-                    "value": 3.0,
-                    "displayValue": "+3"
+                    "value": 6.0,
+                    "displayValue": "+6"
                   },
                   {
                     "name": "points",
@@ -21119,8 +21303,8 @@
                     "description": "Points",
                     "abbreviation": "P",
                     "type": "points",
-                    "value": 6.0,
-                    "displayValue": "6"
+                    "value": 9.0,
+                    "displayValue": "9"
                   },
                   {
                     "name": "ties",
@@ -21139,8 +21323,8 @@
                     "description": "Wins",
                     "abbreviation": "W",
                     "type": "wins",
-                    "value": 2.0,
-                    "displayValue": "2"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "name": "rank",
@@ -21160,8 +21344,8 @@
                     "shortDisplayName": "OVER",
                     "description": "Overall Record",
                     "type": "total",
-                    "summary": "2-0-0",
-                    "displayValue": "2-0-0"
+                    "summary": "3-0-0",
+                    "displayValue": "3-0-0"
                   }
                 ],
                 "logo": [
@@ -21179,10 +21363,10 @@
                 ]
               },
               {
-                "team": "South Korea",
-                "link": "https://www.espn.com/soccer/team/_/id/451/south-korea",
-                "id": "451",
-                "uid": "s:600~t:451",
+                "team": "South Africa",
+                "link": "https://www.espn.com/soccer/team/_/id/467/south-africa",
+                "id": "467",
+                "uid": "s:600~t:467",
                 "stats": [
                   {
                     "name": "gamesPlayed",
@@ -21191,8 +21375,8 @@
                     "description": "Number of Games Played",
                     "abbreviation": "GP",
                     "type": "gamesplayed",
-                    "value": 2.0,
-                    "displayValue": "2"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "name": "losses",
@@ -21211,8 +21395,110 @@
                     "description": "Goal Difference",
                     "abbreviation": "GD",
                     "type": "pointdifferential",
-                    "value": 0.0,
-                    "displayValue": "0"
+                    "value": -1.0,
+                    "displayValue": "-1"
+                  },
+                  {
+                    "name": "points",
+                    "displayName": "Points",
+                    "shortDisplayName": "P",
+                    "description": "Points",
+                    "abbreviation": "P",
+                    "type": "points",
+                    "value": 4.0,
+                    "displayValue": "4"
+                  },
+                  {
+                    "name": "ties",
+                    "displayName": "Draws",
+                    "shortDisplayName": "D",
+                    "description": "Draws",
+                    "abbreviation": "D",
+                    "type": "ties",
+                    "value": 1.0,
+                    "displayValue": "1"
+                  },
+                  {
+                    "name": "wins",
+                    "displayName": "Wins",
+                    "shortDisplayName": "W",
+                    "description": "Wins",
+                    "abbreviation": "W",
+                    "type": "wins",
+                    "value": 1.0,
+                    "displayValue": "1"
+                  },
+                  {
+                    "name": "rank",
+                    "displayName": "Rank",
+                    "shortDisplayName": "Rank",
+                    "description": "Rank",
+                    "abbreviation": "R",
+                    "type": "rank",
+                    "value": 2.0,
+                    "displayValue": "2"
+                  },
+                  {
+                    "id": "0",
+                    "name": "overall",
+                    "abbreviation": "Total",
+                    "displayName": "Overall",
+                    "shortDisplayName": "OVER",
+                    "description": "Overall Record",
+                    "type": "total",
+                    "summary": "1-1-1",
+                    "displayValue": "1-1-1"
+                  }
+                ],
+                "logo": [
+                  {
+                    "href": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
+                    "width": 500,
+                    "height": 500,
+                    "alt": "",
+                    "rel": [
+                      "full",
+                      "default"
+                    ],
+                    "lastUpdated": "2023-10-25T16:21Z"
+                  }
+                ]
+              },
+              {
+                "team": "South Korea",
+                "link": "https://www.espn.com/soccer/team/_/id/451/south-korea",
+                "id": "451",
+                "uid": "s:600~t:451",
+                "stats": [
+                  {
+                    "name": "gamesPlayed",
+                    "displayName": "Games Played",
+                    "shortDisplayName": "GP",
+                    "description": "Number of Games Played",
+                    "abbreviation": "GP",
+                    "type": "gamesplayed",
+                    "value": 3.0,
+                    "displayValue": "3"
+                  },
+                  {
+                    "name": "losses",
+                    "displayName": "Losses",
+                    "shortDisplayName": "L",
+                    "description": "Losses",
+                    "abbreviation": "L",
+                    "type": "losses",
+                    "value": 2.0,
+                    "displayValue": "2"
+                  },
+                  {
+                    "name": "pointDifferential",
+                    "displayName": "Goal Difference",
+                    "shortDisplayName": "GD",
+                    "description": "Goal Difference",
+                    "abbreviation": "GD",
+                    "type": "pointdifferential",
+                    "value": -1.0,
+                    "displayValue": "-1"
                   },
                   {
                     "name": "points",
@@ -21251,8 +21537,8 @@
                     "description": "Rank",
                     "abbreviation": "R",
                     "type": "rank",
-                    "value": 2.0,
-                    "displayValue": "2"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "id": "0",
@@ -21262,8 +21548,8 @@
                     "shortDisplayName": "OVER",
                     "description": "Overall Record",
                     "type": "total",
-                    "summary": "1-0-1",
-                    "displayValue": "1-0-1"
+                    "summary": "1-0-2",
+                    "displayValue": "1-0-2"
                   }
                 ],
                 "logo": [
@@ -21293,120 +21579,18 @@
                     "description": "Number of Games Played",
                     "abbreviation": "GP",
                     "type": "gamesplayed",
-                    "value": 2.0,
-                    "displayValue": "2"
-                  },
-                  {
-                    "name": "losses",
-                    "displayName": "Losses",
-                    "shortDisplayName": "L",
-                    "description": "Losses",
-                    "abbreviation": "L",
-                    "type": "losses",
-                    "value": 1.0,
-                    "displayValue": "1"
-                  },
-                  {
-                    "name": "pointDifferential",
-                    "displayName": "Goal Difference",
-                    "shortDisplayName": "GD",
-                    "description": "Goal Difference",
-                    "abbreviation": "GD",
-                    "type": "pointdifferential",
-                    "value": -1.0,
-                    "displayValue": "-1"
-                  },
-                  {
-                    "name": "points",
-                    "displayName": "Points",
-                    "shortDisplayName": "P",
-                    "description": "Points",
-                    "abbreviation": "P",
-                    "type": "points",
-                    "value": 1.0,
-                    "displayValue": "1"
-                  },
-                  {
-                    "name": "ties",
-                    "displayName": "Draws",
-                    "shortDisplayName": "D",
-                    "description": "Draws",
-                    "abbreviation": "D",
-                    "type": "ties",
-                    "value": 1.0,
-                    "displayValue": "1"
-                  },
-                  {
-                    "name": "wins",
-                    "displayName": "Wins",
-                    "shortDisplayName": "W",
-                    "description": "Wins",
-                    "abbreviation": "W",
-                    "type": "wins",
-                    "value": 0.0,
-                    "displayValue": "0"
-                  },
-                  {
-                    "name": "rank",
-                    "displayName": "Rank",
-                    "shortDisplayName": "Rank",
-                    "description": "Rank",
-                    "abbreviation": "R",
-                    "type": "rank",
                     "value": 3.0,
                     "displayValue": "3"
                   },
                   {
-                    "id": "0",
-                    "name": "overall",
-                    "abbreviation": "Total",
-                    "displayName": "Overall",
-                    "shortDisplayName": "OVER",
-                    "description": "Overall Record",
-                    "type": "total",
-                    "summary": "0-1-1",
-                    "displayValue": "0-1-1"
-                  }
-                ],
-                "logo": [
-                  {
-                    "href": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
-                    "width": 500,
-                    "height": 500,
-                    "alt": "",
-                    "rel": [
-                      "full",
-                      "default"
-                    ],
-                    "lastUpdated": "2023-10-25T16:20Z"
-                  }
-                ]
-              },
-              {
-                "team": "South Africa",
-                "link": "https://www.espn.com/soccer/team/_/id/467/south-africa",
-                "id": "467",
-                "uid": "s:600~t:467",
-                "stats": [
-                  {
-                    "name": "gamesPlayed",
-                    "displayName": "Games Played",
-                    "shortDisplayName": "GP",
-                    "description": "Number of Games Played",
-                    "abbreviation": "GP",
-                    "type": "gamesplayed",
-                    "value": 2.0,
-                    "displayValue": "2"
-                  },
-                  {
                     "name": "losses",
                     "displayName": "Losses",
                     "shortDisplayName": "L",
                     "description": "Losses",
                     "abbreviation": "L",
                     "type": "losses",
-                    "value": 1.0,
-                    "displayValue": "1"
+                    "value": 2.0,
+                    "displayValue": "2"
                   },
                   {
                     "name": "pointDifferential",
@@ -21415,8 +21599,8 @@
                     "description": "Goal Difference",
                     "abbreviation": "GD",
                     "type": "pointdifferential",
-                    "value": -2.0,
-                    "displayValue": "-2"
+                    "value": -4.0,
+                    "displayValue": "-4"
                   },
                   {
                     "name": "points",
@@ -21466,13 +21650,13 @@
                     "shortDisplayName": "OVER",
                     "description": "Overall Record",
                     "type": "total",
-                    "summary": "0-1-1",
-                    "displayValue": "0-1-1"
+                    "summary": "0-1-2",
+                    "displayValue": "0-1-2"
                   }
                 ],
                 "logo": [
                   {
-                    "href": "https://a.espncdn.com/i/teamlogos/countries/500/rsa.png",
+                    "href": "https://a.espncdn.com/i/teamlogos/countries/500/cze.png",
                     "width": 500,
                     "height": 500,
                     "alt": "",
@@ -21480,7 +21664,7 @@
                       "full",
                       "default"
                     ],
-                    "lastUpdated": "2023-10-25T16:21Z"
+                    "lastUpdated": "2023-10-25T16:20Z"
                   }
                 ]
               }

@@ -1,0 +1,107 @@
+name: Terraform prod
+
+on:
+  workflow_dispatch:
+    inputs:
+      action:
+        description: What to run
+        type: choice
+        options:
+          - terraform-plan
+          - terraform-apply
+        default: terraform-plan
+
+concurrency:
+  group: terraform-prod-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  package-lambdas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Package Lambda artifacts
+        run: ./infra/scripts/package_lambdas.sh
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: lambda-zips-prod
+          path: infra/build/lambdas/*.zip
+          retention-days: 1
+
+  terraform:
+    needs: [package-lambdas]
+    runs-on: ubuntu-latest
+    environment: production
+    env:
+      TF_DIR: infra/terraform/envs/prod
+      AWS_REGION: ${{ secrets.AWS_REGION }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/download-artifact@v4
+        with:
+          name: lambda-zips-prod
+          path: infra/build/lambdas/
+
+      - uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: ${{ secrets.ATWC26_AWS_ROLE_ARN }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: "1.9.0"
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Write terraform.tfvars
+        if: env.TFVARS != ''
+        env:
+          TFVARS: ${{ secrets.ATWC26_TFVARS_PROD }}
+        run: printf '%s\n' "$TFVARS" > "$TF_DIR/terraform.tfvars"
+
+      - name: Terraform init
+        run: |
+          if [[ -n "${{ secrets.ATWC26_TF_STATE_BUCKET }}" ]]; then
+            terraform -chdir="$TF_DIR" init -input=false -reconfigure \
+              -backend-config="bucket=${{ secrets.ATWC26_TF_STATE_BUCKET }}" \
+              -backend-config="key=atwc26-v2/prod/terraform.tfstate" \
+              -backend-config="region=${AWS_REGION:-us-east-1}" \
+              -backend-config="encrypt=true"
+          else
+            echo "::error::ATWC26_TF_STATE_BUCKET must be set for prod apply"
+            exit 1
+          fi
+
+      - name: Terraform plan
+        if: inputs.action == 'terraform-plan'
+        run: terraform -chdir="$TF_DIR" plan -input=false -no-color
+
+      - name: Terraform apply
+        if: inputs.action == 'terraform-apply'
+        run: terraform -chdir="$TF_DIR" apply -input=false -auto-approve -no-color
+
+      - name: Stack outputs
+        if: inputs.action == 'terraform-apply'
+        run: |
+          {
+            echo "## Prod stack outputs"
+            echo ""
+            echo "| Output | Value |"
+            echo "|--------|-------|"
+            echo "| site_url | $(terraform -chdir="$TF_DIR" output -raw site_url) |"
+            echo "| cloudfront_url | $(terraform -chdir="$TF_DIR" output -raw cloudfront_url) |"
+            echo "| data_bucket_name | $(terraform -chdir="$TF_DIR" output -raw data_bucket_name) |"
+            echo "| acm_certificate_arn | $(terraform -chdir="$TF_DIR" output -raw acm_certificate_arn) |"
+          } >> "$GITHUB_STEP_SUMMARY"

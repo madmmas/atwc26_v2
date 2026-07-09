@@ -160,8 +160,8 @@
       {
         "player_id": "341706",
         "player_name": "Adil Boulbina",
-        "position": "Forward",
-        "position_abbr": "F",
+        "position": "Midfielder",
+        "position_abbr": "M",
         "jersey": "20"
       },
       {
@@ -362,8 +362,8 @@
       {
         "player_id": "337970",
         "player_name": "Nico Paz",
-        "position": "Forward",
-        "position_abbr": "F",
+        "position": "Midfielder",
+        "position_abbr": "M",
         "jersey": "18"
       }
     ]
@@ -543,8 +543,8 @@
       {
         "player_id": "318429",
         "player_name": "Nishan Velupillay",
-        "position": "Forward",
-        "position_abbr": "F",
+        "position": "Midfielder",
+        "position_abbr": "M",
         "jersey": "23"
       },
       {
@@ -835,8 +835,8 @@
       {
         "player_id": "164895",
         "player_name": "Axel Witsel",
-        "position": "Midfielder",
-        "position_abbr": "M",
+        "position": "Defender",
+        "position_abbr": "D",
         "jersey": "6"
       },
       {
@@ -2374,8 +2374,8 @@
       {
         "player_id": "359132",
         "player_name": "Tyrese Noslin",
-        "position": "Defender",
-        "position_abbr": "D",
+        "position": "Midfielder",
+        "position_abbr": "M",
         "jersey": "13"
       },
       {
@@ -2771,8 +2771,8 @@
       {
         "player_id": "281316",
         "player_name": "Kevin Rodr\u00edguez",
-        "position": "Forward",
-        "position_abbr": "F",
+        "position": "Defender",
+        "position_abbr": "D",
         "jersey": "11"
       },
       {
@@ -2785,8 +2785,8 @@
       {
         "player_id": "318090",
         "player_name": "Nilson Angulo",
-        "position": "Forward",
-        "position_abbr": "F",
+        "position": "Midfielder",
+        "position_abbr": "M",
         "jersey": "20"
       },
       {
@@ -3040,6 +3040,13 @@
         "jersey": "15"
       },
       {
+        "player_id": "227784",
+        "player_name": "Trevoh Chalobah",
+        "position": "Defender",
+        "position_abbr": "D",
+        "jersey": "12"
+      },
+      {
         "player_id": "231859",
         "player_name": "Ezri Konsa",
         "position": "Defender",
@@ -3066,13 +3073,6 @@
         "position": "Defender",
         "position_abbr": "D",
         "jersey": "26"
-      },
-      {
-        "player_id": "299641",
-        "player_name": "Tino Livramento",
-        "position": "Defender",
-        "position_abbr": "D",
-        "jersey": "12"
       },
       {
         "player_id": "328464",
@@ -3112,8 +3112,8 @@
       {
         "player_id": "265653",
         "player_name": "Morgan Rogers",
-        "position": "Midfielder",
-        "position_abbr": "M",
+        "position": "Forward",
+        "position_abbr": "F",
         "jersey": "17"
       },
       {
@@ -3813,6 +3813,13 @@
         "jersey": "8"
       },
       {
+        "player_id": "320621",
+        "player_name": "Garven Metusala",
+        "position": "Defender",
+        "position_abbr": "D",
+        "jersey": "14"
+      },
+      {
         "player_id": "385479",
         "player_name": "Wilguens Paugain",
         "position": "Defender",
@@ -3832,13 +3839,6 @@
         "position": "Midfielder",
         "position_abbr": "M",
         "jersey": "10"
-      },
-      {
-        "player_id": "268134",
-        "player_name": "Leverton Pierre",
-        "position": "Midfielder",
-        "position_abbr": "M",
-        "jersey": "14"
       },
       {
         "player_id": "297177",
@@ -3899,8 +3899,8 @@
       {
         "player_id": "275007",
         "player_name": "Yassin Fortun\u00e9",
-        "position": "Midfielder",
-        "position_abbr": "M",
+        "position": "Forward",
+        "position_abbr": "F",
         "jersey": "19"
       },
       {
@@ -4274,7 +4274,7 @@
       },
       {
         "player_id": "274166",
-        "player_name": "Ali Yousif",
+        "player_name": "Hashim Ali",
         "position": "Forward",
         "position_abbr": "F",
         "jersey": "13"
@@ -4449,8 +4449,8 @@
       {
         "player_id": "291630",
         "player_name": "Amad Diallo",
-        "position": "Forward",
-        "position_abbr": "F",
+        "position": "Midfielder",
+        "position_abbr": "M",
         "jersey": "15"
       },
       {
@@ -4992,8 +4992,8 @@
       {
         "player_id": "303577",
         "player_name": "Brian Guti\u00e9rrez",
-        "position": "Midfielder",
-        "position_abbr": "M",
+        "position": "Defender",
+        "position_abbr": "D",
         "jersey": "26"
       },
       {
@@ -5377,7 +5377,7 @@
         "player_name": "Quinten Timber",
         "position": "Midfielder",
         "position_abbr": "M",
-        "jersey": null
+        "jersey": "26"
       },
       {
         "player_id": "159255",
@@ -5431,8 +5431,8 @@
       {
         "player_id": "284792",
         "player_name": "Crysencio Summerville",
-        "position": "Forward",
-        "position_abbr": "F",
+        "position": "Midfielder",
+        "position_abbr": "M",
         "jersey": "24"
       }
     ]
@@ -6021,7 +6021,7 @@
       },
       {
         "player_id": "301648",
-        "player_name": "Orlando Gil",
+        "player_name": "Orlando Gill",
         "position": "Goalkeeper",
         "position_abbr": "G",
         "jersey": "12"
@@ -6300,7 +6300,7 @@
       },
       {
         "player_id": "288897",
-        "player_name": "Vitinha ",
+        "player_name": "Vitinha",
         "position": "Midfielder",
         "position_abbr": "M",
         "jersey": "23"
@@ -7095,8 +7095,8 @@
       {
         "player_id": "268641",
         "player_name": "Iliman Ndiaye",
-        "position": "Forward",
-        "position_abbr": "F",
+        "position": "Midfielder",
+        "position_abbr": "M",
         "jersey": "13"
       },
       {
@@ -8961,8 +8961,8 @@
       {
         "player_id": "288949",
         "player_name": "Oston Urunov",
-        "position": "Midfielder",
-        "position_abbr": "M",
+        "position": "Forward",
+        "position_abbr": "F",
         "jersey": "11"
       },
       {

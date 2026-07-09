@@ -71,6 +71,9 @@ jobs:
         with:
           terraform_version: "1.9.0"
 
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
       - name: Write terraform.tfvars
         if: env.TFVARS != ''
         env:
@@ -141,6 +144,8 @@ jobs:
           } >> "$GITHUB_STEP_SUMMARY"
 
   deploy-predict-ecs:
+    # Optional manual path. With build_ecs_image=true (default), terraform apply already
+    # builds/pushes the predict image and updates ECS — use this job only for image-only redeploys.
     if: |
       github.event_name == 'push' ||
       (github.event_name == 'workflow_dispatch' && inputs.action == 'deploy-predict-ecs')

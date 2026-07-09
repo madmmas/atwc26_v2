@@ -76,6 +76,11 @@ output "ecs_service_name" {
   description = "ECS service to pass to ATWC26_ECS_SERVICES after publish"
 }
 
+output "ecs_predict_image_uri" {
+  value       = var.enable_ecs_compute && var.build_ecs_image ? module.ecs_predict_image[0].image_uri : null
+  description = "ECR image URI built during terraform apply (content-hash tag)"
+}
+
 output "compute_alb_dns" {
   value       = var.enable_ecs_compute ? module.ecs_compute[0].alb_dns_name : null
   description = "Public ALB for ECS compute (debug only; use API Gateway/CloudFront in prod)"
@@ -88,7 +93,7 @@ output "github_actions_role_arn" {
 
 output "etl_schedule_rule_name" {
   value       = var.enable_etl_scheduler ? module.etl_scheduler[0].schedule_rule_name : null
-  description = "EventBridge rule that triggers ETL every 15 minutes"
+  description = "EventBridge rule that polls schedule.json for match-based ETL triggers"
 }
 
 output "etl_dispatch_lambda_name" {

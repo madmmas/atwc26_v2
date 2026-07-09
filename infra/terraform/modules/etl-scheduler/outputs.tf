@@ -1,6 +1,6 @@
 output "schedule_rule_arn" {
   value       = aws_cloudwatch_event_rule.etl_schedule.arn
-  description = "EventBridge rule ARN for the 15-minute ETL schedule."
+  description = "EventBridge rule ARN for the match-based ETL checker."
 }
 
 output "schedule_rule_name" {

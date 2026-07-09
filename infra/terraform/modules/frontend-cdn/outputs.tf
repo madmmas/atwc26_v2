@@ -18,6 +18,11 @@ output "cloudfront_domain_name" {
   value       = aws_cloudfront_distribution.site.domain_name
 }
 
+output "cloudfront_hosted_zone_id" {
+  description = "CloudFront Route53 hosted zone ID (fixed Z2FDTNDATAQYW2) for alias records."
+  value       = aws_cloudfront_distribution.site.hosted_zone_id
+}
+
 output "cloudfront_url" {
   description = "HTTPS URL for the static site (+ /api/* when API origin is wired)."
   value       = "https://${aws_cloudfront_distribution.site.domain_name}"

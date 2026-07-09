@@ -338,6 +338,8 @@
               "gameResult": "D",
               "competitionName": "2026 World Cup Qualifying - UEFA",
               "roundName": "Group Stage",
+              "leagueName": "FIFA World Cup Qualifying - UEFA",
+              "leagueAbbreviation": "WCQ - UEFA",
               "opponent": {
                 "id": "452",
                 "uid": "s:600~t:452",
@@ -379,9 +381,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png",
-              "leagueName": "FIFA World Cup Qualifying - UEFA",
-              "leagueAbbreviation": "WCQ - UEFA"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bih.png"
             }
           ]
         },
@@ -520,8 +520,6 @@
               "awayShootoutScore": "0",
               "gameResult": "L",
               "competitionName": "2026 International Friendly",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "208",
                 "uid": "s:600~t:208",
@@ -563,7 +561,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly"
             },
             {
               "id": "401862319",
@@ -652,6 +652,8 @@
               "awayShootoutScore": "0",
               "gameResult": "D",
               "competitionName": "2026 International Friendly",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "657",
                 "uid": "s:600~t:657",
@@ -693,9 +695,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nga.png",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nga.png"
             },
             {
               "id": "401862038",
@@ -1643,8 +1643,6 @@
             "awayShootoutScore": "0",
             "gameResult": "D",
             "competitionName": "2026 International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "657",
               "uid": "s:600~t:657",
@@ -1686,7 +1684,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nga.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nga.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           },
           {
             "id": "401862319",
@@ -1775,6 +1775,8 @@
             "awayShootoutScore": "0",
             "gameResult": "L",
             "competitionName": "2026 International Friendly",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "208",
               "uid": "s:600~t:208",
@@ -1816,9 +1818,7 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/col.png"
           },
           {
             "id": "760431",
@@ -2885,23 +2885,6 @@
         "lang": "en",
         "region": "us",
         "isNational": false
-      },
-      {
-        "type": {
-          "id": "4",
-          "shortName": "STREAMING",
-          "longName": "Streaming",
-          "slug": "streaming"
-        },
-        "market": {},
-        "media": {
-          "callLetters": "Peacock",
-          "name": "Peacock",
-          "shortName": "Peacock"
-        },
-        "lang": "en",
-        "region": "us",
-        "isNational": false
       }
     ],
     "pickcenter": [
@@ -2925,7 +2908,7 @@
             }
           ]
         },
-        "details": "AUT -1.5",
+        "details": "AUT -255",
         "overUnder": 2.5,
         "spread": -1.5,
         "overOdds": -110.0,
@@ -3187,7 +3170,7 @@
             }
           ]
         },
-        "details": "AUT -1.5",
+        "details": "AUT -255",
         "overUnder": 2.5,
         "spread": -1.5,
         "overOdds": -110.0,
@@ -3429,1126 +3412,6 @@
       }
     ],
     "hasOdds": false,
-    "news": {
-      "header": "FIFA World Cup News",
-      "link": {
-        "language": "en",
-        "rel": [
-          "index",
-          "desktop",
-          "league"
-        ],
-        "href": "https://www.espn.com/football/worldcup/",
-        "text": "All FIFA World Cup News",
-        "shortText": "All News",
-        "isExternal": false,
-        "isPremium": false
-      },
-      "articles": [
-        {
-          "id": 49097269,
-          "nowId": "1-49097269",
-          "contentKey": "49097269-1-5-1",
-          "dataSourceIdentifier": "dd8e7a6724ef9",
-          "type": "HeadlineNews",
-          "headline": "Portugal, Ronaldo frustrated in opening draw with Congo DR",
-          "description": "Congo DR produced another stunning result at the 2026 World Cup, as the African side held one of the pre-tournament favorites, Portugal, to a 1-1 draw in Houston on Wednesday.",
-          "lastModified": "2026-06-17T19:00:17Z",
-          "published": "2026-06-17T19:00:17Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "ac7ce5ccdc6ad",
-              "id": 49098383,
-              "type": "header",
-              "name": "Congo celeb vs Portugal [1296x729]",
-              "caption": "Congo DR celebrate their equalizing goal against Portugal.",
-              "alt": "Cedric Bakambu #17 of DR Congo leaps on top of teammates to celebrate a goal by Yoane Wissa #20 of DR Congo during the FIFA World Cup 2026 Group K match between Portugal and Congo DR on June 17, 2026, at Houston Stadium in Houston, Texas.",
-              "credit": "David Buono/Icon Sportswire via Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674979_1296x729_16-9.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 72587,
-              "type": "team",
-              "uid": "s:600~t:482",
-              "guid": "12433baf-649d-7f4f-7233-6db63a5f62f4",
-              "description": "Portugal",
-              "sportId": 600,
-              "teamId": 482,
-              "team": {
-                "id": 482,
-                "description": "Portugal",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/482/portugal"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/482/portugal"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 716040,
-              "type": "team",
-              "uid": "s:600~t:131255",
-              "guid": "f783fdf2-35c5-3d2e-bc33-dbeffac57c2f",
-              "description": "Congo DR",
-              "sportId": 600,
-              "teamId": 131255,
-              "team": {
-                "id": 131255,
-                "description": "Congo DR",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/131255/congo-dr"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/131255/congo-dr"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "12433baf-649d-7f4f-7233-6db63a5f62f4"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "f783fdf2-35c5-3d2e-bc33-dbeffac57c2f"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49097269/portugal-congo-dr-world-cup-2026-cristiano-ronaldo"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49097269"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49097269"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49097269"
-              }
-            }
-          },
-          "byline": "ESPN"
-        },
-        {
-          "id": 49098203,
-          "nowId": "1-49098203",
-          "contentKey": "49098203-1-5-1",
-          "dataSourceIdentifier": "9ddd414686b0c",
-          "type": "HeadlineNews",
-          "headline": "Noni Madueke, Jude Bellingham start for England vs. Croatia, Bukayo Saka on bench",
-          "description": "Noni Madueke, Jude Bellingham and Anthony Gordon will operate behind Harry Kane in England's World Cup opener against Croatia",
-          "lastModified": "2026-06-17T18:47:06Z",
-          "published": "2026-06-17T18:47:06Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "a58a83d623204",
-              "id": 49098289,
-              "type": "header",
-              "name": "Madueke Bellingham [1296x729]",
-              "alt": "Noni Madueke #20 of England speaks to teammate Jude Bellingham during the International Friendly match between England and Costa Rica at Inter&Co Stadium on June 10, 2026 in Orlando, Florida.",
-              "credit": "Eddie Keogh - The FA/The FA via Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674975_1296x729_16-9.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 72576,
-              "type": "team",
-              "uid": "s:600~t:448",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
-              "description": "England",
-              "sportId": 600,
-              "teamId": 448,
-              "team": {
-                "id": 448,
-                "description": "England",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49098203/england-croatia-lineups-world-cup-2026-noni-madueke-jude-bellingham-start-bukayo-saka-marc-guehi-bench"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49098203"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49098203"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49098203"
-              }
-            }
-          },
-          "byline": "ESPN"
-        },
-        {
-          "id": 49090581,
-          "nowId": "1-49090581",
-          "contentKey": "49090581-1-6-1",
-          "dataSourceIdentifier": "4243df7115dcd",
-          "type": "Story",
-          "headline": "World Cup Daily: Ronaldo, Portugal take on Congo DR",
-          "description": "It has officially been one week of 2026 FIFA World Cup action. Enjoy all the features, news, video analysis and color from around the competition.",
-          "lastModified": "2026-06-17T18:27:38Z",
-          "published": "2026-06-17T18:27:38Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "34dd113160a73",
-              "id": 49097202,
-              "type": "header",
-              "name": "Portugal team celeb v DR Congo 260617 [1296x1296]",
-              "credit": "Julian Finney - FIFA/FIFA via Getty Images",
-              "height": 1296,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674913_1296x1296_1-1.jpg"
-            },
-            {
-              "dataSourceIdentifier": "4697b830a2dfc",
-              "id": 49096837,
-              "type": "header",
-              "name": "Ronaldo thumbs-up pregame alt 260617 [1296x729]",
-              "credit": "Molly Darlington/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674893_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "d9bcf0aa3901c",
-              "id": 49091732,
-              "type": "header",
-              "name": "Messi goat [607x341]",
-              "caption": "Messi goat",
-              "credit": "Fox Sports",
-              "height": 341,
-              "width": 607,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674693_607x341_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "bfc153cd1b9e7",
-              "id": 49090528,
-              "type": "header",
-              "name": "Portugal [1296x729]",
-              "credit": "(Photo by Leonardo Fernandez/Getty Images)",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674641_1296x729_16-9.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 760055,
-              "type": "topic",
-              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd",
-              "description": "live blog",
-              "sportId": 0,
-              "topicId": 4378
-            },
-            {
-              "id": 72587,
-              "type": "team",
-              "uid": "s:600~t:482",
-              "guid": "12433baf-649d-7f4f-7233-6db63a5f62f4",
-              "description": "Portugal",
-              "sportId": 600,
-              "teamId": 482,
-              "team": {
-                "id": 482,
-                "description": "Portugal",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/482/portugal"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/482/portugal"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 716040,
-              "type": "team",
-              "uid": "s:600~t:131255",
-              "guid": "f783fdf2-35c5-3d2e-bc33-dbeffac57c2f",
-              "description": "Congo DR",
-              "sportId": 600,
-              "teamId": 131255,
-              "team": {
-                "id": 131255,
-                "description": "Congo DR",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/131255/congo-dr"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/131255/congo-dr"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd"
-            },
-            {
-              "type": "guid",
-              "guid": "12433baf-649d-7f4f-7233-6db63a5f62f4"
-            },
-            {
-              "type": "guid",
-              "guid": "f783fdf2-35c5-3d2e-bc33-dbeffac57c2f"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49090581/world-cup-daily-nfl-star-winston-dresses-goat-messi-tribute-goat"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49090581"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49090581"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49090581"
-              }
-            }
-          },
-          "byline": "ESPN"
-        },
-        {
-          "id": 49097782,
-          "nowId": "1-49097782",
-          "contentKey": "49097782-1-293-1",
-          "dataSourceIdentifier": "dda4db3eca0af",
-          "type": "Media",
-          "headline": "USMNT's Aaronson, Robinson say Messi's hat-trick 'not normal'",
-          "description": "USMNT's Aaronson, Robinson say Messi's hat-trick 'not normal'",
-          "lastModified": "2026-06-17T18:10:58Z",
-          "published": "2026-06-17T18:10:58Z",
-          "images": [
-            {
-              "name": "USMNT's Aaronson, Robinson say Messi's hat-trick 'not normal'",
-              "caption": "USMNT's Aaronson, Robinson say Messi's hat-trick 'not normal'",
-              "alt": "",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0617/dm_260617_USMNTs_Aaronson_Robinson_say_Messis_hattrick_not_normal/dm_260617_USMNTs_Aaronson_Robinson_say_Messis_hattrick_not_normal.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 259403,
-              "type": "athlete",
-              "uid": "s:600~a:222396",
-              "guid": "97f92287-b26d-c59a-5d43-db2c63cb7603",
-              "description": "Antonee Robinson",
-              "sportId": 600,
-              "athleteId": 222396,
-              "athlete": {
-                "id": 222396,
-                "description": "Antonee Robinson",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/222396/antonee-robinson"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/222396/antonee-robinson"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 278942,
-              "type": "athlete",
-              "uid": "s:600~a:259653",
-              "guid": "83729cd8-c60e-145e-7657-380ed705b7b0",
-              "description": "Brenden Aaronson",
-              "sportId": 600,
-              "athleteId": 259653,
-              "athlete": {
-                "id": 259653,
-                "description": "Brenden Aaronson",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/259653/brenden-aaronson"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/259653/brenden-aaronson"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 238474,
-              "type": "athlete",
-              "uid": "s:600~a:45843",
-              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0",
-              "description": "Lionel Messi",
-              "sportId": 600,
-              "athleteId": 45843,
-              "athlete": {
-                "id": 45843,
-                "description": "Lionel Messi",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "97f92287-b26d-c59a-5d43-db2c63cb7603"
-            },
-            {
-              "type": "guid",
-              "guid": "83729cd8-c60e-145e-7657-380ed705b7b0"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49097782/usmnt-aaronson-robinson-say-messi-hat-trick-not-normal",
-              "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49097782/usmnt-aaronson-robinson-say-messi-hat-trick-not-normal",
-                "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=dda4db3eca0af"
-                }
-              }
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49097782"
-              },
-              "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/4dd012ac-aa30-4343-9745-d468861de1a6"
-              }
-            },
-            "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49097782&videoDSI=dda4db3eca0af"
-            }
-          }
-        },
-        {
-          "id": 49097656,
-          "nowId": "1-49097656",
-          "contentKey": "49097656-1-5-1",
-          "dataSourceIdentifier": "973268a179500",
-          "type": "HeadlineNews",
-          "headline": "South Africa's Themba Zwane handed three-match ban for red card against Mexico in FIFA World Cup opener",
-          "description": "South Africa attacking midfielder Themba Zwane has been suspended for three matches for his red card against Mexico, subject to appeal, by the FIFA Disciplinary Committee.",
-          "lastModified": "2026-06-17T18:08:12Z",
-          "published": "2026-06-17T18:08:12Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "a811bb6446c35",
-              "id": 49033937,
-              "type": "header",
-              "name": "Mexico, South Africa red cards [1296x729]",
-              "caption": "The three red cards in Mexico vs. South Africa is a record for the opening match of a World Cup.",
-              "credit": "Yuri CORTEZ / AFP via Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0611/r1671558_2_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Gomez on South Africa's red cards: 'I have no idea what got into them'",
-              "caption": "Gomez on South Africa's red cards: 'I have no idea what got into them'.",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0611/dm_260611_Gomez_on_South_Africas_red_cards_I_have_no_idea_what_got_into_them/dm_260611_Gomez_on_South_Africas_red_cards_I_have_no_idea_what_got_into_them.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 257431,
-              "type": "athlete",
-              "uid": "s:600~a:157046",
-              "guid": "c3a472b5-9924-0e1c-db0c-f76a33e8ae55",
-              "description": "Themba Zwane",
-              "sportId": 600,
-              "athleteId": 157046,
-              "athlete": {
-                "id": 157046,
-                "description": "Themba Zwane",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/157046/themba-zwane"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/157046/themba-zwane"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72580,
-              "type": "team",
-              "uid": "s:600~t:467",
-              "guid": "d4889543-c668-800d-56fa-542c10023978",
-              "description": "South Africa",
-              "sportId": 600,
-              "teamId": 467,
-              "team": {
-                "id": 467,
-                "description": "South Africa",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/467/south-africa"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/467/south-africa"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 142446,
-              "type": "team",
-              "uid": "s:600~t:450",
-              "guid": "14608173-473c-c347-d753-e45fe20730f5",
-              "description": "Czechia",
-              "sportId": 600,
-              "teamId": 450,
-              "team": {
-                "id": 450,
-                "description": "Czechia",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/450/czechia"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/450/czechia"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 702974,
-              "type": "contributor",
-              "guid": "8bdbfcb7-37ef-3a8f-817c-e30ebcf3eeba",
-              "description": "200305 COLUMNIST PROFILE Leonard Solms",
-              "slug": "200305-columnist-profile-leonard-solms",
-              "contributor": {
-                "id": 3846,
-                "description": "200305 COLUMNIST PROFILE Leonard Solms"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "c3a472b5-9924-0e1c-db0c-f76a33e8ae55"
-            },
-            {
-              "type": "guid",
-              "guid": "d4889543-c668-800d-56fa-542c10023978"
-            },
-            {
-              "type": "guid",
-              "guid": "14608173-473c-c347-d753-e45fe20730f5"
-            },
-            {
-              "type": "guid",
-              "guid": "8bdbfcb7-37ef-3a8f-817c-e30ebcf3eeba"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/espn/story/_/id/49097656/south-africa-themba-zwane-handed-three-match-ban-red-card-mexico-fifa-world-cup-opener"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/wireless/story?storyId=49097656"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49097656"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49097656"
-              }
-            }
-          },
-          "byline": "Leonard Solms"
-        },
-        {
-          "id": 49097404,
-          "nowId": "1-49097404",
-          "contentKey": "49097404-1-6-1",
-          "dataSourceIdentifier": "1399bb112a6eb",
-          "type": "Story",
-          "headline": "All Herve Renard has to do with Tunisia is 'stop the bleeding' - Patrice Beaumelle",
-          "description": "Herve Renard's long-term assistant coach Patrice Beaumelle believes that the newly appointed Tunisia coach must prioritise the North Africans' disastrous defensive record before anything else at the FIFA World Cup.",
-          "lastModified": "2026-06-17T17:43:16Z",
-          "published": "2026-06-17T17:43:16Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "1e59c4dbad12b",
-              "id": 49097375,
-              "type": "header",
-              "name": "Herve Renard Tunisia [1296x729]",
-              "caption": "Herve Renard arrived to coach Tunisia by Tuesday.",
-              "credit": "Azael Rodriguez/FIFA via Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674922_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "3f98e8149e1dd",
-              "id": 49084531,
-              "type": "header",
-              "name": "herve Renard Saudi [1296x729]",
-              "caption": "Herve Renard led Saudi Arabia to a shock win over Argentina at the 2022 World Cup. That Argentina went on to win the tournament is unimportant.",
-              "credit": "Etsuo Hara/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0616/r1674267_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Renard: 'I did not hesitate for a second' taking Tunisia job",
-              "caption": "Renard: 'I did not hesitate for a second' taking Tunisia job",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0617/dm_260617_COM_SOC_News_Renard_I_did_not_hesitate_for_a_second_taking_Tunisia_job_20260617_GLOBAL_FIFA_W/dm_260617_COM_SOC_News_Renard_I_did_not_hesitate_for_a_second_taking_Tunisia_job_20260617_GLOBAL_FIFA_W.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 142399,
-              "type": "team",
-              "uid": "s:600~t:659",
-              "guid": "11090cca-6664-482e-ceb7-3b70b3297cc7",
-              "description": "Tunisia",
-              "sportId": 600,
-              "teamId": 659,
-              "team": {
-                "id": 659,
-                "description": "Tunisia",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/659/tunisia"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/659/tunisia"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 702571,
-              "type": "contributor",
-              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc",
-              "description": "180530 COLUMNIST PROFILE Ed Dove",
-              "slug": "180530-columnist-profile-ed-dove",
-              "contributor": {
-                "id": 3335,
-                "description": "180530 COLUMNIST PROFILE Ed Dove"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "11090cca-6664-482e-ceb7-3b70b3297cc7"
-            },
-            {
-              "type": "guid",
-              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/espn/story/_/id/49097404/all-herve-renard-do-tunisia-stop-bleeding-patrice-beaumelle"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/wireless/story?storyId=49097404"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49097404"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49097404"
-              }
-            }
-          },
-          "byline": "Ed Dove"
-        }
-      ]
-    },
     "rosters": [
       {
         "homeAway": "home",
@@ -15107,367 +13970,1282 @@
         "formation": "3-4-2-1"
       }
     ],
-    "article": {
-      "id": 49078243,
-      "nowId": "1-49078243",
-      "contentKey": "49078243-1-21-1",
-      "dataSourceIdentifier": "bcf3e68890697",
-      "publishedkey": "soccer760431",
-      "type": "Recap",
-      "gameId": "760431",
-      "headline": "Marko Arnautovic helps Austria to first World Cup win in 36 years against Jordan ",
-      "description": "Austria won a World Cup game for the first time in 36 years with a 3-1 victory Tuesday over a Jordan team making their debut at the global showpiece.\n\n\n",
-      "linkText": "Austria get first WC win in 36 years against Jordan",
-      "categorized": "2026-06-17T11:41:27Z",
-      "originallyPosted": "2026-06-17T06:35:00Z",
-      "lastModified": "2026-06-17T06:35:17Z",
-      "published": "2026-06-17T06:35:00Z",
-      "section": "Soccer",
-      "images": [
-        {
-          "dataSourceIdentifier": "0929c9899bb0d",
-          "id": 49090900,
-          "type": "header",
-          "name": "Austria  [594x334]",
-          "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
-          "credit": "Getty",
-          "height": 334,
-          "width": 594,
-          "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_594x334_16-9.jpg",
-          "peers": [
-            {
-              "dataSourceIdentifier": "730ae5953bfe5",
-              "id": 49090909,
-              "type": "inline",
-              "name": "Austria  [385x385]",
-              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
-              "credit": "Getty",
-              "height": 385,
-              "width": 385,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_385x385_1-1.jpg"
-            },
-            {
-              "dataSourceIdentifier": "0929c9899bb0d",
-              "id": 49090900,
-              "type": "header",
-              "name": "Austria  [594x334]",
-              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
-              "credit": "Getty",
-              "height": 334,
-              "width": 594,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_594x334_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "2bbfe3cae19a5",
-              "id": 49090903,
-              "type": "inline",
-              "name": "Austria  [257x385]",
-              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
-              "credit": "Getty",
-              "height": 385,
-              "width": 257,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_257x385_2-3.jpg"
-            },
-            {
-              "dataSourceIdentifier": "15085e62e017d",
-              "id": 49090905,
-              "type": "inline",
-              "name": "Austria  [567x378]",
-              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
-              "credit": "Getty",
-              "height": 378,
-              "width": 567,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_567x378_3-2.jpg"
-            },
-            {
-              "dataSourceIdentifier": "a6613c3d3a585",
-              "id": 49090907,
-              "type": "header",
-              "name": "Austria  [594x238]",
-              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
-              "credit": "Getty",
-              "height": 238,
-              "width": 594,
-              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_594x238_5-2.jpg"
-            }
-          ]
-        }
-      ],
-      "video": [],
-      "categories": [
-        {
-          "id": 81497,
-          "type": "league",
-          "uid": "s:600",
-          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-          "description": "Soccer",
-          "sportId": 600,
-          "leagueId": 600,
-          "league": {
-            "id": 600,
-            "description": "Soccer",
-            "links": {
-              "web": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/"
-                }
-              },
-              "mobile": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": 33303,
-          "type": "league",
-          "uid": "s:600~l:606",
-          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-          "description": "FIFA World Cup",
-          "sportId": 600,
-          "leagueId": 4,
-          "league": {
-            "id": 606,
-            "description": "FIFA World Cup",
-            "abbreviation": "FIFA World Cup",
-            "links": {
-              "web": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/worldcup/"
-                }
-              },
-              "mobile": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/worldcup/"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": 142345,
-          "type": "team",
-          "uid": "s:600~t:474",
-          "guid": "97f12487-4e78-aa06-a02c-7e91dbcd42b8",
-          "description": "Austria",
-          "sportId": 600,
-          "teamId": 474,
-          "team": {
-            "id": 474,
-            "description": "Austria",
-            "links": {
-              "web": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/474/austria"
-                }
-              },
-              "mobile": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/474/austria"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": 142352,
-          "type": "team",
-          "uid": "s:600~t:2917",
-          "guid": "a20b8505-77b9-564c-c376-6b98d920cf97",
-          "description": "Jordan",
-          "sportId": 600,
-          "teamId": 2917,
-          "team": {
-            "id": 2917,
-            "description": "Jordan",
-            "links": {
-              "web": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/2917/jordan"
-                }
-              },
-              "mobile": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/2917/jordan"
-                }
-              }
-            }
-          }
-        },
-        {
-          "type": "event",
-          "uid": "s:600~l:606~e:760431",
-          "guid": "4a7b6d90-d73a-3b2d-8713-00590022465b",
-          "description": "Jordan @ Austria",
-          "eventId": 760431,
-          "event": {
-            "id": 760431,
-            "sport": "soccer",
-            "league": "fifa.world",
-            "description": "Jordan @ Austria"
-          }
-        },
-        {
-          "type": "guid",
-          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-        },
-        {
-          "type": "guid",
-          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-        },
-        {
-          "type": "guid",
-          "guid": "97f12487-4e78-aa06-a02c-7e91dbcd42b8"
-        },
-        {
-          "type": "guid",
-          "guid": "a20b8505-77b9-564c-c376-6b98d920cf97"
-        },
-        {
-          "type": "guid",
-          "guid": "4a7b6d90-d73a-3b2d-8713-00590022465b"
-        }
-      ],
-      "keywords": [
-        "Soccer",
-        "FIFA World Cup",
-        "Austria",
-        "Jordan",
-        "Jordan @ Austria"
-      ],
-      "story": "<p><a data-clubhouse-guid=\"97f12487-4e78-aa06-a02c-7e91dbcd42b8\" href=\"http://espn.com/soccer/team?id=474\">Austria</a> won a World Cup game for the first time in 36 years with a 3-1 victory Tuesday over a <a data-clubhouse-guid=\"a20b8505-77b9-564c-c376-6b98d920cf97\" href=\"http://espn.com/soccer/team?id=2917\">Jordan</a> team making their debut at the global showpiece.</p>\n<p>An own goal from a corner kick that deflected off Jordanian defender Yazan Al Arab gave Austria a 2-1 lead in the 76th minute. <a data-player-guid=\"3d96a7ee-0cbb-6117-cd1e-1d2bcb4dabcf\" href=\"http://espn.com/soccer/player/_/id/98193/marko-arnautovic\">Marko Arnautovic</a>'s penalty kick deep in stoppage team extended the margin.</p>\n<p>The game between a Jordan team making their debut and an Austrian squad back on soccer's biggest stage after missing the last six tournaments featured plenty of excitement.</p>\n<p><photo1></p>\n<p>It peaked in a stretch in the second half that featured an equaliser by Jordan and two balls sent into the net off corner kicks by Austria --\u00a0 with only one of those counting.</p>\n<p>Substitute Arnautovic had appeared to give Austria the lead when he converted from a corner kick after a misplay by Jordanian goalkeeper <a data-player-guid=\"e9fdf374-2b13-585c-2854-204004393a43\" href=\"http://espn.com/soccer/player/_/id/235212/yazeed-abulaila\">Yazeed Abulaila</a>. But the decision went to VAR and the referee called a hand ball on <a data-player-guid=\"12276641-ea7c-3509-ee17-bd842924d9d2\" href=\"http://espn.com/soccer/player/_/id/238906/stefan-posch\">Stefan Posch</a> whose arm touched the ball in the lead up.</p>\n<p>Austria got another corner kick shortly after the second-half hydration break and the took a 2-1 lead on Al Arab's own goal.</p>\n<p>That proved to be the difference for Austria, which earned its first win at the World Cup since beating the <a data-clubhouse-guid=\"e6b65d49-258c-b730-b7db-df75c6b1f714\" href=\"http://espn.com/soccer/team?id=660\">United States</a> in a group-stage match in 1990. Jordan fell short in its attempt to become the first country to win its World Cup debut game since <a data-clubhouse-guid=\"3d969454-cda7-bf55-21fb-33a8c2ca21ee\" href=\"http://espn.com/soccer/team?id=654\">Senegal</a> did it in 2002 against defending-champion <a data-clubhouse-guid=\"81be996c-0f98-eec4-6284-c6be0d186360\" href=\"http://espn.com/soccer/team?id=478\">France</a>.</p>\n<p><a data-player-guid=\"6c5073c6-93f0-0766-94d1-da337806368d\" href=\"http://espn.com/soccer/player/_/id/238296/romano-schmid\">Romano Schmid</a> scored in the 20th minute for Austria when he capped off an impressive buildup that put the Jordanian defense on its heels. <a data-player-guid=\"6e8fc00b-585d-b9ca-6a77-a3f3e73faef9\" href=\"http://espn.com/soccer/player/_/id/238886/xaver-schlager\">Xaver Schlager</a> fed a pass to Schmid, who hit a perfectly struck right-foot shot from the edge of the area into the top corner of the net.</p>\n<p><a data-player-guid=\"2003d81a-8144-3100-8d08-1d48abcaf102\" href=\"http://espn.com/soccer/player/_/id/320908/ali-olwan\">Ali Olwan</a> tied it for Jordan in the 50th when made a long run into the box on a counterattack and beat <a data-player-guid=\"73c3013c-03b6-51b2-38cc-551b4a8fad27\" href=\"http://espn.com/soccer/player/_/id/195082/alexander-schlager\">Alexander Schlager</a> with a right-foot shot that delighted the large contingent of Jordanian fans.</p>\n<p>Jordan will return to <a data-clubhouse-guid=\"6c71b4ba-b350-5ba0-64d0-29dacaf6a7d2\" href=\"http://espn.com/soccer/team?id=12215\">Santa Clara</a> for its second match next Monday against <a data-clubhouse-guid=\"5a9aa911-bb70-d5d4-2c03-166d0fe0dc3c\" href=\"http://espn.com/soccer/team?id=624\">Algeria</a>, which lost 3-0 to <a data-clubhouse-guid=\"892f805f-fef9-c22d-8f87-ba08b1b4d256\" href=\"http://espn.com/soccer/team?id=202\">Argentina</a> in the first Group J match. Austria will face <a data-player-guid=\"dc5f8d51-332b-0ab2-b4b0-c97efdc624e0\" href=\"http://espn.com/soccer/player/_/id/45843/lionel-messi\">Lionel Messi</a> and Argentina in the Dallas area that same day.</p>\n\n\n\n\n",
-      "premium": false,
-      "isLiveBlog": false,
-      "links": {
-        "web": {
-          "href": "http://www.espn.com/soccer/report/_/gameId/760431"
-        },
-        "mobile": {
-          "href": "http://m.espn.go.com/soccer/story?storyId=49078243"
-        },
-        "api": {
-          "self": {
-            "href": "https://content.core.api.espn.com/v1/sports/news/49078243"
-          }
-        },
-        "app": {
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showStory?uid=49078243"
-          }
-        }
+    "news": {
+      "header": "FIFA World Cup News",
+      "link": {
+        "language": "en",
+        "rel": [
+          "index",
+          "desktop",
+          "league"
+        ],
+        "href": "https://www.espn.com/football/worldcup/",
+        "text": "All FIFA World Cup News",
+        "shortText": "All News",
+        "isExternal": false,
+        "isPremium": false
       },
-      "byline": "Associated Press",
-      "allowComments": true,
-      "allowSearch": true,
-      "allowContentReactions": false
-    },
-    "videos": [
-      {
-        "id": 49093443,
-        "cerebroId": "6a3287cb1bf54a00fd674183",
-        "source": "espn",
-        "headline": "Rangnick credits WC debutants Jordan for 'exceeding expectations' vs. Austria",
-        "description": "Rangnick credits WC debutants Jordan for 'exceeding expectations' vs. Austria",
-        "lastModified": "2026-06-17T11:41:25Z",
-        "originalPublishDate": "2026-06-17T11:40:59Z",
-        "duration": 63,
-        "timeRestrictions": {
-          "embargoDate": "2026-06-17T11:39:51Z",
-          "expirationDate": "2027-06-20T11:39:51Z"
-        },
-        "deviceRestrictions": {
-          "type": "whitelist",
-          "devices": [
-            "settop",
-            "tablet",
-            "handset",
-            "ipad",
-            "desktop"
-          ]
-        },
-        "thumbnail": "https://a.espncdn.com/media/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026.jpg",
-        "links": {
-          "web": {
-            "href": "https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria",
-            "self": {
-              "href": "https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria",
-              "dsi": {
-                "href": "https://www.espn.com/video/clip?id=e2418ad777ec3"
-              }
+      "articles": [
+        {
+          "id": 49312995,
+          "nowId": "1-49312995",
+          "contentKey": "49312995-1-293-1",
+          "dataSourceIdentifier": "2adb113f6178b",
+          "type": "Media",
+          "headline": "Olmo: Spain don't care what the other teams are doing",
+          "description": "Olmo: Spain don't care what the other teams are doing",
+          "lastModified": "2026-07-09T09:54:06Z",
+          "published": "2026-07-09T09:54:06Z",
+          "images": [
+            {
+              "name": "Olmo: Spain don't care what the other teams are doing",
+              "caption": "Olmo: Spain don't care what the other teams are doing",
+              "alt": "",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_Presser_Olmo_Spain_dont_care_what_the_other_teams_are_doing_20260709_GLOBAL_FIFA_WORLD/dm_260709_COM_SOC_Presser_Olmo_Spain_dont_care_what_the_other_teams_are_doing_20260709_GLOBAL_FIFA_WORLD.jpg"
             }
-          },
-          "mobile": {
-            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria",
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026.mp4"
-            },
-            "alert": {
-              "href": "https://m.espn.com/general/video/videoAlert?vid=49093443"
-            },
-            "streaming": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria"
-            },
-            "progressiveDownload": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria"
-            }
-          },
-          "api": {
-            "self": {
-              "href": "https://content.core.api.espn.com/v1/video/clips/49093443"
-            },
-            "artwork": {
-              "href": "https://artwork.api.espn.com/artwork/collections/media/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f"
-            }
-          },
-          "source": {
-            "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026_360p30_1464k.mp4",
-            "mezzanine": {
-              "href": "https://media.video-origin.espn.com/espnvideo/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026.mp4"
-            },
-            "flash": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026.smil"
-            },
-            "hds": {
-              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026_rel.smil/manifest.f4m"
-            },
-            "HLS": {
-              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/playlist.m3u8",
-              "HD": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/playlist.m3u8"
-              },
-              "cmaf": {
-                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/playlist.m3u8"
-              },
-              "shield": {
-                "href": "https://watch.auth.api.espn.com/video/auth/media/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f/asset"
+          ],
+          "categories": [
+            {
+              "id": 135133,
+              "type": "team",
+              "uid": "s:600~t:459",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141",
+              "description": "Belgium",
+              "sportId": 600,
+              "teamId": 459,
+              "team": {
+                "id": 459,
+                "description": "Belgium",
+                "abbreviation": "BEL",
+                "shortDisplayName": "Belgium",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  }
+                }
               }
             },
-            "HD": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026_720p30_2896k.mp4"
+            {
+              "id": 238222,
+              "type": "athlete",
+              "uid": "s:600~a:227765",
+              "guid": "4ac1c50f-aad6-d466-47b8-343f613b7e66",
+              "description": "Dani Olmo",
+              "sportId": 600,
+              "athleteId": 227765,
+              "athlete": {
+                "id": 227765,
+                "description": "Dani Olmo",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/227765/dani-olmo"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/227765/dani-olmo"
+                    }
+                  }
+                }
+              }
             },
-            "full": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026_360p30_1464k.mp4"
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72568,
+              "type": "team",
+              "uid": "s:600~t:164",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
+              "description": "Spain",
+              "sportId": 600,
+              "teamId": 164,
+              "team": {
+                "id": 164,
+                "description": "Spain",
+                "abbreviation": "ESP",
+                "shortDisplayName": "Spain",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "event",
+              "uid": "s:600~l:606~e:760511",
+              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675",
+              "description": "Belgium @ Spain",
+              "eventId": 760511,
+              "event": {
+                "id": 760511,
+                "sport": "soccer",
+                "league": "fifa.world",
+                "description": "Belgium @ Spain"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141"
+            },
+            {
+              "type": "guid",
+              "guid": "4ac1c50f-aad6-d466-47b8-343f613b7e66"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
+            },
+            {
+              "type": "guid",
+              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675"
             }
-          },
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showVideo?videoID=49093443&videoDSI=e2418ad777ec3"
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/video/clip/_/id/49312995/spain-care-other-teams-doing",
+              "self": {
+                "href": "https://www.espn.com/video/clip/_/id/49312995/spain-care-other-teams-doing",
+                "dsi": {
+                  "href": "https://www.espn.com/video/clip?id=2adb113f6178b"
+                }
+              }
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/video/clips/49312995"
+              },
+              "artwork": {
+                "href": "https://artwork.api.espn.com/artwork/collections/media/68c7efc7-88e0-4485-9a6f-cd28a8fa5d01"
+              }
+            },
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49312995&videoDSI=2adb113f6178b"
+            }
           }
         },
-        "ad": {
-          "sport": "Soccer",
-          "bundle": "espnfc"
+        {
+          "id": 49309123,
+          "nowId": "1-49309123",
+          "contentKey": "49309123-1-6-1",
+          "dataSourceIdentifier": "b74b261a0f52e",
+          "type": "Story",
+          "headline": "World Cup Daily live: Mexico star Mora's high school graduation, France-Morocco kicks off quarterfinals",
+          "description": "Enjoy all the features, news, video analysis and color from around the competition as the first day of the 2026 FIFA World Cup quarterfinals begin.",
+          "lastModified": "2026-07-09T09:34:16Z",
+          "published": "2026-07-09T09:34:16Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "73d008facc8e9",
+              "id": 49312848,
+              "type": "header",
+              "name": "Mexico's Gilberto Mora [1296x729]",
+              "credit": "Carl Recine/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686754_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "ba09ed7f81dee",
+              "id": 49309095,
+              "type": "header",
+              "name": "France [1296x729]",
+              "credit": "(Photo by Elsa/Getty Images)",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0708/r1686580_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Qui\u00f1ones goal causes chaos in Mexico City",
+              "caption": "Qui\u00f1ones goal causes chaos in Mexico City",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0705/dm_260705_Quinones_goal_causes_chaos_in_Mexico_City/dm_260705_Quinones_goal_causes_chaos_in_Mexico_City.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 760055,
+              "type": "topic",
+              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd",
+              "description": "live blog",
+              "sportId": 0,
+              "topicId": 4378
+            },
+            {
+              "id": 72570,
+              "type": "team",
+              "uid": "s:600~t:203",
+              "guid": "9e213fae-5b9d-d331-8b4b-33abdaf57b4f",
+              "description": "Mexico",
+              "sportId": 600,
+              "teamId": 203,
+              "team": {
+                "id": 203,
+                "description": "Mexico",
+                "abbreviation": "MEX",
+                "shortDisplayName": "Mexico",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/203/mexico"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/203/mexico"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 680891,
+              "type": "athlete",
+              "uid": "s:600~a:389575",
+              "guid": "5220f4ae-9d46-35e2-8fa6-0daa0b1578c3",
+              "description": "Gilberto Mora",
+              "sportId": 600,
+              "athleteId": 389575,
+              "athlete": {
+                "id": 389575,
+                "description": "Gilberto Mora",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/389575/gilberto-mora"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/389575/gilberto-mora"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd"
+            },
+            {
+              "type": "guid",
+              "guid": "9e213fae-5b9d-d331-8b4b-33abdaf57b4f"
+            },
+            {
+              "type": "guid",
+              "guid": "5220f4ae-9d46-35e2-8fa6-0daa0b1578c3"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49309123/world-cup-daily-live-mexico-star-mora-high-school-graduation-france-morocco-quarterfinals"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49309123"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49309123"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49309123"
+              }
+            }
+          },
+          "byline": "ESPN"
         },
-        "tracking": {
-          "sportName": "soccer",
-          "leagueName": "FIFA World Cup",
-          "coverageType": "PressConference",
-          "trackingName": "COM_SOC Presser (Rangnick credits WC debutants Jordan for \u2018exceeding expectations\u2019 vs. Austria) 2026/06/17 GLOBAL FIFA WORLD CUP",
-          "trackingId": "dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026"
+        {
+          "id": 49312820,
+          "nowId": "1-49312820",
+          "contentKey": "49312820-1-293-1",
+          "dataSourceIdentifier": "c238ff1b42947",
+          "type": "Media",
+          "headline": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
+          "description": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
+          "lastModified": "2026-07-09T09:27:12Z",
+          "published": "2026-07-09T09:27:12Z",
+          "images": [
+            {
+              "name": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
+              "caption": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
+              "alt": "",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_News_Morocco_press_conference_chaos_leaves_Brahim_Diaz_forgetting_the_question_20260709/dm_260709_COM_SOC_News_Morocco_press_conference_chaos_leaves_Brahim_Diaz_forgetting_the_question_20260709.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 234376,
+              "type": "athlete",
+              "uid": "s:600~a:246532",
+              "guid": "0673b66c-e4c1-4f58-6277-6a177a3bc1f4",
+              "description": "Brahim D\u00edaz",
+              "sportId": 600,
+              "athleteId": 246532,
+              "athlete": {
+                "id": 246532,
+                "description": "Brahim D\u00edaz",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/246532/brahim-diaz"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/246532/brahim-diaz"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "event",
+              "uid": "s:600~l:606~e:760510",
+              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460",
+              "description": "Morocco @ France",
+              "eventId": 760510,
+              "event": {
+                "id": 760510,
+                "sport": "soccer",
+                "league": "fifa.world",
+                "description": "Morocco @ France"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "0673b66c-e4c1-4f58-6277-6a177a3bc1f4"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/video/clip/_/id/49312820/morocco-press-conference-chaos-leaves-brahim-diaz-forgetting-question",
+              "self": {
+                "href": "https://www.espn.com/video/clip/_/id/49312820/morocco-press-conference-chaos-leaves-brahim-diaz-forgetting-question",
+                "dsi": {
+                  "href": "https://www.espn.com/video/clip?id=c238ff1b42947"
+                }
+              }
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/video/clips/49312820"
+              },
+              "artwork": {
+                "href": "https://artwork.api.espn.com/artwork/collections/media/fada00e5-5290-4a78-a7d1-22549f99b842"
+              }
+            },
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49312820&videoDSI=c238ff1b42947"
+            }
+          }
+        },
+        {
+          "id": 49312811,
+          "nowId": "1-49312811",
+          "contentKey": "49312811-1-5-1",
+          "dataSourceIdentifier": "1dc969dec977d",
+          "type": "HeadlineNews",
+          "headline": "Lamine Yamal: 'Incredible' to see Lionel Messi still starring at World Cup",
+          "description": "Spain winger Lamine Yamal has said he is thrilled to see Lionel Messi defy time and continue to have a starring role at this World Cup.",
+          "lastModified": "2026-07-09T09:30:40Z",
+          "published": "2026-07-09T09:30:40Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "85515ca942c19",
+              "id": 49312824,
+              "type": "header",
+              "name": "Lionel Messi  [1296x729]",
+              "credit": "Photo by Marcel Bonte/Soccrates/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686753_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "9fa38dd2f6ec7",
+              "id": 49312761,
+              "type": "header",
+              "name": " Lamine Yamal [1296x729]",
+              "credit": "Photo by Grzegorz Wajda/SOPA Images/LightRocket via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686752_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Why Spain's substitutes were so important vs. Portugal",
+              "caption": "Alex Kirkland reacts to Spain's late 1-0 win over Portugal to advance to the quarterfinals.",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0707/dm_260707_SPAIN_WC_REAX_16x9_SC4U/dm_260707_SPAIN_WC_REAX_16x9_SC4U.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "id": 596595,
+              "type": "athlete",
+              "uid": "s:600~a:362150",
+              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4",
+              "description": "Lamine Yamal",
+              "sportId": 600,
+              "athleteId": 362150,
+              "athlete": {
+                "id": 362150,
+                "description": "Lamine Yamal",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72568,
+              "type": "team",
+              "uid": "s:600~t:164",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
+              "description": "Spain",
+              "sportId": 600,
+              "teamId": 164,
+              "team": {
+                "id": 164,
+                "description": "Spain",
+                "abbreviation": "ESP",
+                "shortDisplayName": "Spain",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 238474,
+              "type": "athlete",
+              "uid": "s:600~a:45843",
+              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0",
+              "description": "Lionel Messi",
+              "sportId": 600,
+              "athleteId": 45843,
+              "athlete": {
+                "id": 45843,
+                "description": "Lionel Messi",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 702608,
+              "type": "contributor",
+              "guid": "fec4eb72-2649-3b41-a508-b3164b869711",
+              "description": "Adriana Garcia",
+              "slug": "adriana-garcia",
+              "contributor": {
+                "id": 3379,
+                "description": "Adriana Garcia"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            },
+            {
+              "type": "guid",
+              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
+            },
+            {
+              "type": "guid",
+              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0"
+            },
+            {
+              "type": "guid",
+              "guid": "fec4eb72-2649-3b41-a508-b3164b869711"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49312811/incredible-see-lionel-messi-starring-world-cup"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49312811"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49312811"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49312811"
+              }
+            }
+          },
+          "byline": "Adriana Garcia"
+        },
+        {
+          "id": 49312788,
+          "nowId": "1-49312788",
+          "contentKey": "49312788-1-5-1",
+          "dataSourceIdentifier": "b87a1f9b1e7d2",
+          "type": "HeadlineNews",
+          "headline": "Keir Starmer hints at bank holiday if England win World Cup",
+          "description": "An England World Cup win could mean an extra bank holiday, Sir Keir Starmer has hinted ahead of a quarterfinal clash with Norway.",
+          "lastModified": "2026-07-09T09:17:13Z",
+          "published": "2026-07-09T09:17:13Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "408374cca65be",
+              "id": 49312681,
+              "type": "header",
+              "name": "Keir Starmer [1296x729]",
+              "caption": "United Kingdom Prime Minister Keir Starmer and Norway's Prime Minister Jonas Gahr Store greet the media at the Nato summit",
+              "alt": "United Kingdom Prime Minister Keir Starmer and Norway's Prime Minister Jonas Gahr Store greet the media at the Nato summit",
+              "credit": "GettyImages",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686749_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "53069ab990a51",
+              "id": 49287362,
+              "type": "header",
+              "name": "Harry Kane Jude Bellingham [1296x729]",
+              "caption": "Harry Kane (left) and Jude Bellingham (right) celebrate Kane's goal for England on Sunday.",
+              "credit": "Charlotte Wilson/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0706/r1685382_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Odegaard: Norway's quarterfinal against England a 'massive test'",
+              "caption": "Odegaard: Norway's quarterfinal against England a 'massive test'",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "id": 72576,
+              "type": "team",
+              "uid": "s:600~t:448",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
+              "description": "England",
+              "sportId": 600,
+              "teamId": 448,
+              "team": {
+                "id": 448,
+                "description": "England",
+                "abbreviation": "ENG",
+                "shortDisplayName": "England",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            },
+            {
+              "type": "guid",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49312788/uk-prime-minister-keir-starmer-hints-bank-holiday-england-win-world-cup-2026"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49312788"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49312788"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49312788"
+              }
+            }
+          },
+          "byline": "PA"
+        },
+        {
+          "id": 49310007,
+          "nowId": "1-49310007",
+          "contentKey": "49310007-1-5-1",
+          "dataSourceIdentifier": "a87f9b24da6d4",
+          "type": "HeadlineNews",
+          "headline": "Morocco star Saibari to miss World Cup quarterfinal vs. France",
+          "description": "Morocco will be without star forward Ismael Saibari for their World Cup quarterfinal with France on Thursday.",
+          "lastModified": "2026-07-09T08:27:25Z",
+          "published": "2026-07-09T08:27:25Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "0bd0bf703334d",
+              "id": 49310040,
+              "type": "header",
+              "name": "Ismael Saibari [1296x729]",
+              "caption": "Ismael Saibari suffered an injury in Morocco's win over Canada.",
+              "alt": "Ismael Saibari #11 (C) of Morocco reacts after sustaining an injury during the FIFA World Cup 2026 Round of 16 match between Canada and Morocco at Houston Stadium on July 04, 2026 in Houston, Texas.",
+              "credit": "Kevin C. Cox/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0708/r1686644_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "LeBoeuf: France have to 'respect' Morocco",
+              "caption": "LeBoeuf: France have to 'respect' Morocco",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_LeBoeuf_France_have_to_respect_Morocco/dm_260708_LeBoeuf_France_have_to_respect_Morocco.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 441270,
+              "type": "athlete",
+              "uid": "s:600~a:304572",
+              "guid": "2b40e878-1abd-31ac-b76f-5a5d5c9f2ada",
+              "description": "Ismael Saibari",
+              "sportId": 600,
+              "athleteId": 304572,
+              "athlete": {
+                "id": 304572,
+                "description": "Ismael Saibari",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/304572/ismael-saibari"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/304572/ismael-saibari"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 702571,
+              "type": "contributor",
+              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc",
+              "description": "180530 COLUMNIST PROFILE Ed Dove",
+              "slug": "180530-columnist-profile-ed-dove",
+              "contributor": {
+                "id": 3335,
+                "description": "180530 COLUMNIST PROFILE Ed Dove"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "2b40e878-1abd-31ac-b76f-5a5d5c9f2ada"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49310007/morocco-ismael-saibari-injury-france-world-cup-2026-quarterfinal"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49310007"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49310007"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49310007"
+              }
+            }
+          },
+          "byline": "Ed Dove"
         }
-      }
-    ],
+      ]
+    },
     "header": {
       "id": "760431",
       "uid": "s:600~l:606~e:760431",
@@ -15537,7 +15315,7 @@
                   }
                 ],
                 "groups": {
-                  "name": "Group J"
+                  "name": "FIFA World Cup"
                 },
                 "links": [
                   {
@@ -15550,7 +15328,7 @@
                     "text": "Clubhouse"
                   }
                 ],
-                "form": "WWWWD"
+                "form": "LDLWW"
               },
               "score": "3",
               "linescores": [
@@ -15621,7 +15399,7 @@
                   }
                 ],
                 "groups": {
-                  "name": "Group J"
+                  "name": "FIFA World Cup"
                 },
                 "links": [
                   {
@@ -15634,7 +15412,7 @@
                     "text": "Clubhouse"
                   }
                 ],
-                "form": "LLLDD"
+                "form": "LLLLL"
               },
               "score": "1",
               "linescores": [
@@ -15666,7 +15444,7 @@
           "notes": [
             {
               "type": "event-ingest-note",
-              "date": "2026-06-18T00:00Z",
+              "date": "2026-06-18T03:04Z",
               "text": "Austria advances.",
               "source": "38"
             }
@@ -15707,19 +15485,6 @@
               "market": {},
               "media": {
                 "shortName": "Tele"
-              },
-              "lang": "en",
-              "region": "us",
-              "isNational": false
-            },
-            {
-              "type": {
-                "id": "4",
-                "shortName": "STREAMING"
-              },
-              "market": {},
-              "media": {
-                "shortName": "Peacock"
               },
               "lang": "en",
               "region": "us",
@@ -15951,7 +15716,7 @@
           },
           "isFinal": false,
           "isThirdPlace": false,
-          "altGameNote": "FIFA World Cup, Group J",
+          "altGameNote": "FIFA World Cup, FIFA World Cup",
           "boxscoreMinutes": false,
           "shotMapAvailable": true
         }
@@ -16143,6 +15908,25 @@
             ],
             "href": "https://www.espn.com/soccer/teams/_/league/fifa.world",
             "text": "Teams"
+          },
+          {
+            "rel": [
+              "playoff-bracket",
+              "desktop",
+              "league"
+            ],
+            "href": "https://www.espn.com/soccer/bracket",
+            "text": "Bracket"
+          },
+          {
+            "rel": [
+              "playoff-bracket",
+              "sportscenter",
+              "app",
+              "league"
+            ],
+            "href": "sportscenter://x-callback-url/showClubhouse?uid=s:600~l:606&section=bracket",
+            "text": "Bracket"
           }
         ],
         "logos": [
@@ -16237,6 +16021,371 @@
         }
       ]
     },
+    "article": {
+      "id": 49078243,
+      "nowId": "1-49078243",
+      "contentKey": "49078243-1-21-1",
+      "dataSourceIdentifier": "bcf3e68890697",
+      "publishedkey": "soccer760431",
+      "type": "Recap",
+      "gameId": "760431",
+      "headline": "Marko Arnautovic helps Austria to first World Cup win in 36 years against Jordan ",
+      "description": "Austria won a World Cup game for the first time in 36 years with a 3-1 victory Tuesday over a Jordan team making their debut at the global showpiece.\n\n\n",
+      "linkText": "Austria get first WC win in 36 years against Jordan",
+      "categorized": "2026-06-17T11:41:27Z",
+      "originallyPosted": "2026-06-17T06:35:00Z",
+      "lastModified": "2026-06-17T06:35:17Z",
+      "published": "2026-06-17T06:35:00Z",
+      "section": "Soccer",
+      "images": [
+        {
+          "dataSourceIdentifier": "0929c9899bb0d",
+          "id": 49090900,
+          "type": "header",
+          "name": "Austria  [594x334]",
+          "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
+          "credit": "Getty",
+          "height": 334,
+          "width": 594,
+          "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_594x334_16-9.jpg",
+          "peers": [
+            {
+              "dataSourceIdentifier": "730ae5953bfe5",
+              "id": 49090909,
+              "type": "inline",
+              "name": "Austria  [385x385]",
+              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
+              "credit": "Getty",
+              "height": 385,
+              "width": 385,
+              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_385x385_1-1.jpg"
+            },
+            {
+              "dataSourceIdentifier": "0929c9899bb0d",
+              "id": 49090900,
+              "type": "header",
+              "name": "Austria  [594x334]",
+              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
+              "credit": "Getty",
+              "height": 334,
+              "width": 594,
+              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_594x334_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "2bbfe3cae19a5",
+              "id": 49090903,
+              "type": "inline",
+              "name": "Austria  [257x385]",
+              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
+              "credit": "Getty",
+              "height": 385,
+              "width": 257,
+              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_257x385_2-3.jpg"
+            },
+            {
+              "dataSourceIdentifier": "15085e62e017d",
+              "id": 49090905,
+              "type": "inline",
+              "name": "Austria  [567x378]",
+              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
+              "credit": "Getty",
+              "height": 378,
+              "width": 567,
+              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_567x378_3-2.jpg"
+            },
+            {
+              "dataSourceIdentifier": "a6613c3d3a585",
+              "id": 49090907,
+              "type": "header",
+              "name": "Austria  [594x238]",
+              "caption": "Marko Arnautovic scores from the spot to help Austria to a 3-1 win",
+              "credit": "Getty",
+              "height": 238,
+              "width": 594,
+              "url": "https://a.espncdn.com/photo/2026/0617/r1674663_2_594x238_5-2.jpg"
+            }
+          ]
+        }
+      ],
+      "video": [],
+      "categories": [
+        {
+          "id": 81497,
+          "type": "league",
+          "uid": "s:600",
+          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+          "description": "Soccer",
+          "sportId": 600,
+          "leagueId": 600,
+          "league": {
+            "id": 600,
+            "description": "Soccer",
+            "links": {
+              "web": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/"
+                }
+              },
+              "mobile": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": 33303,
+          "type": "league",
+          "uid": "s:600~l:606",
+          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+          "description": "FIFA World Cup",
+          "sportId": 600,
+          "leagueId": 4,
+          "league": {
+            "id": 606,
+            "description": "FIFA World Cup",
+            "abbreviation": "FIFA World Cup",
+            "links": {
+              "web": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/worldcup/"
+                }
+              },
+              "mobile": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/worldcup/"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": 142345,
+          "type": "team",
+          "uid": "s:600~t:474",
+          "guid": "97f12487-4e78-aa06-a02c-7e91dbcd42b8",
+          "description": "Austria",
+          "sportId": 600,
+          "teamId": 474,
+          "team": {
+            "id": 474,
+            "description": "Austria",
+            "abbreviation": "AUT",
+            "shortDisplayName": "Austria",
+            "links": {
+              "web": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/474/austria"
+                }
+              },
+              "mobile": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/474/austria"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": 142352,
+          "type": "team",
+          "uid": "s:600~t:2917",
+          "guid": "a20b8505-77b9-564c-c376-6b98d920cf97",
+          "description": "Jordan",
+          "sportId": 600,
+          "teamId": 2917,
+          "team": {
+            "id": 2917,
+            "description": "Jordan",
+            "abbreviation": "JOR",
+            "shortDisplayName": "Jordan",
+            "links": {
+              "web": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/2917/jordan"
+                }
+              },
+              "mobile": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/2917/jordan"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "event",
+          "uid": "s:600~l:606~e:760431",
+          "guid": "4a7b6d90-d73a-3b2d-8713-00590022465b",
+          "description": "Jordan @ Austria",
+          "eventId": 760431,
+          "event": {
+            "id": 760431,
+            "sport": "soccer",
+            "league": "fifa.world",
+            "description": "Jordan @ Austria"
+          }
+        },
+        {
+          "type": "guid",
+          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+        },
+        {
+          "type": "guid",
+          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+        },
+        {
+          "type": "guid",
+          "guid": "97f12487-4e78-aa06-a02c-7e91dbcd42b8"
+        },
+        {
+          "type": "guid",
+          "guid": "a20b8505-77b9-564c-c376-6b98d920cf97"
+        },
+        {
+          "type": "guid",
+          "guid": "4a7b6d90-d73a-3b2d-8713-00590022465b"
+        }
+      ],
+      "keywords": [
+        "Soccer",
+        "FIFA World Cup",
+        "Austria",
+        "Jordan",
+        "Jordan @ Austria"
+      ],
+      "story": "<p><a data-clubhouse-guid=\"97f12487-4e78-aa06-a02c-7e91dbcd42b8\" href=\"http://espn.com/soccer/team?id=474\">Austria</a> won a World Cup game for the first time in 36 years with a 3-1 victory Tuesday over a <a data-clubhouse-guid=\"a20b8505-77b9-564c-c376-6b98d920cf97\" href=\"http://espn.com/soccer/team?id=2917\">Jordan</a> team making their debut at the global showpiece.</p>\n<p>An own goal from a corner kick that deflected off Jordanian defender Yazan Al Arab gave Austria a 2-1 lead in the 76th minute. <a data-player-guid=\"3d96a7ee-0cbb-6117-cd1e-1d2bcb4dabcf\" href=\"http://espn.com/soccer/player/_/id/98193/marko-arnautovic\">Marko Arnautovic</a>'s penalty kick deep in stoppage team extended the margin.</p>\n<p>The game between a Jordan team making their debut and an Austrian squad back on soccer's biggest stage after missing the last six tournaments featured plenty of excitement.</p>\n<p><photo1></p>\n<p>It peaked in a stretch in the second half that featured an equaliser by Jordan and two balls sent into the net off corner kicks by Austria --\u00a0 with only one of those counting.</p>\n<p>Substitute Arnautovic had appeared to give Austria the lead when he converted from a corner kick after a misplay by Jordanian goalkeeper <a data-player-guid=\"e9fdf374-2b13-585c-2854-204004393a43\" href=\"http://espn.com/soccer/player/_/id/235212/yazeed-abulaila\">Yazeed Abulaila</a>. But the decision went to VAR and the referee called a hand ball on <a data-player-guid=\"12276641-ea7c-3509-ee17-bd842924d9d2\" href=\"http://espn.com/soccer/player/_/id/238906/stefan-posch\">Stefan Posch</a> whose arm touched the ball in the lead up.</p>\n<p>Austria got another corner kick shortly after the second-half hydration break and the took a 2-1 lead on Al Arab's own goal.</p>\n<p>That proved to be the difference for Austria, which earned its first win at the World Cup since beating the <a data-clubhouse-guid=\"e6b65d49-258c-b730-b7db-df75c6b1f714\" href=\"http://espn.com/soccer/team?id=660\">United States</a> in a group-stage match in 1990. Jordan fell short in its attempt to become the first country to win its World Cup debut game since <a data-clubhouse-guid=\"3d969454-cda7-bf55-21fb-33a8c2ca21ee\" href=\"http://espn.com/soccer/team?id=654\">Senegal</a> did it in 2002 against defending-champion <a data-clubhouse-guid=\"81be996c-0f98-eec4-6284-c6be0d186360\" href=\"http://espn.com/soccer/team?id=478\">France</a>.</p>\n<p><a data-player-guid=\"6c5073c6-93f0-0766-94d1-da337806368d\" href=\"http://espn.com/soccer/player/_/id/238296/romano-schmid\">Romano Schmid</a> scored in the 20th minute for Austria when he capped off an impressive buildup that put the Jordanian defense on its heels. <a data-player-guid=\"6e8fc00b-585d-b9ca-6a77-a3f3e73faef9\" href=\"http://espn.com/soccer/player/_/id/238886/xaver-schlager\">Xaver Schlager</a> fed a pass to Schmid, who hit a perfectly struck right-foot shot from the edge of the area into the top corner of the net.</p>\n<p><a data-player-guid=\"2003d81a-8144-3100-8d08-1d48abcaf102\" href=\"http://espn.com/soccer/player/_/id/320908/ali-olwan\">Ali Olwan</a> tied it for Jordan in the 50th when made a long run into the box on a counterattack and beat <a data-player-guid=\"73c3013c-03b6-51b2-38cc-551b4a8fad27\" href=\"http://espn.com/soccer/player/_/id/195082/alexander-schlager\">Alexander Schlager</a> with a right-foot shot that delighted the large contingent of Jordanian fans.</p>\n<p>Jordan will return to <a data-clubhouse-guid=\"6c71b4ba-b350-5ba0-64d0-29dacaf6a7d2\" href=\"http://espn.com/soccer/team?id=12215\">Santa Clara</a> for its second match next Monday against <a data-clubhouse-guid=\"5a9aa911-bb70-d5d4-2c03-166d0fe0dc3c\" href=\"http://espn.com/soccer/team?id=624\">Algeria</a>, which lost 3-0 to <a data-clubhouse-guid=\"892f805f-fef9-c22d-8f87-ba08b1b4d256\" href=\"http://espn.com/soccer/team?id=202\">Argentina</a> in the first Group J match. Austria will face <a data-player-guid=\"dc5f8d51-332b-0ab2-b4b0-c97efdc624e0\" href=\"http://espn.com/soccer/player/_/id/45843/lionel-messi\">Lionel Messi</a> and Argentina in the Dallas area that same day.</p>\n\n\n\n\n",
+      "premium": false,
+      "isLiveBlog": false,
+      "links": {
+        "web": {
+          "href": "http://www.espn.com/soccer/report/_/gameId/760431"
+        },
+        "mobile": {
+          "href": "http://m.espn.go.com/soccer/story?storyId=49078243"
+        },
+        "api": {
+          "self": {
+            "href": "https://content.core.api.espn.com/v1/sports/news/49078243"
+          }
+        },
+        "app": {
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showStory?uid=49078243"
+          }
+        }
+      },
+      "byline": "Associated Press",
+      "allowComments": true,
+      "allowSearch": true,
+      "allowContentReactions": false
+    },
+    "videos": [
+      {
+        "id": 49093443,
+        "cerebroId": "6a3287cb1bf54a00fd674183",
+        "source": "espn",
+        "headline": "Rangnick credits WC debutants Jordan for 'exceeding expectations' vs. Austria",
+        "description": "Rangnick credits WC debutants Jordan for 'exceeding expectations' vs. Austria",
+        "lastModified": "2026-06-17T11:41:25Z",
+        "originalPublishDate": "2026-06-17T11:40:59Z",
+        "duration": 63,
+        "timeRestrictions": {
+          "embargoDate": "2026-06-17T11:39:51Z",
+          "expirationDate": "2027-06-20T11:39:51Z"
+        },
+        "deviceRestrictions": {
+          "type": "whitelist",
+          "devices": [
+            "settop",
+            "tablet",
+            "handset",
+            "ipad",
+            "desktop"
+          ]
+        },
+        "thumbnail": "https://a.espncdn.com/media/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026.jpg",
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria",
+            "self": {
+              "href": "https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=e2418ad777ec3"
+              }
+            }
+          },
+          "mobile": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria",
+            "source": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026.mp4"
+            },
+            "alert": {
+              "href": "https://m.espn.com/general/video/videoAlert?vid=49093443"
+            },
+            "streaming": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria"
+            },
+            "progressiveDownload": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49093443/rangnick-credits-wc-debutants-jordan-exceeding-expectations-vs-austria"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/49093443"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f"
+            }
+          },
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026_360p30_1464k.mp4",
+            "mezzanine": {
+              "href": "https://media.video-origin.espn.com/espnvideo/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026.mp4"
+            },
+            "flash": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026.smil"
+            },
+            "hds": {
+              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026_rel.smil/manifest.f4m"
+            },
+            "HLS": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/playlist.m3u8",
+              "HD": {
+                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/playlist.m3u8"
+              },
+              "cmaf": {
+                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/playlist.m3u8"
+              },
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/0c298ab5-e3bd-4c5b-8542-5e0c8a1f067f/asset"
+              }
+            },
+            "HD": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026_720p30_2896k.mp4"
+            },
+            "full": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0617/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026/dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026_360p30_1464k.mp4"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=49093443&videoDSI=e2418ad777ec3"
+          }
+        },
+        "ad": {
+          "sport": "Soccer",
+          "bundle": "espnfc"
+        },
+        "tracking": {
+          "sportName": "soccer",
+          "leagueName": "FIFA World Cup",
+          "coverageType": "PressConference",
+          "trackingName": "COM_SOC Presser (Rangnick credits WC debutants Jordan for \u2018exceeding expectations\u2019 vs. Austria) 2026/06/17 GLOBAL FIFA WORLD CUP",
+          "trackingId": "dm_260617_COM_SOC_Presser_Rangnick_credits_WC_debutants_Jordan_for_exceeding_expectations_vs_Austria_2026"
+        }
+      }
+    ],
     "keyEvents": [
       {
         "id": "49537275",
@@ -16299,7 +16448,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-17T04:23:00Z",
+        "wallclock": "2026-06-17T04:22:59Z",
         "shootout": false,
         "goalPositionY": 46.3,
         "fieldPositionX": 77.8,
@@ -16331,7 +16480,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-17T04:25:39Z",
+        "wallclock": "2026-06-17T04:25:38Z",
         "shootout": false
       },
       {
@@ -16384,7 +16533,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-17T04:28:46Z",
+        "wallclock": "2026-06-17T04:28:45Z",
         "shootout": false
       },
       {
@@ -16585,7 +16734,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-17T05:23:16Z",
+        "wallclock": "2026-06-17T05:23:15Z",
         "shootout": false
       },
       {
@@ -16627,7 +16776,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-17T05:23:30Z",
+        "wallclock": "2026-06-17T05:23:29Z",
         "shootout": false
       },
       {
@@ -17014,9 +17163,9 @@
         "wallclock": "2026-06-17T05:41:04Z",
         "shootout": false,
         "goalPositionY": 46.4,
-        "fieldPositionX": 4.6,
-        "fieldPositionY": 44.9,
-        "fieldPosition2X": 0.0,
+        "fieldPositionX": 95.4,
+        "fieldPositionY": 55.1,
+        "fieldPosition2X": 100.0,
         "fieldPosition2Y": 46.4
       },
       {
@@ -17242,7 +17391,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-17T05:46:10Z",
+        "wallclock": "2026-06-17T05:46:09Z",
         "shootout": false
       },
       {
@@ -17380,7 +17529,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-17T05:52:17Z",
+        "wallclock": "2026-06-17T05:52:16Z",
         "shootout": false
       },
       {
@@ -17422,7 +17571,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-17T05:53:15Z",
+        "wallclock": "2026-06-17T05:53:14Z",
         "shootout": false
       },
       {
@@ -17591,7 +17740,7 @@
           "id": "38",
           "description": "SA.ENVOY"
         },
-        "wallclock": "2026-06-17T06:08:34Z",
+        "wallclock": "2026-06-17T06:08:02Z",
         "shootout": false
       }
     ],
@@ -17699,7 +17848,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:09:58Z",
+          "wallclock": "2026-06-17T04:09:57Z",
           "fieldPositionX": 90.4,
           "fieldPositionY": 27.8
         }
@@ -17746,7 +17895,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:11:40Z",
+          "wallclock": "2026-06-17T04:11:39Z",
           "goalPositionY": 47.8,
           "fieldPositionX": 79.8,
           "fieldPositionY": 23.6,
@@ -17791,7 +17940,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:13:31Z",
+          "wallclock": "2026-06-17T04:13:30Z",
           "goalPositionY": 40.2,
           "fieldPositionX": 69.6,
           "fieldPositionY": 49.1,
@@ -17836,7 +17985,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:14:05Z",
+          "wallclock": "2026-06-17T04:14:04Z",
           "fieldPositionX": 76.9,
           "fieldPositionY": 78.1,
           "fieldPosition2X": 92.6,
@@ -17885,7 +18034,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:15:02Z",
+          "wallclock": "2026-06-17T04:15:01Z",
           "fieldPositionX": 64.2,
           "fieldPositionY": 51.8
         }
@@ -17932,60 +18081,13 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:15:02Z",
+          "wallclock": "2026-06-17T04:15:01Z",
           "fieldPositionX": 64.2,
           "fieldPositionY": 51.8
         }
       },
       {
         "sequence": 9,
-        "time": {
-          "value": 779.0,
-          "displayValue": "13'"
-        },
-        "text": "Foul by Xaver Schlager (Austria).",
-        "play": {
-          "id": "49537542",
-          "type": {
-            "id": "66",
-            "text": "Foul",
-            "type": "foul"
-          },
-          "text": "Odeh Fakhoury (Jordan) wins a free kick in the defensive half.",
-          "shortText": "Xaver Schlager Foul",
-          "period": {
-            "number": 1
-          },
-          "clock": {
-            "value": 779.0,
-            "displayValue": "13'"
-          },
-          "team": {
-            "displayName": "Austria"
-          },
-          "participants": [
-            {
-              "athlete": {
-                "displayName": "Xaver Schlager"
-              }
-            },
-            {
-              "athlete": {
-                "displayName": "Odeh Fakhoury"
-              }
-            }
-          ],
-          "source": {
-            "id": "38",
-            "description": "SA.ENVOY"
-          },
-          "wallclock": "2026-06-17T04:15:58Z",
-          "fieldPositionX": 61.6,
-          "fieldPositionY": 75.3
-        }
-      },
-      {
-        "sequence": 10,
         "time": {
           "value": 779.0,
           "displayValue": "13'"
@@ -17998,7 +18100,7 @@
             "text": "Foul",
             "type": "foul"
           },
-          "text": "Odeh Fakhoury (Jordan) wins a free kick in the defensive half.",
+          "text": "Foul by Xaver Schlager (Austria).",
           "shortText": "Xaver Schlager Foul",
           "period": {
             "number": 1
@@ -18026,7 +18128,54 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:15:58Z",
+          "wallclock": "2026-06-17T04:15:57Z",
+          "fieldPositionX": 61.6,
+          "fieldPositionY": 75.3
+        }
+      },
+      {
+        "sequence": 10,
+        "time": {
+          "value": 779.0,
+          "displayValue": "13'"
+        },
+        "text": "Foul by Xaver Schlager (Austria).",
+        "play": {
+          "id": "49537542",
+          "type": {
+            "id": "66",
+            "text": "Foul",
+            "type": "foul"
+          },
+          "text": "Foul by Xaver Schlager (Austria).",
+          "shortText": "Xaver Schlager Foul",
+          "period": {
+            "number": 1
+          },
+          "clock": {
+            "value": 779.0,
+            "displayValue": "13'"
+          },
+          "team": {
+            "displayName": "Austria"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "displayName": "Xaver Schlager"
+              }
+            },
+            {
+              "athlete": {
+                "displayName": "Odeh Fakhoury"
+              }
+            }
+          ],
+          "source": {
+            "id": "38",
+            "description": "SA.ENVOY"
+          },
+          "wallclock": "2026-06-17T04:15:57Z",
           "fieldPositionX": 61.6,
           "fieldPositionY": 75.3
         }
@@ -18379,7 +18528,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:23:00Z",
+          "wallclock": "2026-06-17T04:22:59Z",
           "goalPositionY": 46.3,
           "fieldPositionX": 77.8,
           "fieldPositionY": 53.4,
@@ -18500,7 +18649,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:25:39Z"
+          "wallclock": "2026-06-17T04:25:38Z"
         }
       },
       {
@@ -18532,7 +18681,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:28:46Z"
+          "wallclock": "2026-06-17T04:28:45Z"
         }
       },
       {
@@ -18577,7 +18726,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:32:27Z",
+          "wallclock": "2026-06-17T04:32:26Z",
           "goalPositionY": 3.9,
           "fieldPositionX": 90.1,
           "fieldPositionY": 51.0,
@@ -18622,7 +18771,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:35:11Z",
+          "wallclock": "2026-06-17T04:35:10Z",
           "goalPositionY": 66.9,
           "fieldPositionX": 92.7,
           "fieldPositionY": 37.3,
@@ -18767,7 +18916,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:39:28Z",
+          "wallclock": "2026-06-17T04:39:27Z",
           "fieldPositionX": 71.4,
           "fieldPositionY": 79.4
         }
@@ -18814,7 +18963,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:39:28Z",
+          "wallclock": "2026-06-17T04:39:27Z",
           "fieldPositionX": 71.4,
           "fieldPositionY": 79.4
         }
@@ -18861,7 +19010,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:42:27Z",
+          "wallclock": "2026-06-17T04:42:26Z",
           "fieldPositionX": 36.6,
           "fieldPositionY": 56.3
         }
@@ -18955,7 +19104,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:43:20Z",
+          "wallclock": "2026-06-17T04:43:19Z",
           "fieldPositionX": 87.4,
           "fieldPositionY": 63.0
         }
@@ -19002,7 +19151,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:43:20Z",
+          "wallclock": "2026-06-17T04:43:19Z",
           "fieldPositionX": 87.4,
           "fieldPositionY": 63.0
         }
@@ -19013,7 +19162,7 @@
           "value": 2463.0,
           "displayValue": "42'"
         },
-        "text": "Foul by Phillipp Mwene (Austria).",
+        "text": "Ali Olwan (Jordan) wins a free kick in the attacking half.",
         "play": {
           "id": "49537915",
           "type": {
@@ -19021,7 +19170,7 @@
             "text": "Foul",
             "type": "foul"
           },
-          "text": "Ali Olwan (Jordan) wins a free kick in the attacking half.",
+          "text": "Foul by Phillipp Mwene (Austria).",
           "shortText": "Phillipp Mwene Foul",
           "period": {
             "number": 1
@@ -19060,7 +19209,7 @@
           "value": 2463.0,
           "displayValue": "42'"
         },
-        "text": "Ali Olwan (Jordan) wins a free kick in the attacking half.",
+        "text": "Foul by Phillipp Mwene (Austria).",
         "play": {
           "id": "49537915",
           "type": {
@@ -19068,7 +19217,7 @@
             "text": "Foul",
             "type": "foul"
           },
-          "text": "Ali Olwan (Jordan) wins a free kick in the attacking half.",
+          "text": "Foul by Phillipp Mwene (Austria).",
           "shortText": "Phillipp Mwene Foul",
           "period": {
             "number": 1
@@ -19141,7 +19290,7 @@
           "value": 2569.0,
           "displayValue": "43'"
         },
-        "text": "Foul by Stefan Posch (Austria).",
+        "text": "Odeh Fakhoury (Jordan) wins a free kick in the attacking half.",
         "play": {
           "id": "49537928",
           "type": {
@@ -19149,7 +19298,7 @@
             "text": "Foul",
             "type": "foul"
           },
-          "text": "Odeh Fakhoury (Jordan) wins a free kick in the attacking half.",
+          "text": "Foul by Stefan Posch (Austria).",
           "shortText": "Stefan Posch Foul",
           "period": {
             "number": 1
@@ -19177,7 +19326,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:45:48Z",
+          "wallclock": "2026-06-17T04:45:47Z",
           "fieldPositionX": 72.4,
           "fieldPositionY": 70.6
         }
@@ -19188,7 +19337,7 @@
           "value": 2569.0,
           "displayValue": "43'"
         },
-        "text": "Odeh Fakhoury (Jordan) wins a free kick in the attacking half.",
+        "text": "Foul by Stefan Posch (Austria).",
         "play": {
           "id": "49537928",
           "type": {
@@ -19196,7 +19345,7 @@
             "text": "Foul",
             "type": "foul"
           },
-          "text": "Odeh Fakhoury (Jordan) wins a free kick in the attacking half.",
+          "text": "Foul by Stefan Posch (Austria).",
           "shortText": "Stefan Posch Foul",
           "period": {
             "number": 1
@@ -19224,7 +19373,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T04:45:48Z",
+          "wallclock": "2026-06-17T04:45:47Z",
           "fieldPositionX": 72.4,
           "fieldPositionY": 70.6
         }
@@ -19290,7 +19439,7 @@
       {
         "sequence": 40,
         "time": {
-          "value": 2700.0,
+          "value": 2719.0,
           "displayValue": "45'+1'"
         },
         "text": "Attempt missed. Mousa Al Tamari (Jordan) left footed shot from the right side of the box is close, but misses to the right. Assisted by Ehsan Haddad.",
@@ -19340,10 +19489,10 @@
       {
         "sequence": 41,
         "time": {
-          "value": 2700.0,
+          "value": 2757.0,
           "displayValue": "45'+1'"
         },
-        "text": "Nicolas Seiwald (Austria) wins a free kick in the attacking half.",
+        "text": "Foul by Nizar Al Rashdan (Jordan).",
         "play": {
           "id": "49537983",
           "type": {
@@ -19351,7 +19500,7 @@
             "text": "Foul",
             "type": "foul"
           },
-          "text": "Foul by Nizar Al Rashdan (Jordan).",
+          "text": "Nicolas Seiwald (Austria) wins a free kick in the attacking half.",
           "shortText": "Nizar Al-Rashdan Foul",
           "period": {
             "number": 1
@@ -19387,10 +19536,10 @@
       {
         "sequence": 42,
         "time": {
-          "value": 2700.0,
+          "value": 2757.0,
           "displayValue": "45'+1'"
         },
-        "text": "Foul by Nizar Al Rashdan (Jordan).",
+        "text": "Nicolas Seiwald (Austria) wins a free kick in the attacking half.",
         "play": {
           "id": "49537983",
           "type": {
@@ -19398,7 +19547,7 @@
             "text": "Foul",
             "type": "foul"
           },
-          "text": "Foul by Nizar Al Rashdan (Jordan).",
+          "text": "Nicolas Seiwald (Austria) wins a free kick in the attacking half.",
           "shortText": "Nizar Al-Rashdan Foul",
           "period": {
             "number": 1
@@ -19434,7 +19583,7 @@
       {
         "sequence": 43,
         "time": {
-          "value": 2700.0,
+          "value": 2934.0,
           "displayValue": "45'+4'"
         },
         "text": "Attempt missed. Sasa Kalajdzic (Austria) right footed shot from outside the box is high and wide to the right. Assisted by Marcel Sabitzer.",
@@ -19484,13 +19633,21 @@
       {
         "sequence": 44,
         "time": {
-          "value": 2700.0,
+          "value": 2943.0,
           "displayValue": "45'+5'"
         },
         "text": "First Half ends, Austria 1, Jordan 0."
       },
       {
         "sequence": 45,
+        "time": {
+          "value": 2700.0,
+          "displayValue": "45'"
+        },
+        "text": "Second Half begins Austria 1, Jordan 0."
+      },
+      {
+        "sequence": 46,
         "time": {
           "value": 2700.0,
           "displayValue": "45'"
@@ -19533,14 +19690,6 @@
           },
           "wallclock": "2026-06-17T05:09:20Z"
         }
-      },
-      {
-        "sequence": 46,
-        "time": {
-          "value": 2700.0,
-          "displayValue": "45'"
-        },
-        "text": "Second Half begins Austria 1, Jordan 0."
       },
       {
         "sequence": 47,
@@ -19648,48 +19797,6 @@
           "value": 3353.0,
           "displayValue": "56'"
         },
-        "text": "Stefan Posch (Austria) wins a free kick on the right wing.",
-        "play": {
-          "id": "49538222",
-          "type": {
-            "id": "177",
-            "text": "Ball touch",
-            "type": "ball-touch"
-          },
-          "text": "Stefan Posch (Austria) wins a free kick on the right wing.",
-          "shortText": "Stefan Posch Ball touch",
-          "period": {
-            "number": 2
-          },
-          "clock": {
-            "value": 3353.0,
-            "displayValue": "56'"
-          },
-          "team": {
-            "displayName": "Austria"
-          },
-          "participants": [
-            {
-              "athlete": {
-                "displayName": "Stefan Posch"
-              }
-            }
-          ],
-          "source": {
-            "id": "38",
-            "description": "SA.ENVOY"
-          },
-          "wallclock": "2026-06-17T05:21:04Z",
-          "fieldPositionX": 59.0,
-          "fieldPositionY": 7.5
-        }
-      },
-      {
-        "sequence": 50,
-        "time": {
-          "value": 3353.0,
-          "displayValue": "56'"
-        },
         "text": "Foul by Mohannad Abu Taha (Jordan).",
         "play": {
           "id": "49538223",
@@ -19729,6 +19836,48 @@
           "wallclock": "2026-06-17T05:21:04Z",
           "fieldPositionX": 38.7,
           "fieldPositionY": 92.2
+        }
+      },
+      {
+        "sequence": 50,
+        "time": {
+          "value": 3353.0,
+          "displayValue": "56'"
+        },
+        "text": "Stefan Posch (Austria) wins a free kick on the right wing.",
+        "play": {
+          "id": "49538222",
+          "type": {
+            "id": "177",
+            "text": "Ball touch",
+            "type": "ball-touch"
+          },
+          "text": "Stefan Posch (Austria) wins a free kick on the right wing.",
+          "shortText": "Stefan Posch Ball touch",
+          "period": {
+            "number": 2
+          },
+          "clock": {
+            "value": 3353.0,
+            "displayValue": "56'"
+          },
+          "team": {
+            "displayName": "Austria"
+          },
+          "participants": [
+            {
+              "athlete": {
+                "displayName": "Stefan Posch"
+              }
+            }
+          ],
+          "source": {
+            "id": "38",
+            "description": "SA.ENVOY"
+          },
+          "wallclock": "2026-06-17T05:21:04Z",
+          "fieldPositionX": 59.0,
+          "fieldPositionY": 7.5
         }
       },
       {
@@ -19867,7 +20016,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:23:16Z"
+          "wallclock": "2026-06-17T05:23:15Z"
         }
       },
       {
@@ -19912,7 +20061,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:23:30Z"
+          "wallclock": "2026-06-17T05:23:29Z"
         }
       },
       {
@@ -20002,7 +20151,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:24:08Z",
+          "wallclock": "2026-06-17T05:24:07Z",
           "fieldPositionX": 61.2,
           "fieldPositionY": 24.2
         }
@@ -20049,7 +20198,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:24:08Z",
+          "wallclock": "2026-06-17T05:24:07Z",
           "fieldPositionX": 61.2,
           "fieldPositionY": 24.2
         }
@@ -20096,7 +20245,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:24:48Z",
+          "wallclock": "2026-06-17T05:24:47Z",
           "goalPositionY": 46.0,
           "fieldPositionX": 86.2,
           "fieldPositionY": 35.8,
@@ -20349,7 +20498,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:30:18Z",
+          "wallclock": "2026-06-17T05:30:17Z",
           "fieldPositionX": 28.5,
           "fieldPositionY": 29.5,
           "fieldPosition2X": 52.8,
@@ -20472,7 +20621,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:32:04Z",
+          "wallclock": "2026-06-17T05:32:03Z",
           "fieldPositionX": 94.0,
           "fieldPositionY": 45.9
         }
@@ -20655,7 +20804,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:40:42Z",
+          "wallclock": "2026-06-17T05:40:41Z",
           "fieldPositionX": 89.0,
           "fieldPositionY": 24.1
         }
@@ -20699,9 +20848,9 @@
           },
           "wallclock": "2026-06-17T05:41:04Z",
           "goalPositionY": 46.4,
-          "fieldPositionX": 4.6,
-          "fieldPositionY": 44.9,
-          "fieldPosition2X": 0.0,
+          "fieldPositionX": 95.4,
+          "fieldPositionY": 55.1,
+          "fieldPosition2X": 100.0,
           "fieldPosition2Y": 46.4
         }
       },
@@ -20940,7 +21089,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:46:10Z"
+          "wallclock": "2026-06-17T05:46:09Z"
         }
       },
       {
@@ -21088,38 +21237,6 @@
           "value": 5189.0,
           "displayValue": "87'"
         },
-        "text": "Delay in match because of an injury Stefan Posch (Austria).",
-        "play": {
-          "id": "49538606",
-          "type": {
-            "id": "129",
-            "text": "Start Delay",
-            "type": "start-delay"
-          },
-          "text": "Delay in match because of an injury Stefan Posch (Austria).",
-          "period": {
-            "number": 2
-          },
-          "clock": {
-            "value": 5189.0,
-            "displayValue": "87'"
-          },
-          "team": {
-            "displayName": "Austria"
-          },
-          "source": {
-            "id": "38",
-            "description": "SA.ENVOY"
-          },
-          "wallclock": "2026-06-17T05:51:40Z"
-        }
-      },
-      {
-        "sequence": 84,
-        "time": {
-          "value": 5189.0,
-          "displayValue": "87'"
-        },
         "text": "Delay in match because of an injury Odeh Fakhoury (Jordan).",
         "play": {
           "id": "49538607",
@@ -21138,6 +21255,38 @@
           },
           "team": {
             "displayName": "Jordan"
+          },
+          "source": {
+            "id": "38",
+            "description": "SA.ENVOY"
+          },
+          "wallclock": "2026-06-17T05:51:40Z"
+        }
+      },
+      {
+        "sequence": 84,
+        "time": {
+          "value": 5189.0,
+          "displayValue": "87'"
+        },
+        "text": "Delay in match because of an injury Stefan Posch (Austria).",
+        "play": {
+          "id": "49538606",
+          "type": {
+            "id": "129",
+            "text": "Start Delay",
+            "type": "start-delay"
+          },
+          "text": "Delay in match because of an injury Stefan Posch (Austria).",
+          "period": {
+            "number": 2
+          },
+          "clock": {
+            "value": 5189.0,
+            "displayValue": "87'"
+          },
+          "team": {
+            "displayName": "Austria"
           },
           "source": {
             "id": "38",
@@ -21188,7 +21337,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:52:17Z"
+          "wallclock": "2026-06-17T05:52:16Z"
         }
       },
       {
@@ -21233,7 +21382,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:53:15Z"
+          "wallclock": "2026-06-17T05:53:14Z"
         }
       },
       {
@@ -21271,7 +21420,7 @@
       {
         "sequence": 88,
         "time": {
-          "value": 5400.0,
+          "value": 5409.0,
           "displayValue": "90'+1'"
         },
         "text": "Fourth official has announced 10 minutes of added time."
@@ -21279,7 +21428,7 @@
       {
         "sequence": 89,
         "time": {
-          "value": 5400.0,
+          "value": 5467.0,
           "displayValue": "90'+2'"
         },
         "text": "Attempt saved. Marko Arnautovic (Austria) left footed shot from the centre of the box is saved in the centre of the goal by Yazeed Abulaila (Jordan).",
@@ -21324,7 +21473,7 @@
       {
         "sequence": 90,
         "time": {
-          "value": 5400.0,
+          "value": 5514.0,
           "displayValue": "90'+2'"
         },
         "text": "Mohannad Abu Taha (Jordan) wins a free kick on the left wing.",
@@ -21371,7 +21520,7 @@
       {
         "sequence": 91,
         "time": {
-          "value": 5400.0,
+          "value": 5514.0,
           "displayValue": "90'+2'"
         },
         "text": "Foul by Stefan Posch (Austria).",
@@ -21418,7 +21567,7 @@
       {
         "sequence": 92,
         "time": {
-          "value": 5400.0,
+          "value": 5561.0,
           "displayValue": "90'+3'"
         },
         "text": "Attempt missed. Ali Azaizeh (Jordan) left footed shot from outside the box is close, but misses to the right following a set piece situation.",
@@ -21452,7 +21601,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:57:52Z",
+          "wallclock": "2026-06-17T05:57:51Z",
           "goalPositionY": 40.8,
           "fieldPositionX": 70.9,
           "fieldPositionY": 50.0,
@@ -21463,7 +21612,7 @@
       {
         "sequence": 93,
         "time": {
-          "value": 5400.0,
+          "value": 5596.0,
           "displayValue": "90'+4'"
         },
         "text": "Corner, Austria. Conceded by Yazeed Abulaila.",
@@ -21497,7 +21646,7 @@
       {
         "sequence": 94,
         "time": {
-          "value": 5400.0,
+          "value": 5633.0,
           "displayValue": "90'+4'"
         },
         "text": "Attempt missed. Konrad Laimer (Austria) right footed shot from outside the box is high and wide to the right following a corner.",
@@ -21531,7 +21680,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T05:59:04Z",
+          "wallclock": "2026-06-17T05:59:03Z",
           "goalPositionY": 23.2,
           "fieldPositionX": 74.7,
           "fieldPositionY": 54.8,
@@ -21542,7 +21691,7 @@
       {
         "sequence": 95,
         "time": {
-          "value": 5400.0,
+          "value": 5685.0,
           "displayValue": "90'+5'"
         },
         "text": "Handball by Nicolas Seiwald (Austria).",
@@ -21584,7 +21733,7 @@
       {
         "sequence": 96,
         "time": {
-          "value": 5400.0,
+          "value": 5926.0,
           "displayValue": "90'+9'"
         },
         "text": "Penalty conceded by Saleem Obaid (Jordan) with a handball in the penalty area.",
@@ -21626,7 +21775,7 @@
       {
         "sequence": 97,
         "time": {
-          "value": 5400.0,
+          "value": 5994.0,
           "displayValue": "90'+10'"
         },
         "text": "VAR Decision: Penalty Austria.",
@@ -21666,7 +21815,7 @@
       {
         "sequence": 98,
         "time": {
-          "value": 5400.0,
+          "value": 6107.0,
           "displayValue": "90'+12'"
         },
         "text": "Goal! Austria 3, Jordan 1. Marko Arnautovic (Austria) converts the penalty with a right footed shot to the bottom left corner.",
@@ -21711,7 +21860,7 @@
       {
         "sequence": 99,
         "time": {
-          "value": 5400.0,
+          "value": 6171.0,
           "displayValue": "90'+14'"
         },
         "text": "Second Half ends, Austria 3, Jordan 1.",
@@ -21734,7 +21883,7 @@
             "id": "38",
             "description": "SA.ENVOY"
           },
-          "wallclock": "2026-06-17T06:08:34Z"
+          "wallclock": "2026-06-17T06:08:02Z"
         }
       },
       {
@@ -21749,11 +21898,11 @@
     "wallclockAvailable": true,
     "meta": {
       "gp_topic": "gp-soccer-fifa.world-760431",
-      "gameSwitcherEnabled": true,
+      "gameSwitcherEnabled": false,
       "picker_topic": "picker-soccer-fifa.world",
-      "lastUpdatedAt": "2026-06-17T06:08:34Z",
+      "lastUpdatedAt": "2026-06-17T06:08:02Z",
       "firstPlayWallClock": "2026-06-17T04:04:29Z",
-      "lastPlayWallClock": "2026-06-17T06:08:34Z",
+      "lastPlayWallClock": "2026-06-17T06:08:02Z",
       "gameState": "post",
       "syncUrl": "https://client.espncdn.com/fauxcast/stats/606/760431/en/us/"
     },
@@ -21780,8 +21929,8 @@
                     "description": "Number of Games Played",
                     "abbreviation": "GP",
                     "type": "gamesplayed",
-                    "value": 1.0,
-                    "displayValue": "1"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "name": "losses",
@@ -21800,8 +21949,8 @@
                     "description": "Goal Difference",
                     "abbreviation": "GD",
                     "type": "pointdifferential",
-                    "value": 3.0,
-                    "displayValue": "+3"
+                    "value": 7.0,
+                    "displayValue": "+7"
                   },
                   {
                     "name": "points",
@@ -21810,8 +21959,8 @@
                     "description": "Points",
                     "abbreviation": "P",
                     "type": "points",
-                    "value": 3.0,
-                    "displayValue": "3"
+                    "value": 9.0,
+                    "displayValue": "9"
                   },
                   {
                     "name": "ties",
@@ -21830,8 +21979,8 @@
                     "description": "Wins",
                     "abbreviation": "W",
                     "type": "wins",
-                    "value": 1.0,
-                    "displayValue": "1"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "name": "rank",
@@ -21851,8 +22000,8 @@
                     "shortDisplayName": "OVER",
                     "description": "Overall Record",
                     "type": "total",
-                    "summary": "1-0-0",
-                    "displayValue": "1-0-0"
+                    "summary": "3-0-0",
+                    "displayValue": "3-0-0"
                   }
                 ],
                 "logo": [
@@ -21882,8 +22031,8 @@
                     "description": "Number of Games Played",
                     "abbreviation": "GP",
                     "type": "gamesplayed",
-                    "value": 1.0,
-                    "displayValue": "1"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "name": "losses",
@@ -21892,8 +22041,8 @@
                     "description": "Losses",
                     "abbreviation": "L",
                     "type": "losses",
-                    "value": 0.0,
-                    "displayValue": "0"
+                    "value": 1.0,
+                    "displayValue": "1"
                   },
                   {
                     "name": "pointDifferential",
@@ -21902,8 +22051,8 @@
                     "description": "Goal Difference",
                     "abbreviation": "GD",
                     "type": "pointdifferential",
-                    "value": 2.0,
-                    "displayValue": "+2"
+                    "value": 0.0,
+                    "displayValue": "0"
                   },
                   {
                     "name": "points",
@@ -21912,8 +22061,8 @@
                     "description": "Points",
                     "abbreviation": "P",
                     "type": "points",
-                    "value": 3.0,
-                    "displayValue": "3"
+                    "value": 4.0,
+                    "displayValue": "4"
                   },
                   {
                     "name": "ties",
@@ -21922,8 +22071,8 @@
                     "description": "Draws",
                     "abbreviation": "D",
                     "type": "ties",
-                    "value": 0.0,
-                    "displayValue": "0"
+                    "value": 1.0,
+                    "displayValue": "1"
                   },
                   {
                     "name": "wins",
@@ -21953,8 +22102,8 @@
                     "shortDisplayName": "OVER",
                     "description": "Overall Record",
                     "type": "total",
-                    "summary": "1-0-0",
-                    "displayValue": "1-0-0"
+                    "summary": "1-1-1",
+                    "displayValue": "1-1-1"
                   }
                 ],
                 "logo": [
@@ -21972,10 +22121,10 @@
                 ]
               },
               {
-                "team": "Jordan",
-                "link": "https://www.espn.com/soccer/team/_/id/2917/jordan",
-                "id": "2917",
-                "uid": "s:600~t:2917",
+                "team": "Algeria",
+                "link": "https://www.espn.com/soccer/team/_/id/624/algeria",
+                "id": "624",
+                "uid": "s:600~t:624",
                 "stats": [
                   {
                     "name": "gamesPlayed",
@@ -21984,8 +22133,8 @@
                     "description": "Number of Games Played",
                     "abbreviation": "GP",
                     "type": "gamesplayed",
-                    "value": 1.0,
-                    "displayValue": "1"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "name": "losses",
@@ -22014,8 +22163,8 @@
                     "description": "Points",
                     "abbreviation": "P",
                     "type": "points",
-                    "value": 0.0,
-                    "displayValue": "0"
+                    "value": 4.0,
+                    "displayValue": "4"
                   },
                   {
                     "name": "ties",
@@ -22024,8 +22173,8 @@
                     "description": "Draws",
                     "abbreviation": "D",
                     "type": "ties",
-                    "value": 0.0,
-                    "displayValue": "0"
+                    "value": 1.0,
+                    "displayValue": "1"
                   },
                   {
                     "name": "wins",
@@ -22034,8 +22183,8 @@
                     "description": "Wins",
                     "abbreviation": "W",
                     "type": "wins",
-                    "value": 0.0,
-                    "displayValue": "0"
+                    "value": 1.0,
+                    "displayValue": "1"
                   },
                   {
                     "name": "rank",
@@ -22055,13 +22204,13 @@
                     "shortDisplayName": "OVER",
                     "description": "Overall Record",
                     "type": "total",
-                    "summary": "0-0-1",
-                    "displayValue": "0-0-1"
+                    "summary": "1-1-1",
+                    "displayValue": "1-1-1"
                   }
                 ],
                 "logo": [
                   {
-                    "href": "https://a.espncdn.com/i/teamlogos/countries/500/jor.png",
+                    "href": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
                     "width": 500,
                     "height": 500,
                     "alt": "",
@@ -22074,10 +22223,10 @@
                 ]
               },
               {
-                "team": "Algeria",
-                "link": "https://www.espn.com/soccer/team/_/id/624/algeria",
-                "id": "624",
-                "uid": "s:600~t:624",
+                "team": "Jordan",
+                "link": "https://www.espn.com/soccer/team/_/id/2917/jordan",
+                "id": "2917",
+                "uid": "s:600~t:2917",
                 "stats": [
                   {
                     "name": "gamesPlayed",
@@ -22086,8 +22235,8 @@
                     "description": "Number of Games Played",
                     "abbreviation": "GP",
                     "type": "gamesplayed",
-                    "value": 1.0,
-                    "displayValue": "1"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "name": "losses",
@@ -22096,8 +22245,8 @@
                     "description": "Losses",
                     "abbreviation": "L",
                     "type": "losses",
-                    "value": 1.0,
-                    "displayValue": "1"
+                    "value": 3.0,
+                    "displayValue": "3"
                   },
                   {
                     "name": "pointDifferential",
@@ -22106,8 +22255,8 @@
                     "description": "Goal Difference",
                     "abbreviation": "GD",
                     "type": "pointdifferential",
-                    "value": -3.0,
-                    "displayValue": "-3"
+                    "value": -5.0,
+                    "displayValue": "-5"
                   },
                   {
                     "name": "points",
@@ -22157,13 +22306,13 @@
                     "shortDisplayName": "OVER",
                     "description": "Overall Record",
                     "type": "total",
-                    "summary": "0-0-1",
-                    "displayValue": "0-0-1"
+                    "summary": "0-0-3",
+                    "displayValue": "0-0-3"
                   }
                 ],
                 "logo": [
                   {
-                    "href": "https://a.espncdn.com/i/teamlogos/countries/500/alg.png",
+                    "href": "https://a.espncdn.com/i/teamlogos/countries/500/jor.png",
                     "width": 500,
                     "height": 500,
                     "alt": "",
@@ -23656,8 +23805,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 3499.0,
+                "displayValue": "3499"
               },
               {
                 "name": "timeStarted",
@@ -26003,8 +26152,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 3485.0,
+                "displayValue": "3485"
               },
               {
                 "name": "timeStarted",
@@ -29591,8 +29740,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 3500.0,
+                "displayValue": "3500"
               },
               {
                 "name": "timeStarted",
@@ -31893,8 +32042,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 2700.0,
+                "displayValue": "2700"
               },
               {
                 "name": "timeStarted",
@@ -34312,8 +34461,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 4941.0,
+                "displayValue": "4941"
               },
               {
                 "name": "timeStarted",
@@ -38295,8 +38444,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 3500.0,
+                "displayValue": "3500"
               },
               {
                 "name": "winPct",
@@ -38682,6 +38831,15 @@
                 "shortDisplayName": "ACTHRU",
                 "description": "The number of through balls that find their target.",
                 "abbreviation": "AC.THRU",
+                "value": 0.0,
+                "displayValue": "0"
+              },
+              {
+                "name": "attemptsInBox",
+                "displayName": "Attempts In Box",
+                "shortDisplayName": "AIB",
+                "description": "The number of attempts from in the box.",
+                "abbreviation": "AIB",
                 "value": 0.0,
                 "displayValue": "0"
               },
@@ -39473,8 +39631,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 3485.0,
+                "displayValue": "3485"
               },
               {
                 "name": "winPct",
@@ -39833,6 +39991,15 @@
                 "shortDisplayName": "ACTHRU",
                 "description": "The number of through balls that find their target.",
                 "abbreviation": "AC.THRU",
+                "value": 0.0,
+                "displayValue": "0"
+              },
+              {
+                "name": "attemptsInBox",
+                "displayName": "Attempts In Box",
+                "shortDisplayName": "AIB",
+                "description": "The number of attempts from in the box.",
+                "abbreviation": "AIB",
                 "value": 0.0,
                 "displayValue": "0"
               },
@@ -44274,8 +44441,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 2700.0,
+                "displayValue": "2700"
               },
               {
                 "name": "winPct",
@@ -48266,8 +48433,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 4941.0,
+                "displayValue": "4941"
               },
               {
                 "name": "winPct",
@@ -48617,6 +48784,15 @@
                 "shortDisplayName": "ACTHRU",
                 "description": "The number of through balls that find their target.",
                 "abbreviation": "AC.THRU",
+                "value": 0.0,
+                "displayValue": "0"
+              },
+              {
+                "name": "attemptsInBox",
+                "displayName": "Attempts In Box",
+                "shortDisplayName": "AIB",
+                "description": "The number of attempts from in the box.",
+                "abbreviation": "AIB",
                 "value": 0.0,
                 "displayValue": "0"
               },
@@ -49363,8 +49539,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 3499.0,
+                "displayValue": "3499"
               },
               {
                 "name": "winPct",
@@ -49696,6 +49872,15 @@
                 "shortDisplayName": "ACTHRU",
                 "description": "The number of through balls that find their target.",
                 "abbreviation": "AC.THRU",
+                "value": 0.0,
+                "displayValue": "0"
+              },
+              {
+                "name": "attemptsInBox",
+                "displayName": "Attempts In Box",
+                "shortDisplayName": "AIB",
+                "description": "The number of attempts from in the box.",
+                "abbreviation": "AIB",
                 "value": 0.0,
                 "displayValue": "0"
               },
@@ -52708,8 +52893,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 4269.0,
+                "displayValue": "4269"
               },
               {
                 "name": "timeStarted",
@@ -53850,8 +54035,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 4842.0,
+                "displayValue": "4842"
               },
               {
                 "name": "timeStarted",
@@ -58562,8 +58747,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 4859.0,
+                "displayValue": "4859"
               },
               {
                 "name": "timeStarted",
@@ -59767,8 +59952,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 5226.0,
+                "displayValue": "5226"
               },
               {
                 "name": "timeStarted",
@@ -62258,8 +62443,8 @@
                 "shortDisplayName": "TE",
                 "description": "The time a match ends.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 5284.0,
+                "displayValue": "5284"
               },
               {
                 "name": "timeStarted",
@@ -63454,8 +63639,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 4269.0,
+                "displayValue": "4269"
               },
               {
                 "name": "winPct",
@@ -64533,8 +64718,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 4859.0,
+                "displayValue": "4859"
               },
               {
                 "name": "winPct",
@@ -69361,8 +69546,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 4842.0,
+                "displayValue": "4842"
               },
               {
                 "name": "winPct",
@@ -72319,8 +72504,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 5226.0,
+                "displayValue": "5226"
               },
               {
                 "name": "winPct",
@@ -77102,8 +77287,8 @@
                 "shortDisplayName": "TS",
                 "description": "The time a match starts.",
                 "abbreviation": "FGA",
-                "value": 0.0,
-                "displayValue": "0"
+                "value": 5284.0,
+                "displayValue": "5284"
               },
               {
                 "name": "winPct",

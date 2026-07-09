@@ -58,6 +58,12 @@ variable "enable_ecs_compute" {
   default     = false
 }
 
+variable "build_ecs_image" {
+  description = "When enable_ecs_compute=true, docker build + push predict image to ECR during terraform apply."
+  type        = bool
+  default     = true
+}
+
 variable "ecs_container_image" {
   description = "ECR image URI for ECS compute service (required when enable_ecs_compute=true)."
   type        = string
@@ -83,7 +89,7 @@ variable "github_repo" {
 }
 
 variable "enable_etl_scheduler" {
-  description = "EventBridge rate(15 minutes) → Lambda → GitHub workflow_dispatch for ETL."
+  description = "EventBridge match-based checker → Lambda → GitHub workflow_dispatch for ETL."
   type        = bool
   default     = false
 }

@@ -32,6 +32,7 @@ ARTIFACTS: tuple[ArtifactSpec, ...] = (
     ArtifactSpec("xgb_features", config.XGB_FEATURES, False, "json"),
     ArtifactSpec("glossary", config.GLOSSARY_CSV, False, "csv"),
     ArtifactSpec("team_flags", config.TEAM_FLAGS, False, "json"),
+    ArtifactSpec("schedule", config.SCHEDULE, False, "json"),
 )
 
 

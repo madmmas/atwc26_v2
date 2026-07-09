@@ -25,7 +25,10 @@ infra/
     modules/lambda-predict/    # Issue 7
     modules/api-gateway/       # Issue 7 — HTTP API routes
     modules/ecs-compute/       # Fargate for POST /api/predict only
+    modules/ecs-predict-image/ # Docker build + ECR push (terraform apply)
+    modules/acm-certificate/   # ACM + Route53 DNS validation (us-east-1)
     envs/dev/                  # dev/candidate wiring
+    envs/prod/                 # production — atwc26.com + Route53 aliases
 services/
   analytics_api/               # Issue 7 — read-only tournament API
   predict_api/                 # Issue 7 — POST /api/predict
@@ -81,7 +84,10 @@ API Gateway routes:
 - `POST /api/predict` → compute (ECS when `enable_ecs_compute=true`, else predict Lambda)
 - all other paths (including `GET /api/winner-probabilities`) → analytics Lambda
 
-Set `enable_ecs_compute = true` and `ecs_container_image` in `terraform.tfvars` to use Fargate for compute routes.
+Set `enable_ecs_compute = true` in `terraform.tfvars` to route `POST /api/predict` to Fargate.
+With `build_ecs_image = true` (default), `terraform apply` also **docker builds**, **pushes to ECR**, and rolls the ECS task definition to the content-hash tag — no separate deploy step.
+
+Requires **Docker** and **AWS CLI** on the machine running `terraform apply` when ECS is enabled.
 
 ### 3. CORS on v1 backend
 
@@ -120,11 +126,61 @@ export ATWC26_CLOUDFRONT_DISTRIBUTION_ID="$(terraform -chdir=infra/terraform/env
 
 Open `terraform output cloudfront_url` and verify pages load; API calls should reach `backend_api_url`.
 
-### Validate (CI / local, no AWS apply)
+## Production — `atwc26.com` (envs/prod)
+
+Prod stack provisions the full v2 API + static frontend with **managed ACM**, **CloudFront aliases**, and **Route53 A/AAAA alias records** for `atwc26.com` and `www.atwc26.com`.
+
+### 1. Configure
+
+```bash
+cd infra/terraform/envs/prod
+cp terraform.tfvars.example terraform.tfvars
+cp backend.hcl.example backend.hcl   # state key: atwc26-v2/prod/terraform.tfstate
+# edit terraform.tfvars (github_dispatch_token, etc.)
+```
+
+Import existing apex/www A records before first apply if they already exist — see [envs/prod/IMPORT.md](terraform/envs/prod/IMPORT.md).
+
+### 2. Plan / apply
+
+```bash
+# From repo root:
+make tf-plan TF_ENV=prod
+make tf-apply TF_ENV=prod
+
+# Or:
+ATWC26_TF_DIR=infra/terraform/envs/prod ./infra/scripts/build_frontend_static.sh
+ATWC26_TF_DIR=infra/terraform/envs/prod ./infra/scripts/deploy_frontend_from_tf.sh
+```
+
+### 3. Publish data
+
+```bash
+ATWC26_S3_BUCKET="$(terraform -chdir=infra/terraform/envs/prod output -raw data_bucket_name)" \
+ATWC26_DYNAMODB_TABLE="$(terraform -chdir=infra/terraform/envs/prod output -raw dynamodb_table_name)" \
+  make etl-publish
+```
+
+### Prod variables (highlights)
+
+| Variable | Default | Purpose |
+|----------|---------|---------|
+| `enable_custom_domain` | `true` | Issue ACM cert + attach to CloudFront |
+| `manage_dns_alias_records` | `true` | Route53 apex/www → CloudFront |
+| `domain_name` | `atwc26.com` | Primary custom domain |
+| `cors_allow_origins` | `https://atwc26.com`, `https://www.atwc26.com` | API CORS |
+
+CI: **Actions → Terraform prod → Run workflow** (requires GitHub `production` environment + `ATWC26_TFVARS_PROD` secret).
+
+---
+
+## Validate (CI / local, no AWS apply)
 
 ```bash
 terraform -chdir=infra/terraform/envs/dev init -backend=false
 terraform -chdir=infra/terraform/envs/dev validate
+terraform -chdir=infra/terraform/envs/prod init -backend=false
+terraform -chdir=infra/terraform/envs/prod validate
 ```
 
 ## Issue 7 — Split analytics + predict Lambdas
@@ -263,7 +319,8 @@ Configure under **Settings → Secrets and variables → Actions**.
 | `ATWC26_S3_BUCKET` | ETL publish | `terraform output data_bucket_name` |
 | `ATWC26_DYNAMODB_TABLE` | ETL publish | `terraform output dynamodb_table_name` |
 | `ATWC26_TF_STATE_BUCKET` | Deploy `apply` | S3 bucket for Terraform state |
-| `ATWC26_TFVARS` | Deploy (optional) | Multiline HCL — copy of `terraform.tfvars` if not using defaults |
+| `ATWC26_TFVARS` | Deploy dev (optional) | Multiline HCL — copy of `envs/dev/terraform.tfvars` |
+| `ATWC26_TFVARS_PROD` | Deploy prod | Multiline HCL — copy of `envs/prod/terraform.tfvars` |
 | `ATWC26_FRONTEND_BUCKET` | Manual `deploy_frontend.sh` only | `terraform output bucket_name` |
 | `ATWC26_CLOUDFRONT_DISTRIBUTION_ID` | Manual deploy / invalidation | `terraform output cloudfront_distribution_id` |
 

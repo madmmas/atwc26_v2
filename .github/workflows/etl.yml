@@ -11,8 +11,8 @@ on:
         description: Skip S3/DynamoDB publish after transform
         type: boolean
         default: false
-  # Scheduled runs use AWS EventBridge (rate(15 minutes)) → Lambda → workflow_dispatch.
-  # See infra/terraform/modules/etl-scheduler and enable_etl_scheduler in dev tfvars.
+  # Scheduled runs: AWS EventBridge cron(*/5 * * * ? *) UTC → Lambda reads data/schedule.json
+  # and dispatches ETL at estimated match end +5/+20/+40 minutes (all times UTC).
 
 concurrency:
   group: etl-${{ github.ref }}

@@ -163,6 +163,8 @@ jobs:
         run: |
           terraform -chdir=infra/terraform/envs/dev init -backend=false
           terraform -chdir=infra/terraform/envs/dev validate
+          terraform -chdir=infra/terraform/envs/prod init -backend=false
+          terraform -chdir=infra/terraform/envs/prod validate
 
   lambda-package:
     needs: changes

@@ -15,7 +15,8 @@ CORE_PKG     := $(ROOT)/packages/atwc26_core
 SERVICES_DIR := $(ROOT)/services
 CONTRACT_DIR := $(ROOT)/tests/contract
 BUILD_SCRIPT := $(ROOT)/infra/scripts/build_frontend_static.sh
-TF_DIR       := $(ROOT)/infra/terraform/envs/dev
+TF_ENV       ?= dev
+TF_DIR       := $(ROOT)/infra/terraform/envs/$(TF_ENV)
 PACKAGE_LAMBDAS := $(ROOT)/infra/scripts/package_lambdas.sh
 
 # ── Python / backend venv ──────────────────────────────────────────────────────
@@ -48,7 +49,7 @@ TF_AWS_ENV = $(if $(AWS_PROFILE),AWS_PROFILE=$(AWS_PROFILE))
 	schedule scrape scrape-force analyze events squads groups history \
 	build-frontend-static build-frontend-static-v2 serve-frontend-static \
 	k6-smoke k6-journey k6-load k6-stress k6-ab \
-	tf-init tf-init-local tf-validate tf-package tf-plan tf-apply tf-destroy tf-output \
+	tf-init tf-init-local tf-validate tf-validate-prod tf-package tf-plan tf-apply tf-destroy tf-output \
 	up docker down restart-backend health refresh refresh-full deploy
 
 ##@ Help
@@ -265,8 +266,13 @@ tf-init-local: ## Init without remote state (validate only; resets .terraform)
 	@rm -rf $(TF_DIR)/.terraform
 	$(TF) -chdir=$(TF_DIR) init -input=false -backend=false
 
-tf-validate: tf-init-local ## Validate (no AWS credentials required)
+tf-validate: tf-init-local ## Validate current TF_ENV (default: dev)
 	$(TF) -chdir=$(TF_DIR) validate
+
+tf-validate-prod: ## Validate prod Terraform env
+	@rm -rf $(ROOT)/infra/terraform/envs/prod/.terraform
+	$(TF) -chdir=$(ROOT)/infra/terraform/envs/prod init -input=false -backend=false
+	$(TF) -chdir=$(ROOT)/infra/terraform/envs/prod validate
 
 tf-package: ## Package Lambda layer + analytics/predict zips
 	$(PACKAGE_LAMBDAS)
