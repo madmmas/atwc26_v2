@@ -54,3 +54,16 @@ def test_run_simulate_writes_artifacts(data_dir):
     winner_doc = json.loads((data_dir / "winner_probabilities.json").read_text())
     assert winner_doc["trials"] == 20
     assert winner_doc["seed"] == 1
+    # Stage probabilities present after simulation
+    assert "stage_probabilities" in winner_doc
+    # At least the surviving teams should have stage data
+    alive = {t for t, p in winner_doc["probabilities"].items() if p > 0}
+    stages = winner_doc["stage_probabilities"]
+    # Every alive team should appear in stage_probabilities
+    for team in alive:
+        assert team in stages, f"{team} missing from stage_probabilities"
+        # title probability should match probabilities dict
+        title_p = stages[team].get("title", 0.0)
+        assert abs(title_p - winner_doc["probabilities"][team]) < 1e-4, (
+            f"{team}: stage title={title_p} != probabilities={winner_doc['probabilities'][team]}"
+        )

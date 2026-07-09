@@ -144,13 +144,22 @@ def build_overview(store: DataStore, manifest: dict) -> tuple[dict, str, list[st
 def build_winner_probabilities(
     store: DataStore, manifest: dict
 ) -> tuple[dict | None, str, list[str]]:
-    from ..simulation_artifacts import load_winner_probabilities, winner_probabilities_api_payload
+    from ..simulation_artifacts import (
+        load_stage_probabilities,
+        load_winner_probabilities,
+        winner_probabilities_api_payload,
+    )
     from ..tournament import get_winner_probabilities
 
     probs = load_winner_probabilities()
     if probs is None:
         probs = get_winner_probabilities(store)
-    payload = winner_probabilities_api_payload(probs, flag_lookup=store.flag)
+    stage_probs = load_stage_probabilities()
+    payload = winner_probabilities_api_payload(
+        probs,
+        flag_lookup=store.flag,
+        stage_probabilities=stage_probs,
+    )
     source_sha = _artifact_hash(manifest, "winner_probabilities")
     return payload, source_sha, ["winner_probabilities"]
 

@@ -31,12 +31,15 @@ def run_simulate(*, trials: int | None = None, seed: int | None = None) -> dict:
     store.load()
     predictor = get_predictor(store)
 
-    probabilities = run_simulation(store, predictor, trials=trials, seed=seed)
+    result = run_simulation(store, predictor, trials=trials, seed=seed)
+    probabilities = result["probabilities"]
+    stage_probabilities = result.get("stage_probabilities", {})
     predictions = predict_bracket_path(store, predictor)
     generated_at = datetime.now(timezone.utc).isoformat()
 
     winner_path = write_winner_probabilities(
         probabilities,
+        stage_probabilities=stage_probabilities,
         trials=trials,
         seed=seed,
         generated_at=generated_at,
@@ -53,6 +56,7 @@ def run_simulate(*, trials: int | None = None, seed: int | None = None) -> dict:
         "winner_probabilities": str(winner_path),
         "bracket_predictions": str(bracket_path),
         "teams": len(probabilities),
+        "teams_with_stages": len(stage_probabilities),
         "bracket_matches": len(predictions),
     }
 

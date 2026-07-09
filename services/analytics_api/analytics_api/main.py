@@ -88,11 +88,18 @@ def winner_probabilities():
     pk = keys.dataset_pk()
 
     def _fallback():
+        from atwc26_core.simulation_artifacts import load_stage_probabilities
+
         store = get_store()
         payload, _, _ = builders.build_winner_probabilities(store, {})
         if payload is None:
             probs = load_winner_probabilities() or get_winner_probabilities(store)
-            payload = winner_probabilities_api_payload(probs, flag_lookup=store.flag)
+            stage_probs = load_stage_probabilities()
+            payload = winner_probabilities_api_payload(
+                probs,
+                flag_lookup=store.flag,
+                stage_probabilities=stage_probs,
+            )
         return payload
 
     return clean_json(read_cached(pk, keys.winner_probabilities_sk(), _fallback))

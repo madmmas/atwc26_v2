@@ -295,11 +295,22 @@ export type BracketRound = { name: string; matches: BracketMatch[] };
 export type BracketData = { rounds: BracketRound[] };
 
 // --- Winner Probability ---
+export type StageProbabilities = {
+  "Round of 32"?: number;
+  "Round of 16"?: number;
+  Quarterfinals?: number;
+  Semifinals?: number;
+  "Third Place Match"?: number;
+  Final?: number;
+  title?: number;
+};
+
 export type WinnerProbability = {
   team_name: string;
   flag_url?: string | null;
   probability: number;
   eliminated: boolean;
+  stage_probabilities?: StageProbabilities | null;
 };
 
 export type PlayerDetail = {

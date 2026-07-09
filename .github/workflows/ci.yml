@@ -92,7 +92,7 @@ jobs:
 
       - name: Transform + QA
         env:
-          ATWC26_SIMULATE_TRIALS: "100"
+          ATWC26_SIMULATE_TRIALS: "1000"
         run: make etl-local
 
       - name: ETL tests
