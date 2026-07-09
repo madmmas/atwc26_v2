@@ -1,6 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
-import { api, WinnerProbability } from "@/lib/api";
+import { api, StageProbabilities, WinnerProbability } from "@/lib/api";
 import { TeamLabel } from "@/components/Flag";
 import { SectionTitle, Skeleton } from "@/components/ui";
 
@@ -41,19 +41,49 @@ export function WinnerProbabilityChart() {
       />
       <div className="space-y-1.5">
         {shown.map((t) => (
-          <div key={t.team_name} className="flex items-center gap-2 text-xs">
+          <div key={t.team_name} className="flex items-start gap-2 text-xs">
             <TeamLabel
               name={t.team_name}
               flag={t.flag_url}
               size={16}
               className={`w-36 shrink-0 truncate ${t.eliminated ? "text-faint" : "text-fg"}`}
             />
-            <div className="h-3 flex-1 overflow-hidden rounded-full bg-pitch-edge">
-              {!t.eliminated && (
-                <div
-                  className="h-full rounded-full bg-pitch-accent"
-                  style={{ width: `${Math.max((t.probability / top) * 100, 2)}%` }}
-                />
+            <div className="min-w-0 flex-1">
+              <div className="h-3 overflow-hidden rounded-full bg-pitch-edge">
+                {!t.eliminated && (
+                  <div
+                    className="h-full rounded-full bg-pitch-accent"
+                    style={{ width: `${Math.max((t.probability / top) * 100, 2)}%` }}
+                  />
+                )}
+              </div>
+              {t.stage_probabilities && (
+                <div className="mt-0.5 flex flex-wrap gap-1 text-[10px] text-faint">
+                  {["Round of 16", "Quarterfinals", "Semifinals", "Final", "title"].map(
+                    (stage) => {
+                      const p = t.stage_probabilities![stage as keyof StageProbabilities];
+                      if (p === undefined) return null;
+                      const label =
+                        stage === "title"
+                          ? "🏆"
+                          : stage === "Round of 16"
+                            ? "R16"
+                            : stage === "Quarterfinals"
+                              ? "QF"
+                              : stage === "Semifinals"
+                                ? "SF"
+                                : "F";
+                      return (
+                        <span
+                          key={stage}
+                          className={p >= 0.5 ? "text-pitch-accent" : ""}
+                        >
+                          {label} {(p * 100).toFixed(0)}%
+                        </span>
+                      );
+                    },
+                  )}
+                </div>
               )}
             </div>
             <span

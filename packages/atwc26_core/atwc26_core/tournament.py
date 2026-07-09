@@ -257,7 +257,7 @@ def resolve_slot(
 def run_simulation(
     store: DataStore, predictor: Predictor, trials: int = DEFAULT_TRIALS,
     seed: int | None = None,
-) -> dict[str, float]:
+) -> dict:
     rng = np.random.default_rng(seed)
     ratings = team_ratings(store, predictor)
     avg_goals = predictor.avg_goals
@@ -267,7 +267,10 @@ def run_simulation(
     all_names = sorted(set(
         t["team_name"] for g in standings.values() for t in g["teams"]
     ))
-    wins = defaultdict(int)
+    wins: defaultdict[str, int] = defaultdict(int)
+    stage_reaches: defaultdict[str, defaultdict[str, int]] = defaultdict(
+        lambda: defaultdict(int)
+    )
 
     for _ in range(trials):
         ranked_groups = simulate_group_stage(standings, ratings, avg_goals, rng)
@@ -298,20 +301,42 @@ def run_simulation(
                 loser = (b_id, b_name) if sa > sb else (a_id, a_name)
                 round_results[(rname, m["position"], "match_winner")] = winner
                 round_results[(rname, m["position"], "match_loser")] = loser
+                # Track which round each team reached in this trial
+                if winner[1]:
+                    stage_reaches[winner[1]][rname] += 1
                 if rname == "Final":
                     champion = winner[1]
 
         if champion:
             wins[champion] += 1
+            stage_reaches[champion]["title"] += 1
 
-    # Real (non-simulated) elimination overrides the simulated frequency —
-    # a team can legitimately simulate to 0/trials title wins without being
-    # mathematically out yet (a longshot, not an impossibility); only a real
-    # confirmed elimination should report exactly 0%.
+    # Real elimination overrides — a team can score 0/trials without being
+    # mathematically eliminated yet; only confirmed real elimination → 0%.
     real_eliminated = eliminated_teams(store)
-    return {
+
+    probabilities = {
         name: 0.0 if name in real_eliminated else wins.get(name, 0) / trials
         for name in all_names
+    }
+
+    # Per-round reach probabilities. Real results (completed=True) are
+    # already baked into every trial via the completed-match branch, so
+    # teams that have genuinely reached a round will show 1.0 for it.
+    stage_probabilities: dict[str, dict[str, float]] = {}
+    for name in all_names:
+        if probabilities.get(name, 0.0) == 0.0 and name in real_eliminated:
+            continue  # skip truly eliminated teams
+        stages = stage_reaches.get(name, {})
+        if stages:
+            stage_probabilities[name] = {
+                stage: round(count / trials, 4)
+                for stage, count in stages.items()
+            }
+
+    return {
+        "probabilities": probabilities,
+        "stage_probabilities": stage_probabilities,
     }
 
 
@@ -441,7 +466,7 @@ def get_winner_probabilities(store: DataStore) -> dict[str, float]:
         else:
             from .prediction import get_predictor
 
-            _probabilities = run_simulation(store, get_predictor(store))
+            _probabilities = run_simulation(store, get_predictor(store))["probabilities"]
     return _probabilities
 
 
