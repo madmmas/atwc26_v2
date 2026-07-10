@@ -46,7 +46,7 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 
 | Doc | Contents |
 |-----|----------|
-| [V1_TO_V2.md](V1_TO_V2.md) | v1 monolith → v2 AWS: rationale, comparison, decision log |
+| [V1_TO_V2.md](V1_TO_V2.md) | v1 monolith → v2 AWS: rationale, comparison, **retroactive decision log (§8)** |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | C4 model + full AWS deployment map |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Development & code review guide |
 | [WEBAPP_README.md](WEBAPP_README.md) | Frontend pages, API client modes, local dev |
@@ -59,3 +59,9 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 |-----|----------|
 | [`infra/README.md`](../infra/README.md) | Terraform, GitHub Actions, AWS secrets |
 | [`etl/README.md`](../etl/README.md) | ETL operator runbook (code) |
+
+---
+
+## Architecture decisions (not formal ADRs)
+
+There is **no `docs/adr/` folder** and no numbered ADR files. Major v1 → v2 choices are captured as a **decision log table** in [V1_TO_V2.md §8](V1_TO_V2.md#8-decision-log-retroactive); [V1_TO_V2.md §9](V1_TO_V2.md#9-do-we-need-formal-adrs) explains when a future one-page ADR would be worth adding. Current-state diagrams live in [ARCHITECTURE.md](ARCHITECTURE.md).

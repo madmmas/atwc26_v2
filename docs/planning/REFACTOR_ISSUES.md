@@ -41,7 +41,7 @@ main ──► Issue 1 ──► Issue 2 ──► Issue 3 ──► (tag v1-bas
 
 | Doc | Purpose |
 |-----|---------|
-| **[V1_TO_V2.md](../V1_TO_V2.md)** | v1 → v2 rationale, comparison, retroactive decision log, ADR guidance |
+| **[V1_TO_V2.md](../V1_TO_V2.md)** | v1 → v2 rationale, comparison, retroactive decision log (§8); §9 on when formal ADRs would help |
 | **[ARCHITECTURE.md](../ARCHITECTURE.md)** | Current v2 C4 + AWS map |
 | **[REFACTOR_GITHUB_ISSUES.md](REFACTOR_GITHUB_ISSUES.md)** | Issue titles, bodies, acceptance criteria |
 | **[CUTOVER.md](../ops/CUTOVER.md)** | Production cutover checklist |

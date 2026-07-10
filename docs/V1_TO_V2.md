@@ -235,6 +235,8 @@ Docs index: [README.md](README.md).
 
 ## 8. Decision log (retroactive)
 
+> **Not formal ADRs.** There is no `docs/adr/` directory in this repo. The table below is the canonical record of major v1 → v2 architecture choices already implemented. See [§9](#9-do-we-need-formal-adrs) for when to add a real ADR file on *future* decisions.
+
 No formal ADRs were written during the refactor. These are the **material decisions** inferred from code, [planning/REFACTOR_ISSUES.md](planning/REFACTOR_ISSUES.md), and [TODO.md](../TODO.md):
 
 | # | Decision | Alternatives considered | Outcome | Why |
@@ -256,7 +258,7 @@ When you change one of these, update this table **and** [ARCHITECTURE.md](ARCHIT
 
 ## 9. Do we need formal ADRs?
 
-**Short answer: not mandatory for this project at its current size; a living architecture doc + this transition doc is enough. Consider lightweight ADRs only if the team grows or AWS choices multiply.**
+**Short answer: not mandatory for this project at its current size.** The §8 decision log plus [ARCHITECTURE.md](ARCHITECTURE.md) replace retroactive ADRs. Add a file under `docs/adr/` only for **new** irreversible choices (see below) — do not backfill ADRs for D1–D10.
 
 ### What ADRs are good for
 
