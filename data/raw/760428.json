@@ -201,8 +201,6 @@
               "awayShootoutScore": "0",
               "gameResult": "D",
               "competitionName": "2026 International Friendly",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "2620",
                 "uid": "s:600~t:2620",
@@ -244,7 +242,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly"
             },
             {
               "id": "401865041",
@@ -334,6 +334,8 @@
               "gameResult": "D",
               "competitionName": "2026 World Cup Qualifying - UEFA",
               "roundName": "Group Stage",
+              "leagueName": "FIFA World Cup Qualifying - UEFA",
+              "leagueAbbreviation": "WCQ - UEFA",
               "opponent": {
                 "id": "465",
                 "uid": "s:600~t:465",
@@ -375,9 +377,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png",
-              "leagueName": "FIFA World Cup Qualifying - UEFA",
-              "leagueAbbreviation": "WCQ - UEFA"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tur.png"
             }
           ]
         },
@@ -1321,8 +1321,6 @@
             "awayShootoutScore": "0",
             "gameResult": "D",
             "competitionName": "2026 International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "2620",
               "uid": "s:600~t:2620",
@@ -1364,7 +1362,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/egy.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           },
           {
             "id": "401871471",
@@ -1387,8 +1387,6 @@
             "awayShootoutScore": "0",
             "gameResult": "D",
             "competitionName": "2026 International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "4375",
               "uid": "s:600~t:4375",
@@ -1430,7 +1428,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           },
           {
             "id": "401867679",
@@ -1453,8 +1453,6 @@
             "awayShootoutScore": "0",
             "gameResult": "W",
             "competitionName": "2026 International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "211",
               "uid": "s:600~t:211",
@@ -1496,7 +1494,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/per.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/per.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           }
         ]
       },
@@ -1829,8 +1829,6 @@
             "awayShootoutScore": "0",
             "gameResult": "W",
             "competitionName": "2026 International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "6757",
               "uid": "s:600~t:6757",
@@ -1872,7 +1870,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sba.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/sba.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           }
         ]
       }
@@ -3424,6 +3424,1365 @@
       }
     ],
     "hasOdds": false,
+    "news": {
+      "header": "FIFA World Cup News",
+      "link": {
+        "language": "en",
+        "rel": [
+          "index",
+          "desktop",
+          "league"
+        ],
+        "href": "https://www.espn.com/football/worldcup/",
+        "text": "All FIFA World Cup News",
+        "shortText": "All News",
+        "isExternal": false,
+        "isPremium": false
+      },
+      "articles": [
+        {
+          "id": 49322084,
+          "nowId": "1-49322084",
+          "contentKey": "49322084-1-5-1",
+          "dataSourceIdentifier": "22ab354c373f2",
+          "type": "HeadlineNews",
+          "headline": "Police officer injured, arrests made amid London disorder after France beat Morocco",
+          "description": "A police officer was injured and four people were arrested after disorder broke out in London following France's 2-0 win against Morocco in the World Cup quarterfinal on Thursday.",
+          "lastModified": "2026-07-10T09:27:54Z",
+          "published": "2026-07-10T09:27:54Z",
+          "images": [],
+          "categories": [
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49322084/police-officer-injured-arrests-made-amid-london-disorder-france-beat-morocco-world-cup-2026"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49322084"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49322084"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49322084"
+              }
+            }
+          },
+          "byline": "ESPN News Services"
+        },
+        {
+          "id": 49317008,
+          "nowId": "1-49317008",
+          "contentKey": "49317008-1-6-1",
+          "dataSourceIdentifier": "7a81dfeb9bd3c",
+          "type": "Story",
+          "headline": "Instead of its biggest World Cup star, Pulisic was U.S.'s biggest mystery",
+          "description": "In his prime at a World Cup on home soil, this summer was Christian Pulisic's moment, but for a number of reasons, he failed to meet it.",
+          "lastModified": "2026-07-10T06:34:29Z",
+          "published": "2026-07-10T06:34:29Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "7fedff3da8abd",
+              "id": 49292147,
+              "type": "header",
+              "name": "usmnt christian pulisic loser July6-2026 [1296x729]",
+              "credit": "Carl Recine/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0707/r1685681_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Moreno: USMNT 'lacked fight' vs. Belgium",
+              "caption": "Moreno: USMNT 'lacked fight' vs. Belgium",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_Moreno_USMNT_lacked_fight_vs_Belgium/dm_260708_Moreno_USMNT_lacked_fight_vs_Belgium.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72593,
+              "type": "team",
+              "uid": "s:600~t:660",
+              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714",
+              "description": "United States",
+              "sportId": 600,
+              "teamId": 660,
+              "team": {
+                "id": 660,
+                "description": "United States",
+                "abbreviation": "USA",
+                "shortDisplayName": "USA",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 280017,
+              "type": "athlete",
+              "uid": "s:600~a:225607",
+              "guid": "4e537717-24b3-a77d-8d12-9cde8792bed6",
+              "description": "Christian Pulisic",
+              "sportId": 600,
+              "athleteId": 225607,
+              "athlete": {
+                "id": 225607,
+                "description": "Christian Pulisic",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/225607/christian-pulisic"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/225607/christian-pulisic"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714"
+            },
+            {
+              "type": "guid",
+              "guid": "4e537717-24b3-a77d-8d12-9cde8792bed6"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49317008/instead-biggest-world-cup-star-christian-pulisic-was-usmnt-biggest-mystery"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49317008"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49317008"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49317008"
+              }
+            }
+          },
+          "byline": "Sam Borden"
+        },
+        {
+          "id": 49294844,
+          "nowId": "1-49294844",
+          "contentKey": "49294844-1-6-1",
+          "dataSourceIdentifier": "7a1738a6755f3",
+          "type": "Story",
+          "headline": "World Cup quarterfinals: How we got here, predictions, odds",
+          "description": "Four weeks after the World Cup began, the quarterfinals are underway, with each team three wins from lifting the trophy. Next up, Spain vs. Belgium.",
+          "lastModified": "2026-07-10T09:03:50Z",
+          "published": "2026-07-10T09:03:50Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "d821ee9211693",
+              "id": 49312575,
+              "type": "header",
+              "name": "Spain v Belgium preview art [1296x729]",
+              "credit": "FIFA/FIFA via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686746_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Burley: Spain need more than Yamal to win World Cup",
+              "caption": "Burley: Spain need more than Yamal to win World Cup",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_Burley_Spain_need_more_than_Yamal_to_win_World_Cup/dm_260709_Burley_Spain_need_more_than_Yamal_to_win_World_Cup.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72569,
+              "type": "team",
+              "uid": "s:600~t:202",
+              "guid": "892f805f-fef9-c22d-8f87-ba08b1b4d256",
+              "description": "Argentina",
+              "sportId": 600,
+              "teamId": 202,
+              "team": {
+                "id": 202,
+                "description": "Argentina",
+                "abbreviation": "ARG",
+                "shortDisplayName": "Argentina",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/202/argentina"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/202/argentina"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 135133,
+              "type": "team",
+              "uid": "s:600~t:459",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141",
+              "description": "Belgium",
+              "sportId": 600,
+              "teamId": 459,
+              "team": {
+                "id": 459,
+                "description": "Belgium",
+                "abbreviation": "BEL",
+                "shortDisplayName": "Belgium",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72576,
+              "type": "team",
+              "uid": "s:600~t:448",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
+              "description": "England",
+              "sportId": 600,
+              "teamId": 448,
+              "team": {
+                "id": 448,
+                "description": "England",
+                "abbreviation": "ENG",
+                "shortDisplayName": "England",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142418,
+              "type": "team",
+              "uid": "s:600~t:464",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e",
+              "description": "Norway",
+              "sportId": 600,
+              "teamId": 464,
+              "team": {
+                "id": 464,
+                "description": "Norway",
+                "abbreviation": "NOR",
+                "shortDisplayName": "Norway",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72568,
+              "type": "team",
+              "uid": "s:600~t:164",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
+              "description": "Spain",
+              "sportId": 600,
+              "teamId": 164,
+              "team": {
+                "id": 164,
+                "description": "Spain",
+                "abbreviation": "ESP",
+                "shortDisplayName": "Spain",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72583,
+              "type": "team",
+              "uid": "s:600~t:475",
+              "guid": "fe8cdad6-2fb3-84d7-e08a-0178e4112534",
+              "description": "Switzerland",
+              "sportId": 600,
+              "teamId": 475,
+              "team": {
+                "id": 475,
+                "description": "Switzerland",
+                "abbreviation": "SUI",
+                "shortDisplayName": "Switzerland",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/475/switzerland"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/475/switzerland"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "892f805f-fef9-c22d-8f87-ba08b1b4d256"
+            },
+            {
+              "type": "guid",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141"
+            },
+            {
+              "type": "guid",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e"
+            },
+            {
+              "type": "guid",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
+            },
+            {
+              "type": "guid",
+              "guid": "fe8cdad6-2fb3-84d7-e08a-0178e4112534"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49294844/fifa-world-cup-quarterfinal-preview-predictions-odds-argentina-belgium-england-france-morocco-norway-spain-switzerland"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49294844"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49294844"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49294844"
+              }
+            }
+          },
+          "byline": "ESPN"
+        },
+        {
+          "id": 49322144,
+          "nowId": "1-49322144",
+          "contentKey": "49322144-1-293-1",
+          "dataSourceIdentifier": "9a8da45c6cb81",
+          "type": "Media",
+          "headline": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
+          "description": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
+          "lastModified": "2026-07-10T07:55:04Z",
+          "published": "2026-07-10T07:55:04Z",
+          "images": [
+            {
+              "name": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
+              "caption": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
+              "alt": "",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0710/dm_260710_COM_SOC_Presser_Gavi_Even_at_seven_percent_Lamine_Yamal_is_still_the_best_20260710_GLOBAL_FIFA_WO/dm_260710_COM_SOC_Presser_Gavi_Even_at_seven_percent_Lamine_Yamal_is_still_the_best_20260710_GLOBAL_FIFA_WO.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 135133,
+              "type": "team",
+              "uid": "s:600~t:459",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141",
+              "description": "Belgium",
+              "sportId": 600,
+              "teamId": 459,
+              "team": {
+                "id": 459,
+                "description": "Belgium",
+                "abbreviation": "BEL",
+                "shortDisplayName": "Belgium",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 490659,
+              "type": "athlete",
+              "uid": "s:600~a:323702",
+              "guid": "3ea1fd25-9cb7-362b-bc0c-e75dcd5705de",
+              "description": "Gavi",
+              "sportId": 600,
+              "athleteId": 323702,
+              "athlete": {
+                "id": 323702,
+                "description": "Gavi",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/323702/gavi"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/323702/gavi"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 596595,
+              "type": "athlete",
+              "uid": "s:600~a:362150",
+              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4",
+              "description": "Lamine Yamal",
+              "sportId": 600,
+              "athleteId": 362150,
+              "athlete": {
+                "id": 362150,
+                "description": "Lamine Yamal",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72568,
+              "type": "team",
+              "uid": "s:600~t:164",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
+              "description": "Spain",
+              "sportId": 600,
+              "teamId": 164,
+              "team": {
+                "id": 164,
+                "description": "Spain",
+                "abbreviation": "ESP",
+                "shortDisplayName": "Spain",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "event",
+              "uid": "s:600~l:606~e:760511",
+              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675",
+              "description": "Belgium @ Spain",
+              "eventId": 760511,
+              "event": {
+                "id": 760511,
+                "sport": "soccer",
+                "league": "fifa.world",
+                "description": "Belgium @ Spain"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "3ea1fd25-9cb7-362b-bc0c-e75dcd5705de"
+            },
+            {
+              "type": "guid",
+              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4"
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
+            },
+            {
+              "type": "guid",
+              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/video/clip/_/id/49322144/even-seventy-percent-lamine-yamal-best",
+              "self": {
+                "href": "https://www.espn.com/video/clip/_/id/49322144/even-seventy-percent-lamine-yamal-best",
+                "dsi": {
+                  "href": "https://www.espn.com/video/clip?id=9a8da45c6cb81"
+                }
+              }
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/video/clips/49322144"
+              },
+              "artwork": {
+                "href": "https://artwork.api.espn.com/artwork/collections/media/f7590422-f035-470a-aaff-5bddb09e6e4d"
+              }
+            },
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49322144&videoDSI=9a8da45c6cb81"
+            }
+          }
+        },
+        {
+          "id": 49322106,
+          "nowId": "1-49322106",
+          "contentKey": "49322106-1-293-1",
+          "dataSourceIdentifier": "dc9a3864e3b1f",
+          "type": "Media",
+          "headline": "Deschamps: France really proud to be in semifinals for third time in a row",
+          "description": "Deschamps: France really proud to be in semifinals for third time in a row",
+          "lastModified": "2026-07-10T07:42:58Z",
+          "published": "2026-07-10T07:42:58Z",
+          "images": [
+            {
+              "name": "Deschamps: France really proud to be in semifinals for third time in a row",
+              "caption": "Deschamps: France really proud to be in semifinals for third time in a row",
+              "alt": "",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0710/dm_260710_COM_SOC_Presser_Deschamps_France_really_proud_to_be_in_semifinals_for_third_time_in_a_row_202607/dm_260710_COM_SOC_Presser_Deschamps_France_really_proud_to_be_in_semifinals_for_third_time_in_a_row_202607.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "event",
+              "uid": "s:600~l:606~e:760510",
+              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460",
+              "description": "Morocco @ France",
+              "eventId": 760510,
+              "event": {
+                "id": 760510,
+                "sport": "soccer",
+                "league": "fifa.world",
+                "description": "Morocco @ France"
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/video/clip/_/id/49322106/france-really-proud-semifinals-third-row",
+              "self": {
+                "href": "https://www.espn.com/video/clip/_/id/49322106/france-really-proud-semifinals-third-row",
+                "dsi": {
+                  "href": "https://www.espn.com/video/clip?id=dc9a3864e3b1f"
+                }
+              }
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/video/clips/49322106"
+              },
+              "artwork": {
+                "href": "https://artwork.api.espn.com/artwork/collections/media/638cacc6-5852-46aa-b59c-fa6c674a6e4f"
+              }
+            },
+            "sportscenter": {
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49322106&videoDSI=dc9a3864e3b1f"
+            }
+          }
+        },
+        {
+          "id": 49322056,
+          "nowId": "1-49322056",
+          "contentKey": "49322056-1-5-1",
+          "dataSourceIdentifier": "2656157d7251e",
+          "type": "HeadlineNews",
+          "headline": "Nico O'Reilly wary of Erling Haaland 'mind games' ahead of England-Norway World Cup quarterfinal",
+          "description": "Nico O'Reilly has said that Erling Haaland is playing mind games by saying England are \"clear favourites\" to win their World Cup quarterfinal with Norway.",
+          "lastModified": "2026-07-10T07:39:17Z",
+          "published": "2026-07-10T07:39:17Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "3721cb702748a",
+              "id": 49322062,
+              "type": "header",
+              "name": "Nico O'Reilly [1296x729]",
+              "alt": "Nico O'Reilly speaks to the media.",
+              "credit": "(Photo by Bradley Collyer/PA Images via Getty Images)",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0710/r1687217_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Haaland: All the pressure is on England in quarterfinal",
+              "caption": "Haaland: All the pressure is on England in quarterfinal",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_ANALYSIS_Haaland_All_the_pressure_is_on_England_in_quarterfinal_2026_7_9/dm_260709_COM_SOC_ANALYSIS_Haaland_All_the_pressure_is_on_England_in_quarterfinal_2026_7_9.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72576,
+              "type": "team",
+              "uid": "s:600~t:448",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
+              "description": "England",
+              "sportId": 600,
+              "teamId": 448,
+              "team": {
+                "id": 448,
+                "description": "England",
+                "abbreviation": "ENG",
+                "shortDisplayName": "England",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142418,
+              "type": "team",
+              "uid": "s:600~t:464",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e",
+              "description": "Norway",
+              "sportId": 600,
+              "teamId": 464,
+              "team": {
+                "id": 464,
+                "description": "Norway",
+                "abbreviation": "NOR",
+                "shortDisplayName": "Norway",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 579868,
+              "type": "athlete",
+              "uid": "s:600~a:328464",
+              "guid": "05fe1643-f278-30d1-9518-93e6543907ca",
+              "description": "Nico O'Reilly",
+              "sportId": 600,
+              "athleteId": 328464,
+              "athlete": {
+                "id": 328464,
+                "description": "Nico O'Reilly",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/328464/nico-oreilly"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/328464/nico-oreilly"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 243655,
+              "type": "athlete",
+              "uid": "s:600~a:253989",
+              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31",
+              "description": "Erling Haaland",
+              "sportId": 600,
+              "athleteId": 253989,
+              "athlete": {
+                "id": 253989,
+                "description": "Erling Haaland",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
+            },
+            {
+              "type": "guid",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e"
+            },
+            {
+              "type": "guid",
+              "guid": "05fe1643-f278-30d1-9518-93e6543907ca"
+            },
+            {
+              "type": "guid",
+              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49322056/nico-oreilly-erling-haaland-mind-games-england-norway-world-cup-quarterfinal"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49322056"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49322056"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49322056"
+              }
+            }
+          },
+          "byline": "PA"
+        }
+      ]
+    },
     "rosters": [
       {
         "homeAway": "home",
@@ -13853,1764 +15212,6 @@
         "formation": "4-1-4-1"
       }
     ],
-    "news": {
-      "header": "FIFA World Cup News",
-      "link": {
-        "language": "en",
-        "rel": [
-          "index",
-          "desktop",
-          "league"
-        ],
-        "href": "https://www.espn.com/football/worldcup/",
-        "text": "All FIFA World Cup News",
-        "shortText": "All News",
-        "isExternal": false,
-        "isPremium": false
-      },
-      "articles": [
-        {
-          "id": 49312995,
-          "nowId": "1-49312995",
-          "contentKey": "49312995-1-293-1",
-          "dataSourceIdentifier": "2adb113f6178b",
-          "type": "Media",
-          "headline": "Olmo: Spain don't care what the other teams are doing",
-          "description": "Olmo: Spain don't care what the other teams are doing",
-          "lastModified": "2026-07-09T09:54:06Z",
-          "published": "2026-07-09T09:54:06Z",
-          "images": [
-            {
-              "name": "Olmo: Spain don't care what the other teams are doing",
-              "caption": "Olmo: Spain don't care what the other teams are doing",
-              "alt": "",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_Presser_Olmo_Spain_dont_care_what_the_other_teams_are_doing_20260709_GLOBAL_FIFA_WORLD/dm_260709_COM_SOC_Presser_Olmo_Spain_dont_care_what_the_other_teams_are_doing_20260709_GLOBAL_FIFA_WORLD.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 135133,
-              "type": "team",
-              "uid": "s:600~t:459",
-              "guid": "4084f797-3877-2af0-b70f-570d25a1a141",
-              "description": "Belgium",
-              "sportId": 600,
-              "teamId": 459,
-              "team": {
-                "id": 459,
-                "description": "Belgium",
-                "abbreviation": "BEL",
-                "shortDisplayName": "Belgium",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 238222,
-              "type": "athlete",
-              "uid": "s:600~a:227765",
-              "guid": "4ac1c50f-aad6-d466-47b8-343f613b7e66",
-              "description": "Dani Olmo",
-              "sportId": 600,
-              "athleteId": 227765,
-              "athlete": {
-                "id": 227765,
-                "description": "Dani Olmo",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/227765/dani-olmo"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/227765/dani-olmo"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72568,
-              "type": "team",
-              "uid": "s:600~t:164",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
-              "description": "Spain",
-              "sportId": 600,
-              "teamId": 164,
-              "team": {
-                "id": 164,
-                "description": "Spain",
-                "abbreviation": "ESP",
-                "shortDisplayName": "Spain",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "event",
-              "uid": "s:600~l:606~e:760511",
-              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675",
-              "description": "Belgium @ Spain",
-              "eventId": 760511,
-              "event": {
-                "id": 760511,
-                "sport": "soccer",
-                "league": "fifa.world",
-                "description": "Belgium @ Spain"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "4084f797-3877-2af0-b70f-570d25a1a141"
-            },
-            {
-              "type": "guid",
-              "guid": "4ac1c50f-aad6-d466-47b8-343f613b7e66"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
-            },
-            {
-              "type": "guid",
-              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49312995/spain-care-other-teams-doing",
-              "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49312995/spain-care-other-teams-doing",
-                "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=2adb113f6178b"
-                }
-              }
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49312995"
-              },
-              "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/68c7efc7-88e0-4485-9a6f-cd28a8fa5d01"
-              }
-            },
-            "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49312995&videoDSI=2adb113f6178b"
-            }
-          }
-        },
-        {
-          "id": 49309123,
-          "nowId": "1-49309123",
-          "contentKey": "49309123-1-6-1",
-          "dataSourceIdentifier": "b74b261a0f52e",
-          "type": "Story",
-          "headline": "World Cup Daily live: Mexico star Mora's high school graduation, France-Morocco kicks off quarterfinals",
-          "description": "Enjoy all the features, news, video analysis and color from around the competition as the first day of the 2026 FIFA World Cup quarterfinals begin.",
-          "lastModified": "2026-07-09T09:34:16Z",
-          "published": "2026-07-09T09:34:16Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "73d008facc8e9",
-              "id": 49312848,
-              "type": "header",
-              "name": "Mexico's Gilberto Mora [1296x729]",
-              "credit": "Carl Recine/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0709/r1686754_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "ba09ed7f81dee",
-              "id": 49309095,
-              "type": "header",
-              "name": "France [1296x729]",
-              "credit": "(Photo by Elsa/Getty Images)",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0708/r1686580_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Qui\u00f1ones goal causes chaos in Mexico City",
-              "caption": "Qui\u00f1ones goal causes chaos in Mexico City",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0705/dm_260705_Quinones_goal_causes_chaos_in_Mexico_City/dm_260705_Quinones_goal_causes_chaos_in_Mexico_City.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 760055,
-              "type": "topic",
-              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd",
-              "description": "live blog",
-              "sportId": 0,
-              "topicId": 4378
-            },
-            {
-              "id": 72570,
-              "type": "team",
-              "uid": "s:600~t:203",
-              "guid": "9e213fae-5b9d-d331-8b4b-33abdaf57b4f",
-              "description": "Mexico",
-              "sportId": 600,
-              "teamId": 203,
-              "team": {
-                "id": 203,
-                "description": "Mexico",
-                "abbreviation": "MEX",
-                "shortDisplayName": "Mexico",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/203/mexico"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/203/mexico"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 680891,
-              "type": "athlete",
-              "uid": "s:600~a:389575",
-              "guid": "5220f4ae-9d46-35e2-8fa6-0daa0b1578c3",
-              "description": "Gilberto Mora",
-              "sportId": 600,
-              "athleteId": 389575,
-              "athlete": {
-                "id": 389575,
-                "description": "Gilberto Mora",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/389575/gilberto-mora"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/389575/gilberto-mora"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd"
-            },
-            {
-              "type": "guid",
-              "guid": "9e213fae-5b9d-d331-8b4b-33abdaf57b4f"
-            },
-            {
-              "type": "guid",
-              "guid": "5220f4ae-9d46-35e2-8fa6-0daa0b1578c3"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49309123/world-cup-daily-live-mexico-star-mora-high-school-graduation-france-morocco-quarterfinals"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49309123"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49309123"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49309123"
-              }
-            }
-          },
-          "byline": "ESPN"
-        },
-        {
-          "id": 49312820,
-          "nowId": "1-49312820",
-          "contentKey": "49312820-1-293-1",
-          "dataSourceIdentifier": "c238ff1b42947",
-          "type": "Media",
-          "headline": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
-          "description": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
-          "lastModified": "2026-07-09T09:27:12Z",
-          "published": "2026-07-09T09:27:12Z",
-          "images": [
-            {
-              "name": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
-              "caption": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
-              "alt": "",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_News_Morocco_press_conference_chaos_leaves_Brahim_Diaz_forgetting_the_question_20260709/dm_260709_COM_SOC_News_Morocco_press_conference_chaos_leaves_Brahim_Diaz_forgetting_the_question_20260709.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 234376,
-              "type": "athlete",
-              "uid": "s:600~a:246532",
-              "guid": "0673b66c-e4c1-4f58-6277-6a177a3bc1f4",
-              "description": "Brahim D\u00edaz",
-              "sportId": 600,
-              "athleteId": 246532,
-              "athlete": {
-                "id": 246532,
-                "description": "Brahim D\u00edaz",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/246532/brahim-diaz"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/246532/brahim-diaz"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72584,
-              "type": "team",
-              "uid": "s:600~t:478",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
-              "description": "France",
-              "sportId": 600,
-              "teamId": 478,
-              "team": {
-                "id": 478,
-                "description": "France",
-                "abbreviation": "FRA",
-                "shortDisplayName": "France",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 142317,
-              "type": "team",
-              "uid": "s:600~t:2869",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
-              "description": "Morocco",
-              "sportId": 600,
-              "teamId": 2869,
-              "team": {
-                "id": 2869,
-                "description": "Morocco",
-                "abbreviation": "MAR",
-                "shortDisplayName": "Morocco",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "event",
-              "uid": "s:600~l:606~e:760510",
-              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460",
-              "description": "Morocco @ France",
-              "eventId": 760510,
-              "event": {
-                "id": 760510,
-                "sport": "soccer",
-                "league": "fifa.world",
-                "description": "Morocco @ France"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "0673b66c-e4c1-4f58-6277-6a177a3bc1f4"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
-            },
-            {
-              "type": "guid",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49312820/morocco-press-conference-chaos-leaves-brahim-diaz-forgetting-question",
-              "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49312820/morocco-press-conference-chaos-leaves-brahim-diaz-forgetting-question",
-                "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=c238ff1b42947"
-                }
-              }
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49312820"
-              },
-              "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/fada00e5-5290-4a78-a7d1-22549f99b842"
-              }
-            },
-            "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49312820&videoDSI=c238ff1b42947"
-            }
-          }
-        },
-        {
-          "id": 49312811,
-          "nowId": "1-49312811",
-          "contentKey": "49312811-1-5-1",
-          "dataSourceIdentifier": "1dc969dec977d",
-          "type": "HeadlineNews",
-          "headline": "Lamine Yamal: 'Incredible' to see Lionel Messi still starring at World Cup",
-          "description": "Spain winger Lamine Yamal has said he is thrilled to see Lionel Messi defy time and continue to have a starring role at this World Cup.",
-          "lastModified": "2026-07-09T09:30:40Z",
-          "published": "2026-07-09T09:30:40Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "85515ca942c19",
-              "id": 49312824,
-              "type": "header",
-              "name": "Lionel Messi  [1296x729]",
-              "credit": "Photo by Marcel Bonte/Soccrates/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0709/r1686753_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "9fa38dd2f6ec7",
-              "id": 49312761,
-              "type": "header",
-              "name": " Lamine Yamal [1296x729]",
-              "credit": "Photo by Grzegorz Wajda/SOPA Images/LightRocket via Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0709/r1686752_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Why Spain's substitutes were so important vs. Portugal",
-              "caption": "Alex Kirkland reacts to Spain's late 1-0 win over Portugal to advance to the quarterfinals.",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0707/dm_260707_SPAIN_WC_REAX_16x9_SC4U/dm_260707_SPAIN_WC_REAX_16x9_SC4U.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 596595,
-              "type": "athlete",
-              "uid": "s:600~a:362150",
-              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4",
-              "description": "Lamine Yamal",
-              "sportId": 600,
-              "athleteId": 362150,
-              "athlete": {
-                "id": 362150,
-                "description": "Lamine Yamal",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72568,
-              "type": "team",
-              "uid": "s:600~t:164",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
-              "description": "Spain",
-              "sportId": 600,
-              "teamId": 164,
-              "team": {
-                "id": 164,
-                "description": "Spain",
-                "abbreviation": "ESP",
-                "shortDisplayName": "Spain",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 238474,
-              "type": "athlete",
-              "uid": "s:600~a:45843",
-              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0",
-              "description": "Lionel Messi",
-              "sportId": 600,
-              "athleteId": 45843,
-              "athlete": {
-                "id": 45843,
-                "description": "Lionel Messi",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 702608,
-              "type": "contributor",
-              "guid": "fec4eb72-2649-3b41-a508-b3164b869711",
-              "description": "Adriana Garcia",
-              "slug": "adriana-garcia",
-              "contributor": {
-                "id": 3379,
-                "description": "Adriana Garcia"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
-            },
-            {
-              "type": "guid",
-              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0"
-            },
-            {
-              "type": "guid",
-              "guid": "fec4eb72-2649-3b41-a508-b3164b869711"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49312811/incredible-see-lionel-messi-starring-world-cup"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49312811"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49312811"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49312811"
-              }
-            }
-          },
-          "byline": "Adriana Garcia"
-        },
-        {
-          "id": 49312788,
-          "nowId": "1-49312788",
-          "contentKey": "49312788-1-5-1",
-          "dataSourceIdentifier": "b87a1f9b1e7d2",
-          "type": "HeadlineNews",
-          "headline": "Keir Starmer hints at bank holiday if England win World Cup",
-          "description": "An England World Cup win could mean an extra bank holiday, Sir Keir Starmer has hinted ahead of a quarterfinal clash with Norway.",
-          "lastModified": "2026-07-09T09:17:13Z",
-          "published": "2026-07-09T09:17:13Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "408374cca65be",
-              "id": 49312681,
-              "type": "header",
-              "name": "Keir Starmer [1296x729]",
-              "caption": "United Kingdom Prime Minister Keir Starmer and Norway's Prime Minister Jonas Gahr Store greet the media at the Nato summit",
-              "alt": "United Kingdom Prime Minister Keir Starmer and Norway's Prime Minister Jonas Gahr Store greet the media at the Nato summit",
-              "credit": "GettyImages",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0709/r1686749_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "53069ab990a51",
-              "id": 49287362,
-              "type": "header",
-              "name": "Harry Kane Jude Bellingham [1296x729]",
-              "caption": "Harry Kane (left) and Jude Bellingham (right) celebrate Kane's goal for England on Sunday.",
-              "credit": "Charlotte Wilson/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0706/r1685382_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Odegaard: Norway's quarterfinal against England a 'massive test'",
-              "caption": "Odegaard: Norway's quarterfinal against England a 'massive test'",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 72576,
-              "type": "team",
-              "uid": "s:600~t:448",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
-              "description": "England",
-              "sportId": 600,
-              "teamId": 448,
-              "team": {
-                "id": 448,
-                "description": "England",
-                "abbreviation": "ENG",
-                "shortDisplayName": "England",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49312788/uk-prime-minister-keir-starmer-hints-bank-holiday-england-win-world-cup-2026"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49312788"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49312788"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49312788"
-              }
-            }
-          },
-          "byline": "PA"
-        },
-        {
-          "id": 49310007,
-          "nowId": "1-49310007",
-          "contentKey": "49310007-1-5-1",
-          "dataSourceIdentifier": "a87f9b24da6d4",
-          "type": "HeadlineNews",
-          "headline": "Morocco star Saibari to miss World Cup quarterfinal vs. France",
-          "description": "Morocco will be without star forward Ismael Saibari for their World Cup quarterfinal with France on Thursday.",
-          "lastModified": "2026-07-09T08:27:25Z",
-          "published": "2026-07-09T08:27:25Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "0bd0bf703334d",
-              "id": 49310040,
-              "type": "header",
-              "name": "Ismael Saibari [1296x729]",
-              "caption": "Ismael Saibari suffered an injury in Morocco's win over Canada.",
-              "alt": "Ismael Saibari #11 (C) of Morocco reacts after sustaining an injury during the FIFA World Cup 2026 Round of 16 match between Canada and Morocco at Houston Stadium on July 04, 2026 in Houston, Texas.",
-              "credit": "Kevin C. Cox/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0708/r1686644_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "LeBoeuf: France have to 'respect' Morocco",
-              "caption": "LeBoeuf: France have to 'respect' Morocco",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_LeBoeuf_France_have_to_respect_Morocco/dm_260708_LeBoeuf_France_have_to_respect_Morocco.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 142317,
-              "type": "team",
-              "uid": "s:600~t:2869",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
-              "description": "Morocco",
-              "sportId": 600,
-              "teamId": 2869,
-              "team": {
-                "id": 2869,
-                "description": "Morocco",
-                "abbreviation": "MAR",
-                "shortDisplayName": "Morocco",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 441270,
-              "type": "athlete",
-              "uid": "s:600~a:304572",
-              "guid": "2b40e878-1abd-31ac-b76f-5a5d5c9f2ada",
-              "description": "Ismael Saibari",
-              "sportId": 600,
-              "athleteId": 304572,
-              "athlete": {
-                "id": 304572,
-                "description": "Ismael Saibari",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/304572/ismael-saibari"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/304572/ismael-saibari"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72584,
-              "type": "team",
-              "uid": "s:600~t:478",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
-              "description": "France",
-              "sportId": 600,
-              "teamId": 478,
-              "team": {
-                "id": 478,
-                "description": "France",
-                "abbreviation": "FRA",
-                "shortDisplayName": "France",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 702571,
-              "type": "contributor",
-              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc",
-              "description": "180530 COLUMNIST PROFILE Ed Dove",
-              "slug": "180530-columnist-profile-ed-dove",
-              "contributor": {
-                "id": 3335,
-                "description": "180530 COLUMNIST PROFILE Ed Dove"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
-            },
-            {
-              "type": "guid",
-              "guid": "2b40e878-1abd-31ac-b76f-5a5d5c9f2ada"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
-            },
-            {
-              "type": "guid",
-              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49310007/morocco-ismael-saibari-injury-france-world-cup-2026-quarterfinal"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49310007"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49310007"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49310007"
-              }
-            }
-          },
-          "byline": "Ed Dove"
-        }
-      ]
-    },
-    "article": {
-      "id": 49034881,
-      "nowId": "1-49034881",
-      "contentKey": "49034881-1-21-1",
-      "dataSourceIdentifier": "3b8a847284f2f",
-      "publishedkey": "soccer760428",
-      "type": "Recap",
-      "gameId": "760428",
-      "headline": "Spain shocked by Cape Verde, draw 0-0 in their World Cup opener",
-      "description": "Cape Verde pulled off the shock of the 2026 World Cup thus far as they held European champions Spain to a battling goalless draw in their Group H opener in Atlanta.",
-      "linkText": "Spain shocked by Cape Verde in World Cup opener",
-      "categorized": "2026-06-16T08:45:08Z",
-      "originallyPosted": "2026-06-15T20:04:00Z",
-      "lastModified": "2026-06-15T20:04:05Z",
-      "published": "2026-06-15T20:04:00Z",
-      "section": "Soccer",
-      "images": [
-        {
-          "dataSourceIdentifier": "6648da96e6392",
-          "id": 49073916,
-          "type": "header",
-          "name": "Cape Verde [1296x729]",
-          "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
-          "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
-          "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
-          "height": 729,
-          "width": 1296,
-          "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x729_16-9.jpg",
-          "peers": [
-            {
-              "dataSourceIdentifier": "7733ed6d1a52b",
-              "id": 49073947,
-              "type": "header",
-              "name": "Cape Verde [1296x1296]",
-              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
-              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
-              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
-              "height": 1296,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x1296_1-1.jpg"
-            },
-            {
-              "dataSourceIdentifier": "6648da96e6392",
-              "id": 49073916,
-              "type": "header",
-              "name": "Cape Verde [1296x729]",
-              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
-              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
-              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "183ae770ea678",
-              "id": 49073925,
-              "type": "header",
-              "name": "Cape Verde [864x1296]",
-              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
-              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
-              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
-              "height": 1296,
-              "width": 864,
-              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_864x1296_2-3.jpg"
-            },
-            {
-              "dataSourceIdentifier": "3697176a25efd",
-              "id": 49073934,
-              "type": "header",
-              "name": "Cape Verde [1296x864]",
-              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
-              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
-              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
-              "height": 864,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x864_3-2.jpg"
-            },
-            {
-              "dataSourceIdentifier": "9d1e0281b2b3d",
-              "id": 49073942,
-              "type": "header",
-              "name": "Cape Verde [1296x518]",
-              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
-              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
-              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
-              "height": 518,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x518_5-2.jpg"
-            }
-          ]
-        },
-        {
-          "type": "Media",
-          "name": "Viral Cape Verde goalkeeper Vozinha's 'dream came true'",
-          "caption": "Viral Cape Verde goalkeeper Vozinha's 'dream came true'",
-          "height": 324,
-          "width": 576,
-          "url": "https://a.espncdn.com/media/motion/2026/0616/dm_260616_COM_SOC_Presser_Vozinha_Today_the_dream_comes_true_after_Cape_Verde_draw_against_Spain_202606_FIFA/dm_260616_COM_SOC_Presser_Vozinha_Today_the_dream_comes_true_after_Cape_Verde_draw_against_Spain_202606_FIFA.jpg"
-        }
-      ],
-      "video": [],
-      "categories": [
-        {
-          "id": 81497,
-          "type": "league",
-          "uid": "s:600",
-          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-          "description": "Soccer",
-          "sportId": 600,
-          "leagueId": 600,
-          "league": {
-            "id": 600,
-            "description": "Soccer",
-            "links": {
-              "web": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/"
-                }
-              },
-              "mobile": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": 33303,
-          "type": "league",
-          "uid": "s:600~l:606",
-          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-          "description": "FIFA World Cup",
-          "sportId": 600,
-          "leagueId": 4,
-          "league": {
-            "id": 606,
-            "description": "FIFA World Cup",
-            "abbreviation": "FIFA World Cup",
-            "links": {
-              "web": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/worldcup/"
-                }
-              },
-              "mobile": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/worldcup/"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": 72568,
-          "type": "team",
-          "uid": "s:600~t:164",
-          "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
-          "description": "Spain",
-          "sportId": 600,
-          "teamId": 164,
-          "team": {
-            "id": 164,
-            "description": "Spain",
-            "abbreviation": "ESP",
-            "shortDisplayName": "Spain",
-            "links": {
-              "web": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                }
-              },
-              "mobile": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": 142461,
-          "type": "team",
-          "uid": "s:600~t:2597",
-          "guid": "d4df09fe-4066-fc4a-ab3d-03e0e19653f3",
-          "description": "Cape Verde",
-          "sportId": 600,
-          "teamId": 2597,
-          "team": {
-            "id": 2597,
-            "description": "Cape Verde",
-            "abbreviation": "CPV",
-            "shortDisplayName": "Cape Verde",
-            "links": {
-              "web": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/2597/cape-verde"
-                }
-              },
-              "mobile": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/2597/cape-verde"
-                }
-              }
-            }
-          }
-        },
-        {
-          "type": "event",
-          "uid": "s:600~l:606~e:760428",
-          "guid": "6db672ce-f61f-3de0-b4f1-8d6c4390613c",
-          "description": "Cape Verde @ Spain",
-          "eventId": 760428,
-          "event": {
-            "id": 760428,
-            "sport": "soccer",
-            "league": "fifa.world",
-            "description": "Cape Verde @ Spain"
-          }
-        },
-        {
-          "type": "guid",
-          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-        },
-        {
-          "type": "guid",
-          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-        },
-        {
-          "type": "guid",
-          "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
-        },
-        {
-          "type": "guid",
-          "guid": "d4df09fe-4066-fc4a-ab3d-03e0e19653f3"
-        },
-        {
-          "type": "guid",
-          "guid": "6db672ce-f61f-3de0-b4f1-8d6c4390613c"
-        }
-      ],
-      "keywords": [
-        "Soccer",
-        "FIFA World Cup",
-        "Spain",
-        "Cape Verde",
-        "Cape Verde @ Spain"
-      ],
-      "story": "<p>Tiny <a data-clubhouse-guid=\"d4df09fe-4066-fc4a-ab3d-03e0e19653f3\" href=\"http://espn.com/soccer/team?id=2597\">Cape Verde</a>, making its debut at the World Cup, pulled off a stunning upset to shut out heavily favored <a data-clubhouse-guid=\"99314f68-1c92-218b-b02b-67c50ff9bc3a\" href=\"http://espn.com/soccer/team?id=164\">Spain</a> in a 0-0 draw on Monday.</p>\n<p>\"This means everything for our country,\" Cape Verde coach Pedro Leit\u00e3o Brito said.</p>\n<p>\"We have always said that we wanted everybody to see our country, our team and we have shown organization and braveness and this is proof of what our country is about - resilience and to try to overcome hardships.\"</p>\n<p>European champion Spain is one of the favorites to win the tournament and was -1200 to beat Cape Verde in its opening game. But it could not find a way past a 40-year-old goalkeeper and a stubborn defense that had an answer to everything Spain's superstars threw at them.</p>\n<p>Not even sensational teenager <a data-player-guid=\"de67ce6f-0991-36b9-afb9-c008f21dc4b4\" href=\"http://espn.com/soccer/player/_/id/362150/lamine-yamal\">Lamine Yamal</a>, who came in off the bench in the second half, could turn a game that ended with wild and emotional celebrations from Cape Verde players and fans inside the stadium.</p>\n<p>\"A dream\" was how Cape Verde defender <a data-player-guid=\"a8e53e98-3611-2b2b-0bfa-f8595bdb9bbf\" href=\"http://espn.com/soccer/player/_/id/180113/steven-moreira\">Steven Moreira</a> described it.</p>\n<p>Veteran goalkeeper Vozinha broke down in tears after the final whistle following his impressive performance to keep Spain at bay.</p>\n<p><photo caption=\"Cape Verde held Spain to a 0-0 draw in the World Cup on Monday.\"></p>\n<p>He was the player of the match, pulling off a string of saves at the end of the first half to deny <a data-player-guid=\"84dc37ee-3f62-aca9-7302-fd812273bfdc\" href=\"http://espn.com/soccer/player/_/id/265869/ferran-torres\">Ferran Torres</a>, <a data-player-guid=\"3b2df297-82ac-bac8-4727-6551202a0e40\" href=\"http://espn.com/soccer/player/_/id/250465/pedri\">Pedri</a> and <a data-player-guid=\"2f55affc-2017-e5f7-9d7a-5efd4ecc0f24\" href=\"http://espn.com/soccer/player/_/id/159317/aymeric-laporte\">Aymeric Laporte</a>.</p>\n<p>The closest Spain came to finding a breakthrough was when Torres struck the bar shortly before halftime.</p>\n<p>\"We should have won today's match with everything that happened, with all the favorable situations we created, but we lacked freshness and a clinical edge,\" said Spain coach Luis de la Fuente, who had warned before the match that Cape Verde could be one of the surprise teams of the World Cup.</p>\n<p>Spain could have been the victim of an even bigger upset when <a data-player-guid=\"99f1657d-8795-966c-8d05-5f1049c30578\" href=\"http://espn.com/soccer/player/_/id/214683/diney-borges\">Diney Borges</a> had a late chance to win the game, but saw his header saved by Spain keeper <a data-player-guid=\"db877e27-6e30-6c82-5760-06f766ad33a3\" href=\"http://espn.com/soccer/player/_/id/222375/unai-simon\">Unai Sim\u00f3n</a>.</p>\n<p>Cape Verde's performance rebuked some of the criticisms that the expansion of the World Cup from 32 teams to 48 would weaken the tournament.</p>\n<p>A group of islands with around half a million inhabitants is the third smallest nation to qualify for the tournament. And even against a Spain team that is filled with superstar players, Cape Verde proved its worth on soccer's biggest stage.</p>\n<p>\"All of us, we are happy because we work a lot to be here. We deserve to be here,\" said Vozinha.</p>\n<p>The 2010 champion Spain is aiming to win the World Cup for a second time, but a disappointing start echoes its performances in recent tournaments when it has failed to advance beyond the round of 16 in each of the last three editions.</p>\n<p>\"What doubts do you think my team is going to have? Zero doubts,\" De la Fuente said. \"We know how difficult this competition is. The idea we need to follow is what took us here and what made us European champions.\"</p>\n<p>Spain plays <a data-clubhouse-guid=\"a0bc2139-6270-6732-54a7-a49929b07c85\" href=\"http://espn.com/soccer/team?id=655\">Saudi Arabia</a> on Sunday and Cape Verde faces <a data-clubhouse-guid=\"881562ef-95fb-355a-edd7-7e40e04b51c2\" href=\"http://espn.com/soccer/team?id=212\">Uruguay</a>.</p>\n\n",
-      "premium": false,
-      "isLiveBlog": false,
-      "links": {
-        "web": {
-          "href": "http://www.espn.com/soccer/report/_/gameId/760428"
-        },
-        "mobile": {
-          "href": "http://m.espn.go.com/soccer/story?storyId=49034881"
-        },
-        "api": {
-          "self": {
-            "href": "https://content.core.api.espn.com/v1/sports/news/49034881"
-          }
-        },
-        "app": {
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showStory?uid=49034881"
-          }
-        }
-      },
-      "byline": "Associated Press",
-      "allowComments": true,
-      "allowSearch": true,
-      "allowContentReactions": false
-    },
-    "videos": [
-      {
-        "id": 49074141,
-        "cerebroId": "6a3042131bf54a00fd65f8de",
-        "source": "espn",
-        "headline": "Burley slams 'extremely pedestrian' Spain after Cape Verde draw",
-        "description": "Burley slams 'extremely pedestrian' Spain after Cape Verde draw",
-        "lastModified": "2026-06-15T18:19:48Z",
-        "originalPublishDate": "2026-06-15T18:18:59Z",
-        "duration": 83,
-        "timeRestrictions": {
-          "embargoDate": "2026-06-15T18:17:13Z",
-          "expirationDate": "2027-06-18T18:17:13Z"
-        },
-        "deviceRestrictions": {
-          "type": "whitelist",
-          "devices": [
-            "settop",
-            "tablet",
-            "handset",
-            "ipad",
-            "desktop"
-          ]
-        },
-        "thumbnail": "https://a.espncdn.com/media/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw.jpg",
-        "links": {
-          "web": {
-            "href": "https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw",
-            "self": {
-              "href": "https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw",
-              "dsi": {
-                "href": "https://www.espn.com/video/clip?id=96b7d5e3fd78d"
-              }
-            }
-          },
-          "mobile": {
-            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/3b875a95-038e-4515-8cdb-53255f65c94e/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw",
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw.mp4"
-            },
-            "alert": {
-              "href": "https://m.espn.com/general/video/videoAlert?vid=49074141"
-            },
-            "streaming": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/3b875a95-038e-4515-8cdb-53255f65c94e/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw"
-            },
-            "progressiveDownload": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/3b875a95-038e-4515-8cdb-53255f65c94e/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw"
-            }
-          },
-          "api": {
-            "self": {
-              "href": "https://content.core.api.espn.com/v1/video/clips/49074141"
-            },
-            "artwork": {
-              "href": "https://artwork.api.espn.com/artwork/collections/media/3b875a95-038e-4515-8cdb-53255f65c94e"
-            }
-          },
-          "source": {
-            "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw_360p30_1464k.mp4",
-            "mezzanine": {
-              "href": "https://media.video-origin.espn.com/espnvideo/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw.mp4"
-            },
-            "flash": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw.smil"
-            },
-            "hds": {
-              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw_rel.smil/manifest.f4m"
-            },
-            "HLS": {
-              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/playlist.m3u8",
-              "HD": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/playlist.m3u8"
-              },
-              "cmaf": {
-                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/playlist.m3u8"
-              },
-              "shield": {
-                "href": "https://watch.auth.api.espn.com/video/auth/media/3b875a95-038e-4515-8cdb-53255f65c94e/asset"
-              }
-            },
-            "HD": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw_720p30_2896k.mp4"
-            },
-            "full": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw_360p30_1464k.mp4"
-            }
-          },
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showVideo?videoID=49074141&videoDSI=96b7d5e3fd78d"
-          }
-        },
-        "ad": {
-          "sport": "Soccer",
-          "bundle": "worldcupstatstories"
-        },
-        "tracking": {
-          "sportName": "soccer",
-          "leagueName": "FIFA World Cup",
-          "coverageType": "Analysis",
-          "trackingName": "COM_SOC Analysis (Burley slams \u2018extremely pedestrian\u2019 Spain after Cape Verde draw) 2026/06/15",
-          "trackingId": "dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw"
-        }
-      },
-      {
-        "id": 49074398,
-        "cerebroId": "6a3046312f39d9111d19e4a4",
-        "source": "espn",
-        "headline": "Burley: Cape Verde couldn't have given a better account of themselves",
-        "description": "Burley: Cape Verde couldn't have given a better account of themselves",
-        "lastModified": "2026-06-15T18:48:43Z",
-        "originalPublishDate": "2026-06-15T18:36:34Z",
-        "duration": 94,
-        "timeRestrictions": {
-          "embargoDate": "2026-06-15T18:31:05Z",
-          "expirationDate": "2027-06-18T18:31:05Z"
-        },
-        "deviceRestrictions": {
-          "type": "whitelist",
-          "devices": [
-            "settop",
-            "tablet",
-            "handset",
-            "ipad",
-            "desktop"
-          ]
-        },
-        "thumbnail": "https://a.espncdn.com/media/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves.jpg",
-        "links": {
-          "web": {
-            "href": "https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account",
-            "self": {
-              "href": "https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account",
-              "dsi": {
-                "href": "https://www.espn.com/video/clip?id=f8f4a872fe2a4"
-              }
-            }
-          },
-          "mobile": {
-            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account",
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves.mp4"
-            },
-            "alert": {
-              "href": "https://m.espn.com/general/video/videoAlert?vid=49074398"
-            },
-            "streaming": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account"
-            },
-            "progressiveDownload": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account"
-            }
-          },
-          "api": {
-            "self": {
-              "href": "https://content.core.api.espn.com/v1/video/clips/49074398"
-            },
-            "artwork": {
-              "href": "https://artwork.api.espn.com/artwork/collections/media/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64"
-            }
-          },
-          "source": {
-            "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves_360p30_1464k.mp4",
-            "mezzanine": {
-              "href": "https://media.video-origin.espn.com/espnvideo/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves.mp4"
-            },
-            "flash": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves.smil"
-            },
-            "hds": {
-              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves_rel.smil/manifest.f4m"
-            },
-            "HLS": {
-              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/playlist.m3u8",
-              "HD": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/playlist.m3u8"
-              },
-              "cmaf": {
-                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/playlist.m3u8"
-              },
-              "shield": {
-                "href": "https://watch.auth.api.espn.com/video/auth/media/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64/asset"
-              }
-            },
-            "HD": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves_720p30_2896k.mp4"
-            },
-            "full": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves_360p30_1464k.mp4"
-            }
-          },
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showVideo?videoID=49074398&videoDSI=f8f4a872fe2a4"
-          }
-        },
-        "ad": {
-          "sport": "Soccer",
-          "bundle": "sportscenter"
-        },
-        "tracking": {
-          "sportName": "soccer",
-          "leagueName": "FIFA World Cup",
-          "coverageType": "Analysis",
-          "trackingName": "COM_SOC Analysis (Burley: Cape Verde couldn\u2019t have given a better account of themselves) 2026/06/15",
-          "trackingId": "dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves"
-        }
-      }
-    ],
     "header": {
       "id": "760428",
       "uid": "s:600~l:606~e:760428",
@@ -16170,6 +15771,488 @@
         }
       ]
     },
+    "article": {
+      "id": 49034881,
+      "nowId": "1-49034881",
+      "contentKey": "49034881-1-21-1",
+      "dataSourceIdentifier": "3b8a847284f2f",
+      "publishedkey": "soccer760428",
+      "type": "Recap",
+      "gameId": "760428",
+      "headline": "Spain shocked by Cape Verde, draw 0-0 in their World Cup opener",
+      "description": "Cape Verde pulled off the shock of the 2026 World Cup thus far as they held European champions Spain to a battling goalless draw in their Group H opener in Atlanta.",
+      "linkText": "Spain shocked by Cape Verde in World Cup opener",
+      "categorized": "2026-06-16T08:45:08Z",
+      "originallyPosted": "2026-06-15T20:04:00Z",
+      "lastModified": "2026-06-15T20:04:05Z",
+      "published": "2026-06-15T20:04:00Z",
+      "section": "Soccer",
+      "images": [
+        {
+          "dataSourceIdentifier": "6648da96e6392",
+          "id": 49073916,
+          "type": "header",
+          "name": "Cape Verde [1296x729]",
+          "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
+          "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
+          "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
+          "height": 729,
+          "width": 1296,
+          "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x729_16-9.jpg",
+          "peers": [
+            {
+              "dataSourceIdentifier": "7733ed6d1a52b",
+              "id": 49073947,
+              "type": "header",
+              "name": "Cape Verde [1296x1296]",
+              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
+              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
+              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
+              "height": 1296,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x1296_1-1.jpg"
+            },
+            {
+              "dataSourceIdentifier": "6648da96e6392",
+              "id": 49073916,
+              "type": "header",
+              "name": "Cape Verde [1296x729]",
+              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
+              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
+              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "183ae770ea678",
+              "id": 49073925,
+              "type": "header",
+              "name": "Cape Verde [864x1296]",
+              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
+              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
+              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
+              "height": 1296,
+              "width": 864,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_864x1296_2-3.jpg"
+            },
+            {
+              "dataSourceIdentifier": "3697176a25efd",
+              "id": 49073934,
+              "type": "header",
+              "name": "Cape Verde [1296x864]",
+              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
+              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
+              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
+              "height": 864,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x864_3-2.jpg"
+            },
+            {
+              "dataSourceIdentifier": "9d1e0281b2b3d",
+              "id": 49073942,
+              "type": "header",
+              "name": "Cape Verde [1296x518]",
+              "caption": "Cape Verde goalkeeper Vozinha impressed against Spain.",
+              "alt": "Cape Verde goalkeeper Vozinha makes a save against Spain.",
+              "credit": "(Photo by Roberto SCHMIDT / AFP via Getty Images,",
+              "height": 518,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0615/r1673657_1296x518_5-2.jpg"
+            }
+          ]
+        },
+        {
+          "type": "Media",
+          "name": "Viral Cape Verde goalkeeper Vozinha's 'dream came true'",
+          "caption": "Viral Cape Verde goalkeeper Vozinha's 'dream came true'",
+          "height": 324,
+          "width": 576,
+          "url": "https://a.espncdn.com/media/motion/2026/0616/dm_260616_COM_SOC_Presser_Vozinha_Today_the_dream_comes_true_after_Cape_Verde_draw_against_Spain_202606_FIFA/dm_260616_COM_SOC_Presser_Vozinha_Today_the_dream_comes_true_after_Cape_Verde_draw_against_Spain_202606_FIFA.jpg"
+        }
+      ],
+      "video": [],
+      "categories": [
+        {
+          "id": 81497,
+          "type": "league",
+          "uid": "s:600",
+          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+          "description": "Soccer",
+          "sportId": 600,
+          "leagueId": 600,
+          "league": {
+            "id": 600,
+            "description": "Soccer",
+            "links": {
+              "web": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/"
+                }
+              },
+              "mobile": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": 33303,
+          "type": "league",
+          "uid": "s:600~l:606",
+          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+          "description": "FIFA World Cup",
+          "sportId": 600,
+          "leagueId": 4,
+          "league": {
+            "id": 606,
+            "description": "FIFA World Cup",
+            "abbreviation": "FIFA World Cup",
+            "links": {
+              "web": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/worldcup/"
+                }
+              },
+              "mobile": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/worldcup/"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": 72568,
+          "type": "team",
+          "uid": "s:600~t:164",
+          "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
+          "description": "Spain",
+          "sportId": 600,
+          "teamId": 164,
+          "team": {
+            "id": 164,
+            "description": "Spain",
+            "abbreviation": "ESP",
+            "shortDisplayName": "Spain",
+            "links": {
+              "web": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                }
+              },
+              "mobile": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": 142461,
+          "type": "team",
+          "uid": "s:600~t:2597",
+          "guid": "d4df09fe-4066-fc4a-ab3d-03e0e19653f3",
+          "description": "Cape Verde",
+          "sportId": 600,
+          "teamId": 2597,
+          "team": {
+            "id": 2597,
+            "description": "Cape Verde",
+            "abbreviation": "CPV",
+            "shortDisplayName": "Cape Verde",
+            "links": {
+              "web": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/2597/cape-verde"
+                }
+              },
+              "mobile": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/2597/cape-verde"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "event",
+          "uid": "s:600~l:606~e:760428",
+          "guid": "6db672ce-f61f-3de0-b4f1-8d6c4390613c",
+          "description": "Cape Verde @ Spain",
+          "eventId": 760428,
+          "event": {
+            "id": 760428,
+            "sport": "soccer",
+            "league": "fifa.world",
+            "description": "Cape Verde @ Spain"
+          }
+        },
+        {
+          "type": "guid",
+          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+        },
+        {
+          "type": "guid",
+          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+        },
+        {
+          "type": "guid",
+          "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
+        },
+        {
+          "type": "guid",
+          "guid": "d4df09fe-4066-fc4a-ab3d-03e0e19653f3"
+        },
+        {
+          "type": "guid",
+          "guid": "6db672ce-f61f-3de0-b4f1-8d6c4390613c"
+        }
+      ],
+      "keywords": [
+        "Soccer",
+        "FIFA World Cup",
+        "Spain",
+        "Cape Verde",
+        "Cape Verde @ Spain"
+      ],
+      "story": "<p>Tiny <a data-clubhouse-guid=\"d4df09fe-4066-fc4a-ab3d-03e0e19653f3\" href=\"http://espn.com/soccer/team?id=2597\">Cape Verde</a>, making its debut at the World Cup, pulled off a stunning upset to shut out heavily favored <a data-clubhouse-guid=\"99314f68-1c92-218b-b02b-67c50ff9bc3a\" href=\"http://espn.com/soccer/team?id=164\">Spain</a> in a 0-0 draw on Monday.</p>\n<p>\"This means everything for our country,\" Cape Verde coach Pedro Leit\u00e3o Brito said.</p>\n<p>\"We have always said that we wanted everybody to see our country, our team and we have shown organization and braveness and this is proof of what our country is about - resilience and to try to overcome hardships.\"</p>\n<p>European champion Spain is one of the favorites to win the tournament and was -1200 to beat Cape Verde in its opening game. But it could not find a way past a 40-year-old goalkeeper and a stubborn defense that had an answer to everything Spain's superstars threw at them.</p>\n<p>Not even sensational teenager <a data-player-guid=\"de67ce6f-0991-36b9-afb9-c008f21dc4b4\" href=\"http://espn.com/soccer/player/_/id/362150/lamine-yamal\">Lamine Yamal</a>, who came in off the bench in the second half, could turn a game that ended with wild and emotional celebrations from Cape Verde players and fans inside the stadium.</p>\n<p>\"A dream\" was how Cape Verde defender <a data-player-guid=\"a8e53e98-3611-2b2b-0bfa-f8595bdb9bbf\" href=\"http://espn.com/soccer/player/_/id/180113/steven-moreira\">Steven Moreira</a> described it.</p>\n<p>Veteran goalkeeper Vozinha broke down in tears after the final whistle following his impressive performance to keep Spain at bay.</p>\n<p><photo caption=\"Cape Verde held Spain to a 0-0 draw in the World Cup on Monday.\"></p>\n<p>He was the player of the match, pulling off a string of saves at the end of the first half to deny <a data-player-guid=\"84dc37ee-3f62-aca9-7302-fd812273bfdc\" href=\"http://espn.com/soccer/player/_/id/265869/ferran-torres\">Ferran Torres</a>, <a data-player-guid=\"3b2df297-82ac-bac8-4727-6551202a0e40\" href=\"http://espn.com/soccer/player/_/id/250465/pedri\">Pedri</a> and <a data-player-guid=\"2f55affc-2017-e5f7-9d7a-5efd4ecc0f24\" href=\"http://espn.com/soccer/player/_/id/159317/aymeric-laporte\">Aymeric Laporte</a>.</p>\n<p>The closest Spain came to finding a breakthrough was when Torres struck the bar shortly before halftime.</p>\n<p>\"We should have won today's match with everything that happened, with all the favorable situations we created, but we lacked freshness and a clinical edge,\" said Spain coach Luis de la Fuente, who had warned before the match that Cape Verde could be one of the surprise teams of the World Cup.</p>\n<p>Spain could have been the victim of an even bigger upset when <a data-player-guid=\"99f1657d-8795-966c-8d05-5f1049c30578\" href=\"http://espn.com/soccer/player/_/id/214683/diney-borges\">Diney Borges</a> had a late chance to win the game, but saw his header saved by Spain keeper <a data-player-guid=\"db877e27-6e30-6c82-5760-06f766ad33a3\" href=\"http://espn.com/soccer/player/_/id/222375/unai-simon\">Unai Sim\u00f3n</a>.</p>\n<p>Cape Verde's performance rebuked some of the criticisms that the expansion of the World Cup from 32 teams to 48 would weaken the tournament.</p>\n<p>A group of islands with around half a million inhabitants is the third smallest nation to qualify for the tournament. And even against a Spain team that is filled with superstar players, Cape Verde proved its worth on soccer's biggest stage.</p>\n<p>\"All of us, we are happy because we work a lot to be here. We deserve to be here,\" said Vozinha.</p>\n<p>The 2010 champion Spain is aiming to win the World Cup for a second time, but a disappointing start echoes its performances in recent tournaments when it has failed to advance beyond the round of 16 in each of the last three editions.</p>\n<p>\"What doubts do you think my team is going to have? Zero doubts,\" De la Fuente said. \"We know how difficult this competition is. The idea we need to follow is what took us here and what made us European champions.\"</p>\n<p>Spain plays <a data-clubhouse-guid=\"a0bc2139-6270-6732-54a7-a49929b07c85\" href=\"http://espn.com/soccer/team?id=655\">Saudi Arabia</a> on Sunday and Cape Verde faces <a data-clubhouse-guid=\"881562ef-95fb-355a-edd7-7e40e04b51c2\" href=\"http://espn.com/soccer/team?id=212\">Uruguay</a>.</p>\n\n",
+      "premium": false,
+      "isLiveBlog": false,
+      "links": {
+        "web": {
+          "href": "http://www.espn.com/soccer/report/_/gameId/760428"
+        },
+        "mobile": {
+          "href": "http://m.espn.go.com/soccer/story?storyId=49034881"
+        },
+        "api": {
+          "self": {
+            "href": "https://content.core.api.espn.com/v1/sports/news/49034881"
+          }
+        },
+        "app": {
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showStory?uid=49034881"
+          }
+        }
+      },
+      "byline": "Associated Press",
+      "allowComments": true,
+      "allowSearch": true,
+      "allowContentReactions": false
+    },
+    "videos": [
+      {
+        "id": 49074141,
+        "cerebroId": "6a3042131bf54a00fd65f8de",
+        "source": "espn",
+        "headline": "Burley slams 'extremely pedestrian' Spain after Cape Verde draw",
+        "description": "Burley slams 'extremely pedestrian' Spain after Cape Verde draw",
+        "lastModified": "2026-06-15T18:19:48Z",
+        "originalPublishDate": "2026-06-15T18:18:59Z",
+        "duration": 83,
+        "timeRestrictions": {
+          "embargoDate": "2026-06-15T18:17:13Z",
+          "expirationDate": "2027-06-18T18:17:13Z"
+        },
+        "deviceRestrictions": {
+          "type": "whitelist",
+          "devices": [
+            "settop",
+            "tablet",
+            "handset",
+            "ipad",
+            "desktop"
+          ]
+        },
+        "thumbnail": "https://a.espncdn.com/media/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw.jpg",
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw",
+            "self": {
+              "href": "https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=96b7d5e3fd78d"
+              }
+            }
+          },
+          "mobile": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/3b875a95-038e-4515-8cdb-53255f65c94e/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw",
+            "source": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw.mp4"
+            },
+            "alert": {
+              "href": "https://m.espn.com/general/video/videoAlert?vid=49074141"
+            },
+            "streaming": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/3b875a95-038e-4515-8cdb-53255f65c94e/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw"
+            },
+            "progressiveDownload": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/3b875a95-038e-4515-8cdb-53255f65c94e/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074141/burley-slams-extremely-pedestrian-spain-cape-verde-draw"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/49074141"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/3b875a95-038e-4515-8cdb-53255f65c94e"
+            }
+          },
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw_360p30_1464k.mp4",
+            "mezzanine": {
+              "href": "https://media.video-origin.espn.com/espnvideo/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw.mp4"
+            },
+            "flash": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw.smil"
+            },
+            "hds": {
+              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw_rel.smil/manifest.f4m"
+            },
+            "HLS": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/playlist.m3u8",
+              "HD": {
+                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/playlist.m3u8"
+              },
+              "cmaf": {
+                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/playlist.m3u8"
+              },
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/3b875a95-038e-4515-8cdb-53255f65c94e/asset"
+              }
+            },
+            "HD": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw_720p30_2896k.mp4"
+            },
+            "full": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw/dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw_360p30_1464k.mp4"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=49074141&videoDSI=96b7d5e3fd78d"
+          }
+        },
+        "ad": {
+          "sport": "Soccer",
+          "bundle": "worldcupstatstories"
+        },
+        "tracking": {
+          "sportName": "soccer",
+          "leagueName": "FIFA World Cup",
+          "coverageType": "Analysis",
+          "trackingName": "COM_SOC Analysis (Burley slams \u2018extremely pedestrian\u2019 Spain after Cape Verde draw) 2026/06/15",
+          "trackingId": "dm_260615_Burley_slams_extremely_pedestrian_Spain_after_Cape_Verde_draw"
+        }
+      },
+      {
+        "id": 49074398,
+        "cerebroId": "6a3046312f39d9111d19e4a4",
+        "source": "espn",
+        "headline": "Burley: Cape Verde couldn't have given a better account of themselves",
+        "description": "Burley: Cape Verde couldn't have given a better account of themselves",
+        "lastModified": "2026-06-15T18:48:43Z",
+        "originalPublishDate": "2026-06-15T18:36:34Z",
+        "duration": 94,
+        "timeRestrictions": {
+          "embargoDate": "2026-06-15T18:31:05Z",
+          "expirationDate": "2027-06-18T18:31:05Z"
+        },
+        "deviceRestrictions": {
+          "type": "whitelist",
+          "devices": [
+            "settop",
+            "tablet",
+            "handset",
+            "ipad",
+            "desktop"
+          ]
+        },
+        "thumbnail": "https://a.espncdn.com/media/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves.jpg",
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account",
+            "self": {
+              "href": "https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=f8f4a872fe2a4"
+              }
+            }
+          },
+          "mobile": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account",
+            "source": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves.mp4"
+            },
+            "alert": {
+              "href": "https://m.espn.com/general/video/videoAlert?vid=49074398"
+            },
+            "streaming": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account"
+            },
+            "progressiveDownload": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49074398/cape-verde-given-better-account"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/49074398"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64"
+            }
+          },
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves_360p30_1464k.mp4",
+            "mezzanine": {
+              "href": "https://media.video-origin.espn.com/espnvideo/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves.mp4"
+            },
+            "flash": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves.smil"
+            },
+            "hds": {
+              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves_rel.smil/manifest.f4m"
+            },
+            "HLS": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/playlist.m3u8",
+              "HD": {
+                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/playlist.m3u8"
+              },
+              "cmaf": {
+                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/playlist.m3u8"
+              },
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/b7db3bc1-5725-4ad9-8d1a-6e890f85bb64/asset"
+              }
+            },
+            "HD": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves_720p30_2896k.mp4"
+            },
+            "full": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0615/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves/dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves_360p30_1464k.mp4"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=49074398&videoDSI=f8f4a872fe2a4"
+          }
+        },
+        "ad": {
+          "sport": "Soccer",
+          "bundle": "sportscenter"
+        },
+        "tracking": {
+          "sportName": "soccer",
+          "leagueName": "FIFA World Cup",
+          "coverageType": "Analysis",
+          "trackingName": "COM_SOC Analysis (Burley: Cape Verde couldn\u2019t have given a better account of themselves) 2026/06/15",
+          "trackingId": "dm_260615_Burley_Cape_Verde_couldnt_have_given_a_better_account_of_themselves"
+        }
+      }
+    ],
     "keyEvents": [
       {
         "id": "49521938",
@@ -21200,7 +21283,7 @@
     "wallclockAvailable": true,
     "meta": {
       "gp_topic": "gp-soccer-fifa.world-760428",
-      "gameSwitcherEnabled": false,
+      "gameSwitcherEnabled": true,
       "picker_topic": "picker-soccer-fifa.world",
       "lastUpdatedAt": "2026-06-15T17:56:00Z",
       "firstPlayWallClock": "2026-06-15T16:01:11Z",

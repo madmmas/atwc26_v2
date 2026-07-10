@@ -469,6 +469,8 @@
               "matchNote": "Morocco advances.",
               "competitionName": "2026 FIFA World Cup",
               "roundName": "Round of 16",
+              "leagueName": "FIFA World Cup",
+              "leagueAbbreviation": "FIFA World Cup",
               "opponent": {
                 "id": "206",
                 "uid": "s:600~t:206",
@@ -510,9 +512,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
-              "leagueName": "FIFA World Cup",
-              "leagueAbbreviation": "FIFA World Cup"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
             },
             {
               "id": "760488",
@@ -745,8 +745,6 @@
               "gameResult": "D",
               "competitionName": "2026 FIFA World Cup",
               "roundName": "Group Stage",
-              "leagueName": "FIFA World Cup",
-              "leagueAbbreviation": "FIFA World Cup",
               "opponent": {
                 "id": "205",
                 "uid": "s:600~t:205",
@@ -788,7 +786,9 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+              "leagueName": "FIFA World Cup",
+              "leagueAbbreviation": "FIFA World Cup"
             }
           ]
         }
@@ -1296,8 +1296,6 @@
             "matchNote": "France advances.",
             "competitionName": "2026 FIFA World Cup",
             "roundName": "Group Stage",
-            "leagueName": "FIFA World Cup",
-            "leagueAbbreviation": "FIFA World Cup",
             "opponent": {
               "id": "4375",
               "uid": "s:600~t:4375",
@@ -1339,7 +1337,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/irq.png",
+            "leagueName": "FIFA World Cup",
+            "leagueAbbreviation": "FIFA World Cup"
           },
           {
             "id": "760475",
@@ -1366,8 +1366,6 @@
             "matchNote": "France advances.",
             "competitionName": "2026 FIFA World Cup",
             "roundName": "Group Stage",
-            "leagueName": "FIFA World Cup",
-            "leagueAbbreviation": "FIFA World Cup",
             "opponent": {
               "id": "464",
               "uid": "s:600~t:464",
@@ -1409,7 +1407,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
+            "leagueName": "FIFA World Cup",
+            "leagueAbbreviation": "FIFA World Cup"
           },
           {
             "id": "760492",
@@ -1436,8 +1436,6 @@
             "matchNote": "France advances.",
             "competitionName": "2026 FIFA World Cup",
             "roundName": "Round of 32",
-            "leagueName": "FIFA World Cup",
-            "leagueAbbreviation": "FIFA World Cup",
             "opponent": {
               "id": "466",
               "uid": "s:600~t:466",
@@ -1479,7 +1477,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+            "leagueName": "FIFA World Cup",
+            "leagueAbbreviation": "FIFA World Cup"
           },
           {
             "id": "760503",
@@ -1619,8 +1619,6 @@
             "gameResult": "D",
             "competitionName": "2026 FIFA World Cup",
             "roundName": "Group Stage",
-            "leagueName": "FIFA World Cup",
-            "leagueAbbreviation": "FIFA World Cup",
             "opponent": {
               "id": "205",
               "uid": "s:600~t:205",
@@ -1662,7 +1660,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/bra.png",
+            "leagueName": "FIFA World Cup",
+            "leagueAbbreviation": "FIFA World Cup"
           },
           {
             "id": "760445",
@@ -1898,8 +1898,6 @@
             "matchNote": "Morocco advances.",
             "competitionName": "2026 FIFA World Cup",
             "roundName": "Round of 16",
-            "leagueName": "FIFA World Cup",
-            "leagueAbbreviation": "FIFA World Cup",
             "opponent": {
               "id": "206",
               "uid": "s:600~t:206",
@@ -1941,7 +1939,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/can.png",
+            "leagueName": "FIFA World Cup",
+            "leagueAbbreviation": "FIFA World Cup"
           }
         ]
       }
@@ -2015,8 +2015,6 @@
             "matchNote": "France advances.",
             "competitionName": "2022 FIFA World Cup",
             "roundName": "Semifinals",
-            "leagueName": "FIFA World Cup",
-            "leagueAbbreviation": "FIFA World Cup",
             "opponent": {
               "id": "2869",
               "uid": "s:600~t:2869",
@@ -2058,7 +2056,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
+            "leagueName": "FIFA World Cup",
+            "leagueAbbreviation": "FIFA World Cup"
           },
           {
             "id": "231580",
@@ -2081,8 +2081,6 @@
             "awayShootoutScore": "0",
             "gameResult": "D",
             "competitionName": "International Friendly",
-            "leagueName": "International Friendly",
-            "leagueAbbreviation": "Men's International Friendly",
             "opponent": {
               "id": "2869",
               "uid": "s:600~t:2869",
@@ -2124,7 +2122,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
+            "leagueName": "International Friendly",
+            "leagueAbbreviation": "Men's International Friendly"
           }
         ]
       }
@@ -3648,6 +3648,850 @@
       },
       "articles": [
         {
+          "id": 49320148,
+          "nowId": "1-49320148",
+          "contentKey": "49320148-1-6-1",
+          "dataSourceIdentifier": "fa21d6b2140c9",
+          "type": "Story",
+          "headline": "World Cup Daily live: Remix of teen Haaland's rap song hits No. 1; Spain to face Belgium",
+          "description": "Enjoy all the features, news, video analysis and color from around the 2026 FIFA World Cup as we start the second day of quarterfinals action.",
+          "lastModified": "2026-07-10T09:53:11Z",
+          "published": "2026-07-10T09:53:11Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "a99174246e9d4",
+              "id": 49322376,
+              "type": "header",
+              "name": "Erling Haaland rap song blog lead [1296x729]",
+              "credit": "Spotify / YouTube @@flowkingz6625 / YouTube @KygoMusic",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0710/r1687224_2_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "e04b603aaa3f8",
+              "id": 49320095,
+              "type": "header",
+              "name": "Spain [1296x729]",
+              "credit": "(Photo by Florencia Tan Jun/Getty Images)",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0710/r1687141_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Haaland: All the pressure is on England in quarterfinal",
+              "caption": "Haaland: All the pressure is on England in quarterfinal",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_ANALYSIS_Haaland_All_the_pressure_is_on_England_in_quarterfinal_2026_7_9/dm_260709_COM_SOC_ANALYSIS_Haaland_All_the_pressure_is_on_England_in_quarterfinal_2026_7_9.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 760055,
+              "type": "topic",
+              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd",
+              "description": "live blog",
+              "sportId": 0,
+              "topicId": 4378
+            },
+            {
+              "id": 142418,
+              "type": "team",
+              "uid": "s:600~t:464",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e",
+              "description": "Norway",
+              "sportId": 600,
+              "teamId": 464,
+              "team": {
+                "id": 464,
+                "description": "Norway",
+                "abbreviation": "NOR",
+                "shortDisplayName": "Norway",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 243655,
+              "type": "athlete",
+              "uid": "s:600~a:253989",
+              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31",
+              "description": "Erling Haaland",
+              "sportId": 600,
+              "athleteId": 253989,
+              "athlete": {
+                "id": 253989,
+                "description": "Erling Haaland",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd"
+            },
+            {
+              "type": "guid",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e"
+            },
+            {
+              "type": "guid",
+              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49320148/world-cup-daily-live-remix-teen-erling-haaland-rap-song-hits-no-1-spain-face-belgium"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49320148"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49320148"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49320148"
+              }
+            }
+          },
+          "byline": "ESPN"
+        },
+        {
+          "id": 49322481,
+          "nowId": "1-49322481",
+          "contentKey": "49322481-1-5-1",
+          "dataSourceIdentifier": "8954dae316402",
+          "type": "HeadlineNews",
+          "headline": "England have Marc Gu\u00e9hi, Declan Rice fitness concerns before Norway World Cup quarterfinal - sources",
+          "description": "Marc Gu\u00e9hi has emerged as an injury concern ahead of England's World Cup quarterfinal against Norway after suffering a hamstring issue, sources have told ESPN.",
+          "lastModified": "2026-07-10T10:00:14Z",
+          "published": "2026-07-10T10:00:14Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "e164103c9367c",
+              "id": 49322545,
+              "type": "header",
+              "name": "Guehi and Rice [1296x729]",
+              "alt": "Marc Guehi #6 and Declan Rice #4 of England react at the hydration break during the FIFA World Cup 2026 Group L match between England and Ghana at Boston Stadium on June 23, 2026 in Foxborough, Massachusetts.",
+              "credit": "Maddie Meyer - FIFA/FIFA via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0710/r1687230_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Haaland: All the pressure is on England in quarterfinal",
+              "caption": "Haaland: All the pressure is on England in quarterfinal",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_ANALYSIS_Haaland_All_the_pressure_is_on_England_in_quarterfinal_2026_7_9/dm_260709_COM_SOC_ANALYSIS_Haaland_All_the_pressure_is_on_England_in_quarterfinal_2026_7_9.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "id": 382058,
+              "type": "athlete",
+              "uid": "s:600~a:265907",
+              "guid": "476ae006-e5b6-49ac-b037-01ebe4436944",
+              "description": "Marc Gu\u00e9hi",
+              "sportId": 600,
+              "athleteId": 265907,
+              "athlete": {
+                "id": 265907,
+                "description": "Marc Gu\u00e9hi",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/265907/marc-guehi"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/265907/marc-guehi"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 268479,
+              "type": "athlete",
+              "uid": "s:600~a:238262",
+              "guid": "6d2a6f94-d9e3-a1ed-461e-4c0e61d67be3",
+              "description": "Declan Rice",
+              "sportId": 600,
+              "athleteId": 238262,
+              "athlete": {
+                "id": 238262,
+                "description": "Declan Rice",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/238262/declan-rice"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/238262/declan-rice"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72576,
+              "type": "team",
+              "uid": "s:600~t:448",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
+              "description": "England",
+              "sportId": 600,
+              "teamId": 448,
+              "team": {
+                "id": 448,
+                "description": "England",
+                "abbreviation": "ENG",
+                "shortDisplayName": "England",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142418,
+              "type": "team",
+              "uid": "s:600~t:464",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e",
+              "description": "Norway",
+              "sportId": 600,
+              "teamId": 464,
+              "team": {
+                "id": 464,
+                "description": "Norway",
+                "abbreviation": "NOR",
+                "shortDisplayName": "Norway",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            },
+            {
+              "type": "guid",
+              "guid": "476ae006-e5b6-49ac-b037-01ebe4436944"
+            },
+            {
+              "type": "guid",
+              "guid": "6d2a6f94-d9e3-a1ed-461e-4c0e61d67be3"
+            },
+            {
+              "type": "guid",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49322481/england-marc-guehi-declan-rice-fitness-concerns-norway-world-cup-quarterfinal-sources"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49322481"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49322481"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49322481"
+              }
+            }
+          },
+          "byline": "ESPN News Services"
+        },
+        {
+          "id": 49313872,
+          "nowId": "1-49313872",
+          "contentKey": "49313872-1-6-1",
+          "dataSourceIdentifier": "b0bf4838e2ad4",
+          "type": "Story",
+          "headline": "Harry Kane vs. Erling Haaland: How do England, Norway stars compare? Key stats before World Cup clash",
+          "description": "Who will come out on top in the World Cup quarterfinal, Harry Kane or Erling Haaland? Here is what the stats say.",
+          "lastModified": "2026-07-10T09:37:39Z",
+          "published": "2026-07-10T09:37:39Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "3a130c87530ac",
+              "id": 49313963,
+              "type": "header",
+              "name": "Harry Kane Erling Haaland [1296x729]",
+              "alt": "An image of Harry Kane alongside one of Erling Haaland.",
+              "credit": "Photo by Luis Cano/Jam Media/Getty Images and Photo by Richard Sellers/Sportsphoto/Allstar via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686784_2_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "121b732b4c11c",
+              "id": 49314038,
+              "type": "header",
+              "name": "Erling Haaland [1296x729]",
+              "alt": "Erling Haaland wears a viking helmet.",
+              "credit": "(Photo by Julian Finney - FIFA/FIFA via Getty Images)",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686791_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "b6ba4d54c8316",
+              "id": 49313992,
+              "type": "header",
+              "name": "Harry Kane penalty [1296x729]",
+              "alt": "Harry Kane takes the penalty against Mexico.",
+              "credit": "(Photo by Francois Nel/Getty Images)",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686789_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Odegaard: Norway's quarterfinal against England a 'massive test'",
+              "caption": "Odegaard: Norway's quarterfinal against England a 'massive test'",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72576,
+              "type": "team",
+              "uid": "s:600~t:448",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
+              "description": "England",
+              "sportId": 600,
+              "teamId": 448,
+              "team": {
+                "id": 448,
+                "description": "England",
+                "abbreviation": "ENG",
+                "shortDisplayName": "England",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142418,
+              "type": "team",
+              "uid": "s:600~t:464",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e",
+              "description": "Norway",
+              "sportId": 600,
+              "teamId": 464,
+              "team": {
+                "id": 464,
+                "description": "Norway",
+                "abbreviation": "NOR",
+                "shortDisplayName": "Norway",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 250037,
+              "type": "athlete",
+              "uid": "s:600~a:142200",
+              "guid": "66b16016-7a3a-434f-ae82-e767fc5fac88",
+              "description": "Harry Kane",
+              "sportId": 600,
+              "athleteId": 142200,
+              "athlete": {
+                "id": 142200,
+                "description": "Harry Kane",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/142200/harry-kane"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/142200/harry-kane"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 243655,
+              "type": "athlete",
+              "uid": "s:600~a:253989",
+              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31",
+              "description": "Erling Haaland",
+              "sportId": 600,
+              "athleteId": 253989,
+              "athlete": {
+                "id": 253989,
+                "description": "Erling Haaland",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
+            },
+            {
+              "type": "guid",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e"
+            },
+            {
+              "type": "guid",
+              "guid": "66b16016-7a3a-434f-ae82-e767fc5fac88"
+            },
+            {
+              "type": "guid",
+              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49313872/harry-kane-erling-haaland-comparison-key-stats-england-norway-world-cup-quarterfinal"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49313872"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49313872"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49313872"
+              }
+            }
+          },
+          "byline": "Jamie Barton"
+        },
+        {
+          "id": 49322084,
+          "nowId": "1-49322084",
+          "contentKey": "49322084-1-5-1",
+          "dataSourceIdentifier": "22ab354c373f2",
+          "type": "HeadlineNews",
+          "headline": "Police officer injured, arrests made amid London disorder after France beat Morocco",
+          "description": "A police officer was injured and four people were arrested after disorder broke out in London following France's 2-0 win against Morocco in the World Cup quarterfinal on Thursday.",
+          "lastModified": "2026-07-10T09:55:07Z",
+          "published": "2026-07-10T09:55:07Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "356b3862dbfeb",
+              "id": 49322451,
+              "type": "header",
+              "name": "Metropolitan Police stock [1296x729]",
+              "alt": "The logo of the Metropolitan Police can be seen on a police car in central London.",
+              "credit": "Anna Ross/picture alliance via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0710/r1687227_1296x729_16-9.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49322084/police-officer-injured-arrests-made-amid-london-disorder-france-beat-morocco-world-cup-2026"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49322084"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49322084"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49322084"
+              }
+            }
+          },
+          "byline": "ESPN News Services"
+        },
+        {
           "id": 49317008,
           "nowId": "1-49317008",
           "contentKey": "49317008-1-6-1",
@@ -4178,890 +5022,6 @@
             }
           },
           "byline": "ESPN"
-        },
-        {
-          "id": 49322144,
-          "nowId": "1-49322144",
-          "contentKey": "49322144-1-293-1",
-          "dataSourceIdentifier": "9a8da45c6cb81",
-          "type": "Media",
-          "headline": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
-          "description": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
-          "lastModified": "2026-07-10T07:55:04Z",
-          "published": "2026-07-10T07:55:04Z",
-          "images": [
-            {
-              "name": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
-              "caption": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
-              "alt": "",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0710/dm_260710_COM_SOC_Presser_Gavi_Even_at_seven_percent_Lamine_Yamal_is_still_the_best_20260710_GLOBAL_FIFA_WO/dm_260710_COM_SOC_Presser_Gavi_Even_at_seven_percent_Lamine_Yamal_is_still_the_best_20260710_GLOBAL_FIFA_WO.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 135133,
-              "type": "team",
-              "uid": "s:600~t:459",
-              "guid": "4084f797-3877-2af0-b70f-570d25a1a141",
-              "description": "Belgium",
-              "sportId": 600,
-              "teamId": 459,
-              "team": {
-                "id": 459,
-                "description": "Belgium",
-                "abbreviation": "BEL",
-                "shortDisplayName": "Belgium",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 490659,
-              "type": "athlete",
-              "uid": "s:600~a:323702",
-              "guid": "3ea1fd25-9cb7-362b-bc0c-e75dcd5705de",
-              "description": "Gavi",
-              "sportId": 600,
-              "athleteId": 323702,
-              "athlete": {
-                "id": 323702,
-                "description": "Gavi",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/323702/gavi"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/323702/gavi"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 596595,
-              "type": "athlete",
-              "uid": "s:600~a:362150",
-              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4",
-              "description": "Lamine Yamal",
-              "sportId": 600,
-              "athleteId": 362150,
-              "athlete": {
-                "id": 362150,
-                "description": "Lamine Yamal",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72568,
-              "type": "team",
-              "uid": "s:600~t:164",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
-              "description": "Spain",
-              "sportId": 600,
-              "teamId": 164,
-              "team": {
-                "id": 164,
-                "description": "Spain",
-                "abbreviation": "ESP",
-                "shortDisplayName": "Spain",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "event",
-              "uid": "s:600~l:606~e:760511",
-              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675",
-              "description": "Belgium @ Spain",
-              "eventId": 760511,
-              "event": {
-                "id": 760511,
-                "sport": "soccer",
-                "league": "fifa.world",
-                "description": "Belgium @ Spain"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "4084f797-3877-2af0-b70f-570d25a1a141"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "3ea1fd25-9cb7-362b-bc0c-e75dcd5705de"
-            },
-            {
-              "type": "guid",
-              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
-            },
-            {
-              "type": "guid",
-              "guid": "42ec9bb5-8181-390e-9de1-5bc291cee675"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49322144/even-seventy-percent-lamine-yamal-best",
-              "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49322144/even-seventy-percent-lamine-yamal-best",
-                "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=9a8da45c6cb81"
-                }
-              }
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49322144"
-              },
-              "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/f7590422-f035-470a-aaff-5bddb09e6e4d"
-              }
-            },
-            "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49322144&videoDSI=9a8da45c6cb81"
-            }
-          }
-        },
-        {
-          "id": 49322106,
-          "nowId": "1-49322106",
-          "contentKey": "49322106-1-293-1",
-          "dataSourceIdentifier": "dc9a3864e3b1f",
-          "type": "Media",
-          "headline": "Deschamps: France really proud to be in semifinals for third time in a row",
-          "description": "Deschamps: France really proud to be in semifinals for third time in a row",
-          "lastModified": "2026-07-10T07:42:58Z",
-          "published": "2026-07-10T07:42:58Z",
-          "images": [
-            {
-              "name": "Deschamps: France really proud to be in semifinals for third time in a row",
-              "caption": "Deschamps: France really proud to be in semifinals for third time in a row",
-              "alt": "",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0710/dm_260710_COM_SOC_Presser_Deschamps_France_really_proud_to_be_in_semifinals_for_third_time_in_a_row_202607/dm_260710_COM_SOC_Presser_Deschamps_France_really_proud_to_be_in_semifinals_for_third_time_in_a_row_202607.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72584,
-              "type": "team",
-              "uid": "s:600~t:478",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
-              "description": "France",
-              "sportId": 600,
-              "teamId": 478,
-              "team": {
-                "id": 478,
-                "description": "France",
-                "abbreviation": "FRA",
-                "shortDisplayName": "France",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 142317,
-              "type": "team",
-              "uid": "s:600~t:2869",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
-              "description": "Morocco",
-              "sportId": 600,
-              "teamId": 2869,
-              "team": {
-                "id": 2869,
-                "description": "Morocco",
-                "abbreviation": "MAR",
-                "shortDisplayName": "Morocco",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "event",
-              "uid": "s:600~l:606~e:760510",
-              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460",
-              "description": "Morocco @ France",
-              "eventId": 760510,
-              "event": {
-                "id": 760510,
-                "sport": "soccer",
-                "league": "fifa.world",
-                "description": "Morocco @ France"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
-            },
-            {
-              "type": "guid",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49322106/france-really-proud-semifinals-third-row",
-              "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49322106/france-really-proud-semifinals-third-row",
-                "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=dc9a3864e3b1f"
-                }
-              }
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49322106"
-              },
-              "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/638cacc6-5852-46aa-b59c-fa6c674a6e4f"
-              }
-            },
-            "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49322106&videoDSI=dc9a3864e3b1f"
-            }
-          }
-        },
-        {
-          "id": 49322056,
-          "nowId": "1-49322056",
-          "contentKey": "49322056-1-5-1",
-          "dataSourceIdentifier": "2656157d7251e",
-          "type": "HeadlineNews",
-          "headline": "Nico O'Reilly wary of Erling Haaland 'mind games' ahead of England-Norway World Cup quarterfinal",
-          "description": "Nico O'Reilly has said that Erling Haaland is playing mind games by saying England are \"clear favourites\" to win their World Cup quarterfinal with Norway.",
-          "lastModified": "2026-07-10T07:39:17Z",
-          "published": "2026-07-10T07:39:17Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "3721cb702748a",
-              "id": 49322062,
-              "type": "header",
-              "name": "Nico O'Reilly [1296x729]",
-              "alt": "Nico O'Reilly speaks to the media.",
-              "credit": "(Photo by Bradley Collyer/PA Images via Getty Images)",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0710/r1687217_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Haaland: All the pressure is on England in quarterfinal",
-              "caption": "Haaland: All the pressure is on England in quarterfinal",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_ANALYSIS_Haaland_All_the_pressure_is_on_England_in_quarterfinal_2026_7_9/dm_260709_COM_SOC_ANALYSIS_Haaland_All_the_pressure_is_on_England_in_quarterfinal_2026_7_9.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72576,
-              "type": "team",
-              "uid": "s:600~t:448",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
-              "description": "England",
-              "sportId": 600,
-              "teamId": 448,
-              "team": {
-                "id": 448,
-                "description": "England",
-                "abbreviation": "ENG",
-                "shortDisplayName": "England",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 142418,
-              "type": "team",
-              "uid": "s:600~t:464",
-              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e",
-              "description": "Norway",
-              "sportId": 600,
-              "teamId": 464,
-              "team": {
-                "id": 464,
-                "description": "Norway",
-                "abbreviation": "NOR",
-                "shortDisplayName": "Norway",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 579868,
-              "type": "athlete",
-              "uid": "s:600~a:328464",
-              "guid": "05fe1643-f278-30d1-9518-93e6543907ca",
-              "description": "Nico O'Reilly",
-              "sportId": 600,
-              "athleteId": 328464,
-              "athlete": {
-                "id": 328464,
-                "description": "Nico O'Reilly",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/328464/nico-oreilly"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/328464/nico-oreilly"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 243655,
-              "type": "athlete",
-              "uid": "s:600~a:253989",
-              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31",
-              "description": "Erling Haaland",
-              "sportId": 600,
-              "athleteId": 253989,
-              "athlete": {
-                "id": 253989,
-                "description": "Erling Haaland",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
-            },
-            {
-              "type": "guid",
-              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e"
-            },
-            {
-              "type": "guid",
-              "guid": "05fe1643-f278-30d1-9518-93e6543907ca"
-            },
-            {
-              "type": "guid",
-              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49322056/nico-oreilly-erling-haaland-mind-games-england-norway-world-cup-quarterfinal"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49322056"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49322056"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49322056"
-              }
-            }
-          },
-          "byline": "PA"
-        },
-        {
-          "id": 49322082,
-          "nowId": "1-49322082",
-          "contentKey": "49322082-1-293-1",
-          "dataSourceIdentifier": "1b51616e789f9",
-          "type": "Media",
-          "headline": "Mbappe: I don't see a World Cup trophy next to me",
-          "description": "Mbappe: I don't see a World Cup trophy next to me",
-          "lastModified": "2026-07-10T07:32:03Z",
-          "published": "2026-07-10T07:32:03Z",
-          "images": [
-            {
-              "name": "Mbappe: I don't see a World Cup trophy next to me",
-              "caption": "Mbappe: I don't see a World Cup trophy next to me",
-              "alt": "",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0710/dm_260710_COM_SOC_Presser_Mbappe_I_dont_see_a_World_Cup_trophy_next_to_me_20260710_GLOBAL_FIFA_WORLD_CUP/dm_260710_COM_SOC_Presser_Mbappe_I_dont_see_a_World_Cup_trophy_next_to_me_20260710_GLOBAL_FIFA_WORLD_CUP.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72584,
-              "type": "team",
-              "uid": "s:600~t:478",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
-              "description": "France",
-              "sportId": 600,
-              "teamId": 478,
-              "team": {
-                "id": 478,
-                "description": "France",
-                "abbreviation": "FRA",
-                "shortDisplayName": "France",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 233179,
-              "type": "athlete",
-              "uid": "s:600~a:231388",
-              "guid": "61edbcca-c316-afde-575f-d9dd69176cc4",
-              "description": "Kylian Mbapp\u00e9",
-              "sportId": 600,
-              "athleteId": 231388,
-              "athlete": {
-                "id": 231388,
-                "description": "Kylian Mbapp\u00e9",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/231388/kylian-mbappe"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/231388/kylian-mbappe"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 142317,
-              "type": "team",
-              "uid": "s:600~t:2869",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
-              "description": "Morocco",
-              "sportId": 600,
-              "teamId": 2869,
-              "team": {
-                "id": 2869,
-                "description": "Morocco",
-                "abbreviation": "MAR",
-                "shortDisplayName": "Morocco",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "event",
-              "uid": "s:600~l:606~e:760510",
-              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460",
-              "description": "Morocco @ France",
-              "eventId": 760510,
-              "event": {
-                "id": 760510,
-                "sport": "soccer",
-                "league": "fifa.world",
-                "description": "Morocco @ France"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
-            },
-            {
-              "type": "guid",
-              "guid": "61edbcca-c316-afde-575f-d9dd69176cc4"
-            },
-            {
-              "type": "guid",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "8a869f1a-816a-3c50-877a-a764df7bf460"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49322082/see-world-cup-trophy-next-me",
-              "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49322082/see-world-cup-trophy-next-me",
-                "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=1b51616e789f9"
-                }
-              }
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49322082"
-              },
-              "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/24259f22-eea5-4597-934a-3f2ce41c39ba"
-              }
-            },
-            "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49322082&videoDSI=1b51616e789f9"
-            }
-          }
         }
       ]
     },
