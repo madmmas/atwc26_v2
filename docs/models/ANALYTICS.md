@@ -302,7 +302,9 @@ split → Elo + Dixon-Coles metrics → `data/backtest_summary.json`. Exposed at
 
 **Publish note:** `backtest_summary.json` is written by train and registered in
 `ARTIFACTS` (`packages/atwc26_core/.../artifacts.py`), so ETL publish uploads it
-with other model artifacts. Served at `GET /api/backtest` (API Gateway → predict).
+with other model artifacts. Predict loads it via `atwc26_core.backtest_io`
+(no ETL package on Lambda/ECS). Served at `GET /api/backtest` (API Gateway →
+predict).
 
 ### 6.10 Worked example (auto-picked Brazil home vs. Germany, Poisson engine)
 
