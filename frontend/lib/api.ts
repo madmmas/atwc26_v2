@@ -112,6 +112,24 @@ export type Prediction = {
   >;
 };
 
+export type BacktestModelMetrics = {
+  n?: number;
+  log_loss?: number | null;
+  accuracy?: number | null;
+  brier?: number | null;
+  train_converged?: boolean;
+  train_max_abs_param?: number;
+};
+
+export type BacktestSummary = {
+  generated_at?: string;
+  holdout_frac?: number;
+  train_n?: number;
+  holdout_n?: number;
+  models: Record<string, BacktestModelMetrics>;
+  error?: string;
+};
+
 async function get<T>(path: string, signal?: AbortSignal): Promise<T> {
   const res = await fetch(`${ANALYTICS_BASE}${path}`, { cache: "no-store", signal });
   if (!res.ok) throw new Error(`API ${path} -> ${res.status}`);
@@ -151,12 +169,23 @@ export const api = {
     }
     return res.json();
   },
-  predictHealth: async (): Promise<{ models_available: string[] }> => {
+  predictHealth: async (): Promise<{
+    models_available: string[];
+    data_updated_at?: string;
+  }> => {
     // Same-origin /api/health hits analytics on API Gateway; predict health is namespaced.
     const res = await fetch(`${PREDICT_BASE}/api/predict/health`, { cache: "no-store" });
     if (!res.ok) throw new Error(`predict health -> ${res.status}`);
     const data = await res.json();
-    return { models_available: data.models_available ?? [] };
+    return {
+      models_available: data.models_available ?? [],
+      data_updated_at: data.data_updated_at,
+    };
+  },
+  backtest: async (): Promise<BacktestSummary> => {
+    const res = await fetch(`${PREDICT_BASE}/api/backtest`, { cache: "no-store" });
+    if (!res.ok) throw new Error(`backtest -> ${res.status}`);
+    return res.json();
   },
   matches: () => get<{ matches: MatchListItem[] }>("/api/matches"),
   matchDetail: (id: string) => get<MatchDetail>(`/api/matches/${id}`),

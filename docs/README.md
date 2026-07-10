@@ -37,7 +37,7 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 | **[etl/](etl/README.md)** | ETL pipeline | Scheduler, pipeline, overview — full AWS map in [ARCHITECTURE.md](ARCHITECTURE.md) |
 | **[ops/](ops/README.md)** | Operations | Deploy, testing, cutover, scrape runbook |
 | **[specs/](specs/README.md)** | Specifications | Product, production, UX specs |
-| **[models/](models/README.md)** | Models & analytics | Prediction methodology, training design |
+| **[models/](models/README.md)** | Models & analytics | Prediction methodology, training design, [parity backport](models/V2_PARITY_BACKPORT.md) |
 | **[planning/](planning/README.md)** | Planning | Roadmap, refactor tracking |
 
 ---

@@ -11,7 +11,7 @@ import xgboost as xgb
 
 from atwc26_core import config
 
-from .features import add_rolling_form
+from .features import add_rolling_attack_stats, add_rolling_form
 
 FEATURE_COLS = [
     "xg_diff",
@@ -46,8 +46,12 @@ def build_xgb_features(
     elo_ratings: dict[str, float],
     dc_params: dict,
 ) -> tuple[np.ndarray, np.ndarray]:
-    """Build feature matrix X and label vector y."""
-    df = add_rolling_form(match_matrix.copy())
+    """Build feature matrix X and label vector y.
+
+    Attack differentials use *pre-match* rolling means (shifted), not the
+    current match's xG/shots — those would leak the label into features.
+    """
+    df = add_rolling_attack_stats(add_rolling_form(match_matrix.copy()))
     attack = dc_params.get("attack", {})
     defence = dc_params.get("defence", {})
 
@@ -63,9 +67,9 @@ def build_xgb_features(
         a_a = math.exp(attack.get(away, 0.0))
         d_h = math.exp(defence.get(home, 0.0))
         rows.append([
-            row["h_xg_p90"] - row["a_xg_p90"],
-            row["h_shots_p90"] - row["a_shots_p90"],
-            row["h_sot_p90"] - row["a_sot_p90"],
+            float(row["h_xg_roll"]) - float(row["a_xg_roll"]),
+            float(row["h_shots_roll"]) - float(row["a_shots_roll"]),
+            float(row["h_sot_roll"]) - float(row["a_sot_roll"]),
             elo_h - elo_a,
             a_h / max(d_a, 1e-6),
             a_a / max(d_h, 1e-6),

@@ -45,8 +45,25 @@ All responses are JSON; `NaN/inf` are converted to `null`.
 ### `GET /api/health`
 ```json
 { "status": "ok", "app": "AnalyseThisWC26", "version": "1.0.0",
-  "avg_team_goals": 1.583, "games": 12, "teams": 24, "players": 376 }
+  "avg_team_goals": 1.583, "games": 12, "teams": 24, "players": 376,
+  "data_updated_at": "2026-07-10T12:00:00+00:00" }
 ```
+
+`data_updated_at` is the newest artifact timestamp among key data files
+(parquet mtimes / JSON `generated_at`).
+
+### `GET /api/backtest` (predict service)
+Returns the latest hold-out summary written by `make etl-train`
+(`data/backtest_summary.json`). **404** if missing.
+
+```json
+{ "generated_at": "...", "holdout_n": 85, "train_n": 343,
+  "models": { "elo": { "accuracy": 0.48, "log_loss": 1.02, "brier": 0.64 },
+              "dixon_coles": { "accuracy": 0.51, "log_loss": 0.98, "brier": 0.61,
+                               "train_converged": true } } }
+```
+
+See also [models/V2_PARITY_TEST_PLAN.md](../models/V2_PARITY_TEST_PLAN.md).
 
 ### `GET /api/overview`
 Keys: `league`, `teams[]`, `top_scorers[]`, `top_xg_per90[]`, `top_creators_per90[]`.

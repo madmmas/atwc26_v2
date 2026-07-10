@@ -1,7 +1,8 @@
-"""Orchestrate Elo, Dixon-Coles, and XGBoost training."""
+"""Orchestrate Elo, Dixon-Coles, and XGBoost training (+ backtest)."""
 from __future__ import annotations
 
 from atwc26_core import config
+from etl.eval.backtest import run_backtest, save_backtest_summary
 
 from .dixon_coles import save_dc_params, train_dixon_coles
 from .elo import save_elo, train_elo
@@ -27,7 +28,10 @@ def run_train() -> dict:
 
     dc_params = train_dixon_coles(match_df)
     save_dc_params(dc_params)
-    print(f"dixon_coles: converged={dc_params['converged']}")
+    print(
+        f"dixon_coles: converged={dc_params['converged']} "
+        f"max_abs={dc_params.get('max_abs_param', 0):.3f}"
+    )
 
     X, y = build_xgb_features(match_df, elo_ratings, dc_params)
     booster = train_xgboost(X, y)
@@ -35,12 +39,20 @@ def run_train() -> dict:
     save_xgb_features(FEATURE_COLS)
     print(f"xgboost: {len(y)} samples, {X.shape[1]} features")
 
+    summary = run_backtest(match_df)
+    save_backtest_summary(summary)
+    print(
+        f"backtest: holdout_n={summary.get('holdout_n')} "
+        f"models={list(summary.get('models', {}).keys())}"
+    )
+
     return {
         "matches": len(match_df),
         "elo_teams": len(elo_ratings),
         "dc_converged": dc_params["converged"],
         "xgb_samples": len(y),
         "xgb_features": X.shape[1],
+        "backtest_holdout_n": summary.get("holdout_n"),
     }
 
 

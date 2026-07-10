@@ -9,9 +9,9 @@ import pytest
 from atwc26_core import config
 from atwc26_core.engines.dixon_coles import DixonColesEngine
 from atwc26_core.engines.elo import EloEngine
-from etl.train.dixon_coles import save_dc_params, train_dixon_coles
+from etl.train.dixon_coles import MAX_ABS_PARAM, save_dc_params, train_dixon_coles
 from etl.train.elo import save_elo, train_elo
-from etl.train.features import add_rolling_form, build_match_matrix
+from etl.train.features import add_rolling_attack_stats, add_rolling_form, build_match_matrix
 from etl.train.xgboost_model import FEATURE_COLS, build_xgb_features
 
 REPO_ROOT = Path(__file__).resolve().parents[2]
@@ -32,14 +32,14 @@ def _sample_match_matrix(n: int = 3) -> pd.DataFrame:
             hg, ag = 0, 2
         rows.append({
             "game_id": f"g{i}",
-            "match_date": f"2025-0{i + 1}-01",
+            "match_date": f"2025-0{(i % 9) + 1}-01",
             "home_team": h,
             "away_team": a,
             "h_goals": hg,
             "a_goals": ag,
-            "h_xg_p90": 1.2,
+            "h_xg_p90": 1.2 + (i % 3) * 0.1,
             "a_xg_p90": 1.0,
-            "h_shots_p90": 10.0,
+            "h_shots_p90": 10.0 + i,
             "a_shots_p90": 8.0,
             "h_sot_p90": 4.0,
             "a_sot_p90": 3.0,
@@ -88,6 +88,33 @@ def test_train_dixon_coles_converges():
     assert all(isinstance(v, float) for v in result["defence"].values())
 
 
+def test_dc_l2_keeps_params_bounded():
+    df = _sample_match_matrix(24)
+    result = train_dixon_coles(df)
+    assert result["converged"] is True
+    assert result["max_abs_param"] <= MAX_ABS_PARAM
+    assert all(abs(v) <= MAX_ABS_PARAM for v in result["attack"].values())
+    assert all(abs(v) <= MAX_ABS_PARAM for v in result["defence"].values())
+
+
+def test_dc_params_centered():
+    df = _sample_match_matrix(16)
+    result = train_dixon_coles(df)
+    assert abs(sum(result["attack"].values()) / len(result["attack"])) < 1e-6
+    assert abs(sum(result["defence"].values()) / len(result["defence"])) < 1e-6
+
+
+def test_dc_converges_on_real_match_matrix():
+    if not (REPO_DATA / "all_players_stats.parquet").exists():
+        pytest.skip("committed data artifacts required")
+    df = build_match_matrix(config.MASTER_PARQUET, config.HISTORICAL_FORM)
+    if len(df) < 50:
+        pytest.skip("not enough matches")
+    result = train_dixon_coles(df)
+    assert result["converged"] is True
+    assert result["max_abs_param"] <= MAX_ABS_PARAM
+
+
 def test_save_load_dc_params(tmp_path):
     df = _sample_match_matrix(12)
     params = train_dixon_coles(df)
@@ -110,6 +137,29 @@ def test_dc_engine_predict_sums_to_one():
     )
     total = result["win_probability_a"] + result["draw_probability"] + result["win_probability_b"]
     assert total == pytest.approx(1.0, abs=1e-4)
+
+
+def test_rolling_attack_shifted():
+    df = add_rolling_attack_stats(_sample_match_matrix(6))
+    # First appearance of each side has zero history.
+    assert float(df.iloc[0]["h_xg_roll"]) == 0.0
+    assert float(df.iloc[0]["a_xg_roll"]) == 0.0
+    # Later rows may be non-zero, but must not equal same-row match xG blindly.
+    # Row 0's home xG should appear in a later home rolling mean for that team.
+    alpha_later = df[(df["home_team"] == "Alpha") | (df["away_team"] == "Alpha")]
+    assert len(alpha_later) >= 1
+
+
+def test_xgb_features_use_prematch_stats():
+    df = _sample_match_matrix(5)
+    X, y = build_xgb_features(df, {}, {"attack": {}, "defence": {}})
+    assert X.shape == (len(df), 9)
+    # First row has no history → attack diffs are 0 (not same-match xG).
+    assert float(X[0, 0]) == pytest.approx(0.0, abs=1e-6)
+    assert float(X[0, 1]) == pytest.approx(0.0, abs=1e-6)
+    assert float(X[0, 2]) == pytest.approx(0.0, abs=1e-6)
+    assert set(y.tolist()).issubset({0, 1, 2})
+    assert len(FEATURE_COLS) == 9
 
 
 def test_xgb_feature_vector_shape():

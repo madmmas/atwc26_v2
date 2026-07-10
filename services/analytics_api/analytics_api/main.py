@@ -33,6 +33,7 @@ from atwc26_core.tournament import get_winner_probabilities
 from services.shared.api_reader import read_cached
 from services.shared.bootstrap import ensure_data_available
 from services.shared.cache_headers import CacheControlMiddleware
+from services.shared.freshness import data_updated_at
 from services.shared.json_util import clean_json
 
 app = FastAPI(title=f"{config.APP_NAME} Analytics", version=config.APP_VERSION)
@@ -108,13 +109,17 @@ def winner_probabilities():
 @app.get("/api/health")
 def health():
     store = get_store()
-    return {
+    payload = {
         "status": "ok",
         "service": "analytics",
         "app": config.APP_NAME,
         "version": config.APP_VERSION,
         **store.league,
     }
+    updated = data_updated_at()
+    if updated:
+        payload["data_updated_at"] = updated
+    return payload
 
 
 @app.get("/api/overview")

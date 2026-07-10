@@ -1,4 +1,4 @@
-"""Fit Dixon-Coles parameters by MLE."""
+"""Fit Dixon-Coles parameters by MLE with L2 regularization."""
 from __future__ import annotations
 
 import json
@@ -11,6 +11,10 @@ import pandas as pd
 from scipy.optimize import minimize
 
 from atwc26_core import config
+
+# Ridge penalty on attack/defence (not home). Stabilises sparse international panels.
+L2_LAMBDA = 1.0
+MAX_ABS_PARAM = 3.0
 
 
 def _poisson_pmf(k: int, lam: float) -> float:
@@ -34,8 +38,9 @@ def negative_log_likelihood(
     teams: list[str],
     matches: pd.DataFrame,
     rho: float = 0.1,
+    l2: float = L2_LAMBDA,
 ) -> float:
-    """Negative log-likelihood for Dixon-Coles model."""
+    """Negative log-likelihood for Dixon-Coles model (+ L2 on α, β)."""
     n = len(teams)
     attack = {teams[i]: params[i] for i in range(n)}
     defence = {teams[i]: params[n + i] for i in range(n)}
@@ -58,11 +63,28 @@ def negative_log_likelihood(
         )
         total_ll += math.log(max(p, 1e-10))
 
-    return -total_ll
+    # Identifiability-friendly ridge on team strengths only.
+    penalty = l2 * float(np.sum(params[: 2 * n] ** 2))
+    return -total_ll + penalty
 
 
-def train_dixon_coles(match_matrix: pd.DataFrame, rho: float = 0.1) -> dict:
-    """Fit Dixon-Coles attack/defence parameters via MLE."""
+def _center_team_params(attack: dict[str, float], defence: dict[str, float]) -> None:
+    """Enforce sum(α)=0 and sum(β)=0 in-place."""
+    if not attack:
+        return
+    a_mean = sum(attack.values()) / len(attack)
+    d_mean = sum(defence.values()) / len(defence)
+    for team in attack:
+        attack[team] -= a_mean
+        defence[team] -= d_mean
+
+
+def train_dixon_coles(
+    match_matrix: pd.DataFrame,
+    rho: float = 0.1,
+    l2: float = L2_LAMBDA,
+) -> dict:
+    """Fit Dixon-Coles attack/defence parameters via regularized MLE."""
     teams = sorted(set(match_matrix["home_team"]) | set(match_matrix["away_team"]))
     n = len(teams)
     x0 = np.zeros(2 * n + 1)
@@ -71,16 +93,22 @@ def train_dixon_coles(match_matrix: pd.DataFrame, rho: float = 0.1) -> dict:
     result = minimize(
         negative_log_likelihood,
         x0,
-        args=(teams, match_matrix, rho),
+        args=(teams, match_matrix, rho, l2),
         method="L-BFGS-B",
-        options={"maxiter": 500, "ftol": 1e-8},
+        options={"maxiter": 800, "ftol": 1e-8},
     )
 
     attack = {teams[i]: float(result.x[i]) for i in range(n)}
     defence = {teams[i]: float(result.x[n + i]) for i in range(n)}
+    _center_team_params(attack, defence)
     home_adv = float(result.x[2 * n])
     all_goals = list(match_matrix["h_goals"]) + list(match_matrix["a_goals"])
     avg_goals = float(np.mean(all_goals)) if all_goals else 1.3
+
+    max_abs = max(
+        [abs(v) for v in attack.values()] + [abs(v) for v in defence.values()] or [0.0]
+    )
+    converged = bool(result.success) and max_abs <= MAX_ABS_PARAM
 
     return {
         "attack": attack,
@@ -88,7 +116,9 @@ def train_dixon_coles(match_matrix: pd.DataFrame, rho: float = 0.1) -> dict:
         "home_advantage": home_adv,
         "rho": rho,
         "avg_goals": avg_goals,
-        "converged": bool(result.success),
+        "converged": converged,
+        "l2_lambda": l2,
+        "max_abs_param": max_abs,
     }
 
 

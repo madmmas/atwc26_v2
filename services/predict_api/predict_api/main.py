@@ -27,9 +27,13 @@ from atwc26_core.prediction import get_predictor
 from atwc26_core.schemas import PredictRequest
 from services.shared.json_util import clean_json
 from services.shared.predict_bootstrap import build_predictor_store, ensure_predictor_data
+from services.shared.freshness import data_updated_at
+from etl.eval.backtest import load_backtest_summary
 
 _RELOAD_SECRET = config.RELOAD_SECRET
 _reload_lock = threading.Lock()
+
+PRIMARY_MODEL_ORDER = ("dixon_coles", "poisson", "elo", "xgboost")
 
 app = FastAPI(title=f"{config.APP_NAME} Predict", version=config.APP_VERSION)
 
@@ -64,7 +68,7 @@ def _get_store():
 
 def _health_payload() -> dict:
     store = _get_store()
-    return {
+    payload = {
         "status": "ok",
         "service": "predict",
         "app": config.APP_NAME,
@@ -72,6 +76,10 @@ def _health_payload() -> dict:
         "models_available": list(available_engines().keys()),
         **store.league,
     }
+    updated = data_updated_at()
+    if updated:
+        payload["data_updated_at"] = updated
+    return payload
 
 
 @app.get("/api/health")
@@ -117,7 +125,11 @@ def predict(req: PredictRequest):
         except Exception as exc:
             results[name] = {"error": str(exc)}
 
-    primary = results.get("poisson", next(iter(results.values())))
+    primary_name = next(
+        (name for name in PRIMARY_MODEL_ORDER if name in results and "error" not in results[name]),
+        next(iter(results)),
+    )
+    primary = results[primary_name]
     return clean_json({
         **primary,
         "comparison": {
@@ -131,6 +143,15 @@ def predict(req: PredictRequest):
             if "error" not in r
         },
     })
+
+
+@app.get("/api/backtest")
+def backtest():
+    """Return the latest out-of-sample backtest summary (written by etl-train)."""
+    summary = load_backtest_summary()
+    if summary is None:
+        raise HTTPException(404, "No backtest summary found. Run make etl-train first.")
+    return clean_json(summary)
 
 
 def _enrich_players(player_selections: list[dict], store) -> None:

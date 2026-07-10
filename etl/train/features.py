@@ -122,3 +122,60 @@ def add_rolling_form(df: pd.DataFrame, window: int = 3) -> pd.DataFrame:
         _record(a_team, 1 if outcome == 0 else 0)
 
     return out
+
+
+def add_rolling_attack_stats(df: pd.DataFrame, window: int = 5) -> pd.DataFrame:
+    """Add pre-match rolling xG/shots/SoT means per side (shifted — no same-match leak).
+
+    Columns added:
+      h_xg_roll, a_xg_roll, h_shots_roll, a_shots_roll, h_sot_roll, a_sot_roll
+    """
+    if df.empty:
+        return df
+
+    out = df.copy()
+    for col in (
+        "h_xg_roll",
+        "a_xg_roll",
+        "h_shots_roll",
+        "a_shots_roll",
+        "h_sot_roll",
+        "a_sot_roll",
+    ):
+        out[col] = 0.0
+
+    # Per team: list of (xg, shots, sot) from past matches only.
+    hist: dict[str, list[tuple[float, float, float]]] = {}
+
+    def _mean(team: str) -> tuple[float, float, float]:
+        past = hist.get(team, [])
+        if not past:
+            return 0.0, 0.0, 0.0
+        windowed = past[-window:]
+        n = len(windowed)
+        return (
+            sum(p[0] for p in windowed) / n,
+            sum(p[1] for p in windowed) / n,
+            sum(p[2] for p in windowed) / n,
+        )
+
+    for idx, row in out.iterrows():
+        h_team = row["home_team"]
+        a_team = row["away_team"]
+        hx, hs, ht = _mean(h_team)
+        ax, as_, at = _mean(a_team)
+        out.at[idx, "h_xg_roll"] = hx
+        out.at[idx, "a_xg_roll"] = ax
+        out.at[idx, "h_shots_roll"] = hs
+        out.at[idx, "a_shots_roll"] = as_
+        out.at[idx, "h_sot_roll"] = ht
+        out.at[idx, "a_sot_roll"] = at
+
+        hist.setdefault(h_team, []).append(
+            (float(row["h_xg_p90"]), float(row["h_shots_p90"]), float(row["h_sot_p90"]))
+        )
+        hist.setdefault(a_team, []).append(
+            (float(row["a_xg_p90"]), float(row["a_shots_p90"]), float(row["a_sot_p90"]))
+        )
+
+    return out

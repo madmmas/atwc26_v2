@@ -18,6 +18,7 @@ def test_analytics_health(analytics_client: TestClient) -> None:
     body = response.json()
     assert body["service"] == "analytics"
     assert body["teams"] > 0
+    assert "data_updated_at" in body
 
 
 def test_predict_health(predict_client: TestClient) -> None:
@@ -27,6 +28,7 @@ def test_predict_health(predict_client: TestClient) -> None:
     assert body["service"] == "predict"
     assert "models_available" in body
     assert "poisson" in body["models_available"]
+    assert "data_updated_at" in body
 
 
 def test_predict_health_namespaced_route(predict_client: TestClient) -> None:
@@ -35,6 +37,36 @@ def test_predict_health_namespaced_route(predict_client: TestClient) -> None:
     body = response.json()
     assert body["service"] == "predict"
     assert "models_available" in body
+
+
+def test_backtest_endpoint(predict_client: TestClient) -> None:
+    response = predict_client.get("/api/backtest")
+    # 200 when etl-train has written summary; 404 otherwise.
+    assert response.status_code in (200, 404)
+    if response.status_code == 200:
+        body = response.json()
+        assert "models" in body
+    else:
+        assert "backtest" in response.json()["detail"].lower()
+
+
+def test_predict_defaults_to_dixon_coles_when_available(
+    analytics_client: TestClient, predict_client: TestClient
+) -> None:
+    health = predict_client.get("/api/predict/health").json()
+    team_a, team_b = team_names_for_predict(analytics_client)
+    body = {
+        "team_a": build_xi(analytics_client, team_a, home=True),
+        "team_b": build_xi(analytics_client, team_b),
+    }
+    response = predict_client.post("/api/predict", json=body)
+    assert response.status_code == 200
+    result = response.json()
+    if "dixon_coles" in health.get("models_available", []):
+        assert result.get("model", {}).get("name") == "dixon_coles"
+    else:
+        assert result.get("model", {}).get("name") in ("poisson", "elo", "xgboost")
+    assert "comparison" in result
 
 
 def test_predict_health_not_on_analytics(analytics_client: TestClient) -> None:
