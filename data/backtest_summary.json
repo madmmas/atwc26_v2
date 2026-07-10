@@ -1,22 +1,22 @@
 {
-  "generated_at": "2026-07-10T09:26:14.364256+00:00",
+  "generated_at": "2026-07-10T09:29:29.354924+00:00",
   "holdout_frac": 0.2,
-  "train_n": 342,
+  "train_n": 343,
   "holdout_n": 86,
   "models": {
     "elo": {
       "n": 86,
-      "log_loss": 1.0343,
-      "accuracy": 0.5233,
-      "brier": 0.6115
+      "log_loss": 1.0353,
+      "accuracy": 0.5349,
+      "brier": 0.6123
     },
     "dixon_coles": {
       "n": 86,
-      "log_loss": 0.9002,
-      "accuracy": 0.6047,
-      "brier": 0.5371,
+      "log_loss": 0.9055,
+      "accuracy": 0.593,
+      "brier": 0.5407,
       "train_converged": true,
-      "train_max_abs_param": 1.2608
+      "train_max_abs_param": 1.2615
     }
   }
 }
