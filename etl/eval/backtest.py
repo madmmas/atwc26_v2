@@ -1,14 +1,12 @@
 """Chronological out-of-sample backtest for Elo and Dixon-Coles."""
 from __future__ import annotations
 
-import json
 from datetime import datetime, timezone
-from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-from atwc26_core import config
+from atwc26_core.backtest_io import load_backtest_summary, save_backtest_summary
 from atwc26_core.engines.dixon_coles import DixonColesEngine
 from atwc26_core.engines.elo import EloEngine
 from etl.train.dixon_coles import train_dixon_coles
@@ -115,18 +113,8 @@ def run_backtest(match_matrix: pd.DataFrame, holdout_frac: float = 0.2) -> dict:
     }
 
 
-def save_backtest_summary(summary: dict, path: Path | None = None) -> Path:
-    path = path or config.BACKTEST_SUMMARY
-    path.parent.mkdir(parents=True, exist_ok=True)
-    path.write_text(json.dumps(summary, indent=2))
-    return path
-
-
-def load_backtest_summary(path: Path | None = None) -> dict | None:
-    path = path or config.BACKTEST_SUMMARY
-    if not path.exists():
-        return None
-    try:
-        return json.loads(path.read_text())
-    except Exception:
-        return None
+__all__ = [
+    "run_backtest",
+    "save_backtest_summary",
+    "load_backtest_summary",
+]
