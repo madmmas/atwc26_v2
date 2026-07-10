@@ -53,7 +53,7 @@ Browser ──▶ Nginx (:443)
 - **Single process** serves every endpoint: overview, teams, players, standings, bracket, winner probabilities, and `POST /api/predict`.
 - **DataStore** in `backend/app/data.py` loads the full parquet dataset once; all aggregates live in memory.
 - **Monte Carlo** tournament simulation (`get_winner_probabilities`) ran at **API startup** — ~6s before the first user request was acceptable on a long-lived server, but expensive on cold-start serverless.
-- **Prediction** (Poisson / XGBoost) shares the same process and memory footprint as read-heavy analytics.
+- **Prediction** (Dixon-Coles / Poisson / Elo / XGBoost) shares the same process and memory footprint as read-heavy analytics.
 
 ### Deployment
 
@@ -86,13 +86,14 @@ Browser ──▶ CloudFront
               ├─ default ──▶ S3 (Next.js static export)
               └─ /api/*  ──▶ API Gateway
                                 ├─ $default ──▶ analytics Lambda (reads)
+                                ├─ GET /api/predict/health ──▶ predict
                                 └─ POST /api/predict ──▶ predict Lambda (default)
                                                          or ECS Fargate (optional)
 ```
 
-- **ETL** (GitHub Actions + optional AWS scheduler) scrapes ESPN, transforms, simulates offline, publishes to **S3** + **DynamoDB** (manifest + API response cache).
+- **ETL** (GitHub Actions + optional AWS scheduler) scrapes ESPN, transforms, simulates offline, trains models, publishes to **S3** + **DynamoDB** (manifest + API response cache).
 - **Analytics Lambda** serves read endpoints from precomputed cache / S3-synced artifacts — no Monte Carlo at request time.
-- **Predict** handles CPU-bound `POST /api/predict` — **Lambda by default**; **ECS Fargate** when `enable_ecs_compute=true` (longer runs, more memory).
+- **Predict** handles CPU-bound `POST /api/predict` (Dixon-Coles primary when available, plus Poisson / Elo / XGBoost) — **Lambda by default**; **ECS Fargate** when `enable_ecs_compute=true`. Also serves `GET /api/backtest` and health (API Gateway routes these to predict).
 - **Shared package** `packages/atwc26_core` holds DataStore, prediction engines, artifact registry — used by ETL, both APIs, and tests.
 
 Full diagram: [ARCHITECTURE.md](ARCHITECTURE.md).
@@ -189,8 +190,10 @@ v2 uses `name_prefix = atwc26-v2` so candidate infrastructure never collides wit
 | Route | v1 | v2 |
 |-------|----|----|
 | `GET /api/*` (reads) | Monolith | Analytics Lambda |
-| `GET /api/winner-probabilities` | Monolith (MC) | Analytics (precomputed) |
-| `POST /api/predict` | Monolith | Predict Lambda or ECS |
+| `GET /api/winner-probabilities` | Monolith (MC at startup) | Analytics (ETL-precomputed + stage_probabilities) |
+| `POST /api/predict` | Monolith | Predict Lambda or ECS (Dixon-Coles primary) |
+| `GET /api/predict/health` | Monolith `/api/health` | Predict (models_available + data_updated_at) |
+| `GET /api/backtest` | — | Predict Lambda/ECS (API Gateway route) |
 
 Contract tests: `make test-contract` · [ops/TESTING.md §12](ops/TESTING.md#12-local-v2-e2e-smoke-path).
 

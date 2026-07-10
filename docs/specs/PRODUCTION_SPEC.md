@@ -2,20 +2,41 @@
 # Instructions for Cursor. Work top-to-bottom. Each section is a discrete task.
 # Prerequisites, exact commands, file edits, and verification steps are all included.
 # Do not skip verification steps — each one confirms the previous task worked.
+#
+# ══════════════════════════════════════════════════════════════════════════════
+# STATUS NOTE (post-parity / post-stage-probs)
+# ══════════════════════════════════════════════════════════════════════════════
+# Parts 1–4 are a **bootstrap checklist if the AWS stack is not yet applied**.
+# Living sources of truth when this file disagrees:
+#   docs/ops/DEPLOY.md · infra/README.md · docs/ARCHITECTURE.md
+#
+# Parts 5–7 (notebooks/models.ipynb, stage_probabilities, small fixes) are **shipped**.
+# Do not re-implement from the commented scripts below. See:
+#   - notebooks/models.ipynb
+#   - docs/models/WINNER_PROBABILITY_MODEL.md
+#   - docs/planning/NEXT_MOVES.md (marked historical)
+# Model-quality follow-ups: docs/models/V2_PARITY_BACKPORT.md
+# Part 8 Phase U (prod Terraform env) is **shipped** — see infra/terraform/envs/prod
+# and docs/ops/DEPLOY.md. Phases V–W remain future work.
+# ══════════════════════════════════════════════════════════════════════════════
 
 ---
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PART 1 — INFRASTRUCTURE BOOTSTRAP (one-time, blocks everything else)
+# PART 1 — INFRASTRUCTURE BOOTSTRAP (one-time, if stack not yet applied)
 # ══════════════════════════════════════════════════════════════════════════════
 #
 # Context: The Terraform modules, GHA workflows, scripts, and application code
-# are all complete. What does not exist yet is:
-#   - A live AWS stack (Terraform has never been applied)
-#   - GitHub OIDC IAM role (workflows use ATWC26_AWS_ROLE_ARN which doesn't exist)
-#   - Lambda packages (infra/build/lambdas/ is empty → Lambda functions have no code)
-#   - DynamoDB API cache (table will exist after apply but is empty until first ETL)
-#   - ETL scheduler (EventBridge rule doesn't exist → ETL never runs automatically)
+# are all complete. Part 1 applies only when you still need a first-time AWS
+# bootstrap. If `envs/dev` or `envs/prod` is already applied, skip to ops
+# runbooks instead of treating the bullets below as current gaps.
+#
+# When bootstrapping from zero, you may still need:
+#   - A live AWS stack (Terraform apply)
+#   - GitHub OIDC IAM role (ATWC26_AWS_ROLE_ARN)
+#   - Lambda packages under infra/build/lambdas/
+#   - DynamoDB API cache rows (filled by first ETL publish)
+#   - ETL scheduler (optional; enable_etl_scheduler)
 #
 # These steps must be done in order. Step 1A must be done by the human in the
 # AWS console and GitHub UI. Steps 1B–1G are Cursor tasks.
@@ -701,8 +722,11 @@ encrypt = true
 # EventBridge scheduler, or manual workflow_dispatch).
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PART 7 — SMALL FIXES (bugs from previous analysis)
+# PART 7 — SMALL FIXES (bugs from previous analysis) — SHIPPED
 # ══════════════════════════════════════════════════════════════════════════════
+# 7A cache_headers ordering, 7B players next_cursor type, 7C ci.yml trials=1000
+# are in the tree. Do not re-apply the scripts below.
+#
 
 # ──────────────────────────────────────────────────────────────────────────────
 # STEP 7A — Fix cache_headers.py CACHE_RULES ordering bug
@@ -775,7 +799,10 @@ encrypt = true
 # PART 8 — AFTER CUTOVER: future phases (not urgent, do after tournament ends)
 # ══════════════════════════════════════════════════════════════════════════════
 
-# Phase U — Prod Terraform env
+# Phase U — Prod Terraform env — SHIPPED
+#   Lives at infra/terraform/envs/prod/ (ACM + Route 53 for atwc26.com).
+#   Ops: docs/ops/DEPLOY.md §6, terraform-prod.yml, GitHub `production` env.
+#   (Original checklist below kept for archaeology only.)
 #   Copy infra/terraform/envs/dev/ to infra/terraform/envs/prod/
 #   Change: name_prefix="atwc26-v2-prod", environment="prod"
 #   Use separate state key: "atwc26-v2/prod/terraform.tfstate"
@@ -800,9 +827,11 @@ encrypt = true
 # VERIFICATION SUMMARY — run these after all parts are complete
 # ══════════════════════════════════════════════════════════════════════════════
 
-# 1. ETL auto-runs every 15 minutes:
+# 1. ETL scheduler (when enable_etl_scheduler=true):
+#    EventBridge polls every 5 minutes → Lambda → workflow_dispatch on etl.yml.
+#    Post-match catchup uses ~15-minute slots (see docs/etl/SCHEDULER.md).
 #    gh run list --workflow etl.yml --limit 10
-#    # Should show runs with trigger "schedule"
+#    # Expect workflow_dispatch runs (not a GitHub Actions cron schedule)
 
 # 2. Lambda analytics reads from DynamoDB (not DataStore):
 #    curl https://atwc26.com/api/standings

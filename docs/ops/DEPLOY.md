@@ -280,8 +280,8 @@ Browser ──HTTPS──▶ CloudFront (no WAF in this phase)
 
 | Path | Service | Notes |
 |------|---------|-------|
-| `GET /api/health`, overview, teams, players, matches, standings, bracket, leaderboard, **winner-probabilities** | **analytics Lambda** | Precomputed JSON / DynamoDB API cache |
-| `POST /api/predict`, `GET /api/predict/health`, `GET /api/backtest` | **predict Lambda** (default) or **ECS Fargate** | Toggle via `enable_ecs_compute` |
+| `GET /api/health`, overview, teams, players, matches, standings, bracket, leaderboard, **winner-probabilities** | **analytics Lambda** | Precomputed JSON / DynamoDB API cache; health may include `data_updated_at` |
+| `POST /api/predict`, `GET /api/predict/health`, `GET /api/backtest` | **predict Lambda** (default) or **ECS Fargate** | Multi-model predict (Dixon-Coles primary); track-record summary; toggle via `enable_ecs_compute` |
 
 CloudFront does **not** proxy `/api/*` to the v1 monolith. Pre-cutover static builds may call v1 **cross-origin** via `NEXT_PUBLIC_API_URL`; post-cutover builds use same-origin `/api/*` through CloudFront.
 

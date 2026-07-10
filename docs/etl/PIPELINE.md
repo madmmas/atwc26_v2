@@ -61,7 +61,7 @@ flowchart TD
 | **B5** | `Scrape ESPN data` | `make etl-scrape-phase` — see [Scrape Phase](#scrape-phase). |
 | **B6** | `Detect data changes` | `etl.changed compare` — skip transform/publish if unchanged. `compare-matches` decides training. |
 | **B7** | `Persist scrape state` | When data unchanged, still saves `processed_games.json` to DynamoDB. |
-| **B8** | `Transform + simulate + QA` | `make etl-local` with `ATWC26_SIMULATE_TRIALS=1000`. Sets `ATWC26_SKIP_TRAIN=1` when only bracket/standings changed. |
+| **B8** | `Transform + simulate + train + QA` | `make etl-local` with `ATWC26_SIMULATE_TRIALS=1000`. Sets `ATWC26_SKIP_TRAIN=1` when only bracket/standings changed. |
 | **B9** | `ETL tests` | `pytest tests/etl etl/qa`. |
 | **B10** | `Publish` | `make etl-publish` — see [Publish & Compute Refresh](#publish--compute-refresh). |
 
@@ -311,7 +311,7 @@ Actions → ETL → Run workflow:
 
 ```bash
 make setup-etl
-make etl-refresh      # scrape + transform + simulate + QA
+make etl-refresh      # scrape + transform + simulate ∥ train + QA
 make etl-publish      # requires ATWC26_S3_BUCKET + AWS creds
 ```
 

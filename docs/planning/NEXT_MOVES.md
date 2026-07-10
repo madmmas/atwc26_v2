@@ -1,15 +1,22 @@
 # atwc26_v2 — Next moves (based on Cursor evaluation)
 #
-# This file contains ONLY the remaining code changes.
-# Parts 1–4 (AWS bootstrap, ECS, CloudFront, DNS) are operational
-# and must be done by the human in AWS console + GitHub UI.
-# This file covers everything that is pure code — no AWS access needed.
+# ══════════════════════════════════════════════════════════════════════════════
+# STATUS: MOSTLY SHIPPED — HISTORICAL CHECKLIST
+# ══════════════════════════════════════════════════════════════════════════════
+# Items A–D below (ci.yml trials, stage_probabilities, models.ipynb, ML
+# artifacts) are implemented. Prefer living docs:
+#   - docs/models/WINNER_PROBABILITY_MODEL.md  (stage_probabilities)
+#   - notebooks/models.ipynb
+#   - docs/models/ANALYTICS.md / V2_PARITY_*
+# This file is the **original** task list (all items shipped). Do not treat
+# the body as open work.
+# ══════════════════════════════════════════════════════════════════════════════
 #
-# Work in this order:
-#   A  ci.yml one-line fix          (2 min)
-#   B  stage probabilities          (the main feature, ~6 files)
-#   C  models.ipynb into repo       (copy file)
-#   D  commit untracked ML artifacts (git add)
+# Original scope (pure code — no AWS access needed):
+#   A  ci.yml one-line fix          (2 min)           ✅ shipped
+#   B  stage probabilities          (the main feature) ✅ shipped
+#   C  models.ipynb into repo       (copy file)        ✅ shipped
+#   D  commit untracked ML artifacts (git add)         ✅ shipped
 #
 # ═══════════════════════════════════════════════════════════════════
 # A — Fix ci.yml simulate trials (one line)

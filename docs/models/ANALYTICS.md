@@ -1,13 +1,18 @@
 # ANALYTICS.md — How the numbers and the prediction work
 
-This document explains **every analytic and the prediction engine** in plain
+This document explains **every analytic and the prediction engines** in plain
 language, then gives the exact formulas and weights so a reviewer can audit them
 and a QA engineer can write assertions against them.
 
-All of this lives in two backend files:
-- [backend/app/data.py](backend/app/data.py) — turns raw scraped rows into
-  analysis-ready player/team profiles.
-- [backend/app/prediction.py](backend/app/prediction.py) — the match predictor.
+**Code locations (v2 canonical):**
+- [`packages/atwc26_core/atwc26_core/data.py`](../../packages/atwc26_core/atwc26_core/data.py) — turns raw scraped rows into analysis-ready player/team profiles.
+- [`packages/atwc26_core/atwc26_core/prediction.py`](../../packages/atwc26_core/atwc26_core/prediction.py) — Poisson XI predictor (with minutes shrinkage).
+- [`packages/atwc26_core/atwc26_core/engines/`](../../packages/atwc26_core/atwc26_core/engines/) — Elo, Dixon-Coles, XGBoost engines + registry.
+- [`etl/train/`](../../etl/train/) — fits Elo / Dixon-Coles / XGBoost; writes artifacts + backtest summary.
+
+v1 mirrors live under `backend/app/` (same formulas; used by the monolith until cutover).
+
+Shipped model-quality work (DC L2, XGB leak fix, backtest, DC-as-primary): [V2_PARITY_BACKPORT.md](V2_PARITY_BACKPORT.md).
 
 ---
 
@@ -25,14 +30,14 @@ Each row carries:
 - **Stats:** ~140 numeric columns (e.g. `expectedGoals`, `expectedAssists`,
   `touches`, `duelsWon`, `defensiveInterventions`, `saves`, `goalsPrevented`).
 
-### Cleaning (done once at backend startup)
+### Cleaning (done once at DataStore load)
 - Every stat column is coerced to numeric (`pd.to_numeric(..., errors="coerce")`)
   because a few arrive as strings.
 - `minutes` missing → `0`.
 - Each row gets a **role** via `classify_role()` (see below).
 
 Everything downstream reads from cached, derived frames — the parquet is only
-read once per process.
+read once per process (or once per Lambda/ECS warm container after S3 sync).
 
 ---
 
@@ -105,21 +110,42 @@ These feed the **Overview** chart and KPIs.
 
 ### League baseline
 `avg_team_goals` = mean goals scored by a team in a game across the tournament
-(currently ≈ **1.58**). This anchors the prediction model.
+(currently ≈ **1.58**). This anchors the Poisson XI model.
 
 ---
 
-## 6. The prediction engine
+## 6. Prediction engines (multi-model)
 
-> **In one sentence:** we turn each selected XI into an *attack rating*, a
-> *defense rating*, and a *goalkeeping factor*, convert those into an expected
-> number of goals for each side, and run a **Poisson goals model** to get
-> win/draw/loss probabilities and the most likely scoreline.
+> **In one sentence:** the predict API exposes four engines — **Dixon-Coles**
+> (primary when available), **Poisson** (XI-based), **Elo**, and **XGBoost**.
+> Omitting `model` runs all available engines and returns a comparison block;
+> the **primary** result prefers Dixon-Coles, then Poisson, Elo, XGBoost
+> (`PRIMARY_MODEL_ORDER` in `services/predict_api`).
 
-This is the standard, well-understood approach to football match prediction. We
-keep every step transparent so the output is explainable.
+| Engine | Artifact / input | What it models |
+|--------|------------------|----------------|
+| `dixon_coles` | `data/dc_params.json` | Team attack/defence + home; bivariate Poisson with τ correction |
+| `poisson` | In-memory player profiles | User-built XIs → role-weighted ratings → independent Poisson scorelines |
+| `elo` | `data/elo_ratings.json` | Rating gap → win/draw/loss |
+| `xgboost` | `data/xgb_model.ubj` + `xgb_features.json` | Classifier on pre-match team features |
 
-### 6.1 Inputs
+Frontend defaults (model selector, homepage quick-predict) follow the same
+Dixon-Coles-first rule. Track record: `GET /api/backtest` + `TrackRecordPanel`
+on `/predict` (see [V2_PARITY_BACKPORT.md](V2_PARITY_BACKPORT.md)).
+
+### 6.0 Dixon-Coles (primary)
+
+Fitted in `etl/train/dixon_coles.py` by MLE with:
+- **L2** penalty on attack/defence (`L2_LAMBDA = 1.0`) so sparse international
+  panels stay bounded.
+- **Centering** after fit: `sum(α)=0`, `sum(β)=0` for identifiability.
+- `converged` flag persisted in `dc_params.json`; tests refuse unbounded params
+  (`MAX_ABS_PARAM = 3.0`).
+
+At inference, the engine builds a scoreline matrix with the Dixon-Coles τ
+low-score correction (not independent Poisson).
+
+### 6.1 Poisson XI model — inputs
 Two teams, each a list of `{player_id, role}` (the role = the **slot** the user
 assigned in the formation, not necessarily the player's natural position). Plus an
 optional `home` flag per team.
@@ -150,6 +176,20 @@ it can be negative for a keeper conceding more than expected.
 
 > Weights live in `ATTACK_WEIGHTS`, `DEFENSE_WEIGHTS`, and `_raw_gk()` in
 > `prediction.py`. They are deliberately simple and editable.
+
+### 6.2b Minutes shrinkage (Empirical Bayes)
+
+Before role-weighted aggregation, each player's per-90 **rates** used in scoring
+are shrunk toward the role reference:
+
+```
+w = minutes / (minutes + k)   # k = MINUTES_SHRINK_K = 45
+rate_shrunk = w * rate + (1 - w) * role_ref
+```
+
+Low-minute cameos therefore pull less weight than full starters. Leaderboards
+still apply an explicit minutes floor for ranking; the predictor uses shrinkage
+instead of a hard floor.
 
 ### 6.3 Step 2 — normalize so an average player ≈ 1.0
 
@@ -210,8 +250,8 @@ tournament norm. Strong attack or a weak opponent pushes it up; vice-versa.
 
 ### 6.6 Step 5 — scoreline matrix → probabilities
 
-Goals are modeled as independent **Poisson** variables. The probability of an
-exact scoreline _i–j_ is:
+Goals are modeled as independent **Poisson** variables (Poisson engine only).
+The probability of an exact scoreline _i–j_ is:
 
 ```
 P(i, j) = Poisson(i; λ_A) × Poisson(j; λ_B)
@@ -241,7 +281,32 @@ Five dimensions, each mapped to a 0–100 dial via `_scale(v) = clamp(50·v, 5, 
 | Defense | `defense_rating` |
 | Goalkeeping | `gk_factor` |
 
-### 6.8 Worked example (auto-picked Brazil home vs. Germany)
+### 6.8 XGBoost features (no same-match leak)
+
+**Training** uses **rolling pre-match** attack stats (`add_rolling_attack_stats`
+in `etl/train/features.py`), shifted like form — never the current match's
+xG/shots — plus rolling form (`h_form3` / `a_form3`).
+
+**Inference** (`XGBoostEngine`) builds a related but not identical vector:
+tournament per-90 XI sums for `xg_diff` / `shots_diff` / `sot_diff`, plus Elo
+gap, DC attack/defence ratios, and home flag. `form3_wins` is not populated by
+the predict API today, so `h_form3` / `a_form3` are typically **0** at serve
+time. Same-match label leakage is fixed; a residual train/serve feature gap
+remains for form (and XI p90 vs rolling attack means).
+
+### 6.9 Out-of-sample backtest
+
+`etl/eval/backtest.py` (invoked from `etl/train/run.py`) chronological 80/20
+split → Elo + Dixon-Coles metrics → `data/backtest_summary.json`. Exposed at
+`GET /api/backtest` on the predict service. See [ops/TESTING.md](../ops/TESTING.md).
+
+**Publish note:** `backtest_summary.json` is written by train and registered in
+`ARTIFACTS` (`packages/atwc26_core/.../artifacts.py`), so ETL publish uploads it
+with other model artifacts. Predict loads it via `atwc26_core.backtest_io`
+(no ETL package on Lambda/ECS). Served at `GET /api/backtest` (API Gateway →
+predict).
+
+### 6.10 Worked example (auto-picked Brazil home vs. Germany, Poisson engine)
 
 ```
 Brazil : attack 0.76  defense 0.97  gk 0.96  → xG 2.60  win 19%
@@ -256,24 +321,25 @@ numbers — that's expected and good for a demo.)
 
 ## 7. Assumptions & limitations (read before trusting it)
 
-- **Independent Poisson goals.** Real goals are mildly correlated (e.g. game
-  state); a Dixon-Coles low-score correction could be added later.
-- **Form = tournament per-90.** A player who's played 45 minutes is judged on a
-  small sample. Leaderboards apply a minutes floor; the predictor does not, so an
-  XI of cameo players can look misleadingly strong/weak.
-- **Ratings are relative to *this* tournament**, not all-time strength.
+- **Poisson engine uses independent goals.** Real goals are mildly correlated;
+  the **Dixon-Coles** engine (primary) applies the τ low-score correction.
+- **Form = tournament per-90 + shrinkage.** Cameo minutes are shrunk toward
+  role references (`MINUTES_SHRINK_K = 45`); leaderboards still use a hard
+  minutes floor for ranking.
+- **Ratings are relative to *this* tournament**, not all-time strength (history
+  blend helps the predictor sample, not a full Elo history for every nation).
 - **Role = the slot you pick**, so you can play anyone anywhere; their *per-90
   numbers* travel with them, not positional context.
 - **No fixtures, fatigue, injuries, tactics, or red-card dynamics.**
 
-These are intentional simplifications that keep the model explainable. They are
-the first things to improve if this graduates from a demo.
+These are intentional simplifications that keep the model explainable.
 
 ---
 
 ## 8. Tuning guide (for contributors)
 
-Everything tunable is a named constant at the top of `prediction.py`:
+Everything tunable for the Poisson XI path is a named constant at the top of
+`prediction.py`:
 
 | Constant | Effect |
 |---|---|
@@ -282,7 +348,11 @@ Everything tunable is a named constant at the top of `prediction.py`:
 | `HOME_ADVANTAGE` | size of the home bump (1.0 = none) |
 | `LAMBDA_CLAMP` | min/max expected goals |
 | `MAX_GOALS` | scoreline grid size |
+| `MINUTES_SHRINK_K` | Empirical-Bayes prior strength (minutes) |
 
-After changing weights, re-run the prediction tests (see
-[TESTING.md](../ops/TESTING.md)) to confirm probabilities still sum to 1.0 and an
-average-vs-average matchup still yields ~1.58 xG per side.
+Dixon-Coles training: `L2_LAMBDA`, `MAX_ABS_PARAM` in `etl/train/dixon_coles.py`.
+
+After changing weights, re-run prediction / train tests (see
+[TESTING.md](../ops/TESTING.md) and [V2_PARITY_TEST_PLAN.md](V2_PARITY_TEST_PLAN.md)).
+Retrain with `make etl-train` so `dc_params.json`, `xgb_model.ubj`, and
+`backtest_summary.json` match the new code.

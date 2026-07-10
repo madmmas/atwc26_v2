@@ -66,11 +66,13 @@ Optional (needs committed parquet):
 5. **Primary model**
    - POST `/api/predict` without `model` → primary block should be Dixon-Coles
      when DC is available (`model.name == "dixon_coles"`).
-   - Quick-predict on homepage fixtures should request `dixon_coles`.
+   - Homepage `quickPredict` omits `model` so the API primary is Dixon-Coles
+    when available (same `PRIMARY_MODEL_ORDER`).
 
 6. **UI**
    - Predict page default selector = Dixon-Coles (when available).
-   - Track-record panel shows hold-out metrics when summary exists.
+   - Track-record panel (inside Match Predictor tab) shows hold-out metrics
+     when summary exists.
 
 ---
 

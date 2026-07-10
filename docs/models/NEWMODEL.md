@@ -1,6 +1,21 @@
 # atwc26_v2 — Multi-model prediction engine
 # Cursor implementation spec
 #
+# ════════════════════════════════════════════════════════════════════════════════
+# STATUS: HISTORICAL — IMPLEMENTED
+# ════════════════════════════════════════════════════════════════════════════════
+# This file was the step-by-step plan to add Elo / Dixon-Coles / XGBoost.
+# The work has shipped. Do **not** treat "Current state: one Poisson model" or
+# "primary result is poisson" as live truth.
+#
+# Living docs:
+#   - docs/models/ANALYTICS.md          — engines, DC primary, shrinkage, XGB features
+#   - docs/models/V2_PARITY_BACKPORT.md — L2, backtest, leak fix, UI defaults
+#   - docs/models/V2_PARITY_TEST_PLAN.md
+#
+# Kept for archaeology / how the engines were introduced.
+# ════════════════════════════════════════════════════════════════════════════════
+#
 # Work top-to-bottom. Each step builds on the previous.
 # Do NOT start a step until the previous step's tests pass.
 # Do NOT touch etl/scrape/*, frontend/app/predict/page.tsx formation logic,
@@ -10,18 +25,18 @@
 # CONTEXT
 # ════════════════════════════════════════════════════════════════════════════════
 #
-# Current state:
+# Current state (at time of writing — **superseded**; see STATUS banner):
 #   - One prediction model: Poisson (packages/atwc26_core/atwc26_core/prediction.py)
 #   - Called by: services/predict_api/predict_api/main.py → POST /api/predict
 #   - Trained data: 94 WC26 matches + 332 historical = 426 total match rows
 #   - Data location: data/all_players_stats.parquet + data/historical_form.parquet
 #   - Pipeline: ETL transform → etl-local → etl-publish
 #
-# Target state after this spec:
+# Target state after this spec (now shipped — see ANALYTICS.md):
 #   - Four models: Poisson (existing), Elo, Dixon-Coles, XGBoost
 #   - Common ModelEngine protocol — every model implements the same interface
 #   - ?model=poisson|elo|dixon_coles|xgboost query param selects the model
-#   - No ?model param → runs all four and returns comparison block
+#   - No ?model param → runs all four and returns comparison block; primary = Dixon-Coles
 #   - New ETL step: etl/train/ runs after simulate, writes model artifacts to data/
 #   - New artifacts registered in artifacts.py and published to S3
 #   - Tests for every new file

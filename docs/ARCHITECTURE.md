@@ -116,7 +116,7 @@ C4Component
         Component(scrape, "etl.scrape", "Python scripts", "fetch_schedule, scrape_wc26, scrape_squads, fetch_groups")
         Component(transform, "etl.transform", "Python module", "Profiles, manifest, match events — run.py, profiles.py; invokes etl/build_match_events.py")
         Component(simulate, "etl.simulate", "Python module", "Monte Carlo (1,000 trials in CI) winner probabilities + bracket path")
-        Component(train, "etl.train", "Python module", "Elo, Dixon-Coles, XGBoost model training")
+        Component(train, "etl.train + etl.eval", "Python module", "Elo, Dixon-Coles (L2), XGBoost + chronological backtest")
         Component(qa, "etl.qa", "Python module", "Validates artifacts + DataStore load — checks.py")
         Component(publish, "etl.publish", "Python module", "S3 upload, DynamoDB manifest/cache, compute refresh — publish.py, refresh.py, api_cache.py")
         Component(core, "atwc26_core", "Shared package", "DataStore, artifact registry, tournament/prediction logic — packages/atwc26_core")
@@ -133,7 +133,7 @@ C4Component
     Rel(scrape, core, "Writes data/*.parquet, data/*.json")
     Rel(transform, core, "Reads raw artifacts, writes profiles + manifest + match_events.json")
     Rel(simulate, core, "Reads features, writes winner_probabilities.json / bracket_predictions.json")
-    Rel(train, core, "Writes elo_ratings.json, dc_params.json, xgb_model.ubj")
+    Rel(train, core, "Writes elo_ratings.json, dc_params.json, xgb_model.ubj, backtest_summary.json")
     Rel(qa, core, "Validates artifacts + DataStore load")
     Rel(publish, s3, "Uploads changed artifacts, sha256-gated against DynamoDB LATEST")
     Rel(publish, ddb, "PutItem: manifest, API cache rows, {game_id}#DONE trigger markers")
@@ -258,7 +258,8 @@ flowchart TB
 
 **Key deployment facts** (confirmed in `infra/terraform/**`):
 
-- The predict route is a **runtime toggle, not two parallel paths**: `enable_ecs_compute` (default `false`) decides whether `POST /api/predict` hits `lambda-predict` or the ECS/ALB path — API Gateway swaps the integration with `create_before_destroy` so the route survives the switch.
+- The predict route is a **runtime toggle, not two parallel paths**: `enable_ecs_compute` (default `false`) decides whether `POST /api/predict` hits `lambda-predict` or the ECS/ALB path — API Gateway swaps the integration with `create_before_destroy` so the route survives the switch. Dedicated predict routes today: `POST /api/predict`, `GET /api/predict/health`, and `GET /api/backtest`.
+- Predict engines: **Dixon-Coles (primary)**, Poisson, Elo, XGBoost — see [models/ANALYTICS.md](models/ANALYTICS.md).
 - **Feature toggles differ by environment** (`infra/terraform/envs/dev/variables.tf` vs `envs/prod/variables.tf`):
 
   | Toggle | `envs/dev` default | `envs/prod` default |

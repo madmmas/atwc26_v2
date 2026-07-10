@@ -33,7 +33,7 @@ infra/
     envs/prod/                 # production — atwc26.com + Route53 aliases
 services/
   analytics_api/               # Issue 7 — read-only tournament API
-  predict_api/                 # Issue 7 — POST /api/predict
+  predict_api/                 # POST /api/predict, GET /api/predict/health, GET /api/backtest
 ```
 
 ## Prerequisites
@@ -84,7 +84,7 @@ CloudFront serves:
 API Gateway routes:
 
 - `POST /api/predict` → compute (ECS when `enable_ecs_compute=true`, else predict Lambda)
-- `GET /api/predict/health` → predict
+- `GET /api/predict/health` → predict (so the static frontend can discover `models_available`)
 - `GET /api/backtest` → predict (track-record summary)
 - all other paths (including `GET /api/winner-probabilities`) → analytics Lambda
 
