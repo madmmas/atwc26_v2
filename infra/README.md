@@ -33,7 +33,7 @@ infra/
     envs/prod/                 # production — atwc26.com + Route53 aliases
 services/
   analytics_api/               # Issue 7 — read-only tournament API
-  predict_api/                 # Issue 7 — POST /api/predict
+  predict_api/                 # POST /api/predict, GET /api/predict/health, GET /api/backtest
 ```
 
 ## Prerequisites

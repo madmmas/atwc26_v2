@@ -18,7 +18,7 @@ Next.js 14 frontend for AnalyseThisWC26 — Overview, Explore, Match Predictor, 
 |-------|---------|
 | `/` | Overview — KPIs, **today's matches** (win probs via quick-predict), team chart, leaderboards |
 | `/explore` | Player explorer (filter, sort, pagination) |
-| `/predict` | Match Predictor — section tabs, build two XIs, multi-model predict (**Dixon-Coles** default), **TrackRecordPanel** |
+| `/predict` | Two tabs — Winner Probability + Match Predictor; multi-model predict (**Dixon-Coles** default); track-record panel under Predictor |
 | `/standings` | Groups + knockout — **StandingsAnchorBar** section nav (`#groups` / `#bracket`) |
 
 App Router: `frontend/app/<route>/page.tsx`. Navigation: `frontend/components/Nav.tsx`.
@@ -27,13 +27,13 @@ App Router: `frontend/app/<route>/page.tsx`. Navigation: `frontend/components/Na
 
 | Component | Role |
 |-----------|------|
-| `TodaysMatchesWidget` | Homepage fixtures for today + quick win-probability chips (`dixon_coles` when available) |
-| `PredictTabs` | In-page tabs on `/predict` (predictor / winner chart / track record) |
-| `TrackRecordPanel` | Out-of-sample backtest metrics from `GET /api/backtest` (`data-testid="track-record-panel"`) |
+| `TodaysMatchesWidget` | Homepage fixtures for today + quick win-probability chips |
+| `PredictTabs` | Two tabs on `/predict`: Winner Probability · Match Predictor |
+| `TrackRecordPanel` | Hold-out metrics from `GET /api/backtest` — rendered **inside** the Match Predictor tab (`data-testid="track-record-panel"`) |
 | `StandingsAnchorBar` | Sticky section anchors on `/standings` |
 | `WinnerProbabilityChart` | Title + stage reach probabilities from analytics |
 
-Model selector default: `dixon_coles` when listed in `models_available`, else Poisson. Same rule in `frontend/lib/quickPredict.ts`.
+**Defaults:** Predict page model selector prefers `dixon_coles` when listed in `models_available`. Homepage `quickPredict` **omits** `model` so the API applies `PRIMARY_MODEL_ORDER` (Dixon-Coles first).
 
 ---
 

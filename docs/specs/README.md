@@ -9,6 +9,6 @@ Product, production architecture, and UX design documents.
 | [PRODUCTION_SPEC.md](PRODUCTION_SPEC.md) | Bootstrap checklist (Parts 5–6 shipped — see banner) |
 | [../ARCHITECTURE.md](../ARCHITECTURE.md) | C4 model + full AWS deployment map |
 | [UXSPEC.md](UXSPEC.md) | **Historical** UI wishlist |
-| [UXSPEC2.md](UXSPEC2.md) | Section-nav / page-tab UX (shipped design) |
+| [UXSPEC2.md](UXSPEC2.md) | Section-nav / page-tab UX (**shipped** — design record) |
 
 **Parent index:** [docs/README.md](../README.md)

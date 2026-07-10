@@ -6,9 +6,9 @@
 # ══════════════════════════════════════════════════════════════════════════════
 # STATUS NOTE (post-parity / post-stage-probs)
 # ══════════════════════════════════════════════════════════════════════════════
-# Parts 1–4 remain useful as an ops bootstrap checklist (cross-check against
-# docs/ops/DEPLOY.md, infra/README.md, and ARCHITECTURE.md — those are the
-# living sources of truth when this file disagrees).
+# Parts 1–4 are a **bootstrap checklist if the AWS stack is not yet applied**.
+# Living sources of truth when this file disagrees:
+#   docs/ops/DEPLOY.md · infra/README.md · docs/ARCHITECTURE.md
 #
 # Parts 5–6 (notebooks/models.ipynb, stage_probabilities) are **shipped**.
 # Do not re-implement from the commented scripts below. See:
@@ -21,16 +21,20 @@
 ---
 
 # ══════════════════════════════════════════════════════════════════════════════
-# PART 1 — INFRASTRUCTURE BOOTSTRAP (one-time, blocks everything else)
+# PART 1 — INFRASTRUCTURE BOOTSTRAP (one-time, if stack not yet applied)
 # ══════════════════════════════════════════════════════════════════════════════
 #
 # Context: The Terraform modules, GHA workflows, scripts, and application code
-# are all complete. What does not exist yet is:
-#   - A live AWS stack (Terraform has never been applied)
-#   - GitHub OIDC IAM role (workflows use ATWC26_AWS_ROLE_ARN which doesn't exist)
-#   - Lambda packages (infra/build/lambdas/ is empty → Lambda functions have no code)
-#   - DynamoDB API cache (table will exist after apply but is empty until first ETL)
-#   - ETL scheduler (EventBridge rule doesn't exist → ETL never runs automatically)
+# are all complete. Part 1 applies only when you still need a first-time AWS
+# bootstrap. If `envs/dev` or `envs/prod` is already applied, skip to ops
+# runbooks instead of treating the bullets below as current gaps.
+#
+# When bootstrapping from zero, you may still need:
+#   - A live AWS stack (Terraform apply)
+#   - GitHub OIDC IAM role (ATWC26_AWS_ROLE_ARN)
+#   - Lambda packages under infra/build/lambdas/
+#   - DynamoDB API cache rows (filled by first ETL publish)
+#   - ETL scheduler (optional; enable_etl_scheduler)
 #
 # These steps must be done in order. Step 1A must be done by the human in the
 # AWS console and GitHub UI. Steps 1B–1G are Cursor tasks.

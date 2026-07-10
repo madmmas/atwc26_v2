@@ -129,8 +129,7 @@ penalty-shootout model.
 (`backend/app/tournament.py`) advances the team using `shootout_a` /
 `shootout_b` from the scraped bracket. **v2 core** currently skips tied
 completed rows (`if sa == sb: continue`) and does not yet read shootout
-fields — a known skew until core is aligned with the v1 fix. Prefer fixing
-core rather than documenting around it long-term.
+fields — **open bug / accuracy skew** until core is aligned with the v1 fix.
 
 ---
 

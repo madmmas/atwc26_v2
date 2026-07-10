@@ -44,10 +44,12 @@ All responses are JSON; `NaN/inf` are converted to `null`.
 
 ### `GET /api/health`
 ```json
-{ "status": "ok", "app": "AnalyseThisWC26", "version": "1.0.0",
-  "avg_team_goals": 1.583, "games": 12, "teams": 24, "players": 376,
-  "data_updated_at": "2026-07-10T12:00:00+00:00" }
+{ "status": "ok", "service": "analytics", "app": "AnalyseThisWC26",
+  "version": "1.0.0", "avg_team_goals": 1.583, "games": 12, "teams": 24,
+  "players": 376, "data_updated_at": "2026-07-10T12:00:00+00:00" }
 ```
+
+Predict health is similar with `"service": "predict"` plus `models_available`.
 
 `data_updated_at` is the newest artifact timestamp among key data files
 (parquet mtimes / JSON `generated_at`). Same-origin CloudFront builds route
@@ -421,7 +423,7 @@ make e2e-v2-local
 Runs, in order:
 
 1. `make verify` — data artifacts present
-2. `make etl-local` — transform + QA manifest
+2. `make etl-local` — transform → simulate ∥ train → QA
 3. `make test-etl` — ETL unit tests
 4. `make test-contract` — analytics/predict split boundaries
 

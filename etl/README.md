@@ -81,20 +81,43 @@ artifacts and `backtest_summary.json`.
 | `data/backtest_summary.json` | no | Hold-out metrics for Track Record (train/eval; published via `ARTIFACTS`) |
 | `data/schedule.json` | no | fixture schedule |
 
+Canonical registry: `packages/atwc26_core/atwc26_core/artifacts.py` (`ARTIFACTS`).
+
+## Useful env vars
+
+| Var | Effect |
+|-----|--------|
+| `ATWC26_SKIP_TRAIN=1` | Skip train step (set by `etl.yml` when only bracket/standings changed) |
+| `ATWC26_SKIP_MATCH_EVENTS=1` | Skip rebuilding match events inside transform (`etl-local` sets this) |
+| `ATWC26_SIMULATE_TRIALS` | Monte Carlo trial count (CI often `1000`) |
+| `ATWC26_S3_BUCKET` / `ATWC26_S3_PREFIX` | Publish target (unset → local staging) |
+| `ATWC26_DYNAMODB_TABLE` | Manifest + API cache table |
+
+Transform also **early-exits** when the scrape fingerprint matches the last published remote fingerprint (`etl/changed/detect.py`) — no separate skip-transform env.
+
 ## S3 keys
 
-Published objects use prefix `ATWC26_S3_PREFIX` (default `data`):
+Published objects use prefix `ATWC26_S3_PREFIX` (default `data`). Examples of keys that **are** in `ARTIFACTS` (uploaded when present and changed):
 
 ```
 s3://<bucket>/data/all_players_stats.parquet
 s3://<bucket>/data/match_events.json
-s3://<bucket>/data/historical_form.parquet
-s3://<bucket>/data/squads_raw.json
+s3://<bucket>/data/player_profiles.parquet
+s3://<bucket>/data/team_profiles.parquet
+s3://<bucket>/data/winner_probabilities.json
+s3://<bucket>/data/bracket_predictions.json
+s3://<bucket>/data/elo_ratings.json
+s3://<bucket>/data/dc_params.json
+s3://<bucket>/data/xgb_model.ubj
+s3://<bucket>/data/xgb_features.json
+s3://<bucket>/data/backtest_summary.json
 s3://<bucket>/data/standings.json
 s3://<bucket>/data/bracket.json
-s3://<bucket>/data/glossary.csv
-s3://<bucket>/data/team_flags.json
+s3://<bucket>/data/schedule.json
+…
 ```
+
+`backtest_summary.json` is written by train and published via `ARTIFACTS`.
 
 Set `ATWC26_S3_BUCKET` and AWS credentials before `make etl-publish`. Without a bucket, publish stages files under `data/.etl/publish-staging/`.
 
@@ -154,7 +177,7 @@ python etl/build_match_events.py
 
 ## CI
 
-`.github/workflows/etl.yml` is triggered by `workflow_dispatch` (manual or AWS Lambda scheduler). It runs scrape → transform → publish with fingerprint-based skip logic. Manual runs can opt out with **skip_scrape** or **skip_publish**.
+`.github/workflows/etl.yml` is triggered by `workflow_dispatch` (manual or AWS Lambda scheduler). It runs scrape → transform → **simulate ∥ train** → QA → publish with fingerprint-based skip logic (`ATWC26_SKIP_TRAIN=1` when only bracket/standings changed). Manual runs can opt out with **skip_scrape** or **skip_publish**.
 
 **Docs:** [docs/etl/OVERVIEW.md](../docs/etl/OVERVIEW.md) · [docs/etl/SCHEDULER.md](../docs/etl/SCHEDULER.md) · [docs/etl/PIPELINE.md](../docs/etl/PIPELINE.md)
 

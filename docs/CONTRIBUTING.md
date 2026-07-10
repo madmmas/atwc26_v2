@@ -130,6 +130,8 @@ docs/               project documentation
 - Homepage: `TodaysMatchesWidget` (today's fixtures + quick-predict).
 - Predict: `PredictTabs`, `TrackRecordPanel`, model select (`predict-model-select`).
 - Standings: `StandingsAnchorBar` section anchors.
+- Same-origin `GET /api/backtest` is routed to predict via API Gateway (see
+  [ops/DEPLOY.md §7](ops/DEPLOY.md#7-v2-edge-routing-reference)).
 
 ---
 

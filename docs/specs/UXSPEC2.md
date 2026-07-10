@@ -5,6 +5,11 @@
 **Date:** July 2026
 **Replaces:** atwc26-tab-spec.md
 
+> **STATUS: SHIPPED.** `PredictTabs` + `StandingsAnchorBar` are live. Treat this
+> file as the design record; for the current page map see
+> [WEBAPP_README.md](../WEBAPP_README.md). Acceptance checkboxes below are
+> historical — do not re-implement from the “What exists today” sections.
+
 ---
 
 ## Design decision rationale

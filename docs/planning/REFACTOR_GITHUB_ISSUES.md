@@ -191,13 +191,16 @@ All PRs below target **`refactor/v2-integration`**, not `main`, until Issue 10 c
 
 Configure Next.js (`frontend/`) for **static export** and manual S3 upload. Pre-cutover candidate builds may use the **v1 API URL** cross-origin; post-cutover uses same-origin `/api/*` via CloudFront ([ops/DEPLOY.md §8](../ops/DEPLOY.md#8-frontend-build-modes)).
 
-**Current state:** `frontend/next.config.js` uses `output: "standalone"` (Docker). Static export not yet configured.
+**Current state (updated):** `frontend/next.config.js` supports both modes —
+`output: "standalone"` (Docker / v1) and `NEXT_OUTPUT_MODE=export` via
+`infra/scripts/build_frontend_static.sh` → `frontend/out/` (AWS static). The
+bullets below were the original Issue checklist and are **shipped**.
 
-**Add:**
+**Shipped:**
 
-- Static export in `frontend/next.config.js`
+- Static export in `frontend/next.config.js` (env-gated)
 - `infra/scripts/build_frontend_static.sh` → `frontend/out/`
-- `infra/scripts/deploy_frontend.sh` — manual `aws s3 sync`
+- `infra/scripts/deploy_frontend.sh` — `aws s3 sync` + CloudFront invalidation
 - `frontend/.env.example` for static deploy API URL
 
 #### Acceptance criteria

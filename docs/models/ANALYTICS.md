@@ -283,10 +283,16 @@ Five dimensions, each mapped to a 0–100 dial via `_scale(v) = clamp(50·v, 5, 
 
 ### 6.8 XGBoost features (no same-match leak)
 
-Training uses **rolling pre-match** attack stats (`add_rolling_attack_stats` in
-`etl/train/features.py`), shifted like form — never the current match's xG/shots.
-Inference builds the same feature vector from tournament per-90 XI sums and
-artifact ratios (Elo gap, DC attack/defence ratios, home flag).
+**Training** uses **rolling pre-match** attack stats (`add_rolling_attack_stats`
+in `etl/train/features.py`), shifted like form — never the current match's
+xG/shots — plus rolling form (`h_form3` / `a_form3`).
+
+**Inference** (`XGBoostEngine`) builds a related but not identical vector:
+tournament per-90 XI sums for `xg_diff` / `shots_diff` / `sot_diff`, plus Elo
+gap, DC attack/defence ratios, and home flag. `form3_wins` is not populated by
+the predict API today, so `h_form3` / `a_form3` are typically **0** at serve
+time. Same-match label leakage is fixed; a residual train/serve feature gap
+remains for form (and XI p90 vs rolling attack means).
 
 ### 6.9 Out-of-sample backtest
 

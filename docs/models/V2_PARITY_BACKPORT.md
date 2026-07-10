@@ -18,11 +18,11 @@ Architecture mapping: `backend/app` (v1) ↔ `packages/atwc26_core` + `services/
 |---|------|----------|--------|---------------|
 | 1 | Dixon-Coles L2 + identifiability | P0 | Done | `etl/train/dixon_coles.py` |
 | 2 | Per-90 shrinkage in Predictor | P1 | Done | `packages/atwc26_core/.../prediction.py` |
-| 3 | Out-of-sample backtest | P1 | Done | `etl/eval/backtest.py`, `data/backtest_summary.json` |
+| 3 | Out-of-sample backtest (Elo + DC) | P1 | Done | `etl/eval/backtest.py`, `data/backtest_summary.json` |
 | 4 | Dixon-Coles as primary | P1 | Done | `services/predict_api/.../main.py`, frontend defaults |
 | 5 | `/api/backtest` + `data_updated_at` | P1 | Done | predict + analytics health |
 | 6 | XGBoost leak — pre-match features | P0 | Done | `etl/train/features.py`, `xgboost_model.py` |
-| 7 | Track-record panel + DC-default UI | P2 | Done | `TrackRecordPanel`, predict page |
+| 7 | Track-record panel + DC-default UI | P2 | Done | `TrackRecordPanel` (Predictor tab), predict page |
 
 Test plan: [V2_PARITY_TEST_PLAN.md](V2_PARITY_TEST_PLAN.md).
 
@@ -89,8 +89,9 @@ Applied in `_rate_team` before role-weighted aggregation.
 
 **Fix.** `etl/eval/backtest.py`:
 - Chronological 80/20 split on the match matrix.
-- Train Elo + Dixon-Coles on the train slice; score log-loss / accuracy / Brier
-  on the hold-out.
+- Train **Elo + Dixon-Coles** on the train slice; score log-loss / accuracy /
+  Brier on the hold-out. (**XGBoost hold-out is still out of scope** — status
+  Done covers Elo/DC only.)
 - Persist `data/backtest_summary.json` from `etl/train/run.py` (published via `ARTIFACTS`).
 - API Gateway routes `GET /api/backtest` to the predict service (same-origin Track Record).
 
@@ -100,8 +101,9 @@ Applied in `_rate_team` before role-weighted aggregation.
 
 **Problem.** Multi-model predict and quick-predict defaulted to Poisson.
 
-**Fix.** Prefer `dixon_coles` when available; fall back to Poisson. Frontend
-model selector and `quickPredict` follow the same default.
+**Fix.** Prefer `dixon_coles` when available; fall back to Poisson
+(`PRIMARY_MODEL_ORDER`). Predict page model selector defaults to Dixon-Coles;
+homepage `quickPredict` omits `model` so the API applies the same order.
 
 ---
 
@@ -133,8 +135,9 @@ like form) for `xg_diff` / `shots_diff` / `sot_diff`. Retrain required
 
 **Problem.** No UI for backtest credibility; defaults favored Poisson.
 
-**Fix.** `TrackRecordPanel` on the predict page; default model =
-`dixon_coles` when listed in `models_available`.
+**Fix.** `TrackRecordPanel` on the Match Predictor tab; default model selector =
+`dixon_coles` when listed in `models_available`. Homepage quick-predict omits
+`model` (server primary order).
 
 ---
 

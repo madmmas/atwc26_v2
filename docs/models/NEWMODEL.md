@@ -25,18 +25,18 @@
 # CONTEXT
 # ════════════════════════════════════════════════════════════════════════════════
 #
-# Current state:
+# Current state (at time of writing — **superseded**; see STATUS banner):
 #   - One prediction model: Poisson (packages/atwc26_core/atwc26_core/prediction.py)
 #   - Called by: services/predict_api/predict_api/main.py → POST /api/predict
 #   - Trained data: 94 WC26 matches + 332 historical = 426 total match rows
 #   - Data location: data/all_players_stats.parquet + data/historical_form.parquet
 #   - Pipeline: ETL transform → etl-local → etl-publish
 #
-# Target state after this spec:
+# Target state after this spec (now shipped — see ANALYTICS.md):
 #   - Four models: Poisson (existing), Elo, Dixon-Coles, XGBoost
 #   - Common ModelEngine protocol — every model implements the same interface
 #   - ?model=poisson|elo|dixon_coles|xgboost query param selects the model
-#   - No ?model param → runs all four and returns comparison block
+#   - No ?model param → runs all four and returns comparison block; primary = Dixon-Coles
 #   - New ETL step: etl/train/ runs after simulate, writes model artifacts to data/
 #   - New artifacts registered in artifacts.py and published to S3
 #   - Tests for every new file

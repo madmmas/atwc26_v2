@@ -8,15 +8,11 @@
 #   - docs/models/WINNER_PROBABILITY_MODEL.md  (stage_probabilities)
 #   - notebooks/models.ipynb
 #   - docs/models/ANALYTICS.md / V2_PARITY_*
-# Keep this file only as a record of the original task list.
+# This file is the **original** task list (all items shipped). Do not treat
+# the body as open work.
 # ══════════════════════════════════════════════════════════════════════════════
 #
-# This file contains ONLY the remaining code changes.
-# Parts 1–4 (AWS bootstrap, ECS, CloudFront, DNS) are operational
-# and must be done by the human in AWS console + GitHub UI.
-# This file covers everything that is pure code — no AWS access needed.
-#
-# Work in this order:
+# Original scope (pure code — no AWS access needed):
 #   A  ci.yml one-line fix          (2 min)           ✅ shipped
 #   B  stage probabilities          (the main feature) ✅ shipped
 #   C  models.ipynb into repo       (copy file)        ✅ shipped
