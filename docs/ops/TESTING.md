@@ -54,7 +54,8 @@ All responses are JSON; `NaN/inf` are converted to `null`.
 
 ### `GET /api/backtest` (predict service)
 Returns the latest hold-out summary written by `make etl-train`
-(`data/backtest_summary.json`). **404** if missing.
+(`data/backtest_summary.json`). **404** if missing. Same-origin prod routes this
+to the predict Lambda/ECS via API Gateway (`GET /api/backtest`).
 
 ```json
 { "generated_at": "...", "holdout_n": 85, "train_n": 343,

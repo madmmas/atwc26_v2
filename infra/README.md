@@ -84,6 +84,8 @@ CloudFront serves:
 API Gateway routes:
 
 - `POST /api/predict` → compute (ECS when `enable_ecs_compute=true`, else predict Lambda)
+- `GET /api/predict/health` → predict
+- `GET /api/backtest` → predict (track-record summary)
 - all other paths (including `GET /api/winner-probabilities`) → analytics Lambda
 
 Set `enable_ecs_compute = true` in `terraform.tfvars` to route `POST /api/predict` to Fargate.

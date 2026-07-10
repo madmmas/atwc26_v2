@@ -287,7 +287,8 @@ Default league slug: `fifa.world`.
 | `team_profiles.parquet` | no | transform |
 | `winner_probabilities.json` | no | simulate |
 | `bracket_predictions.json` | no | simulate |
-| `elo_ratings.json`, `dc_params.json`, `xgb_model.ubj` | no | train |
+| `elo_ratings.json`, `dc_params.json`, `xgb_model.ubj`, `xgb_features.json` | no | train |
+| `backtest_summary.json` | no | train (hold-out metrics for Track Record) |
 | `standings.json`, `bracket.json` | no | fetch_groups |
 | `squads_raw.json` | no | scrape_squads |
 | `schedule.json` | no | fetch_schedule |
