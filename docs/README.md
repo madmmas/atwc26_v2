@@ -8,11 +8,12 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 
 | Role | Doc |
 |------|-----|
+| **v1 → v2 transition (why & how)** | [V1_TO_V2.md](V1_TO_V2.md) |
 | System architecture (C4 + AWS) | [ARCHITECTURE.md](ARCHITECTURE.md) |
 | New contributor | [CONTRIBUTING.md](CONTRIBUTING.md) |
 | How analytics & prediction work | [models/ANALYTICS.md](models/ANALYTICS.md) |
 | QA & automation | [ops/TESTING.md](ops/TESTING.md) |
-| Deploy & ops | [ops/DEPLOY.md](ops/DEPLOY.md) |
+| Deploy & ops | [ops/DEPLOY.md](ops/DEPLOY.md) (local, AWS dev/prod) · [`infra/README.md`](../infra/README.md) (Terraform) |
 | Production cutover | [specs/PRODUCTION_SPEC.md](specs/PRODUCTION_SPEC.md) · [ops/CUTOVER.md](ops/CUTOVER.md) |
 | Web app overview | [WEBAPP_README.md](WEBAPP_README.md) |
 
@@ -45,9 +46,10 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 
 | Doc | Contents |
 |-----|----------|
+| [V1_TO_V2.md](V1_TO_V2.md) | v1 monolith → v2 AWS: rationale, comparison, decision log |
 | [ARCHITECTURE.md](ARCHITECTURE.md) | C4 model + full AWS deployment map |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Development & code review guide |
-| [WEBAPP_README.md](WEBAPP_README.md) | Web application overview |
+| [WEBAPP_README.md](WEBAPP_README.md) | Frontend pages, API client modes, local dev |
 
 ---
 

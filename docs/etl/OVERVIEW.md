@@ -4,6 +4,7 @@ High-level map of the ATWC26 data pipeline: an **AWS scheduler** dispatches **Gi
 
 | Doc | Read when… |
 |-----|------------|
+| **[V1_TO_V2.md](../V1_TO_V2.md)** | Why the pipeline moved off the monolith restart model |
 | **[ARCHITECTURE.md](../ARCHITECTURE.md)** | Full system C4 model + AWS estate (frontend, APIs, scheduler, data layer) |
 | **[SCHEDULER.md](SCHEDULER.md)** | Debugging missed or duplicate GHA dispatches, trigger windows, EventBridge/Lambda |
 | **[PIPELINE.md](PIPELINE.md)** | Debugging scrape/transform/publish, fingerprints, artifacts, compute refresh |

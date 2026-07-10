@@ -8,6 +8,7 @@ and get a statistical match-result prediction driven by real per-90 performance.
 
 > **New here?** Read this file top-to-bottom once. Then jump to the deep-dive doc
 > for your role:
+> - 🔄 **v1 → v2 transition** → [docs/V1_TO_V2.md](docs/V1_TO_V2.md)
 > - 🏗️ **System architecture (C4 + AWS)** → [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 > - 🧠 **How the numbers & prediction work** → [docs/models/ANALYTICS.md](docs/models/ANALYTICS.md)
 > - 🔄 **ETL & data pipeline** → [docs/etl/OVERVIEW.md](docs/etl/OVERVIEW.md)
@@ -20,20 +21,21 @@ and get a statistical match-result prediction driven by real per-90 performance.
 
 ## 1. What's in this repo
 
-The project is two halves that share one dataset:
+The project is two halves that share one dataset. During the v2 migration it also ships **two deployment shapes**: a **v1 monolith** (`backend/` + Docker) at `atwc26.com`, and a **v2 candidate** (split APIs + AWS). See [docs/V1_TO_V2.md](docs/V1_TO_V2.md).
 
 ```
                  ┌──────────────────────────────────────────────┐
-   ESPN JSON ──▶ │  etl/scrape/scrape_wc26.py (data pipeline)   │
-   APIs          │  → data/all_players_stats.parquet           │
+   ESPN JSON ──▶ │  etl/ (scrape → transform → publish)         │
+   APIs          │  → data/*.parquet + JSON artifacts           │
                  └───────────────┬──────────────────────────────┘
                                  │ reads
               ┌──────────────────┴───────────────────┐
               ▼                                       ▼
    ┌────────────────────┐                 ┌────────────────────────┐
    │ notebooks/         │                 │  Web app               │
-   │ notebooks/analysis.ipynb │                 │  backend/  (FastAPI)   │
-   └────────────────────┘                 │  frontend/ (Next.js)   │
+   │ analysis.ipynb     │                 │  v1: backend/          │
+   └────────────────────┘                 │  v2: services/*_api    │
+                                          │  frontend/ (Next.js)   │
                                           └────────────────────────┘
 ```
 
@@ -41,9 +43,12 @@ The project is two halves that share one dataset:
 |---|---|---|
 | **Scraper** | [etl/scrape/scrape_wc26.py](etl/scrape/scrape_wc26.py) | Pulls per-player stats for each game from ESPN's JSON APIs into Parquet. |
 | **Notebook** | [notebooks/analysis.ipynb](notebooks/analysis.ipynb) | Pandas starter: per-90 normalization, leaderboards. |
-| **Backend** | [backend/](backend/) | FastAPI service: analytics endpoints + the prediction engine. |
+| **Backend (v1)** | [backend/](backend/) | FastAPI monolith: analytics + prediction (production v1). |
+| **Services (v2)** | [services/](services/) | Split `analytics_api` + `predict_api` for AWS candidate. |
+| **Shared core** | [packages/atwc26_core/](packages/atwc26_core/) | DataStore, prediction engines, ETL artifacts (v2). |
 | **Frontend** | [frontend/](frontend/) | Next.js UI: Overview, Explore, Match Predictor. |
-| **Deploy** | [docker-compose.yml](docker-compose.yml), [deploy/](deploy/) | Containerized stack behind Nginx. |
+| **Deploy (v1)** | [docker-compose.yml](docker-compose.yml), [deploy/](deploy/) | Nginx + monolith containers. |
+| **Infra (v2)** | [infra/](infra/) | Terraform, Lambda packages, static frontend scripts. |
 | **Data** | [data/](data/) | Generated Parquet/CSV/JSON (the single source of truth). |
 
 The full data-collection design (and its legal/ethical notes) lives in

@@ -1,6 +1,6 @@
 # v2 refactor — GitHub issues (copy-paste)
 
-**Status *(June 2026)*:** Track A (plan Issues 1–3 + #25 ETL follow-up) is **complete** on `main`. Track B issues are **open** on GitHub as #27–#33. Branch `refactor/v2-integration` exists.
+**Status *(July 2026)*:** Track A (plan Issues 1–3 + #25 ETL follow-up) is **complete** on `main`. Track B issues are **open** on GitHub as #27–#33. Branch `refactor/v2-integration` exists. Docs on `docs/reorganize-documentation`: [V1_TO_V2.md](../V1_TO_V2.md), [ARCHITECTURE.md](../ARCHITECTURE.md), [ops/DEPLOY.md](../ops/DEPLOY.md).
 
 Labels (created):
 
@@ -10,7 +10,7 @@ Labels (created):
 - **`blocked`** — waiting on upstream issue
 
 For branch rules, plan # → GitHub # mapping, and dependency graph see [REFACTOR_ISSUES.md](REFACTOR_ISSUES.md).  
-Cutover checklist: [CUTOVER.md](../ops/CUTOVER.md) *(create before Issue 10)*.
+Cutover checklist: [ops/CUTOVER.md](../ops/CUTOVER.md).
 
 Production baseline: [atwc26.com](https://atwc26.com) (v1 monolith on `main`).
 
@@ -38,7 +38,7 @@ Low-risk file moves on v1. Keep `backend/` and `frontend/` unchanged.
 
 | From (repo root) | To |
 |------------------|-----|
-| `ANALYTICS.md`, `CONTRIBUTING.md`, `DEPLOY.md`, `RUN.md`, `TESTING.md`, `WEBAPP_README.md` | `docs/` |
+| `ANALYTICS.md`, `CONTRIBUTING.md`, `DEPLOY.md`, `RUN.md`, `TESTING.md`, `WEBAPP_README.md` | `docs/` → later `docs/ops/`, `docs/models/`, etc. (see [docs/README.md](../README.md)) |
 | `analysis.ipynb`, `verify_data.ipynb` | `notebooks/` |
 | `scrape_wc26.py`, `scrape_squads.py`, `game_links.csv` | `etl/scrape/` |
 
@@ -189,7 +189,7 @@ All PRs below target **`refactor/v2-integration`**, not `main`, until Issue 10 c
 
 #### Body
 
-Configure Next.js (`frontend/`) for **static export** and manual S3 upload. Use the **v1 backend URL** for API env vars until Issue 7.
+Configure Next.js (`frontend/`) for **static export** and manual S3 upload. Pre-cutover candidate builds may use the **v1 API URL** cross-origin; post-cutover uses same-origin `/api/*` via CloudFront ([ops/DEPLOY.md §8](../ops/DEPLOY.md#8-frontend-build-modes)).
 
 **Current state:** `frontend/next.config.js` uses `output: "standalone"` (Docker). Static export not yet configured.
 

@@ -276,7 +276,7 @@ ATWC26_S3_BUCKET="$(terraform output -raw data_bucket_name)" make etl-publish
 | Workflow | Trigger | Purpose |
 |----------|---------|---------|
 | [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) | PR/push to `main` or `refactor/v2-integration` | Path-filtered tests (e2e, ETL, contract, frontend build, terraform validate, Lambda package) |
-| [`.github/workflows/etl.yml`](../.github/workflows/etl.yml) | Daily cron + `workflow_dispatch` | Transform + QA; optional ESPN scrape + S3 publish on manual run |
+| [`.github/workflows/etl.yml`](../.github/workflows/etl.yml) | `workflow_dispatch` only (AWS EventBridge scheduler dispatches) | Scrape → transform → publish when triggered |
 | [`.github/workflows/terraform.yml`](../.github/workflows/terraform.yml) | `workflow_dispatch` | Package Lambdas → Terraform plan/apply; writes stack URLs for k6 A/B |
 | [`.github/workflows/deploy-frontend.yml`](../.github/workflows/deploy-frontend.yml) | Push to `main` (frontend paths) + `workflow_dispatch` | Build and sync static frontend to S3/CloudFront |
 | [`.github/workflows/performance.yml`](../.github/workflows/performance.yml) | `workflow_dispatch` | k6 A/B v1 vs v2 |
@@ -305,8 +305,8 @@ Remote Terraform state is **required** for `apply` in CI. Set `ATWC26_TF_STATE_B
 
 ### ETL workflow
 
-- **Scheduled** (06:00 UTC): transform + QA + tests on committed `data/` artifacts.
-- **Manual** with **Run scrape** enabled: `schedule` → `scrape` → `events` → `squads` → `groups` → transform → QA → tests → publish.
+- **`workflow_dispatch` only** in GitHub — no GHA cron. Match-timed runs come from AWS EventBridge → Lambda → dispatch (when `enable_etl_scheduler=true`).
+- **Manual** run: scrape → transform → simulate/train → QA → publish (see [docs/etl/PIPELINE.md](../docs/etl/PIPELINE.md)).
 
 ## GitHub secrets / vars (Issue 9)
 
@@ -338,5 +338,6 @@ Deploy workflow reads frontend bucket and distribution from Terraform outputs wh
 
 ## Related docs
 
-- [docs/ops/DEPLOY.md](../docs/ops/DEPLOY.md) — full deployment guide
+- [docs/V1_TO_V2.md](../docs/V1_TO_V2.md) — v1 → v2 transition & rationale
+- [docs/ops/DEPLOY.md](../docs/ops/DEPLOY.md) — deployment hub (local, AWS dev/prod)
 - [docs/planning/REFACTOR_GITHUB_ISSUES.md](../docs/planning/REFACTOR_GITHUB_ISSUES.md) — Issues 4–5 spec

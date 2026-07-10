@@ -4,6 +4,7 @@ System-wide architecture for the ATWC26 v2 candidate stack: C4 context/container
 
 | Doc | Read when… |
 |-----|------------|
+| **[V1_TO_V2.md](V1_TO_V2.md)** | Why v1 monolith → v2 split stack; migration & decision log |
 | **[etl/OVERVIEW.md](etl/OVERVIEW.md)** | ETL cross-boundary contract, scheduler ↔ pipeline handoff |
 | **[etl/SCHEDULER.md](etl/SCHEDULER.md)** | EventBridge/Lambda dispatch, trigger windows, DynamoDB dedup |
 | **[etl/PIPELINE.md](etl/PIPELINE.md)** | `etl.yml` steps, scrape → publish, fingerprints |
@@ -291,4 +292,4 @@ flowchart TB
 | ETL GitHub Action | `.github/workflows/etl.yml`, [`etl/README.md`](../etl/README.md), [etl/PIPELINE.md](etl/PIPELINE.md) |
 | CI / Terraform / deploy workflows | `.github/workflows/ci.yml`, `terraform.yml`, `terraform-prod.yml`, `deploy-frontend.yml` |
 | Env toggles & defaults | `infra/terraform/envs/dev/variables.tf`, `infra/terraform/envs/prod/variables.tf` |
-| System purpose / v1 vs v2 | root `README.md`, [ops/DEPLOY.md](ops/DEPLOY.md), [specs/PRODUCTION_SPEC.md](specs/PRODUCTION_SPEC.md) |
+| System purpose / v1 vs v2 | [V1_TO_V2.md](V1_TO_V2.md), root `README.md`, [ops/DEPLOY.md](ops/DEPLOY.md), [specs/PRODUCTION_SPEC.md](specs/PRODUCTION_SPEC.md) |

@@ -2,12 +2,13 @@
 
 Production ([atwc26.com](https://atwc26.com)) runs the **v1 monolith** on `main` until Issue 10 cutover.
 
-## Current status *(updated June 2026)*
+## Current status *(updated July 2026)*
 
 | Milestone | Status |
 |-----------|--------|
 | **Track A — Issues 1–3** | **Complete** on `main` |
 | **ETL layout follow-up** | **Complete** — [#25](https://github.com/neunov/AnalyseThisWC26/issues/25) merged (PR #26) |
+| **Docs reorganize** | **On branch** `docs/reorganize-documentation` — `docs/etl/`, `docs/ops/`, [ARCHITECTURE.md](../ARCHITECTURE.md), [V1_TO_V2.md](../V1_TO_V2.md) |
 | **`refactor/v2-integration`** | **Created** from `main`; merge `main` into it after doc/plan updates |
 | **Track B — Issues 4–10** | **Open** on GitHub — see mapping below |
 | **`v1-baseline` tag** | Optional — not yet applied |
@@ -40,16 +41,18 @@ main ──► Issue 1 ──► Issue 2 ──► Issue 3 ──► (tag v1-bas
 
 | Doc | Purpose |
 |-----|---------|
+| **[V1_TO_V2.md](../V1_TO_V2.md)** | v1 → v2 rationale, comparison, retroactive decision log, ADR guidance |
+| **[ARCHITECTURE.md](../ARCHITECTURE.md)** | Current v2 C4 + AWS map |
 | **[REFACTOR_GITHUB_ISSUES.md](REFACTOR_GITHUB_ISSUES.md)** | Issue titles, bodies, acceptance criteria |
 | **[CUTOVER.md](../ops/CUTOVER.md)** | Production cutover checklist |
-| **[../TODO.md](../TODO.md)** | File-by-file execution checklist (no WAF phase) |
+| **[../TODO.md](../../TODO.md)** | File-by-file execution checklist (no WAF phase) |
 
 ### Current architecture constraints (v2 candidate)
 
 - CloudFront is CDN + TLS only (**no WAF in this phase**).
 - CloudFront routes `/api/*` to API Gateway.
-- API Gateway performs route split (Lambda read endpoints vs ECS compute endpoints).
-- S3 remains source-of-truth ETL storage; DynamoDB expands from manifest to selected API cache slices over phased execution.
+- API Gateway route split: read endpoints → **analytics Lambda**; `POST /api/predict` → **predict Lambda** (default) or **ECS/ALB** when `enable_ecs_compute=true`.
+- S3 remains source-of-truth ETL storage; DynamoDB holds publish manifest + precomputed API cache slices.
 
 ### Execution tracker issues (phase-by-phase)
 
