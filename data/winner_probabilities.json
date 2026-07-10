@@ -1,11 +1,11 @@
 {
-  "generated_at": "2026-07-09T10:31:06.258119+00:00",
+  "generated_at": "2026-07-10T09:24:29.992330+00:00",
   "probabilities": {
     "Algeria": 0.0,
-    "Argentina": 0.1784,
+    "Argentina": 0.1789,
     "Australia": 0.0,
     "Austria": 0.0,
-    "Belgium": 0.3026,
+    "Belgium": 0.2882,
     "Bosnia-Herzegovina": 0.0,
     "Brazil": 0.0,
     "Canada": 0.0,
@@ -17,8 +17,8 @@
     "Czechia": 0.0,
     "Ecuador": 0.0,
     "Egypt": 0.0,
-    "England": 0.0675,
-    "France": 0.0997,
+    "England": 0.0668,
+    "France": 0.1098,
     "Germany": 0.0,
     "Ghana": 0.0,
     "Haiti": 0.0,
@@ -28,10 +28,10 @@
     "Japan": 0.0,
     "Jordan": 0.0,
     "Mexico": 0.0,
-    "Morocco": 0.0509,
+    "Morocco": 0.0519,
     "Netherlands": 0.0,
     "New Zealand": 0.0,
-    "Norway": 0.0256,
+    "Norway": 0.0289,
     "Panama": 0.0,
     "Paraguay": 0.0,
     "Portugal": 0.0,
@@ -41,9 +41,9 @@
     "Senegal": 0.0,
     "South Africa": 0.0,
     "South Korea": 0.0,
-    "Spain": 0.1776,
+    "Spain": 0.1765,
     "Sweden": 0.0,
-    "Switzerland": 0.0977,
+    "Switzerland": 0.099,
     "Tunisia": 0.0,
     "T\u00fcrkiye": 0.0,
     "United States": 0.0,
@@ -53,77 +53,77 @@
   "seed": 42,
   "stage_probabilities": {
     "Argentina": {
-      "Final": 0.1784,
-      "Quarterfinals": 0.5742,
+      "Final": 0.1789,
+      "Quarterfinals": 0.5691,
       "Round of 16": 1.0,
       "Round of 32": 1.0,
-      "Semifinals": 0.402,
-      "Third Place Match": 0.0955,
-      "title": 0.1784
+      "Semifinals": 0.3964,
+      "Third Place Match": 0.0909,
+      "title": 0.1789
     },
     "Belgium": {
-      "Final": 0.3026,
-      "Quarterfinals": 0.5773,
+      "Final": 0.2882,
+      "Quarterfinals": 0.5741,
       "Round of 16": 1.0,
       "Round of 32": 1.0,
-      "Semifinals": 0.4218,
-      "Third Place Match": 0.12,
-      "title": 0.3026
+      "Semifinals": 0.4108,
+      "Third Place Match": 0.1239,
+      "title": 0.2882
     },
     "Colombia": {
       "Round of 32": 1.0
     },
     "England": {
-      "Final": 0.0675,
-      "Quarterfinals": 0.609,
+      "Final": 0.0668,
+      "Quarterfinals": 0.5993,
       "Round of 16": 1.0,
       "Round of 32": 1.0,
-      "Semifinals": 0.2328,
-      "Third Place Match": 0.1516,
-      "title": 0.0675
+      "Semifinals": 0.2211,
+      "Third Place Match": 0.1458,
+      "title": 0.0668
     },
     "France": {
-      "Final": 0.0997,
-      "Quarterfinals": 0.5728,
+      "Final": 0.1098,
+      "Quarterfinals": 0.5823,
       "Round of 16": 1.0,
       "Round of 32": 1.0,
-      "Semifinals": 0.19,
-      "Third Place Match": 0.2186,
-      "title": 0.0997
+      "Semifinals": 0.206,
+      "Third Place Match": 0.2172,
+      "title": 0.1098
     },
     "Morocco": {
-      "Final": 0.0509,
-      "Quarterfinals": 0.4272,
+      "Final": 0.0519,
+      "Quarterfinals": 0.4177,
       "Round of 16": 1.0,
-      "Semifinals": 0.113,
-      "Third Place Match": 0.1584,
-      "title": 0.0509
+      "Semifinals": 0.1137,
+      "Third Place Match": 0.1539,
+      "title": 0.0519
     },
     "Norway": {
-      "Final": 0.0256,
-      "Quarterfinals": 0.391,
+      "Final": 0.0289,
+      "Quarterfinals": 0.4007,
       "Round of 16": 1.0,
       "Round of 32": 1.0,
-      "Semifinals": 0.1086,
-      "Third Place Match": 0.0807,
-      "title": 0.0256
+      "Semifinals": 0.1241,
+      "Third Place Match": 0.0844,
+      "title": 0.0289
     },
     "Spain": {
-      "Final": 0.1776,
-      "Quarterfinals": 0.4227,
+      "Final": 0.1765,
+      "Quarterfinals": 0.4259,
       "Round of 16": 1.0,
       "Round of 32": 1.0,
-      "Semifinals": 0.2752,
-      "Third Place Match": 0.1019,
-      "title": 0.1776
+      "Semifinals": 0.2695,
+      "Third Place Match": 0.1057,
+      "title": 0.1765
     },
     "Switzerland": {
-      "Final": 0.0977,
-      "Quarterfinals": 0.4258,
+      "Final": 0.099,
+      "Quarterfinals": 0.4309,
       "Round of 32": 1.0,
-      "Semifinals": 0.2566,
-      "Third Place Match": 0.0733,
-      "title": 0.0977
+      "Semifinals": 0.2584,
+      "Third Place Match": 0.0782,
+      "title": 0.099
     }
   },
   "trials": 10000
