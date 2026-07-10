@@ -1,8 +1,9 @@
 # CONTRIBUTING.md — Developer & reviewer guide
 
 Welcome 👋 This guide gets you from a fresh clone to making a reviewed change.
-Read [README.md](../README.md) first for the big picture and
-[ANALYTICS.md](ANALYTICS.md) for how the model works.
+Read [README.md](../README.md) first for the big picture,
+[models/ANALYTICS.md](models/ANALYTICS.md) for how the model works, and
+[V1_TO_V2.md](V1_TO_V2.md) if you are working on the v2 split stack.
 
 ---
 
@@ -19,26 +20,30 @@ pip install -r requirements.txt
 cd ../frontend && cp .env.example .env.local && npm install
 ```
 
-Run both in dev (two terminals):
+Run both in dev (two terminals) — **v1 monolith**:
 ```bash
 # backend/  →  python -m uvicorn app.main:app --reload --port 8000
 # frontend/ →  npm run dev
 ```
+
+**v2 split APIs** (analytics + predict): `make dev-v2` — see [ops/DEPLOY.md §3](ops/DEPLOY.md#3-local--v2-split-apis).
+
+### CI and AWS (most contributors can skip this)
+
+- **Normal PRs:** push your branch and open a PR — the **CI** workflow runs automatically (tests, build, validate). You do not need GitHub secrets or AWS access.
+- **AWS / deploy setup** is for **repo maintainers** only: [ops/GITHUB_ACTIONS.md](ops/GITHUB_ACTIONS.md) (what to run and when), [`infra/README.md`](../infra/README.md) (secret names), [specs/PRODUCTION_SPEC.md](specs/PRODUCTION_SPEC.md) Part 1 (first-time bootstrap).
 
 ---
 
 ## 2. Project structure (what lives where)
 
 ```
-backend/
-  app/
-    config.py       env-driven settings (paths, CORS, app name)
-    data.py         DataStore: loads parquet, builds player/team profiles  ← analytics
-    prediction.py   Predictor: the Poisson match model                     ← the engine
-    schemas.py      Pydantic request/response models
-    main.py         FastAPI app + all routes
-  requirements.txt
-  Dockerfile
+backend/                    # v1 monolith API (production v1)
+services/
+  analytics_api/            # v2 read API
+  predict_api/              # v2 predict API
+  shared/                   # bootstrap, cache reader, S3 sync
+packages/atwc26_core/       # shared DataStore, engines, artifacts (v2 + ETL)
 
 frontend/
   app/
@@ -55,13 +60,14 @@ frontend/
 deploy/nginx.conf   reverse proxy (routes /api → backend, / → frontend)
 docker-compose.yml  full stack
 data/               generated dataset (do not hand-edit)
-etl/scrape/         data pipeline scrapers (see RUN.md)
+etl/scrape/         data pipeline scrapers (see [ops/RUN.md](ops/RUN.md))
 notebooks/          analysis and data QA notebooks
 docs/               project documentation
 ```
 
-**Data flow:** `etl/scrape/scrape_wc26.py` → `data/*.parquet` → `DataStore` (cached) →
-endpoints in `main.py` → `lib/api.ts` → React pages.
+**Data flow (v1):** `etl/scrape/scrape_wc26.py` → `data/*.parquet` → `backend/app/data.py` → `main.py` → `lib/api.ts` → React pages.
+
+**Data flow (v2):** ETL publish → S3/DynamoDB → `services/*_api` (+ `atwc26_core`) → `lib/api.ts` → React pages. See [V1_TO_V2.md](V1_TO_V2.md).
 
 ---
 
@@ -113,7 +119,7 @@ endpoints in `main.py` → `lib/api.ts` → React pages.
 
 ### Change the prediction model
 - Edit weights/constants in `prediction.py` (documented in
-  [ANALYTICS.md §8](ANALYTICS.md#8-tuning-guide-for-contributors)).
+  [models/ANALYTICS.md §8](models/ANALYTICS.md#8-tuning-guide-for-contributors)).
 - Re-run prediction tests (probabilities must sum to 1.0; average-vs-average ≈
   1.58 xG/side).
 
@@ -138,7 +144,7 @@ endpoints in `main.py` → `lib/api.ts` → React pages.
 - [ ] No secrets, no large data files committed (`data/` is generated).
 
 ### Review checklist (reviewer)
-- [ ] Logic matches [ANALYTICS.md](ANALYTICS.md); model constants are named, not
+- [ ] Logic matches [models/ANALYTICS.md](models/ANALYTICS.md); model constants are named, not
       inline.
 - [ ] Request handlers stay thin; expensive work is cached in `DataStore`.
 - [ ] Frontend uses `lib/api.ts` and shared Tailwind helpers.

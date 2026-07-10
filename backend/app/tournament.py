@@ -11,7 +11,7 @@ random draw is propagated through the real remaining group fixtures and
 the real knockout bracket thousands of times.
 
 Each team's reported probability = the fraction of simulated tournaments
-they win. See docs/WINNER_PROBABILITY_MODEL.md for the full methodology
+they win. See docs/models/WINNER_PROBABILITY_MODEL.md for the full methodology
 and its documented simplifications.
 """
 from __future__ import annotations
@@ -89,7 +89,7 @@ def simulate_match(
     rng: np.random.Generator, knockout: bool
 ) -> tuple[int, int]:
     """Poisson goal draw from the same lambda formula as Predictor.predict()
-    (no home advantage — see docs/WINNER_PROBABILITY_MODEL.md). A draw in a
+    (no home advantage — see docs/models/WINNER_PROBABILITY_MODEL.md). A draw in a
     knockout match is broken by a coin flip weighted by expected-goal share
     (a proxy for extra time + penalties, not a penalty-shootout model).
     """
@@ -174,7 +174,7 @@ def eliminated_teams(store: DataStore) -> set[str]:
     "rare" with "impossible" was an earlier bug in this module: caught by
     testing Panama/Tunisia, which reach the Round of 32 in a meaningful
     fraction of trials (so are clearly still alive) yet won 0/10,000 title
-    simulations. See docs/WINNER_PROBABILITY_MODEL.md.
+    simulations. See docs/models/WINNER_PROBABILITY_MODEL.md.
     """
     eliminated: set[str] = set()
     standings = store.standings

@@ -21,8 +21,8 @@ make setup-scraper
 # or: pip3 install -r etl/requirements.txt
 ```
 
-> 💡 The web-app backend has its own venv under `backend/.venv` — see
-> [README.md §4](../README.md#4-setup--one-time-vs-repeated-commands).
+> 💡 The v1 web-app backend has its own venv under `backend/.venv` — see
+> [README.md §4](../../README.md#4-setup--one-time-vs-repeated-commands). v2 services use the same venv via `make setup-services`.
 
 ---
 

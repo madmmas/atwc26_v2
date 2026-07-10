@@ -1,6 +1,6 @@
 # v2 refactor — GitHub issues (copy-paste)
 
-**Status *(June 2026)*:** Track A (plan Issues 1–3 + #25 ETL follow-up) is **complete** on `main`. Track B issues are **open** on GitHub as #27–#33. Branch `refactor/v2-integration` exists.
+**Status *(July 2026)*:** Track A (plan Issues 1–3 + #25 ETL follow-up) is **complete** on `main`. Track B issues are **open** on GitHub as #27–#33. Branch `refactor/v2-integration` exists. Docs on `docs/reorganize-documentation`: [V1_TO_V2.md](../V1_TO_V2.md), [ARCHITECTURE.md](../ARCHITECTURE.md), [ops/DEPLOY.md](../ops/DEPLOY.md).
 
 Labels (created):
 
@@ -10,7 +10,7 @@ Labels (created):
 - **`blocked`** — waiting on upstream issue
 
 For branch rules, plan # → GitHub # mapping, and dependency graph see [REFACTOR_ISSUES.md](REFACTOR_ISSUES.md).  
-Cutover checklist: [CUTOVER.md](CUTOVER.md) *(create before Issue 10)*.
+Cutover checklist: [ops/CUTOVER.md](../ops/CUTOVER.md).
 
 Production baseline: [atwc26.com](https://atwc26.com) (v1 monolith on `main`).
 
@@ -38,7 +38,7 @@ Low-risk file moves on v1. Keep `backend/` and `frontend/` unchanged.
 
 | From (repo root) | To |
 |------------------|-----|
-| `ANALYTICS.md`, `CONTRIBUTING.md`, `DEPLOY.md`, `RUN.md`, `TESTING.md`, `WEBAPP_README.md` | `docs/` |
+| `ANALYTICS.md`, `CONTRIBUTING.md`, `DEPLOY.md`, `RUN.md`, `TESTING.md`, `WEBAPP_README.md` | `docs/` → later `docs/ops/`, `docs/models/`, etc. (see [docs/README.md](../README.md)) |
 | `analysis.ipynb`, `verify_data.ipynb` | `notebooks/` |
 | `scrape_wc26.py`, `scrape_squads.py`, `game_links.csv` | `etl/scrape/` |
 
@@ -110,7 +110,7 @@ Automated end-to-end tests against the **v1 FastAPI monolith** (`backend/`) befo
 
 - `e2e/` harness (`pytest`, in-process `TestClient`) — not `tests/` (v2 adds `tests/etl/`, `tests/contract/` later).
 - Coverage: `GET /api/health`, `GET /api/overview`, teams/players/matches, `POST /api/predict` (valid XI + `400` on empty XI).
-- `make test-e2e` and notes in `docs/TESTING.md`.
+- `make test-e2e` and notes in [ops/TESTING.md](../ops/TESTING.md).
 - CI job in `.github/workflows/ci.yml`.
 
 **Follow-up (not yet covered):** expand e2e for tournament endpoints added after Issue 2:
@@ -159,7 +159,7 @@ Establish **baseline latency and error rates** for the current deployment. Defau
 
 - [x] `make k6-smoke` succeeds against production (or documented override).
 - [x] `make k6-journey` writes baseline summary JSON.
-- [x] `docs/TESTING.md` documents env vars and baseline run steps.
+- [x] [ops/TESTING.md](../ops/TESTING.md) documents env vars and baseline run steps.
 - [x] Merged to **`main`**.
 
 #### Test plan
@@ -189,7 +189,7 @@ All PRs below target **`refactor/v2-integration`**, not `main`, until Issue 10 c
 
 #### Body
 
-Configure Next.js (`frontend/`) for **static export** and manual S3 upload. Use the **v1 backend URL** for API env vars until Issue 7.
+Configure Next.js (`frontend/`) for **static export** and manual S3 upload. Pre-cutover candidate builds may use the **v1 API URL** cross-origin; post-cutover uses same-origin `/api/*` via CloudFront ([ops/DEPLOY.md §8](../ops/DEPLOY.md#8-frontend-build-modes)).
 
 **Current state:** `frontend/next.config.js` uses `output: "standalone"` (Docker). Static export not yet configured.
 
@@ -204,7 +204,7 @@ Configure Next.js (`frontend/`) for **static export** and manual S3 upload. Use 
 
 - [ ] `./infra/scripts/build_frontend_static.sh` produces `frontend/out/`.
 - [ ] Static site works locally (`npx serve frontend/out`) against v1 API.
-- [ ] Documented in `docs/DEPLOY.md`.
+- [ ] Documented in [ops/DEPLOY.md](../ops/DEPLOY.md).
 
 #### Test plan
 
@@ -352,7 +352,7 @@ Compare **v1 baseline** (Issue 3 on `main`) against the v2 candidate stack.
 #### Acceptance criteria
 
 - [ ] `make k6-ab` compares baseline vs candidate; writes `reports/` diff.
-- [ ] Thresholds documented in `docs/TESTING.md` and cutover doc.
+- [ ] Thresholds documented in [ops/TESTING.md](../ops/TESTING.md) and cutover doc.
 
 #### Test plan
 
@@ -412,7 +412,7 @@ Final PR: **`refactor/v2-integration` → `main`** after candidate validation.
 
 **Data artifacts to preserve:** `standings.json`, `bracket.json`, `historical_form.parquet`, `match_events.json`, `squads_raw.json`, `data/history_*`, tournament parquet/JSON outputs from ETL publish.
 
-**Ops:** Tag `main` before merge: `v1-monolith`. Run k6 A/B per cutover checklist. DNS/CloudFront cutover. Create/follow `docs/CUTOVER.md`.
+**Ops:** Tag `main` before merge: `v1-monolith`. Run k6 A/B per cutover checklist. DNS/CloudFront cutover. Create/follow [ops/CUTOVER.md](../ops/CUTOVER.md).
 
 #### Acceptance criteria
 
@@ -423,4 +423,4 @@ Final PR: **`refactor/v2-integration` → `main`** after candidate validation.
 
 #### Test plan
 
-Follow cutover checklist (Phases A–H) in `docs/CUTOVER.md`.
+Follow cutover checklist (Phases A–H) in [ops/CUTOVER.md](../ops/CUTOVER.md).

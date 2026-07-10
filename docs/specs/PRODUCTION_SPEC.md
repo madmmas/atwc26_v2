@@ -359,7 +359,7 @@ encrypt = true
 #     ATWC26_PERF_CANDIDATE_ANALYTICS_URL=https://<cloudfront_url> \
 #     ATWC26_PERF_CANDIDATE_PREDICT_URL=https://<cloudfront_url>
 #   # Expected: reports/ab-diff-<timestamp>.json with overall PASS
-#   # Pass criteria from docs/CUTOVER.md:
+#   # Pass criteria from docs/ops/CUTOVER.md:
 #   #   - error rate <= baseline * 1.10
 #   #   - p95 latency <= baseline * 1.25 on all key endpoints
 

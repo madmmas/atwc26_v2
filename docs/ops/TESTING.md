@@ -35,7 +35,11 @@ curl -fs http://localhost:8000/api/health > /dev/null && echo "API ready"
 
 ## 2. API contract (for API automation)
 
-Base URL: `http://localhost:8000` (or `http://localhost:8080` behind Nginx).
+> **v1 monolith** — single origin on `:8000` (or `:8080` behind Nginx). Contract below matches `backend/app/main.py`.
+>
+> **v2 split stack** — analytics on **`:8001`**, predict on **`:8000`**. Run `make test-contract` for split boundaries; live smoke: [§12](#12-local-v2-e2e-smoke-path). Deploy routing: [DEPLOY.md §7](DEPLOY.md#7-v2-edge-routing-reference).
+
+Base URL: `http://localhost:8000` (v1 monolith or v2 predict). For v2 read endpoints use `http://localhost:8001`.
 All responses are JSON; `NaN/inf` are converted to `null`.
 
 ### `GET /api/health`
@@ -135,7 +139,7 @@ Stable selectors are already wired in:
 | `predict-error` | error banner (negative paths) | /predict |
 
 If you need more, add `data-testid`s in the component and note them here (see
-[CONTRIBUTING.md](CONTRIBUTING.md)).
+[CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ---
 

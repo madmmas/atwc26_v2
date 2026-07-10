@@ -7,7 +7,7 @@ import json
 import sys
 from pathlib import Path
 
-# Cutover gates — documented in docs/TESTING.md and docs/CUTOVER.md
+# Cutover gates — documented in docs/ops/TESTING.md and docs/ops/CUTOVER.md
 P95_REGRESSION_FACTOR = 1.25
 ERROR_RATE_MAX = 0.10
 ERROR_RATE_REGRESSION_FACTOR = 1.10

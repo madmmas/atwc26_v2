@@ -1,6 +1,6 @@
 # Production cutover checklist (v2)
 
-Use this before merging `refactor/v2-integration` → `main` (Issue 10).
+Use this before merging `refactor/v2-integration` → `main` (Issue 10). Background: [V1_TO_V2.md](../V1_TO_V2.md). Deployment: [DEPLOY.md](DEPLOY.md) · System map: [ARCHITECTURE.md](../ARCHITECTURE.md).
 
 ## Performance gate (Issue 8)
 
@@ -33,13 +33,15 @@ See [TESTING.md](TESTING.md) §6a for full k6 A/B documentation.
 - [ ] `make e2e-v2-local` passes on candidate data
 - [ ] `make test-contract` passes
 - [ ] k6 A/B **PASS** (artifact saved from CI or local run)
-- [ ] Static frontend smoke on CloudFront URL
+- [ ] Static frontend smoke on CloudFront URL (or `atwc26.com` after DNS)
 - [ ] CloudFront routes static assets to S3 and `/api/*` to API Gateway
 - [ ] Candidate stack runs **without WAF** (CloudFront CDN + TLS only)
-- [ ] API Gateway split verified: read APIs on Lambda, compute APIs on ECS
+- [ ] API Gateway split verified: read routes on **analytics Lambda**; `POST /api/predict` on **predict Lambda** (default) or **ECS/ALB** when `enable_ecs_compute=true`
+- [ ] `GET /api/winner-probabilities` served by **analytics** (not predict)
+- [ ] Frontend built with **same-origin** `/api/*` (`NEXT_PUBLIC_SAME_ORIGIN_API=true` or `deploy-frontend.yml`)
 - [ ] DynamoDB API cache + S3 fallback behavior smoke-tested for read endpoints
 - [ ] ETL publish + Lambda cold-start verified in AWS dev
-- [ ] ETL publish updates compute data version (`ATWC26_DATA_VERSION`) and refreshes ECS predict path
+- [ ] ETL publish bumps `ATWC26_DATA_VERSION`; compute refresh verified (Lambda and/or ECS per toggle)
 - [ ] Rollback plan documented (revert DNS / CloudFront origin to v1)
 
 ## Tag v1 before merge
