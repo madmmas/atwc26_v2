@@ -135,7 +135,7 @@ Stable selectors are already wired in:
 | `predict-error` | error banner (negative paths) | /predict |
 
 If you need more, add `data-testid`s in the component and note them here (see
-[CONTRIBUTING.md](CONTRIBUTING.md)).
+[CONTRIBUTING.md](../CONTRIBUTING.md)).
 
 ---
 

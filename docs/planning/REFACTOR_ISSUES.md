@@ -11,7 +11,7 @@ Production ([atwc26.com](https://atwc26.com)) runs the **v1 monolith** on `main`
 | **`refactor/v2-integration`** | **Created** from `main`; merge `main` into it after doc/plan updates |
 | **Track B — Issues 4–10** | **Open** on GitHub — see mapping below |
 | **`v1-baseline` tag** | Optional — not yet applied |
-| **`docs/CUTOVER.md`** | Created; keep updating during Issues 8–10 |
+| **`docs/ops/CUTOVER.md`** | Created; keep updating during Issues 8–10 |
 
 After this doc PR merges to `main`, sync the integration branch:
 
@@ -41,7 +41,7 @@ main ──► Issue 1 ──► Issue 2 ──► Issue 3 ──► (tag v1-bas
 | Doc | Purpose |
 |-----|---------|
 | **[REFACTOR_GITHUB_ISSUES.md](REFACTOR_GITHUB_ISSUES.md)** | Issue titles, bodies, acceptance criteria |
-| **[CUTOVER.md](CUTOVER.md)** | Production cutover checklist |
+| **[CUTOVER.md](../ops/CUTOVER.md)** | Production cutover checklist |
 | **[../TODO.md](../TODO.md)** | File-by-file execution checklist (no WAF phase) |
 
 ### Current architecture constraints (v2 candidate)
@@ -194,7 +194,7 @@ v2 on refactor/v2-integration (GitHub #27–#33):
   #9  GH #32 — full CI/CD
   #10 GH #33 — cutover → main
 
-Docs: docs/REFACTOR_GITHUB_ISSUES.md
+Docs: [planning/REFACTOR_GITHUB_ISSUES.md](REFACTOR_GITHUB_ISSUES.md)
 ```
 
 ---
@@ -206,4 +206,4 @@ Docs: docs/REFACTOR_GITHUB_ISSUES.md
 3. ~~Create `refactor/v2-integration` from `main`.~~ Done
 4. **Open PRs for Issues 4–9** → `refactor/v2-integration` (GitHub #30, #27, #28, #29, #31, #32).
 5. Optional: tag `main` as `v1-baseline`.
-6. Issue 10 (GH #33): integration → `main` after k6 A/B and `docs/CUTOVER.md` checklist.
+6. Issue 10 (GH #33): integration → `main` after k6 A/B and [ops/CUTOVER.md](../ops/CUTOVER.md) checklist.

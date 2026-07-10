@@ -284,5 +284,5 @@ Everything tunable is a named constant at the top of `prediction.py`:
 | `MAX_GOALS` | scoreline grid size |
 
 After changing weights, re-run the prediction tests (see
-[TESTING.md](TESTING.md)) to confirm probabilities still sum to 1.0 and an
+[TESTING.md](../ops/TESTING.md)) to confirm probabilities still sum to 1.0 and an
 average-vs-average matchup still yields ~1.58 xG per side.

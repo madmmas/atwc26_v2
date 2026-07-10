@@ -8,10 +8,12 @@ and get a statistical match-result prediction driven by real per-90 performance.
 
 > **New here?** Read this file top-to-bottom once. Then jump to the deep-dive doc
 > for your role:
-> - 🧠 **How the numbers & prediction work** → [docs/ANALYTICS.md](docs/ANALYTICS.md)
+> - 🧠 **How the numbers & prediction work** → [docs/models/ANALYTICS.md](docs/models/ANALYTICS.md)
+> - 🔄 **ETL & data pipeline** → [docs/etl/OVERVIEW.md](docs/etl/OVERVIEW.md)
 > - 👩‍💻 **Contributing / code review** → [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)
-> - 🧪 **QA & automation testing** → [docs/TESTING.md](docs/TESTING.md)
-> - 🚀 **Deployment & ops** → [docs/DEPLOY.md](docs/DEPLOY.md)
+> - 🧪 **QA & automation testing** → [docs/ops/TESTING.md](docs/ops/TESTING.md)
+> - 🚀 **Deployment & ops** → [docs/ops/DEPLOY.md](docs/ops/DEPLOY.md)
+> - 📚 **All documentation** → [docs/README.md](docs/README.md)
 
 ---
 
@@ -44,7 +46,7 @@ The project is two halves that share one dataset:
 | **Data** | [data/](data/) | Generated Parquet/CSV/JSON (the single source of truth). |
 
 The full data-collection design (and its legal/ethical notes) lives in
-[docs/RUN.md](docs/RUN.md) and [docs/ANALYTICS.md](docs/ANALYTICS.md).
+[docs/ops/RUN.md](docs/ops/RUN.md) and [docs/models/ANALYTICS.md](docs/models/ANALYTICS.md).
 
 ---
 
@@ -145,7 +147,7 @@ docker compose up --build       # → http://localhost:8080
 
 The dataset grows as the tournament progresses. Add new game links and re-scrape;
 the scraper is incremental (only fetches new games). Full step-by-step:
-**[docs/RUN.md](docs/RUN.md)**.
+**[docs/ops/RUN.md](docs/ops/RUN.md)**.
 
 ```bash
 make scrape                     # picks up new links in etl/scrape/game_links.csv
@@ -167,4 +169,4 @@ make scrape                     # picks up new links in etl/scrape/game_links.cs
 
 Predictions are an illustrative statistical model, **not betting advice**. Data is
 collected from public tournament sources for demonstration purposes only; see the
-data-source notes in [docs/RUN.md](docs/RUN.md) and [docs/ANALYTICS.md](docs/ANALYTICS.md).
+data-source notes in [docs/ops/RUN.md](docs/ops/RUN.md) and [docs/models/ANALYTICS.md](docs/models/ANALYTICS.md).

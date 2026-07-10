@@ -336,5 +336,5 @@ Deploy workflow reads frontend bucket and distribution from Terraform outputs wh
 
 ## Related docs
 
-- [docs/DEPLOY.md](../docs/DEPLOY.md) — full deployment guide
-- [docs/REFACTOR_GITHUB_ISSUES.md](../docs/REFACTOR_GITHUB_ISSUES.md) — Issues 4–5 spec
+- [docs/ops/DEPLOY.md](../docs/ops/DEPLOY.md) — full deployment guide
+- [docs/planning/REFACTOR_GITHUB_ISSUES.md](../docs/planning/REFACTOR_GITHUB_ISSUES.md) — Issues 4–5 spec

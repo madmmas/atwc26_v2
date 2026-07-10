@@ -35,7 +35,7 @@ make k6-ab \
   K6_CANDIDATE_PREDICT_URL=http://localhost:8000
 ```
 
-Outputs `reports/ab-diff-<timestamp>.json`. See [docs/CUTOVER.md](../docs/CUTOVER.md)
+Outputs `reports/ab-diff-<timestamp>.json`. See [docs/ops/CUTOVER.md](../docs/ops/CUTOVER.md)
 for pass thresholds.
 
 ## Environment variables
@@ -74,4 +74,4 @@ k6/
 reports/           # gitignored JSON baselines and ab-diff files
 ```
 
-See [docs/TESTING.md](../docs/TESTING.md) for the full QA guide.
+See [docs/ops/TESTING.md](../docs/ops/TESTING.md) for the full QA guide.

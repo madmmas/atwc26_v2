@@ -146,6 +146,8 @@ python etl/build_match_events.py
 
 ## CI
 
-`.github/workflows/etl.yml` runs `make schedule scrape events squads groups`, then `make etl-local`, then `make etl-publish` on the daily schedule. Manual `workflow_dispatch` can opt out with **skip_scrape** or **skip_publish**.
+`.github/workflows/etl.yml` is triggered by `workflow_dispatch` (manual or AWS Lambda scheduler). It runs scrape → transform → publish with fingerprint-based skip logic. Manual runs can opt out with **skip_scrape** or **skip_publish**.
 
-See [docs/RUN.md](../docs/RUN.md) for the full v1 refresh workflow.
+**Docs:** [docs/etl/OVERVIEW.md](../docs/etl/OVERVIEW.md) · [docs/etl/SCHEDULER.md](../docs/etl/SCHEDULER.md) · [docs/etl/PIPELINE.md](../docs/etl/PIPELINE.md)
+
+See [docs/ops/RUN.md](../docs/ops/RUN.md) for the full v1 refresh workflow.

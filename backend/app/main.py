@@ -173,7 +173,7 @@ def bracket():
 @app.get("/api/winner-probabilities")
 def winner_probabilities():
     """Monte Carlo World Cup winner probability per team — see
-    backend/app/tournament.py and docs/WINNER_PROBABILITY_MODEL.md."""
+    backend/app/tournament.py and docs/models/WINNER_PROBABILITY_MODEL.md."""
     store = get_store()
     probs = get_winner_probabilities(store)
     teams = sorted(

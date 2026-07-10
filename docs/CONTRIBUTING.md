@@ -2,7 +2,7 @@
 
 Welcome 👋 This guide gets you from a fresh clone to making a reviewed change.
 Read [README.md](../README.md) first for the big picture and
-[ANALYTICS.md](ANALYTICS.md) for how the model works.
+[models/ANALYTICS.md](models/ANALYTICS.md) for how the model works.
 
 ---
 
@@ -55,7 +55,7 @@ frontend/
 deploy/nginx.conf   reverse proxy (routes /api → backend, / → frontend)
 docker-compose.yml  full stack
 data/               generated dataset (do not hand-edit)
-etl/scrape/         data pipeline scrapers (see RUN.md)
+etl/scrape/         data pipeline scrapers (see [ops/RUN.md](ops/RUN.md))
 notebooks/          analysis and data QA notebooks
 docs/               project documentation
 ```
@@ -113,7 +113,7 @@ endpoints in `main.py` → `lib/api.ts` → React pages.
 
 ### Change the prediction model
 - Edit weights/constants in `prediction.py` (documented in
-  [ANALYTICS.md §8](ANALYTICS.md#8-tuning-guide-for-contributors)).
+  [models/ANALYTICS.md §8](models/ANALYTICS.md#8-tuning-guide-for-contributors)).
 - Re-run prediction tests (probabilities must sum to 1.0; average-vs-average ≈
   1.58 xG/side).
 
@@ -138,7 +138,7 @@ endpoints in `main.py` → `lib/api.ts` → React pages.
 - [ ] No secrets, no large data files committed (`data/` is generated).
 
 ### Review checklist (reviewer)
-- [ ] Logic matches [ANALYTICS.md](ANALYTICS.md); model constants are named, not
+- [ ] Logic matches [models/ANALYTICS.md](models/ANALYTICS.md); model constants are named, not
       inline.
 - [ ] Request handlers stay thin; expensive work is cached in `DataStore`.
 - [ ] Frontend uses `lib/api.ts` and shared Tailwind helpers.

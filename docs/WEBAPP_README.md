@@ -8,9 +8,9 @@ prediction** from real per-90 performance.
 Built on the dataset produced by [`etl/scrape/scrape_wc26.py`](../etl/scrape/scrape_wc26.py).
 
 > 📚 **This is the web-app reference.** For the whole project start at
-> **[README.md](../README.md)**. Deep dives: **[ANALYTICS.md](ANALYTICS.md)** (the
+> **[README.md](../README.md)**. Deep dives: **[models/ANALYTICS.md](models/ANALYTICS.md)** (the
 > model), **[CONTRIBUTING.md](CONTRIBUTING.md)** (dev/review),
-> **[TESTING.md](TESTING.md)** (QA), **[DEPLOY.md](DEPLOY.md)** (ops).
+> **[ops/TESTING.md](ops/TESTING.md)** (QA), **[ops/DEPLOY.md](ops/DEPLOY.md)** (ops).
 
 ## Features
 
@@ -64,7 +64,7 @@ cd frontend && cp .env.example .env.local && npm install && npm run dev
 # open http://localhost:3000
 ```
 
-Or the whole stack via Docker (see **[DEPLOY.md](DEPLOY.md)**):
+Or the whole stack via Docker (see **[ops/DEPLOY.md](ops/DEPLOY.md)**):
 ```bash
 docker compose up --build      # http://localhost:8080
 ```
@@ -87,7 +87,7 @@ docker compose up --build      # http://localhost:8080
 backend/   FastAPI app (data layer, prediction engine, API)
 frontend/  Next.js app (overview, explore, predict)
 deploy/    nginx.conf
-docker-compose.yml, DEPLOY.md
+docker-compose.yml, [ops/DEPLOY.md](ops/DEPLOY.md)
 data/      parquet dataset (from etl/scrape/scrape_wc26.py)
 ```
 

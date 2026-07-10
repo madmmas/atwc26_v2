@@ -33,7 +33,7 @@ A two-service web app plus a reverse proxy:
 
 > Use a **virtualenv** for the backend so the interpreter running uvicorn always
 > matches its installed packages (avoids the classic "No module named pyarrow"
-> from a mismatched Python). See [README.md §4](../README.md#4-setup--one-time-vs-repeated-commands)
+> from a mismatched Python). See [README.md §4](../../README.md#4-setup--one-time-vs-repeated-commands)
 > for the one-time-vs-repeated command breakdown.
 
 **Backend**
@@ -102,7 +102,7 @@ NEXT_PUBLIC_API_URL="$(terraform output -raw backend_api_url)" \
 Add `terraform output cors_origin_hint` to **`ATWC26_CORS_ORIGINS`** on the v1
 backend so the browser can call the API from the CloudFront origin.
 
-See [infra/README.md](../infra/README.md) for full variable/output reference.
+See [infra/README.md](../../infra/README.md) for full variable/output reference.
 
 **Manual deploy** (without Terraform outputs helper):
 

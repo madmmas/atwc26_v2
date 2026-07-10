@@ -108,7 +108,7 @@ export function WinnerProbabilityChart() {
         Estimated from 10,000 simulated tournaments using the same player-form model as the
         predictor below — remaining group matches and the full knockout bracket are simulated,
         and a team is shown as &quot;Out&quot; only once they&apos;re actually eliminated, not
-        just unlikely to win. See docs/WINNER_PROBABILITY_MODEL.md for the full methodology.
+        just unlikely to win. See docs/models/WINNER_PROBABILITY_MODEL.md for the full methodology.
       </p>
     </div>
   );
