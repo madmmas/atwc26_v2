@@ -43,7 +43,7 @@ The project is two halves that share one dataset. During the v2 migration it als
 | Part | Folder / file | What it does |
 |---|---|---|
 | **Scraper** | [etl/scrape/scrape_wc26.py](etl/scrape/scrape_wc26.py) | Pulls per-player stats for each game from ESPN's JSON APIs into Parquet. |
-| **Notebook** | [notebooks/analysis.ipynb](notebooks/analysis.ipynb) | Pandas starter: per-90 normalization, leaderboards. |
+| **Notebooks** | [notebooks/analysis.ipynb](notebooks/analysis.ipynb), [notebooks/models.ipynb](notebooks/models.ipynb) | Per-90 / leaderboards starter; multi-model deep-dive. |
 | **Backend (v1)** | [backend/](backend/) | FastAPI monolith: analytics + prediction (production v1). |
 | **Services (v2)** | [services/](services/) | Split `analytics_api` + `predict_api` for AWS candidate. |
 | **Shared core** | [packages/atwc26_core/](packages/atwc26_core/) | DataStore, prediction engines, ETL artifacts (v2). |
@@ -63,7 +63,7 @@ The full data-collection design (and its legal/ethical notes) lives in
 |---|---|---|
 | Data pipeline | Python, pandas, pyarrow | Fast, typed columnar data (Parquet). |
 | Backend API | FastAPI, Gunicorn + Uvicorn | Async, scales horizontally; reuses the pandas data. |
-| Prediction | NumPy + a Poisson goals model | Transparent, explainable football analytics. |
+| Prediction | Dixon-Coles (primary), Poisson XI, Elo, XGBoost | Multi-model stack; transparent weights + offline backtest. |
 | Frontend | Next.js 14, TypeScript, Tailwind, Recharts | Modern, fast, CDN-deployable, attractive. |
 | Delivery | Docker, docker-compose, Nginx | One public origin, secure, reproducible. |
 

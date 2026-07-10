@@ -34,17 +34,19 @@ make groups              # refresh standings + bracket
 ### v2 transform / QA / publish
 
 ```bash
-make etl-local           # transform + simulate + QA (writes data/.etl/manifest.json)
+make etl-local           # transform + simulate + train + QA (writes data/.etl/manifest.json)
 make etl-scrape          # discover fixtures + scrape ESPN → data/raw + parquet
 make etl-refresh         # scrape ESPN, then etl-local (full local refresh)
 make etl-simulate        # Monte Carlo + bracket predictions → JSON artifacts
+make etl-train           # Elo + Dixon-Coles (L2) + XGBoost + backtest summary
 make etl-publish         # upload to S3 + DynamoDB + API cache (or local staging)
 make test-etl            # pytest tests/etl etl/qa -q
 ```
 
-`etl-local` runs `python -m etl.transform`, `python -m etl.simulate`, then `python -m etl.qa`.
+`etl-local` runs transform, then **simulate ∥ train** where the Makefile parallelizes, then QA.
 Transform rebuilds match timelines, precomputes player/team profiles, and records SHA-256
-hashes. Simulate runs the 10k-trial tournament MC in GHA (not in Lambda/ECS).
+hashes. Simulate runs the tournament MC (10k locally / 1k in CI). Train writes model
+artifacts and `backtest_summary.json`.
 
 ## Pipeline layout
 
@@ -52,7 +54,8 @@ hashes. Simulate runs the 10k-trial tournament MC in GHA (not in Lambda/ECS).
 |-------|--------|---------|
 | Scrape | `etl/scrape/` | ESPN fixtures, per-game stats, squads, history |
 | Transform | `etl/transform/` | Profiles, derived artifacts + manifest |
-| Simulate | `etl/simulate/` | 10k MC winner probs + bracket predictions (GHA) |
+| Simulate | `etl/simulate/` | MC winner probs (+ stage_probabilities) + bracket path |
+| Train | `etl/train/` + `etl/eval/` | Elo, Dixon-Coles, XGBoost + chronological backtest |
 | QA | `etl/qa/` | Validate parquet/JSON + `DataStore` load |
 | Publish | `etl/publish/` | S3 upload + DynamoDB manifest + API cache |
 
@@ -70,12 +73,13 @@ hashes. Simulate runs the 10k-trial tournament MC in GHA (not in Lambda/ECS).
 | `data/team_flags.json` | no | flag URLs |
 | `data/player_profiles.parquet` | no | precomputed per-90 player profiles |
 | `data/team_profiles.parquet` | no | precomputed team aggregates |
-| `data/winner_probabilities.json` | no | offline Monte Carlo output |
+| `data/winner_probabilities.json` | no | offline Monte Carlo (title + stage_probabilities) |
 | `data/bracket_predictions.json` | no | deterministic bracket path |
-| `data/elo_ratings.json` | no | Elo ratings |
-| `data/dc_params.json` | no | Dixon-Coles params |
-| `data/xgb_model.ubj` / `xgb_features.json` | no | XGBoost model |
-| `data/backtest_summary.json` | no | hold-out track-record metrics |
+| `data/elo_ratings.json` | no | Elo ratings (train) |
+| `data/dc_params.json` | no | Dixon-Coles params, L2-fitted (train) |
+| `data/xgb_model.ubj` / `xgb_features.json` | no | XGBoost model + feature list (train) |
+| `data/backtest_summary.json` | no | Hold-out metrics for Track Record (train/eval; published via `ARTIFACTS`) |
+| `data/schedule.json` | no | fixture schedule |
 
 ## S3 keys
 

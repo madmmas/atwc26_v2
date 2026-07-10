@@ -5,6 +5,13 @@
 **Date:** July 2026  
 **Priority order:** P0 = ship now · P1 = next sprint · P2 = backlog
 
+> **Historical.** Older wishlist / audit against an earlier CloudFront build.
+> For **shipped** section navigation (Predict tabs, Standings anchors) and
+> related UX, use [UXSPEC2.md](UXSPEC2.md). For the live page map, see
+> [WEBAPP_README.md](../WEBAPP_README.md) (Today's matches, TrackRecordPanel,
+> Dixon-Coles default). Do not implement from this file without checking what
+> already landed.
+
 ---
 
 ## Context & Constraints

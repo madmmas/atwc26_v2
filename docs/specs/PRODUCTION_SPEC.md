@@ -2,6 +2,21 @@
 # Instructions for Cursor. Work top-to-bottom. Each section is a discrete task.
 # Prerequisites, exact commands, file edits, and verification steps are all included.
 # Do not skip verification steps — each one confirms the previous task worked.
+#
+# ══════════════════════════════════════════════════════════════════════════════
+# STATUS NOTE (post-parity / post-stage-probs)
+# ══════════════════════════════════════════════════════════════════════════════
+# Parts 1–4 remain useful as an ops bootstrap checklist (cross-check against
+# docs/ops/DEPLOY.md, infra/README.md, and ARCHITECTURE.md — those are the
+# living sources of truth when this file disagrees).
+#
+# Parts 5–6 (notebooks/models.ipynb, stage_probabilities) are **shipped**.
+# Do not re-implement from the commented scripts below. See:
+#   - notebooks/models.ipynb
+#   - docs/models/WINNER_PROBABILITY_MODEL.md
+#   - docs/planning/NEXT_MOVES.md (marked historical)
+# Model-quality follow-ups: docs/models/V2_PARITY_BACKPORT.md
+# ══════════════════════════════════════════════════════════════════════════════
 
 ---
 

@@ -1,6 +1,21 @@
 # atwc26_v2 — Multi-model prediction engine
 # Cursor implementation spec
 #
+# ════════════════════════════════════════════════════════════════════════════════
+# STATUS: HISTORICAL — IMPLEMENTED
+# ════════════════════════════════════════════════════════════════════════════════
+# This file was the step-by-step plan to add Elo / Dixon-Coles / XGBoost.
+# The work has shipped. Do **not** treat "Current state: one Poisson model" or
+# "primary result is poisson" as live truth.
+#
+# Living docs:
+#   - docs/models/ANALYTICS.md          — engines, DC primary, shrinkage, XGB features
+#   - docs/models/V2_PARITY_BACKPORT.md — L2, backtest, leak fix, UI defaults
+#   - docs/models/V2_PARITY_TEST_PLAN.md
+#
+# Kept for archaeology / how the engines were introduced.
+# ════════════════════════════════════════════════════════════════════════════════
+#
 # Work top-to-bottom. Each step builds on the previous.
 # Do NOT start a step until the previous step's tests pass.
 # Do NOT touch etl/scrape/*, frontend/app/predict/page.tsx formation logic,

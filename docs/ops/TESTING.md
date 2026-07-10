@@ -50,7 +50,9 @@ All responses are JSON; `NaN/inf` are converted to `null`.
 ```
 
 `data_updated_at` is the newest artifact timestamp among key data files
-(parquet mtimes / JSON `generated_at`).
+(parquet mtimes / JSON `generated_at`). Same-origin CloudFront builds route
+`GET /api/backtest` to predict via API Gateway — see
+[DEPLOY.md §7](DEPLOY.md#7-v2-edge-routing-reference).
 
 ### `GET /api/backtest` (predict service)
 Returns the latest hold-out summary written by `make etl-train`
@@ -153,8 +155,10 @@ Stable selectors are already wired in:
 | `autopick-a`, `autopick-b` | "Auto-pick XI" buttons | /predict |
 | `team-col-a`, `team-col-b` | each team's column | /predict |
 | `predict-button` | "Predict result" | /predict |
+| `predict-model-select` | model dropdown (default Dixon-Coles when available) | /predict |
 | `prediction-result` | result container (appears after predict) | /predict |
 | `predict-error` | error banner (negative paths) | /predict |
+| `track-record-panel` | out-of-sample backtest panel | /predict |
 
 If you need more, add `data-testid`s in the component and note them here (see
 [CONTRIBUTING.md](../CONTRIBUTING.md)).

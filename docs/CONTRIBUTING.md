@@ -118,10 +118,18 @@ docs/               project documentation
 3. Fetch via `lib/api.ts`.
 
 ### Change the prediction model
-- Edit weights/constants in `prediction.py` (documented in
-  [models/ANALYTICS.md §8](models/ANALYTICS.md#8-tuning-guide-for-contributors)).
-- Re-run prediction tests (probabilities must sum to 1.0; average-vs-average ≈
-  1.58 xG/side).
+- **Poisson XI weights:** edit named constants in
+  `packages/atwc26_core/atwc26_core/prediction.py` (or v1 `backend/app/prediction.py`) —
+  documented in [models/ANALYTICS.md §8](models/ANALYTICS.md#8-tuning-guide-for-contributors).
+- **Dixon-Coles / Elo / XGBoost:** change training in `etl/train/`, then `make etl-train`.
+  Primary API/UI order is `PRIMARY_MODEL_ORDER` in `services/predict_api`.
+- Re-run prediction + train tests (probabilities must sum to 1.0; see
+  [models/V2_PARITY_TEST_PLAN.md](models/V2_PARITY_TEST_PLAN.md)).
+
+### Frontend surfaces worth knowing
+- Homepage: `TodaysMatchesWidget` (today's fixtures + quick-predict).
+- Predict: `PredictTabs`, `TrackRecordPanel`, model select (`predict-model-select`).
+- Standings: `StandingsAnchorBar` section anchors.
 
 ---
 

@@ -1,6 +1,9 @@
 # V2 parity backport — implementation plan
 
-Branch: `feat/v2-parity-backport`
+Branch: `feat/v2-parity-backport` (merged)
+
+**Status: shipped** (all items Done). Living methodology:
+[ANALYTICS.md](ANALYTICS.md). Acceptance: [V2_PARITY_TEST_PLAN.md](V2_PARITY_TEST_PLAN.md).
 
 Closes the model-quality gaps identified against the v1 parity hand-off. Each
 item is a small, self-contained change — not a rewrite.
@@ -146,3 +149,9 @@ make etl-train
 so `dc_params.json`, `xgb_model.ubj`, and `backtest_summary.json` reflect the
 new training code. Until then, engines still load existing artifacts; DC may
 remain non-converged until retrain.
+
+**Publish note:** `backtest_summary.json` is registered in
+`packages/atwc26_core/atwc26_core/artifacts.py` `ARTIFACTS` and published to S3.
+`GET /api/backtest` is routed on API Gateway to the predict service (same-origin
+TrackRecord works after Terraform apply of that route). See
+[ops/DEPLOY.md §7](../ops/DEPLOY.md#7-v2-edge-routing-reference).

@@ -1,34 +1,58 @@
 # WINNER_PROBABILITY_MODEL.md — World Cup winner probability
 
 This document explains how each team's "chance of winning the World Cup"
-percentage (shown on the Predictor page, above the match predictor) is
-computed, why this is a reasonable estimate given the data available, and
-what would make it more accurate.
+percentage (shown on the Predict / Standings surfaces) is computed, why this is
+a reasonable estimate given the data available, and what would make it more
+accurate.
 
-All of this lives in [backend/app/tournament.py](../backend/app/tournament.py),
-reusing the rating math in
-[backend/app/prediction.py](../backend/app/prediction.py) — nothing here is a
-separate model; it's the same per-90, history-blended player ratings that
-power the head-to-head match predictor, just run forward thousands of times
-instead of once.
+**v2 (canonical):** Monte Carlo runs in the **ETL simulate** step
+([`packages/atwc26_core/atwc26_core/tournament.py`](../../packages/atwc26_core/atwc26_core/tournament.py)),
+writes `data/winner_probabilities.json` (title probs + **stage_probabilities**),
+and analytics serves `GET /api/winner-probabilities` from that artifact / API
+cache. Rating math reuses
+[`prediction.py`](../../packages/atwc26_core/atwc26_core/prediction.py).
+
+**v1 monolith:** the same logic lives in `backend/app/tournament.py` and still
+warms at API startup for the long-lived server. Prefer the core package when
+changing behavior.
 
 ---
 
 ## 1. What it computes
 
 For every one of the 48 WC26 teams: the fraction of simulated tournaments in
-which that team wins the Final. This is exposed at `GET /api/winner-probabilities`
-and rendered by `frontend/components/WinnerProbabilityChart.tsx`.
+which that team wins the Final. Exposed at `GET /api/winner-probabilities` and
+rendered by `frontend/components/WinnerProbabilityChart.tsx` (including per-round
+**stage** reach probabilities when present).
 
-It is recomputed once per backend process (at startup, via `_warm()` in
-`main.py`) and cached for the life of that process — the same pattern
-`prediction.py`'s `get_predictor` already uses. The existing data-refresh
-cron restarts the backend after every `make refresh`/`refresh-full` cycle,
-so "rerun after every finished match" falls directly out of that existing
-restart, with no separate scheduling added.
+**v2 lifecycle:** recomputed on each ETL simulate/publish cycle (scheduler or
+manual `make etl-simulate` / `etl.yml`), not inside Lambda request handlers.
+**v1:** recomputed once per backend process at startup via `_warm()`; data-refresh
+restarts pick up new scrapes.
 
 A team that's actually eliminated (not just unlikely to win) is forced to
 exactly **0%** — see §5.
+
+Artifact shape (v2):
+
+```json
+{
+  "probabilities": { "Belgium": 0.32, "...": "..." },
+  "stage_probabilities": {
+    "Belgium": {
+      "Round of 16": 1.0,
+      "Quarterfinals": 0.89,
+      "Semifinals": 0.74,
+      "Final": 0.54,
+      "title": 0.32
+    }
+  },
+  "generated_at": "..."
+}
+```
+
+Round names come from `bracket.json` (`rounds[].name`) plus `"title"` for the
+champion.
 
 ---
 
@@ -58,10 +82,10 @@ One **trial** = one full hypothetical run of the rest of the tournament:
    not yet actually played, resolve who's actually in it (§4), then simulate
    it (§3, with no draws allowed). For a fixture that's *already* really been
    played, its real result is used as-is, not re-simulated.
-3. Record who wins the Final.
+3. Record who wins the Final (and which rounds each team reached → stage probs).
 
-Repeat for `trials = 10_000` (the default in `tournament.py`), then
-`probability(team) = times_won / trials`.
+Repeat for `trials = 10_000` (default in `tournament.py`; CI often uses 1,000),
+then `probability(team) = times_won / trials`.
 
 **Why 10,000 trials**: empirically verified — two independent 10,000-trial
 runs (different random seeds) of the current tournament state produced
@@ -93,11 +117,20 @@ sequence of actual results, not just their average.
 **No home advantage is applied** here (see §5 — this is a deliberate
 simplification, not an oversight).
 
-**Knockout draws**: a tied Poisson draw can't happen in a real knockout
-match (extra time + penalties resolve it). Modeled as a coin flip weighted
-by each side's expected-goal share (`lambda_a / (lambda_a + lambda_b)`) — a
-reasonable proxy for "the side that was expected to score more is slightly
-more likely to win it," not an actual penalty-shootout model.
+**Knockout draws (simulated):** a tied Poisson draw can't happen in a real
+knockout match (extra time + penalties resolve it). Modeled as a coin flip
+weighted by each side's expected-goal share
+(`lambda_a / (lambda_a + lambda_b)`) — a reasonable proxy for "the side that
+was expected to score more is slightly more likely to win it," not an actual
+penalty-shootout model.
+
+**Completed knockout ties decided on penalties (real results):** when
+`score_a == score_b` on a completed bracket match, **v1**
+(`backend/app/tournament.py`) advances the team using `shootout_a` /
+`shootout_b` from the scraped bracket. **v2 core** currently skips tied
+completed rows (`if sa == sb: continue`) and does not yet read shootout
+fields — a known skew until core is aligned with the v1 fix. Prefer fixing
+core rather than documenting around it long-term.
 
 ---
 
@@ -106,12 +139,12 @@ more likely to win it," not an actual penalty-shootout model.
 ### Team strength, computed once
 A team's rating doesn't change between trials — only match *outcomes* are
 randomized. So each of the 48 teams' best XI is auto-picked once per
-process (`auto_pick_xi()`, a Python port of the frontend's `autoFill` in
+simulation run (`auto_pick_xi()`, a Python port of the frontend's `autoFill` in
 `predict/page.tsx`: best-by-minutes per role, falling back across roles if
 a team is short at a position) and rated once via the existing
 `Predictor._rate_team()`. This keeps 10,000 trials × ~56 matches/trial fast
-(~6 seconds total) since only the cheap Poisson draw repeats per trial, not
-the rating computation.
+since only the cheap Poisson draw repeats per trial, not the rating
+computation.
 
 **Selection uses real WC26 minutes; rating uses blended stats — these are
 deliberately different inputs.** `team_ratings()` picks each team's XI from
@@ -128,21 +161,18 @@ tournament; *how reliably we know their rate stats* is what the history
 blend is for.
 
 ### Resolving who's actually in a future bracket match
-This is the part that needed real verification, not assumption. ESPN
-publishes the entire Round-of-32-through-Final fixture skeleton in advance,
+ESPN publishes the entire Round-of-32-through-Final fixture skeleton in advance,
 with each not-yet-decided slot encoded as a placeholder — e.g. `abbreviation:
 "2A"` (Group A runner-up), `"3RD"` with `displayName: "Third Place Group
 A/B/C/D/F"` (one of the four third-place wildcard slots), or later-round text
 like `"Round of 32 3 Winner"`.
 
-**Confirmed empirically** (not assumed): a later round's reference number
-("Round of 32 **3** Winner") is exactly that round's **1-indexed position**
-in ESPN's own discovery order. Verified for every link in the chain — R32→R16,
-R16→QF, QF→SF, SF→Final, SF→3rd-place ("Loser") — every reference number in
-every later round matched its source round's position with zero exceptions,
-across all 32 knockout fixtures. This means the entire bracket can be wired
-up purely from ESPN's own data, with **no hardcoded FIFA bracket-sheet
-table** required anywhere in this codebase.
+**Bracket match `position`:** each round's matches are sorted and numbered by
+ESPN's canonical `competitions[0].matchNumber` (fetched in
+`etl/scrape/fetch_groups.py`), not by discovery/id order. Later-round
+placeholders ("Round of 32 **3** Winner") refer to that **matchNumber**-aligned
+position. Verified across the knockout chain so the bracket can be wired from
+ESPN's own data with **no hardcoded FIFA bracket-sheet table**.
 
 `etl/scrape/fetch_groups.py`'s `parse_slot()` turns every slot into one of
 four explicit types at scrape time:
@@ -172,8 +202,8 @@ four explicit types at scrape time:
   (USA/Canada/Mexico) playing in their own country, which would need
   venue-city-to-team-country matching we don't do yet. Left out entirely
   rather than applied incorrectly to teams it doesn't apply to.
-- **Knockout draws resolved by a weighted coin flip**, not a penalty-shootout
-  model — see §3.
+- **Knockout draws (simulated)** resolved by a weighted coin flip, not a
+  penalty-shootout model — see §3. Real completed shootouts: see §3 v1/v2 note.
 - **History window**: `store.predictor_players` blends in whatever
   `scrape_history.py` pulled (~1 year of qualifiers/friendlies), flat —
   a match from 11 months ago counts the same as one from last week. A
@@ -184,7 +214,7 @@ four explicit types at scrape time:
   unlikely (true probability somewhere under ~0.05%) can also land on
   exactly 0/10,000 by chance alone — that's an honest precision limit of
   10,000 trials, not a claim that they're impossible. Raising the trial
-  count narrows this floor at the cost of slower startup.
+  count narrows this floor at the cost of slower simulate runs.
 
 ### Eliminated teams show exactly 0%, distinctly from "very unlikely"
 `eliminated_teams()` in `tournament.py` computes this from **real data
@@ -212,25 +242,21 @@ simulation count.
 
 Roughly in order of expected impact for the effort involved:
 
-1. **Recency-weighted form** instead of a flat ~1-year blend — e.g. an
+1. **Align v2 core with v1 on completed penalty shootouts** so tied completed
+   knockout matches always advance the correct team in simulation.
+2. **Recency-weighted form** instead of a flat ~1-year blend — e.g. an
    Elo-style decay so a team's last few matches count more than one from
-   11 months ago. Currently the single biggest known gap between this model
-   and how a human pundit would actually weigh form.
-2. **Real host-nation home advantage** (USA/Canada/Mexico in their own
+   11 months ago.
+3. **Real host-nation home advantage** (USA/Canada/Mexico in their own
    country) via venue-city-to-team-country matching — currently omitted
    entirely rather than guessed.
-3. **Head-to-head and disciplinary-points tiebreakers** for the genuinely
-   rare cases where Points/GD/Goals-scored alone doesn't separate two teams
-   — low frequency, but would make the group-stage edge cases exactly match
-   the official rules instead of an documented approximation.
-4. **A real penalty-shootout sub-model** (e.g. a fixed ~50/50 with a small
-   goalkeeping-rating adjustment, calibrated against real shootout base
-   rates) instead of the expected-goal-share coin flip used for knockout
-   draws now.
-5. **More trials** (e.g. 50,000–100,000) to push the longshot-team precision
-   floor down further — straightforward, just slower to (re)compute at
-   startup.
-6. **More historical data sources** — currently only ESPN's qualifier/friendly
-   coverage for the last year; additional competitions (e.g. continental
-   cups, more friendlies further back) would widen the sample, especially
-   for teams with thin WC26 minutes so far.
+4. **Head-to-head and disciplinary-points tiebreakers** for the genuinely
+   rare cases where Points/GD/Goals-scored alone doesn't separate two teams.
+5. **A real penalty-shootout sub-model** for *simulated* knockout draws
+   (e.g. ~50/50 with a small goalkeeping-rating adjustment) instead of the
+   expected-goal-share coin flip.
+6. **More trials** (e.g. 50,000–100,000) to push the longshot-team precision
+   floor down further — straightforward, just slower ETL simulate.
+7. **More historical data sources** — currently only ESPN's qualifier/friendly
+   coverage for the last year; additional competitions would widen the sample,
+   especially for teams with thin WC26 minutes so far.
