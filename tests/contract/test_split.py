@@ -101,6 +101,50 @@ def test_analytics_overview(analytics_client: TestClient) -> None:
     assert response.json()["teams"]
 
 
+def test_players_full_includes_all_metric_columns(analytics_client: TestClient) -> None:
+    """Explore uses fields=full so every table column has a value, not just the sort key."""
+    metric_keys = (
+        "minutes",
+        "totalGoals_total",
+        "expectedGoals_p90",
+        "expectedAssists_p90",
+        "totalShots_p90",
+        "duelsWon_p90",
+        "defensiveInterventions_p90",
+        "passPct",
+    )
+    full = analytics_client.get(
+        "/api/players",
+        params={"sort": "totalShots_p90", "dir": "desc", "limit": 5, "fields": "full"},
+    )
+    assert full.status_code == 200
+    full_players = full.json()["players"]
+    assert full_players
+    for key in metric_keys:
+        assert key in full_players[0], f"full payload missing {key}"
+
+    slim = analytics_client.get(
+        "/api/players",
+        params={"sort": "totalShots_p90", "dir": "desc", "limit": 5, "fields": "slim"},
+    )
+    assert slim.status_code == 200
+    slim_row = slim.json()["players"][0]
+    assert "totalShots_p90" in slim_row
+    assert "minutes" in slim_row
+    assert "expectedGoals_p90" not in slim_row
+
+
+def test_players_min_minutes_filter(analytics_client: TestClient) -> None:
+    response = analytics_client.get(
+        "/api/players",
+        params={"sort": "minutes", "limit": 20, "min_minutes": 90, "fields": "full"},
+    )
+    assert response.status_code == 200
+    players = response.json()["players"]
+    assert players
+    assert all(p["minutes"] >= 90 for p in players)
+
+
 def test_predict_on_predict_service(
     analytics_client: TestClient, predict_client: TestClient
 ) -> None:
