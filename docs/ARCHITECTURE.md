@@ -68,7 +68,7 @@ C4Container
         Container(frontend, "Static Frontend", "Next.js 14, static export", "Overview / Explore / Predict / Standings — build-time env vars set API base URL(s)")
         Container(cdn, "CloudFront + API Gateway", "CDN (OAC) + HTTP API", "Single public origin: default behavior → S3, /api/* behavior → API Gateway")
         Container(analytics, "Analytics API", "AWS Lambda, Python 3.11 / FastAPI, arm64", "Read endpoints: health, overview, teams, players, matches, standings, bracket, leaderboard, winner-probabilities")
-        Container(predict, "Predict API", "AWS Lambda (default) or ECS Fargate + ALB (enable_ecs_compute=true)", "POST /api/predict — Poisson / XGBoost compute, CPU-bound")
+        Container(predict, "Predict API", "AWS Lambda (default) or ECS Fargate + ALB (enable_ecs_compute=true)", "POST /api/predict — Dixon-Coles / Poisson / Elo / XGBoost; GET /api/backtest; GET /api/predict/health")
         ContainerDb(datastore, "Data Bucket", "Amazon S3", "Published parquet/JSON artifacts — single source of truth for both APIs")
         ContainerDb(manifest, "Manifest & Cache Table", "Amazon DynamoDB, single table", "Publish manifest, precomputed API-response cache, ETL trigger dedup state")
         Container(scheduler, "ETL Scheduler", "Amazon EventBridge + AWS Lambda", "Polls schedule.json every 5 min; dispatches ETL once a match is confirmed complete on ESPN")
@@ -82,7 +82,7 @@ C4Container
     Rel(fan, cdn, "HTTPS")
     Rel(cdn, frontend, "Serves static assets", "S3 origin via OAC")
     Rel(cdn, analytics, "GET /api/* via API Gateway ($default route)", "HTTPS")
-    Rel(cdn, predict, "POST /api/predict, GET /api/predict/health via API Gateway", "HTTPS")
+    Rel(cdn, predict, "POST /api/predict, GET /api/predict/health, GET /api/backtest via API Gateway", "HTTPS")
     Rel(frontend, v1, "Pre-cutover: may call v1 API cross-origin", "HTTPS")
     Rel(analytics, datastore, "Reads artifacts (S3 sync via manifest)")
     Rel(analytics, manifest, "Reads precomputed API cache")
@@ -175,7 +175,7 @@ flowchart TB
     end
 
     subgraph APILAYER["API Layer — module: api-gateway"]
-        APIGW["API Gateway HTTP API<br/>$default → analytics<br/>POST /api/predict → predict<br/>GET /api/predict/health → predict"]:::edge
+        APIGW["API Gateway HTTP API<br/>$default → analytics<br/>POST /api/predict → predict<br/>GET /api/predict/health → predict<br/>GET /api/backtest → predict"]:::edge
     end
 
     subgraph COMPUTE["Compute"]

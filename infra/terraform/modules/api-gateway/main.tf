@@ -71,6 +71,15 @@ resource "aws_apigatewayv2_route" "predict_health" {
   depends_on = [aws_apigatewayv2_integration.predict]
 }
 
+# Track-record panel (same-origin) — must not fall through to analytics $default.
+resource "aws_apigatewayv2_route" "backtest" {
+  api_id    = aws_apigatewayv2_api.http.id
+  route_key = "GET /api/backtest"
+  target    = "integrations/${aws_apigatewayv2_integration.predict.id}"
+
+  depends_on = [aws_apigatewayv2_integration.predict]
+}
+
 resource "aws_apigatewayv2_route" "analytics" {
   api_id    = aws_apigatewayv2_api.http.id
   route_key = "$default"

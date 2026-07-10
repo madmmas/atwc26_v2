@@ -72,6 +72,10 @@ hashes. Simulate runs the 10k-trial tournament MC in GHA (not in Lambda/ECS).
 | `data/team_profiles.parquet` | no | precomputed team aggregates |
 | `data/winner_probabilities.json` | no | offline Monte Carlo output |
 | `data/bracket_predictions.json` | no | deterministic bracket path |
+| `data/elo_ratings.json` | no | Elo ratings |
+| `data/dc_params.json` | no | Dixon-Coles params |
+| `data/xgb_model.ubj` / `xgb_features.json` | no | XGBoost model |
+| `data/backtest_summary.json` | no | hold-out track-record metrics |
 
 ## S3 keys
 

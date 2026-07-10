@@ -40,6 +40,7 @@ def ensure_predictor_data() -> list[str]:
         ("dc_params", config.DC_PARAMS),
         ("xgb_model", config.XGB_MODEL),
         ("xgb_features", config.XGB_FEATURES),
+        ("backtest_summary", config.BACKTEST_SUMMARY),
     ]
 
     updated = []

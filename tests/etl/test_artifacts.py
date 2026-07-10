@@ -19,6 +19,14 @@ def test_required_artifact_names():
     assert "match_events" in names
 
 
+def test_backtest_summary_is_published():
+    names = {a.name for a in ARTIFACTS}
+    assert "backtest_summary" in names
+    spec = next(a for a in ARTIFACTS if a.name == "backtest_summary")
+    assert spec.path.name == "backtest_summary.json"
+    assert spec.required is False
+
+
 def test_s3_key_for_uses_prefix():
     spec = next(a for a in ARTIFACTS if a.name == "master_parquet")
     key = s3_key_for(spec, prefix="data")

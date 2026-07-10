@@ -88,7 +88,8 @@ Applied in `_rate_team` before role-weighted aggregation.
 - Chronological 80/20 split on the match matrix.
 - Train Elo + Dixon-Coles on the train slice; score log-loss / accuracy / Brier
   on the hold-out.
-- Persist `data/backtest_summary.json` from `etl/train/run.py`.
+- Persist `data/backtest_summary.json` from `etl/train/run.py` (published via `ARTIFACTS`).
+- API Gateway routes `GET /api/backtest` to the predict service (same-origin Track Record).
 
 ---
 
@@ -107,6 +108,8 @@ model selector and `quickPredict` follow the same default.
 
 **Fix.**
 - `GET /api/backtest` on predict service (reads `backtest_summary.json`).
+- API Gateway `GET /api/backtest` → predict (same-origin Track Record).
+- `backtest_summary` registered in `ARTIFACTS` + predict S3 sync targets.
 - `data_updated_at` on analytics + predict health (newest artifact
   `generated_at` / mtime among key data files).
 
