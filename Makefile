@@ -45,7 +45,7 @@ TF_AWS_ENV = $(if $(AWS_PROFILE),AWS_PROFILE=$(AWS_PROFILE))
 	setup setup-backend setup-frontend setup-scraper setup-etl setup-test setup-services verify \
 	backend analytics predict frontend dev dev-v2 \
 	test-e2e test-etl test-contract e2e-v2-local \
-	etl-scrape etl-local etl-refresh etl-simulate etl-train etl-publish \
+	etl-scrape etl-scrape-phase etl-local etl-simulate-only etl-train-only etl-refresh etl-simulate etl-train etl-publish \
 	schedule scrape scrape-force analyze events squads groups history \
 	build-frontend-static build-frontend-static-v2 serve-frontend-static \
 	k6-smoke k6-journey k6-load k6-stress k6-ab \
@@ -191,21 +191,34 @@ events: ## Rebuild match timelines/momentum from data/raw/*.json
 groups: ## Refresh group standings + remaining group-stage fixtures
 	$(PYTHON) $(SCRAPER_DIR)/fetch_groups.py
 
+# schedule first, then scrape ∥ squads ∥ groups, then events (needs raw JSON).
+etl-scrape-phase: schedule ## Parallel ESPN scrape phase (schedule + scrape/squads/groups + events)
+	@$(MAKE) scrape & \
+	$(MAKE) squads & \
+	$(MAKE) groups & \
+	wait
+	$(MAKE) events
+
 analyze: ## Re-execute notebooks/analysis.ipynb in place
 	jupyter nbconvert --to notebook --execute --inplace notebooks/analysis.ipynb
 
 etl-scrape: setup-scraper ## Discover fixtures + scrape ESPN → data/raw + parquet
-	$(MAKE) schedule scrape events squads groups
+	$(MAKE) etl-scrape-phase
 
 etl-local: setup-etl ## Transform + simulate + train + QA (local manifest)
-	cd $(ROOT) && $(PYTHON) -m etl.transform
-	cd $(ROOT) && $(PYTHON) -m etl.simulate
+	cd $(ROOT) && ATWC26_SKIP_MATCH_EVENTS=1 $(PYTHON) -m etl.transform
 ifeq ($(ATWC26_SKIP_TRAIN),1)
-	@echo "etl-train: skipped (match data unchanged)"
+	cd $(ROOT) && $(PYTHON) -m etl.simulate
 else
-	cd $(ROOT) && $(PYTHON) -m etl.train
+	@$(MAKE) -j2 etl-simulate-only etl-train-only
 endif
 	cd $(ROOT) && $(PYTHON) -m etl.qa
+
+etl-simulate-only: setup-etl ## simulate only (for parallel etl-local)
+	cd $(ROOT) && $(PYTHON) -m etl.simulate
+
+etl-train-only: setup-etl ## train only (for parallel etl-local)
+	cd $(ROOT) && $(PYTHON) -m etl.train
 
 etl-refresh: etl-scrape etl-local ## Scrape ESPN, then transform + simulate + train + QA
 
@@ -310,7 +323,12 @@ restart-backend: ## Reload backend after a data refresh (Docker)
 
 refresh: scrape events groups restart-backend ## Scrape, rebuild timelines/standings, restart backend
 
-refresh-full: schedule scrape events squads groups restart-backend ## Discover fixtures/squads, then refresh
+refresh-full: schedule ## Discover fixtures/squads, then refresh
+	@$(MAKE) scrape & \
+	$(MAKE) squads & \
+	$(MAKE) groups & \
+	wait
+	$(MAKE) events restart-backend
 
 deploy: ## Rebuild stack, then refresh data immediately
 	docker compose up -d --build

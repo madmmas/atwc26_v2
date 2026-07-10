@@ -49,3 +49,32 @@ def test_refresh_lambda_functions_bumps_env(monkeypatch):
     for call in updates:
         assert call["Environment"]["Variables"]["ATWC26_DATA_VERSION"] == "publish456"
         assert call["Environment"]["Variables"]["ATWC26_S3_BUCKET"] == "bucket"
+
+
+def test_refresh_compute_runs_lambda_and_ecs(monkeypatch):
+    pytest.importorskip("boto3")
+    calls: list[str] = []
+
+    import etl.publish.refresh as refresh_mod
+
+    def _lambda(_publish_id: str) -> list[str]:
+        calls.append("lambda")
+        return ["analytics"]
+
+    def _ecs() -> list[str]:
+        calls.append("ecs")
+        return ["predict"]
+
+    def _predict(_publish_id: str) -> bool:
+        calls.append("predict")
+        return True
+
+    monkeypatch.setattr(refresh_mod, "refresh_lambda_functions", _lambda)
+    monkeypatch.setattr(refresh_mod, "refresh_ecs_services", _ecs)
+    monkeypatch.setattr(refresh_mod, "refresh_predict_service", _predict)
+
+    result = refresh_mod.refresh_compute("publish789")
+    assert set(calls) == {"lambda", "ecs", "predict"}
+    assert result["lambdas"] == ["analytics"]
+    assert result["services"] == ["predict"]
+    assert result["predict_reloaded"] is True

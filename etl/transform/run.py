@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import os
 import subprocess
 import sys
 from datetime import datetime, timezone
@@ -77,8 +78,12 @@ def run_transform(*, skip_match_events: bool = False) -> Path:
     return write_manifest()
 
 
+def _skip_match_events_from_env() -> bool:
+    return os.getenv("ATWC26_SKIP_MATCH_EVENTS", "").strip().lower() in {"1", "true", "yes"}
+
+
 def main() -> int:
-    run_transform()
+    run_transform(skip_match_events=_skip_match_events_from_env())
     print(f"wrote manifest -> {MANIFEST_FILE}")
     return 0
 

@@ -103,8 +103,7 @@ jobs:
 
       - name: Scrape ESPN data
         if: steps.trigger.outputs.needed != 'false' && (github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true)
-        run: |
-          make schedule scrape events squads groups
+        run: make etl-scrape-phase
 
       - name: Detect data changes
         id: detect

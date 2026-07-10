@@ -19,7 +19,7 @@ from .api_cache import (
     publish_matches_cache,
     publish_teams_cache,
 )
-from .refresh import refresh_ecs_services, refresh_lambda_functions, refresh_predict_service
+from .refresh import refresh_compute
 
 try:
     import boto3
@@ -194,16 +194,18 @@ def run_publish(
     if config.S3_BUCKET:
         result = publish_aws(manifest)
         _persist_etl_state(before_fingerprint=_load_before_fingerprint())
-        if result.get("uploaded"):
-            if refresh_lambdas:
-                lambdas = refresh_lambda_functions(result["publish_id"])
-                if lambdas:
-                    print(f"refreshed Lambda(s): {', '.join(lambdas)}")
-            if refresh_ecs:
-                services = refresh_ecs_services()
-                if services:
-                    print(f"refreshed ECS service(s): {', '.join(services)}")
-                refresh_predict_service(result["publish_id"])
+        if result.get("uploaded") and (refresh_lambdas or refresh_ecs):
+            refreshed = refresh_compute(
+                result["publish_id"],
+                refresh_lambdas=refresh_lambdas,
+                refresh_ecs=refresh_ecs,
+            )
+            lambdas = refreshed["lambdas"]
+            services = refreshed["services"]
+            if lambdas:
+                print(f"refreshed Lambda(s): {', '.join(lambdas)}")
+            if services:
+                print(f"refreshed ECS service(s): {', '.join(services)}")
     else:
         publish_local(manifest)
         print("set ATWC26_S3_BUCKET (+ AWS creds) to publish to S3")

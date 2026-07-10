@@ -3,7 +3,7 @@ from __future__ import annotations
 
 import json
 
-from etl.transform.run import build_manifest, write_manifest, MANIFEST_FILE
+from etl.transform.run import build_manifest, write_manifest, MANIFEST_FILE, _skip_match_events_from_env
 
 
 def test_build_manifest_has_artifacts():
@@ -26,3 +26,10 @@ def test_write_manifest_creates_file(tmp_path, monkeypatch):
     assert path.exists()
     data = json.loads(path.read_text())
     assert data["dataset"] == "wc26"
+
+
+def test_skip_match_events_from_env(monkeypatch):
+    monkeypatch.delenv("ATWC26_SKIP_MATCH_EVENTS", raising=False)
+    assert _skip_match_events_from_env() is False
+    monkeypatch.setenv("ATWC26_SKIP_MATCH_EVENTS", "1")
+    assert _skip_match_events_from_env() is True

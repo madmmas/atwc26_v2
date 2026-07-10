@@ -85,6 +85,34 @@ def refresh_ecs_services() -> list[str]:
     return refreshed
 
 
+def refresh_compute(
+    publish_id: str,
+    *,
+    refresh_lambdas: bool = True,
+    refresh_ecs: bool = True,
+) -> dict[str, list[str] | bool]:
+    """Refresh Lambda env and ECS services in parallel, then warm predict."""
+    from concurrent.futures import ThreadPoolExecutor
+
+    lambdas: list[str] = []
+    services: list[str] = []
+    if refresh_lambdas and refresh_ecs:
+        with ThreadPoolExecutor(max_workers=2) as pool:
+            lambda_future = pool.submit(refresh_lambda_functions, publish_id)
+            ecs_future = pool.submit(refresh_ecs_services)
+            lambdas = lambda_future.result()
+            services = ecs_future.result()
+    elif refresh_lambdas:
+        lambdas = refresh_lambda_functions(publish_id)
+    elif refresh_ecs:
+        services = refresh_ecs_services()
+
+    reloaded = False
+    if refresh_ecs:
+        reloaded = refresh_predict_service(publish_id)
+    return {"lambdas": lambdas, "services": services, "predict_reloaded": reloaded}
+
+
 def refresh_predict_service(publish_id: str) -> bool:
     """
     POST /api/predict/reload on the running ECS predict service.
