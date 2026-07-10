@@ -21,8 +21,7 @@ Why AnalyseThisWC26 moved from a **single-server monolith** to a **split, server
 5. [Side-by-side comparison](#5-side-by-side-comparison)
 6. [Deployment transition](#6-deployment-transition)
 7. [Repository layout changes](#7-repository-layout-changes)
-8. [Decision log (retroactive)](#8-decision-log-retroactive)
-9. [Do we need formal ADRs?](#9-do-we-need-formal-adrs)
+8. [Decision log](#8-decision-log)
 
 ---
 
@@ -233,11 +232,9 @@ Docs index: [README.md](README.md).
 
 ---
 
-## 8. Decision log (retroactive)
+## 8. Decision log
 
-> **Not formal ADRs.** There is no `docs/adr/` directory in this repo. The table below is the canonical record of major v1 → v2 architecture choices already implemented. See [§9](#9-do-we-need-formal-adrs) for when to add a real ADR file on *future* decisions.
-
-No formal ADRs were written during the refactor. These are the **material decisions** inferred from code, [planning/REFACTOR_ISSUES.md](planning/REFACTOR_ISSUES.md), and [TODO.md](../TODO.md):
+Major v1 → v2 architecture choices, inferred from code, [planning/REFACTOR_ISSUES.md](planning/REFACTOR_ISSUES.md), and [TODO.md](../TODO.md):
 
 | # | Decision | Alternatives considered | Outcome | Why |
 |---|----------|-------------------------|---------|-----|
@@ -254,48 +251,4 @@ No formal ADRs were written during the refactor. These are the **material decisi
 
 When you change one of these, update this table **and** [ARCHITECTURE.md](ARCHITECTURE.md) / [ops/DEPLOY.md](ops/DEPLOY.md).
 
----
-
-## 9. Do we need formal ADRs?
-
-**Short answer: not mandatory for this project at its current size.** The §8 decision log plus [ARCHITECTURE.md](ARCHITECTURE.md) replace retroactive ADRs. Add a file under `docs/adr/` only for **new** irreversible choices (see below) — do not backfill ADRs for D1–D10.
-
-### What ADRs are good for
-
-Architecture Decision Records capture **context, options, decision, and consequences** at the time a choice is made — before memory fades. They help when:
-
-- Multiple developers need to understand *why* something is the way it is.
-- Decisions are irreversible or expensive to undo (data model, public API shape, multi-account AWS).
-- You revisit the same debate every six months.
-
-### Why we didn't write ADRs during the refactor
-
-- **Single maintainer / small team** — context lived in GitHub issues (#27–#33), [REFACTOR_ISSUES.md](planning/REFACTOR_ISSUES.md), and implementation PRs.
-- **Exploratory refactor** — many decisions evolved together (ETL phases A–L in [TODO.md](../TODO.md)); freezing ADRs mid-flight would have churned constantly.
-- **Substitutes emerged:**
-  - [ARCHITECTURE.md](ARCHITECTURE.md) — current state (C4 + AWS)
-  - This doc — v1/v2 delta + retroactive decision log (§8)
-  - [specs/PRODUCTION_SPEC.md](specs/PRODUCTION_SPEC.md) — bootstrap runbook with verification steps
-  - [planning/REFACTOR_GITHUB_ISSUES.md](planning/REFACTOR_GITHUB_ISSUES.md) — acceptance criteria per issue
-
-That combination is **good enough** for onboarding and ops on a capability demo / small product.
-
-### When ADRs *would* make sense here
-
-Add `docs/adr/NNN-title.md` (or similar) **only if**:
-
-1. **Predict path flips to ECS-only in production** and you need to document SLO/cost tradeoffs permanently.
-2. **WAF, multi-region, or multi-account** production hardening begins — security/compliance choices deserve records.
-3. **More than 2–3 contributors** debate infrastructure regularly without reading the full refactor thread.
-4. **Public API contracts** freeze for external consumers (not just the owned frontend).
-
-### Recommended practice going forward
-
-| Change size | Document in |
-|-------------|-------------|
-| Bugfix / small feature | PR description only |
-| New API route or ETL artifact | [etl/PIPELINE.md](etl/PIPELINE.md) or [models/ANALYTICS.md](models/ANALYTICS.md) |
-| Infrastructure toggle or new AWS service | [ARCHITECTURE.md](ARCHITECTURE.md) + [infra/README.md](../infra/README.md) + row in §8 above |
-| Irreversible cross-cutting choice | Optional one-page ADR in `docs/adr/` + link from [ARCHITECTURE.md](ARCHITECTURE.md) |
-
-**Do not** retroactively write a dozen polished ADRs — the §8 table above captures the important ones. Invest documentation effort in **keeping ARCHITECTURE, DEPLOY, and ETL docs accurate** as the branch evolves.
+For **new** irreversible choices (e.g. ECS-only predict in prod, WAF, public API freeze), add a row here or a short note in the relevant ops/spec doc — no need to backfill separate records for D1–D10.

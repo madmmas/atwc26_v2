@@ -5,7 +5,7 @@ How to run and ship AnalyseThisWC26 locally and on AWS. This doc is the **ops en
 | Doc | Read when… |
 |-----|------------|
 | [GITHUB_ACTIONS.md](GITHUB_ACTIONS.md) | What GHA workflows run automatically vs manually; bootstrap order; `production` environment |
-| [V1_TO_V2.md](../V1_TO_V2.md) | v1 → v2 rationale, comparison, retroactive decision log |
+| [V1_TO_V2.md](../V1_TO_V2.md) | v1 → v2 rationale, comparison, decision log |
 | [ARCHITECTURE.md](../ARCHITECTURE.md) | C4 model + AWS deployment diagram |
 | [`infra/README.md`](../../infra/README.md) | Terraform variables, outputs, GitHub secrets catalog, workflow file reference |
 | [specs/PRODUCTION_SPEC.md](../specs/PRODUCTION_SPEC.md) | First-time AWS bootstrap (state bucket, OIDC, scheduler enablement order) |

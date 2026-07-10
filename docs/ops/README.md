@@ -15,7 +15,7 @@ Deploy, test, cutover, and data-collection runbooks.
 | Doc | Contents |
 |-----|----------|
 | [GITHUB_ACTIONS.md](GITHUB_ACTIONS.md) | **GHA runbook** — auto vs manual workflows, bootstrap order, `production` environment |
-| [V1_TO_V2.md](../V1_TO_V2.md) | v1 → v2 rationale, comparison, retroactive decision log |
+| [V1_TO_V2.md](../V1_TO_V2.md) | v1 → v2 rationale, comparison, decision log |
 | [ARCHITECTURE.md](../ARCHITECTURE.md) | System C4 model + AWS deployment map |
 | [DEPLOY.md](DEPLOY.md) | **Deployment hub** — local, Docker, AWS dev/prod, frontend build modes |
 | [TESTING.md](TESTING.md) | QA, E2E, k6 performance, env vars |
