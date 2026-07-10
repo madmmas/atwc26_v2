@@ -52,26 +52,59 @@ function sortFromSearchParams(params: URLSearchParams): { sort: string; dir: Sor
 }
 
 const ROLES = ["ALL", "GK", "DEF", "MID", "FWD"];
+const MIN_MINUTES_OPTIONS = [
+  { value: 0, label: "Any minutes" },
+  { value: 45, label: "≥ 45 min" },
+  { value: 90, label: "≥ 90 min" },
+];
 
 type SortDir = "asc" | "desc";
+
+type PlayersPage = {
+  players: Player[];
+  count: number;
+  next_cursor: string | null;
+};
+
+/** Session cache so revisiting a sort/filter combo skips the network. */
+const playersPageCache = new Map<string, PlayersPage>();
 
 function buildQuery(p: {
   sort: string;
   dir: SortDir;
   role: string;
   team: string;
+  minMinutes: number;
   cursor?: string | null;
 }) {
   const q = new URLSearchParams({
     sort: p.sort,
     dir: p.dir,
     limit: String(PAGE_SIZE),
-    fields: "slim",
+    // Full rows so every metric column has a value (slim only returns the sort key).
+    fields: "full",
   });
   if (p.role !== "ALL") q.set("role", p.role);
   if (p.team !== "ALL") q.set("team", p.team);
+  if (p.minMinutes > 0) q.set("min_minutes", String(p.minMinutes));
   if (p.cursor) q.set("cursor", p.cursor);
   return q.toString();
+}
+
+async function fetchPlayersPage(
+  query: string,
+  signal?: AbortSignal
+): Promise<PlayersPage> {
+  const cached = playersPageCache.get(query);
+  if (cached) return cached;
+  const data = await api.players(query, signal);
+  const page: PlayersPage = {
+    players: data.players,
+    count: data.count,
+    next_cursor: data.next_cursor ?? null,
+  };
+  playersPageCache.set(query, page);
+  return page;
 }
 
 function SortableHeader({
@@ -125,6 +158,7 @@ function ExploreContent() {
   const [nextCursor, setNextCursor] = useState<string | null>(null);
   const [team, setTeam] = useState("ALL");
   const [role, setRole] = useState("ALL");
+  const [minMinutes, setMinMinutes] = useState(0);
   const [sort, setSort] = useState(initialSort.sort);
   const [dir, setDir] = useState<SortDir>(initialSort.dir);
   const [search, setSearch] = useState("");
@@ -157,18 +191,19 @@ function ExploreContent() {
     setPlayers([]);
     setNextCursor(null);
     try {
-      const data = await api.players(buildQuery({ sort, dir, role, team }), ctrl.signal);
+      const query = buildQuery({ sort, dir, role, team, minMinutes });
+      const data = await fetchPlayersPage(query, ctrl.signal);
       if (ctrl.signal.aborted || gen !== fetchGenRef.current) return;
       setPlayers(data.players);
       setTotalCount(data.count);
-      setNextCursor(data.next_cursor ?? null);
+      setNextCursor(data.next_cursor);
     } catch (e) {
       if (ctrl.signal.aborted || gen !== fetchGenRef.current) return;
       throw e;
     } finally {
       if (!ctrl.signal.aborted && gen === fetchGenRef.current) setLoading(false);
     }
-  }, [sort, dir, role, team]);
+  }, [sort, dir, role, team, minMinutes]);
 
   useEffect(() => {
     fetchFirst();
@@ -178,13 +213,14 @@ function ExploreContent() {
     if (!nextCursor || loadingMore) return;
     setLoadingMore(true);
     try {
-      const data = await api.players(buildQuery({ sort, dir, role, team, cursor: nextCursor }));
+      const query = buildQuery({ sort, dir, role, team, minMinutes, cursor: nextCursor });
+      const data = await fetchPlayersPage(query);
       setPlayers((prev) => [...prev, ...data.players]);
-      setNextCursor(data.next_cursor ?? null);
+      setNextCursor(data.next_cursor);
     } finally {
       setLoadingMore(false);
     }
-  }, [nextCursor, loadingMore, sort, dir, role, team]);
+  }, [nextCursor, loadingMore, sort, dir, role, team, minMinutes]);
 
   useEffect(() => {
     const el = sentinelRef.current;
@@ -210,7 +246,7 @@ function ExploreContent() {
       return;
     }
     let cancelled = false;
-    fetchAllPlayers().then((all) => {
+    fetchAllPlayers({ fields: "full" }).then((all) => {
       if (!cancelled) setSearchPool(all);
     });
     return () => {
@@ -221,8 +257,14 @@ function ExploreContent() {
   const displayed = useMemo(() => {
     if (!searchDebounced) return players;
     const pool = searchPool ?? players;
-    return pool.filter((p) => matchPlayerName(p.player_name, searchDebounced));
-  }, [players, searchPool, searchDebounced]);
+    return pool.filter((p) => {
+      if (!matchPlayerName(p.player_name, searchDebounced)) return false;
+      if (team !== "ALL" && p.team_name !== team) return false;
+      if (role !== "ALL" && p.role !== role) return false;
+      if (minMinutes > 0 && (p.minutes ?? 0) < minMinutes) return false;
+      return true;
+    });
+  }, [players, searchPool, searchDebounced, team, role, minMinutes]);
 
   function handleSort(key: string) {
     if (key === sort) {
@@ -268,6 +310,19 @@ function ExploreContent() {
             </button>
           ))}
         </div>
+
+        <select
+          value={minMinutes}
+          onChange={(e) => setMinMinutes(Number(e.target.value))}
+          className="select"
+          aria-label="Minimum minutes played"
+        >
+          {MIN_MINUTES_OPTIONS.map((opt) => (
+            <option key={opt.value} value={opt.value}>
+              {opt.label}
+            </option>
+          ))}
+        </select>
 
         <div className="relative min-w-[180px] flex-1">
           <input
@@ -333,7 +388,9 @@ function ExploreContent() {
         </div>
       ) : displayed.length === 0 ? (
         <div className="card p-8 text-center text-sm text-muted">
-          No players match &apos;{searchDebounced}&apos;. Try a different name or clear the filters.
+          {searchDebounced
+            ? `No players match '${searchDebounced}'. Try a different name or clear the filters.`
+            : "No players match these filters. Try lowering the minutes floor or clearing team/role."}
         </div>
       ) : (
         <>
