@@ -90,10 +90,12 @@ def parse_event(event: dict) -> tuple[str, dict] | None:
     competitors = comp.get("competitors", [])
     home = next((c["team"]["displayName"] for c in competitors if c.get("homeAway") == "home"), None)
     away = next((c["team"]["displayName"] for c in competitors if c.get("homeAway") == "away"), None)
+    season = event.get("season") or {}
     return gid, {
         "kickoff_utc": format_kickoff_utc(event.get("date")),
         "home": home,
         "away": away,
+        "round_slug": season.get("slug"),
         "status_state": status.get("state"),
         "status_name": status.get("name"),
         "completed": bool(status.get("completed")),

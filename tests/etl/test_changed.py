@@ -6,11 +6,14 @@ from pathlib import Path
 
 import atwc26_core.config as core_config
 from etl.changed.detect import (
+    changed_game_ids,
+    check_trigger,
     compare_matches_snapshot,
     compare_snapshot,
     data_changed,
     describe_changes,
     fingerprint,
+    mark_finished_from_snapshot,
     match_fingerprint,
     save_snapshot,
 )
@@ -20,6 +23,7 @@ from etl.changed.store import (
     save_fingerprint,
     save_scrape_state,
 )
+from etl.changed.triggers import game_done_key, is_game_finished, mark_games_finished
 
 
 def _use_data_dir(tmp_path: Path, monkeypatch) -> Path:
@@ -111,6 +115,53 @@ def test_data_changed_detects_modified_standings():
     after = {"data/standings.json": "new"}
     assert data_changed(before, after)
     assert "standings" in describe_changes(before, after)
+
+
+def test_changed_game_ids_detects_new_and_modified_raw_files():
+    before = {"data/raw/760001.json": "aaa"}
+    after = {
+        "data/raw/760001.json": "bbb",
+        "data/raw/760002.json": "ccc",
+        "data/standings.json": "unchanged",
+    }
+    assert changed_game_ids(before, after) == {"760001", "760002"}
+
+
+def test_mark_finished_from_snapshot_writes_done_records(tmp_path, monkeypatch):
+    data = _use_data_dir(tmp_path, monkeypatch)
+    raw = data / "raw"
+    raw.mkdir()
+    (raw / "760001.json").write_text('{"a": 1}\n')
+
+    snap = tmp_path / "fp.json"
+    snap.write_text(json.dumps({"data/raw/760001.json": "old"}) + "\n")
+
+    monkeypatch.setattr("etl.changed.triggers.config.DYNAMODB_TABLE", "test-table")
+    items: dict[tuple[str, str], dict] = {}
+
+    class FakeTable:
+        def put_item(self, *, Item):
+            items[(Item["PK"], Item["SK"])] = Item
+
+        def get_item(self, *, Key):
+            return {"Item": items.get((Key["PK"], Key["SK"]))}
+
+    monkeypatch.setattr("etl.changed.triggers._table", lambda: FakeTable())
+
+    assert mark_finished_from_snapshot(snap) == 0
+    assert game_done_key("760001") in {item["SK"] for item in items.values()}
+    assert is_game_finished("760001")
+
+
+def test_mark_games_finished_noop_without_table(monkeypatch):
+    monkeypatch.setattr("etl.changed.triggers.config.DYNAMODB_TABLE", "")
+    assert mark_games_finished({"760001"}) is False
+
+
+def test_check_trigger_exits_when_game_finished(monkeypatch):
+    monkeypatch.setattr("etl.changed.detect.trigger_still_needed", lambda gid: gid != "760001")
+    assert check_trigger("760510") == 0
+    assert check_trigger("760001") == 1
 
 
 def test_save_and_load_fingerprint_round_trip(tmp_path, monkeypatch):

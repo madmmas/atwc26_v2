@@ -107,10 +107,17 @@ resource "aws_lambda_function" "dispatch" {
       GITHUB_REF               = var.github_ref
       SCHEDULE_S3_BUCKET       = var.s3_bucket_name
       SCHEDULE_S3_KEY          = var.schedule_s3_key
-      DYNAMODB_TABLE_NAME      = var.dynamodb_table_name
-      MATCH_DURATION_MINUTES   = tostring(var.match_duration_minutes)
-      TRIGGER_OFFSETS_MINUTES  = join(",", [for o in var.trigger_offsets_minutes : tostring(o)])
-      TRIGGER_CATCHUP_MINUTES  = tostring(var.trigger_catchup_minutes)
+      DYNAMODB_TABLE_NAME               = var.dynamodb_table_name
+      MATCH_DURATION_MINUTES            = tostring(var.match_duration_minutes)
+      GROUP_STAGE_TRIGGER_OFFSETS_MINUTES = join(",", [
+        for o in var.group_stage_trigger_offsets_minutes : tostring(o)
+      ])
+      KNOCKOUT_TRIGGER_OFFSETS_MINUTES  = join(",", [
+        for o in var.knockout_trigger_offsets_minutes : tostring(o)
+      ])
+      TRIGGER_CATCHUP_MINUTES           = tostring(var.trigger_catchup_minutes)
+      REQUIRE_COMPLETED                 = var.require_completed ? "true" : "false"
+      ESPN_LEAGUE                       = var.espn_league
     }
   }
 
@@ -125,7 +132,7 @@ resource "aws_lambda_function" "dispatch" {
 
 resource "aws_cloudwatch_event_rule" "etl_schedule" {
   name                = "${var.name_prefix}-${var.environment}-etl-match-check"
-  description         = "Poll schedule.json and dispatch ETL from kickoff+105m, then every 15m for 16 runs (4h)."
+  description         = "Poll schedule.json and dispatch ETL from kickoff+105m (group +60m, knockout +225m)."
   schedule_expression = var.schedule_expression
   tags                = var.tags
 }

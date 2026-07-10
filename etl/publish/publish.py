@@ -9,8 +9,9 @@ from pathlib import Path
 from atwc26_core import config
 from atwc26_core.artifacts import ARTIFACTS, s3_key_for
 
-from ..changed.detect import fingerprint
+from ..changed.detect import changed_game_ids, fingerprint, match_fingerprint
 from ..changed.store import read_scrape_state, save_fingerprint, save_scrape_state
+from ..changed.triggers import mark_games_finished
 from ..transform.run import MANIFEST_FILE, build_manifest, write_manifest
 from .api_cache import (
     publish_api_cache,
@@ -154,9 +155,25 @@ def _publish_api_caches(manifest: dict) -> None:
         print(f"api cache: {total_written} written, {total_skipped} unchanged")
 
 
-def _persist_etl_state() -> None:
+def _load_before_fingerprint() -> dict[str, str] | None:
+    path = os.getenv("ETL_BEFORE_FINGERPRINT", "")
+    if not path:
+        return None
+    fp_path = Path(path)
+    if not fp_path.is_file():
+        return None
+    data = json.loads(fp_path.read_text())
+    return data if isinstance(data, dict) else None
+
+
+def _persist_etl_state(*, before_fingerprint: dict[str, str] | None = None) -> None:
     """Record scrape inputs + processed_games for the next scheduled CI run."""
-    save_fingerprint(fingerprint())
+    after = fingerprint()
+    save_fingerprint(after)
+    if before_fingerprint is not None:
+        game_ids = changed_game_ids(before_fingerprint, match_fingerprint())
+        if game_ids:
+            mark_games_finished(game_ids)
     state = read_scrape_state()
     if state:
         save_scrape_state(state)
@@ -176,7 +193,7 @@ def run_publish(
 
     if config.S3_BUCKET:
         result = publish_aws(manifest)
-        _persist_etl_state()
+        _persist_etl_state(before_fingerprint=_load_before_fingerprint())
         if result.get("uploaded"):
             if refresh_lambdas:
                 lambdas = refresh_lambda_functions(result["publish_id"])

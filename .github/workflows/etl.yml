@@ -11,12 +11,16 @@ on:
         description: Skip S3/DynamoDB publish after transform
         type: boolean
         default: false
-  # Scheduled runs: AWS EventBridge cron(*/5 * * * ? *) UTC → Lambda reads data/schedule.json
-  # and dispatches ETL at kickoff+105m, then every 15m for 16 runs over 4 hours.
+      trigger_game_id:
+        description: Scheduler game ID that triggered this run (empty for manual runs)
+        type: string
+        default: ""
+  # Scheduled runs: AWS EventBridge cron(*/5 * * * ? *) UTC → Lambda probes ESPN,
+  # dispatches ETL at kickoff+105m (group: +60m window, knockout: +225m window).
 
 concurrency:
   group: etl-${{ github.ref }}
-  cancel-in-progress: false
+  cancel-in-progress: true
 
 permissions:
   contents: read
@@ -40,7 +44,7 @@ jobs:
           pip install pytest boto3
 
       - name: Configure AWS credentials
-        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
+        if: inputs.trigger_game_id != '' || github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
         env:
           AWS_ACCESS_KEY_ID: ""
           AWS_SECRET_ACCESS_KEY: ""
@@ -51,15 +55,34 @@ jobs:
           aws-region: ${{ secrets.AWS_REGION }}
           audience: sts.amazonaws.com
 
+      - name: Check scheduler trigger still needed
+        id: trigger
+        env:
+          ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
+          AWS_REGION: ${{ secrets.AWS_REGION }}
+        run: |
+          gid="${{ inputs.trigger_game_id }}"
+          if [[ -z "$gid" ]]; then
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+            echo "Manual or untagged run — proceeding."
+            exit 0
+          fi
+          if python -m etl.changed check-trigger "$gid"; then
+            echo "needed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "needed=false" >> "$GITHUB_OUTPUT"
+            echo "Game $gid already processed — skipping ETL run."
+          fi
+
       - name: Restore scrape state
-        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
+        if: steps.trigger.outputs.needed != 'false' && (github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true)
         env:
           ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: python -m etl.changed restore-state
 
       - name: Sync published artifacts
-        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
+        if: steps.trigger.outputs.needed != 'false' && (github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true)
         env:
           ATWC26_S3_BUCKET: ${{ secrets.ATWC26_S3_BUCKET }}
           ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
@@ -72,19 +95,20 @@ jobs:
           "
 
       - name: Load prior fingerprint
-        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
+        if: steps.trigger.outputs.needed != 'false' && (github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true)
         env:
           ATWC26_DYNAMODB_TABLE: ${{ secrets.ATWC26_DYNAMODB_TABLE }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
         run: python -m etl.changed load-remote /tmp/etl-fp.json
 
       - name: Scrape ESPN data
-        if: github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true
+        if: steps.trigger.outputs.needed != 'false' && (github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true)
         run: |
           make schedule scrape events squads groups
 
       - name: Detect data changes
         id: detect
+        if: steps.trigger.outputs.needed != 'false'
         run: |
           if [[ "${{ github.event_name }}" == "workflow_dispatch" && "${{ inputs.skip_scrape }}" == "true" ]]; then
             echo "changed=true" >> "$GITHUB_OUTPUT"
@@ -105,6 +129,7 @@ jobs:
 
       - name: Persist scrape state
         if: |
+          steps.trigger.outputs.needed != 'false' &&
           steps.detect.outputs.changed == 'false' &&
           (github.event_name != 'workflow_dispatch' || inputs.skip_scrape != true)
         env:
@@ -113,18 +138,19 @@ jobs:
         run: python -m etl.changed save-scrape-state
 
       - name: Transform + simulate + QA
-        if: steps.detect.outputs.changed == 'true'
+        if: steps.trigger.outputs.needed != 'false' && steps.detect.outputs.changed == 'true'
         env:
           ATWC26_SIMULATE_TRIALS: "1000"
           ATWC26_SKIP_TRAIN: ${{ steps.detect.outputs.train == 'false' && '1' || '' }}
         run: make etl-local
 
       - name: ETL tests
-        if: steps.detect.outputs.changed == 'true'
+        if: steps.trigger.outputs.needed != 'false' && steps.detect.outputs.changed == 'true'
         run: PYTHONPATH=. pytest tests/etl etl/qa -q
 
       - name: Configure AWS credentials
         if: |
+          steps.trigger.outputs.needed != 'false' &&
           steps.detect.outputs.changed == 'true' &&
           (github.event_name != 'workflow_dispatch' || inputs.skip_publish != true) &&
           (github.event_name == 'workflow_dispatch' && inputs.skip_scrape == true)
@@ -140,12 +166,14 @@ jobs:
 
       - name: Verify AWS identity
         if: |
+          steps.trigger.outputs.needed != 'false' &&
           steps.detect.outputs.changed == 'true' &&
           (github.event_name != 'workflow_dispatch' || inputs.skip_publish != true)
         run: aws sts get-caller-identity
 
       - name: Publish to S3 + DynamoDB + warm compute
         if: |
+          steps.trigger.outputs.needed != 'false' &&
           steps.detect.outputs.changed == 'true' &&
           (github.event_name != 'workflow_dispatch' || inputs.skip_publish != true)
         env:
@@ -159,6 +187,7 @@ jobs:
           ATWC26_RELOAD_SECRET: ${{ secrets.ATWC26_RELOAD_SECRET }}
           AWS_REGION: ${{ secrets.AWS_REGION }}
           GITHUB_SHA: ${{ github.sha }}
+          ETL_BEFORE_FINGERPRINT: /tmp/etl-fp.json
         run: make etl-publish
 
       - name: Run summary
@@ -170,8 +199,9 @@ jobs:
             echo "| | |"
             echo "|---|---|"
             echo "| Trigger | \`${{ github.event_name }}\` |"
-            echo "| Data changed | \`${{ steps.detect.outputs.changed }}\` |"
-            if [[ "${{ steps.detect.outputs.changed }}" == "true" ]]; then
+            if [[ "${{ steps.trigger.outputs.needed }}" == "false" ]]; then
+              echo "| Status | skipped — game \`${{ inputs.trigger_game_id }}\` already processed |"
+            elif [[ "${{ steps.detect.outputs.changed }}" == "true" ]]; then
               if [[ "${{ steps.detect.outputs.train }}" == "false" ]]; then
                 echo "| Transform | ran (train skipped — bracket/standings only) |"
               else
@@ -183,6 +213,7 @@ jobs:
                 echo "| Publish | skipped (skip_publish) |"
               fi
             else
+              echo "| Data changed | \`false\` |"
               echo "| Transform / publish | skipped — ESPN data unchanged since last run |"
             fi
           } >> "$GITHUB_STEP_SUMMARY"

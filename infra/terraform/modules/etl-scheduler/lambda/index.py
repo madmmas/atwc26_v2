@@ -11,17 +11,27 @@ from datetime import datetime, timezone
 import boto3
 from botocore.exceptions import ClientError
 
+from espn_status import match_completed
 from schedule_triggers import (
     DEFAULT_CATCHUP_MINUTES,
+    DEFAULT_GROUP_STAGE_TRIGGER_OFFSETS_MINUTES,
+    DEFAULT_KNOCKOUT_TRIGGER_OFFSETS_MINUTES,
     DEFAULT_MATCH_DURATION_MINUTES,
-    DEFAULT_TRIGGER_OFFSETS_MINUTES,
     due_triggers,
+    game_done_key,
     load_schedule,
     trigger_key,
     upcoming_triggers,
 )
 
 ETL_TRIGGER_PK = "ETL_TRIGGER#wc26"
+
+
+def _env_bool(name: str, default: bool) -> bool:
+    raw = os.environ.get(name, "")
+    if not raw:
+        return default
+    return raw.strip().lower() in {"1", "true", "yes", "on"}
 
 
 def _env_int(name: str, default: int) -> int:
@@ -79,6 +89,27 @@ def _already_dispatched(table_name: str, game_id: str, offset_minutes: int) -> b
     return bool(resp.get("Item"))
 
 
+def _game_finished(table_name: str, game_id: str) -> bool:
+    table = boto3.resource("dynamodb").Table(table_name)
+    try:
+        resp = table.get_item(Key={"PK": ETL_TRIGGER_PK, "SK": game_done_key(game_id)})
+    except ClientError as exc:
+        print(f"DynamoDB read failed for finished game {game_id}: {exc}")
+        return False
+    return bool(resp.get("Item"))
+
+
+def _load_finished_game_ids(table_name: str, game_ids: list[str]) -> set[str]:
+    if not game_ids:
+        return set()
+    finished: set[str] = set()
+    table = boto3.resource("dynamodb").Table(table_name)
+    for game_id in game_ids:
+        if _game_finished(table_name, game_id):
+            finished.add(str(game_id))
+    return finished
+
+
 def _mark_dispatched(
     table_name: str,
     game_id: str,
@@ -100,7 +131,7 @@ def _mark_dispatched(
     )
 
 
-def _dispatch_workflow(*, reason: str) -> dict:
+def _dispatch_workflow(*, reason: str, game_id: str) -> dict:
     owner = os.environ["GITHUB_OWNER"]
     repo = os.environ["GITHUB_REPO"]
     workflow = os.environ.get("GITHUB_WORKFLOW", "etl.yml")
@@ -110,7 +141,15 @@ def _dispatch_workflow(*, reason: str) -> dict:
         f"https://api.github.com/repos/{owner}/{repo}/actions/workflows/"
         f"{workflow}/dispatches"
     )
-    body = json.dumps({"ref": ref, "inputs": {"skip_scrape": "false"}}).encode("utf-8")
+    body = json.dumps(
+        {
+            "ref": ref,
+            "inputs": {
+                "skip_scrape": "false",
+                "trigger_game_id": game_id,
+            },
+        }
+    ).encode("utf-8")
     request = urllib.request.Request(
         url,
         data=body,
@@ -145,13 +184,26 @@ def handler(event, context):
 
     schedule = load_schedule(_load_schedule_payload())
     now = datetime.now(timezone.utc)
-    offsets = _env_offsets("TRIGGER_OFFSETS_MINUTES", DEFAULT_TRIGGER_OFFSETS_MINUTES)
+    group_offsets = _env_offsets(
+        "GROUP_STAGE_TRIGGER_OFFSETS_MINUTES",
+        DEFAULT_GROUP_STAGE_TRIGGER_OFFSETS_MINUTES,
+    )
+    knockout_offsets = _env_offsets(
+        "KNOCKOUT_TRIGGER_OFFSETS_MINUTES",
+        DEFAULT_KNOCKOUT_TRIGGER_OFFSETS_MINUTES,
+    )
+    require_completed = _env_bool("REQUIRE_COMPLETED", True)
+    espn_league = os.environ.get("ESPN_LEAGUE", "fifa.world")
+    finished_game_ids = _load_finished_game_ids(table_name, list(schedule.keys()))
+
     due = due_triggers(
         schedule,
         now,
         match_duration_minutes=_env_int("MATCH_DURATION_MINUTES", DEFAULT_MATCH_DURATION_MINUTES),
-        trigger_offsets_minutes=offsets,
+        group_offsets_minutes=group_offsets,
+        knockout_offsets_minutes=knockout_offsets,
         catchup_minutes=_env_int("TRIGGER_CATCHUP_MINUTES", DEFAULT_CATCHUP_MINUTES),
+        finished_game_ids=finished_game_ids,
     )
 
     if not due:
@@ -159,7 +211,9 @@ def handler(event, context):
             schedule,
             now,
             match_duration_minutes=_env_int("MATCH_DURATION_MINUTES", DEFAULT_MATCH_DURATION_MINUTES),
-            trigger_offsets_minutes=offsets,
+            group_offsets_minutes=group_offsets,
+            knockout_offsets_minutes=knockout_offsets,
+            finished_game_ids=finished_game_ids,
         )
         if next_slots:
             preview = ", ".join(
@@ -176,11 +230,28 @@ def handler(event, context):
 
     dispatched: list[str] = []
     for game_id, offset_minutes, trigger_at in due:
+        if _game_finished(table_name, game_id):
+            print(f"Skip finished game {game_id}")
+            continue
         if _already_dispatched(table_name, game_id, offset_minutes):
             print(f"Skip already dispatched {trigger_key(game_id, offset_minutes)}")
             continue
+
+        game = schedule.get(game_id, {})
+        if require_completed:
+            schedule_completed = bool(game.get("completed"))
+            if not match_completed(
+                game_id,
+                league=espn_league,
+                schedule_completed=schedule_completed,
+            ):
+                print(
+                    f"Skip {game_id} end+{offset_minutes}m — ESPN reports match not completed"
+                )
+                continue
+
         reason = f"game {game_id} end+{offset_minutes}m ({trigger_at.isoformat()})"
-        result = _dispatch_workflow(reason=reason)
+        _dispatch_workflow(reason=reason, game_id=game_id)
         _mark_dispatched(
             table_name,
             game_id,
@@ -190,8 +261,8 @@ def handler(event, context):
         dispatched.append(trigger_key(game_id, offset_minutes))
 
     if not dispatched:
-        print("All due triggers were already dispatched")
-        return {"statusCode": 204, "body": "triggers already dispatched"}
+        print("No ETL workflows dispatched (waiting on completion or already handled)")
+        return {"statusCode": 204, "body": "no workflows dispatched"}
 
     return {
         "statusCode": 200,

@@ -9,6 +9,7 @@ from pathlib import Path
 from atwc26_core import config as core_config
 
 from .store import load_fingerprint, restore_scrape_state, save_fingerprint, save_scrape_state
+from .triggers import mark_games_finished, trigger_still_needed
 
 ROOT = Path(__file__).resolve().parents[2]
 LINKS_CSV = ROOT / "etl" / "scrape" / "game_links.csv"
@@ -37,6 +38,27 @@ def _path_key(path: Path) -> str:
 
 def _is_raw_key(key: str) -> bool:
     return key.startswith("data/raw/") and key.endswith(".json")
+
+
+def _game_id_from_raw_key(key: str) -> str | None:
+    if not _is_raw_key(key):
+        return None
+    return key.rsplit("/", 1)[-1].removesuffix(".json")
+
+
+def changed_game_ids(before: dict[str, str], after: dict[str, str]) -> set[str]:
+    """Return game IDs whose raw ESPN payloads were added or modified."""
+    ids: set[str] = set()
+    for key in set(after) - set(before):
+        game_id = _game_id_from_raw_key(key)
+        if game_id:
+            ids.add(game_id)
+    for key in before.keys() & after.keys():
+        if before[key] != after[key]:
+            game_id = _game_id_from_raw_key(key)
+            if game_id:
+                ids.add(game_id)
+    return ids
 
 
 def match_fingerprint() -> dict[str, str]:
@@ -150,6 +172,26 @@ def restore_state() -> int:
     return 0
 
 
+def check_trigger(game_id: str) -> int:
+    """Exit 0 when ETL should run for this scheduler game; 1 when already processed."""
+    if trigger_still_needed(game_id):
+        print(f"scheduler trigger still active for game {game_id}")
+        return 0
+    print(f"game {game_id} already processed — ETL not needed")
+    return 1
+
+
+def mark_finished_from_snapshot(path: Path) -> int:
+    """Mark scheduler triggers finished for games with new raw match data."""
+    before = json.loads(path.read_text())
+    game_ids = changed_game_ids(before, match_fingerprint())
+    if not game_ids:
+        print("no new match data to mark finished")
+        return 0
+    mark_games_finished(game_ids)
+    return 0
+
+
 def persist_scrape_state() -> int:
     from .store import read_scrape_state
 
@@ -181,6 +223,18 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("restore-state", help="Restore processed_games.json from DynamoDB")
     sub.add_parser("save-scrape-state", help="Persist processed_games.json to DynamoDB")
 
+    mark_finished = sub.add_parser(
+        "mark-finished",
+        help="Mark ETL scheduler slots finished for games with new raw match data",
+    )
+    mark_finished.add_argument("path", type=Path, help="Prior fingerprint snapshot JSON")
+
+    check = sub.add_parser(
+        "check-trigger",
+        help="Exit 0 when scheduler ETL is still needed for a game",
+    )
+    check.add_argument("game_id")
+
     args = parser.parse_args(argv)
     if args.command == "snapshot":
         return save_snapshot(args.path)
@@ -190,12 +244,17 @@ def main(argv: list[str] | None = None) -> int:
         return restore_state()
     if args.command == "save-scrape-state":
         return persist_scrape_state()
+    if args.command == "mark-finished":
+        return mark_finished_from_snapshot(args.path)
+    if args.command == "check-trigger":
+        return check_trigger(args.game_id)
     if args.command == "compare-matches":
         return compare_matches_snapshot(args.path)
     return compare_snapshot(args.path)
 
 
 __all__ = [
+    "changed_game_ids",
     "data_changed",
     "describe_changes",
     "fingerprint",
@@ -204,4 +263,5 @@ __all__ = [
     "compare_snapshot",
     "compare_matches_snapshot",
     "save_snapshot",
+    "mark_finished_from_snapshot",
 ]

@@ -67,7 +67,31 @@ variable "match_duration_minutes" {
 variable "trigger_offsets_minutes" {
   type        = list(number)
   default     = [0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225]
-  description = "Minutes after kickoff+match_duration to dispatch ETL (16 runs, 15 min apart, 4h window)."
+  description = "Deprecated alias for knockout_trigger_offsets_minutes."
+}
+
+variable "group_stage_trigger_offsets_minutes" {
+  type        = list(number)
+  default     = [0, 15, 30, 45, 60]
+  description = "Minutes after kickoff+match_duration for group-stage ETL polls."
+}
+
+variable "knockout_trigger_offsets_minutes" {
+  type        = list(number)
+  default     = [0, 15, 30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225]
+  description = "Minutes after kickoff+match_duration for knockout ETL polls (4h window)."
+}
+
+variable "require_completed" {
+  type        = bool
+  default     = true
+  description = "Probe ESPN and only dispatch ETL when the match is completed."
+}
+
+variable "espn_league" {
+  type        = string
+  default     = "fifa.world"
+  description = "ESPN league slug used by the scheduler completion probe."
 }
 
 variable "trigger_catchup_minutes" {
