@@ -28,7 +28,7 @@ from atwc26_core.schemas import PredictRequest
 from services.shared.json_util import clean_json
 from services.shared.predict_bootstrap import build_predictor_store, ensure_predictor_data
 from services.shared.freshness import data_updated_at
-from etl.eval.backtest import load_backtest_summary
+from atwc26_core.backtest_io import load_backtest_summary
 
 _RELOAD_SECRET = config.RELOAD_SECRET
 _reload_lock = threading.Lock()
