@@ -6,6 +6,8 @@ Use a distinct `name_prefix` (default `atwc26-v2`) so candidate resources never 
 
 > Scope note: this v2 candidate path intentionally uses **CloudFront without WAF** for now (CDN + TLS only).
 
+**Architecture diagram:** [docs/ARCHITECTURE.md](../docs/ARCHITECTURE.md) (C4 model + full AWS map). ETL scheduler detail: [docs/etl/SCHEDULER.md](../docs/etl/SCHEDULER.md).
+
 ## Layout
 
 ```text

@@ -2,7 +2,7 @@
 
 GitHub Actions workflow that scrapes ESPN, transforms data, runs models, validates output, and publishes artifacts to S3/DynamoDB. Triggered by the [AWS scheduler](SCHEDULER.md) (`workflow_dispatch`) or manually.
 
-**Related:** [OVERVIEW.md](OVERVIEW.md) (end-to-end map), [`etl/README.md`](../../etl/README.md) (Makefile & artifacts runbook), [`.github/workflows/etl.yml`](../../.github/workflows/etl.yml).
+**Related:** [ARCHITECTURE.md](../ARCHITECTURE.md) (§3 ETL component diagram), [OVERVIEW.md](OVERVIEW.md) (end-to-end map), [`etl/README.md`](../../etl/README.md) (Makefile & artifacts runbook), [`.github/workflows/etl.yml`](../../.github/workflows/etl.yml).
 
 ---
 

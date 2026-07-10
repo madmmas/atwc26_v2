@@ -8,6 +8,7 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 
 | Role | Doc |
 |------|-----|
+| System architecture (C4 + AWS) | [ARCHITECTURE.md](ARCHITECTURE.md) |
 | New contributor | [CONTRIBUTING.md](CONTRIBUTING.md) |
 | How analytics & prediction work | [models/ANALYTICS.md](models/ANALYTICS.md) |
 | QA & automation | [ops/TESTING.md](ops/TESTING.md) |
@@ -21,7 +22,7 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 
 | Folder | Index | Contents |
 |--------|-------|----------|
-| **[etl/](etl/README.md)** | ETL architecture | Scheduler, pipeline, overview |
+| **[etl/](etl/README.md)** | ETL pipeline | Scheduler, pipeline, overview — full AWS map in [ARCHITECTURE.md](ARCHITECTURE.md) |
 | **[ops/](ops/README.md)** | Operations | Deploy, testing, cutover, scrape runbook |
 | **[specs/](specs/README.md)** | Specifications | Product, production, UX specs |
 | **[models/](models/README.md)** | Models & analytics | Prediction methodology, training design |
@@ -44,6 +45,7 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 
 | Doc | Contents |
 |-----|----------|
+| [ARCHITECTURE.md](ARCHITECTURE.md) | C4 model + full AWS deployment map |
 | [CONTRIBUTING.md](CONTRIBUTING.md) | Development & code review guide |
 | [WEBAPP_README.md](WEBAPP_README.md) | Web application overview |
 

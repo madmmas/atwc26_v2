@@ -4,6 +4,7 @@ Match-timed data pipeline: AWS scheduler dispatches GitHub Actions to scrape ESP
 
 | Doc | Read when… |
 |-----|------------|
+| **[ARCHITECTURE.md](../ARCHITECTURE.md)** | Full system C4 model + AWS deployment map |
 | **[OVERVIEW.md](OVERVIEW.md)** | First read — end-to-end map and cross-boundary contract |
 | **[SCHEDULER.md](SCHEDULER.md)** | GHA didn't fire, duplicate dispatches, trigger windows |
 | **[PIPELINE.md](PIPELINE.md)** | Scrape/transform/publish failures, fingerprints, API stale |

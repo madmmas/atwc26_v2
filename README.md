@@ -8,6 +8,7 @@ and get a statistical match-result prediction driven by real per-90 performance.
 
 > **New here?** Read this file top-to-bottom once. Then jump to the deep-dive doc
 > for your role:
+> - 🏗️ **System architecture (C4 + AWS)** → [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md)
 > - 🧠 **How the numbers & prediction work** → [docs/models/ANALYTICS.md](docs/models/ANALYTICS.md)
 > - 🔄 **ETL & data pipeline** → [docs/etl/OVERVIEW.md](docs/etl/OVERVIEW.md)
 > - 👩‍💻 **Contributing / code review** → [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)

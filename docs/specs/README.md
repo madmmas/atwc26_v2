@@ -6,6 +6,7 @@ Product, production architecture, and UX design documents.
 |-----|----------|
 | [ATWC26-SPEC.md](ATWC26-SPEC.md) | Product specification |
 | [PRODUCTION_SPEC.md](PRODUCTION_SPEC.md) | Production architecture & cutover |
+| [../ARCHITECTURE.md](../ARCHITECTURE.md) | C4 model + full AWS deployment map |
 | [UXSPEC.md](UXSPEC.md) | UI/UX specification (v1) |
 | [UXSPEC2.md](UXSPEC2.md) | UI/UX specification (v2) |
 

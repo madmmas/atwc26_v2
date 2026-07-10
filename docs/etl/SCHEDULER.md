@@ -2,7 +2,7 @@
 
 Match-timed ETL dispatch runs in AWS: **EventBridge** polls every 5 minutes, a **Lambda** function reads `schedule.json`, decides which post-match trigger slots are due, and dispatches **GitHub Actions** via the API.
 
-**Related:** [OVERVIEW.md](OVERVIEW.md) (cross-boundary contract), [PIPELINE.md](PIPELINE.md) (what GHA does after dispatch), [`infra/terraform/modules/etl-scheduler/`](../../infra/terraform/modules/etl-scheduler/).
+**Related:** [ARCHITECTURE.md](../ARCHITECTURE.md) (§4 AWS map), [OVERVIEW.md](OVERVIEW.md) (cross-boundary contract), [PIPELINE.md](PIPELINE.md) (what GHA does after dispatch), [`infra/terraform/modules/etl-scheduler/`](../../infra/terraform/modules/etl-scheduler/).
 
 ---
 
