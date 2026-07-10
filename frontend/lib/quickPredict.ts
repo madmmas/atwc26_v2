@@ -89,7 +89,7 @@ export async function quickPredict(home: string, away: string): Promise<FixtureP
       home: false,
       players: slotsB.map((s) => ({ player_id: s.player_id, role: s.role })),
     },
-    model: "poisson",
+    // Omit model → server prefers dixon_coles, then poisson.
   });
   return predictionFromApi(home, away, result);
 }

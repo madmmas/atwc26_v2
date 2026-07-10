@@ -24,6 +24,7 @@ ELO_RATINGS = DATA_DIR / "elo_ratings.json"
 DC_PARAMS = DATA_DIR / "dc_params.json"
 XGB_MODEL = DATA_DIR / "xgb_model.ubj"
 XGB_FEATURES = DATA_DIR / "xgb_features.json"
+BACKTEST_SUMMARY = DATA_DIR / "backtest_summary.json"
 SCHEDULE = DATA_DIR / "schedule.json"
 RELOAD_SECRET = os.getenv("ATWC26_RELOAD_SECRET", "")
 

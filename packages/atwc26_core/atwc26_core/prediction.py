@@ -55,6 +55,9 @@ ROLE_WEIGHTS = {
 HOME_ADVANTAGE = 1.10      # applied to the team flagged home (neutral = 1.0)
 MAX_GOALS = 8              # scoreline matrix dimension
 LAMBDA_CLAMP = (0.2, 5.0)
+# Empirical-Bayes minutes prior: w = minutes / (minutes + k).
+# Low-minute players shrink toward role reference rates.
+MINUTES_SHRINK_K = 45.0
 
 
 # --------------------------------------------------------------------------- #
@@ -141,6 +144,12 @@ class Predictor:
 
             a_raw = float(self._raw_attack(row.to_frame().T).iloc[0])
             d_raw = float(self._raw_defense(row.to_frame().T).iloc[0])
+            minutes = float(row.get("minutes", 0) or 0)
+            w = minutes / (minutes + MINUTES_SHRINK_K) if minutes > 0 else 0.0
+            # Shrink raw scores toward role-average raw (ref * 1.0 in raw space
+            # is the mean raw for that role).
+            a_raw = w * a_raw + (1.0 - w) * self.ref_attack_by_role[role]
+            d_raw = w * d_raw + (1.0 - w) * self.ref_defense_by_role[role]
             a_norm = a_raw / self.ref_attack_by_role[role]
             d_norm = d_raw / self.ref_defense_by_role[role]
             attack += a_norm * aw
@@ -237,7 +246,9 @@ class Predictor:
                         "defensive actions)",
                 "avg_team_goals_baseline": self.avg_goals,
                 "assumptions": "Independent Poisson goals; ratings normalised to "
-                               "tournament averages; home advantage x1.10 if set.",
+                               "tournament averages; low-minute per-90 rates shrunk "
+                               f"toward role means (k={int(MINUTES_SHRINK_K)}); "
+                               "home advantage x1.10 if set.",
             },
         }
 

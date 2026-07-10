@@ -7,6 +7,7 @@ from starlette.middleware.base import BaseHTTPMiddleware
 CACHE_RULES: list[tuple[str, str]] = [
     # Specific sub-paths FIRST — startswith() matches the first hit
     ("/api/health", "no-store"),
+    ("/api/backtest", "public, max-age=300, stale-while-revalidate=60"),
     ("/api/matches/", "public, max-age=86400, stale-while-revalidate=3600"),
     ("/api/players/", "public, max-age=3600, stale-while-revalidate=600"),
     ("/api/teams/", "public, max-age=300, stale-while-revalidate=120"),

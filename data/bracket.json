@@ -496,7 +496,7 @@
         {
           "game_id": "760510",
           "kickoff_utc": "2026-07-09T20:00Z",
-          "completed": false,
+          "completed": true,
           "slot_a": {
             "type": "team",
             "team_id": "478",
@@ -507,7 +507,7 @@
             "team_id": "2869",
             "team_name": "Morocco"
           },
-          "score_a": "0",
+          "score_a": "2",
           "score_b": "0",
           "shootout_a": null,
           "shootout_b": null,
@@ -583,9 +583,9 @@
           "kickoff_utc": "2026-07-14T19:00Z",
           "completed": false,
           "slot_a": {
-            "type": "match_winner",
-            "round": "Quarterfinals",
-            "position": 1
+            "type": "team",
+            "team_id": "478",
+            "team_name": "France"
           },
           "slot_b": {
             "type": "match_winner",

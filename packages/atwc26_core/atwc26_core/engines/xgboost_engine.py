@@ -13,7 +13,7 @@ class XGBoostEngine:
     """XGBoost trained on team-level engineered features.
 
     Features (order defined by xgb_features.json):
-      xg_diff, shots_diff, sot_diff,       ← per-90 attack differential
+      xg_diff, shots_diff, sot_diff,       ← pre-match rolling attack differentials
       elo_diff,                              ← Elo rating gap
       dc_attack_ratio, dc_defence_ratio,    ← Dixon-Coles strength ratios
       home_adv,                             ← 1 if home else 0
@@ -129,8 +129,8 @@ class XGBoostEngine:
                 "version": "1.0",
                 "description": (
                     "XGBoost classifier trained on team-level engineered features "
-                    "(xG diff, shots diff, Elo gap, Dixon-Coles ratios, home advantage, "
-                    "recent form). max_depth=2, trained on 426 matches."
+                    "(pre-match rolling xG/shots diffs, Elo gap, Dixon-Coles ratios, "
+                    "home advantage, recent form). max_depth=2."
                 ),
             },
         }

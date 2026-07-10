@@ -7,6 +7,7 @@ import { PredictTabs } from "@/components/PredictTabs";
 import { PredictorHintBar } from "@/components/PredictorHintBar";
 import { RoleChip, Skeleton } from "@/components/ui";
 import { PredictionResult } from "@/components/PredictionResult";
+import { TrackRecordPanel } from "@/components/TrackRecordPanel";
 import { WinnerProbabilityChart } from "@/components/WinnerProbabilityChart";
 import { usePageTab } from "@/hooks/usePageTab";
 
@@ -232,8 +233,9 @@ function PredictContent() {
   const [slotsA, setSlotsA] = useState<Slot[]>([]);
   const [slotsB, setSlotsB] = useState<Slot[]>([]);
   const [homeSide, setHomeSide] = useState<"a" | "b" | "none">("none");
-  const [predictModel, setPredictModel] = useState<PredictModel>("all");
+  const [predictModel, setPredictModel] = useState<PredictModel>("dixon_coles");
   const [modelsAvailable, setModelsAvailable] = useState<string[]>(["poisson"]);
+  const [defaultModelApplied, setDefaultModelApplied] = useState(false);
   const [mobileTab, setMobileTab] = useState<"a" | "b">("a");
   const [result, setResult] = useState<Prediction | null>(null);
   const [busy, setBusy] = useState(false);
@@ -257,10 +259,27 @@ function PredictContent() {
   }, [predictorVisited]);
 
   useEffect(() => {
-    if (predictModel !== "all" && !modelsAvailable.includes(predictModel)) {
-      setPredictModel(modelsAvailable.length > 1 ? "all" : "poisson");
+    if (!defaultModelApplied && modelsAvailable.length) {
+      if (modelsAvailable.includes("dixon_coles")) {
+        setPredictModel("dixon_coles");
+      } else if (modelsAvailable.length > 1) {
+        setPredictModel("all");
+      } else {
+        setPredictModel((modelsAvailable[0] as PredictModel) || "poisson");
+      }
+      setDefaultModelApplied(true);
+      return;
     }
-  }, [predictModel, modelsAvailable]);
+    if (predictModel !== "all" && !modelsAvailable.includes(predictModel)) {
+      setPredictModel(
+        modelsAvailable.includes("dixon_coles")
+          ? "dixon_coles"
+          : modelsAvailable.length > 1
+            ? "all"
+            : "poisson"
+      );
+    }
+  }, [predictModel, modelsAvailable, defaultModelApplied]);
 
   useEffect(() => {
     if (urlLoaded.current) return;
@@ -522,6 +541,9 @@ function PredictContent() {
         </div>
       )}
       {result && <PredictionResult p={result} shareUrl={shareUrl()} />}
+      <div className="mt-6">
+        <TrackRecordPanel />
+      </div>
         </div>
       )}
     </div>

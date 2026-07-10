@@ -1,16 +1,6 @@
 {
-  "generated_at": "2026-07-09T10:31:06.258119+00:00",
+  "generated_at": "2026-07-10T10:08:53.561165+00:00",
   "predictions": {
-    "760510": {
-      "predicted_score_a": 3,
-      "predicted_score_b": 2,
-      "predicted_winner": "France",
-      "team_a_flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
-      "team_a_name": "France",
-      "team_b_flag": "https://a.espncdn.com/i/teamlogos/countries/500/mar.png",
-      "team_b_name": "Morocco",
-      "win_probability": 0.5711
-    },
     "760511": {
       "predicted_score_a": 3,
       "predicted_score_b": 3,
@@ -19,27 +9,27 @@
       "team_a_name": "Spain",
       "team_b_flag": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
       "team_b_name": "Belgium",
-      "win_probability": 0.5688
+      "win_probability": 0.5723
     },
     "760512": {
       "predicted_score_a": 3,
-      "predicted_score_b": 4,
+      "predicted_score_b": 3,
       "predicted_winner": "England",
       "team_a_flag": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
       "team_a_name": "Norway",
       "team_b_flag": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
       "team_b_name": "England",
-      "win_probability": 0.6093
+      "win_probability": 0.5948
     },
     "760513": {
-      "predicted_score_a": 3,
+      "predicted_score_a": 2,
       "predicted_score_b": 2,
       "predicted_winner": "Argentina",
       "team_a_flag": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
       "team_a_name": "Argentina",
       "team_b_flag": "https://a.espncdn.com/i/teamlogos/countries/500/sui.png",
       "team_b_name": "Switzerland",
-      "win_probability": 0.5751
+      "win_probability": 0.5619
     },
     "760514": {
       "predicted_score_a": 3,
@@ -49,7 +39,7 @@
       "team_a_name": "France",
       "team_b_flag": "https://a.espncdn.com/i/teamlogos/countries/500/bel.png",
       "team_b_name": "Belgium",
-      "win_probability": 0.7029
+      "win_probability": 0.5924
     },
     "760515": {
       "predicted_score_a": 3,
@@ -59,17 +49,17 @@
       "team_a_name": "England",
       "team_b_flag": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
       "team_b_name": "Argentina",
-      "win_probability": 0.6575
+      "win_probability": 0.6523
     },
     "760516": {
-      "predicted_score_a": 3,
+      "predicted_score_a": 4,
       "predicted_score_b": 3,
       "predicted_winner": "France",
       "team_a_flag": "https://a.espncdn.com/i/teamlogos/countries/500/fra.png",
       "team_a_name": "France",
       "team_b_flag": "https://a.espncdn.com/i/teamlogos/countries/500/eng.png",
       "team_b_name": "England",
-      "win_probability": 0.5929
+      "win_probability": 0.702
     },
     "760517": {
       "predicted_score_a": 4,
@@ -79,7 +69,7 @@
       "team_a_name": "Belgium",
       "team_b_flag": "https://a.espncdn.com/i/teamlogos/countries/500/arg.png",
       "team_b_name": "Argentina",
-      "win_probability": 0.6484
+      "win_probability": 0.6456
     }
   }
 }

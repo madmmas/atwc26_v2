@@ -70,6 +70,8 @@
               "gameResult": "D",
               "competitionName": "2026 FIFA World Cup",
               "roundName": "Group Stage",
+              "leagueName": "FIFA World Cup",
+              "leagueAbbreviation": "FIFA World Cup",
               "opponent": {
                 "id": "627",
                 "uid": "s:600~t:627",
@@ -111,9 +113,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png",
-              "leagueName": "FIFA World Cup",
-              "leagueAbbreviation": "FIFA World Cup"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/jpn.png"
             },
             {
               "id": "401871814",
@@ -450,6 +450,8 @@
               "matchNote": "Sweden advances.",
               "competitionName": "2026 FIFA World Cup",
               "roundName": "Group Stage",
+              "leagueName": "FIFA World Cup",
+              "leagueAbbreviation": "FIFA World Cup",
               "opponent": {
                 "id": "659",
                 "uid": "s:600~t:659",
@@ -491,9 +493,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png",
-              "leagueName": "FIFA World Cup",
-              "leagueAbbreviation": "FIFA World Cup"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/tun.png"
             },
             {
               "id": "401870034",
@@ -516,6 +516,8 @@
               "awayShootoutScore": "0",
               "gameResult": "D",
               "competitionName": "2026 International Friendly",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "455",
                 "uid": "s:600~t:455",
@@ -557,9 +559,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/gre.png",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/gre.png"
             },
             {
               "id": "401864055",
@@ -582,6 +582,8 @@
               "awayShootoutScore": "0",
               "gameResult": "L",
               "competitionName": "2026 International Friendly",
+              "leagueName": "International Friendly",
+              "leagueAbbreviation": "Men's International Friendly",
               "opponent": {
                 "id": "464",
                 "uid": "s:600~t:464",
@@ -623,9 +625,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png",
-              "leagueName": "International Friendly",
-              "leagueAbbreviation": "Men's International Friendly"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/nor.png"
             },
             {
               "id": "761954",
@@ -652,6 +652,8 @@
               "matchNote": "Sweden advances.",
               "competitionName": "2026 World Cup Qualifying - UEFA",
               "roundName": "Playoff Finals",
+              "leagueName": "FIFA World Cup Qualifying - UEFA",
+              "leagueAbbreviation": "WCQ - UEFA",
               "opponent": {
                 "id": "471",
                 "uid": "s:600~t:471",
@@ -693,9 +695,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/pol.png",
-              "leagueName": "FIFA World Cup Qualifying - UEFA",
-              "leagueAbbreviation": "WCQ - UEFA"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/pol.png"
             },
             {
               "id": "761384",
@@ -722,6 +722,8 @@
               "matchNote": "Sweden advances.",
               "competitionName": "2026 World Cup Qualifying - UEFA",
               "roundName": "Playoff Semifinals",
+              "leagueName": "FIFA World Cup Qualifying - UEFA",
+              "leagueAbbreviation": "WCQ - UEFA",
               "opponent": {
                 "id": "457",
                 "uid": "s:600~t:457",
@@ -763,9 +765,7 @@
                   }
                 ]
               },
-              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ukr.png",
-              "leagueName": "FIFA World Cup Qualifying - UEFA",
-              "leagueAbbreviation": "WCQ - UEFA"
+              "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/ukr.png"
             }
           ]
         }
@@ -2035,8 +2035,6 @@
             "gameResult": "D",
             "competitionName": "2018 World Cup Qualifying - UEFA",
             "roundName": "Group Stage",
-            "leagueName": "FIFA World Cup Qualifying - UEFA",
-            "leagueAbbreviation": "WCQ - UEFA",
             "opponent": {
               "id": "466",
               "uid": "s:600~t:466",
@@ -2078,7 +2076,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+            "leagueName": "FIFA World Cup Qualifying - UEFA",
+            "leagueAbbreviation": "WCQ - UEFA"
           },
           {
             "id": "308582",
@@ -2102,8 +2102,6 @@
             "gameResult": "L",
             "competitionName": "2012 European Championship Qualifying",
             "roundName": "Group Stage 2012",
-            "leagueName": "UEFA European Championship Qualifying",
-            "leagueAbbreviation": "EURO Qualifying",
             "opponent": {
               "id": "466",
               "uid": "s:600~t:466",
@@ -2145,7 +2143,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+            "leagueName": "UEFA European Championship Qualifying",
+            "leagueAbbreviation": "EURO Qualifying"
           },
           {
             "id": "299370",
@@ -2168,8 +2168,6 @@
             "awayShootoutScore": "0",
             "gameResult": "W",
             "competitionName": "Group Stage 2012",
-            "leagueName": "UEFA European Championship Qualifying",
-            "leagueAbbreviation": "EURO Qualifying",
             "opponent": {
               "id": "466",
               "uid": "s:600~t:466",
@@ -2211,7 +2209,9 @@
                 }
               ]
             },
-            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png"
+            "opponentLogo": "https://a.espncdn.com/i/teamlogos/countries/500/swe.png",
+            "leagueName": "UEFA European Championship Qualifying",
+            "leagueAbbreviation": "EURO Qualifying"
           },
           {
             "id": "244658",
@@ -3803,23 +3803,948 @@
       },
       "articles": [
         {
-          "id": 49312995,
-          "nowId": "1-49312995",
-          "contentKey": "49312995-1-293-1",
-          "dataSourceIdentifier": "2adb113f6178b",
-          "type": "Media",
-          "headline": "Olmo: Spain don't care what the other teams are doing",
-          "description": "Olmo: Spain don't care what the other teams are doing",
-          "lastModified": "2026-07-09T09:54:06Z",
-          "published": "2026-07-09T09:54:06Z",
+          "id": 49313872,
+          "nowId": "1-49313872",
+          "contentKey": "49313872-1-6-1",
+          "dataSourceIdentifier": "b0bf4838e2ad4",
+          "type": "Story",
+          "headline": "Harry Kane vs. Erling Haaland: How do England, Norway stars compare? Key stats before World Cup clash",
+          "description": "Who will come out on top in the World Cup quarterfinal, Harry Kane or Erling Haaland? Here is what the stats say.",
+          "lastModified": "2026-07-10T09:37:39Z",
+          "published": "2026-07-10T09:37:39Z",
           "images": [
             {
-              "name": "Olmo: Spain don't care what the other teams are doing",
-              "caption": "Olmo: Spain don't care what the other teams are doing",
+              "dataSourceIdentifier": "3a130c87530ac",
+              "id": 49313963,
+              "type": "header",
+              "name": "Harry Kane Erling Haaland [1296x729]",
+              "alt": "An image of Harry Kane alongside one of Erling Haaland.",
+              "credit": "Photo by Luis Cano/Jam Media/Getty Images and Photo by Richard Sellers/Sportsphoto/Allstar via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686784_2_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "121b732b4c11c",
+              "id": 49314038,
+              "type": "header",
+              "name": "Erling Haaland [1296x729]",
+              "alt": "Erling Haaland wears a viking helmet.",
+              "credit": "(Photo by Julian Finney - FIFA/FIFA via Getty Images)",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686791_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "b6ba4d54c8316",
+              "id": 49313992,
+              "type": "header",
+              "name": "Harry Kane penalty [1296x729]",
+              "alt": "Harry Kane takes the penalty against Mexico.",
+              "credit": "(Photo by Francois Nel/Getty Images)",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686789_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Odegaard: Norway's quarterfinal against England a 'massive test'",
+              "caption": "Odegaard: Norway's quarterfinal against England a 'massive test'",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72576,
+              "type": "team",
+              "uid": "s:600~t:448",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
+              "description": "England",
+              "sportId": 600,
+              "teamId": 448,
+              "team": {
+                "id": 448,
+                "description": "England",
+                "abbreviation": "ENG",
+                "shortDisplayName": "England",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142418,
+              "type": "team",
+              "uid": "s:600~t:464",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e",
+              "description": "Norway",
+              "sportId": 600,
+              "teamId": 464,
+              "team": {
+                "id": 464,
+                "description": "Norway",
+                "abbreviation": "NOR",
+                "shortDisplayName": "Norway",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 250037,
+              "type": "athlete",
+              "uid": "s:600~a:142200",
+              "guid": "66b16016-7a3a-434f-ae82-e767fc5fac88",
+              "description": "Harry Kane",
+              "sportId": 600,
+              "athleteId": 142200,
+              "athlete": {
+                "id": 142200,
+                "description": "Harry Kane",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/142200/harry-kane"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/142200/harry-kane"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 243655,
+              "type": "athlete",
+              "uid": "s:600~a:253989",
+              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31",
+              "description": "Erling Haaland",
+              "sportId": 600,
+              "athleteId": 253989,
+              "athlete": {
+                "id": 253989,
+                "description": "Erling Haaland",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/253989/erling-haaland"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
+            },
+            {
+              "type": "guid",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e"
+            },
+            {
+              "type": "guid",
+              "guid": "66b16016-7a3a-434f-ae82-e767fc5fac88"
+            },
+            {
+              "type": "guid",
+              "guid": "63b48f6c-a73d-78e7-71b9-21edae6b0e31"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49313872/harry-kane-erling-haaland-comparison-key-stats-england-norway-world-cup-quarterfinal"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49313872"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49313872"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49313872"
+              }
+            }
+          },
+          "byline": "Jamie Barton"
+        },
+        {
+          "id": 49322084,
+          "nowId": "1-49322084",
+          "contentKey": "49322084-1-5-1",
+          "dataSourceIdentifier": "22ab354c373f2",
+          "type": "HeadlineNews",
+          "headline": "Police officer injured, arrests made amid London disorder after France beat Morocco",
+          "description": "A police officer was injured and four people were arrested after disorder broke out in London following France's 2-0 win against Morocco in the World Cup quarterfinal on Thursday.",
+          "lastModified": "2026-07-10T09:27:54Z",
+          "published": "2026-07-10T09:27:54Z",
+          "images": [],
+          "categories": [
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 409224,
+              "type": "topic",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
+              "description": "news",
+              "sportId": 0,
+              "topicId": 781
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49322084/police-officer-injured-arrests-made-amid-london-disorder-france-beat-morocco-world-cup-2026"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49322084"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49322084"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49322084"
+              }
+            }
+          },
+          "byline": "ESPN News Services"
+        },
+        {
+          "id": 49317008,
+          "nowId": "1-49317008",
+          "contentKey": "49317008-1-6-1",
+          "dataSourceIdentifier": "7a81dfeb9bd3c",
+          "type": "Story",
+          "headline": "Instead of its biggest World Cup star, Pulisic was U.S.'s biggest mystery",
+          "description": "In his prime at a World Cup on home soil, this summer was Christian Pulisic's moment, but for a number of reasons, he failed to meet it.",
+          "lastModified": "2026-07-10T06:34:29Z",
+          "published": "2026-07-10T06:34:29Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "7fedff3da8abd",
+              "id": 49292147,
+              "type": "header",
+              "name": "usmnt christian pulisic loser July6-2026 [1296x729]",
+              "credit": "Carl Recine/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0707/r1685681_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Moreno: USMNT 'lacked fight' vs. Belgium",
+              "caption": "Moreno: USMNT 'lacked fight' vs. Belgium",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_Moreno_USMNT_lacked_fight_vs_Belgium/dm_260708_Moreno_USMNT_lacked_fight_vs_Belgium.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72593,
+              "type": "team",
+              "uid": "s:600~t:660",
+              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714",
+              "description": "United States",
+              "sportId": 600,
+              "teamId": 660,
+              "team": {
+                "id": 660,
+                "description": "United States",
+                "abbreviation": "USA",
+                "shortDisplayName": "USA",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/660/united-states"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 280017,
+              "type": "athlete",
+              "uid": "s:600~a:225607",
+              "guid": "4e537717-24b3-a77d-8d12-9cde8792bed6",
+              "description": "Christian Pulisic",
+              "sportId": 600,
+              "athleteId": 225607,
+              "athlete": {
+                "id": 225607,
+                "description": "Christian Pulisic",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/225607/christian-pulisic"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/225607/christian-pulisic"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "e6b65d49-258c-b730-b7db-df75c6b1f714"
+            },
+            {
+              "type": "guid",
+              "guid": "4e537717-24b3-a77d-8d12-9cde8792bed6"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49317008/instead-biggest-world-cup-star-christian-pulisic-was-usmnt-biggest-mystery"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49317008"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49317008"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49317008"
+              }
+            }
+          },
+          "byline": "Sam Borden"
+        },
+        {
+          "id": 49294844,
+          "nowId": "1-49294844",
+          "contentKey": "49294844-1-6-1",
+          "dataSourceIdentifier": "7a1738a6755f3",
+          "type": "Story",
+          "headline": "World Cup quarterfinals: How we got here, predictions, odds",
+          "description": "Four weeks after the World Cup began, the quarterfinals are underway, with each team three wins from lifting the trophy. Next up, Spain vs. Belgium.",
+          "lastModified": "2026-07-10T09:03:50Z",
+          "published": "2026-07-10T09:03:50Z",
+          "images": [
+            {
+              "dataSourceIdentifier": "d821ee9211693",
+              "id": 49312575,
+              "type": "header",
+              "name": "Spain v Belgium preview art [1296x729]",
+              "credit": "FIFA/FIFA via Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0709/r1686746_1296x729_16-9.jpg"
+            },
+            {
+              "type": "Media",
+              "name": "Burley: Spain need more than Yamal to win World Cup",
+              "caption": "Burley: Spain need more than Yamal to win World Cup",
+              "height": 324,
+              "width": 576,
+              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_Burley_Spain_need_more_than_Yamal_to_win_World_Cup/dm_260709_Burley_Spain_need_more_than_Yamal_to_win_World_Cup.jpg"
+            }
+          ],
+          "categories": [
+            {
+              "id": 33303,
+              "type": "league",
+              "uid": "s:600~l:606",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+              "description": "FIFA World Cup",
+              "sportId": 600,
+              "leagueId": 4,
+              "league": {
+                "id": 606,
+                "description": "FIFA World Cup",
+                "abbreviation": "FIFA World Cup",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 81497,
+              "type": "league",
+              "uid": "s:600",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+              "description": "Soccer",
+              "sportId": 600,
+              "leagueId": 600,
+              "league": {
+                "id": 600,
+                "description": "Soccer",
+                "links": {
+                  "web": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  },
+                  "mobile": {
+                    "leagues": {
+                      "href": "https://www.espn.com/soccer/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72569,
+              "type": "team",
+              "uid": "s:600~t:202",
+              "guid": "892f805f-fef9-c22d-8f87-ba08b1b4d256",
+              "description": "Argentina",
+              "sportId": 600,
+              "teamId": 202,
+              "team": {
+                "id": 202,
+                "description": "Argentina",
+                "abbreviation": "ARG",
+                "shortDisplayName": "Argentina",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/202/argentina"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/202/argentina"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 135133,
+              "type": "team",
+              "uid": "s:600~t:459",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141",
+              "description": "Belgium",
+              "sportId": 600,
+              "teamId": 459,
+              "team": {
+                "id": 459,
+                "description": "Belgium",
+                "abbreviation": "BEL",
+                "shortDisplayName": "Belgium",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/459/belgium"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72576,
+              "type": "team",
+              "uid": "s:600~t:448",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
+              "description": "England",
+              "sportId": 600,
+              "teamId": 448,
+              "team": {
+                "id": 448,
+                "description": "England",
+                "abbreviation": "ENG",
+                "shortDisplayName": "England",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72584,
+              "type": "team",
+              "uid": "s:600~t:478",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
+              "description": "France",
+              "sportId": 600,
+              "teamId": 478,
+              "team": {
+                "id": 478,
+                "description": "France",
+                "abbreviation": "FRA",
+                "shortDisplayName": "France",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142317,
+              "type": "team",
+              "uid": "s:600~t:2869",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
+              "description": "Morocco",
+              "sportId": 600,
+              "teamId": 2869,
+              "team": {
+                "id": 2869,
+                "description": "Morocco",
+                "abbreviation": "MAR",
+                "shortDisplayName": "Morocco",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 142418,
+              "type": "team",
+              "uid": "s:600~t:464",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e",
+              "description": "Norway",
+              "sportId": 600,
+              "teamId": 464,
+              "team": {
+                "id": 464,
+                "description": "Norway",
+                "abbreviation": "NOR",
+                "shortDisplayName": "Norway",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/464/norway"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72568,
+              "type": "team",
+              "uid": "s:600~t:164",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
+              "description": "Spain",
+              "sportId": 600,
+              "teamId": 164,
+              "team": {
+                "id": 164,
+                "description": "Spain",
+                "abbreviation": "ESP",
+                "shortDisplayName": "Spain",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 72583,
+              "type": "team",
+              "uid": "s:600~t:475",
+              "guid": "fe8cdad6-2fb3-84d7-e08a-0178e4112534",
+              "description": "Switzerland",
+              "sportId": 600,
+              "teamId": 475,
+              "team": {
+                "id": 475,
+                "description": "Switzerland",
+                "abbreviation": "SUI",
+                "shortDisplayName": "Switzerland",
+                "links": {
+                  "web": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/475/switzerland"
+                    }
+                  },
+                  "mobile": {
+                    "teams": {
+                      "href": "https://www.espn.com/soccer/team/_/id/475/switzerland"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "type": "guid",
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+            },
+            {
+              "type": "guid",
+              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+            },
+            {
+              "type": "guid",
+              "guid": "892f805f-fef9-c22d-8f87-ba08b1b4d256"
+            },
+            {
+              "type": "guid",
+              "guid": "4084f797-3877-2af0-b70f-570d25a1a141"
+            },
+            {
+              "type": "guid",
+              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
+            },
+            {
+              "type": "guid",
+              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
+            },
+            {
+              "type": "guid",
+              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
+            },
+            {
+              "type": "guid",
+              "guid": "2fceb68b-55e5-2028-6ca3-42869377b23e"
+            },
+            {
+              "type": "guid",
+              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
+            },
+            {
+              "type": "guid",
+              "guid": "fe8cdad6-2fb3-84d7-e08a-0178e4112534"
+            }
+          ],
+          "premium": false,
+          "links": {
+            "web": {
+              "href": "https://www.espn.com/soccer/story/_/id/49294844/fifa-world-cup-quarterfinal-preview-predictions-odds-argentina-belgium-england-france-morocco-norway-spain-switzerland"
+            },
+            "mobile": {
+              "href": "http://m.espn.go.com/soccer/story?storyId=49294844"
+            },
+            "api": {
+              "self": {
+                "href": "https://content.core.api.espn.com/v1/sports/news/49294844"
+              }
+            },
+            "app": {
+              "sportscenter": {
+                "href": "sportscenter://x-callback-url/showStory?uid=49294844"
+              }
+            }
+          },
+          "byline": "ESPN"
+        },
+        {
+          "id": 49322144,
+          "nowId": "1-49322144",
+          "contentKey": "49322144-1-293-1",
+          "dataSourceIdentifier": "9a8da45c6cb81",
+          "type": "Media",
+          "headline": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
+          "description": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
+          "lastModified": "2026-07-10T07:55:04Z",
+          "published": "2026-07-10T07:55:04Z",
+          "images": [
+            {
+              "name": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
+              "caption": "Gavi: Even at seventy percent, Lamine Yamal is still the best",
               "alt": "",
               "height": 324,
               "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_Presser_Olmo_Spain_dont_care_what_the_other_teams_are_doing_20260709_GLOBAL_FIFA_WORLD/dm_260709_COM_SOC_Presser_Olmo_Spain_dont_care_what_the_other_teams_are_doing_20260709_GLOBAL_FIFA_WORLD.jpg"
+              "url": "https://a.espncdn.com/media/motion/2026/0710/dm_260710_COM_SOC_Presser_Gavi_Even_at_seven_percent_Lamine_Yamal_is_still_the_best_20260710_GLOBAL_FIFA_WO/dm_260710_COM_SOC_Presser_Gavi_Even_at_seven_percent_Lamine_Yamal_is_still_the_best_20260710_GLOBAL_FIFA_WO.jpg"
             }
           ],
           "categories": [
@@ -3851,31 +4776,6 @@
               }
             },
             {
-              "id": 238222,
-              "type": "athlete",
-              "uid": "s:600~a:227765",
-              "guid": "4ac1c50f-aad6-d466-47b8-343f613b7e66",
-              "description": "Dani Olmo",
-              "sportId": 600,
-              "athleteId": 227765,
-              "athlete": {
-                "id": 227765,
-                "description": "Dani Olmo",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/227765/dani-olmo"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/227765/dani-olmo"
-                    }
-                  }
-                }
-              }
-            },
-            {
               "id": 33303,
               "type": "league",
               "uid": "s:600~l:606",
@@ -3896,6 +4796,56 @@
                   "mobile": {
                     "leagues": {
                       "href": "https://www.espn.com/soccer/worldcup/"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 490659,
+              "type": "athlete",
+              "uid": "s:600~a:323702",
+              "guid": "3ea1fd25-9cb7-362b-bc0c-e75dcd5705de",
+              "description": "Gavi",
+              "sportId": 600,
+              "athleteId": 323702,
+              "athlete": {
+                "id": 323702,
+                "description": "Gavi",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/323702/gavi"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/323702/gavi"
+                    }
+                  }
+                }
+              }
+            },
+            {
+              "id": 596595,
+              "type": "athlete",
+              "uid": "s:600~a:362150",
+              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4",
+              "description": "Lamine Yamal",
+              "sportId": 600,
+              "athleteId": 362150,
+              "athlete": {
+                "id": 362150,
+                "description": "Lamine Yamal",
+                "links": {
+                  "web": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
+                    }
+                  },
+                  "mobile": {
+                    "athletes": {
+                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
                     }
                   }
                 }
@@ -3972,11 +4922,15 @@
             },
             {
               "type": "guid",
-              "guid": "4ac1c50f-aad6-d466-47b8-343f613b7e66"
+              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
             },
             {
               "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+              "guid": "3ea1fd25-9cb7-362b-bc0c-e75dcd5705de"
+            },
+            {
+              "type": "guid",
+              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4"
             },
             {
               "type": "guid",
@@ -3994,267 +4948,48 @@
           "premium": false,
           "links": {
             "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49312995/spain-care-other-teams-doing",
+              "href": "https://www.espn.com/video/clip/_/id/49322144/even-seventy-percent-lamine-yamal-best",
               "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49312995/spain-care-other-teams-doing",
+                "href": "https://www.espn.com/video/clip/_/id/49322144/even-seventy-percent-lamine-yamal-best",
                 "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=2adb113f6178b"
+                  "href": "https://www.espn.com/video/clip?id=9a8da45c6cb81"
                 }
               }
             },
             "api": {
               "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49312995"
+                "href": "https://content.core.api.espn.com/v1/video/clips/49322144"
               },
               "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/68c7efc7-88e0-4485-9a6f-cd28a8fa5d01"
+                "href": "https://artwork.api.espn.com/artwork/collections/media/f7590422-f035-470a-aaff-5bddb09e6e4d"
               }
             },
             "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49312995&videoDSI=2adb113f6178b"
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49322144&videoDSI=9a8da45c6cb81"
             }
           }
         },
         {
-          "id": 49309123,
-          "nowId": "1-49309123",
-          "contentKey": "49309123-1-6-1",
-          "dataSourceIdentifier": "b74b261a0f52e",
-          "type": "Story",
-          "headline": "World Cup Daily live: Mexico star Mora's high school graduation, France-Morocco kicks off quarterfinals",
-          "description": "Enjoy all the features, news, video analysis and color from around the competition as the first day of the 2026 FIFA World Cup quarterfinals begin.",
-          "lastModified": "2026-07-09T09:34:16Z",
-          "published": "2026-07-09T09:34:16Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "73d008facc8e9",
-              "id": 49312848,
-              "type": "header",
-              "name": "Mexico's Gilberto Mora [1296x729]",
-              "credit": "Carl Recine/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0709/r1686754_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "ba09ed7f81dee",
-              "id": 49309095,
-              "type": "header",
-              "name": "France [1296x729]",
-              "credit": "(Photo by Elsa/Getty Images)",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0708/r1686580_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Qui\u00f1ones goal causes chaos in Mexico City",
-              "caption": "Qui\u00f1ones goal causes chaos in Mexico City",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0705/dm_260705_Quinones_goal_causes_chaos_in_Mexico_City/dm_260705_Quinones_goal_causes_chaos_in_Mexico_City.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 760055,
-              "type": "topic",
-              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd",
-              "description": "live blog",
-              "sportId": 0,
-              "topicId": 4378
-            },
-            {
-              "id": 72570,
-              "type": "team",
-              "uid": "s:600~t:203",
-              "guid": "9e213fae-5b9d-d331-8b4b-33abdaf57b4f",
-              "description": "Mexico",
-              "sportId": 600,
-              "teamId": 203,
-              "team": {
-                "id": 203,
-                "description": "Mexico",
-                "abbreviation": "MEX",
-                "shortDisplayName": "Mexico",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/203/mexico"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/203/mexico"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 680891,
-              "type": "athlete",
-              "uid": "s:600~a:389575",
-              "guid": "5220f4ae-9d46-35e2-8fa6-0daa0b1578c3",
-              "description": "Gilberto Mora",
-              "sportId": 600,
-              "athleteId": 389575,
-              "athlete": {
-                "id": 389575,
-                "description": "Gilberto Mora",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/389575/gilberto-mora"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/389575/gilberto-mora"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "66b21007-df2c-31fb-bc64-4f31259b8acd"
-            },
-            {
-              "type": "guid",
-              "guid": "9e213fae-5b9d-d331-8b4b-33abdaf57b4f"
-            },
-            {
-              "type": "guid",
-              "guid": "5220f4ae-9d46-35e2-8fa6-0daa0b1578c3"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49309123/world-cup-daily-live-mexico-star-mora-high-school-graduation-france-morocco-quarterfinals"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49309123"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49309123"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49309123"
-              }
-            }
-          },
-          "byline": "ESPN"
-        },
-        {
-          "id": 49312820,
-          "nowId": "1-49312820",
-          "contentKey": "49312820-1-293-1",
-          "dataSourceIdentifier": "c238ff1b42947",
+          "id": 49322106,
+          "nowId": "1-49322106",
+          "contentKey": "49322106-1-293-1",
+          "dataSourceIdentifier": "dc9a3864e3b1f",
           "type": "Media",
-          "headline": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
-          "description": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
-          "lastModified": "2026-07-09T09:27:12Z",
-          "published": "2026-07-09T09:27:12Z",
+          "headline": "Deschamps: France really proud to be in semifinals for third time in a row",
+          "description": "Deschamps: France really proud to be in semifinals for third time in a row",
+          "lastModified": "2026-07-10T07:42:58Z",
+          "published": "2026-07-10T07:42:58Z",
           "images": [
             {
-              "name": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
-              "caption": "Morocco press conference chaos leaves Brahim Diaz forgetting the question",
+              "name": "Deschamps: France really proud to be in semifinals for third time in a row",
+              "caption": "Deschamps: France really proud to be in semifinals for third time in a row",
               "alt": "",
               "height": 324,
               "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0709/dm_260709_COM_SOC_News_Morocco_press_conference_chaos_leaves_Brahim_Diaz_forgetting_the_question_20260709/dm_260709_COM_SOC_News_Morocco_press_conference_chaos_leaves_Brahim_Diaz_forgetting_the_question_20260709.jpg"
+              "url": "https://a.espncdn.com/media/motion/2026/0710/dm_260710_COM_SOC_Presser_Deschamps_France_really_proud_to_be_in_semifinals_for_third_time_in_a_row_202607/dm_260710_COM_SOC_Presser_Deschamps_France_really_proud_to_be_in_semifinals_for_third_time_in_a_row_202607.jpg"
             }
           ],
           "categories": [
-            {
-              "id": 234376,
-              "type": "athlete",
-              "uid": "s:600~a:246532",
-              "guid": "0673b66c-e4c1-4f58-6277-6a177a3bc1f4",
-              "description": "Brahim D\u00edaz",
-              "sportId": 600,
-              "athleteId": 246532,
-              "athlete": {
-                "id": 246532,
-                "description": "Brahim D\u00edaz",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/246532/brahim-diaz"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/246532/brahim-diaz"
-                    }
-                  }
-                }
-              }
-            },
             {
               "id": 33303,
               "type": "league",
@@ -4375,10 +5110,6 @@
             },
             {
               "type": "guid",
-              "guid": "0673b66c-e4c1-4f58-6277-6a177a3bc1f4"
-            },
-            {
-              "type": "guid",
               "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
             },
             {
@@ -4401,664 +5132,26 @@
           "premium": false,
           "links": {
             "web": {
-              "href": "https://www.espn.com/video/clip/_/id/49312820/morocco-press-conference-chaos-leaves-brahim-diaz-forgetting-question",
+              "href": "https://www.espn.com/video/clip/_/id/49322106/france-really-proud-semifinals-third-row",
               "self": {
-                "href": "https://www.espn.com/video/clip/_/id/49312820/morocco-press-conference-chaos-leaves-brahim-diaz-forgetting-question",
+                "href": "https://www.espn.com/video/clip/_/id/49322106/france-really-proud-semifinals-third-row",
                 "dsi": {
-                  "href": "https://www.espn.com/video/clip?id=c238ff1b42947"
+                  "href": "https://www.espn.com/video/clip?id=dc9a3864e3b1f"
                 }
               }
             },
             "api": {
               "self": {
-                "href": "https://content.core.api.espn.com/v1/video/clips/49312820"
+                "href": "https://content.core.api.espn.com/v1/video/clips/49322106"
               },
               "artwork": {
-                "href": "https://artwork.api.espn.com/artwork/collections/media/fada00e5-5290-4a78-a7d1-22549f99b842"
+                "href": "https://artwork.api.espn.com/artwork/collections/media/638cacc6-5852-46aa-b59c-fa6c674a6e4f"
               }
             },
             "sportscenter": {
-              "href": "sportscenter://x-callback-url/showVideo?videoID=49312820&videoDSI=c238ff1b42947"
+              "href": "sportscenter://x-callback-url/showVideo?videoID=49322106&videoDSI=dc9a3864e3b1f"
             }
           }
-        },
-        {
-          "id": 49312811,
-          "nowId": "1-49312811",
-          "contentKey": "49312811-1-5-1",
-          "dataSourceIdentifier": "1dc969dec977d",
-          "type": "HeadlineNews",
-          "headline": "Lamine Yamal: 'Incredible' to see Lionel Messi still starring at World Cup",
-          "description": "Spain winger Lamine Yamal has said he is thrilled to see Lionel Messi defy time and continue to have a starring role at this World Cup.",
-          "lastModified": "2026-07-09T09:30:40Z",
-          "published": "2026-07-09T09:30:40Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "85515ca942c19",
-              "id": 49312824,
-              "type": "header",
-              "name": "Lionel Messi  [1296x729]",
-              "credit": "Photo by Marcel Bonte/Soccrates/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0709/r1686753_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "9fa38dd2f6ec7",
-              "id": 49312761,
-              "type": "header",
-              "name": " Lamine Yamal [1296x729]",
-              "credit": "Photo by Grzegorz Wajda/SOPA Images/LightRocket via Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0709/r1686752_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Why Spain's substitutes were so important vs. Portugal",
-              "caption": "Alex Kirkland reacts to Spain's late 1-0 win over Portugal to advance to the quarterfinals.",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0707/dm_260707_SPAIN_WC_REAX_16x9_SC4U/dm_260707_SPAIN_WC_REAX_16x9_SC4U.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 596595,
-              "type": "athlete",
-              "uid": "s:600~a:362150",
-              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4",
-              "description": "Lamine Yamal",
-              "sportId": 600,
-              "athleteId": 362150,
-              "athlete": {
-                "id": 362150,
-                "description": "Lamine Yamal",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/362150/lamine-yamal"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72568,
-              "type": "team",
-              "uid": "s:600~t:164",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a",
-              "description": "Spain",
-              "sportId": 600,
-              "teamId": 164,
-              "team": {
-                "id": 164,
-                "description": "Spain",
-                "abbreviation": "ESP",
-                "shortDisplayName": "Spain",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/164/spain"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 238474,
-              "type": "athlete",
-              "uid": "s:600~a:45843",
-              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0",
-              "description": "Lionel Messi",
-              "sportId": 600,
-              "athleteId": 45843,
-              "athlete": {
-                "id": 45843,
-                "description": "Lionel Messi",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/45843/lionel-messi"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 702608,
-              "type": "contributor",
-              "guid": "fec4eb72-2649-3b41-a508-b3164b869711",
-              "description": "Adriana Garcia",
-              "slug": "adriana-garcia",
-              "contributor": {
-                "id": 3379,
-                "description": "Adriana Garcia"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "de67ce6f-0991-36b9-afb9-c008f21dc4b4"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "99314f68-1c92-218b-b02b-67c50ff9bc3a"
-            },
-            {
-              "type": "guid",
-              "guid": "dc5f8d51-332b-0ab2-b4b0-c97efdc624e0"
-            },
-            {
-              "type": "guid",
-              "guid": "fec4eb72-2649-3b41-a508-b3164b869711"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49312811/incredible-see-lionel-messi-starring-world-cup"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49312811"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49312811"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49312811"
-              }
-            }
-          },
-          "byline": "Adriana Garcia"
-        },
-        {
-          "id": 49312788,
-          "nowId": "1-49312788",
-          "contentKey": "49312788-1-5-1",
-          "dataSourceIdentifier": "b87a1f9b1e7d2",
-          "type": "HeadlineNews",
-          "headline": "Keir Starmer hints at bank holiday if England win World Cup",
-          "description": "An England World Cup win could mean an extra bank holiday, Sir Keir Starmer has hinted ahead of a quarterfinal clash with Norway.",
-          "lastModified": "2026-07-09T09:17:13Z",
-          "published": "2026-07-09T09:17:13Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "408374cca65be",
-              "id": 49312681,
-              "type": "header",
-              "name": "Keir Starmer [1296x729]",
-              "caption": "United Kingdom Prime Minister Keir Starmer and Norway's Prime Minister Jonas Gahr Store greet the media at the Nato summit",
-              "alt": "United Kingdom Prime Minister Keir Starmer and Norway's Prime Minister Jonas Gahr Store greet the media at the Nato summit",
-              "credit": "GettyImages",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0709/r1686749_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "53069ab990a51",
-              "id": 49287362,
-              "type": "header",
-              "name": "Harry Kane Jude Bellingham [1296x729]",
-              "caption": "Harry Kane (left) and Jude Bellingham (right) celebrate Kane's goal for England on Sunday.",
-              "credit": "Charlotte Wilson/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0706/r1685382_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "Odegaard: Norway's quarterfinal against England a 'massive test'",
-              "caption": "Odegaard: Norway's quarterfinal against England a 'massive test'",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test/dm_260708_Odegaard_Norways_quarterfinal_against_England_a_massive_test.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 72576,
-              "type": "team",
-              "uid": "s:600~t:448",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9",
-              "description": "England",
-              "sportId": 600,
-              "teamId": 448,
-              "team": {
-                "id": 448,
-                "description": "England",
-                "abbreviation": "ENG",
-                "shortDisplayName": "England",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/448/england"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "217dee4e-6974-a197-49a2-afda6e1788c9"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49312788/uk-prime-minister-keir-starmer-hints-bank-holiday-england-win-world-cup-2026"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49312788"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49312788"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49312788"
-              }
-            }
-          },
-          "byline": "PA"
-        },
-        {
-          "id": 49310007,
-          "nowId": "1-49310007",
-          "contentKey": "49310007-1-5-1",
-          "dataSourceIdentifier": "a87f9b24da6d4",
-          "type": "HeadlineNews",
-          "headline": "Morocco star Saibari to miss World Cup quarterfinal vs. France",
-          "description": "Morocco will be without star forward Ismael Saibari for their World Cup quarterfinal with France on Thursday.",
-          "lastModified": "2026-07-09T08:27:25Z",
-          "published": "2026-07-09T08:27:25Z",
-          "images": [
-            {
-              "dataSourceIdentifier": "0bd0bf703334d",
-              "id": 49310040,
-              "type": "header",
-              "name": "Ismael Saibari [1296x729]",
-              "caption": "Ismael Saibari suffered an injury in Morocco's win over Canada.",
-              "alt": "Ismael Saibari #11 (C) of Morocco reacts after sustaining an injury during the FIFA World Cup 2026 Round of 16 match between Canada and Morocco at Houston Stadium on July 04, 2026 in Houston, Texas.",
-              "credit": "Kevin C. Cox/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0708/r1686644_1296x729_16-9.jpg"
-            },
-            {
-              "type": "Media",
-              "name": "LeBoeuf: France have to 'respect' Morocco",
-              "caption": "LeBoeuf: France have to 'respect' Morocco",
-              "height": 324,
-              "width": 576,
-              "url": "https://a.espncdn.com/media/motion/2026/0708/dm_260708_LeBoeuf_France_have_to_respect_Morocco/dm_260708_LeBoeuf_France_have_to_respect_Morocco.jpg"
-            }
-          ],
-          "categories": [
-            {
-              "id": 81497,
-              "type": "league",
-              "uid": "s:600",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-              "description": "Soccer",
-              "sportId": 600,
-              "leagueId": 600,
-              "league": {
-                "id": 600,
-                "description": "Soccer",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 409224,
-              "type": "topic",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe",
-              "description": "news",
-              "sportId": 0,
-              "topicId": 781
-            },
-            {
-              "id": 142317,
-              "type": "team",
-              "uid": "s:600~t:2869",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9",
-              "description": "Morocco",
-              "sportId": 600,
-              "teamId": 2869,
-              "team": {
-                "id": 2869,
-                "description": "Morocco",
-                "abbreviation": "MAR",
-                "shortDisplayName": "Morocco",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/2869/morocco"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 441270,
-              "type": "athlete",
-              "uid": "s:600~a:304572",
-              "guid": "2b40e878-1abd-31ac-b76f-5a5d5c9f2ada",
-              "description": "Ismael Saibari",
-              "sportId": 600,
-              "athleteId": 304572,
-              "athlete": {
-                "id": 304572,
-                "description": "Ismael Saibari",
-                "links": {
-                  "web": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/304572/ismael-saibari"
-                    }
-                  },
-                  "mobile": {
-                    "athletes": {
-                      "href": "https://www.espn.com/soccer/player/_/id/304572/ismael-saibari"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 33303,
-              "type": "league",
-              "uid": "s:600~l:606",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-              "description": "FIFA World Cup",
-              "sportId": 600,
-              "leagueId": 4,
-              "league": {
-                "id": 606,
-                "description": "FIFA World Cup",
-                "abbreviation": "FIFA World Cup",
-                "links": {
-                  "web": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  },
-                  "mobile": {
-                    "leagues": {
-                      "href": "https://www.espn.com/soccer/worldcup/"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 72584,
-              "type": "team",
-              "uid": "s:600~t:478",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360",
-              "description": "France",
-              "sportId": 600,
-              "teamId": 478,
-              "team": {
-                "id": 478,
-                "description": "France",
-                "abbreviation": "FRA",
-                "shortDisplayName": "France",
-                "links": {
-                  "web": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  },
-                  "mobile": {
-                    "teams": {
-                      "href": "https://www.espn.com/soccer/team/_/id/478/france"
-                    }
-                  }
-                }
-              }
-            },
-            {
-              "id": 702571,
-              "type": "contributor",
-              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc",
-              "description": "180530 COLUMNIST PROFILE Ed Dove",
-              "slug": "180530-columnist-profile-ed-dove",
-              "contributor": {
-                "id": 3335,
-                "description": "180530 COLUMNIST PROFILE Ed Dove"
-              }
-            },
-            {
-              "type": "guid",
-              "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-            },
-            {
-              "type": "guid",
-              "guid": "52313677-19f8-b106-ec91-d8d17e6087fe"
-            },
-            {
-              "type": "guid",
-              "guid": "a6945df8-27b1-9615-af13-7379154954b9"
-            },
-            {
-              "type": "guid",
-              "guid": "2b40e878-1abd-31ac-b76f-5a5d5c9f2ada"
-            },
-            {
-              "type": "guid",
-              "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-            },
-            {
-              "type": "guid",
-              "guid": "81be996c-0f98-eec4-6284-c6be0d186360"
-            },
-            {
-              "type": "guid",
-              "guid": "f13d8b66-caf7-3a9a-ada3-7e83964ffbbc"
-            }
-          ],
-          "premium": false,
-          "links": {
-            "web": {
-              "href": "https://www.espn.com/soccer/story/_/id/49310007/morocco-ismael-saibari-injury-france-world-cup-2026-quarterfinal"
-            },
-            "mobile": {
-              "href": "http://m.espn.go.com/soccer/story?storyId=49310007"
-            },
-            "api": {
-              "self": {
-                "href": "https://content.core.api.espn.com/v1/sports/news/49310007"
-              }
-            },
-            "app": {
-              "sportscenter": {
-                "href": "sportscenter://x-callback-url/showStory?uid=49310007"
-              }
-            }
-          },
-          "byline": "Ed Dove"
         }
       ]
     },
@@ -15506,786 +15599,6 @@
         "formation": "3-1-4-2"
       }
     ],
-    "article": {
-      "id": 49111562,
-      "nowId": "1-49111562",
-      "contentKey": "49111562-1-21-1",
-      "dataSourceIdentifier": "1b4e17cbe6174",
-      "publishedkey": "soccer760447",
-      "type": "Recap",
-      "gameId": "760447",
-      "headline": "Netherlands thump Sweden 5-1 as Cody Gakpo, Brian Brobbey bag World Cup doubles",
-      "description": "Brian Brobbey and Cody Gakpo scored two each as Netherlands cruised to a 5-1 World Cup victory over Sweden to go top of Group F.",
-      "linkText": "Netherlands thump Sweden 5-1 in statement win",
-      "categorized": "2026-06-21T08:44:40Z",
-      "originallyPosted": "2026-06-18T21:45:27Z",
-      "lastModified": "2026-06-20T19:18:45Z",
-      "published": "2026-06-18T21:45:27Z",
-      "section": "Soccer",
-      "images": [
-        {
-          "dataSourceIdentifier": "893917e71566e",
-          "id": 49127924,
-          "type": "header",
-          "name": "Brian Brobbey of Holland celebrates  [1296x729]",
-          "credit": "Rico Brouwer/Soccrates/Getty Images",
-          "height": 729,
-          "width": 1296,
-          "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x729_16-9.jpg",
-          "peers": [
-            {
-              "dataSourceIdentifier": "ed777d8a7b553",
-              "id": 49127940,
-              "type": "header",
-              "name": "Brian Brobbey of Holland celebrates  [1296x1296]",
-              "credit": "Rico Brouwer/Soccrates/Getty Images",
-              "height": 1296,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x1296_1-1.jpg"
-            },
-            {
-              "dataSourceIdentifier": "893917e71566e",
-              "id": 49127924,
-              "type": "header",
-              "name": "Brian Brobbey of Holland celebrates  [1296x729]",
-              "credit": "Rico Brouwer/Soccrates/Getty Images",
-              "height": 729,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x729_16-9.jpg"
-            },
-            {
-              "dataSourceIdentifier": "62ebe8eb9c42f",
-              "id": 49127933,
-              "type": "header",
-              "name": "Brian Brobbey of Holland celebrates  [864x1296]",
-              "credit": "Rico Brouwer/Soccrates/Getty Images",
-              "height": 1296,
-              "width": 864,
-              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_864x1296_2-3.jpg"
-            },
-            {
-              "dataSourceIdentifier": "e7065fe185936",
-              "id": 49127929,
-              "type": "header",
-              "name": "Brian Brobbey of Holland celebrates  [1296x864]",
-              "credit": "Rico Brouwer/Soccrates/Getty Images",
-              "height": 864,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x864_3-2.jpg"
-            },
-            {
-              "dataSourceIdentifier": "4334bcde88b96",
-              "id": 49127937,
-              "type": "header",
-              "name": "Brian Brobbey of Holland celebrates  [1296x518]",
-              "credit": "Rico Brouwer/Soccrates/Getty Images",
-              "height": 518,
-              "width": 1296,
-              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x518_5-2.jpg"
-            }
-          ]
-        },
-        {
-          "type": "Media",
-          "name": "Potter: Sweden loss to Netherlands an 'opportunity to grow'",
-          "caption": "Potter: Sweden loss to Netherlands an 'opportunity to grow'",
-          "height": 324,
-          "width": 576,
-          "url": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Potter_Sweden_loss_to_Netherlands_an_opportunity_to_grow/dm_260620_Potter_Sweden_loss_to_Netherlands_an_opportunity_to_grow.jpg"
-        }
-      ],
-      "video": [],
-      "categories": [
-        {
-          "id": 81497,
-          "type": "league",
-          "uid": "s:600",
-          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
-          "description": "Soccer",
-          "sportId": 600,
-          "leagueId": 600,
-          "league": {
-            "id": 600,
-            "description": "Soccer",
-            "links": {
-              "web": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/"
-                }
-              },
-              "mobile": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": 33303,
-          "type": "league",
-          "uid": "s:600~l:606",
-          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
-          "description": "FIFA World Cup",
-          "sportId": 600,
-          "leagueId": 4,
-          "league": {
-            "id": 606,
-            "description": "FIFA World Cup",
-            "abbreviation": "FIFA World Cup",
-            "links": {
-              "web": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/worldcup/"
-                }
-              },
-              "mobile": {
-                "leagues": {
-                  "href": "https://www.espn.com/soccer/worldcup/"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": 72577,
-          "type": "team",
-          "uid": "s:600~t:449",
-          "guid": "6236b2ae-6d80-4bff-5c4f-3573ac94bec8",
-          "description": "Netherlands",
-          "sportId": 600,
-          "teamId": 449,
-          "team": {
-            "id": 449,
-            "description": "Netherlands",
-            "abbreviation": "NED",
-            "shortDisplayName": "Netherlands",
-            "links": {
-              "web": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/449/netherlands"
-                }
-              },
-              "mobile": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/449/netherlands"
-                }
-              }
-            }
-          }
-        },
-        {
-          "id": 142415,
-          "type": "team",
-          "uid": "s:600~t:466",
-          "guid": "1d5c4799-84ee-83ef-14fd-19b310654768",
-          "description": "Sweden",
-          "sportId": 600,
-          "teamId": 466,
-          "team": {
-            "id": 466,
-            "description": "Sweden",
-            "abbreviation": "SWE",
-            "shortDisplayName": "Sweden",
-            "links": {
-              "web": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/466/sweden"
-                }
-              },
-              "mobile": {
-                "teams": {
-                  "href": "https://www.espn.com/soccer/team/_/id/466/sweden"
-                }
-              }
-            }
-          }
-        },
-        {
-          "type": "event",
-          "uid": "s:600~l:606~e:760447",
-          "guid": "ce3e9c00-7956-3ec7-ae73-b60abf23ae4e",
-          "description": "Sweden @ Netherlands",
-          "eventId": 760447,
-          "event": {
-            "id": 760447,
-            "sport": "soccer",
-            "league": "fifa.world",
-            "description": "Sweden @ Netherlands"
-          }
-        },
-        {
-          "type": "guid",
-          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
-        },
-        {
-          "type": "guid",
-          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
-        },
-        {
-          "type": "guid",
-          "guid": "6236b2ae-6d80-4bff-5c4f-3573ac94bec8"
-        },
-        {
-          "type": "guid",
-          "guid": "1d5c4799-84ee-83ef-14fd-19b310654768"
-        },
-        {
-          "type": "guid",
-          "guid": "ce3e9c00-7956-3ec7-ae73-b60abf23ae4e"
-        }
-      ],
-      "keywords": [
-        "Soccer",
-        "FIFA World Cup",
-        "Netherlands",
-        "Sweden",
-        "Sweden @ Netherlands"
-      ],
-      "story": "<p><a data-player-guid=\"b364d01b-1f19-04d9-7a4c-cd97abbf347d\" href=\"http://espn.com/soccer/player/_/id/282229/brian-brobbey\">Brian Brobbey</a> and <a data-player-guid=\"c9ad2796-537e-c93b-4f14-1b323d48644a\" href=\"http://espn.com/soccer/player/_/id/249524/cody-gakpo\">Cody Gakpo</a> scored two each as <a data-clubhouse-guid=\"6236b2ae-6d80-4bff-5c4f-3573ac94bec8\" href=\"http://espn.com/soccer/team?id=449\">Netherlands</a> cruised to a 5-1 World Cup victory over <a data-clubhouse-guid=\"1d5c4799-84ee-83ef-14fd-19b310654768\" href=\"http://espn.com/soccer/team?id=466\">Sweden</a> to go top of Group F.</p>\n<p>Oranje boss <a data-player-guid=\"bf786db5-889c-8889-96b6-699f4e4c1d95\" href=\"http://espn.com/soccer/player/_/id/79505/ronald-koeman\">Ronald Koeman</a> sprang something of a surprise by selecting Brobbey ahead of <a data-player-guid=\"8e39cb1e-67ce-f6d3-093d-eae763cd9a6d\" href=\"http://espn.com/soccer/player/_/id/284792/crysencio-summerville\">Crysencio Summerville</a>, a goal scorer in their opening 2-2 draw with <a data-clubhouse-guid=\"2b08760f-e2eb-50c1-872e-2baa869daefa\" href=\"http://espn.com/soccer/team?id=627\">Japan</a>, but the decision was quickly vindicated as the <a data-clubhouse-guid=\"479e0b8f-fbeb-4a27-ce19-2c6ab31ac811\" href=\"http://espn.com/soccer/team?id=366\">Sunderland</a> striker scored twice in the opening 17 minutes.</p>\n<p>After Sweden had a goal ruled out at the end of the first half, Gakpo hit two in the first 10 minutes of the second half, and although <a data-player-guid=\"12fd9b14-f1d2-c06c-3683-bca5e3354941\" href=\"http://espn.com/soccer/player/_/id/296622/anthony-elanga\">Anthony Elanga</a> pulled one back for Graham Potter's Sweden just before the hour, substitute Summerville had the final say in the 90th minute.</p>\n<p>Only five minutes in, Brobbey laid the ball off to <a data-player-guid=\"c43b4ae7-4834-34ed-e958-7360cb259c5a\" href=\"http://espn.com/soccer/player/_/id/261328/tijjani-reijnders\">Tijjani Reijnders</a>, who swept it left for Gakpo to send in a low cross for Brobbey to poke in, and the second goal was almost a mirror image as <a data-player-guid=\"c128b9df-efdb-0638-a282-5b66a7fde3e4\" href=\"http://espn.com/soccer/player/_/id/213248/denzel-dumfries\">Denzel Dumfries</a> crossed low from the right and Brobbey again prodded home.</p>\n<p><photo caption=\"Cody Gakpo and Brian Brobbey scored twice against Sweden.\"></p>\n<p>Sweden, who came to life after the first hydration break, thought they had a goal back late in the half, but <a data-player-guid=\"7cb64e10-325e-38d9-8fc0-8a052f6074b5\" href=\"http://espn.com/soccer/player/_/id/324930/gustaf-lagerbielke\">Gustaf Lagerbielke</a> was one of several Sweden players offside as he headed in <a data-player-guid=\"f8a2761b-8e06-6feb-cf9d-5cccc54e04e7\" href=\"http://espn.com/soccer/player/_/id/274522/benjamin-nygren\">Benjamin Nygren</a>'s free kick.</p>\n<p>Instead, Gakpo was able to kill off Sweden early in the second half. When Summerville, on for <a data-player-guid=\"8f6f9bbd-32de-eb36-5fea-e326e1989fc2\" href=\"http://espn.com/soccer/player/_/id/259481/donyell-malen\">Donyell Malen</a> at the break, sent in a low cross that Brobbey could not quite stretch far enough to get his hat trick, but Gakpo was left with an easy finish at the back post.</p>\n<p>Eight minutes later, Netherlands punished a mistake from <a data-player-guid=\"d29363ad-0204-25cf-7611-8aff328308b1\" href=\"http://espn.com/soccer/player/_/id/235662/alexander-isak\">Alexander Isak</a> with a rapid counter as Summerville laid the ball off for Gakpo to cut in from the left and fire home.</p>\n<p>Just before the hour Elanga gave Sweden something to cheer as he ran on to a through ball from Isak and clipped it beyond <a data-player-guid=\"25915a25-3933-6769-b4f4-052d205af5b1\" href=\"http://espn.com/soccer/player/_/id/291609/bart-verbruggen\">Bart Verbruggen</a>, but Summerville sparked fresh Dutch celebrations in the 90th minute as he swept home from the edge of the box.</p>\n\n\n\n",
-      "premium": false,
-      "isLiveBlog": false,
-      "links": {
-        "web": {
-          "href": "http://www.espn.com/soccer/report/_/gameId/760447"
-        },
-        "mobile": {
-          "href": "http://m.espn.go.com/soccer/story?storyId=49111562"
-        },
-        "api": {
-          "self": {
-            "href": "https://content.core.api.espn.com/v1/sports/news/49111562"
-          }
-        },
-        "app": {
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showStory?uid=49111562"
-          }
-        }
-      },
-      "byline": "PA",
-      "allowComments": true,
-      "allowSearch": true,
-      "allowContentReactions": false
-    },
-    "videos": [
-      {
-        "id": 49128118,
-        "cerebroId": "6a36e7ad1bf54a00fd69b344",
-        "source": "espn",
-        "headline": "Why does Cody Gakpo look better for Netherlands than Liverpool?",
-        "description": "Why does Cody Gakpo look better for Netherlands than Liverpool?",
-        "lastModified": "2026-06-20T19:23:57Z",
-        "originalPublishDate": "2026-06-20T19:19:10Z",
-        "duration": 90,
-        "timeRestrictions": {
-          "embargoDate": "2026-06-20T19:16:07Z",
-          "expirationDate": "2027-06-23T19:16:00Z"
-        },
-        "deviceRestrictions": {
-          "type": "whitelist",
-          "devices": [
-            "settop",
-            "tablet",
-            "handset",
-            "ipad",
-            "desktop"
-          ]
-        },
-        "thumbnail": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool.jpg",
-        "links": {
-          "web": {
-            "href": "https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool",
-            "self": {
-              "href": "https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool",
-              "dsi": {
-                "href": "https://www.espn.com/video/clip?id=0766c0201ce6f"
-              }
-            }
-          },
-          "mobile": {
-            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/5cbc8762-580a-4f86-b378-cde5f8786eb5/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool",
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool.mp4"
-            },
-            "alert": {
-              "href": "https://m.espn.com/general/video/videoAlert?vid=49128118"
-            },
-            "streaming": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/5cbc8762-580a-4f86-b378-cde5f8786eb5/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool"
-            },
-            "progressiveDownload": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/5cbc8762-580a-4f86-b378-cde5f8786eb5/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool"
-            }
-          },
-          "api": {
-            "self": {
-              "href": "https://content.core.api.espn.com/v1/video/clips/49128118"
-            },
-            "artwork": {
-              "href": "https://artwork.api.espn.com/artwork/collections/media/5cbc8762-580a-4f86-b378-cde5f8786eb5"
-            }
-          },
-          "source": {
-            "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool_360p30_1464k.mp4",
-            "mezzanine": {
-              "href": "https://media.video-origin.espn.com/espnvideo/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool.mp4"
-            },
-            "flash": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool.smil"
-            },
-            "hds": {
-              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool_rel.smil/manifest.f4m"
-            },
-            "HLS": {
-              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/playlist.m3u8",
-              "HD": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/playlist.m3u8"
-              },
-              "cmaf": {
-                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/playlist.m3u8"
-              },
-              "shield": {
-                "href": "https://watch.auth.api.espn.com/video/auth/media/5cbc8762-580a-4f86-b378-cde5f8786eb5/asset"
-              }
-            },
-            "HD": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool_720p30_2896k.mp4"
-            },
-            "full": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool_360p30_1464k.mp4"
-            }
-          },
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showVideo?videoID=49128118&videoDSI=0766c0201ce6f"
-          }
-        },
-        "ad": {
-          "sport": "Soccer",
-          "bundle": "worldcupstatstories"
-        },
-        "tracking": {
-          "sportName": "soccer",
-          "leagueName": "FIFA World Cup",
-          "coverageType": "Analysis",
-          "trackingName": "COM_SOC Analysis (Why does Cody Gakpo look better for Netherlands than Liverpool?) 2026/06/20",
-          "trackingId": "dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool"
-        }
-      },
-      {
-        "id": 49128124,
-        "cerebroId": "6a36e8351bf54a00fd69b34e",
-        "source": "espn",
-        "headline": "Hislop praises 'complete' Netherlands team after 'thumping' Sweden",
-        "description": "Hislop praises 'complete' Netherlands team after 'thumping' Sweden.",
-        "lastModified": "2026-06-20T19:22:56Z",
-        "originalPublishDate": "2026-06-20T19:21:25Z",
-        "duration": 83,
-        "timeRestrictions": {
-          "embargoDate": "2026-06-20T19:20:24Z",
-          "expirationDate": "2027-06-23T19:20:24Z"
-        },
-        "deviceRestrictions": {
-          "type": "whitelist",
-          "devices": [
-            "settop",
-            "tablet",
-            "handset",
-            "ipad",
-            "desktop"
-          ]
-        },
-        "thumbnail": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden.jpg",
-        "links": {
-          "web": {
-            "href": "https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden",
-            "self": {
-              "href": "https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden",
-              "dsi": {
-                "href": "https://www.espn.com/video/clip?id=d6cfacf1b9655"
-              }
-            }
-          },
-          "mobile": {
-            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/4d201e70-9ed5-42a0-8992-acd8a2b9df7c/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden",
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden.mp4"
-            },
-            "alert": {
-              "href": "https://m.espn.com/general/video/videoAlert?vid=49128124"
-            },
-            "streaming": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/4d201e70-9ed5-42a0-8992-acd8a2b9df7c/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden"
-            },
-            "progressiveDownload": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/4d201e70-9ed5-42a0-8992-acd8a2b9df7c/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden"
-            }
-          },
-          "api": {
-            "self": {
-              "href": "https://content.core.api.espn.com/v1/video/clips/49128124"
-            },
-            "artwork": {
-              "href": "https://artwork.api.espn.com/artwork/collections/media/4d201e70-9ed5-42a0-8992-acd8a2b9df7c"
-            }
-          },
-          "source": {
-            "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden_360p30_1464k.mp4",
-            "mezzanine": {
-              "href": "https://media.video-origin.espn.com/espnvideo/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden.mp4"
-            },
-            "flash": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden.smil"
-            },
-            "hds": {
-              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden_rel.smil/manifest.f4m"
-            },
-            "HLS": {
-              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/playlist.m3u8",
-              "HD": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/playlist.m3u8"
-              },
-              "cmaf": {
-                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/playlist.m3u8"
-              },
-              "shield": {
-                "href": "https://watch.auth.api.espn.com/video/auth/media/4d201e70-9ed5-42a0-8992-acd8a2b9df7c/asset"
-              }
-            },
-            "HD": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden_720p30_2896k.mp4"
-            },
-            "full": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden_360p30_1464k.mp4"
-            }
-          },
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showVideo?videoID=49128124&videoDSI=d6cfacf1b9655"
-          }
-        },
-        "ad": {
-          "sport": "Soccer",
-          "bundle": "espnfc"
-        },
-        "tracking": {
-          "sportName": "soccer",
-          "leagueName": "FIFA World Cup",
-          "coverageType": "Analysis",
-          "trackingName": "COM_SOC Analysis (Hislop praises \u2018complete\u2019 Netherlands team after \u2018thumping\u2019 Sweden) 20260620 GLOBAL FIFA WORLD CUP",
-          "trackingId": "dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden"
-        }
-      },
-      {
-        "id": 49128147,
-        "cerebroId": "6a36e97b2f39d9111d1db604",
-        "source": "espn",
-        "headline": "Ogden: Summerville is great option for Manchester United's transfer plans",
-        "description": "Ogden: Summerville is great option for Manchester United's transfer plans.",
-        "lastModified": "2026-06-20T19:27:59Z",
-        "originalPublishDate": "2026-06-20T19:26:51Z",
-        "duration": 48,
-        "timeRestrictions": {
-          "embargoDate": "2026-06-20T19:23:34Z",
-          "expirationDate": "2027-06-23T19:23:34Z"
-        },
-        "deviceRestrictions": {
-          "type": "whitelist",
-          "devices": [
-            "settop",
-            "tablet",
-            "handset",
-            "ipad",
-            "desktop"
-          ]
-        },
-        "thumbnail": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans.jpg",
-        "links": {
-          "web": {
-            "href": "https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans",
-            "self": {
-              "href": "https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans",
-              "dsi": {
-                "href": "https://www.espn.com/video/clip?id=e3f0370c12696"
-              }
-            }
-          },
-          "mobile": {
-            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/95bd002a-9e97-4713-a0a1-68b0c51178c3/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans",
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans.mp4"
-            },
-            "alert": {
-              "href": "https://m.espn.com/general/video/videoAlert?vid=49128147"
-            },
-            "streaming": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/95bd002a-9e97-4713-a0a1-68b0c51178c3/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans"
-            },
-            "progressiveDownload": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/95bd002a-9e97-4713-a0a1-68b0c51178c3/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans"
-            }
-          },
-          "api": {
-            "self": {
-              "href": "https://content.core.api.espn.com/v1/video/clips/49128147"
-            },
-            "artwork": {
-              "href": "https://artwork.api.espn.com/artwork/collections/media/95bd002a-9e97-4713-a0a1-68b0c51178c3"
-            }
-          },
-          "source": {
-            "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans_360p30_1464k.mp4",
-            "mezzanine": {
-              "href": "https://media.video-origin.espn.com/espnvideo/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans.mp4"
-            },
-            "flash": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans.smil"
-            },
-            "hds": {
-              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans_rel.smil/manifest.f4m"
-            },
-            "HLS": {
-              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/playlist.m3u8",
-              "HD": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/playlist.m3u8"
-              },
-              "cmaf": {
-                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/playlist.m3u8"
-              },
-              "shield": {
-                "href": "https://watch.auth.api.espn.com/video/auth/media/95bd002a-9e97-4713-a0a1-68b0c51178c3/asset"
-              }
-            },
-            "HD": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans_720p30_2896k.mp4"
-            },
-            "full": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans_360p30_1464k.mp4"
-            }
-          },
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showVideo?videoID=49128147&videoDSI=e3f0370c12696"
-          }
-        },
-        "ad": {
-          "sport": "Soccer",
-          "bundle": "espnfc"
-        },
-        "tracking": {
-          "sportName": "soccer",
-          "leagueName": "FIFA World Cup",
-          "coverageType": "Analysis",
-          "trackingName": "COM_SOC Analysis (Ogden: Summerville is great option for Manchester United\u2019s transfer plans) 20260620 GLOBAL FIFA WORLD CUP",
-          "trackingId": "dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans"
-        }
-      },
-      {
-        "id": 49133212,
-        "cerebroId": "6a37a3d01bf54a00fd6a2e38",
-        "source": "espn",
-        "headline": "Koeman: We have more confidence after victory vs. Sweden",
-        "description": "Koeman: We have more confidence after victory vs. Sweden",
-        "lastModified": "2026-06-21T08:44:38Z",
-        "originalPublishDate": "2026-06-21T08:41:52Z",
-        "duration": 64,
-        "timeRestrictions": {
-          "embargoDate": "2026-06-21T08:38:34Z",
-          "expirationDate": "2027-06-24T08:38:34Z"
-        },
-        "deviceRestrictions": {
-          "type": "whitelist",
-          "devices": [
-            "settop",
-            "tablet",
-            "handset",
-            "ipad",
-            "desktop"
-          ]
-        },
-        "thumbnail": "https://a.espncdn.com/media/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21.jpg",
-        "links": {
-          "web": {
-            "href": "https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden",
-            "self": {
-              "href": "https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden",
-              "dsi": {
-                "href": "https://www.espn.com/video/clip?id=0b4ad5260784b"
-              }
-            }
-          },
-          "mobile": {
-            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/f9ef55a6-c882-4882-a395-56de8991968b/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden",
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21.mp4"
-            },
-            "alert": {
-              "href": "https://m.espn.com/general/video/videoAlert?vid=49133212"
-            },
-            "streaming": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/f9ef55a6-c882-4882-a395-56de8991968b/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden"
-            },
-            "progressiveDownload": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/f9ef55a6-c882-4882-a395-56de8991968b/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden"
-            }
-          },
-          "api": {
-            "self": {
-              "href": "https://content.core.api.espn.com/v1/video/clips/49133212"
-            },
-            "artwork": {
-              "href": "https://artwork.api.espn.com/artwork/collections/media/f9ef55a6-c882-4882-a395-56de8991968b"
-            }
-          },
-          "source": {
-            "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21_360p30_1464k.mp4",
-            "mezzanine": {
-              "href": "https://media.video-origin.espn.com/espnvideo/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21.mp4"
-            },
-            "flash": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21.smil"
-            },
-            "hds": {
-              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21_rel.smil/manifest.f4m"
-            },
-            "HLS": {
-              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/playlist.m3u8",
-              "HD": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/playlist.m3u8"
-              },
-              "cmaf": {
-                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/playlist.m3u8"
-              },
-              "shield": {
-                "href": "https://watch.auth.api.espn.com/video/auth/media/f9ef55a6-c882-4882-a395-56de8991968b/asset"
-              }
-            },
-            "HD": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21_720p30_2896k.mp4"
-            },
-            "full": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21_360p30_1464k.mp4"
-            }
-          },
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showVideo?videoID=49133212&videoDSI=0b4ad5260784b"
-          }
-        },
-        "ad": {
-          "sport": "Soccer",
-          "bundle": "worldcupstatstories"
-        },
-        "tracking": {
-          "sportName": "soccer",
-          "leagueName": "FIFA World Cup",
-          "coverageType": "Analysis",
-          "trackingName": "COM_SOC Analysis (Koeman: We have more confidence after victory vs. Sweden ) GLOBAL 2026-06-21",
-          "trackingId": "dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21",
-          "program": "ESPN"
-        }
-      },
-      {
-        "id": 49127415,
-        "cerebroId": "6a36cdb12f39d9111d1da8f3",
-        "source": "espn",
-        "headline": "Dutch fans celebrate Brobbey's opening goal vs. Sweden",
-        "description": "Dutch fans celebrate Brobbey's opening goal vs. Sweden.",
-        "lastModified": "2026-06-20T17:29:07Z",
-        "originalPublishDate": "2026-06-20T17:28:18Z",
-        "duration": 19,
-        "timeRestrictions": {
-          "embargoDate": "2026-06-20T17:26:46Z",
-          "expirationDate": "2027-06-23T17:26:46Z"
-        },
-        "deviceRestrictions": {
-          "type": "whitelist",
-          "devices": [
-            "settop",
-            "tablet",
-            "handset",
-            "ipad",
-            "desktop"
-          ]
-        },
-        "thumbnail": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden.jpg",
-        "links": {
-          "web": {
-            "href": "https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden",
-            "self": {
-              "href": "https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden",
-              "dsi": {
-                "href": "https://www.espn.com/video/clip?id=cd007ecfe4430"
-              }
-            }
-          },
-          "mobile": {
-            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/8d06c485-53d5-465b-8c17-fb64a1c88e83/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden",
-            "source": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden.mp4"
-            },
-            "alert": {
-              "href": "https://m.espn.com/general/video/videoAlert?vid=49127415"
-            },
-            "streaming": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/8d06c485-53d5-465b-8c17-fb64a1c88e83/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden"
-            },
-            "progressiveDownload": {
-              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/8d06c485-53d5-465b-8c17-fb64a1c88e83/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden"
-            }
-          },
-          "api": {
-            "self": {
-              "href": "https://content.core.api.espn.com/v1/video/clips/49127415"
-            },
-            "artwork": {
-              "href": "https://artwork.api.espn.com/artwork/collections/media/8d06c485-53d5-465b-8c17-fb64a1c88e83"
-            }
-          },
-          "source": {
-            "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden_360p30_1464k.mp4",
-            "mezzanine": {
-              "href": "https://media.video-origin.espn.com/espnvideo/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden.mp4"
-            },
-            "flash": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden.smil"
-            },
-            "hds": {
-              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden_rel.smil/manifest.f4m"
-            },
-            "HLS": {
-              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/playlist.m3u8",
-              "HD": {
-                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/playlist.m3u8"
-              },
-              "cmaf": {
-                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/playlist.m3u8"
-              },
-              "shield": {
-                "href": "https://watch.auth.api.espn.com/video/auth/media/8d06c485-53d5-465b-8c17-fb64a1c88e83/asset"
-              }
-            },
-            "HD": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden_720p30_2896k.mp4"
-            },
-            "full": {
-              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden_360p30_1464k.mp4"
-            }
-          },
-          "sportscenter": {
-            "href": "sportscenter://x-callback-url/showVideo?videoID=49127415&videoDSI=cd007ecfe4430"
-          }
-        },
-        "ad": {
-          "sport": "Soccer",
-          "bundle": "espnfc"
-        },
-        "tracking": {
-          "sportName": "soccer",
-          "leagueName": "FIFA World Cup",
-          "coverageType": "Social",
-          "trackingName": "COM_SOC Social (Dutch fans celebrate Brobbey\u2019s opening goal vs. Sweden) 20260620 GLOBAL FIFA WORLD CUP",
-          "trackingId": "dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden"
-        }
-      }
-    ],
     "header": {
       "id": "760447",
       "uid": "s:600~l:606~e:760447",
@@ -17239,6 +16552,786 @@
         }
       ]
     },
+    "article": {
+      "id": 49111562,
+      "nowId": "1-49111562",
+      "contentKey": "49111562-1-21-1",
+      "dataSourceIdentifier": "1b4e17cbe6174",
+      "publishedkey": "soccer760447",
+      "type": "Recap",
+      "gameId": "760447",
+      "headline": "Netherlands thump Sweden 5-1 as Cody Gakpo, Brian Brobbey bag World Cup doubles",
+      "description": "Brian Brobbey and Cody Gakpo scored two each as Netherlands cruised to a 5-1 World Cup victory over Sweden to go top of Group F.",
+      "linkText": "Netherlands thump Sweden 5-1 in statement win",
+      "categorized": "2026-06-21T08:44:40Z",
+      "originallyPosted": "2026-06-18T21:45:27Z",
+      "lastModified": "2026-06-20T19:18:45Z",
+      "published": "2026-06-18T21:45:27Z",
+      "section": "Soccer",
+      "images": [
+        {
+          "dataSourceIdentifier": "893917e71566e",
+          "id": 49127924,
+          "type": "header",
+          "name": "Brian Brobbey of Holland celebrates  [1296x729]",
+          "credit": "Rico Brouwer/Soccrates/Getty Images",
+          "height": 729,
+          "width": 1296,
+          "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x729_16-9.jpg",
+          "peers": [
+            {
+              "dataSourceIdentifier": "ed777d8a7b553",
+              "id": 49127940,
+              "type": "header",
+              "name": "Brian Brobbey of Holland celebrates  [1296x1296]",
+              "credit": "Rico Brouwer/Soccrates/Getty Images",
+              "height": 1296,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x1296_1-1.jpg"
+            },
+            {
+              "dataSourceIdentifier": "893917e71566e",
+              "id": 49127924,
+              "type": "header",
+              "name": "Brian Brobbey of Holland celebrates  [1296x729]",
+              "credit": "Rico Brouwer/Soccrates/Getty Images",
+              "height": 729,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x729_16-9.jpg"
+            },
+            {
+              "dataSourceIdentifier": "62ebe8eb9c42f",
+              "id": 49127933,
+              "type": "header",
+              "name": "Brian Brobbey of Holland celebrates  [864x1296]",
+              "credit": "Rico Brouwer/Soccrates/Getty Images",
+              "height": 1296,
+              "width": 864,
+              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_864x1296_2-3.jpg"
+            },
+            {
+              "dataSourceIdentifier": "e7065fe185936",
+              "id": 49127929,
+              "type": "header",
+              "name": "Brian Brobbey of Holland celebrates  [1296x864]",
+              "credit": "Rico Brouwer/Soccrates/Getty Images",
+              "height": 864,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x864_3-2.jpg"
+            },
+            {
+              "dataSourceIdentifier": "4334bcde88b96",
+              "id": 49127937,
+              "type": "header",
+              "name": "Brian Brobbey of Holland celebrates  [1296x518]",
+              "credit": "Rico Brouwer/Soccrates/Getty Images",
+              "height": 518,
+              "width": 1296,
+              "url": "https://a.espncdn.com/photo/2026/0620/r1676712_1296x518_5-2.jpg"
+            }
+          ]
+        },
+        {
+          "type": "Media",
+          "name": "Potter: Sweden loss to Netherlands an 'opportunity to grow'",
+          "caption": "Potter: Sweden loss to Netherlands an 'opportunity to grow'",
+          "height": 324,
+          "width": 576,
+          "url": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Potter_Sweden_loss_to_Netherlands_an_opportunity_to_grow/dm_260620_Potter_Sweden_loss_to_Netherlands_an_opportunity_to_grow.jpg"
+        }
+      ],
+      "video": [],
+      "categories": [
+        {
+          "id": 81497,
+          "type": "league",
+          "uid": "s:600",
+          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259",
+          "description": "Soccer",
+          "sportId": 600,
+          "leagueId": 600,
+          "league": {
+            "id": 600,
+            "description": "Soccer",
+            "links": {
+              "web": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/"
+                }
+              },
+              "mobile": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": 33303,
+          "type": "league",
+          "uid": "s:600~l:606",
+          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2",
+          "description": "FIFA World Cup",
+          "sportId": 600,
+          "leagueId": 4,
+          "league": {
+            "id": 606,
+            "description": "FIFA World Cup",
+            "abbreviation": "FIFA World Cup",
+            "links": {
+              "web": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/worldcup/"
+                }
+              },
+              "mobile": {
+                "leagues": {
+                  "href": "https://www.espn.com/soccer/worldcup/"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": 72577,
+          "type": "team",
+          "uid": "s:600~t:449",
+          "guid": "6236b2ae-6d80-4bff-5c4f-3573ac94bec8",
+          "description": "Netherlands",
+          "sportId": 600,
+          "teamId": 449,
+          "team": {
+            "id": 449,
+            "description": "Netherlands",
+            "abbreviation": "NED",
+            "shortDisplayName": "Netherlands",
+            "links": {
+              "web": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/449/netherlands"
+                }
+              },
+              "mobile": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/449/netherlands"
+                }
+              }
+            }
+          }
+        },
+        {
+          "id": 142415,
+          "type": "team",
+          "uid": "s:600~t:466",
+          "guid": "1d5c4799-84ee-83ef-14fd-19b310654768",
+          "description": "Sweden",
+          "sportId": 600,
+          "teamId": 466,
+          "team": {
+            "id": 466,
+            "description": "Sweden",
+            "abbreviation": "SWE",
+            "shortDisplayName": "Sweden",
+            "links": {
+              "web": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/466/sweden"
+                }
+              },
+              "mobile": {
+                "teams": {
+                  "href": "https://www.espn.com/soccer/team/_/id/466/sweden"
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "event",
+          "uid": "s:600~l:606~e:760447",
+          "guid": "ce3e9c00-7956-3ec7-ae73-b60abf23ae4e",
+          "description": "Sweden @ Netherlands",
+          "eventId": 760447,
+          "event": {
+            "id": 760447,
+            "sport": "soccer",
+            "league": "fifa.world",
+            "description": "Sweden @ Netherlands"
+          }
+        },
+        {
+          "type": "guid",
+          "guid": "119cfa41-71d4-39bf-a790-6273a52b0259"
+        },
+        {
+          "type": "guid",
+          "guid": "34f478c4-cf9a-35da-abd5-33db021e09d2"
+        },
+        {
+          "type": "guid",
+          "guid": "6236b2ae-6d80-4bff-5c4f-3573ac94bec8"
+        },
+        {
+          "type": "guid",
+          "guid": "1d5c4799-84ee-83ef-14fd-19b310654768"
+        },
+        {
+          "type": "guid",
+          "guid": "ce3e9c00-7956-3ec7-ae73-b60abf23ae4e"
+        }
+      ],
+      "keywords": [
+        "Soccer",
+        "FIFA World Cup",
+        "Netherlands",
+        "Sweden",
+        "Sweden @ Netherlands"
+      ],
+      "story": "<p><a data-player-guid=\"b364d01b-1f19-04d9-7a4c-cd97abbf347d\" href=\"http://espn.com/soccer/player/_/id/282229/brian-brobbey\">Brian Brobbey</a> and <a data-player-guid=\"c9ad2796-537e-c93b-4f14-1b323d48644a\" href=\"http://espn.com/soccer/player/_/id/249524/cody-gakpo\">Cody Gakpo</a> scored two each as <a data-clubhouse-guid=\"6236b2ae-6d80-4bff-5c4f-3573ac94bec8\" href=\"http://espn.com/soccer/team?id=449\">Netherlands</a> cruised to a 5-1 World Cup victory over <a data-clubhouse-guid=\"1d5c4799-84ee-83ef-14fd-19b310654768\" href=\"http://espn.com/soccer/team?id=466\">Sweden</a> to go top of Group F.</p>\n<p>Oranje boss <a data-player-guid=\"bf786db5-889c-8889-96b6-699f4e4c1d95\" href=\"http://espn.com/soccer/player/_/id/79505/ronald-koeman\">Ronald Koeman</a> sprang something of a surprise by selecting Brobbey ahead of <a data-player-guid=\"8e39cb1e-67ce-f6d3-093d-eae763cd9a6d\" href=\"http://espn.com/soccer/player/_/id/284792/crysencio-summerville\">Crysencio Summerville</a>, a goal scorer in their opening 2-2 draw with <a data-clubhouse-guid=\"2b08760f-e2eb-50c1-872e-2baa869daefa\" href=\"http://espn.com/soccer/team?id=627\">Japan</a>, but the decision was quickly vindicated as the <a data-clubhouse-guid=\"479e0b8f-fbeb-4a27-ce19-2c6ab31ac811\" href=\"http://espn.com/soccer/team?id=366\">Sunderland</a> striker scored twice in the opening 17 minutes.</p>\n<p>After Sweden had a goal ruled out at the end of the first half, Gakpo hit two in the first 10 minutes of the second half, and although <a data-player-guid=\"12fd9b14-f1d2-c06c-3683-bca5e3354941\" href=\"http://espn.com/soccer/player/_/id/296622/anthony-elanga\">Anthony Elanga</a> pulled one back for Graham Potter's Sweden just before the hour, substitute Summerville had the final say in the 90th minute.</p>\n<p>Only five minutes in, Brobbey laid the ball off to <a data-player-guid=\"c43b4ae7-4834-34ed-e958-7360cb259c5a\" href=\"http://espn.com/soccer/player/_/id/261328/tijjani-reijnders\">Tijjani Reijnders</a>, who swept it left for Gakpo to send in a low cross for Brobbey to poke in, and the second goal was almost a mirror image as <a data-player-guid=\"c128b9df-efdb-0638-a282-5b66a7fde3e4\" href=\"http://espn.com/soccer/player/_/id/213248/denzel-dumfries\">Denzel Dumfries</a> crossed low from the right and Brobbey again prodded home.</p>\n<p><photo caption=\"Cody Gakpo and Brian Brobbey scored twice against Sweden.\"></p>\n<p>Sweden, who came to life after the first hydration break, thought they had a goal back late in the half, but <a data-player-guid=\"7cb64e10-325e-38d9-8fc0-8a052f6074b5\" href=\"http://espn.com/soccer/player/_/id/324930/gustaf-lagerbielke\">Gustaf Lagerbielke</a> was one of several Sweden players offside as he headed in <a data-player-guid=\"f8a2761b-8e06-6feb-cf9d-5cccc54e04e7\" href=\"http://espn.com/soccer/player/_/id/274522/benjamin-nygren\">Benjamin Nygren</a>'s free kick.</p>\n<p>Instead, Gakpo was able to kill off Sweden early in the second half. When Summerville, on for <a data-player-guid=\"8f6f9bbd-32de-eb36-5fea-e326e1989fc2\" href=\"http://espn.com/soccer/player/_/id/259481/donyell-malen\">Donyell Malen</a> at the break, sent in a low cross that Brobbey could not quite stretch far enough to get his hat trick, but Gakpo was left with an easy finish at the back post.</p>\n<p>Eight minutes later, Netherlands punished a mistake from <a data-player-guid=\"d29363ad-0204-25cf-7611-8aff328308b1\" href=\"http://espn.com/soccer/player/_/id/235662/alexander-isak\">Alexander Isak</a> with a rapid counter as Summerville laid the ball off for Gakpo to cut in from the left and fire home.</p>\n<p>Just before the hour Elanga gave Sweden something to cheer as he ran on to a through ball from Isak and clipped it beyond <a data-player-guid=\"25915a25-3933-6769-b4f4-052d205af5b1\" href=\"http://espn.com/soccer/player/_/id/291609/bart-verbruggen\">Bart Verbruggen</a>, but Summerville sparked fresh Dutch celebrations in the 90th minute as he swept home from the edge of the box.</p>\n\n\n\n",
+      "premium": false,
+      "isLiveBlog": false,
+      "links": {
+        "web": {
+          "href": "http://www.espn.com/soccer/report/_/gameId/760447"
+        },
+        "mobile": {
+          "href": "http://m.espn.go.com/soccer/story?storyId=49111562"
+        },
+        "api": {
+          "self": {
+            "href": "https://content.core.api.espn.com/v1/sports/news/49111562"
+          }
+        },
+        "app": {
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showStory?uid=49111562"
+          }
+        }
+      },
+      "byline": "PA",
+      "allowComments": true,
+      "allowSearch": true,
+      "allowContentReactions": false
+    },
+    "videos": [
+      {
+        "id": 49128118,
+        "cerebroId": "6a36e7ad1bf54a00fd69b344",
+        "source": "espn",
+        "headline": "Why does Cody Gakpo look better for Netherlands than Liverpool?",
+        "description": "Why does Cody Gakpo look better for Netherlands than Liverpool?",
+        "lastModified": "2026-06-20T19:23:57Z",
+        "originalPublishDate": "2026-06-20T19:19:10Z",
+        "duration": 90,
+        "timeRestrictions": {
+          "embargoDate": "2026-06-20T19:16:07Z",
+          "expirationDate": "2027-06-23T19:16:00Z"
+        },
+        "deviceRestrictions": {
+          "type": "whitelist",
+          "devices": [
+            "settop",
+            "tablet",
+            "handset",
+            "ipad",
+            "desktop"
+          ]
+        },
+        "thumbnail": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool.jpg",
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool",
+            "self": {
+              "href": "https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=0766c0201ce6f"
+              }
+            }
+          },
+          "mobile": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/5cbc8762-580a-4f86-b378-cde5f8786eb5/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool",
+            "source": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool.mp4"
+            },
+            "alert": {
+              "href": "https://m.espn.com/general/video/videoAlert?vid=49128118"
+            },
+            "streaming": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/5cbc8762-580a-4f86-b378-cde5f8786eb5/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool"
+            },
+            "progressiveDownload": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/5cbc8762-580a-4f86-b378-cde5f8786eb5/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128118/why-does-cody-gakpo-look-better-netherlands-liverpool"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/49128118"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/5cbc8762-580a-4f86-b378-cde5f8786eb5"
+            }
+          },
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool_360p30_1464k.mp4",
+            "mezzanine": {
+              "href": "https://media.video-origin.espn.com/espnvideo/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool.mp4"
+            },
+            "flash": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool.smil"
+            },
+            "hds": {
+              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool_rel.smil/manifest.f4m"
+            },
+            "HLS": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/playlist.m3u8",
+              "HD": {
+                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/playlist.m3u8"
+              },
+              "cmaf": {
+                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/playlist.m3u8"
+              },
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/5cbc8762-580a-4f86-b378-cde5f8786eb5/asset"
+              }
+            },
+            "HD": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool_720p30_2896k.mp4"
+            },
+            "full": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool/dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool_360p30_1464k.mp4"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=49128118&videoDSI=0766c0201ce6f"
+          }
+        },
+        "ad": {
+          "sport": "Soccer",
+          "bundle": "worldcupstatstories"
+        },
+        "tracking": {
+          "sportName": "soccer",
+          "leagueName": "FIFA World Cup",
+          "coverageType": "Analysis",
+          "trackingName": "COM_SOC Analysis (Why does Cody Gakpo look better for Netherlands than Liverpool?) 2026/06/20",
+          "trackingId": "dm_260620_Why_does_Cody_Gakpo_look_better_for_Netherlands_than_Liverpool"
+        }
+      },
+      {
+        "id": 49128124,
+        "cerebroId": "6a36e8351bf54a00fd69b34e",
+        "source": "espn",
+        "headline": "Hislop praises 'complete' Netherlands team after 'thumping' Sweden",
+        "description": "Hislop praises 'complete' Netherlands team after 'thumping' Sweden.",
+        "lastModified": "2026-06-20T19:22:56Z",
+        "originalPublishDate": "2026-06-20T19:21:25Z",
+        "duration": 83,
+        "timeRestrictions": {
+          "embargoDate": "2026-06-20T19:20:24Z",
+          "expirationDate": "2027-06-23T19:20:24Z"
+        },
+        "deviceRestrictions": {
+          "type": "whitelist",
+          "devices": [
+            "settop",
+            "tablet",
+            "handset",
+            "ipad",
+            "desktop"
+          ]
+        },
+        "thumbnail": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden.jpg",
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden",
+            "self": {
+              "href": "https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=d6cfacf1b9655"
+              }
+            }
+          },
+          "mobile": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/4d201e70-9ed5-42a0-8992-acd8a2b9df7c/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden",
+            "source": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden.mp4"
+            },
+            "alert": {
+              "href": "https://m.espn.com/general/video/videoAlert?vid=49128124"
+            },
+            "streaming": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/4d201e70-9ed5-42a0-8992-acd8a2b9df7c/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden"
+            },
+            "progressiveDownload": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/4d201e70-9ed5-42a0-8992-acd8a2b9df7c/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128124/hislop-praises-complete-netherlands-team-thumping-sweden"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/49128124"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/4d201e70-9ed5-42a0-8992-acd8a2b9df7c"
+            }
+          },
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden_360p30_1464k.mp4",
+            "mezzanine": {
+              "href": "https://media.video-origin.espn.com/espnvideo/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden.mp4"
+            },
+            "flash": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden.smil"
+            },
+            "hds": {
+              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden_rel.smil/manifest.f4m"
+            },
+            "HLS": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/playlist.m3u8",
+              "HD": {
+                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/playlist.m3u8"
+              },
+              "cmaf": {
+                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/playlist.m3u8"
+              },
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/4d201e70-9ed5-42a0-8992-acd8a2b9df7c/asset"
+              }
+            },
+            "HD": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden_720p30_2896k.mp4"
+            },
+            "full": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden/dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden_360p30_1464k.mp4"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=49128124&videoDSI=d6cfacf1b9655"
+          }
+        },
+        "ad": {
+          "sport": "Soccer",
+          "bundle": "espnfc"
+        },
+        "tracking": {
+          "sportName": "soccer",
+          "leagueName": "FIFA World Cup",
+          "coverageType": "Analysis",
+          "trackingName": "COM_SOC Analysis (Hislop praises \u2018complete\u2019 Netherlands team after \u2018thumping\u2019 Sweden) 20260620 GLOBAL FIFA WORLD CUP",
+          "trackingId": "dm_260620_Hislop_praises_complete_Netherlands_team_after_thumping_Sweden"
+        }
+      },
+      {
+        "id": 49128147,
+        "cerebroId": "6a36e97b2f39d9111d1db604",
+        "source": "espn",
+        "headline": "Ogden: Summerville is great option for Manchester United's transfer plans",
+        "description": "Ogden: Summerville is great option for Manchester United's transfer plans.",
+        "lastModified": "2026-06-20T19:27:59Z",
+        "originalPublishDate": "2026-06-20T19:26:51Z",
+        "duration": 48,
+        "timeRestrictions": {
+          "embargoDate": "2026-06-20T19:23:34Z",
+          "expirationDate": "2027-06-23T19:23:34Z"
+        },
+        "deviceRestrictions": {
+          "type": "whitelist",
+          "devices": [
+            "settop",
+            "tablet",
+            "handset",
+            "ipad",
+            "desktop"
+          ]
+        },
+        "thumbnail": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans.jpg",
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans",
+            "self": {
+              "href": "https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=e3f0370c12696"
+              }
+            }
+          },
+          "mobile": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/95bd002a-9e97-4713-a0a1-68b0c51178c3/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans",
+            "source": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans.mp4"
+            },
+            "alert": {
+              "href": "https://m.espn.com/general/video/videoAlert?vid=49128147"
+            },
+            "streaming": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/95bd002a-9e97-4713-a0a1-68b0c51178c3/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans"
+            },
+            "progressiveDownload": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/95bd002a-9e97-4713-a0a1-68b0c51178c3/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49128147/summerville-great-option-manchester-united-transfer-plans"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/49128147"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/95bd002a-9e97-4713-a0a1-68b0c51178c3"
+            }
+          },
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans_360p30_1464k.mp4",
+            "mezzanine": {
+              "href": "https://media.video-origin.espn.com/espnvideo/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans.mp4"
+            },
+            "flash": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans.smil"
+            },
+            "hds": {
+              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans_rel.smil/manifest.f4m"
+            },
+            "HLS": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/playlist.m3u8",
+              "HD": {
+                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/playlist.m3u8"
+              },
+              "cmaf": {
+                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/playlist.m3u8"
+              },
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/95bd002a-9e97-4713-a0a1-68b0c51178c3/asset"
+              }
+            },
+            "HD": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans_720p30_2896k.mp4"
+            },
+            "full": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans/dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans_360p30_1464k.mp4"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=49128147&videoDSI=e3f0370c12696"
+          }
+        },
+        "ad": {
+          "sport": "Soccer",
+          "bundle": "espnfc"
+        },
+        "tracking": {
+          "sportName": "soccer",
+          "leagueName": "FIFA World Cup",
+          "coverageType": "Analysis",
+          "trackingName": "COM_SOC Analysis (Ogden: Summerville is great option for Manchester United\u2019s transfer plans) 20260620 GLOBAL FIFA WORLD CUP",
+          "trackingId": "dm_260620_Ogden_Summerville_is_great_option_for_Manchester_Uniteds_transfer_plans"
+        }
+      },
+      {
+        "id": 49133212,
+        "cerebroId": "6a37a3d01bf54a00fd6a2e38",
+        "source": "espn",
+        "headline": "Koeman: We have more confidence after victory vs. Sweden",
+        "description": "Koeman: We have more confidence after victory vs. Sweden",
+        "lastModified": "2026-06-21T08:44:38Z",
+        "originalPublishDate": "2026-06-21T08:41:52Z",
+        "duration": 64,
+        "timeRestrictions": {
+          "embargoDate": "2026-06-21T08:38:34Z",
+          "expirationDate": "2027-06-24T08:38:34Z"
+        },
+        "deviceRestrictions": {
+          "type": "whitelist",
+          "devices": [
+            "settop",
+            "tablet",
+            "handset",
+            "ipad",
+            "desktop"
+          ]
+        },
+        "thumbnail": "https://a.espncdn.com/media/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21.jpg",
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden",
+            "self": {
+              "href": "https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=0b4ad5260784b"
+              }
+            }
+          },
+          "mobile": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/f9ef55a6-c882-4882-a395-56de8991968b/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden",
+            "source": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21.mp4"
+            },
+            "alert": {
+              "href": "https://m.espn.com/general/video/videoAlert?vid=49133212"
+            },
+            "streaming": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/f9ef55a6-c882-4882-a395-56de8991968b/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden"
+            },
+            "progressiveDownload": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/f9ef55a6-c882-4882-a395-56de8991968b/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49133212/more-confidence-victory-vs-sweden"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/49133212"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/f9ef55a6-c882-4882-a395-56de8991968b"
+            }
+          },
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21_360p30_1464k.mp4",
+            "mezzanine": {
+              "href": "https://media.video-origin.espn.com/espnvideo/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21.mp4"
+            },
+            "flash": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21.smil"
+            },
+            "hds": {
+              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21_rel.smil/manifest.f4m"
+            },
+            "HLS": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/playlist.m3u8",
+              "HD": {
+                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/playlist.m3u8"
+              },
+              "cmaf": {
+                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/playlist.m3u8"
+              },
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/f9ef55a6-c882-4882-a395-56de8991968b/asset"
+              }
+            },
+            "HD": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21_720p30_2896k.mp4"
+            },
+            "full": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0621/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21/dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21_360p30_1464k.mp4"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=49133212&videoDSI=0b4ad5260784b"
+          }
+        },
+        "ad": {
+          "sport": "Soccer",
+          "bundle": "worldcupstatstories"
+        },
+        "tracking": {
+          "sportName": "soccer",
+          "leagueName": "FIFA World Cup",
+          "coverageType": "Analysis",
+          "trackingName": "COM_SOC Analysis (Koeman: We have more confidence after victory vs. Sweden ) GLOBAL 2026-06-21",
+          "trackingId": "dm_260621_COM_SOC_Analysis_Koeman3A_We_have_more_confidence_after_victory_vs_Sweden__GLOBAL_2026-06-21",
+          "program": "ESPN"
+        }
+      },
+      {
+        "id": 49127415,
+        "cerebroId": "6a36cdb12f39d9111d1da8f3",
+        "source": "espn",
+        "headline": "Dutch fans celebrate Brobbey's opening goal vs. Sweden",
+        "description": "Dutch fans celebrate Brobbey's opening goal vs. Sweden.",
+        "lastModified": "2026-06-20T17:29:07Z",
+        "originalPublishDate": "2026-06-20T17:28:18Z",
+        "duration": 19,
+        "timeRestrictions": {
+          "embargoDate": "2026-06-20T17:26:46Z",
+          "expirationDate": "2027-06-23T17:26:46Z"
+        },
+        "deviceRestrictions": {
+          "type": "whitelist",
+          "devices": [
+            "settop",
+            "tablet",
+            "handset",
+            "ipad",
+            "desktop"
+          ]
+        },
+        "thumbnail": "https://a.espncdn.com/media/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden.jpg",
+        "links": {
+          "web": {
+            "href": "https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden",
+            "self": {
+              "href": "https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden",
+              "dsi": {
+                "href": "https://www.espn.com/video/clip?id=cd007ecfe4430"
+              }
+            }
+          },
+          "mobile": {
+            "href": "https://watch.auth.api.espn.com/video/auth/brightcove/8d06c485-53d5-465b-8c17-fb64a1c88e83/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden",
+            "source": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden.mp4"
+            },
+            "alert": {
+              "href": "https://m.espn.com/general/video/videoAlert?vid=49127415"
+            },
+            "streaming": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/8d06c485-53d5-465b-8c17-fb64a1c88e83/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden"
+            },
+            "progressiveDownload": {
+              "href": "https://watch.auth.api.espn.com/video/auth/brightcove/8d06c485-53d5-465b-8c17-fb64a1c88e83/asset?UMADPARAMreferer=https://www.espn.com/video/clip/_/id/49127415/dutch-fans-celebrate-brobbey-opening-goal-vs-sweden"
+            }
+          },
+          "api": {
+            "self": {
+              "href": "https://content.core.api.espn.com/v1/video/clips/49127415"
+            },
+            "artwork": {
+              "href": "https://artwork.api.espn.com/artwork/collections/media/8d06c485-53d5-465b-8c17-fb64a1c88e83"
+            }
+          },
+          "source": {
+            "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden_360p30_1464k.mp4",
+            "mezzanine": {
+              "href": "https://media.video-origin.espn.com/espnvideo/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden.mp4"
+            },
+            "flash": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden.smil"
+            },
+            "hds": {
+              "href": "https://hds.video-cdn.espn.com/z/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden_rel.smil/manifest.f4m"
+            },
+            "HLS": {
+              "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/playlist.m3u8",
+              "HD": {
+                "href": "https://service-pkgespn.akamaized.net/opp/hls/espn/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/playlist.m3u8"
+              },
+              "cmaf": {
+                "href": "https://service-pkgespn.akamaized.net/opp/cmaf/espn/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/playlist.m3u8"
+              },
+              "shield": {
+                "href": "https://watch.auth.api.espn.com/video/auth/media/8d06c485-53d5-465b-8c17-fb64a1c88e83/asset"
+              }
+            },
+            "HD": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden_720p30_2896k.mp4"
+            },
+            "full": {
+              "href": "https://media.video-cdn.espn.com/motion/2026/0620/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden/dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden_360p30_1464k.mp4"
+            }
+          },
+          "sportscenter": {
+            "href": "sportscenter://x-callback-url/showVideo?videoID=49127415&videoDSI=cd007ecfe4430"
+          }
+        },
+        "ad": {
+          "sport": "Soccer",
+          "bundle": "espnfc"
+        },
+        "tracking": {
+          "sportName": "soccer",
+          "leagueName": "FIFA World Cup",
+          "coverageType": "Social",
+          "trackingName": "COM_SOC Social (Dutch fans celebrate Brobbey\u2019s opening goal vs. Sweden) 20260620 GLOBAL FIFA WORLD CUP",
+          "trackingId": "dm_260620_Dutch_fans_celebrate_Brobbeys_opening_goal_vs_Sweden"
+        }
+      }
+    ],
     "keyEvents": [
       {
         "id": "49561059",
@@ -23063,7 +23156,7 @@
     "wallclockAvailable": true,
     "meta": {
       "gp_topic": "gp-soccer-fifa.world-760447",
-      "gameSwitcherEnabled": false,
+      "gameSwitcherEnabled": true,
       "picker_topic": "picker-soccer-fifa.world",
       "lastUpdatedAt": "2026-06-20T18:57:41Z",
       "firstPlayWallClock": "2026-06-20T17:00:10Z",

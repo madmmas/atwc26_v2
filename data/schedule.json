@@ -3,7 +3,8 @@
     "away": "Czechia",
     "completed": true,
     "home": "South Korea",
-    "kickoff_utc": "2026-06-12T02:00Z",
+    "kickoff_utc": "2026-06-12T02:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -11,7 +12,8 @@
     "away": "South Africa",
     "completed": true,
     "home": "Mexico",
-    "kickoff_utc": "2026-06-11T19:00Z",
+    "kickoff_utc": "2026-06-11T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -19,7 +21,8 @@
     "away": "Bosnia-Herzegovina",
     "completed": true,
     "home": "Canada",
-    "kickoff_utc": "2026-06-12T19:00Z",
+    "kickoff_utc": "2026-06-12T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -27,7 +30,8 @@
     "away": "Paraguay",
     "completed": true,
     "home": "United States",
-    "kickoff_utc": "2026-06-13T01:00Z",
+    "kickoff_utc": "2026-06-13T01:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -35,7 +39,8 @@
     "away": "Scotland",
     "completed": true,
     "home": "Haiti",
-    "kickoff_utc": "2026-06-14T01:00Z",
+    "kickoff_utc": "2026-06-14T01:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -43,7 +48,8 @@
     "away": "Morocco",
     "completed": true,
     "home": "Brazil",
-    "kickoff_utc": "2026-06-13T22:00Z",
+    "kickoff_utc": "2026-06-13T22:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -51,7 +57,8 @@
     "away": "Switzerland",
     "completed": true,
     "home": "Qatar",
-    "kickoff_utc": "2026-06-13T19:00Z",
+    "kickoff_utc": "2026-06-13T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -59,7 +66,8 @@
     "away": "T\u00fcrkiye",
     "completed": true,
     "home": "Australia",
-    "kickoff_utc": "2026-06-14T04:00Z",
+    "kickoff_utc": "2026-06-14T04:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -67,7 +75,8 @@
     "away": "Cura\u00e7ao",
     "completed": true,
     "home": "Germany",
-    "kickoff_utc": "2026-06-14T17:00Z",
+    "kickoff_utc": "2026-06-14T17:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -75,7 +84,8 @@
     "away": "Ecuador",
     "completed": true,
     "home": "Ivory Coast",
-    "kickoff_utc": "2026-06-14T23:00Z",
+    "kickoff_utc": "2026-06-14T23:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -83,7 +93,8 @@
     "away": "Tunisia",
     "completed": true,
     "home": "Sweden",
-    "kickoff_utc": "2026-06-15T02:00Z",
+    "kickoff_utc": "2026-06-15T02:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -91,7 +102,8 @@
     "away": "Japan",
     "completed": true,
     "home": "Netherlands",
-    "kickoff_utc": "2026-06-14T20:00Z",
+    "kickoff_utc": "2026-06-14T20:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -99,7 +111,8 @@
     "away": "Egypt",
     "completed": true,
     "home": "Belgium",
-    "kickoff_utc": "2026-06-15T19:00Z",
+    "kickoff_utc": "2026-06-15T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -107,7 +120,8 @@
     "away": "New Zealand",
     "completed": true,
     "home": "Iran",
-    "kickoff_utc": "2026-06-16T01:00Z",
+    "kickoff_utc": "2026-06-16T01:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -115,7 +129,8 @@
     "away": "Cape Verde",
     "completed": true,
     "home": "Spain",
-    "kickoff_utc": "2026-06-15T16:00Z",
+    "kickoff_utc": "2026-06-15T16:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -123,7 +138,8 @@
     "away": "Uruguay",
     "completed": true,
     "home": "Saudi Arabia",
-    "kickoff_utc": "2026-06-15T22:00Z",
+    "kickoff_utc": "2026-06-15T22:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -131,7 +147,8 @@
     "away": "Norway",
     "completed": true,
     "home": "Iraq",
-    "kickoff_utc": "2026-06-16T22:00Z",
+    "kickoff_utc": "2026-06-16T22:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -139,7 +156,8 @@
     "away": "Jordan",
     "completed": true,
     "home": "Austria",
-    "kickoff_utc": "2026-06-17T04:00Z",
+    "kickoff_utc": "2026-06-17T04:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -147,7 +165,8 @@
     "away": "Senegal",
     "completed": true,
     "home": "France",
-    "kickoff_utc": "2026-06-16T19:00Z",
+    "kickoff_utc": "2026-06-16T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -155,7 +174,8 @@
     "away": "Algeria",
     "completed": true,
     "home": "Argentina",
-    "kickoff_utc": "2026-06-17T01:00Z",
+    "kickoff_utc": "2026-06-17T01:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -163,7 +183,8 @@
     "away": "Panama",
     "completed": true,
     "home": "Ghana",
-    "kickoff_utc": "2026-06-17T23:00Z",
+    "kickoff_utc": "2026-06-17T23:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -171,7 +192,8 @@
     "away": "Congo DR",
     "completed": true,
     "home": "Portugal",
-    "kickoff_utc": "2026-06-17T17:00Z",
+    "kickoff_utc": "2026-06-17T17:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -179,7 +201,8 @@
     "away": "Colombia",
     "completed": true,
     "home": "Uzbekistan",
-    "kickoff_utc": "2026-06-18T02:00Z",
+    "kickoff_utc": "2026-06-18T02:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -187,7 +210,8 @@
     "away": "Croatia",
     "completed": true,
     "home": "England",
-    "kickoff_utc": "2026-06-17T20:00Z",
+    "kickoff_utc": "2026-06-17T20:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -195,7 +219,8 @@
     "away": "South Africa",
     "completed": true,
     "home": "Czechia",
-    "kickoff_utc": "2026-06-18T16:00Z",
+    "kickoff_utc": "2026-06-18T16:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -203,7 +228,8 @@
     "away": "Bosnia-Herzegovina",
     "completed": true,
     "home": "Switzerland",
-    "kickoff_utc": "2026-06-18T19:00Z",
+    "kickoff_utc": "2026-06-18T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -211,7 +237,8 @@
     "away": "Qatar",
     "completed": true,
     "home": "Canada",
-    "kickoff_utc": "2026-06-18T22:00Z",
+    "kickoff_utc": "2026-06-18T22:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -219,7 +246,8 @@
     "away": "South Korea",
     "completed": true,
     "home": "Mexico",
-    "kickoff_utc": "2026-06-19T01:00Z",
+    "kickoff_utc": "2026-06-19T01:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -227,7 +255,8 @@
     "away": "Australia",
     "completed": true,
     "home": "United States",
-    "kickoff_utc": "2026-06-19T19:00Z",
+    "kickoff_utc": "2026-06-19T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -235,7 +264,8 @@
     "away": "Paraguay",
     "completed": true,
     "home": "T\u00fcrkiye",
-    "kickoff_utc": "2026-06-20T03:00Z",
+    "kickoff_utc": "2026-06-20T03:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -243,7 +273,8 @@
     "away": "Haiti",
     "completed": true,
     "home": "Brazil",
-    "kickoff_utc": "2026-06-20T00:30Z",
+    "kickoff_utc": "2026-06-20T00:30:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -251,7 +282,8 @@
     "away": "Morocco",
     "completed": true,
     "home": "Scotland",
-    "kickoff_utc": "2026-06-19T22:00Z",
+    "kickoff_utc": "2026-06-19T22:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -259,7 +291,8 @@
     "away": "Cura\u00e7ao",
     "completed": true,
     "home": "Ecuador",
-    "kickoff_utc": "2026-06-21T00:00Z",
+    "kickoff_utc": "2026-06-21T00:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -267,7 +300,8 @@
     "away": "Sweden",
     "completed": true,
     "home": "Netherlands",
-    "kickoff_utc": "2026-06-20T17:00Z",
+    "kickoff_utc": "2026-06-20T17:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -275,7 +309,8 @@
     "away": "Ivory Coast",
     "completed": true,
     "home": "Germany",
-    "kickoff_utc": "2026-06-20T20:00Z",
+    "kickoff_utc": "2026-06-20T20:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -283,7 +318,8 @@
     "away": "Japan",
     "completed": true,
     "home": "Tunisia",
-    "kickoff_utc": "2026-06-21T04:00Z",
+    "kickoff_utc": "2026-06-21T04:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -291,7 +327,8 @@
     "away": "Cape Verde",
     "completed": true,
     "home": "Uruguay",
-    "kickoff_utc": "2026-06-21T22:00Z",
+    "kickoff_utc": "2026-06-21T22:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -299,7 +336,8 @@
     "away": "Iran",
     "completed": true,
     "home": "Belgium",
-    "kickoff_utc": "2026-06-21T19:00Z",
+    "kickoff_utc": "2026-06-21T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -307,7 +345,8 @@
     "away": "Egypt",
     "completed": true,
     "home": "New Zealand",
-    "kickoff_utc": "2026-06-22T01:00Z",
+    "kickoff_utc": "2026-06-22T01:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -315,7 +354,8 @@
     "away": "Saudi Arabia",
     "completed": true,
     "home": "Spain",
-    "kickoff_utc": "2026-06-21T16:00Z",
+    "kickoff_utc": "2026-06-21T16:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -323,7 +363,8 @@
     "away": "Senegal",
     "completed": true,
     "home": "Norway",
-    "kickoff_utc": "2026-06-23T00:00Z",
+    "kickoff_utc": "2026-06-23T00:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -331,7 +372,8 @@
     "away": "Algeria",
     "completed": true,
     "home": "Jordan",
-    "kickoff_utc": "2026-06-23T03:00Z",
+    "kickoff_utc": "2026-06-23T03:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -339,7 +381,8 @@
     "away": "Austria",
     "completed": true,
     "home": "Argentina",
-    "kickoff_utc": "2026-06-22T17:00Z",
+    "kickoff_utc": "2026-06-22T17:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -347,7 +390,8 @@
     "away": "Iraq",
     "completed": true,
     "home": "France",
-    "kickoff_utc": "2026-06-22T21:00Z",
+    "kickoff_utc": "2026-06-22T21:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -355,7 +399,8 @@
     "away": "Ghana",
     "completed": true,
     "home": "England",
-    "kickoff_utc": "2026-06-23T20:00Z",
+    "kickoff_utc": "2026-06-23T20:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -363,7 +408,8 @@
     "away": "Congo DR",
     "completed": true,
     "home": "Colombia",
-    "kickoff_utc": "2026-06-24T02:00Z",
+    "kickoff_utc": "2026-06-24T02:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -371,7 +417,8 @@
     "away": "Croatia",
     "completed": true,
     "home": "Panama",
-    "kickoff_utc": "2026-06-23T23:00Z",
+    "kickoff_utc": "2026-06-23T23:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -379,7 +426,8 @@
     "away": "Uzbekistan",
     "completed": true,
     "home": "Portugal",
-    "kickoff_utc": "2026-06-23T17:00Z",
+    "kickoff_utc": "2026-06-23T17:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -387,7 +435,8 @@
     "away": "Qatar",
     "completed": true,
     "home": "Bosnia-Herzegovina",
-    "kickoff_utc": "2026-06-24T19:00Z",
+    "kickoff_utc": "2026-06-24T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -395,7 +444,8 @@
     "away": "Canada",
     "completed": true,
     "home": "Switzerland",
-    "kickoff_utc": "2026-06-24T19:00Z",
+    "kickoff_utc": "2026-06-24T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -403,7 +453,8 @@
     "away": "Haiti",
     "completed": true,
     "home": "Morocco",
-    "kickoff_utc": "2026-06-24T22:00Z",
+    "kickoff_utc": "2026-06-24T22:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -411,7 +462,8 @@
     "away": "Brazil",
     "completed": true,
     "home": "Scotland",
-    "kickoff_utc": "2026-06-24T22:00Z",
+    "kickoff_utc": "2026-06-24T22:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -419,7 +471,8 @@
     "away": "South Korea",
     "completed": true,
     "home": "South Africa",
-    "kickoff_utc": "2026-06-25T01:00Z",
+    "kickoff_utc": "2026-06-25T01:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -427,7 +480,8 @@
     "away": "Mexico",
     "completed": true,
     "home": "Czechia",
-    "kickoff_utc": "2026-06-25T01:00Z",
+    "kickoff_utc": "2026-06-25T01:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -435,7 +489,8 @@
     "away": "Germany",
     "completed": true,
     "home": "Ecuador",
-    "kickoff_utc": "2026-06-25T20:00Z",
+    "kickoff_utc": "2026-06-25T20:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -443,7 +498,8 @@
     "away": "Australia",
     "completed": true,
     "home": "Paraguay",
-    "kickoff_utc": "2026-06-26T02:00Z",
+    "kickoff_utc": "2026-06-26T02:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -451,7 +507,8 @@
     "away": "United States",
     "completed": true,
     "home": "T\u00fcrkiye",
-    "kickoff_utc": "2026-06-26T02:00Z",
+    "kickoff_utc": "2026-06-26T02:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -459,7 +516,8 @@
     "away": "Sweden",
     "completed": true,
     "home": "Japan",
-    "kickoff_utc": "2026-06-25T23:00Z",
+    "kickoff_utc": "2026-06-25T23:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -467,7 +525,8 @@
     "away": "Netherlands",
     "completed": true,
     "home": "Tunisia",
-    "kickoff_utc": "2026-06-25T23:00Z",
+    "kickoff_utc": "2026-06-25T23:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -475,7 +534,8 @@
     "away": "Ivory Coast",
     "completed": true,
     "home": "Cura\u00e7ao",
-    "kickoff_utc": "2026-06-25T20:00Z",
+    "kickoff_utc": "2026-06-25T20:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -483,7 +543,8 @@
     "away": "Iraq",
     "completed": true,
     "home": "Senegal",
-    "kickoff_utc": "2026-06-26T19:00Z",
+    "kickoff_utc": "2026-06-26T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -491,7 +552,8 @@
     "away": "France",
     "completed": true,
     "home": "Norway",
-    "kickoff_utc": "2026-06-26T19:00Z",
+    "kickoff_utc": "2026-06-26T19:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -499,7 +561,8 @@
     "away": "Iran",
     "completed": true,
     "home": "Egypt",
-    "kickoff_utc": "2026-06-27T03:00Z",
+    "kickoff_utc": "2026-06-27T03:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -507,7 +570,8 @@
     "away": "Belgium",
     "completed": true,
     "home": "New Zealand",
-    "kickoff_utc": "2026-06-27T03:00Z",
+    "kickoff_utc": "2026-06-27T03:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -515,7 +579,8 @@
     "away": "Saudi Arabia",
     "completed": true,
     "home": "Cape Verde",
-    "kickoff_utc": "2026-06-27T00:00Z",
+    "kickoff_utc": "2026-06-27T00:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -523,7 +588,8 @@
     "away": "Spain",
     "completed": true,
     "home": "Uruguay",
-    "kickoff_utc": "2026-06-27T00:00Z",
+    "kickoff_utc": "2026-06-27T00:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -531,7 +597,8 @@
     "away": "Ghana",
     "completed": true,
     "home": "Croatia",
-    "kickoff_utc": "2026-06-27T21:00Z",
+    "kickoff_utc": "2026-06-27T21:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -539,7 +606,8 @@
     "away": "Portugal",
     "completed": true,
     "home": "Colombia",
-    "kickoff_utc": "2026-06-27T23:30Z",
+    "kickoff_utc": "2026-06-27T23:30:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -547,7 +615,8 @@
     "away": "Uzbekistan",
     "completed": true,
     "home": "Congo DR",
-    "kickoff_utc": "2026-06-27T23:30Z",
+    "kickoff_utc": "2026-06-27T23:30:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -555,7 +624,8 @@
     "away": "Argentina",
     "completed": true,
     "home": "Jordan",
-    "kickoff_utc": "2026-06-28T02:00Z",
+    "kickoff_utc": "2026-06-28T02:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -563,7 +633,8 @@
     "away": "Austria",
     "completed": true,
     "home": "Algeria",
-    "kickoff_utc": "2026-06-28T02:00Z",
+    "kickoff_utc": "2026-06-28T02:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -571,7 +642,8 @@
     "away": "England",
     "completed": true,
     "home": "Panama",
-    "kickoff_utc": "2026-06-27T21:00Z",
+    "kickoff_utc": "2026-06-27T21:00:00Z",
+    "round_slug": "group-stage",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -579,7 +651,8 @@
     "away": "Canada",
     "completed": true,
     "home": "South Africa",
-    "kickoff_utc": "2026-06-28T19:00Z",
+    "kickoff_utc": "2026-06-28T19:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -587,7 +660,8 @@
     "away": "Japan",
     "completed": true,
     "home": "Brazil",
-    "kickoff_utc": "2026-06-29T17:00Z",
+    "kickoff_utc": "2026-06-29T17:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -595,7 +669,8 @@
     "away": "Morocco",
     "completed": true,
     "home": "Netherlands",
-    "kickoff_utc": "2026-06-30T01:00Z",
+    "kickoff_utc": "2026-06-30T01:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FINAL_PEN",
     "status_state": "post"
   },
@@ -603,7 +678,8 @@
     "away": "Paraguay",
     "completed": true,
     "home": "Germany",
-    "kickoff_utc": "2026-06-29T20:30Z",
+    "kickoff_utc": "2026-06-29T20:30:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FINAL_PEN",
     "status_state": "post"
   },
@@ -611,7 +687,8 @@
     "away": "Norway",
     "completed": true,
     "home": "Ivory Coast",
-    "kickoff_utc": "2026-06-30T17:00Z",
+    "kickoff_utc": "2026-06-30T17:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -619,7 +696,8 @@
     "away": "Ecuador",
     "completed": true,
     "home": "Mexico",
-    "kickoff_utc": "2026-07-01T02:00Z",
+    "kickoff_utc": "2026-07-01T02:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -627,7 +705,8 @@
     "away": "Sweden",
     "completed": true,
     "home": "France",
-    "kickoff_utc": "2026-06-30T21:00Z",
+    "kickoff_utc": "2026-06-30T21:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -635,7 +714,8 @@
     "away": "Senegal",
     "completed": true,
     "home": "Belgium",
-    "kickoff_utc": "2026-07-01T20:00Z",
+    "kickoff_utc": "2026-07-01T20:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FINAL_AET",
     "status_state": "post"
   },
@@ -643,7 +723,8 @@
     "away": "Bosnia-Herzegovina",
     "completed": true,
     "home": "United States",
-    "kickoff_utc": "2026-07-02T00:00Z",
+    "kickoff_utc": "2026-07-02T00:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -651,7 +732,8 @@
     "away": "Congo DR",
     "completed": true,
     "home": "England",
-    "kickoff_utc": "2026-07-01T16:00Z",
+    "kickoff_utc": "2026-07-01T16:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -659,7 +741,8 @@
     "away": "Croatia",
     "completed": true,
     "home": "Portugal",
-    "kickoff_utc": "2026-07-02T23:00Z",
+    "kickoff_utc": "2026-07-02T23:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -667,7 +750,8 @@
     "away": "Austria",
     "completed": true,
     "home": "Spain",
-    "kickoff_utc": "2026-07-02T19:00Z",
+    "kickoff_utc": "2026-07-02T19:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -675,7 +759,8 @@
     "away": "Algeria",
     "completed": true,
     "home": "Switzerland",
-    "kickoff_utc": "2026-07-03T03:00Z",
+    "kickoff_utc": "2026-07-03T03:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -683,7 +768,8 @@
     "away": "Egypt",
     "completed": true,
     "home": "Australia",
-    "kickoff_utc": "2026-07-03T18:00Z",
+    "kickoff_utc": "2026-07-03T18:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FINAL_PEN",
     "status_state": "post"
   },
@@ -691,7 +777,8 @@
     "away": "Cape Verde",
     "completed": true,
     "home": "Argentina",
-    "kickoff_utc": "2026-07-03T22:00Z",
+    "kickoff_utc": "2026-07-03T22:00:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FINAL_AET",
     "status_state": "post"
   },
@@ -699,7 +786,8 @@
     "away": "Ghana",
     "completed": true,
     "home": "Colombia",
-    "kickoff_utc": "2026-07-04T01:30Z",
+    "kickoff_utc": "2026-07-04T01:30:00Z",
+    "round_slug": "round-of-32",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -707,7 +795,8 @@
     "away": "Morocco",
     "completed": true,
     "home": "Canada",
-    "kickoff_utc": "2026-07-04T17:00Z",
+    "kickoff_utc": "2026-07-04T17:00:00Z",
+    "round_slug": "round-of-16",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -715,7 +804,8 @@
     "away": "France",
     "completed": true,
     "home": "Paraguay",
-    "kickoff_utc": "2026-07-04T21:00Z",
+    "kickoff_utc": "2026-07-04T21:00:00Z",
+    "round_slug": "round-of-16",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -723,7 +813,8 @@
     "away": "Norway",
     "completed": true,
     "home": "Brazil",
-    "kickoff_utc": "2026-07-05T20:00Z",
+    "kickoff_utc": "2026-07-05T20:00:00Z",
+    "round_slug": "round-of-16",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -731,7 +822,8 @@
     "away": "England",
     "completed": true,
     "home": "Mexico",
-    "kickoff_utc": "2026-07-06T01:00Z",
+    "kickoff_utc": "2026-07-06T01:00:00Z",
+    "round_slug": "round-of-16",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -739,7 +831,8 @@
     "away": "Spain",
     "completed": true,
     "home": "Portugal",
-    "kickoff_utc": "2026-07-06T19:00Z",
+    "kickoff_utc": "2026-07-06T19:00:00Z",
+    "round_slug": "round-of-16",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -747,7 +840,8 @@
     "away": "Belgium",
     "completed": true,
     "home": "United States",
-    "kickoff_utc": "2026-07-07T00:00Z",
+    "kickoff_utc": "2026-07-07T00:00:00Z",
+    "round_slug": "round-of-16",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
@@ -755,7 +849,8 @@
     "away": "Colombia",
     "completed": true,
     "home": "Switzerland",
-    "kickoff_utc": "2026-07-07T20:00Z",
+    "kickoff_utc": "2026-07-07T20:00:00Z",
+    "round_slug": "round-of-16",
     "status_name": "STATUS_FINAL_PEN",
     "status_state": "post"
   },
@@ -763,23 +858,26 @@
     "away": "Egypt",
     "completed": true,
     "home": "Argentina",
-    "kickoff_utc": "2026-07-07T16:00Z",
+    "kickoff_utc": "2026-07-07T16:00:00Z",
+    "round_slug": "round-of-16",
     "status_name": "STATUS_FULL_TIME",
     "status_state": "post"
   },
   "760510": {
     "away": "Morocco",
-    "completed": false,
+    "completed": true,
     "home": "France",
-    "kickoff_utc": "2026-07-09T20:00Z",
-    "status_name": "STATUS_SCHEDULED",
-    "status_state": "pre"
+    "kickoff_utc": "2026-07-09T20:00:00Z",
+    "round_slug": "quarterfinals",
+    "status_name": "STATUS_FULL_TIME",
+    "status_state": "post"
   },
   "760511": {
     "away": "Belgium",
     "completed": false,
     "home": "Spain",
-    "kickoff_utc": "2026-07-10T19:00Z",
+    "kickoff_utc": "2026-07-10T19:00:00Z",
+    "round_slug": "quarterfinals",
     "status_name": "STATUS_SCHEDULED",
     "status_state": "pre"
   },
@@ -787,7 +885,8 @@
     "away": "England",
     "completed": false,
     "home": "Norway",
-    "kickoff_utc": "2026-07-11T21:00Z",
+    "kickoff_utc": "2026-07-11T21:00:00Z",
+    "round_slug": "quarterfinals",
     "status_name": "STATUS_SCHEDULED",
     "status_state": "pre"
   },
@@ -795,15 +894,17 @@
     "away": "Switzerland",
     "completed": false,
     "home": "Argentina",
-    "kickoff_utc": "2026-07-12T01:00Z",
+    "kickoff_utc": "2026-07-12T01:00:00Z",
+    "round_slug": "quarterfinals",
     "status_name": "STATUS_SCHEDULED",
     "status_state": "pre"
   },
   "760514": {
     "away": "Quarterfinal 2 Winner",
     "completed": false,
-    "home": "Quarterfinal 1 Winner",
-    "kickoff_utc": "2026-07-14T19:00Z",
+    "home": "France",
+    "kickoff_utc": "2026-07-14T19:00:00Z",
+    "round_slug": "semifinals",
     "status_name": "STATUS_SCHEDULED",
     "status_state": "pre"
   },
@@ -811,7 +912,8 @@
     "away": "Quarterfinal 4 Winner",
     "completed": false,
     "home": "Quarterfinal 3 Winner",
-    "kickoff_utc": "2026-07-15T19:00Z",
+    "kickoff_utc": "2026-07-15T19:00:00Z",
+    "round_slug": "semifinals",
     "status_name": "STATUS_SCHEDULED",
     "status_state": "pre"
   },
@@ -819,7 +921,8 @@
     "away": "Semifinal 2 Loser",
     "completed": false,
     "home": "Semifinal 1 Loser",
-    "kickoff_utc": "2026-07-18T21:00Z",
+    "kickoff_utc": "2026-07-18T21:00:00Z",
+    "round_slug": "3rd-place-match",
     "status_name": "STATUS_SCHEDULED",
     "status_state": "pre"
   },
@@ -827,7 +930,8 @@
     "away": "Semifinal 2 Winner",
     "completed": false,
     "home": "Semifinal 1 Winner",
-    "kickoff_utc": "2026-07-19T19:00Z",
+    "kickoff_utc": "2026-07-19T19:00:00Z",
+    "round_slug": "final",
     "status_name": "STATUS_SCHEDULED",
     "status_state": "pre"
   }
