@@ -4,9 +4,10 @@ How to run and ship AnalyseThisWC26 locally and on AWS. This doc is the **ops en
 
 | Doc | Read when… |
 |-----|------------|
+| [GITHUB_ACTIONS.md](GITHUB_ACTIONS.md) | What GHA workflows run automatically vs manually; bootstrap order; `production` environment |
 | [V1_TO_V2.md](../V1_TO_V2.md) | v1 → v2 rationale, comparison, retroactive decision log |
 | [ARCHITECTURE.md](../ARCHITECTURE.md) | C4 model + AWS deployment diagram |
-| [`infra/README.md`](../../infra/README.md) | Terraform variables, outputs, GitHub secrets, workflow tables |
+| [`infra/README.md`](../../infra/README.md) | Terraform variables, outputs, GitHub secrets catalog, workflow file reference |
 | [specs/PRODUCTION_SPEC.md](../specs/PRODUCTION_SPEC.md) | First-time AWS bootstrap (state bucket, OIDC, scheduler enablement order) |
 | [TESTING.md](TESTING.md) | QA, k6 A/B, `make e2e-v2-local`, split-API smoke |
 | [CUTOVER.md](CUTOVER.md) | v1 → v2 production go-live checklist |
@@ -355,7 +356,7 @@ Docker Compose continues to use `output: "standalone"` — static export is a se
 | `NEXT_PUBLIC_API_URL` | `http://localhost:8000` | v1 monolith API; `""` for same-origin behind Nginx |
 | `NEXT_OUTPUT_MODE` | `export` (static script) / `standalone` (Docker) | Next.js output mode |
 
-GitHub Actions secrets for AWS deploy: [`infra/README.md` § GitHub secrets](../../infra/README.md#github-secrets--vars-issue-9).
+GitHub Actions: [GITHUB_ACTIONS.md](GITHUB_ACTIONS.md) (what/when). Secrets catalog: [`infra/README.md` § GitHub secrets](../../infra/README.md#github-secrets--vars-issue-9).
 
 ---
 

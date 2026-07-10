@@ -28,6 +28,11 @@ Run both in dev (two terminals) — **v1 monolith**:
 
 **v2 split APIs** (analytics + predict): `make dev-v2` — see [ops/DEPLOY.md §3](ops/DEPLOY.md#3-local--v2-split-apis).
 
+### CI and AWS (most contributors can skip this)
+
+- **Normal PRs:** push your branch and open a PR — the **CI** workflow runs automatically (tests, build, validate). You do not need GitHub secrets or AWS access.
+- **AWS / deploy setup** is for **repo maintainers** only: [ops/GITHUB_ACTIONS.md](ops/GITHUB_ACTIONS.md) (what to run and when), [`infra/README.md`](../infra/README.md) (secret names), [specs/PRODUCTION_SPEC.md](specs/PRODUCTION_SPEC.md) Part 1 (first-time bootstrap).
+
 ---
 
 ## 2. Project structure (what lives where)

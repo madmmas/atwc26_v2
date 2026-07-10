@@ -4,6 +4,16 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 
 ---
 
+## Who are you?
+
+| Role | Start here | You do **not** need |
+|------|------------|---------------------|
+| **App / API / frontend dev** | [CONTRIBUTING.md](CONTRIBUTING.md), [ops/DEPLOY.md](ops/DEPLOY.md) §2–3 | GitHub secrets, Terraform, manual GHA runs |
+| **Infra / deploy maintainer** | [ops/GITHUB_ACTIONS.md](ops/GITHUB_ACTIONS.md) → [ops/DEPLOY.md](ops/DEPLOY.md) §5–6 → [`infra/README.md`](../infra/README.md) | Full [PRODUCTION_SPEC.md](specs/PRODUCTION_SPEC.md) for every change |
+| **ETL operator** | [etl/PIPELINE.md](etl/PIPELINE.md) | Terraform (usually) |
+
+---
+
 ## Start here
 
 | Role | Doc |
@@ -11,6 +21,7 @@ Navigation hub for ATWC26 project docs. Diagrams live **inline** in each markdow
 | **v1 → v2 transition (why & how)** | [V1_TO_V2.md](V1_TO_V2.md) |
 | System architecture (C4 + AWS) | [ARCHITECTURE.md](ARCHITECTURE.md) |
 | New contributor | [CONTRIBUTING.md](CONTRIBUTING.md) |
+| GitHub Actions (what / when) | [ops/GITHUB_ACTIONS.md](ops/GITHUB_ACTIONS.md) |
 | How analytics & prediction work | [models/ANALYTICS.md](models/ANALYTICS.md) |
 | QA & automation | [ops/TESTING.md](ops/TESTING.md) |
 | Deploy & ops | [ops/DEPLOY.md](ops/DEPLOY.md) (local, AWS dev/prod) · [`infra/README.md`](../infra/README.md) (Terraform) |

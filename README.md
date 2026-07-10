@@ -13,6 +13,7 @@ and get a statistical match-result prediction driven by real per-90 performance.
 > - 🧠 **How the numbers & prediction work** → [docs/models/ANALYTICS.md](docs/models/ANALYTICS.md)
 > - 🔄 **ETL & data pipeline** → [docs/etl/OVERVIEW.md](docs/etl/OVERVIEW.md)
 > - 👩‍💻 **Contributing / code review** → [docs/CONTRIBUTING.md](docs/CONTRIBUTING.md)
+> - ⚙️ **GitHub Actions & AWS secrets (maintainers)** → [docs/ops/GITHUB_ACTIONS.md](docs/ops/GITHUB_ACTIONS.md)
 > - 🧪 **QA & automation testing** → [docs/ops/TESTING.md](docs/ops/TESTING.md)
 > - 🚀 **Deployment & ops** → [docs/ops/DEPLOY.md](docs/ops/DEPLOY.md)
 > - 📚 **All documentation** → [docs/README.md](docs/README.md)
