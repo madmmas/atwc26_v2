@@ -10,9 +10,9 @@ and writes the result to `data/squads_raw.json`. The backend (DataStore.load,
 in backend/app/data.py) merges this in-memory on every load, adding a
 synthetic 0-minute row for any squad member with no match appearance yet —
 done at load time (not written into the match dataset) so it survives every
-`rebuild_master()` in scrape_wc26.py, which rebuilds the master parquet from
-scratch on every scrape/refresh cycle and only ever knows about players who
-appeared in a scraped match.
+`rebuild_master()` in scrape_wc26.py. That rebuild prefers per-game parquets
+and preserves master-only game IDs, but still only contains players who
+appeared in a scraped match — never the full registered squad.
 
 The result: the predictor / player-analysis UI can list ANY squad member;
 untested players show 0 minutes and near-zero tournament-form ratings.
