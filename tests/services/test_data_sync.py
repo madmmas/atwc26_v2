@@ -28,13 +28,17 @@ def test_sync_writes_manifest_with_dynamodb_decimals(tmp_path, monkeypatch):
     monkeypatch.setattr(config, "DYNAMODB_TABLE", "test-manifest")
 
     master = tmp_path / "all_players_stats.parquet"
-    fake_artifacts = (
-        type("S", (), {"name": "master_parquet", "path": master, "required": True})(),
-    )
+    from atwc26_core.artifacts import ArtifactSpec
 
     import services.shared.data_sync as data_sync_mod
 
-    monkeypatch.setattr(data_sync_mod, "ARTIFACTS", fake_artifacts)
+    monkeypatch.setattr(
+        data_sync_mod,
+        "resolve_artifact",
+        lambda name, meta=None: ArtifactSpec("master_parquet", master, True, "parquet")
+        if name == "master_parquet"
+        else None,
+    )
     monkeypatch.setattr(data_sync_mod, "SYNC_MANIFEST", tmp_path / ".etl" / "sync-manifest.json")
 
     latest = {
@@ -91,14 +95,18 @@ def test_sync_downloads_only_changed_artifacts(tmp_path, monkeypatch):
     master.write_bytes(b"unchanged")
     events.write_text("{}")
 
-    fake_artifacts = (
-        type("S", (), {"name": "master_parquet", "path": master, "required": True})(),
-        type("S", (), {"name": "match_events", "path": events, "required": True})(),
-    )
+    from atwc26_core.artifacts import ArtifactSpec
+
+    def fake_resolve(name, meta=None):
+        if name == "master_parquet":
+            return ArtifactSpec("master_parquet", master, True, "parquet")
+        if name == "match_events":
+            return ArtifactSpec("match_events", events, True, "json")
+        return None
 
     import services.shared.data_sync as data_sync_mod
 
-    monkeypatch.setattr(data_sync_mod, "ARTIFACTS", fake_artifacts)
+    monkeypatch.setattr(data_sync_mod, "resolve_artifact", fake_resolve)
     monkeypatch.setattr(data_sync_mod, "SYNC_MANIFEST", tmp_path / ".etl" / "sync-manifest.json")
 
     latest = {
@@ -147,6 +155,61 @@ def test_sync_downloads_only_changed_artifacts(tmp_path, monkeypatch):
     assert updated == ["match_events"]
     assert downloads == ["data/match_events.json"]
     assert (tmp_path / "match_events.json").read_bytes() == b"new-bytes"
+
+
+def test_sync_downloads_game_parquets(tmp_path, monkeypatch):
+    pytest.importorskip("boto3")
+    monkeypatch.setattr(config, "DATA_DIR", tmp_path)
+    monkeypatch.setattr(config, "S3_BUCKET", "test-bucket")
+    monkeypatch.setattr(config, "DYNAMODB_TABLE", "test-manifest")
+
+    import services.shared.data_sync as data_sync_mod
+
+    monkeypatch.setattr(data_sync_mod, "SYNC_MANIFEST", tmp_path / ".etl" / "sync-manifest.json")
+
+    latest = {
+        "latest_publish_sk": "PUBLISH#1",
+        "published_at": "2026-07-01T00:00:00+00:00",
+        "artifacts": {
+            "game_760511": {
+                "sha256": "g1",
+                "s3_key": "data/games/game_760511.parquet",
+            },
+        },
+    }
+
+    downloads: list[str] = []
+
+    class FakeS3:
+        def download_file(self, bucket, key, dest):
+            downloads.append(key)
+            Path(dest).parent.mkdir(parents=True, exist_ok=True)
+            Path(dest).write_bytes(b"game-bytes")
+
+    class FakeTable:
+        def get_item(self, Key):
+            return {"Item": latest}
+
+    import sys
+
+    fake_boto = type(
+        "Boto",
+        (),
+        {
+            "client": staticmethod(lambda *a, **k: FakeS3()),
+            "resource": staticmethod(
+                lambda *a, **k: type("R", (), {"Table": staticmethod(lambda t: FakeTable())})()
+            ),
+        },
+    )
+    monkeypatch.setitem(sys.modules, "boto3", fake_boto)
+
+    from services.shared.data_sync import sync_from_manifest
+
+    updated = sync_from_manifest()
+    assert updated == ["game_760511"]
+    assert downloads == ["data/games/game_760511.parquet"]
+    assert (tmp_path / "games" / "game_760511.parquet").read_bytes() == b"game-bytes"
 
 
 def test_reload_data_clears_predictor_cache(monkeypatch):

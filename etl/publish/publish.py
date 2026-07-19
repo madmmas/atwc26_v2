@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from pathlib import Path
 
 from atwc26_core import config
-from atwc26_core.artifacts import ARTIFACTS, s3_key_for
+from atwc26_core.artifacts import publishable_artifacts, resolve_artifact, s3_key_for
 
 from ..changed.detect import changed_game_ids, fingerprint, match_fingerprint
 from ..changed.store import read_scrape_state, save_fingerprint, save_scrape_state
@@ -54,10 +54,15 @@ def publish_local(manifest: dict) -> Path:
     """Dry-run publish: copy artifacts + manifest into local staging dir."""
     STAGING_DIR.mkdir(parents=True, exist_ok=True)
     copied = 0
-    for spec in ARTIFACTS:
+    for spec in publishable_artifacts():
         if not spec.path.exists():
             continue
-        dest = STAGING_DIR / spec.path.name
+        try:
+            rel = spec.path.resolve().relative_to(config.DATA_DIR.resolve())
+        except ValueError:
+            rel = Path(spec.path.name)
+        dest = STAGING_DIR / rel
+        dest.parent.mkdir(parents=True, exist_ok=True)
         dest.write_bytes(spec.path.read_bytes())
         copied += 1
     staging_manifest = STAGING_DIR / "manifest.json"
@@ -86,23 +91,25 @@ def publish_aws(manifest: dict) -> dict:
     skipped: list[str] = []
     artifact_meta: dict[str, dict] = {}
 
-    for spec in ARTIFACTS:
-        entry = manifest["artifacts"].get(spec.name, {})
+    for name, entry in (manifest.get("artifacts") or {}).items():
         if not entry.get("exists"):
             continue
+        spec = resolve_artifact(name, entry)
+        if spec is None or not spec.path.exists():
+            continue
         sha = entry.get("sha256", "")
-        key = s3_key_for(spec)
-        artifact_meta[spec.name] = {
+        key = entry.get("s3_key") or s3_key_for(spec)
+        artifact_meta[name] = {
             "s3_key": key,
             "sha256": sha,
             "bytes": entry.get("bytes"),
             "kind": spec.kind,
         }
-        if remote_hashes.get(spec.name) == sha:
-            skipped.append(spec.name)
+        if remote_hashes.get(name) == sha:
+            skipped.append(name)
             continue
         s3.upload_file(str(spec.path), config.S3_BUCKET, key)
-        uploaded.append(spec.name)
+        uploaded.append(name)
 
     published_at = datetime.now(timezone.utc).isoformat()
     publish_id = published_at.replace(":", "").replace("-", "").replace("+", "")

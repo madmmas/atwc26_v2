@@ -9,7 +9,7 @@ import sys
 from datetime import datetime, timezone
 from pathlib import Path
 
-from atwc26_core.artifacts import ARTIFACTS, ArtifactSpec, s3_key_for
+from atwc26_core.artifacts import publishable_artifacts, s3_key_for
 from atwc26_core import config
 
 from .profiles import build_profiles
@@ -38,10 +38,14 @@ def build_manifest() -> dict:
     """Collect artifact metadata (paths, sizes, hashes, S3 keys)."""
     published_at = datetime.now(timezone.utc).isoformat()
     artifacts: dict[str, dict] = {}
-    for spec in ARTIFACTS:
+    for spec in publishable_artifacts():
+        try:
+            rel_path = str(spec.path.relative_to(REPO_ROOT))
+        except ValueError:
+            rel_path = str(spec.path)
         entry: dict = {
             "name": spec.name,
-            "path": str(spec.path.relative_to(REPO_ROOT)),
+            "path": rel_path,
             "kind": spec.kind,
             "required": spec.required,
             "s3_key": s3_key_for(spec),

@@ -6,7 +6,7 @@ from pathlib import Path
 
 from atwc26_core import config
 from atwc26_core.api_cache.store import _from_dynamo
-from atwc26_core.artifacts import ARTIFACTS, s3_key_for
+from atwc26_core.artifacts import resolve_artifact, s3_key_for
 
 DATASET = "wc26"
 SYNC_MANIFEST = config.DATA_DIR / ".etl" / "sync-manifest.json"
@@ -33,6 +33,10 @@ def _fetch_latest_manifest(table) -> dict | None:
 def sync_from_manifest(*, force: bool = False) -> list[str]:
     """Download artifacts whose sha256 differs from the published manifest.
 
+    Includes per-game ``game_*`` parquets when present in LATEST so CI rebuilds
+    of ``all_players_stats`` see every previously scraped match, not only
+    whatever is committed under ``data/games/`` in git.
+
     Returns artifact names that were downloaded. No-op when S3/DynamoDB are
     unset (local dev with a mounted ``data/`` directory).
     """
@@ -57,17 +61,19 @@ def sync_from_manifest(*, force: bool = False) -> list[str]:
     updated: list[str] = []
 
     config.DATA_DIR.mkdir(parents=True, exist_ok=True)
-    for spec in ARTIFACTS:
-        meta = remote.get(spec.name)
-        if not meta:
+    for name, meta in remote.items():
+        if not isinstance(meta, dict):
+            continue
+        spec = resolve_artifact(name, meta)
+        if spec is None:
             continue
         sha = meta.get("sha256", "")
-        if not force and local.get(spec.name) == sha and spec.path.exists():
+        if not force and local.get(name) == sha and spec.path.exists():
             continue
         key = meta.get("s3_key") or s3_key_for(spec)
         spec.path.parent.mkdir(parents=True, exist_ok=True)
         s3.download_file(bucket, key, str(spec.path))
-        updated.append(spec.name)
+        updated.append(name)
 
     SYNC_MANIFEST.parent.mkdir(parents=True, exist_ok=True)
     SYNC_MANIFEST.write_text(

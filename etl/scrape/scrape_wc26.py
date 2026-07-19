@@ -440,8 +440,15 @@ def process_once(session, args, glossary) -> int:
     elif args.force:
         targets = links
     else:
-        targets = {g: u for g, u in links.items()
-                   if state.get(g, {}).get("status") != "ok"}
+        # "ok" is only valid when the durable per-game parquet is on disk.
+        # CI restores scrape state from DynamoDB but historically did not sync
+        # game_*.parquet from S3 — treating bare ok as done caused rebuild_master
+        # to drop those matches on the next incremental scrape.
+        targets = {
+            g: u for g, u in links.items()
+            if state.get(g, {}).get("status") != "ok"
+            or not (GAMES_DIR / f"game_{g}.parquet").is_file()
+        }
 
     if not targets:
         log.info("no new games to process (%d already done)", len(state))

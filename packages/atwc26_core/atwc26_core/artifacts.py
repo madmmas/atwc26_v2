@@ -37,6 +37,55 @@ ARTIFACTS: tuple[ArtifactSpec, ...] = (
 )
 
 
+def games_dir() -> Path:
+    return config.DATA_DIR / "games"
+
+
+def iter_game_artifacts() -> tuple[ArtifactSpec, ...]:
+    """Per-match player-stat parquets under data/games/.
+
+    These are the durable inputs to ``rebuild_master``. They must be published
+    and synced like other artifacts; otherwise a CI checkout only has whatever
+    is committed in git and an incremental scrape can rebuild master without
+    earlier knockout games.
+    """
+    root = games_dir()
+    if not root.is_dir():
+        return ()
+    specs: list[ArtifactSpec] = []
+    for path in sorted(root.glob("game_*.parquet")):
+        specs.append(ArtifactSpec(path.stem, path, False, "parquet"))
+    return tuple(specs)
+
+
+def publishable_artifacts() -> tuple[ArtifactSpec, ...]:
+    """Static ARTIFACTS plus every on-disk per-game parquet."""
+    return ARTIFACTS + iter_game_artifacts()
+
+
+def resolve_artifact(name: str, meta: dict | None = None) -> ArtifactSpec | None:
+    """Map a manifest artifact name to a local path (including game_* entries)."""
+    for spec in ARTIFACTS:
+        if spec.name == name:
+            return spec
+    if name.startswith("game_"):
+        meta = meta or {}
+        key = str(meta.get("s3_key") or "")
+        if "/games/" in key:
+            filename = key.rsplit("/", 1)[-1]
+            return ArtifactSpec(name, games_dir() / filename, False, "parquet")
+        return ArtifactSpec(name, games_dir() / f"{name}.parquet", False, "parquet")
+    return None
+
+
 def s3_key_for(artifact: ArtifactSpec, prefix: str = config.S3_PREFIX) -> str:
-    """Return the S3 object key for an artifact under the configured prefix."""
-    return f"{prefix}/{artifact.path.name}"
+    """Return the S3 object key for an artifact under the configured prefix.
+
+    Paths under ``DATA_DIR`` keep their relative layout (e.g.
+    ``data/games/game_760511.parquet``) so per-game files are not flattened.
+    """
+    try:
+        rel = artifact.path.resolve().relative_to(config.DATA_DIR.resolve())
+    except ValueError:
+        return f"{prefix}/{artifact.path.name}"
+    return f"{prefix}/{rel.as_posix()}"
