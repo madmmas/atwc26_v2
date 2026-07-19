@@ -35,16 +35,11 @@ Outputs (under ./data)
 
 Usage
 -----
-  python3 scrape_wc26.py                  # process pending / missing-parquet games
+  python3 scrape_wc26.py                  # process newly-added links, then exit
   python3 scrape_wc26.py --force          # reprocess every link in the csv
   python3 scrape_wc26.py --game 760416    # (re)process a single gameId
   python3 scrape_wc26.py --watch 60       # poll the csv every 60s for new links
   python3 scrape_wc26.py --include-dnp    # also store players who didn't play
-
-Incremental runs skip games with status=ok *and* a local game_<id>.parquet.
-Completed bracket games missing from master stats are always re-queued.
-rebuild_master merges per-game parquets with any master-only game IDs so a
-single-game scrape cannot wipe earlier S3-synced matches.
 """
 
 from __future__ import annotations
@@ -392,130 +387,17 @@ def scrape_game(
 # --------------------------------------------------------------------------- #
 # Output assembly
 # --------------------------------------------------------------------------- #
-def game_parquet_path(gid: str) -> Path:
-    return GAMES_DIR / f"game_{gid}.parquet"
-
-
-def has_game_parquet(gid: str) -> bool:
-    """True when the durable per-game artifact exists on disk."""
-    return game_parquet_path(gid).is_file()
-
-
 def write_game(df: pd.DataFrame, gid: str) -> None:
     GAMES_DIR.mkdir(parents=True, exist_ok=True)
-    df.to_parquet(game_parquet_path(gid), index=False)
-
-
-def _game_ids_in_frame(df: pd.DataFrame) -> set[str]:
-    if df.empty or "game_id" not in df.columns:
-        return set()
-    return {str(g) for g in df["game_id"].dropna().unique()}
-
-
-def completed_bracket_game_ids() -> set[str]:
-    """Completed knockout game IDs from bracket.json (scoreboard pipeline)."""
-    path = DATA_DIR / "bracket.json"
-    if not path.is_file():
-        return set()
-    try:
-        payload = json.loads(path.read_text())
-    except (OSError, ValueError):
-        return set()
-    out: set[str] = set()
-    for rnd in payload.get("rounds") or []:
-        for match in rnd.get("matches") or []:
-            if match.get("completed") and match.get("game_id") is not None:
-                out.add(str(match["game_id"]))
-    return out
-
-
-def master_game_ids() -> set[str]:
-    if not MASTER_PARQUET.is_file():
-        return set()
-    try:
-        return _game_ids_in_frame(pd.read_parquet(MASTER_PARQUET, columns=["game_id"]))
-    except Exception:
-        return set()
-
-
-def heal_missing_parquet_state(state: dict) -> dict:
-    """Downgrade ok→pending when Dynamo/git say done but the parquet is gone.
-
-    CI restores processed_games.json from DynamoDB but does not publish
-    per-game parquets to S3. A later incremental rebuild can therefore mark
-    games ok while their durable game_*.parquet never lands in the checkout.
-    """
-    changed = False
-    for gid, meta in list(state.items()):
-        if not isinstance(meta, dict):
-            continue
-        if meta.get("status") == "ok" and not has_game_parquet(gid):
-            log.warning(
-                "[%s] status=ok but %s missing — will re-scrape",
-                gid, game_parquet_path(gid).name,
-            )
-            meta = dict(meta)
-            meta["status"] = "pending"
-            meta["reason"] = "missing_parquet"
-            state[gid] = meta
-            changed = True
-    if changed:
-        save_state(state)
-    return state
-
-
-def games_needing_scrape(links: dict[str, str], state: dict) -> dict[str, str]:
-    """Incremental targets: not ok, missing parquet, or completed-in-bracket gap."""
-    targets = {
-        gid: url for gid, url in links.items()
-        if state.get(gid, {}).get("status") != "ok" or not has_game_parquet(gid)
-    }
-    covered = master_game_ids()
-    if GAMES_DIR.is_dir():
-        covered |= {
-            p.stem.removeprefix("game_") for p in GAMES_DIR.glob("game_*.parquet")
-        }
-    for gid in completed_bracket_game_ids() - covered:
-        targets.setdefault(gid, links.get(gid, f"gameId/{gid}"))
-        log.warning(
-            "[%s] completed in bracket but missing from match stats — will scrape",
-            gid,
-        )
-    return targets
+    df.to_parquet(GAMES_DIR / f"game_{gid}.parquet", index=False)
 
 
 def rebuild_master(glossary: dict) -> None:
-    """Rebuild master from per-game parquets, preserving synced-only games.
-
-    Per-game files are source of truth when present. Rows already in
-    ``all_players_stats.parquet`` for game IDs without a local
-    ``game_*.parquet`` are kept so an incremental scrape of one new match
-    cannot wipe earlier games that only exist in the S3-synced master.
-    """
+    """Rebuild the combined master files from every per-game parquet."""
     files = sorted(GAMES_DIR.glob("game_*.parquet"))
-    frames: list[pd.DataFrame] = []
-    file_gids: set[str] = set()
-    for path in files:
-        frame = pd.read_parquet(path)
-        frames.append(frame)
-        file_gids.add(path.stem.removeprefix("game_"))
-
-    preserved = 0
-    if MASTER_PARQUET.is_file():
-        try:
-            existing = pd.read_parquet(MASTER_PARQUET)
-        except Exception as exc:
-            log.warning("could not read existing master for merge: %s", exc)
-            existing = None
-        if existing is not None and not existing.empty and "game_id" in existing.columns:
-            keep = existing[~existing["game_id"].astype(str).isin(file_gids)]
-            if not keep.empty:
-                frames.append(keep)
-                preserved = len(_game_ids_in_frame(keep))
-
-    if not frames:
+    if not files:
         return
-    combined = pd.concat(frames, ignore_index=True)
+    combined = pd.concat((pd.read_parquet(f) for f in files), ignore_index=True)
     stat_cols = sorted(c for c in combined.columns if c not in IDENTITY_COLS)
     combined = combined[[c for c in IDENTITY_COLS if c in combined.columns] + stat_cols]
     combined.to_parquet(MASTER_PARQUET, index=False)
@@ -527,11 +409,8 @@ def rebuild_master(glossary: dict) -> None:
                .reset_index(drop=True))
         gdf.to_csv(GLOSSARY_CSV, index=False)
 
-    n_games = len(_game_ids_in_frame(combined))
-    log.info(
-        "master rebuilt: %d rows across %d games (%d from parquet, %d preserved) -> %s",
-        len(combined), n_games, len(file_gids), preserved, MASTER_PARQUET.name,
-    )
+    log.info("master rebuilt: %d rows across %d games -> %s",
+             len(combined), len(files), MASTER_PARQUET.name)
 
 
 def load_glossary() -> dict:
@@ -555,13 +434,14 @@ def process_once(session, args, glossary) -> int:
         log.info("no game links found in %s", LINKS_CSV.name)
         return 0
 
-    state = heal_missing_parquet_state(load_state())
+    state = load_state()
     if args.game:
         targets = {args.game: links.get(args.game, f"gameId/{args.game}")}
     elif args.force:
         targets = links
     else:
-        targets = games_needing_scrape(links, state)
+        targets = {g: u for g, u in links.items()
+                   if state.get(g, {}).get("status") != "ok"}
 
     if not targets:
         log.info("no new games to process (%d already done)", len(state))

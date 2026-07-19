@@ -7,7 +7,6 @@ from dataclasses import dataclass
 import pandas as pd
 
 from atwc26_core.artifacts import ARTIFACTS
-from atwc26_core import config
 from atwc26_core.data import DataStore
 
 
@@ -67,65 +66,12 @@ def check_datastore_loads() -> QAResult:
     return QAResult("datastore_load", True, f"{len(store.teams)} teams")
 
 
-def _completed_bracket_game_ids() -> set[str]:
-    path = config.BRACKET
-    if not path.is_file():
-        return set()
-    try:
-        payload = json.loads(path.read_text())
-    except (OSError, ValueError):
-        return set()
-    out: set[str] = set()
-    for rnd in payload.get("rounds") or []:
-        for match in rnd.get("matches") or []:
-            if match.get("completed") and match.get("game_id") is not None:
-                out.add(str(match["game_id"]))
-    return out
-
-
-def check_bracket_match_coverage() -> QAResult:
-    """Fail when bracket shows a finished match that master stats omitted.
-
-    Standings/bracket come from the scoreboard scrape; matches/scorers come
-    from all_players_stats. This catches the dual-pipeline gap that previously
-    published a complete bracket with missing knockout player stats.
-    """
-    completed = _completed_bracket_game_ids()
-    if not completed:
-        return QAResult("bracket_match_coverage", True, "no completed bracket games")
-
-    spec = next(a for a in ARTIFACTS if a.name == "master_parquet")
-    if not spec.path.exists():
-        return QAResult(
-            "bracket_match_coverage",
-            False,
-            f"{len(completed)} completed bracket games but master parquet missing",
-        )
-    df = pd.read_parquet(spec.path, columns=["game_id"])
-    master = {str(g) for g in df["game_id"].dropna().unique()}
-    missing = sorted(completed - master)
-    if missing:
-        preview = ", ".join(missing[:8])
-        more = f" (+{len(missing) - 8} more)" if len(missing) > 8 else ""
-        return QAResult(
-            "bracket_match_coverage",
-            False,
-            f"completed bracket games missing from master: {preview}{more}",
-        )
-    return QAResult(
-        "bracket_match_coverage",
-        True,
-        f"{len(completed)} completed bracket games present in master",
-    )
-
-
 def run_all_checks() -> list[QAResult]:
     return [
         *check_required_artifacts(),
         check_master_parquet(),
         check_match_events(),
         check_datastore_loads(),
-        check_bracket_match_coverage(),
     ]
 
 

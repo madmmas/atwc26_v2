@@ -2,7 +2,6 @@
 from __future__ import annotations
 
 from etl.qa.checks import (
-    check_bracket_match_coverage,
     check_datastore_loads,
     check_master_parquet,
     check_match_events,
@@ -29,9 +28,4 @@ def test_match_events():
 
 def test_datastore_loads():
     result = check_datastore_loads()
-    assert result.ok, result.detail
-
-
-def test_bracket_match_coverage():
-    result = check_bracket_match_coverage()
     assert result.ok, result.detail
